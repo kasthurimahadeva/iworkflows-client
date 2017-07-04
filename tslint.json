@@ -68,7 +68,7 @@
     "object-literal-sort-keys": false,
     "one-line": [
       true,
-      "check-open-brace",
+      //"check-open-brace",
       "check-catch",
       "check-else",
       "check-whitespace"
@@ -110,13 +110,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "fuse",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "fuse",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

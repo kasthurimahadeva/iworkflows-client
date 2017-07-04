@@ -1,0 +1,41 @@
+<h3>Normal Buttons</h3>
+<div class="button-row">
+    <button md-button>Flat button</button>
+    <button md-raised-button>Raised button</button>
+    <button md-fab>
+        <md-icon>check</md-icon>
+    </button>
+    <button md-mini-fab>
+        <md-icon>check</md-icon>
+    </button>
+</div>
+
+<h3>Link Buttons</h3>
+<div class="example-button-row">
+    <a md-button routerLink=".">Flat button</a>
+    <a md-raised-button routerLink=".">Raised button</a>
+    <a md-fab routerLink=".">
+        <md-icon>check</md-icon>
+    </a>
+    <a md-mini-fab routerLink=".">
+        <md-icon>check</md-icon>
+    </a>
+</div>
+<h1>
+    {{name}}
+</h1>
+<md-icon svgIcon="thumbs-up"></md-icon>
+
+<md-icon class="mat-icon material-icons" role="img" aria-hidden="true">home</md-icon>
+
+<div fuseDirective></div>
+
+<fuse-name-getter [nameValue]="name">
+
+</fuse-name-getter>
+
+<input type="text"  [value]="name2" (change)="name2=$event.target.value">
+
+<button md-button (click)="name2='Sercan'">
+    {{name2}}
+</button>
