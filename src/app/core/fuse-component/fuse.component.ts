@@ -1,4 +1,4 @@
-import {Component, Directive, ElementRef, Input, OnInit, Output} from '@angular/core';
+import {Component, Directive, DoCheck, ElementRef, Input, OnInit, Output} from '@angular/core';
 
 @Directive({
     selector: '[fuseDirective]'
@@ -39,24 +39,36 @@ export class NameGetterComponent implements OnInit
 }
 
 @Component({
-    selector   : 'fuse-component',
+    selector   : 'fuse-fuse',
     templateUrl: './fuse.component.html',
     styleUrls  : ['./fuse.component.scss']
 })
-export class FuseComponent implements OnInit
+export class FuseComponent implements OnInit, DoCheck
 {
     name2: string;
     @Input('name') name: string;
+
 
     constructor()
     {
     }
 
+    public changeName(name)
+    {
+        console.info('name change emit');
+
+    }
 
     ngOnInit()
     {
         this.name2 = this.name;
         console.log(this.name);
         console.info('on init');
+    }
+
+    ngDoCheck()
+    {
+        console.info('ngDoCheck');
+
     }
 }

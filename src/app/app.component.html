@@ -1,3 +1,76 @@
+<ng-container *ngIf="layoutSettings.toolbar === 'above'">
+    <fuse-toolbar></fuse-toolbar>
+</ng-container>
+
+<ng-container *ngIf="layoutSettings.navigation === 'left'">
+
+    <md-sidenav-container id="wrapper" class="example-sidenav-fab-container" fxLayout="row" fxfill>
+
+        <md-sidenav #sidenav mode="side" opened="true" fxFlex="256px">
+            <fuse-navigation></fuse-navigation>
+        </md-sidenav>
+
+        <fuse-toolbar *ngIf="layoutSettings.toolbar === 'below'" class="" [sidenav]="sidenav"></fuse-toolbar>
+
+        <div id="content">
+            <router-outlet></router-outlet>
+        </div>
+    </md-sidenav-container>
+
+</ng-container>
+
+<ng-container *ngIf="layoutSettings.navigation === 'right'">
+
+    <md-sidenav-container id="wrapper" class="example-sidenav-fab-container" fxLayout="row" fxfill>
+
+        <fuse-toolbar *ngIf="layoutSettings.toolbar === 'below'" class="" [sidenav]="sidenav"></fuse-toolbar>
+
+        <div id="content">
+            <router-outlet></router-outlet>
+            <button md-mini-fab class="example-fab" (click)="sidenav.toggle()">
+                <md-icon>add</md-icon>
+            </button>
+        </div>
+
+        <md-sidenav #sidenav mode="side" align="end" opened="true" fxFlex="256px">
+            <fuse-navigation></fuse-navigation>
+        </md-sidenav>
+
+    </md-sidenav-container>
+
+</ng-container>
+
+<ng-container *ngIf="layoutSettings.navigation === 'top'">
+
+    <div id="wrapper" class="">
+
+        <div id="nav" class="">
+            <fuse-navigation></fuse-navigation>
+        </div>
+
+        <fuse-toolbar *ngIf="layoutSettings.toolbar === 'below'" class="" [sidenav]="sidenav"></fuse-toolbar>
+
+        <div id="content-wrapper" class="">
+
+            <div id="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+    </div>
+</ng-container>
+
+<!--
+<pre>{{layoutSettings | json}}</pre>
+
+<fuse-layout></fuse-layout>
+
+
 <div class="example-container">
-  <fuse-component name="Sercan"></fuse-component>
+    <h1>Fuse Component</h1>
+    <fuse-fuse name="Sercan" (nameChanged)="onNameChange()"></fuse-fuse>
+    <h1>Muse Component</h1>
+    <input type="text" [(ngModel)]="bgValue">
+    <fuse-muse [bgColor]="bgValue"></fuse-muse>
 </div>
+-->

@@ -1,0 +1,13 @@
+<md-sidenav-container id="mail" class="example-sidenav-fab-container" fxLayout="row" fxfill>
+
+    <md-sidenav #sidenav mode="side" opened="true" fxFlex="240px">
+        <fuse-mail-main-sidenav></fuse-mail-main-sidenav>
+    </md-sidenav>
+
+    <div class="content">
+        <a md-mini-fab class="sidenav-toggle-button" (click)="sidenav.toggle()">
+            <md-icon>menu</md-icon>
+        </a>
+        <router-outlet name="view"></router-outlet>
+    </div>
+</md-sidenav-container>

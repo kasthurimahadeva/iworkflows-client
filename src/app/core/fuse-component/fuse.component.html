@@ -1,0 +1,26 @@
+<button md-raised-button>Raised button</button>
+<md-icon class="mat-icon material-icons" role="img" aria-hidden="true">home</md-icon>
+
+<hr>
+<h3>
+    Name:{{name}}
+</h3>
+<hr>
+<h3>
+    Fuse Directive:
+</h3>
+<div fuseDirective>Fuse Directive Content</div>
+<hr>
+
+<h3>
+    Fuse Name Getter Component:
+</h3>
+<fuse-name-getter [nameValue]="name"></fuse-name-getter>
+
+<hr>
+
+<input type="text" [value]="name2" (change)="name2=$event.target.value">
+
+<button md-button (click)="changeName('sercan')">
+    {{name2}}
+</button>
