@@ -25,6 +25,7 @@
             overflow: hidden;
             background-color: map-get($background, raised-button);
             color: map_get($foreground, text);
+            cursor: pointer;
 
             &:hover {
                 background-color: map-get($background, hover);

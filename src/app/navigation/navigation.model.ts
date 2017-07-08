@@ -1,6 +1,6 @@
 export class FuseNavigation
 {
-    array = [
+    items = [
         {
             'title': 'APPS',
             'type' : 'subheader'
@@ -9,17 +9,17 @@ export class FuseNavigation
             'title'   : 'Dashboards',
             'type'    : 'nav-collapse',
             'icon'    : 'dashboard',
-            'url'     : 'apps/dashboards',
+            'url'     : '/apps/dashboards',
             'children': [
                 {
                     'type' : 'nav-item',
                     'title': 'Project',
-                    'url'  : 'apps/dashboards/project'
+                    'url'  : '/apps/dashboards/project'
                 },
                 {
                     'type' : 'nav-item',
                     'title': 'Server',
-                    'url'  : 'apps-dashboards-server'
+                    'url'  : '/apps/dashboards/server'
                 }
             ]
         },
@@ -27,28 +27,28 @@ export class FuseNavigation
             'title': 'Calendar',
             'type' : 'nav-item',
             'icon' : 'today',
-            'url'  : 'apps-calendar'
+            'url'  : '/apps/calendar'
         },
         {
             'title'   : 'Ecommerce',
             'type'    : 'nav-collapse',
             'icon'    : 'shopping_cart',
-            'url'     : 'apps-e-commerce-',
+            'url'     : '/apps/e-commerce',
             'children': [
                 {
                     'title': 'Products',
                     'type' : 'nav-item',
-                    'url'  : 'apps-e-commerce-products'
+                    'url'  : '/apps/e-commerce/products'
                 },
                 {
                     'title': 'Product',
                     'type' : 'nav-item',
-                    'url'  : 'apps-e-commerce-product'
+                    'url'  : '/apps/e-commerce/product'
                 },
                 {
                     'title': 'Orders',
                     'type' : 'nav-item',
-                    'url'  : 'apps-e-commerce-orders'
+                    'url'  : '/apps/e-commerce/orders'
                 }
             ]
         },
@@ -56,31 +56,31 @@ export class FuseNavigation
             'title': 'Mail',
             'type' : 'nav-item',
             'icon' : 'email',
-            'url'  : 'apps/mail'
+            'url'  : '/apps/mail'
         },
         {
             'title': 'Chat',
             'type' : 'nav-item',
             'icon' : 'chat',
-            'url'  : 'apps/chat'
+            'url'  : '/apps/chat'
         },
         {
             'title': 'File Manager',
             'type' : 'nav-item',
             'icon' : 'folder',
-            'url'  : 'apps-file-manager'
+            'url'  : '/apps/file-manager'
         },
         {
             'title': 'Contacts',
             'type' : 'nav-item',
             'icon' : 'account_box',
-            'url'  : 'apps-contacts'
+            'url'  : '/apps/contacts'
         },
         {
             'title': 'To-Do',
             'type' : 'nav-item',
             'icon' : 'checkbox_cricle',
-            'url'  : 'apps-todo'
+            'url'  : '/apps/todo'
         },
         {
             'title': 'PAGES',
@@ -90,42 +90,42 @@ export class FuseNavigation
             'title'   : 'Authentication',
             'type'    : 'nav-collapse',
             'icon'    : 'lock',
-            'url'     : 'pages-auth-',
+            'url'     : '/pages/auth',
             'children': [
                 {
                     'title': 'Login',
                     'type' : 'nav-item',
-                    'url'  : 'pages-auth-login'
+                    'url'  : '/pages/auth/login'
                 },
                 {
                     'title': 'Login v2',
                     'type' : 'nav-item',
-                    'url'  : 'pages-auth-login-v2'
+                    'url'  : '/pages/auth/login-v2'
                 },
                 {
                     'title': 'Register',
                     'type' : 'nav-item',
-                    'url'  : 'pages-auth-register'
+                    'url'  : '/pages/auth/register'
                 },
                 {
                     'title': 'Register v2',
                     'type' : 'nav-item',
-                    'url'  : 'pages-auth-register-v2'
+                    'url'  : '/pages/auth/register-v2'
                 },
                 {
                     'title': 'Forgot Password',
                     'type' : 'nav-item',
-                    'url'  : 'pages-auth-forgot-password'
+                    'url'  : '/pages/auth/forgot-password'
                 },
                 {
                     'title': 'Reset Password',
                     'type' : 'nav-item',
-                    'url'  : 'pages-auth-reset-password'
+                    'url'  : '/pages/auth/reset-password'
                 },
                 {
                     'title': 'Lock Screen',
                     'type' : 'nav-item',
-                    'url'  : 'pages-auth-lock-screen'
+                    'url'  : '/pages/auth/lock-screen'
                 }
             ]
         },
@@ -133,23 +133,23 @@ export class FuseNavigation
             'title': 'Coming Soon',
             'type' : 'nav-item',
             'icon' : 'alarm',
-            'url'  : 'pages-coming-soon'
+            'url'  : '/pages/coming-soon'
         },
         {
             'title'   : 'Errors',
             'type'    : 'nav-collapse',
             'icon'    : 'error',
-            'url'     : 'pages-errors-',
+            'url'     : '/pages/errors',
             'children': [
                 {
                     'title': '404',
                     'type' : 'nav-item',
-                    'url'  : 'pages-errors-404'
+                    'url'  : '/pages/errors/404'
                 },
                 {
                     'title': '500',
                     'type' : 'nav-item',
-                    'url'  : 'pages-errors-500'
+                    'url'  : '/pages/errors/500'
                 }
             ]
         },
@@ -157,19 +157,19 @@ export class FuseNavigation
             'title': 'Maintenance',
             'type' : 'nav-item',
             'icon' : 'build',
-            'url'  : 'pages-maintenance'
+            'url'  : '/pages/maintenance'
         },
         {
             'title': 'Profile',
             'type' : 'nav-item',
             'icon' : 'account',
-            'url'  : 'pages-profile'
+            'url'  : '/pages/profile'
         },
         {
             'title': 'Search',
             'type' : 'nav-item',
             'icon' : 'search',
-            'url'  : 'pages-search'
+            'url'  : '/pages/search'
         },
         {
             'title': 'USER INTERFACE',
@@ -179,82 +179,82 @@ export class FuseNavigation
             'title'   : 'Elements',
             'type'    : 'nav-collapse',
             'icon'    : 'layers',
-            'url'     : 'user-interface-elements-',
+            'url'     : '/user-interface/elements',
             'children': [
                 {
                     'title': 'Alerts',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-alerts'
+                    'url'  : '/user-interface/elements/alerts'
                 },
                 {
                     'title': 'Badges',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-badges'
+                    'url'  : '/user-interface/elements/badges'
                 },
                 {
                     'title': 'Breadcrumb',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-breadcrumb'
+                    'url'  : '/user-interface/elements/breadcrumb'
                 },
                 {
                     'title': 'Buttons',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-buttons'
+                    'url'  : '/user-interface/elements/buttons'
                 },
                 {
                     'title': 'Button Group',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-button-group'
+                    'url'  : '/user-interface/elements/button-group'
                 },
                 {
                     'title': 'Cards',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-cards'
+                    'url'  : '/user-interface/elements/cards'
                 },
                 {
                     'title': 'Dropdowns',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-dropdowns'
+                    'url'  : '/user-interface/elements/dropdowns'
                 },
                 {
                     'title': 'Forms',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-forms'
+                    'url'  : '/user-interface/elements/forms'
                 },
                 {
                     'title': 'Input Group',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-input-group'
+                    'url'  : '/user-interface/elements/input-group'
                 },
                 {
                     'title': 'Jumbotron',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-jumbotron'
+                    'url'  : '/user-interface/elements/jumbotron'
                 },
                 {
                     'title': 'List Group',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-list-group'
+                    'url'  : '/user-interface/elements/list-group'
                 },
                 {
                     'title': 'Navs',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-navs'
+                    'url'  : '/user-interface/elements/navs'
                 },
                 {
                     'title': 'Navbar',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-navbar'
+                    'url'  : '/user-interface/elements/navbar'
                 },
                 {
                     'title': 'Pagination',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-pagination'
+                    'url'  : '/user-interface/elements/pagination'
                 },
                 {
                     'title': 'Progress',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-elements-progress'
+                    'url'  : '/user-interface/elements/progress'
                 }
             ]
         },
@@ -262,17 +262,17 @@ export class FuseNavigation
             'title'   : 'Tables',
             'type'    : 'nav-collapse',
             'icon'    : 'border_all',
-            'url'     : 'user-interface-tables-',
+            'url'     : '/user-interface/tables',
             'children': [
                 {
                     'title': 'Simple Table',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-tables-simple-table'
+                    'url'  : '/user-interface/tables/simple-table'
                 },
                 {
                     'title': 'Data Table',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-tables-data-table'
+                    'url'  : '/user-interface/tables/data-table'
                 }
             ]
         },
@@ -280,81 +280,81 @@ export class FuseNavigation
             'title'   : 'Page Layouts',
             'type'    : 'nav-collapse',
             'icon'    : 'view_quilt',
-            'url'     : 'user-interface-page-layouts-',
+            'url'     : 'page-layouts',
             'children': [
                 {
                     'title'   : 'Carded',
                     'type'    : 'nav-collapse',
-                    'url'     : 'user-interface-page-layouts-carded-',
+                    'url'     : '/user-interface/page-layouts/carded',
                     'children': [
                         {
                             'title': 'Full Width',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-carded-full-width'
+                            'url'  : '/user-interface/page-layouts/carded/full-width'
                         },
                         {
                             'title': 'Left Sidebar',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-carded-left-sidebar'
+                            'url'  : '/user-interface/page-layouts/carded/left-sidebar'
                         },
                         {
                             'title': 'Right Sidebar',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-carded-right-sidebar'
+                            'url'  : '/user-interface/page-layouts/carded/right-sidebar'
                         }
                     ]
                 },
                 {
                     'title'   : 'Simple',
                     'type'    : 'nav-collapse',
-                    'url'     : 'user-interface-page-layouts-simple-',
+                    'url'     : '/user-interface/page-layouts/simple',
                     'children': [
                         {
                             'title': 'Full Width',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-full-width'
+                            'url'  : '/user-interface/page-layouts/simple/full-width'
                         },
                         {
                             'title': 'Left Sidebar',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-left-sidebar'
+                            'url'  : '/user-interface/page-layouts/simple/left-sidebar'
                         },
                         {
                             'title': 'Left Sidebar Inner',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-left-sidebar-inner'
+                            'url'  : '/user-interface/page-layouts/simple/left-sidebar-inner'
                         },
                         {
                             'title': 'Left Sidebar Floating',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-left-sidebar-floating'
+                            'url'  : '/user-interface/page-layouts/simple/left-sidebar-floating'
                         },
                         {
                             'title': 'Right Sidebar',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-right-sidebar'
+                            'url'  : '/user-interface/page-layouts/simple/right-sidebar'
                         },
                         {
                             'title': 'Right Sidebar Inner',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-right-sidebar-inner'
+                            'url'  : '/user-interface/page-layouts/simple/sidebar-inner'
                         },
                         {
                             'title': 'Right Sidebar Floating',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-right-sidebar-floating'
+                            'url'  : '/user-interface/page-layouts/simple/right-sidebar-floating'
                         },
                         {
                             'title': 'Tabbed',
                             'type' : 'nav-item',
-                            'url'  : 'user-interface-page-layouts-simple-tabbed'
+                            'url'  : '/user-interface/page-layouts/simple/tabbed'
                         }
                     ]
                 },
                 {
                     'title': 'Blank',
                     'type' : 'nav-item',
-                    'url'  : 'user-interface-page-layouts-blank'
+                    'url'  : '/user-interface/page-layouts/blank'
                 }
             ]
         },
@@ -362,7 +362,7 @@ export class FuseNavigation
             'title': 'Colors',
             'type' : 'nav-item',
             'icon' : 'color_lens',
-            'url'  : 'user-interface-colors'
+            'url'  : '/user-interface/colors'
         },
         {
             'title': 'COMPONENTS',
@@ -371,13 +371,13 @@ export class FuseNavigation
         {
             'title'   : 'Charts',
             'type'    : 'nav-collapse',
-            'url'     : 'components-charts-',
+            'url'     : '/components/charts',
             'icon'    : 'poll',
             'children': [
                 {
                     'title': 'nvD3',
                     'type' : 'nav-item',
-                    'url'  : 'components-charts-nvd3'
+                    'url'  : '/components/charts/nvd3'
                 }
             ]
         },
@@ -385,31 +385,31 @@ export class FuseNavigation
             'title': 'Collapse',
             'type' : 'nav-item',
             'icon' : 'add_box',
-            'url'  : 'components-collapse'
+            'url'  : '/components/collapse'
         },
         {
             'title': 'Modal',
             'type' : 'nav-item',
             'icon' : 'picture_in_picture',
-            'url'  : 'components-modal'
+            'url'  : '/components/modal'
         },
         {
             'title': 'Popovers',
             'type' : 'nav-item',
             'icon' : 'chat_buble',
-            'url'  : 'components-popovers'
+            'url'  : '/components/popovers'
         },
         {
             'title': 'Snackbar',
             'type' : 'nav-item',
             'icon' : 'call_to_action',
-            'url'  : 'components-snackbar'
+            'url'  : '/components/snackbar'
         },
         {
             'title': 'Tooltips',
             'type' : 'nav-item',
             'icon' : 'live_help',
-            'url'  : 'components-tooltips'
+            'url'  : '/components/tooltips'
         }
     ];
 }

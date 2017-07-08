@@ -1,0 +1,12 @@
+:host {
+
+    > .children {
+        display: none;
+    }
+
+    &.open {
+        > .children {
+            display: block;
+        }
+    }
+}

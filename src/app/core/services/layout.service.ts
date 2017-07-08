@@ -53,6 +53,6 @@ export class LayoutService
     {
         Object.assign(this.settings, newSettings);
         this.settingsChanged.emit(this.settings);
-        console.log('settings changed');
+        // console.log('settings changed');
     }
 }

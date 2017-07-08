@@ -20,7 +20,7 @@ import {NavCollapseComponent} from './nav-collapse/nav-collapse.component';
         NavSubheaderComponent,
         NavItemComponent,
         NavCollapseComponent
-    ]
+    ],
 })
 export class NavigationModule
 {

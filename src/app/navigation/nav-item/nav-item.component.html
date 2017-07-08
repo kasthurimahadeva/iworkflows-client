@@ -1,4 +1,6 @@
-<a class="nav-link" [routerLink]="[item.url]" routerLinkActive="active" md-ripple>
+<a class="nav-link" md-ripple
+   [routerLink]="[item.url]" routerLinkActive="active"
+   (click)="onClick()">
     <md-icon *ngIf="item.icon">{{item.icon}}</md-icon>
     <span>{{item.title}}</span>
 </a>

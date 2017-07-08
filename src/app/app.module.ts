@@ -11,6 +11,8 @@ import {ChatModule} from './main/apps/chat/chat.module';
 import {NavigationModule} from './navigation/navigation.module';
 import {ProjectModule} from './main/apps/dashboards/project/project.module';
 import {SharedModule} from './core/shared.module';
+import {NavigationService} from './navigation/navigation.service';
+import {CardedFullWidthModule} from './main/ui/page-layouts/carded/fullwidth/fullwidth.module';
 
 const appRoutes: Routes = [
     {path: '**', redirectTo: 'apps/dashboards/project'}
@@ -20,7 +22,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         LayoutComponent,
-        ToolbarComponent
+        ToolbarComponent,
     ],
     imports     : [
         SharedModule,
@@ -33,9 +35,10 @@ const appRoutes: Routes = [
         NavigationModule,
         MailModule,
         ChatModule,
-        ProjectModule
+        ProjectModule,
+        CardedFullWidthModule
     ],
-    providers   : [],
+    providers   : [NavigationService],
     bootstrap   : [AppComponent]
 })
 export class AppModule

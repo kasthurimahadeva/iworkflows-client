@@ -1,4 +1,5 @@
-import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {NavigationService} from '../navigation.service';
 
 @Component({
     selector   : 'fuse-nav-item',
@@ -10,7 +11,7 @@ export class NavItemComponent implements OnInit
     @HostBinding('class') classes = 'nav-item';
     @Input() item: any;
 
-    constructor()
+    constructor(private navigationService: NavigationService)
     {
     }
 
@@ -18,4 +19,9 @@ export class NavItemComponent implements OnInit
     {
     }
 
+    onClick()
+    {
+        console.log('clicked');
+        this.navigationService.navItemClicked.emit(this.item.url);
+    }
 }
