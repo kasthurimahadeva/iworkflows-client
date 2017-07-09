@@ -1,5 +1,6 @@
-import {Component, HostBinding, HostListener, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {NavigationService} from '../navigation.service';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
     selector   : 'fuse-nav-collapse',
@@ -10,36 +11,127 @@ export class NavCollapseComponent implements OnInit
 {
     @Input() item: any;
     @HostBinding('class') classes = 'nav-collapse nav-item';
-    @HostBinding('class.open') public isOpen = false;
+    @HostBinding('class.open') private isOpen = false;
 
-    constructor(private navigationService: NavigationService)
+    constructor(private navigationService: NavigationService, private router: Router)
     {
-        this.navigationService.navItemClicked.subscribe(
-            (instance) =>
+        /**
+         * When navigation changed
+         */
+        router.events.subscribe(
+            (event) =>
             {
-                // console.warn('navItemClicked', instance);
-
-                if ( !instance.includes(this.item.url) && this.isOpen )
+                if ( event instanceof NavigationEnd )
                 {
-                    this.isOpen = !this.isOpen;
+                    /**
+                     * Check if the url is child of the collapse
+                     */
+                    if ( this.isUrlInChildren(this.item, event.urlAfterRedirects) )
+                    {
+                        this.expand();
+                    }
+                    else
+                    {
+                        this.collapse();
+                    }
                 }
-                console.warn(this.item.url, instance);
-                if ( instance.includes(this.item.url) && !this.isOpen )
+            }
+        );
+
+        /**
+         * Whenever a navigaiton collapse item toggled
+         */
+        this.navigationService.onNavCollapseToggled.subscribe(
+            (clickedItem) =>
+            {
+                if ( clickedItem.children )
                 {
-                    this.isOpen = !this.isOpen;
+                    /**
+                     * if clicked collapse is child of this collapse
+                     * return
+                     */
+                    if ( this.item.children.indexOf(clickedItem) !== -1 )
+                    {
+                        return;
+                    }
+                    /**
+                     * If collapsed item is not related with this collapse
+                     * collapse
+                     */
+                    if ( this.item !== clickedItem )
+                    {
+                        this.collapse();
+                    }
                 }
             }
         );
     }
 
-    toggleOpen(event)
+    /**
+     * Toggle Collapse
+     * @param ev
+     */
+    toggleOpen(ev)
     {
-        event.preventDefault();
+        ev.preventDefault();
         this.isOpen = !this.isOpen;
-        this.navigationService.navItemClicked.emit(this.item.url);
+        //  this.navigationService.onNavItemClicked.emit(this.item);
+        this.navigationService.onNavCollapseToggled.emit(this.item);
         console.log('toggleOpen');
     }
 
+    /**
+     * Expand
+     */
+    expand()
+    {
+        if ( this.isOpen )
+        {
+            return;
+        }
+        this.isOpen = true;
+    }
+
+    /**
+     * Collapse
+     */
+    collapse()
+    {
+        if ( !this.isOpen )
+        {
+            return;
+        }
+        this.isOpen = false;
+    }
+
+    /**
+     * Checking the url is in children
+     * @param arr
+     * @param url
+     * @returns {any}
+     */
+    isUrlInChildren(arr, url)
+    {
+        if ( !arr.children )
+        {
+            return false;
+        }
+        for ( let i = 0; i < arr.children.length; i++ )
+        {
+            if ( arr.children[i].children )
+            {
+                return this.isUrlInChildren(arr.children[i], url)
+            }
+            else
+            {
+                if ( arr.children[i].url === url )
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     ngOnInit()
     {
