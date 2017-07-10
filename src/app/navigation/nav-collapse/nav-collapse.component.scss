@@ -1,12 +1,26 @@
 :host {
 
+    .nav-link {
+        .collapse-arrow {
+            transition: transform .3s ease-in-out, opacity .25s ease-in-out .1s;
+            transform: rotate(0);
+        }
+    }
+
     > .children {
-        display: none;
+        overflow: hidden;
     }
 
     &.open {
-        > .children {
-            display: block;
+
+        .nav-link {
+            .collapse-arrow {
+                transform: rotate(90deg);
+            }
         }
+
+        > .children {
+        }
+
     }
 }

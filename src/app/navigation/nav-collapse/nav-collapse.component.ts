@@ -1,17 +1,19 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {NavigationService} from '../navigation.service';
 import {NavigationEnd, Router} from '@angular/router';
+import {Animations} from '../../core/animations';
 
 @Component({
     selector   : 'fuse-nav-collapse',
     templateUrl: './nav-collapse.component.html',
     styleUrls  : ['./nav-collapse.component.scss'],
+    animations : [Animations.slideInOut]
 })
 export class NavCollapseComponent implements OnInit
 {
     @Input() item: any;
     @HostBinding('class') classes = 'nav-collapse nav-item';
-    @HostBinding('class.open') private isOpen = false;
+    @HostBinding('class.open') public isOpen = false;
 
     constructor(private navigationService: NavigationService, private router: Router)
     {
@@ -75,9 +77,7 @@ export class NavCollapseComponent implements OnInit
     {
         ev.preventDefault();
         this.isOpen = !this.isOpen;
-        //  this.navigationService.onNavItemClicked.emit(this.item);
         this.navigationService.onNavCollapseToggled.emit(this.item);
-        console.log('toggleOpen');
     }
 
     /**
@@ -131,6 +131,11 @@ export class NavCollapseComponent implements OnInit
             }
         }
         return false;
+    }
+
+    public isCollapsed(): boolean
+    {
+        return this.isOpen;
     }
 
     ngOnInit()

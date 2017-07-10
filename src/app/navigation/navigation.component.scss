@@ -27,6 +27,10 @@
             color: map_get($foreground, text);
             cursor: pointer;
 
+            > span {
+                flex: 1;
+            }
+
             &:hover {
                 background-color: map-get($background, hover);
             }
@@ -42,18 +46,22 @@
                     background-color: mat-color($accent, default-contrast, 0.1);
                 }
 
-                &, .mat-icon {
+                &, .nav-link-icon {
                     color: mat-color($accent, default-contrast);
                 }
             }
 
-            .mat-icon {
+            .nav-link-icon {
+                margin-right: 16px;
+            }
+
+            .nav-link-icon,
+            .collapse-arrow {
                 font-size: 16px;
                 width: 16px;
                 height: 16px;
                 line-height: 16px;
                 color: map_get($mat-light-theme-foreground, icon);;
-                margin-right: 16px;
             }
         }
 
