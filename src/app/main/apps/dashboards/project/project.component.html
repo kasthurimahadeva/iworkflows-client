@@ -1,3 +1,35 @@
+Navigation:
+<md-radio-group [(ngModel)]="layoutSettings.navigation" (ngModelChange)="onSettingsChanged()">
+    <md-radio-button value="left">Left</md-radio-button>
+    <md-radio-button value="right">Right</md-radio-button>
+    <md-radio-button value="none">None</md-radio-button>
+</md-radio-group>
+
+<br>
+<br>
+
+Toolbar:
+<md-radio-group [(ngModel)]="layoutSettings.toolbar" (ngModelChange)="onSettingsChanged()">
+    <md-radio-button value="below">Below</md-radio-button>
+    <md-radio-button value="above">Above</md-radio-button>
+    <md-radio-button value="none">None</md-radio-button>
+</md-radio-group>
+
+<br>
+<br>
+
+Footer:
+<md-radio-group [(ngModel)]="layoutSettings.footer" (ngModelChange)="onSettingsChanged()">
+    <md-radio-button value="below">Below</md-radio-button>
+    <md-radio-button value="above">Above</md-radio-button>
+    <md-radio-button value="none">None</md-radio-button>
+</md-radio-group>
+
+<br>
+<br>
+<br>
+<br>
+
 <p>
     project works!
 </p>

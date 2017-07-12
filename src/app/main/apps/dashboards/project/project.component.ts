@@ -8,17 +8,26 @@ import { LayoutService } from '../../../../core/services/layout.service';
 })
 export class ProjectComponent implements OnInit
 {
+    layoutSettings: any;
+
     constructor(private layoutService: LayoutService)
     {
-        this.layoutService.setSettings({
+        /*this.layoutService.setSettings({
             navigation: 'left',
             toolbar   : 'above',
             footer    : 'above'
-        });
+        });*/
+        // this.layoutSettings = Object.assign(this.layoutSettings, this.layoutService.getSettings());
+    }
+
+    onSettingsChanged()
+    {
+        this.layoutService.setSettings({...this.layoutSettings});
     }
 
     ngOnInit()
     {
+        this.layoutSettings = this.layoutService.getSettings();
     }
 
 }

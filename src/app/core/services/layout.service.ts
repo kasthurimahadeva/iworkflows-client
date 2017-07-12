@@ -43,7 +43,7 @@ export class LayoutService
      */
     getSettings()
     {
-        return this.settings;
+        return {...this.settings};
     }
 
     /**
