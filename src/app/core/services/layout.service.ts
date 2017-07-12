@@ -1,25 +1,26 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import {NavigationStart, Router} from '@angular/router';
+import { EventEmitter, Injectable } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 
 @Injectable()
 export class LayoutService
 {
+    defaultSettings: { toolbar: string, navigation: string };
+    settings: { toolbar: string, navigation: string };
+
+    onSettingsChanged = new EventEmitter<{ toolbar: string, navigation: string }>();
+
     /**
-     * Default Settings
-     * @type {{navigation: string; toolbar: string}}
+     * @param router
      */
-    defaultSettings = {
-        navigation: 'left', // 'right', 'left', 'top', false
-        toolbar   : 'above' // 'above', 'below', false
-    }
-
-    settings;
-
-    settingsChanged = new EventEmitter<{ toolbar: any, navigation: any }>()
-
     constructor(private router: Router)
     {
-        // Asign default settings at the init
+        // Set the default settings
+        this.defaultSettings = {
+            navigation: 'left', // 'right', 'left', 'top', false
+            toolbar   : 'above' // 'above', 'below', false
+        };
+
+        // Assign default settings at the init
         this.settings = {...this.defaultSettings};
 
         // Reset the default settings whenever navigation starts
@@ -29,9 +30,8 @@ export class LayoutService
                 if ( event instanceof NavigationStart )
                 {
                     this.settings = {...this.defaultSettings};
-                    this.settingsChanged.emit(this.settings);
+                    this.onSettingsChanged.emit(this.settings);
                 }
-
             }
         );
     }
@@ -52,7 +52,6 @@ export class LayoutService
     setSettings(newSettings)
     {
         Object.assign(this.settings, newSettings);
-        this.settingsChanged.emit(this.settings);
-        // console.log('settings changed');
+        this.onSettingsChanged.emit(this.settings);
     }
 }

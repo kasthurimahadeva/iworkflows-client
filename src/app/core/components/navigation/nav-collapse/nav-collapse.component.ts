@@ -1,7 +1,7 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {NavigationService} from '../navigation.service';
 import {NavigationEnd, Router} from '@angular/router';
-import {Animations} from '../../core/animations';
+import {Animations} from '../../../animations';
 
 @Component({
     selector   : 'fuse-nav-collapse',

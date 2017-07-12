@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CardedFullWidthComponent} from './fullwidth.component';
-import {SharedModule} from '../../../../../core/shared.module';
+import {SharedModule} from '../../../../../core/modules/shared.module';
 
 const routes: Routes = [
     {

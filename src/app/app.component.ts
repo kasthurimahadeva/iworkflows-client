@@ -1,33 +1,30 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {LayoutService} from './core/services/layout.service';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-root',
+    selector   : 'body',
     templateUrl: './app.component.html',
-    styleUrls  : ['./app.component.scss'],
-    providers  : [LayoutService]
+    styleUrls  : ['./app.component.scss']
 })
 export class AppComponent implements OnInit
 {
-    layoutSettings: { toolbar: any, navigation: any };
-
-    constructor(private layoutService: LayoutService)
+    constructor(
+        private _renderer: Renderer2,
+        private _elementRef: ElementRef
+    )
     {
-        this.layoutSettings = layoutService.getSettings();
+    }
+
+    addClass(className: string)
+    {
+        this._renderer.addClass(this._elementRef.nativeElement, className);
+    }
+
+    removeClass(className: string)
+    {
+        this._renderer.removeClass(this._elementRef.nativeElement, className);
     }
 
     ngOnInit()
-    {
-        this.layoutService.settingsChanged
-            .subscribe(
-                (newSettings) =>
-                {
-                    this.layoutSettings = newSettings;
-                }
-            )
-    }
-
-    onNameChange()
     {
 
     }

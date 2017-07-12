@@ -13,7 +13,8 @@
 
     &.open {
 
-        .nav-link {
+        > .nav-link {
+
             .collapse-arrow {
                 transform: rotate(90deg);
             }

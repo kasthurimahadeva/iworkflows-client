@@ -1,0 +1,27 @@
+<!-- TOOLBAR: Above -->
+<ng-container *ngIf="layoutSettings.toolbar === 'above'">
+    <fuse-toolbar></fuse-toolbar>
+</ng-container>
+<!-- / TOOLBAR: Above -->
+
+<div id="wrapper">
+
+    <!-- NAVIGATION: Left -->
+    <ng-container *ngIf="layoutSettings.navigation === 'left'">
+
+        <fuse-navbar></fuse-navbar>
+
+        <div class="content-wrapper">
+
+            <ng-container *ngIf="layoutSettings.toolbar === 'below'">
+                <fuse-toolbar></fuse-toolbar>
+            </ng-container>
+
+            <fuse-content></fuse-content>
+
+        </div>
+
+    </ng-container>
+    <!-- / NAVIGATION: Left -->
+
+</div>

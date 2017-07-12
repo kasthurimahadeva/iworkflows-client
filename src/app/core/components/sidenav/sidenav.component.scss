@@ -1,0 +1,28 @@
+@import "src/app/core/scss/fuse";
+
+:host {
+    display: block;
+    position: absolute;
+    width: 320px;
+    height: 100%;
+    background: grey;
+    right: 0;
+    top: 0;
+    overflow-y: auto;
+
+    @include media-breakpoint('sm') {
+        background: white;
+    }
+
+    @include media-breakpoint('md') {
+        background: red;
+    }
+
+    @include media-breakpoint('lg') {
+        background: green;
+    }
+
+    @include media-breakpoint('gt-lg') {
+        background: white;
+    }
+}

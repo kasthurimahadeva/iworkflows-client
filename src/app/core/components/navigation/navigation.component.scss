@@ -1,4 +1,4 @@
-@import '../../theme-config';
+@import 'src/app/core/scss/fuse';
 
 #main-navigation {
     margin: 0;
@@ -11,6 +11,7 @@
         color: rgba(0, 0, 0, .54);
         font-weight: 500;
         padding-left: 24px;
+        white-space: nowrap;
     }
 
     .nav-item {
@@ -26,9 +27,11 @@
             background-color: map-get($background, raised-button);
             color: map_get($foreground, text);
             cursor: pointer;
+            user-select: none;
 
             > span {
                 flex: 1;
+                white-space: nowrap;
             }
 
             &:hover {
