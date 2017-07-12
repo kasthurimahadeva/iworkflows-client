@@ -8,7 +8,7 @@ import { LayoutService } from '../../services/layout.service';
 })
 export class LayoutComponent implements OnInit
 {
-    layoutSettings: { toolbar: any, navigation: any };
+    layoutSettings: { navigation: string, toolbar: string, footer: string };
 
     constructor(private layoutService: LayoutService)
     {

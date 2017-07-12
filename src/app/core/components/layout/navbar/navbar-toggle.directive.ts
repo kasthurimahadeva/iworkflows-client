@@ -1,4 +1,4 @@
-import {Directive, HostListener, Input} from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 import {NavbarService} from './navbar.service';
 import {NavbarComponent} from './navbar.component';
 
@@ -16,7 +16,7 @@ export class NavbarToggleDirective
     }
 
     @HostListener('click')
-    onMouseEnter()
+    onClick()
     {
         if ( !this.navbar[this.fuseNavbar] )
         {

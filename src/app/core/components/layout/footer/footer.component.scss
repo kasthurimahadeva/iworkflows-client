@@ -1,0 +1,7 @@
+:host {
+
+    &.above {
+        position: relative;
+        z-index: 99;
+    }
+}

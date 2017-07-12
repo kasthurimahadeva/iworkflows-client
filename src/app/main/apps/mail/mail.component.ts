@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {LayoutService} from '../../../core/services/layout.service';
+import { Component, OnInit } from '@angular/core';
+import { LayoutService } from '../../../core/services/layout.service';
 
 @Component({
     selector   : 'fuse-mail',
@@ -12,8 +12,9 @@ export class MailComponent implements OnInit
     constructor(private layoutService: LayoutService)
     {
         this.layoutService.setSettings({
+            navigation: 'left',
             toolbar   : 'below',
-            navigation: 'left'
+            footer    : 'below'
         });
     }
 

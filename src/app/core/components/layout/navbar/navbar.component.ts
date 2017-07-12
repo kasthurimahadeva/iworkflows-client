@@ -1,9 +1,8 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit} from '@angular/core';
-import {AppComponent} from '../../../../app.component';
-import {Subscription} from 'rxjs/Subscription';
-import {MatchMedia, MediaChange, MediaMonitor, ObservableMedia} from '@angular/flex-layout';
-import {FuseMatchMedia} from '../../../services/match-media.service';
-import {NavbarService} from './navbar.service';
+import { Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AppComponent } from '../../../../app.component';
+import { Subscription } from 'rxjs/Subscription';
+import { FuseMatchMedia } from '../../../services/match-media.service';
+import { NavbarService } from './navbar.service';
 
 @Component({
     selector   : 'fuse-navbar',
@@ -20,11 +19,11 @@ export class NavbarComponent implements OnInit, OnDestroy
 
     matchMediaWatcher: Subscription;
 
-    constructor(private elementRef: ElementRef,
-                private bodyEl: AppComponent,
-                private observableMedia: ObservableMedia,
-                private fuseMatchMedia: FuseMatchMedia,
-                private navBarService: NavbarService)
+    constructor(
+        private bodyEl: AppComponent,
+        private fuseMatchMedia: FuseMatchMedia,
+        private navBarService: NavbarService
+    )
     {
         navBarService.setNavBar(this);
         this.isClosed = false;
@@ -34,7 +33,6 @@ export class NavbarComponent implements OnInit, OnDestroy
 
         this.matchMediaWatcher = this.fuseMatchMedia.onMediaChange.subscribe((mediaStep) =>
         {
-            console.warn('Media step changed:', mediaStep);
             if ( mediaStep === 'xs' )
             {
                 this.closeBar();
@@ -48,14 +46,12 @@ export class NavbarComponent implements OnInit, OnDestroy
 
     openBar()
     {
-        console.info('opened');
         this.isClosed = false;
         this.updateCssClasses();
     }
 
     closeBar()
     {
-        console.info('closed');
         this.isClosed = true;
         this.updateCssClasses();
     }

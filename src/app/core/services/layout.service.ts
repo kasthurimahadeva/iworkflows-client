@@ -4,10 +4,10 @@ import { NavigationStart, Router } from '@angular/router';
 @Injectable()
 export class LayoutService
 {
-    defaultSettings: { toolbar: string, navigation: string };
-    settings: { toolbar: string, navigation: string };
+    defaultSettings: { navigation: string, toolbar: string, footer: string };
+    settings: { navigation: string, toolbar: string, footer: string };
 
-    onSettingsChanged = new EventEmitter<{ toolbar: string, navigation: string }>();
+    onSettingsChanged = new EventEmitter<{ navigation: string, toolbar: string, footer: string }>();
 
     /**
      * @param router
@@ -16,8 +16,9 @@ export class LayoutService
     {
         // Set the default settings
         this.defaultSettings = {
-            navigation: 'left', // 'right', 'left', 'top', false
-            toolbar   : 'above' // 'above', 'below', false
+            navigation: 'left', // 'right', 'left', 'top', none
+            toolbar   : 'above', // 'above', 'below', none
+            footer    : 'above' // 'above', 'below', none
         };
 
         // Assign default settings at the init
@@ -38,7 +39,7 @@ export class LayoutService
 
     /**
      * Get Settings
-     * @returns {{navigation: any, toolbar: any}}
+     * @returns {{navigation: string, toolbar: string, footer: string}}
      */
     getSettings()
     {

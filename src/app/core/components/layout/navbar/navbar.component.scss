@@ -3,6 +3,8 @@
 :host {
     display: block;
     width: 256px;
+    min-width: 256px;
+    max-width: 256px;
     height: 100%;
     background-color: #FFFFFF;
     overflow-y: auto;
@@ -16,9 +18,9 @@
         position: absolute;
 
         &:not(.folded-open) {
-            width: 64px !important;
-            min-width: 64px !important;
-            max-width: 64px !important;
+            width: 64px;
+            min-width: 64px;
+            max-width: 64px;
         }
 
         &.folded-open {
