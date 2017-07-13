@@ -1,6 +1,8 @@
-import { Directive, Input, OnInit, HostListener, ElementRef } from '@angular/core';
+import { Directive, Input, OnInit, HostListener, ElementRef, AfterViewInit, HostBinding } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 import { FuseMdSidenavHelperService } from 'app/core/directives/md-sidenav-helper/md-sidenav-helper.service';
+import { FuseMatchMedia } from '../../services/match-media.service';
+import { MediaMonitor, ObservableMedia } from '@angular/flex-layout';
 
 @Directive({
     selector: '[fuseMdSidenavHelper]'
@@ -8,18 +10,52 @@ import { FuseMdSidenavHelperService } from 'app/core/directives/md-sidenav-helpe
 export class FuseMdSidenavHelperDirective implements OnInit
 {
     @Input('fuseMdSidenavHelper') mdSidenavInstance: MdSidenav;
+    @Input('md-is-locked-open') mdIsLockedOpen: string;
 
     constructor(
         private fuseMdSidenavService: FuseMdSidenavHelperService,
-        private elRef: ElementRef
+        private elRef: ElementRef,
+        private fuseMatchMedia: FuseMatchMedia,
+        private observableMedia: ObservableMedia
     )
     {
-
     }
 
     ngOnInit()
     {
         this.fuseMdSidenavService.setSidenav(this.elRef.nativeElement.id, this.mdSidenavInstance);
+
+        console.warn(this.mdIsLockedOpen);
+
+        if ( this.observableMedia.isActive(this.mdIsLockedOpen) )
+        {
+            this.mdSidenavInstance.open();
+            this.mdSidenavInstance.mode = 'side';
+        }
+        else
+        {
+            this.mdSidenavInstance.close();
+            this.mdSidenavInstance.mode = 'over';
+        }
+
+        this.fuseMatchMedia.onMediaChange.subscribe((change) =>
+        {
+            console.log(this.observableMedia.isActive(this.mdIsLockedOpen));
+
+            if ( this.observableMedia.isActive(this.mdIsLockedOpen) )
+            {
+                this.mdSidenavInstance.open();
+                this.mdSidenavInstance.mode = 'side';
+            }
+            else
+            {
+                this.mdSidenavInstance.close();
+                this.mdSidenavInstance.mode = 'over';
+            }
+        });
+
+        console.warn(this.mdIsLockedOpen);
+
     }
 }
 

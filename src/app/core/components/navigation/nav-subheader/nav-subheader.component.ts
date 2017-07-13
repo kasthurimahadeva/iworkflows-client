@@ -5,7 +5,7 @@ import {Component, HostBinding, Input, OnInit} from '@angular/core';
     templateUrl: './nav-subheader.component.html',
     styleUrls  : ['./nav-subheader.component.scss']
 })
-export class NavSubheaderComponent implements OnInit
+export class FuseNavSubheaderComponent implements OnInit
 {
     @HostBinding('class') classes = 'nav-subheader';
     @Input() item: any;

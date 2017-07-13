@@ -1,7 +1,7 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {NavigationService} from '../navigation.service';
-import {NavigationEnd, Router} from '@angular/router';
-import {Animations} from '../../../animations';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { FuseNavigationService } from '../navigation.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { Animations } from '../../../animations';
 
 @Component({
     selector   : 'fuse-nav-collapse',
@@ -9,13 +9,13 @@ import {Animations} from '../../../animations';
     styleUrls  : ['./nav-collapse.component.scss'],
     animations : [Animations.slideInOut]
 })
-export class NavCollapseComponent implements OnInit
+export class FuseNavCollapseComponent implements OnInit
 {
     @Input() item: any;
     @HostBinding('class') classes = 'nav-collapse nav-item';
     @HostBinding('class.open') public isOpen = false;
 
-    constructor(private navigationService: NavigationService, private router: Router)
+    constructor(private navigationService: FuseNavigationService, private router: Router)
     {
         /**
          * When navigation changed
@@ -120,7 +120,7 @@ export class NavCollapseComponent implements OnInit
         {
             if ( arr.children[i].children )
             {
-                return this.isUrlInChildren(arr.children[i], url)
+                return this.isUrlInChildren(arr.children[i], url);
             }
             else
             {

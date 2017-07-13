@@ -19,4 +19,7 @@
 @include angular-material-typography($custom-typography);
 
 // Partials
-
+@import "partials/global";
+@import "partials/angular-material-fix";
+@import "partials/typography";
+@import "partials/page-layouts";

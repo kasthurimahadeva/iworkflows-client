@@ -4,62 +4,54 @@ import 'hammerjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './core/components/layout/layout.component';
 import { MailModule } from './main/apps/mail/mail.module';
 import { ChatModule } from './main/apps/chat/chat.module';
 import { ProjectModule } from './main/apps/dashboards/project/project.module';
-import { CardedFullWidthModule } from './main/ui/page-layouts/carded/fullwidth/fullwidth.module';
-import { LayoutService } from './core/services/layout.service';
-import { NavbarComponent } from './core/components/layout/navbar/navbar.component';
-import { ToolbarComponent } from './core/components/layout/toolbar/toolbar.component';
-import { NavigationModule } from './core/components/navigation/navigation.module';
-import { NavigationService } from './core/components/navigation/navigation.service';
+import { FuseLayoutService } from './core/services/layout.service';
+import { FuseNavigationService } from './core/components/navigation/navigation.service';
 import { SidenavComponent } from './core/components/sidenav/sidenav.component';
 import { FuseMatchMedia } from './core/services/match-media.service';
-import { NavbarToggleDirective } from './core/components/layout/navbar/navbar-toggle.directive';
-import { NavbarService } from './core/components/layout/navbar/navbar.service';
-import { ContentComponent } from './core/components/layout/content/content.component';
+import { FuseNavbarService } from './core/components/layout/navbar/navbar.service';
 import { SharedModule } from './core/modules/shared.module';
-import { FooterComponent } from './core/components/layout/footer/footer.component';
-import { FuseMdSidenavHelperDirective, FuseMdSidenavTogglerDirective } from './core/directives/md-sidenav-helper/md-sidenav-helper.directive';
 import { FuseMdSidenavHelperService } from './core/directives/md-sidenav-helper/md-sidenav-helper.service';
+import { UIPageLayoutsModule } from './main/ui/page-layouts/page-layouts.module';
+import { FuseLayoutModule } from './core/components/layout/layout.module';
 
 const appRoutes: Routes = [
     {
+        path      : 'apps/mail',
+        loadChildren: './main/apps/mail/mail.module#MailModule'
+    },
+    {
         path      : '**',
         redirectTo: 'apps/dashboards/project'
-    }
+    },
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
-        LayoutComponent,
-        ToolbarComponent,
-        NavbarComponent,
         SidenavComponent,
-        NavbarToggleDirective,
-        FuseMdSidenavHelperDirective,
-        FuseMdSidenavTogglerDirective,
-        ContentComponent,
-        FooterComponent
     ],
     imports     : [
-        SharedModule,
         BrowserModule,
         BrowserAnimationsModule,
+        SharedModule,
         RouterModule.forRoot(appRoutes),
-        NavigationModule,
-        MailModule,
+
+        FuseLayoutModule,
+
+        // MailModule,
         ChatModule,
         ProjectModule,
-        CardedFullWidthModule
+
+        UIPageLayoutsModule
     ],
     providers   : [
-        NavigationService,
-        LayoutService,
+        FuseNavigationService,
+        FuseLayoutService,
         FuseMatchMedia,
-        NavbarService,
+        FuseNavbarService,
         FuseMdSidenavHelperService
     ],
     bootstrap   : [AppComponent]

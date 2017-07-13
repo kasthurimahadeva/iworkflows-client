@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from '../../../../core/services/layout.service';
+import { FuseLayoutService } from '../../../../core/services/layout.service';
 
 @Component({
     selector   : 'fuse-project',
@@ -10,7 +10,7 @@ export class ProjectComponent implements OnInit
 {
     layoutSettings: any;
 
-    constructor(private layoutService: LayoutService)
+    constructor(private layoutService: FuseLayoutService)
     {
         /*this.layoutService.setSettings({
             navigation: 'left',

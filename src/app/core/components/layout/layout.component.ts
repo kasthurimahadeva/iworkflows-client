@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from '../../services/layout.service';
+import { FuseLayoutService } from '../../services/layout.service';
 
 @Component({
     selector   : 'fuse-layout',
     templateUrl: './layout.component.html',
     styleUrls  : ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit
+export class FuseLayoutComponent implements OnInit
 {
     layoutSettings: { navigation: string, toolbar: string, footer: string };
 
-    constructor(private layoutService: LayoutService)
+    constructor(private layoutService: FuseLayoutService)
     {
         this.layoutSettings = layoutService.getSettings();
     }

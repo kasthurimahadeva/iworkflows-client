@@ -1,19 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector   : 'fuse-toolbar',
     templateUrl: './toolbar.component.html',
     styleUrls  : ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit
+
+export class FuseToolbarComponent
 {
-    @Input() sidenav;
-
     constructor()
-    {
-    }
-
-    ngOnInit()
     {
     }
 }

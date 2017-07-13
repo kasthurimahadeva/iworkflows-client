@@ -1,19 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-chat',
+    selector   : 'fuse-carded-fullwidth',
     templateUrl: './fullwidth.component.html',
     styleUrls  : ['./fullwidth.component.scss']
 })
-export class CardedFullWidthComponent implements OnInit
+export class CardedFullWidthComponent
 {
-
     constructor()
     {
     }
-
-    ngOnInit()
-    {
-    }
-
 }

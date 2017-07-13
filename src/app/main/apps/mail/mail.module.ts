@@ -7,7 +7,7 @@ import { ClassicViewComponent } from './views/classic/classic-view.component';
 
 const routes: Routes = [
     {
-        path     : 'apps/mail',
+        path     : '',
         component: MailComponent,
         children : [
             {

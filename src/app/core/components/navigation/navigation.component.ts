@@ -1,23 +1,19 @@
-import {Component, EventEmitter, OnInit, ViewEncapsulation} from '@angular/core';
-import {NavigationService} from './navigation.service';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { FuseNavigationService } from './navigation.service';
 
 @Component({
     selector     : 'fuse-navigation',
     templateUrl  : './navigation.component.html',
     styleUrls    : ['./navigation.component.scss'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.None
 })
-export class NavigationComponent implements OnInit
+export class FuseNavigationComponent
 {
     navigation: object[];
 
-    constructor(private navigationService: NavigationService)
+    constructor(private navigationService: FuseNavigationService)
     {
         this.navigation = navigationService.getNavigation();
-    }
-
-    ngOnInit()
-    {
     }
 
 }

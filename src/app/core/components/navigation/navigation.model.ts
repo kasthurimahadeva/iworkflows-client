@@ -286,17 +286,32 @@ export class FuseNavigation
                             {
                                 'title': 'Full Width',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/carded/full-width'
+                                'url'  : '/ui/page-layouts/carded/full-width'
                             },
                             {
-                                'title': 'Left Sidebar',
+                                'title': 'Full Width 2',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/carded/left-sidebar'
+                                'url'  : '/ui/page-layouts/carded/full-width-2'
                             },
                             {
-                                'title': 'Right Sidebar',
+                                'title': 'Left Sidenav',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/carded/right-sidebar'
+                                'url'  : '/ui/page-layouts/carded/left-sidenav'
+                            },
+                            {
+                                'title': 'Left Sidenav 2',
+                                'type' : 'nav-item',
+                                'url'  : '/ui/page-layouts/carded/left-sidenav-2'
+                            },
+                            {
+                                'title': 'Right Sidenav',
+                                'type' : 'nav-item',
+                                'url'  : '/ui/page-layouts/carded/right-sidenav'
+                            },
+                            {
+                                'title': 'Right Sidenav',
+                                'type' : 'nav-item',
+                                'url'  : '/ui/page-layouts/carded/right-sidenav-2'
                             }
                         ]
                     },
@@ -307,49 +322,49 @@ export class FuseNavigation
                             {
                                 'title': 'Full Width',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/full-width'
+                                'url'  : '/ui/page-layouts/simple/full-width'
                             },
                             {
                                 'title': 'Left Sidebar',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/left-sidebar'
+                                'url'  : '/ui/page-layouts/simple/left-sidebar'
                             },
                             {
                                 'title': 'Left Sidebar Inner',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/left-sidebar-inner'
+                                'url'  : '/ui/page-layouts/simple/left-sidebar-inner'
                             },
                             {
                                 'title': 'Left Sidebar Floating',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/left-sidebar-floating'
+                                'url'  : '/ui/page-layouts/simple/left-sidebar-floating'
                             },
                             {
                                 'title': 'Right Sidebar',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/right-sidebar'
+                                'url'  : '/ui/page-layouts/simple/right-sidebar'
                             },
                             {
                                 'title': 'Right Sidebar Inner',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/sidebar-inner'
+                                'url'  : '/ui/page-layouts/simple/sidebar-inner'
                             },
                             {
                                 'title': 'Right Sidebar Floating',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/right-sidebar-floating'
+                                'url'  : '/ui/page-layouts/simple/right-sidebar-floating'
                             },
                             {
                                 'title': 'Tabbed',
                                 'type' : 'nav-item',
-                                'url'  : '/user-interface/page-layouts/simple/tabbed'
+                                'url'  : '/ui/page-layouts/simple/tabbed'
                             }
                         ]
                     },
                     {
                         'title': 'Blank',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/page-layouts/blank'
+                        'url'  : '/ui/page-layouts/blank'
                     }
                 ]
             },

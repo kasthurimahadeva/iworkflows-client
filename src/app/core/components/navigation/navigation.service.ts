@@ -2,7 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {FuseNavigation} from './navigation.model';
 
 @Injectable()
-export class NavigationService
+export class FuseNavigationService
 {
     onNavCollapseToggled = new EventEmitter<any>();
     navigation: object[];

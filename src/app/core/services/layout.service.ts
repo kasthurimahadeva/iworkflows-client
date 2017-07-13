@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 
 @Injectable()
-export class LayoutService
+export class FuseLayoutService
 {
     defaultSettings: { navigation: string, toolbar: string, footer: string };
     settings: { navigation: string, toolbar: string, footer: string };
@@ -17,8 +17,8 @@ export class LayoutService
         // Set the default settings
         this.defaultSettings = {
             navigation: 'left', // 'right', 'left', 'top', none
-            toolbar   : 'above', // 'above', 'below', none
-            footer    : 'above' // 'above', 'below', none
+            toolbar   : 'below', // 'above', 'below', none
+            footer    : 'none' // 'above', 'below', none
         };
 
         // Assign default settings at the init
@@ -38,7 +38,7 @@ export class LayoutService
     }
 
     /**
-     * Get Settings
+     * Gets settings
      * @returns {{navigation: string, toolbar: string, footer: string}}
      */
     getSettings()
@@ -47,12 +47,23 @@ export class LayoutService
     }
 
     /**
-     * Set Settings
+     * Sets settings
      * @param newSettings
      */
     setSettings(newSettings)
     {
         Object.assign(this.settings, newSettings);
         this.onSettingsChanged.emit(this.settings);
+    }
+
+    /**
+     * Sets default settings
+     * @param newDefaultSettings
+     */
+    setDefaultSettings(newDefaultSettings)
+    {
+        Object.assign(this.defaultSettings, newDefaultSettings);
+
+        // this.onSettingsChanged.emit(this.settings);
     }
 }

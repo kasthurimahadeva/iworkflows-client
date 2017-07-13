@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+
+    &.fuse-nav-bar-folded {
+
+        .content-wrapper {
+            padding-left: 64px;
+        }
+    }
+
+    > md-sidenav-container {
+        height: 100%;
+    }
+}

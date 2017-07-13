@@ -1,0 +1,67 @@
+<div class="page-layout carded left-sidenav">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- SIDENAV -->
+    <md-sidenav-container>
+
+        <md-sidenav id="carded-left-sidenav" #cardedLeftSidenav class="sidenav" align="start" opened="true" mode="side"
+                    [fuseMdSidenavHelper]="cardedLeftSidenav" md-is-locked-open="gt-md">
+
+            <!-- SIDENAV HEADER -->
+            <div class="header">
+                <p>Sidenav header</p>
+            </div>
+            <!-- / SIDENAV HEADER -->
+
+            <!-- SIDENAV CONTENT -->
+            <div class="content">
+                <fuse-demo-sidenav></fuse-demo-sidenav>
+            </div>
+            <!-- / SIDENAV CONTENT -->
+
+        </md-sidenav>
+        <!-- / SIDENAV -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- CONTENT HEADER -->
+            <div class="header">
+                <h2>Left sidenav with content scroll</h2>
+            </div>
+            <!-- / CONTENT HEADER -->
+
+            <!-- CONTENT CARD -->
+            <div class="content-card">
+
+                <!-- CONTENT TOOLBAR -->
+                <div class="toolbar">
+                    <button md-button class="mat-icon-button" [fuseMdSidenavToggler]="'carded-left-sidenav'"
+                            fxHide.gt-md>
+                        <md-icon>menu</md-icon>
+                    </button>
+
+                    <p>Content toolbar</p>
+                </div>
+                <!-- / CONTENT TOOLBAR -->
+
+                <!-- CONTENT -->
+                <div class="content">
+
+                    <fuse-demo-content></fuse-demo-content>
+
+                </div>
+                <!-- / CONTENT -->
+
+            </div>
+            <!-- / CONTENT CARD -->
+
+        </div>
+        <!-- / CENTER -->
+
+    </md-sidenav-container>
+
+</div>

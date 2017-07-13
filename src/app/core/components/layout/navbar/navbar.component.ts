@@ -2,14 +2,14 @@ import { Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angula
 import { AppComponent } from '../../../../app.component';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMatchMedia } from '../../../services/match-media.service';
-import { NavbarService } from './navbar.service';
+import { FuseNavbarService } from './navbar.service';
 
 @Component({
     selector   : 'fuse-navbar',
     templateUrl: './navbar.component.html',
     styleUrls  : ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy
+export class FuseNavbarComponent implements OnInit, OnDestroy
 {
     @HostBinding('class.close') isClosed: boolean;
     @HostBinding('class.open') isOpened: boolean = !this.isClosed;
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy
     constructor(
         private bodyEl: AppComponent,
         private fuseMatchMedia: FuseMatchMedia,
-        private navBarService: NavbarService
+        private navBarService: FuseNavbarService
     )
     {
         navBarService.setNavBar(this);
