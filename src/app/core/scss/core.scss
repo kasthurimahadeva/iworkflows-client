@@ -1,3 +1,4 @@
+@import "~perfect-scrollbar/src/css/main";
 // Fuse
 @import "fuse";
 
@@ -23,3 +24,6 @@
 @import "partials/angular-material-fix";
 @import "partials/typography";
 @import "partials/page-layouts";
+
+// Plugins
+@import "partials/plugins/plugins";

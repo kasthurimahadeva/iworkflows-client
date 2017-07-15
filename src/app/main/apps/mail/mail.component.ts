@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FuseLayoutService } from '../../../core/services/layout.service';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { ActivatedRoute, Data } from '@angular/router';
 
 @Component({
     selector   : 'fuse-mail',
@@ -8,19 +9,28 @@ import { FuseLayoutService } from '../../../core/services/layout.service';
 })
 export class MailComponent implements OnInit
 {
+    mails: FirebaseListObservable<any[]>;
 
-    constructor(private layoutService: FuseLayoutService)
+    constructor(private db: AngularFireDatabase, private route: ActivatedRoute)
     {
-        this.layoutService.setSettings({
-            navigation: 'left',
-            toolbar   : 'below',
-            footer    : 'below'
-        });
+        console.log('mail component inited');
+
+        // this.mails = db.list('/mail/data');
+
+        /*this.mails.subscribe(response =>
+         {
+         console.log(response);
+
+         console.log('going offline...');
+         this.db.database.goOffline();
+         });*/
     }
 
     ngOnInit()
     {
-
+        this.route.data.subscribe((data: Data) =>
+        {
+            console.warn(data['mails']);
+        });
     }
-
 }

@@ -1,25 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-left-sidenav',
+    selector   : 'fuse-carded-left-sidenav',
     templateUrl: './left-sidenav.component.html',
     styleUrls  : ['./left-sidenav.component.scss']
 })
-export class CardedLeftSidenavComponent implements OnInit
+export class CardedLeftSidenavComponent
 {
-    sidenavMode: string;
-
     constructor()
     {
-
-        this.sidenavMode = 'side';
     }
 
-    ngOnInit()
-    {
-        setTimeout(() =>
-        {
-            this.sidenavMode = 'over'
-        }, 1000);
-    }
 }

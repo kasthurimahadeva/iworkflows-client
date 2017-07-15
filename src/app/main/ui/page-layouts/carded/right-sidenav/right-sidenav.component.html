@@ -1,4 +1,4 @@
-<div class="page-layout carded left-sidenav">
+<div class="page-layout carded right-sidenav">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg md-accent-bg"></div>
@@ -7,8 +7,8 @@
     <md-sidenav-container>
 
         <!-- SIDENAV -->
-        <md-sidenav class="sidenav mat-sidenav-opened" align="start" opened="true" mode="side"
-                    fuseMdSidenavHelper="carded-left-sidenav" md-is-locked-open="gt-md">
+        <md-sidenav class="sidenav mat-sidenav-opened" align="end" opened="true" mode="side"
+                    fuseMdSidenavHelper="carded-right-sidenav" md-is-locked-open="gt-md">
 
             <!-- SIDENAV HEADER -->
             <div class="header">
@@ -18,9 +18,7 @@
 
             <!-- SIDENAV CONTENT -->
             <div class="content" perfect-scrollbar>
-
-                Sidenav
-
+                <fuse-demo-sidenav></fuse-demo-sidenav>
             </div>
             <!-- / SIDENAV CONTENT -->
 
@@ -32,7 +30,7 @@
 
             <!-- CONTENT HEADER -->
             <div class="header">
-                <h2>Left sidenav with content scroll</h2>
+                <h2>Right sidenav with content scroll</h2>
             </div>
             <!-- / CONTENT HEADER -->
 
@@ -42,7 +40,7 @@
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar">
                     <button md-button class="mat-icon-button sidenav-toggle"
-                            fuseMdSidenavToggler="carded-left-sidenav"
+                            fuseMdSidenavToggler="carded-right-sidenav"
                             fxHide.gt-md>
                         <md-icon>menu</md-icon>
                     </button>
@@ -54,9 +52,7 @@
                 <!-- CONTENT -->
                 <div class="content" perfect-scrollbar>
 
-                    <fuse-mail-list></fuse-mail-list>
-
-                    <fuse-mail-details></fuse-mail-details>
+                    <fuse-demo-content></fuse-demo-content>
 
                 </div>
                 <!-- / CONTENT -->

@@ -58,7 +58,7 @@ export class FuseNavigation
                 'title': 'Mail',
                 'type' : 'nav-item',
                 'icon' : 'email',
-                'url'  : '/apps/mail'
+                'url'  : '/apps/mail/inbox'
             },
             {
                 'title': 'Chat',
@@ -309,7 +309,7 @@ export class FuseNavigation
                                 'url'  : '/ui/page-layouts/carded/right-sidenav'
                             },
                             {
-                                'title': 'Right Sidenav',
+                                'title': 'Right Sidenav 2',
                                 'type' : 'nav-item',
                                 'url'  : '/ui/page-layouts/carded/right-sidenav-2'
                             }

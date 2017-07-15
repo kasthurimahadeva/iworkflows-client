@@ -4,20 +4,20 @@
     <div class="top-bg md-accent-bg"></div>
     <!-- / TOP BACKGROUND -->
 
-    <!-- SIDENAV -->
     <md-sidenav-container>
 
-        <md-sidenav id="carded-left-sidenav" #cardedLeftSidenav class="sidenav" align="start" opened="true" mode="side"
-                    [fuseMdSidenavHelper]="cardedLeftSidenav" md-is-locked-open="gt-md">
+        <!-- SIDENAV -->
+        <md-sidenav class="sidenav mat-sidenav-opened" align="start" opened="true" mode="side"
+                    fuseMdSidenavHelper="carded-left-sidenav" md-is-locked-open="gt-md">
 
             <!-- SIDENAV HEADER -->
             <div class="header">
-                <p>Sidenav header</p>
+                <span>Sidenav header</span>
             </div>
             <!-- / SIDENAV HEADER -->
 
             <!-- SIDENAV CONTENT -->
-            <div class="content">
+            <div class="content" perfect-scrollbar>
                 <fuse-demo-sidenav></fuse-demo-sidenav>
             </div>
             <!-- / SIDENAV CONTENT -->
@@ -39,17 +39,18 @@
 
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar">
-                    <button md-button class="mat-icon-button" [fuseMdSidenavToggler]="'carded-left-sidenav'"
+                    <button md-button class="mat-icon-button sidenav-toggle"
+                            fuseMdSidenavToggler="carded-left-sidenav"
                             fxHide.gt-md>
                         <md-icon>menu</md-icon>
                     </button>
 
-                    <p>Content toolbar</p>
+                    <span>Content toolbar</span>
                 </div>
                 <!-- / CONTENT TOOLBAR -->
 
                 <!-- CONTENT -->
-                <div class="content">
+                <div class="content" perfect-scrollbar>
 
                     <fuse-demo-content></fuse-demo-content>
 

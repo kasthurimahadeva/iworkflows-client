@@ -1,0 +1,13 @@
+:host {
+
+    .folded:not(.folded-open) & {
+
+        .nav-link {
+
+            > span {
+                opacity: 0;
+                transition: opacity 200ms ease;
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+
+:host {
+
+    .folded:not(.folded-open) & {
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            min-width: 1.6rem;
+            border-top: 2px solid rgba(0, 0, 0, .12);
+        }
+
+        > span {
+            opacity: 0;
+            transition: opacity 200ms ease;
+        }
+    }
+}

@@ -25,8 +25,10 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
     &.carded {
         display: flex;
         flex-direction: row;
-        min-height: 100%;
+        width: 100%;
         height: 100%;
+        min-width: 100%;
+        min-height: 100%;
 
         // Fullwidth
         &.fullwidth {
@@ -94,27 +96,19 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
         }
 
         // Left sidenav
-        &.left-sidenav {
+        &.left-sidenav,
+        &.right-sidenav {
 
             // Single scroll
             &.single-scroll {
                 height: auto;
-
-                > .center {
-
-                    .content-card {
-
-                        .content {
-                            overflow: hidden;
-                        }
-                    }
-                }
             }
 
-            // Sidenav
             > md-sidenav-container {
+                display: flex;
                 background: none;
                 z-index: 2;
+                width: 100%;
 
                 .sidenav {
                     display: flex;
@@ -125,6 +119,19 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                     z-index: 2;
                     overflow-y: hidden;
                     @include mat-elevation(7);
+
+                    &.md-is-locked-open {
+                        position: relative;
+                        background: none;
+                        box-shadow: none;
+                    }
+
+                    &.md-stop-transition {
+
+                        ~ .mat-sidenav-content {
+                            transition: none;
+                        }
+                    }
 
                     .header {
                         height: $header-height;
@@ -138,38 +145,10 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                         padding: 24px;
                         overflow: auto;
                     }
-
-                    @include media-breakpoint('gt-md') {
-                        background: none;
-                        box-shadow: none;
-                    }
-
-                    /*&.md-locked-open {
-                        width: 220px;
-                        min-width: 220px;
-                        max-width: 220px;
-                        z-index: 2;
-                        background: transparent;
-                        box-shadow: none;
-
-                        + .center {
-                            margin-left: 0;
-                        }
-                    }
-
-                    &:not(.md-locked-open) {
-
-                        .header {
-                            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-                        }
-
-                        .content {
-                            overflow: hidden;
-                        }
-                    }*/
                 }
 
                 .mat-sidenav-content {
+                    flex: 1;
                     overflow: visible;
 
                     // Center
@@ -182,10 +161,6 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                         height: 100%;
                         margin-left: 32px;
                         margin-right: 32px;
-
-                        @include media-breakpoint('gt-md') {
-                            margin-left: 0;
-                        }
 
                         .header {
                             display: flex;
@@ -234,103 +209,46 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
             }
         }
 
+        // Left sidenav
+        &.left-sidenav {
+
+            // Sidenav
+            > md-sidenav-container {
+
+                .sidenav {
+
+                    &.md-is-locked-open {
+
+                        ~ .mat-sidenav-content {
+                            margin-left: 0 !important;
+
+                            .center {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         // Right sidenav
         &.right-sidenav {
 
-            // Single scroll
-            &.single-scroll {
-                height: auto;
-
-                > .center {
-
-                    .content-card {
-
-                        .content {
-                            overflow: hidden;
-                        }
-                    }
-                }
-            }
-
             // Sidenav
-            > .sidenav {
-                width: 240px;
-                min-width: 240px;
-                max-width: 240px;
-                z-index: 51;
-                @include mat-elevation(7);
+            > md-sidenav-container {
 
-                .header {
-                    height: $header-height;
-                    min-height: $header-height;
-                    max-height: $header-height;
-                    padding: 24px 24px 24px 0;
-                }
+                .sidenav {
+                    order: 999;
 
-                .content {
-                    background: transparent;
-                    padding: 24px 24px 24px 0;
-                }
+                    &.md-is-locked-open {
 
-                &.md-locked-open {
-                    width: 196px;
-                    min-width: 196px;
-                    max-width: 196px;
-                    z-index: 2;
-                    background: transparent;
-                    box-shadow: none;
-                }
+                        ~ .mat-sidenav-content {
+                            margin-right: 0px !important;
 
-                &:not(.md-locked-open) {
-
-                    .header {
-                        padding: 24px;
-                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-                    }
-
-                    .content {
-                        overflow: hidden;
-                        padding: 24px;
-                    }
-                }
-            }
-
-            // Center
-            > .center {
-                position: relative;
-                z-index: 2;
-                margin-left: 32px;
-                margin-right: 32px;
-
-                .header {
-                    height: $card-header-height;
-                    min-height: $card-header-height;
-                    max-height: $card-header-height;
-                    padding: 24px;
-                }
-
-                .content-card {
-                    background: #FFFFFF;
-                    overflow: hidden;
-                    @include mat-elevation(7);
-
-                    .toolbar {
-                        padding: 8px 24px;
-                        height: $card-toolbar-height;
-                        min-height: $card-toolbar-height;
-                        max-height: $card-toolbar-height;
-                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-
-                        .sidenav-toggle {
-                            margin: 0 0 0 8px !important;
-                            padding: 0 !important;
-                            border-radius: 0;
+                            .center {
+                                margin-right: 0;
+                            }
                         }
-                    }
-
-                    .content {
-                        padding: 24px;
-                        background: #FFFFFF;
                     }
                 }
             }

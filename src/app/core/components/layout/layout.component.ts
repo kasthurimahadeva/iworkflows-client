@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseLayoutService } from '../../services/layout.service';
 
 @Component({
-    selector   : 'fuse-layout',
-    templateUrl: './layout.component.html',
-    styleUrls  : ['./layout.component.scss']
+    selector     : 'fuse-layout',
+    templateUrl  : './layout.component.html',
+    styleUrls    : ['./layout.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class FuseLayoutComponent implements OnInit
 {
@@ -24,7 +25,6 @@ export class FuseLayoutComponent implements OnInit
                     this.layoutSettings = newSettings;
                 }
             );
-
     }
 
 }

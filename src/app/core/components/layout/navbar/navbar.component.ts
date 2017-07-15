@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, OnDestroy, OnInit } from '@angular/core';
+import {Component, HostBinding, HostListener, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import { AppComponent } from '../../../../app.component';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMatchMedia } from '../../../services/match-media.service';

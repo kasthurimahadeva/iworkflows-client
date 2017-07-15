@@ -1,4 +1,4 @@
-:host {
+fuse-layout {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -20,6 +20,11 @@
                 height: 100%;
                 overflow-x: hidden;
                 overflow-y: auto;
+
+                > *:not(router-outlet):not(.ps__scrollbar-x-rail):not(.ps__scrollbar-y-rail) {
+                    width: 100%;
+                    min-width: 100%;
+                }
             }
         }
     }
