@@ -1,3 +1,38 @@
+<!-- SIDENAV HEADER -->
+<div class="header" fxLayout="column" fxLayoutAlign="space-between start">
+    <div class="logo" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <md-icon class="logo-icon">mail</md-icon>
+        <span class="logo-text">Mailbox</span>
+    </div>
+
+    <div class="account" fxLayout="column">
+        <div class="title">John Doe</div>
+        <md-select class="account-selection" placeholder="Mail Selection"
+                   floatPlaceholder="never"
+                   [ngModel]="selectedAccount">
+            <md-option *ngFor="let account of (accounts | keys)" [value]="account.key">
+                {{account.value}}
+            </md-option>
+        </md-select>
+    </div>
+
+</div>
+<!-- / SIDENAV HEADER -->
+
+<!-- SIDENAV CONTENT -->
+<div class="content" perfect-scrollbar>
+
+    Sidenav
+
+</div>
+<!-- / SIDENAV CONTENT -->
+
+<!-- SIDENAV HEADER -->
+<div class="header" layout="column" layout-align="space-between start">
+
+</div>
+<!-- / SIDENAV HEADER -->
+
 <p>
-  main sidenav
+    main sidenav
 </p>

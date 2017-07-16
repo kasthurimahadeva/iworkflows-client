@@ -9,21 +9,7 @@
         <!-- SIDENAV -->
         <md-sidenav class="sidenav mat-sidenav-opened" align="start" opened="true" mode="side"
                     fuseMdSidenavHelper="carded-left-sidenav" md-is-locked-open="gt-md">
-
-            <!-- SIDENAV HEADER -->
-            <div class="header">
-                <span>Sidenav header</span>
-            </div>
-            <!-- / SIDENAV HEADER -->
-
-            <!-- SIDENAV CONTENT -->
-            <div class="content" perfect-scrollbar>
-
-                Sidenav
-
-            </div>
-            <!-- / SIDENAV CONTENT -->
-
+            <fuse-mail-main-sidenav></fuse-mail-main-sidenav>
         </md-sidenav>
         <!-- / SIDENAV -->
 
@@ -31,8 +17,22 @@
         <div class="center">
 
             <!-- CONTENT HEADER -->
-            <div class="header">
-                <h2>Left sidenav with content scroll</h2>
+            <div class="header" fxLayout="row" fxLayoutAlign="start center">
+
+                <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                    <button md-button class="mat-icon-button sidenav-toggle"
+                            fuseMdSidenavToggler="carded-left-sidenav"
+                            fxHide.gt-md aria-label="Toggle Sidenav">
+                        <md-icon>menu</md-icon>
+                    </button>
+
+                    <div class="search" flex fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon>search</md-icon>
+                        <input fxFlex type="text" placeholder="Search for an e-mail or contact">
+                    </div>
+                </div>
+
             </div>
             <!-- / CONTENT HEADER -->
 
@@ -41,11 +41,6 @@
 
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar">
-                    <button md-button class="mat-icon-button sidenav-toggle"
-                            fuseMdSidenavToggler="carded-left-sidenav"
-                            fxHide.gt-md>
-                        <md-icon>menu</md-icon>
-                    </button>
 
                     <span>Content toolbar</span>
                 </div>

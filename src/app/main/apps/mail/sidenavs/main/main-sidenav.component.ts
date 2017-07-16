@@ -7,8 +7,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MainSidenavComponent implements OnInit
 {
+    accounts: object;
+    selectedAccount: string;
+
     constructor()
     {
+        // Data
+        this.accounts = {
+            'creapond'    : 'johndoe@creapond.com',
+            'withinpixels': 'johndoe@withinpixels.com'
+        };
+        this.selectedAccount = 'creapond';
     }
 
     ngOnInit()

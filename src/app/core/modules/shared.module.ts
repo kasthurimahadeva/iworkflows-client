@@ -8,11 +8,13 @@ import {
     FuseMdSidenavTogglerDirective
 } from '../directives/md-sidenav-helper/md-sidenav-helper.directive';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import {KeysPipe} from '../pipes/keys';
 
 @NgModule({
     declarations: [
         FuseMdSidenavHelperDirective,
-        FuseMdSidenavTogglerDirective
+        FuseMdSidenavTogglerDirective,
+        KeysPipe
     ],
     imports     : [
         FlexLayoutModule,
@@ -28,7 +30,8 @@ import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
         FormsModule,
         FuseMdSidenavHelperDirective,
         FuseMdSidenavTogglerDirective,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,
+        KeysPipe
     ]
 })
 

@@ -19,7 +19,7 @@ import { UIPageLayoutsModule } from './main/ui/page-layouts/page-layouts.module'
 import { FuseLayoutModule } from './core/components/layout/layout.module';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AngularFireModule } from 'angularfire2';
-import { environment } from "environments/environment";
+import { environment } from 'environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { MailListComponent } from './main/apps/mail/mail-list/mail-list.component';
 import { MailDetailsComponent } from './main/apps/mail/mail-details/mail-details.component';
