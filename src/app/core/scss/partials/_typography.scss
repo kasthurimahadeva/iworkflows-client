@@ -1,0 +1,13 @@
+
+// Truncate
+.text-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Nowrap
+.text-nowrap {
+    white-space: nowrap;
+}
