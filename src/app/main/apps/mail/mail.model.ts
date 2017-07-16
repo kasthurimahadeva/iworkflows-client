@@ -11,7 +11,6 @@ export class MailModel
         name: string,
         email: string
     }[];
-
     message: string;
     time: string;
     read: boolean;

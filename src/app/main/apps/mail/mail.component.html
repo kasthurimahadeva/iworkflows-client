@@ -51,9 +51,9 @@
 
                     <div fxLayout="row" fxFill>
 
-                        <fuse-mail-list fxFlex></fuse-mail-list>
+                        <fuse-mail-list fxFlex [selectedMail]="selectedMail" (onMailSelect)="onMailSelect($event)"></fuse-mail-list>
 
-                        <fuse-mail-details fxFlex></fuse-mail-details>
+                        <fuse-mail-details fxFlex [selectedMail]="selectedMail"></fuse-mail-details>
 
                     </div>
 

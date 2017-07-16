@@ -6,20 +6,20 @@
 
         <div class="name" fxLayout="row" fxLayoutAlign="start center">
 
-            <img class="avatar" *ngIf="mail.from.avatar" alt="{{mail.from.name}}" src="{{mail.from.avatar}}"/>
+            <img class="avatar" *ngIf="mail.from?.avatar" alt="{{mail.from?.name}}" src="{{mail.from?.avatar}}"/>
 
-            <div class="avatar" *ngIf="!mail.from.avatar">{{mail.from.name[0]}}</div>
+            <div class="avatar" *ngIf="!mail.from?.avatar">{{mail.from?.name[0]}}</div>
 
-            <span class="text-truncate">{{mail.from.name}}</span>
+            <span class="text-truncate" *ngIf="mail?.from">{{mail.from?.name}}</span>
 
-            <md-icon *ngIf="mail.hasAttachments" class="has-attachment">attachment</md-icon>
+            <md-icon *ngIf="mail.hasAttachments">attachment</md-icon>
         </div>
 
         <div class="subject text-truncate">
             {{mail.subject}}
         </div>
 
-        <div class="message text-truncate">
+        <div class="message text-truncate" *ngIf="mail?.message">
 
             {{mail.message | htmlToPlaintext | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
 

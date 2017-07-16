@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { ActivatedRoute, Data } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import {ActivatedRoute, Data} from '@angular/router';
+import {MailModel} from './mail.model';
 
 @Component({
     selector   : 'fuse-mail',
@@ -10,6 +11,7 @@ import { ActivatedRoute, Data } from '@angular/router';
 export class MailComponent implements OnInit
 {
     mails: FirebaseListObservable<any[]>;
+    selectedMail: MailModel;
 
     constructor(private db: AngularFireDatabase, private route: ActivatedRoute)
     {
@@ -32,5 +34,11 @@ export class MailComponent implements OnInit
         {
             console.warn(data['mails']);
         });
+    }
+
+    onMailSelect(mail)
+    {
+        console.info('on mail select', mail);
+        this.selectedMail = mail;
     }
 }

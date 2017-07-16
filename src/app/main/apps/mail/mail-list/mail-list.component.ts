@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import {MailModel} from '../mail.model';
 
 @Component({
     selector   : 'fuse-mail-list',
@@ -10,14 +11,16 @@ export class MailListComponent implements OnInit
 {
     mailsDB: FirebaseListObservable<any[]>;
     mails: any;
+    @Input('selectedMail') public selectedMail: MailModel;
+    @Output() onMailSelect = new EventEmitter<MailModel>();
 
     constructor(private db: AngularFireDatabase)
     {
         this.mailsDB = this.db.list('/mail/data', {
-            query: {
-                orderByChild: 'important',
-                equalTo     : true
-            }
+            // query: {
+            //     orderByChild: 'important',
+            //     equalTo     : true
+            // }
         });
     }
 
@@ -47,6 +50,13 @@ export class MailListComponent implements OnInit
          });*/
 
         console.log(this.mails);
+    }
+
+    selectMail(mail)
+    {
+        console.info('mail selected', mail);
+        this.selectedMail = mail;
+        this.onMailSelect.emit(mail);
     }
 
     onGet()

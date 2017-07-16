@@ -16,7 +16,6 @@ export class MailListItemComponent implements OnInit
 
     ngOnInit()
     {
-        console.log('mail list item inited');
     }
 
 }

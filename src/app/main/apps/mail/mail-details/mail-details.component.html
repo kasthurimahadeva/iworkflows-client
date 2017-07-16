@@ -1,3 +1,140 @@
-<p>
-  mail-details works!
-</p>
+<div *ngIf="mail">
+
+    <div class="mail-header" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <div>
+            <div class="subject" flex>{{mail.subject}}</div>
+
+            <div class="labels">
+                <div class="label" *ngFor="let labelId of mail.labels">
+                    {{labelId}}
+                </div>
+            </div>
+        </div>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="start center">
+            <button md-button class="mat-icon-button" ng-click="vm.togglemailStatus('starred')"
+                    aria-label="Toggle starred">
+                <md-icon *ngIf="mail.starred">star</md-icon>
+                <md-icon *ngIf="!mail.starred">star_outline</md-icon>
+            </button>
+
+            <button md-button class="mat-icon-button" ng-click="vm.togglemailStatus('important')"
+                    aria-label="Toggle important">
+                <md-icon *ngIf="mail.important">label</md-icon>
+                <md-icon *ngIf="!mail.important">label_outline</md-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="mail-content">
+
+        <div class="info" fxLayout="row" fxLayoutAlign="space-between start">
+
+            <div fxFlex fxLayout="column" fxLayoutAlign="start start">
+
+                <div fxLayout="row" fxLayoutAlign="start start">
+
+                    <div>
+                        <img *ngIf="mail.from.avatar" alt="{{mail.from.name}}"
+                             src="{{mail.from.avatar}}" class="avatar"/>
+
+                        <div *ngIf="!mail.from.avatar" class="avatar" ms-random-class="vm.colors">
+                            {{mail.from.name[0]}}
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayoutAlign="start start">
+
+                        <div class="name">
+                            {{mail.from.name}}
+                        </div>
+
+                        <div class="to" fxLayout="row" fxLayoutAlign="start center">
+                            <div class="to-text">to</div>
+                            <div>{{mail.to[0].name}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="toggle-details"
+                   *ngIf="!showDetails"
+                   (click)="showDetails = !showDetails">
+                    Show Details
+                </a>
+
+                <a class="toggle-details"
+                   *ngIf="showDetails"
+                   (click)="showDetails = !showDetails">
+                    Hide Details
+                </a>
+
+                <div *ngIf="showDetails" class="details" fxLayout="row" fxLayoutAlign="start start">
+
+                    <div fxLayout="column">
+                        <span class="title">From:</span>
+                        <span class="title">To:</span>
+                        <span class="title">Date:</span>
+                    </div>
+
+                    <div fxLayout="column">
+                        <span class="detail">{{mail.from.email}}</span>
+                        <span class="detail">{{mail.to[0].email}}</span>
+                        <span class="detail">{{mail.time}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <button md-button
+                    [mdMenuTriggerFor]="moreMenu"
+                    aria-label="More" class="mat-icon-button"
+                    ng-click="$mdOpenMenu($event)">
+                <md-icon>more_vert</md-icon>
+            </button>
+
+            <md-menu #moreMenu="mdMenu">
+                <button md-menu-item aria-label="Reply"
+                        ng-click="vm.replyDialog($event)">
+                    <md-icon>reply</md-icon>
+                    <span>Reply</span>
+                </button>
+
+                <button md-menu-item aria-label="Forward">
+                    <md-icon>forward</md-icon>
+                    <span>Forward</span>
+                </button>
+
+                <button md-menu-item aria-label="Print">
+                    <md-icon>print</md-icon>
+                    <span>Print</span>
+                </button>
+            </md-menu>
+        </div>
+
+        <div [innerHTML]="mail.message"></div>
+
+    </div>
+
+    <div *ngIf="mail.attachments" class="mail-attachments">
+
+        <div class="title">
+            <span>Attachments</span> ({{mail.attachments.length}})
+        </div>
+
+        <div class="attachment-list" layout-wrap fxLayout="row">
+
+            <div class="attachment" fxLayout="column"
+                 *ngFor="let attachment of mail.attachments">
+
+                <img class="preview" src="{{attachment.preview}}">
+
+                <div fxLayout="column">
+                    <a href="#" class="md-accent-color link">View</a>
+                    <a href="#" class="md-accent-color link">Download</a>
+                    <div class="size">({{attachment.size}})</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

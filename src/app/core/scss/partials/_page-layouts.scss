@@ -18,7 +18,7 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
         right: 0;
         left: 0;
         height: $header-height;
-        background-color: mat-color($mat-blue, 500);
+        background-color: mat-color($accent);
     }
 
     // Carded layout

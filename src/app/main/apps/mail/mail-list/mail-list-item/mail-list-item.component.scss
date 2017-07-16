@@ -1,4 +1,7 @@
+@import 'src/app/core/scss/fuse';
+
 :host {
+    flex-shrink: 0;
     background: #FAFAFA;
     position: relative;
     padding: 16px 24px;
@@ -38,7 +41,7 @@
         }
     }
 
-    &.current-thread {
+    &.selected-mail {
         background: #E3F2FD;
 
         .info {
@@ -67,11 +70,7 @@
                 width: 32px;
                 height: 32px;
                 line-height: 32px;
-            }
-
-            .has-attachment {
-                margin-left: 8px;
-                transform: rotate(90deg);
+                background-color: mat-color($accent);
             }
         }
 
