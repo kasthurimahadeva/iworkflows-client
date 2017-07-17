@@ -27,6 +27,7 @@ export class MailModel
         }
         ];
     labels: string[];
+    folders: any[];
 
     constructor()
     {

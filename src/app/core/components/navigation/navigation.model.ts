@@ -58,7 +58,7 @@ export class FuseNavigation
                 'title': 'Mail',
                 'type' : 'nav-item',
                 'icon' : 'email',
-                'url'  : '/apps/mail/inbox'
+                'url'  : '/apps/mail'
             },
             {
                 'title': 'Chat',

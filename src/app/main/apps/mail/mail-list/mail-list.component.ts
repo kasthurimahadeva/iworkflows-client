@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
-import {MailModel} from '../mail.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MailModel } from '../mail.model';
+import { MailDataService } from '../mail-data.service';
+import { Http } from '@angular/http';
 
 @Component({
     selector   : 'fuse-mail-list',
@@ -9,80 +10,58 @@ import {MailModel} from '../mail.model';
 })
 export class MailListComponent implements OnInit
 {
-    mailsDB: FirebaseListObservable<any[]>;
-    mails: any;
+    mails: MailModel[];
+
     @Input('selectedMail') public selectedMail: MailModel;
     @Output() onMailSelect = new EventEmitter<MailModel>();
 
-    constructor(private db: AngularFireDatabase)
+    constructor(
+        private mailDataService: MailDataService,
+        private http: Http
+    )
     {
-        this.mailsDB = this.db.list('/mail/data', {
-            // query: {
-            //     orderByChild: 'important',
-            //     equalTo     : true
-            // }
-        });
+
     }
 
     ngOnInit()
     {
-        this.mailsDB.subscribe((response) =>
-        {
-            console.log('mail list component inited');
-            console.log(response);
-
-            this.mails = response;
-        });
 
     }
 
     onSave()
     {
-        // this.mailList.push({name: 'Mustafa'});
-        this.mails.push({subject: 'deneme'});
+        /*this.http.get('api/mails?important=true&labels=1').subscribe(response =>
+        {
+            console.log(response);
+        });*/
 
-        // this.mails.update({test: 'deneme'});
-        // this.mails.set({test: 'deneme'});
+        /*this.http.get('api/mail-mails').subscribe(response =>
+        {
+            console.log(response);
+        });*/
 
-        /*this.mails.set({
-         name: 'sercan',
-         age : 29
-         });*/
+        /*this.http.get('api/mail/folders/0').subscribe(response =>
+        {
+            console.log(response);
+        });*/
 
-        console.log(this.mails);
+
+        /*this.http.post('api/mails', {id: '2', subject: 'Test test'}).subscribe(response =>
+        {
+            console.log(response);
+
+            this.http.get('api/mails/2').subscribe(response2 =>
+            {
+                console.log(response2);
+            });
+        });*/
+
     }
 
     selectMail(mail)
     {
-        console.info('mail selected', mail);
         this.selectedMail = mail;
         this.onMailSelect.emit(mail);
-    }
-
-    onGet()
-    {
-        this.mails.subscribe((response) =>
-        {
-
-            console.log(response);
-        });
-
-        /*const get = this.http.get('https://fuse2-demo.firebaseio.com/mail.json');
-
-         get.subscribe((response) =>
-         {
-         console.log(response);
-         });*/
-    }
-
-    onGoOnline()
-    {
-        this.db.database.goOnline();
-    }
-
-    onGoOffline()
-    {
-        this.db.database.goOffline();
     }
 
 }
