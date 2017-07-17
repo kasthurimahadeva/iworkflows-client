@@ -7,26 +7,37 @@ import { MailListItemComponent } from './mail-list/mail-list-item/mail-list-item
 import { MailListComponent } from './mail-list/mail-list.component';
 import { MailDetailsComponent } from './mail-details/mail-details.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MailFakeDbService } from './mail-fake-db.service';
 import { HttpModule } from '@angular/http';
+import {MailDataService} from './mail-data.service';
 
 const routes: Routes = [
     {
         path    : 'label/:labelHandle',
-        children: [
-            {
-                path: ':mailId'
-            }
-        ]
+        component: MailComponent,
+        resolve     : {
+            mailDB: MailDataService
+        }
+    },
+    {
+        path: 'label/:labelHandle/:mailId',
+        component: MailComponent,
+        resolve     : {
+            mailDB: MailDataService
+        }
     },
     {
         path     : ':folderHandle',
         component: MailComponent,
-        children : [
-            {
-                path: ':mailId'
-            }
-        ]
+        resolve     : {
+            mailDB: MailDataService
+        }
+    },
+    {
+        path: ':folderHandle/:mailId',
+        component: MailComponent,
+        resolve     : {
+            mailDB: MailDataService
+        }
     },
     {
         path      : '**',
@@ -45,8 +56,8 @@ const routes: Routes = [
     imports     : [
         SharedModule,
         HttpModule,
-        InMemoryWebApiModule.forRoot(MailFakeDbService),
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        InMemoryWebApiModule
     ],
     providers   : []
 })

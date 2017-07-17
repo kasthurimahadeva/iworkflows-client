@@ -23,6 +23,8 @@ import { MailListComponent } from './main/apps/mail/mail-list/mail-list.componen
 import { MailDetailsComponent } from './main/apps/mail/mail-details/mail-details.component';
 import { MailDataService } from './main/apps/mail/mail-data.service';
 import { HttpModule } from '@angular/http';
+import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {FuseFakeDbService} from './fuse-fake-db/fuse-fake-db.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -31,10 +33,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 const appRoutes: Routes = [
     {
         path        : 'apps/mail',
-        loadChildren: './main/apps/mail/mail.module#MailModule',
-        resolve     : {
-            mailDB: MailDataService
-        }
+        loadChildren: './main/apps/mail/mail.module#MailModule'
     },
     {
         path      : '**',
@@ -54,6 +53,8 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         SharedModule,
         RouterModule.forRoot(appRoutes),
+
+        InMemoryWebApiModule.forRoot(FuseFakeDbService, { delay: 500 }),
 
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
 
