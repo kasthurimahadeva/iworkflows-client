@@ -467,43 +467,43 @@ export class MailFakeDb
             'id'    : 0,
             'handle': 'inbox',
             'title' : 'Inbox',
-            'icon'  : 'icon-inbox'
+            'icon'  : 'inbox'
         },
         {
             'id'    : 1,
             'handle': 'sent',
             'title' : 'Sent',
-            'icon'  : 'icon-send'
+            'icon'  : 'send'
         },
         {
             'id'    : 2,
             'handle': 'drafts',
             'title' : 'Drafts',
-            'icon'  : 'icon-email-open'
+            'icon'  : 'email_open'
         },
         {
             'id'    : 3,
             'handle': 'spam',
             'title' : 'Spam',
-            'icon'  : 'icon-alert-octagon'
+            'icon'  : 'error'
         },
         {
             'id'    : 4,
             'handle': 'trash',
             'title' : 'Trash',
-            'icon'  : 'icon-delete'
+            'icon'  : 'delete'
         },
         {
             'id'    : 5,
             'handle': 'starred',
             'title' : 'Starred',
-            'icon'  : 'icon-star'
+            'icon'  : 'star'
         },
         {
             'id'    : 6,
             'handle': 'important',
             'title' : 'Important',
-            'icon'  : 'icon-label'
+            'icon'  : 'label'
         }
     ];
 
@@ -512,25 +512,25 @@ export class MailFakeDb
             'id'    : 0,
             'handle': 'note',
             'title' : 'Note',
-            'color' : 'md-green-600-bg'
+            'color' : '#7cb342'
         },
         {
             'id'    : 1,
             'handle': 'paypal',
             'title' : 'Paypal',
-            'color' : 'md-orange-800-bg'
+            'color' : '#d84315'
         },
         {
             'id'    : 2,
             'handle': 'invoice',
             'title' : 'Invoice',
-            'color' : 'md-blue-grey-500-bg'
+            'color' : '#607d8b'
         },
         {
             'id'    : 3,
             'handle': 'amazon',
             'title' : 'Amazon',
-            'color' : 'md-blue-500-bg'
+            'color' : '#03a9f4'
         }
     ];
 }

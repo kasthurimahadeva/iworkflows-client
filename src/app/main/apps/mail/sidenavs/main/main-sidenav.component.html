@@ -22,21 +22,26 @@
 <!-- SIDENAV CONTENT -->
 <div class="content" perfect-scrollbar>
 
-    <md-list>
-        <div md-subheader>FOLDERS</div>
-        <md-list-item *ngFor="let folder of folders">
-            <a md-line [routerLink]="'/apps/mail/' + folder.handle">
-                {{ folder.title }}
-            </a>
-        </md-list-item>
+    <div class="nav">
 
-        <div md-subheader>LABELS</div>
-        <md-list-item *ngFor="let label of labels">
-            <a md-line [routerLink]="'/apps/mail/label/' + label.handle">
-                {{ label.title }}
-            </a>
-        </md-list-item>
-    </md-list>
+        <div class="nav-subheader">FOLDERS</div>
 
+        <div class="nav-item" *ngFor="let item of folders">
+            <a class="nav-link" md-ripple [routerLink]="'/apps/mail/' + item.handle">
+                <md-icon class="nav-link-icon" *ngIf="item.icon">{{item.icon}}</md-icon>
+                <span>{{item.title}}</span>
+            </a>
+        </div>
+
+        <div class="nav-subheader">LABELS</div>
+
+        <div class="nav-item" *ngFor="let item of labels">
+            <a class="nav-link" md-ripple [routerLink]="'/apps/mail/label/' + item.handle">
+                <md-icon class="nav-link-icon" [ngStyle]="{'color':item.color}">label</md-icon>
+                <span>{{item.title}}</span>
+            </a>
+        </div>
+
+    </div>
 </div>
 <!-- / SIDENAV CONTENT -->

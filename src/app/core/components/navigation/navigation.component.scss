@@ -4,90 +4,14 @@
     margin: 0;
     padding: 0;
 
-    .nav-subheader {
-        display: flex;
-        align-items: center;
-        height: 56px;
-        color: rgba(0, 0, 0, .54);
-        font-weight: 500;
-        padding-left: 24px;
-        white-space: nowrap;
-    }
-
     .nav-item {
 
         .nav-link {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            height: 48px;
-            padding: 0 24px;
-            position: relative;
-            overflow: hidden;
             background-color: map-get($background, raised-button);
             color: map_get($foreground, text);
-            cursor: pointer;
-            user-select: none;
-
-            > span {
-                flex: 1;
-                white-space: nowrap;
-            }
 
             &:hover {
                 background-color: map-get($background, hover);
-            }
-
-            .mat-ripple-element {
-                background-color: map-get($background, hover);
-            }
-
-            &.active {
-                background-color: mat-color($accent);
-
-                .mat-ripple-element {
-                    background-color: mat-color($accent, default-contrast, 0.1);
-                }
-
-                &, .nav-link-icon {
-                    color: mat-color($accent, default-contrast);
-                }
-            }
-
-            .nav-link-icon {
-                margin-right: 16px;
-            }
-
-            .nav-link-icon,
-            .collapse-arrow {
-                font-size: 16px;
-                width: 16px;
-                height: 16px;
-                line-height: 16px;
-                color: map_get($mat-light-theme-foreground, icon);;
-            }
-        }
-
-        &.nav-collapse {
-
-            > .children {
-
-                > .nav-item {
-
-                    > .nav-link {
-                        padding-left: 56px;
-                    }
-
-                    > .children {
-
-                        > .nav-item {
-
-                            > .nav-link {
-                                padding-left: 72px;
-                            }
-                        }
-                    }
-                }
             }
         }
     }
