@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MailModel } from './mail.model';
-import { MailDataService } from './mail-data.service';
+import { Mail } from './mail.model';
+import { MailService } from './mail.service';
 
 @Component({
     selector   : 'fuse-mail',
@@ -10,23 +9,22 @@ import { MailDataService } from './mail-data.service';
 })
 export class MailComponent implements OnInit
 {
-    selectedMail: MailModel;
+    selectedMail: Mail;
 
     constructor(
-        private route: ActivatedRoute,
-        private mailDataService: MailDataService
+        private mailService: MailService
     )
     {
-        console.log('mail component inited');
+
     }
 
     ngOnInit()
     {
+        this.selectedMail = this.mailService.selectedMail;
 
-    }
-
-    onMailSelect(mail)
-    {
-        this.selectedMail = mail;
+        this.mailService.onSelectedMailUpdated
+            .subscribe(selectedMail => {
+                this.selectedMail = selectedMail;
+            });
     }
 }

@@ -22,12 +22,21 @@
 <!-- SIDENAV CONTENT -->
 <div class="content" perfect-scrollbar>
 
-    <a routerLink="/apps/mail/inbox">Inbox</a>
-    <a routerLink="/apps/mail/sent">Sent</a>
-    <a routerLink="/apps/mail/drafts">Drafts</a>
-    <a routerLink="/apps/mail/spam">Spam</a>
+    <md-list>
+        <div md-subheader>FOLDERS</div>
+        <md-list-item *ngFor="let folder of folders">
+            <a md-line [routerLink]="'/apps/mail/' + folder.handle">
+                {{ folder.title }}
+            </a>
+        </md-list-item>
 
-    <a routerLink="/apps/mail/true">Spam</a>
+        <div md-subheader>LABELS</div>
+        <md-list-item *ngFor="let label of labels">
+            <a md-line [routerLink]="'/apps/mail/label/' + label.handle">
+                {{ label.title }}
+            </a>
+        </md-list-item>
+    </md-list>
 
 </div>
 <!-- / SIDENAV CONTENT -->

@@ -1,8 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MailModel} from '../mail.model';
-import {MailDataService} from '../mail-data.service';
-import {Http} from '@angular/http';
-import {ActivatedRoute} from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Mail } from '../mail.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MailService } from '../mail.service';
 
 @Component({
     selector   : 'fuse-mail-list',
@@ -11,62 +10,44 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MailListComponent implements OnInit
 {
-    mails: MailModel[];
+    mails: Mail[];
 
-    @Input('selectedMail') public selectedMail: MailModel;
-    @Output() onMailSelect = new EventEmitter<MailModel>();
+    @Input('selectedMail') public selectedMail: Mail;
 
-    constructor(private mailDataService: MailDataService,
-                private http: Http,
-                private route: ActivatedRoute)
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private mailService: MailService
+    )
     {
-        route.data.subscribe(response =>
-        {
-            console.info(response.mailDB.json());
-            this.mails = response.mailDB.json().data;
-        });
     }
 
     ngOnInit()
     {
+        // Get mails for the first time
+        this.mails = this.mailService.mails;
 
-
+        // Subscribe to update mails on changes
+        this.mailService.onMailsUpdated
+            .subscribe(mails => {
+                console.log('mailsUpdated');
+                this.mails = mails;
+            });
     }
 
-    onSave()
+    selectMail(mailId)
     {
-        /*this.http.get('api/mails?important=true&labels=1').subscribe(response =>
-         {
-         console.log(response);
-         });*/
+        const labelHandle  = this.route.snapshot.params.labelHandle,
+              folderHandle = this.route.snapshot.params.folderHandle;
 
-        this.http.get('api/mail-mails').subscribe(response =>
+        if ( labelHandle )
         {
-            console.log(response.json());
-        });
-
-        /*this.http.get('api/mail/folders/0').subscribe(response =>
-         {
-         console.log(response);
-         });*/
-
-
-        /*this.http.post('api/mails', {id: '2', subject: 'Test test'}).subscribe(response =>
-         {
-         console.log(response);
-
-         this.http.get('api/mails/2').subscribe(response2 =>
-         {
-         console.log(response2);
-         });
-         });*/
-
-    }
-
-    selectMail(mail)
-    {
-        this.selectedMail = mail;
-        this.onMailSelect.emit(mail);
+            this.router.navigate(['apps/mail/label', labelHandle, mailId]);
+        }
+        else
+        {
+            this.router.navigate(['apps/mail', folderHandle, mailId]);
+        }
     }
 
 }

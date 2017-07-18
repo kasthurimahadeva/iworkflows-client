@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import 'hammerjs';
-import { MailModule } from './main/apps/mail/mail.module';
 import { ChatModule } from './main/apps/chat/chat.module';
 import { ProjectModule } from './main/apps/dashboards/project/project.module';
 import { FuseLayoutService } from './core/services/layout.service';
@@ -18,13 +17,9 @@ import { FuseMdSidenavHelperService } from './core/directives/md-sidenav-helper/
 import { UIPageLayoutsModule } from './main/ui/page-layouts/page-layouts.module';
 import { FuseLayoutModule } from './core/components/layout/layout.module';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { environment } from 'environments/environment';
-import { MailListComponent } from './main/apps/mail/mail-list/mail-list.component';
-import { MailDetailsComponent } from './main/apps/mail/mail-details/mail-details.component';
-import { MailDataService } from './main/apps/mail/mail-data.service';
 import { HttpModule } from '@angular/http';
-import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {FuseFakeDbService} from './fuse-fake-db/fuse-fake-db.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -54,7 +49,7 @@ const appRoutes: Routes = [
         SharedModule,
         RouterModule.forRoot(appRoutes),
 
-        InMemoryWebApiModule.forRoot(FuseFakeDbService, { delay: 500 }),
+        InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 125}),
 
         PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
 
@@ -67,7 +62,6 @@ const appRoutes: Routes = [
         UIPageLayoutsModule
     ],
     providers   : [
-        MailDataService,
         FuseNavigationService,
         FuseLayoutService,
         FuseMatchMedia,

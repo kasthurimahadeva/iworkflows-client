@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MailModel } from '../../mail.model';
+import { Mail } from '../../mail.model';
+import { MailService } from '../../mail.service';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
     selector   : 'fuse-mail-list-item',
@@ -8,14 +10,36 @@ import { MailModel } from '../../mail.model';
 })
 export class MailListItemComponent implements OnInit
 {
-    @Input() mail: MailModel;
+    @Input() mail: Mail;
 
-    constructor()
+    constructor(
+        private route: ActivatedRoute,
+        private mailService: MailService
+    )
     {
+
     }
 
     ngOnInit()
     {
+        this.mail = new Mail(this.mail);
     }
 
+    toggleStar(event)
+    {
+        event.stopPropagation();
+
+        this.mail.toggleStar();
+
+        this.mailService.update(this.mail);
+    }
+
+    toggleImportant(event)
+    {
+        event.stopPropagation();
+
+        this.mail.toggleImportant();
+
+        this.mailService.update(this.mail);
+    }
 }

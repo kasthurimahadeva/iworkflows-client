@@ -1,7 +1,6 @@
-export class MailModel
+export class Mail
 {
     id: string;
-    subject: string;
     from: {
         name: string,
         avatar: string,
@@ -11,26 +10,47 @@ export class MailModel
         name: string,
         email: string
     }[];
+    subject: string;
     message: string;
     time: string;
     read: boolean;
     starred: boolean;
     important: boolean;
     hasAttachments: boolean;
-    attachments: [
-        {
-            type: string,
-            fileName: string,
-            preview: string,
-            url: string,
-            size: string
-        }
-        ];
+    attachments: {
+        type: string,
+        fileName: string,
+        preview: string,
+        url: string,
+        size: string
+    }[];
     labels: string[];
-    folders: any[];
+    folders: string[];
 
-    constructor()
+    constructor(mail)
     {
+        this.id = mail.id;
+        this.from = mail.from;
+        this.to = mail.to;
+        this.subject = mail.subject;
+        this.message = mail.message;
+        this.time = mail.time;
+        this.read = mail.read;
+        this.starred = mail.starred;
+        this.important = mail.important;
+        this.hasAttachments = mail.hasAttachments;
+        this.attachments = mail.attachments;
+        this.labels = mail.labels;
+        this.folders = mail.folders;
+    }
 
+    toggleStar()
+    {
+        this.starred = !this.starred;
+    }
+
+    toggleImportant()
+    {
+        this.important = !this.important;
     }
 }

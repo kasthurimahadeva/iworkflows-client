@@ -1,15 +1,3 @@
-
-<button md-button (click)="onSave()">Save</button>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<fuse-mail-list-item *ngFor="let mail of mails" [mail]="mail" md-ripple (click)="selectMail(mail)"
-                     [ngClass]="{'selected-mail':mail === selectedMail}">
+<fuse-mail-list-item *ngFor="let mail of mails" [mail]="mail" md-ripple (click)="selectMail(mail.id)"
+                     [ngClass]="{'selected-mail':mail?.id === selectedMail?.id}">
 </fuse-mail-list-item>
