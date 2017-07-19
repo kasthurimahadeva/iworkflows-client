@@ -3,16 +3,4 @@
 #main-navigation {
     margin: 0;
     padding: 0;
-
-    .nav-item {
-
-        .nav-link {
-            background-color: map-get($background, raised-button);
-            color: map_get($foreground, text);
-
-            &:hover {
-                background-color: map-get($background, hover);
-            }
-        }
-    }
 }

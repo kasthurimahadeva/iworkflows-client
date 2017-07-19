@@ -1,6 +1,9 @@
 @import 'src/app/core/scss/fuse';
 
 :host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     background: #FFFFFF;
     padding: 24px;
 
@@ -10,12 +13,6 @@
 
         .actions {
             min-width: 88px;
-
-            .mat-icon-button {
-                padding: 0;
-                width: 32px;
-                height: 32px;
-            }
         }
 
         .subject {

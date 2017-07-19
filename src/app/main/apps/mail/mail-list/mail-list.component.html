@@ -1,3 +1,16 @@
-<fuse-mail-list-item *ngFor="let mail of mails" [mail]="mail" md-ripple (click)="selectMail(mail.id)"
+<div *ngIf="mails.length === 0" fxLayout="column" fxLayoutAlign="center center" fxFlex>
+    <span class="hint-text">There are no messages!</span>
+</div>
+
+<input type="text" [(ngModel)]="search">
+
+{{search}}
+
+<br>
+<br>
+<br>
+<br>
+
+<fuse-mail-list-item *ngFor="let mail of mails | filter:search" [mail]="mail" md-ripple (click)="selectMail(mail.id)"
                      [ngClass]="{'selected-mail':mail?.id === selectedMail?.id}">
 </fuse-mail-list-item>

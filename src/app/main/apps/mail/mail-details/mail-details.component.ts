@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Mail } from '../mail.model';
 import { MailService } from '../mail.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector   : 'fuse-mail-details',
@@ -12,9 +11,9 @@ export class MailDetailsComponent implements OnInit
 {
     @Input('selectedMail') public mail: Mail;
     showDetails: boolean;
+    labels: any[];
 
     constructor(
-        private route: ActivatedRoute,
         private mailService: MailService
     )
     {
@@ -23,7 +22,7 @@ export class MailDetailsComponent implements OnInit
 
     ngOnInit()
     {
-
+        this.labels = this.mailService.labels;
     }
 
     toggleStar(event)

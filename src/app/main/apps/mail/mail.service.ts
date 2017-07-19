@@ -177,9 +177,8 @@ export class MailService implements Resolve<any>
     update(mail)
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/mail-mails/' + mail.id, {...mail}).subscribe(response => {
 
-                console.log(response);
+            this.http.post('api/mail-mails/' + mail.id, {...mail}).subscribe(response => {
 
                 this.getMails().then(mails => {
 

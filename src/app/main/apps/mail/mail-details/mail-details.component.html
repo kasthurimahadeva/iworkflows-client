@@ -1,3 +1,8 @@
+<div *ngIf="!mail" fxLayout="column" fxLayoutAlign="center center" fxFlex>
+    <md-icon>email</md-icon>
+    <span class="hint-text">Select a message to read</span>
+</div>
+
 <div *ngIf="mail">
 
     <div class="mail-header" fxLayout="row" fxLayoutAlign="space-between center">
@@ -6,8 +11,8 @@
             <div class="subject" flex>{{mail.subject}}</div>
 
             <div class="labels">
-                <div class="label" *ngFor="let labelId of mail.labels">
-                    {{labelId}}
+                <div class="label" *ngFor="let labelId of mail.labels"
+                     [ngStyle]="{background: labels | getById:labelId:'color'}">{{labels | getById:labelId:'title'}}
                 </div>
             </div>
         </div>
@@ -128,8 +133,8 @@
                 <img class="preview" src="{{attachment.preview}}">
 
                 <div fxLayout="column">
-                    <a href="#" class="md-accent-color link">View</a>
-                    <a href="#" class="md-accent-color link">Download</a>
+                    <a href="#" class="md-accent-color link" onclick="event.preventDefault()">View</a>
+                    <a href="#" class="md-accent-color link" onclick="event.preventDefault()">Download</a>
                     <div class="size">({{attachment.size}})</div>
                 </div>
 

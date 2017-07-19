@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Mail } from '../mail.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MailService } from '../mail.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector   : 'fuse-mail-list',
@@ -14,10 +15,12 @@ export class MailListComponent implements OnInit
 
     @Input('selectedMail') public selectedMail: Mail;
 
+    search: string;
+
     constructor(
         private route: ActivatedRoute,
-        private router: Router,
-        private mailService: MailService
+        private mailService: MailService,
+        private location: Location
     )
     {
     }
@@ -30,8 +33,25 @@ export class MailListComponent implements OnInit
         // Subscribe to update mails on changes
         this.mailService.onMailsUpdated
             .subscribe(mails => {
-                console.log('mailsUpdated');
                 this.mails = mails;
+            });
+
+        this.mailService.onSelectedMailUpdated
+            .subscribe(selectedMail => {
+                if ( !selectedMail )
+                {
+                    const labelHandle  = this.route.snapshot.params.labelHandle,
+                          folderHandle = this.route.snapshot.params.folderHandle;
+
+                    if ( labelHandle )
+                    {
+                        this.location.go('apps/mail/label/' + labelHandle);
+                    }
+                    else
+                    {
+                        this.location.go('apps/mail/' + folderHandle);
+                    }
+                }
             });
     }
 
@@ -42,12 +62,15 @@ export class MailListComponent implements OnInit
 
         if ( labelHandle )
         {
-            this.router.navigate(['apps/mail/label', labelHandle, mailId]);
+            this.location.go('apps/mail/label/' + labelHandle + '/' + mailId);
         }
         else
         {
-            this.router.navigate(['apps/mail', folderHandle, mailId]);
+            this.location.go('apps/mail/' + folderHandle + '/' + mailId);
         }
+
+        // Set selected mail
+        this.mailService.setSelectedMail(mailId);
     }
 
 }

@@ -1,28 +1,28 @@
-import {NgModule} from '@angular/core';
-import {MaterialModule} from './material.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { MaterialModule } from './material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
 import {
     FuseMdSidenavHelperDirective,
     FuseMdSidenavTogglerDirective
 } from '../directives/md-sidenav-helper/md-sidenav-helper.directive';
-import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
-import {KeysPipe} from '../pipes/keys';
-import {HtmlToPlaintextPipe} from '../pipes//htmlToPlaintext';
+import { FusePipesModule } from '../pipes/pipes.module';
 
 @NgModule({
     declarations: [
         FuseMdSidenavHelperDirective,
-        FuseMdSidenavTogglerDirective,
-        KeysPipe,
-        HtmlToPlaintextPipe
+        FuseMdSidenavTogglerDirective
     ],
     imports     : [
         FlexLayoutModule,
         MaterialModule,
         CommonModule,
         FormsModule,
+        FusePipesModule,
         PerfectScrollbarModule
     ],
     exports     : [
@@ -32,9 +32,8 @@ import {HtmlToPlaintextPipe} from '../pipes//htmlToPlaintext';
         FormsModule,
         FuseMdSidenavHelperDirective,
         FuseMdSidenavTogglerDirective,
-        PerfectScrollbarModule,
-        KeysPipe,
-        HtmlToPlaintextPipe
+        FusePipesModule,
+        PerfectScrollbarModule
     ]
 })
 

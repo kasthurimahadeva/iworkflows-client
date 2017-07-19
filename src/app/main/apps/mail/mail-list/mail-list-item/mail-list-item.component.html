@@ -24,7 +24,9 @@
             {{mail.message | htmlToPlaintext | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
 
             <div class="labels">
-                <div class="label" *ngFor="let labelId of mail.labels">{{labelId}}</div>
+                <div class="label" *ngFor="let labelId of mail.labels"
+                     [ngStyle]="{background: labels | getById:labelId:'color'}">{{labels | getById:labelId:'title'}}
+                </div>
             </div>
         </div>
 

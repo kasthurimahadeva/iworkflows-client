@@ -27,7 +27,7 @@
         <div class="nav-subheader">FOLDERS</div>
 
         <div class="nav-item" *ngFor="let item of folders">
-            <a class="nav-link" md-ripple [routerLink]="'/apps/mail/' + item.handle">
+            <a class="nav-link" md-ripple [routerLink]="'/apps/mail/' + item.handle" routerLinkActive="active">
                 <md-icon class="nav-link-icon" *ngIf="item.icon">{{item.icon}}</md-icon>
                 <span>{{item.title}}</span>
             </a>
@@ -36,7 +36,7 @@
         <div class="nav-subheader">LABELS</div>
 
         <div class="nav-item" *ngFor="let item of labels">
-            <a class="nav-link" md-ripple [routerLink]="'/apps/mail/label/' + item.handle">
+            <a class="nav-link" md-ripple [routerLink]="'/apps/mail/label/' + item.handle" routerLinkActive="active">
                 <md-icon class="nav-link-icon" [ngStyle]="{'color':item.color}">label</md-icon>
                 <span>{{item.title}}</span>
             </a>
