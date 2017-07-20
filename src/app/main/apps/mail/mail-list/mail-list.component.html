@@ -2,15 +2,6 @@
     <span class="hint-text">There are no messages!</span>
 </div>
 
-<input type="text" [(ngModel)]="search">
-
-{{search}}
-
-<br>
-<br>
-<br>
-<br>
-
-<fuse-mail-list-item *ngFor="let mail of mails | filter:search" [mail]="mail" md-ripple (click)="selectMail(mail.id)"
-                     [ngClass]="{'selected-mail':mail?.id === selectedMail?.id}">
+<fuse-mail-list-item md-ripple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"
+                     [ngClass]="{'current-mail':mail?.id == currentMail?.id}">
 </fuse-mail-list-item>

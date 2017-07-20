@@ -1,13 +1,14 @@
-import {InMemoryDbService} from 'angular-in-memory-web-api';
-import {MailFakeDb} from './mail';
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { MailFakeDb } from './mail';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
     createDb()
     {
         return {
-            'mail-mails'   : MailFakeDb.mails,
+            'mail-mails'  : MailFakeDb.mails,
             'mail-folders': MailFakeDb.folders,
+            'mail-filters': MailFakeDb.filters,
             'mail-labels' : MailFakeDb.labels
         };
     }

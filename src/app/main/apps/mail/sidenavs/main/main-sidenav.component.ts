@@ -8,8 +8,9 @@ import { MailService } from '../../mail.service';
 })
 export class MainSidenavComponent implements OnInit
 {
-    labels: any[];
     folders: any[];
+    filters: any[];
+    labels: any[];
     accounts: object;
     selectedAccount: string;
 
@@ -28,15 +29,20 @@ export class MainSidenavComponent implements OnInit
 
     ngOnInit()
     {
-        this.labels = this.mailService.labels;
         this.folders = this.mailService.folders;
+        this.filters = this.mailService.filters;
+        this.labels = this.mailService.labels;
 
-        this.mailService.onLabelsUpdated.subscribe(labels => {
-            this.labels = this.mailService.labels;
+        this.mailService.onFoldersChanged.subscribe(folders => {
+            this.folders = this.mailService.folders;
         });
 
-        this.mailService.onFoldersUpdated.subscribe(folders => {
-            this.folders = this.mailService.folders;
+        this.mailService.onFiltersChanged.subscribe(folders => {
+            this.filters = this.mailService.filters;
+        });
+
+        this.mailService.onLabelsChanged.subscribe(labels => {
+            this.labels = this.mailService.labels;
         });
     }
 }

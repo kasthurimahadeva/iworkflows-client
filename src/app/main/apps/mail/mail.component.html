@@ -42,7 +42,41 @@
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar">
 
-                    <span>Content toolbar</span>
+                    <md-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedMails"
+                                 [indeterminate]="isIndeterminate"></md-checkbox>
+
+                    <button md-icon-button [mdMenuTriggerFor]="selectMenu">
+                        <md-icon>arrow_drop_down</md-icon>
+                    </button>
+                    <md-menu #selectMenu="mdMenu">
+                        <button md-menu-item (click)="selectMails()">All</button>
+                        <button md-menu-item (click)="deselectMails()">None</button>
+                        <button md-menu-item (click)="selectMails('read', true)">Read</button>
+                        <button md-menu-item (click)="selectMails('read', false)">Unread</button>
+                        <button md-menu-item (click)="selectMails('starred', true)">Starred</button>
+                        <button md-menu-item (click)="selectMails('starred', false)">Unstarred</button>
+                        <button md-menu-item (click)="selectMails('important', true)">Important</button>
+                        <button md-menu-item (click)="selectMails('important', false)">Unimportant</button>
+                    </md-menu>
+
+                    <button md-icon-button (click)="setFolderOnSelectedMails(4)" *ngIf="hasSelectedMails">
+                        <md-icon>delete</md-icon>
+                    </button>
+
+                    <button md-icon-button [mdMenuTriggerFor]="folderMenu" *ngIf="hasSelectedMails">
+                        <md-icon>folder</md-icon>
+                    </button>
+                    <md-menu #folderMenu="mdMenu">
+                        <button md-menu-item *ngFor="let folder of folders" (click)="setFolderOnSelectedMails(folder.id)">{{folder.title}}</button>
+                    </md-menu>
+
+                    <button md-icon-button [mdMenuTriggerFor]="labelMenu" *ngIf="hasSelectedMails">
+                        <md-icon>label</md-icon>
+                    </button>
+                    <md-menu #labelMenu="mdMenu">
+                        <button md-menu-item *ngFor="let label of labels" (click)="toggleLabelOnSelectedMails(label.id)">{{label.title}}</button>
+                    </md-menu>
+
                 </div>
                 <!-- / CONTENT TOOLBAR -->
 
@@ -51,9 +85,9 @@
 
                     <div fxLayout="row" fxFill>
 
-                        <fuse-mail-list fxFlex [selectedMail]="selectedMail" perfect-scrollbar></fuse-mail-list>
+                        <fuse-mail-list fxFlex perfect-scrollbar></fuse-mail-list>
 
-                        <fuse-mail-details fxFlex [selectedMail]="selectedMail" perfect-scrollbar></fuse-mail-details>
+                        <fuse-mail-details fxFlex perfect-scrollbar></fuse-mail-details>
 
                     </div>
 

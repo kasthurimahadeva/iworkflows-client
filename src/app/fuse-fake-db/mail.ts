@@ -47,11 +47,7 @@ export class MailFakeDb
             'labels'        : [
                 1
             ],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '154588a0864d2881124',
@@ -74,11 +70,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '15453ba60d3baa5daaf',
@@ -104,11 +96,7 @@ export class MailFakeDb
                 3,
                 2
             ],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '15453a06c08fb021776',
@@ -134,11 +122,7 @@ export class MailFakeDb
                 3,
                 4
             ],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '154537435d5b32bf11a',
@@ -161,11 +145,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '1544e43dcdae6ebf876',
@@ -190,11 +170,7 @@ export class MailFakeDb
             'labels'        : [
                 2
             ],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '1543ee3a5b43e0f9f45',
@@ -217,11 +193,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '1543cc4515df3146112',
@@ -244,11 +216,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '154398a4770d7aaf9a2',
@@ -271,11 +239,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '15438351f87dcd68567',
@@ -298,11 +262,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '1542d75d929a603125',
@@ -325,11 +285,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '1541ca7af66da284177',
@@ -352,11 +308,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '154297167e781781745',
@@ -379,11 +331,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                0,
-                1,
-                2
-            ]
+            'folder'        : 0
         },
         {
             'id'            : '15427f4c1b7f3953234',
@@ -406,9 +354,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                3
-            ]
+            'folder'        : 3
         },
         {
             'id'            : '154204e45a59b168453',
@@ -431,9 +377,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                3
-            ]
+            'folder'        : 3
         },
         {
             'id'            : '1541dd1e05dfc439216',
@@ -456,9 +400,7 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [],
-            'folders'       : [
-                3
-            ]
+            'folder'        : 3
         }
     ];
 
@@ -492,15 +434,18 @@ export class MailFakeDb
             'handle': 'trash',
             'title' : 'Trash',
             'icon'  : 'delete'
-        },
+        }
+    ];
+
+    public static filters = [
         {
-            'id'    : 5,
+            'id'    : 0,
             'handle': 'starred',
             'title' : 'Starred',
             'icon'  : 'star'
         },
         {
-            'id'    : 6,
+            'id'    : 1,
             'handle': 'important',
             'title' : 'Important',
             'icon'  : 'label'
