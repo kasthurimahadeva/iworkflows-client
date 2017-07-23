@@ -60,16 +60,9 @@
                     </div>
                 </div>
 
-                <a class="toggle-details"
-                   *ngIf="!showDetails"
-                   (click)="showDetails = !showDetails">
-                    Show Details
-                </a>
-
-                <a class="toggle-details"
-                   *ngIf="showDetails"
-                   (click)="showDetails = !showDetails">
-                    Hide Details
+                <a class="toggle-details" (click)="showDetails = !showDetails">
+                    <span *ngIf="!showDetails">Show Details</span>
+                    <span *ngIf="showDetails">Hide Details</span>
                 </a>
 
                 <div *ngIf="showDetails" class="details" fxLayout="row" fxLayoutAlign="start start">
@@ -88,16 +81,13 @@
                 </div>
             </div>
 
-            <button md-button
-                    [mdMenuTriggerFor]="moreMenu"
-                    aria-label="More" class="mat-icon-button"
+            <button md-button [mdMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
                     ng-click="$mdOpenMenu($event)">
                 <md-icon>more_vert</md-icon>
             </button>
 
             <md-menu #moreMenu="mdMenu">
-                <button md-menu-item aria-label="Reply"
-                        ng-click="vm.replyDialog($event)">
+                <button md-menu-item aria-label="Reply">
                     <md-icon>reply</md-icon>
                     <span>Reply</span>
                 </button>
@@ -125,7 +115,7 @@
             ({{mail.attachments.length}})
         </div>
 
-        <div class="attachment-list" layout-wrap fxLayout="row">
+        <div class="attachment-list" fxLayout="row" fxLayoutWrap>
 
             <div class="attachment" fxLayout="column"
                  *ngFor="let attachment of mail.attachments">
@@ -133,8 +123,8 @@
                 <img class="preview" src="{{attachment.preview}}">
 
                 <div fxLayout="column">
-                    <a href="#" class="md-accent-color link" onclick="event.preventDefault()">View</a>
-                    <a href="#" class="md-accent-color link" onclick="event.preventDefault()">Download</a>
+                    <a href="#" onclick="event.preventDefault()">View</a>
+                    <a href="#" onclick="event.preventDefault()">Download</a>
                     <div class="size">({{attachment.size}})</div>
                 </div>
 

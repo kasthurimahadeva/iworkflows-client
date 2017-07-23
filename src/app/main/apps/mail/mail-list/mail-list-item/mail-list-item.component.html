@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="start center">
 
-    <md-checkbox></md-checkbox>
+    <md-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()" (click)="$event.stopPropagation();"></md-checkbox>
 
     <div class="info" fxFlex FlexLayout="column">
 

@@ -54,6 +54,8 @@
             }
 
             .toggle-details {
+                user-select: none;
+                text-decoration: underline;
                 padding-top: 16px;
                 cursor: pointer;
                 font-weight: 500;

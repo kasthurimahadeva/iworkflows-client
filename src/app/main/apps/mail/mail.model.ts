@@ -25,7 +25,7 @@ export class Mail
         size: string
     }[];
     labels: string[];
-    folders: string[];
+    folder: string;
 
     constructor(mail)
     {
@@ -41,7 +41,7 @@ export class Mail
         this.hasAttachments = mail.hasAttachments;
         this.attachments = mail.attachments;
         this.labels = mail.labels;
-        this.folders = mail.folders;
+        this.folder = mail.folder;
     }
 
     toggleStar()

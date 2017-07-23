@@ -9,24 +9,35 @@ import { Subject } from 'rxjs/Subject';
 export class MailService implements Resolve<any>
 {
     mails: Mail[];
-    selectedMail: Mail;
-    labels: any[];
-    folders: any[];
+    selectedMails: Mail[];
+    currentMail: Mail;
 
+    folders: any[];
+    filters: any[];
+    labels: any[];
     routeParams: any;
 
-    onMailsUpdated = new Subject<Mail[]>();
-    onSelectedMailUpdated = new Subject<Mail>();
-    onLabelsUpdated = new Subject<any[]>();
-    onFoldersUpdated = new Subject<any[]>();
+    onMailsChanged = new Subject<Mail[]>();
+    onSelectedMailsChanged = new Subject<Mail[]>();
+    onCurrentMailChanged = new Subject<Mail>();
+
+    onFoldersChanged = new Subject<any[]>();
+    onFiltersChanged = new Subject<any[]>();
+    onLabelsChanged = new Subject<any[]>();
 
     constructor(
         private http: Http
     )
     {
-
+        this.selectedMails = [];
     }
 
+    /**
+     * Resolve
+     * @param {ActivatedRouteSnapshot} route
+     * @param {RouterStateSnapshot} state
+     * @returns {Observable<any> | Promise<any> | any}
+     */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
         this.routeParams = route.params;
@@ -34,17 +45,18 @@ export class MailService implements Resolve<any>
         return new Promise((resolve, reject) => {
             Promise.all([
                 this.getFolders(),
+                this.getFilters(),
                 this.getLabels(),
                 this.getMails()
             ]).then(
                 () => {
                     if ( this.routeParams.mailId )
                     {
-                        this.setSelectedMail(this.routeParams.mailId);
+                        this.setCurrentMail(this.routeParams.mailId);
                     }
                     else
                     {
-                        this.setSelectedMail(null);
+                        this.setCurrentMail(null);
                     }
 
                     resolve();
@@ -54,30 +66,58 @@ export class MailService implements Resolve<any>
         });
     }
 
+    /**
+     * Get all folders
+     * @returns {Promise<any>}
+     */
     getFolders(): Promise<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-folders')
                 .subscribe(response => {
                     this.folders = response.json().data;
-                    this.onFoldersUpdated.next(this.folders);
+                    this.onFoldersChanged.next(this.folders);
                     resolve(this.folders);
                 }, reject);
         });
     }
 
+    /**
+     * Get all filters
+     * @returns {Promise<any>}
+     */
+    getFilters(): Promise<any>
+    {
+        return new Promise((resolve, reject) => {
+            this.http.get('api/mail-filters')
+                .subscribe(response => {
+                    this.filters = response.json().data;
+                    this.onFiltersChanged.next(this.filters);
+                    resolve(this.filters);
+                }, reject);
+        });
+    }
+
+    /**
+     * Get all labels
+     * @returns {Promise<any>}
+     */
     getLabels(): Promise<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-labels')
                 .subscribe(response => {
                     this.labels = response.json().data;
-                    this.onLabelsUpdated.next(this.labels);
+                    this.onLabelsChanged.next(this.labels);
                     resolve(this.labels);
                 }, reject);
         });
     }
 
+    /**
+     * Get all mails
+     * @returns {Promise<Mail[]>}
+     */
     getMails(): Promise<Mail[]>
     {
         if ( this.routeParams.labelHandle )
@@ -85,52 +125,73 @@ export class MailService implements Resolve<any>
             return this.getMailsByLabel(this.routeParams.labelHandle);
         }
 
+        if ( this.routeParams.filterHandle )
+        {
+            return this.getMailsByFilter(this.routeParams.filterHandle);
+        }
+
         return this.getMailsByFolder(this.routeParams.folderHandle);
     }
 
+    /**
+     * Get mails by folder
+     * @param handle
+     * @returns {Promise<Mail[]>}
+     */
     getMailsByFolder(handle): Promise<Mail[]>
     {
         return new Promise((resolve, reject) => {
 
-            if ( handle === 'starred' || handle === 'important' )
-            {
-                this.http.get('api/mail-mails?' + handle + '=true')
-                    .subscribe(mails => {
+            this.http.get('api/mail-folders?handle=' + handle)
+                .subscribe(folders => {
 
-                        this.mails = mails.json().data.map(mail => {
-                            return new Mail(mail);
-                        });
+                    const folderId = folders.json().data[0].id;
 
-                        this.onMailsUpdated.next(this.mails);
+                    this.http.get('api/mail-mails?folder=' + folderId)
+                        .subscribe(mails => {
 
-                        resolve(this.mails);
+                            this.mails = mails.json().data.map(mail => {
+                                return new Mail(mail);
+                            });
 
-                    }, reject);
-            }
-            else
-            {
-                this.http.get('api/mail-folders?handle=' + handle)
-                    .subscribe(folders => {
+                            this.onMailsChanged.next(this.mails);
 
-                        const folderId = folders.json().data[0].id;
+                            resolve(this.mails);
 
-                        this.http.get('api/mail-mails?folders=' + folderId)
-                            .subscribe(mails => {
-
-                                this.mails = mails.json().data.map(mail => {
-                                    return new Mail(mail);
-                                });
-
-                                this.onMailsUpdated.next(this.mails);
-
-                                resolve(this.mails);
-
-                            }, reject);
-                    });
-            }
+                        }, reject);
+                });
         });
     }
 
+    /**
+     * Get mails by filter
+     * @param handle
+     * @returns {Promise<Mail[]>}
+     */
+    getMailsByFilter(handle): Promise<Mail[]>
+    {
+        return new Promise((resolve, reject) => {
+
+            this.http.get('api/mail-mails?' + handle + '=true')
+                .subscribe(mails => {
+
+                    this.mails = mails.json().data.map(mail => {
+                        return new Mail(mail);
+                    });
+
+                    this.onMailsChanged.next(this.mails);
+
+                    resolve(this.mails);
+
+                }, reject);
+        });
+    }
+
+    /**
+     * Get mails by label
+     * @param handle
+     * @returns {Promise<Mail[]>}
+     */
     getMailsByLabel(handle): Promise<Mail[]>
     {
         return new Promise((resolve, reject) => {
@@ -146,7 +207,7 @@ export class MailService implements Resolve<any>
                                 return new Mail(mail);
                             });
 
-                            this.onMailsUpdated.next(this.mails);
+                            this.onMailsChanged.next(this.mails);
 
                             resolve(this.mails);
 
@@ -155,42 +216,167 @@ export class MailService implements Resolve<any>
         });
     }
 
-    getMailById(id): Promise<Mail>
+    /**
+     * Toggle selected mail by id
+     * @param id
+     */
+    toggleSelectedMail(id)
     {
-        return new Promise((resolve, reject) => {
-            this.http.get('api/mail-mails/' + id)
-                .subscribe(mail => {
-                    resolve(mail.json().data);
-                }, reject);
-        });
+        // First, check if we already have that mail as selected...
+        if ( this.selectedMails.length > 0 )
+        {
+            for ( const mail of this.selectedMails )
+            {
+                // ...delete the selected mail
+                if ( mail.id === id )
+                {
+                    const index = this.selectedMails.indexOf(mail);
+
+                    if ( index !== -1 )
+                    {
+                        this.selectedMails.splice(index, 1);
+
+                        // Trigger the next event
+                        this.onSelectedMailsChanged.next(this.selectedMails);
+
+                        // Return
+                        return;
+                    }
+                }
+            }
+        }
+
+        // If we don't have it, push as selected
+        this.selectedMails.push(
+            this.mails.find(mail => {
+                return mail.id === id;
+            })
+        );
+
+        // Trigger the next event
+        this.onSelectedMailsChanged.next(this.selectedMails);
     }
 
-    setSelectedMail(id)
+    /**
+     * Toggle select all
+     */
+    toggleSelectAll()
     {
-        this.selectedMail = this.mails.find(mail => {
+        if ( this.selectedMails.length > 0 )
+        {
+            this.deselectMails();
+        }
+        else
+        {
+            this.selectMails();
+        }
+
+    }
+
+    selectMails(filterParameter?, filterValue?)
+    {
+        this.selectedMails = [];
+
+        // If there is no filter, select all mails
+        if ( filterParameter === undefined || filterValue === undefined )
+        {
+            this.selectedMails = this.mails;
+        }
+        else
+        {
+            this.selectedMails.push(...
+                this.mails.filter(mail => {
+                    return mail[filterParameter] === filterValue;
+                })
+            );
+        }
+
+        // Trigger the next event
+        this.onSelectedMailsChanged.next(this.selectedMails);
+    }
+
+    deselectMails()
+    {
+        this.selectedMails = [];
+
+        // Trigger the next event
+        this.onSelectedMailsChanged.next(this.selectedMails);
+    }
+
+    /**
+     * Set current mail by id
+     * @param id
+     */
+    setCurrentMail(id)
+    {
+        this.currentMail = this.mails.find(mail => {
             return mail.id === id;
         });
 
-        this.onSelectedMailUpdated.next(this.selectedMail);
+        this.onCurrentMailChanged.next(this.currentMail);
     }
 
-    update(mail)
+    /**
+     * Toggle label on selected mails
+     * @param labelId
+     */
+    toggleLabelOnSelectedMails(labelId)
+    {
+        this.selectedMails.map(mail => {
+
+            const index = mail.labels.indexOf(labelId);
+
+            if ( index !== -1 )
+            {
+                mail.labels.splice(index, 1);
+            }
+            else
+            {
+                mail.labels.push(labelId);
+            }
+
+            this.updateMail(mail);
+        });
+    }
+
+    /**
+     * Set folder on selected mails
+     * @param folderId
+     */
+    setFolderOnSelectedMails(folderId)
+    {
+        this.selectedMails.map(mail => {
+            mail.folder = folderId;
+
+            this.updateMail(mail);
+        });
+
+        this.deselectMails();
+    }
+
+    /**
+     * Update the mail
+     * @param mail
+     * @returns {Promise<any>}
+     */
+    updateMail(mail)
     {
         return new Promise((resolve, reject) => {
 
-            this.http.post('api/mail-mails/' + mail.id, {...mail}).subscribe(response => {
+            this.http.post('api/mail-mails/' + mail.id, {...mail})
+                .subscribe(response => {
 
-                this.getMails().then(mails => {
+                    this.getMails().then(mails => {
 
-                    if ( mails && this.selectedMail )
-                    {
-                        this.setSelectedMail(this.selectedMail.id);
-                    }
+                        if ( mails && this.currentMail )
+                        {
+                            this.setCurrentMail(this.currentMail.id);
+                        }
 
-                    resolve(mails);
+                        resolve(mails);
 
-                }, reject);
-            });
+                    }, reject);
+                });
         });
     }
 

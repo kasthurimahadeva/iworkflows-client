@@ -24,6 +24,20 @@ const routes: Routes = [
         }
     },
     {
+        path     : 'filter/:filterHandle',
+        component: MailComponent,
+        resolve  : {
+            mail: MailService
+        }
+    },
+    {
+        path     : 'filter/:filterHandle/:mailId',
+        component: MailComponent,
+        resolve  : {
+            mail: MailService
+        }
+    },
+    {
         path     : ':folderHandle',
         component: MailComponent,
         resolve  : {

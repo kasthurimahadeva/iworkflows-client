@@ -1,28 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Mail } from '../mail.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from '../mail.service';
+import { Mail } from '../mail.model';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector   : 'fuse-mail-details',
     templateUrl: './mail-details.component.html',
     styleUrls  : ['./mail-details.component.scss']
 })
-export class MailDetailsComponent implements OnInit
+export class MailDetailsComponent implements OnInit, OnDestroy
 {
-    @Input('selectedMail') public mail: Mail;
-    showDetails: boolean;
+    mail: Mail;
     labels: any[];
+    showDetails = false;
+
+    onCurrentMailChanged: Subscription;
 
     constructor(
         private mailService: MailService
     )
     {
-        this.showDetails = false;
     }
 
     ngOnInit()
     {
+        // Set initial values
         this.labels = this.mailService.labels;
+        this.mail = this.mailService.currentMail;
+
+        // Subscribe to update the current mail
+        this.onCurrentMailChanged = this.mailService.onCurrentMailChanged
+                                        .subscribe(currentMail => {
+                                            this.mail = currentMail;
+                                        });
+    }
+
+    ngOnDestroy()
+    {
+        this.onCurrentMailChanged.unsubscribe();
     }
 
     toggleStar(event)
@@ -31,7 +46,7 @@ export class MailDetailsComponent implements OnInit
 
         this.mail.toggleStar();
 
-        this.mailService.update(this.mail);
+        this.mailService.updateMail(this.mail);
     }
 
     toggleImportant(event)
@@ -40,7 +55,7 @@ export class MailDetailsComponent implements OnInit
 
         this.mail.toggleImportant();
 
-        this.mailService.update(this.mail);
+        this.mailService.updateMail(this.mail);
     }
 
 }

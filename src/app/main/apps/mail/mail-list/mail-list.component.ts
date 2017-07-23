@@ -1,21 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Mail } from '../mail.model';
 import { ActivatedRoute } from '@angular/router';
 import { MailService } from '../mail.service';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector   : 'fuse-mail-list',
     templateUrl: './mail-list.component.html',
     styleUrls  : ['./mail-list.component.scss']
 })
-export class MailListComponent implements OnInit
+export class MailListComponent implements OnInit, OnDestroy
 {
     mails: Mail[];
+    currentMail: Mail;
 
-    @Input('selectedMail') public selectedMail: Mail;
-
-    search: string;
+    onMailsChanged: Subscription;
+    onCurrentMailChanged: Subscription;
 
     constructor(
         private route: ActivatedRoute,
@@ -30,32 +31,56 @@ export class MailListComponent implements OnInit
         // Get mails for the first time
         this.mails = this.mailService.mails;
 
+        // Get current mail for the first time if available
+        this.currentMail = this.mailService.currentMail || null;
+
         // Subscribe to update mails on changes
-        this.mailService.onMailsUpdated
-            .subscribe(mails => {
-                this.mails = mails;
-            });
+        this.onMailsChanged =
+            this.mailService.onMailsChanged
+                .subscribe(mails => {
+                    this.mails = mails;
+                });
 
-        this.mailService.onSelectedMailUpdated
-            .subscribe(selectedMail => {
-                if ( !selectedMail )
-                {
-                    const labelHandle  = this.route.snapshot.params.labelHandle,
-                          folderHandle = this.route.snapshot.params.folderHandle;
-
-                    if ( labelHandle )
+        // Subscribe to update current mail on changes
+        this.onCurrentMailChanged =
+            this.mailService.onCurrentMailChanged
+                .subscribe(currentMail => {
+                    if ( !currentMail )
                     {
-                        this.location.go('apps/mail/label/' + labelHandle);
+                        // Set the current mail id to null to deselect the current mail
+                        this.currentMail = null;
+
+                        // Handle the location changes
+                        const labelHandle  = this.route.snapshot.params.labelHandle,
+                              folderHandle = this.route.snapshot.params.folderHandle;
+
+                        if ( labelHandle )
+                        {
+                            this.location.go('apps/mail/label/' + labelHandle);
+                        }
+                        else
+                        {
+                            this.location.go('apps/mail/' + folderHandle);
+                        }
                     }
                     else
                     {
-                        this.location.go('apps/mail/' + folderHandle);
+                        this.currentMail = currentMail;
                     }
-                }
-            });
+                });
     }
 
-    selectMail(mailId)
+    ngOnDestroy()
+    {
+        this.onMailsChanged.unsubscribe();
+        this.onCurrentMailChanged.unsubscribe();
+    }
+
+    /**
+     * Read mail
+     * @param mailId
+     */
+    readMail(mailId)
     {
         const labelHandle  = this.route.snapshot.params.labelHandle,
               folderHandle = this.route.snapshot.params.folderHandle;
@@ -69,8 +94,8 @@ export class MailListComponent implements OnInit
             this.location.go('apps/mail/' + folderHandle + '/' + mailId);
         }
 
-        // Set selected mail
-        this.mailService.setSelectedMail(mailId);
+        // Set current mail
+        this.mailService.setCurrentMail(mailId);
     }
 
 }
