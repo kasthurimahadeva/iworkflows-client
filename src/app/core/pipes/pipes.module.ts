@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { KeysPipe } from './keys.pipe';
 import { GetByIdPipe } from './getById.pipe';
 import { HtmlToPlaintextPipe } from './htmlToPlaintext.pipe';
-import { SearchPipe } from './search.pipe';
 import { FilterPipe } from './filter.pipe';
 
 @NgModule({
@@ -11,7 +10,6 @@ import { FilterPipe } from './filter.pipe';
         KeysPipe,
         GetByIdPipe,
         HtmlToPlaintextPipe,
-        SearchPipe,
         FilterPipe
 
     ],
@@ -20,7 +18,6 @@ import { FilterPipe } from './filter.pipe';
         KeysPipe,
         GetByIdPipe,
         HtmlToPlaintextPipe,
-        SearchPipe,
         FilterPipe
     ]
 })
