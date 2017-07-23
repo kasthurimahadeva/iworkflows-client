@@ -88,10 +88,11 @@ export class ChatService implements Resolve<any>
             };
 
             const chatListItem = {
-                'id'             : chatId,
-                'contactId'      : contactId,
-                'unread'         : null,
-                'lastMessageTime': '2017-02-18T10:30:18.931Z'
+                contactId      : contactId,
+                id             : chatId,
+                lastMessageTime: '2017-02-18T10:30:18.931Z',
+                name           : contact.name,
+                unread         : null,
             };
 
             /**
@@ -109,7 +110,7 @@ export class ChatService implements Resolve<any>
                      * Post the new the user data
                      */
                     this.http.post('api/chat-user/' + this.user.id, this.user)
-                        .subscribe(addedlistItem => {
+                        .subscribe(newUserData => {
 
                             /**
                              * Update the user data from server
