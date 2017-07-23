@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from './material.module';
@@ -23,7 +23,8 @@ import { FusePipesModule } from '../pipes/pipes.module';
         CommonModule,
         FormsModule,
         FusePipesModule,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,
+        ReactiveFormsModule
     ],
     exports     : [
         FlexLayoutModule,
@@ -33,7 +34,8 @@ import { FusePipesModule } from '../pipes/pipes.module';
         FuseMdSidenavHelperDirective,
         FuseMdSidenavTogglerDirective,
         FusePipesModule,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,
+        ReactiveFormsModule
     ]
 })
 

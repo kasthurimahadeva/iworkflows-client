@@ -1,5 +1,6 @@
 import {InMemoryDbService} from 'angular-in-memory-web-api';
 import {MailFakeDb} from './mail';
+import {ChatFakeDb} from './chat';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -7,8 +8,11 @@ export class FuseFakeDbService implements InMemoryDbService
     {
         return {
             'mail-mails'   : MailFakeDb.mails,
-            'mail-folders': MailFakeDb.folders,
-            'mail-labels' : MailFakeDb.labels
+            'mail-folders' : MailFakeDb.folders,
+            'mail-labels'  : MailFakeDb.labels,
+            'chat-contacts': ChatFakeDb.contacts,
+            'chat-chats'   : ChatFakeDb.chats,
+            'chat-user'    : ChatFakeDb.user,
         };
     }
 

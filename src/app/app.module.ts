@@ -20,6 +20,7 @@ import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-per
 import { HttpModule } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
+import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic/src/platform_providers';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -29,6 +30,10 @@ const appRoutes: Routes = [
     {
         path        : 'apps/mail',
         loadChildren: './main/apps/mail/mail.module#MailModule'
+    },
+    {
+        path        : 'apps/chat',
+        loadChildren: './main/apps/chat/chat.module#ChatModule'
     },
     {
         path      : '**',

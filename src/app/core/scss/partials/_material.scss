@@ -39,6 +39,54 @@
     }
 }
 
+.avatar-wrapper {
+    position: relative;
+
+    .avatar {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    md-icon.status {
+        position: absolute;
+        top: 28px;
+        left: 28px;
+    }
+}
+
+md-icon.status {
+    border-radius: 50%;
+
+    &.online {
+        color: #4CAF50;
+        &:before {
+            content: "check_circle";
+        }
+    }
+
+    &.do-not-disturb {
+        color: #F44336;
+        &:before {
+            content: "do_not_disturb_on";
+        }
+    }
+
+    &.away {
+        background-color: #FFC107;
+        color: #FFFFFF;
+        &:before {
+            content: "access_time";
+        }
+    }
+
+    &.offline {
+        color: #646464;
+        background-color: #FFFFFF;
+        &:before {
+            content: "not_interested";
+        }
+    }
+}
+
 /*----------------------------------------------------------------*/
 /*  Forms
 /*----------------------------------------------------------------*/

@@ -1,0 +1,115 @@
+<!-- CHAT -->
+<div class="chat" fxFlex fxLayout="column">
+
+    <!-- CHAT TOOLBAR -->
+    <md-toolbar class="chat-toolbar">
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <!-- RESPONSIVE CHATS BUTTON-->
+                <div md-button fxHide.gt-md class="responsive-chats-button mat-icon-button mr-16"
+                     fuseMdSidenavToggler="chat-left-sidenav"
+                     aria-label="chats button">
+                    <md-icon class="s-36">chat</md-icon>
+                </div>
+                <!-- / RESPONSIVE CHATS BUTTON-->
+
+                <!-- CHAT CONTACT-->
+                <div class="chat-contact" fxLayout="row" fxLayoutAlign="start center"
+                     fuseMdSidenavToggler="chat-right-sidenav" (click)="selectContact()">
+
+                    <div class="avatar-wrapper">
+
+                        <img [src]="contact.avatar"
+                             class="avatar"
+                             alt="{{contact.name}}"/>
+
+                        <md-icon class="s-16 status"
+                                 [ngClass]="contact.status">
+                        </md-icon>
+                    </div>
+
+                    <div class="chat-contact-name">
+                        {{contact.name}}
+                    </div>
+
+                </div>
+                <!-- / CHAT CONTACT-->
+            </div>
+
+            <div>
+                <button md-button class="mat-icon-button" [mdMenuTriggerFor]="contactMenu"
+                        aria-label="more">
+                    <md-icon>more_vert</md-icon>
+                </button>
+
+                <md-menu #contactMenu="mdMenu">
+                    <button md-menu-item fuseMdSidenavToggler="chat-right-sidenav" (click)="selectContact()">
+                        Contact Info
+                    </button>
+                </md-menu>
+            </div>
+
+        </div>
+    </md-toolbar>
+    <!-- / CHAT TOOLBAR -->
+
+    <!-- CHAT CONTENT -->
+    <div id="chat-content" fxFlex perfect-scrollbar>
+
+        <!-- CHAT MESSAGES -->
+        <div class="chat-messages">
+
+            <!-- MESSAGE -->
+            <div fxLayout="row" *ngFor="let message of dialog" class="message-row"
+                 [ngClass]="{'user' :message.who === user.id}">
+
+                <img *ngIf="message.who === contact.id"
+                     src="{{contact.avatar}}"
+                     class="avatar"
+                     alt="{{contact.name}}"/>
+
+                <img *ngIf="message.who ===user.id" class="avatar" src="{{user.avatar}}">
+
+                <div class="bubble">
+                    <div class="message">{{message.message}}</div>
+                    <div class="time secondary-text">{{message.time | date:'medium'}}</div>
+                </div>
+
+            </div>
+            <!-- / MESSAGE -->
+
+        </div>
+        <!-- CHAT MESSAGES -->
+
+    </div>
+    <!-- / CHAT CONTENT -->
+
+    <!-- CHAT FOOTER -->
+    <div class="chat-footer" fxLayout="row" fxLayoutAlign="center center">
+
+        <!-- REPLY FORM -->
+        <form #replyForm="ngForm"
+              (ngSubmit)="reply($event)"
+              (keyup.enter)="reply($event)"
+              fxFlex class="reply-form"
+              fxLayout="row"
+              fxLayoutAlign="start center">
+
+            <md-input-container class="" fxFlex floatPlaceholder="never">
+                <textarea mdInput #replyInput placeholder="Type and hit enter to send message"
+                          ngModel name="message"></textarea>
+            </md-input-container>
+
+            <button md-fab class="" type="submit" aria-label="Send message">
+                <md-icon>send</md-icon>
+            </button>
+
+        </form>
+        <!-- / REPLY FORM -->
+    </div>
+    <!-- / CHAT FOOTER-->
+</div>
+<!-- / CHAT -->
