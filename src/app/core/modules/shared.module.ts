@@ -11,6 +11,7 @@ import {
     FuseMdSidenavTogglerDirective
 } from '../directives/md-sidenav-helper/md-sidenav-helper.directive';
 import { FusePipesModule } from '../pipes/pipes.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [

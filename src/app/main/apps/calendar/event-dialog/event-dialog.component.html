@@ -1,0 +1,20 @@
+<h1 md-dialog-title>
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="dialogRef.close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</h1>
+<div md-dialog-content>
+    <div>
+        Action:
+        <pre>{{ data.action }}</pre>
+    </div>
+    <div>
+        Event:
+        <pre>{{ data.event | json }}</pre>
+    </div>
+</div>
+<div md-dialog-actions>
+    <button md-button class="dialog-button" (click)="dialogRef.close('Option 1')">OPTION 1</button>
+    <button md-button class="dialog-button" (click)="dialogRef.close('Option 2')">OPTION 2</button>
+</div>

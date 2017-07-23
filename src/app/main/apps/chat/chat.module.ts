@@ -13,7 +13,7 @@ import { ContactSidenavComponent } from './sidenavs/right/contact/contact.compon
 
 const routes: Routes = [
     {
-        path   : 'apps/chat', component: ChatComponent, children: [],
+        path   : '**', component: ChatComponent, children: [],
         resolve: {
             chat: ChatService
         }

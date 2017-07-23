@@ -36,6 +36,10 @@ const appRoutes: Routes = [
         loadChildren: './main/apps/chat/chat.module#ChatModule'
     },
     {
+        path        : 'apps/calendar',
+        loadChildren: './main/apps/calendar/calendar.module#FuseCalendarModule'
+    },
+    {
         path      : '**',
         redirectTo: 'apps/dashboards/project'
     }
@@ -60,8 +64,6 @@ const appRoutes: Routes = [
 
         FuseLayoutModule,
 
-        // MailModule,
-        ChatModule,
         ProjectModule,
 
         UIPageLayoutsModule
