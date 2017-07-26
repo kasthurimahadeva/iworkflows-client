@@ -1,0 +1,78 @@
+<!-- SIDENAV HEADER -->
+<div class="sidenav-header">
+
+    <!-- USER TOOLBAR -->
+    <md-toolbar>
+
+        <!-- TOOLBAR TOP -->
+        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+
+            <button md-button class="mat-icon-button" (click)="changeLeftSidenavView('chats')" aria-label="back">
+                <md-icon>arrow_back</md-icon>
+            </button>
+
+        </div>
+        <!-- / TOOLBAR TOP -->
+
+        <!-- TOOLBAR BOTTOM -->
+        <md-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
+
+            <img [src]="user.avatar" class="avatar user-avatar huge" alt="{{user.name}}"/>
+
+            <div class="user-name my-8">{{user.name}}</div>
+
+        </md-toolbar-row>
+        <!-- / TOOLBAR BOTTOM -->
+
+    </md-toolbar>
+    <!-- / USER TOOLBAR -->
+</div>
+
+<!-- SIDENAV CONTENT -->
+<div class="sidenav-content p-16" perfect-scrollbar fxFlex>
+
+    <!-- USER MOOD -->
+    <md-card>
+
+        <form [formGroup]="userForm" fxLayout="column">
+
+            <md-input-container class="mb-24" fxFlex>
+                <textarea mdInput placeholder="Mood" name="mood"
+                          formControlName="mood" rows="3"></textarea>
+            </md-input-container>
+
+            <md-radio-group formControlName="status" fxLayout="column">
+
+                <md-radio-button value="online" class="py-8">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon class="status online mr-8"></md-icon>
+                        <span class="mat-h4 m-0">Online</span>
+                    </div>
+                </md-radio-button>
+
+                <md-radio-button value="away" class="py-8">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon class="status away mr-8"></md-icon>
+                        <span class="mat-h4 m-0">Away</span>
+                    </div>
+                </md-radio-button>
+
+                <md-radio-button value="do-not-disturb" class="py-8">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon class="status do-not-disturb mr-8"></md-icon>
+                        <span class="mat-h4 m-0">Do not disturb</span>
+                    </div>
+                </md-radio-button>
+
+                <md-radio-button value="offline" class="py-8">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon class="status offline mr-8"></md-icon>
+                        <span class="mat-h4 m-0">Offline</span>
+                    </div>
+                </md-radio-button>
+            </md-radio-group>
+
+        </form>
+    </md-card>
+    <!-- / USER MOOD -->
+</div>

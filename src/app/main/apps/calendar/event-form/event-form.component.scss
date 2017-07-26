@@ -1,0 +1,12 @@
+.event-form-dialog {
+    .mat-dialog-container {
+        padding: 0;
+        max-width: 720px;
+        width: 720px;
+    }
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+}

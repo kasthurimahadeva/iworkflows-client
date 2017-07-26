@@ -27,12 +27,16 @@
 @include angular-material-typography($custom-typography);
 
 // Partials
+@import "partials/normalize";
+@import "partials/spacing";
 @import "partials/global";
-@import "partials/_material";
+@import "partials/icons";
+@import "partials/material";
 @import "partials/angular-material-fix";
 @import "partials/typography";
 @import "partials/page-layouts";
 @import "partials/navigation";
+@import "partials/forms";
 
 // Plugins
 @import "partials/plugins/plugins";

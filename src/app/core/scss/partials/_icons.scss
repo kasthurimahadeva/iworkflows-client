@@ -1,0 +1,22 @@
+i,
+md-icon {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    line-height: 24px;
+
+    @for $size from 2 through 128 {
+
+        &.s-#{$size * 2} {
+            font-size: #{($size * 2) + 'px'} !important;
+            width: #{($size * 2) + 'px'} !important;
+            height: #{($size * 2) + 'px'} !important;
+            min-width: #{($size * 2) + 'px'} !important;
+            min-height: #{($size * 2) + 'px'} !important;
+            line-height: #{($size * 2) + 'px'} !important;
+        }
+    }
+}

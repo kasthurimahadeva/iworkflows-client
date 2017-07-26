@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from './material.module';
@@ -13,22 +13,27 @@ import {
     FuseMdSidenavTogglerDirective
 } from '../directives/md-sidenav-helper/md-sidenav-helper.directive';
 import { FusePipesModule } from '../pipes/pipes.module';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-    declarations: [
+    declarations   : [
         FuseMdSidenavHelperDirective,
-        FuseMdSidenavTogglerDirective
+        FuseMdSidenavTogglerDirective,
+        FuseConfirmDialogComponent
     ],
-    imports     : [
+    imports        : [
         FlexLayoutModule,
         MaterialModule,
         NgxDatatableModule,
         CommonModule,
         FormsModule,
         FusePipesModule,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,
+        ReactiveFormsModule,
+        ColorPickerModule
     ],
-    exports     : [
+    exports        : [
         FlexLayoutModule,
         MaterialModule,
         NgxDatatableModule,
@@ -37,8 +42,11 @@ import { FusePipesModule } from '../pipes/pipes.module';
         FuseMdSidenavHelperDirective,
         FuseMdSidenavTogglerDirective,
         FusePipesModule,
-        PerfectScrollbarModule
-    ]
+        PerfectScrollbarModule,
+        ReactiveFormsModule,
+        ColorPickerModule
+    ],
+    entryComponents: [FuseConfirmDialogComponent]
 })
 
 export class SharedModule
