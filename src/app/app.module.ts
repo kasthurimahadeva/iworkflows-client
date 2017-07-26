@@ -29,7 +29,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 const appRoutes: Routes = [
     {
         path        : 'apps/mail',
-        loadChildren: './main/apps/mail/mail.module#MailModule'
+        loadChildren: './main/apps/mail/mail.module#FuseMailModule'
     },
     {
         path        : 'apps/chat',

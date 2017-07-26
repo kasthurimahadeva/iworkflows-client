@@ -53,17 +53,17 @@ const routes: Routes = [
     },
     {
         path      : '**',
-        redirectTo: 'folder/inbox'
+        redirectTo: 'inbox'
     }
 ];
 
 @NgModule({
     declarations: [
         MailComponent,
-        MainSidenavComponent,
         MailListComponent,
         MailListItemComponent,
-        MailDetailsComponent
+        MailDetailsComponent,
+        MainSidenavComponent
     ],
     imports     : [
         SharedModule,
@@ -73,6 +73,6 @@ const routes: Routes = [
         MailService
     ]
 })
-export class MailModule
+export class FuseMailModule
 {
 }
