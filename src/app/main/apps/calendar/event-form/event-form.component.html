@@ -115,6 +115,7 @@
             md-raised-button
             (click)="dialogRef.close(eventForm)"
             class="save-button mat-accent"
+            [disabled]="eventForm.pristine"
             aria-label="SAVE">
         SAVE
     </button>
@@ -123,6 +124,7 @@
             md-raised-button
             (click)="dialogRef.close(['save',eventForm])"
             class="save-button mat-accent"
+            [disabled]="eventForm.pristine"
             aria-label="SAVE">
         SAVE
     </button>
