@@ -1,0 +1,53 @@
+@import "src/app/core/scss/fuse";
+
+:host {
+    width: 100%;
+    height: 100%;
+
+    .center {
+
+        .header {
+            padding: 0 !important;
+
+            .search-wrapper {
+                @include mat-elevation(7);
+
+                .sidenav-toggle {
+                    margin: 0;
+                    width: 56px;
+                    height: 56px;
+                    background: #FFF;
+                    border-radius: 0;
+                    border-right: 1px solid rgba(0, 0, 0, .12);
+                }
+
+                .search {
+                    width: 100%;
+                    height: 56px;
+                    line-height: 56px;
+                    padding: 18px;
+                    background: #FFFFFF;
+
+                    input {
+                        height: 56px;
+                        padding-left: 16px;
+                        color: rgba(0, 0, 0, 0.54);
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .content-card {
+
+            .toolbar {
+            }
+
+            .content {
+                padding: 0 !important;
+            }
+        }
+    }
+}
+

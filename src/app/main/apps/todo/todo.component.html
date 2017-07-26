@@ -1,0 +1,98 @@
+<div id="todo" class="page-layout carded left-sidenav">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <md-sidenav-container>
+
+        <!-- SIDENAV -->
+        <md-sidenav class="sidenav mat-sidenav-opened" align="start" opened="true" mode="side"
+                    fuseMdSidenavHelper="carded-left-sidenav" md-is-locked-open="gt-md">
+            <fuse-todo-main-sidenav></fuse-todo-main-sidenav>
+        </md-sidenav>
+        <!-- / SIDENAV -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- CONTENT HEADER -->
+            <div class="header" fxLayout="row" fxLayoutAlign="start center">
+
+                <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                    <button md-button class="mat-icon-button sidenav-toggle"
+                            fuseMdSidenavToggler="carded-left-sidenav"
+                            fxHide.gt-md aria-label="Toggle Sidenav">
+                        <md-icon>menu</md-icon>
+                    </button>
+
+                    <div class="search" flex fxLayout="row" fxLayoutAlign="start center">
+                        <md-icon>search</md-icon>
+                        <input fxFlex type="text" placeholder="Search for an todo">
+                    </div>
+                </div>
+
+            </div>
+            <!-- / CONTENT HEADER -->
+
+            <!-- CONTENT CARD -->
+            <div class="content-card">
+
+                <!-- CONTENT TOOLBAR -->
+                <div class="toolbar">
+
+                    <md-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedTodos"
+                                 [indeterminate]="isIndeterminate"></md-checkbox>
+
+                    <button md-icon-button [mdMenuTriggerFor]="selectMenu">
+                        <md-icon>arrow_drop_down</md-icon>
+                    </button>
+                    <md-menu #selectMenu="mdMenu">
+                        <button md-menu-item (click)="selectTodos()">All</button>
+                        <button md-menu-item (click)="deselectTodos()">None</button>
+                        <button md-menu-item (click)="selectTodos('read', true)">Read</button>
+                        <button md-menu-item (click)="selectTodos('read', false)">Unread</button>
+                        <button md-menu-item (click)="selectTodos('starred', true)">Starred</button>
+                        <button md-menu-item (click)="selectTodos('starred', false)">Unstarred</button>
+                        <button md-menu-item (click)="selectTodos('important', true)">Important</button>
+                        <button md-menu-item (click)="selectTodos('important', false)">Unimportant</button>
+                    </md-menu>
+
+                    <div class="toolbar-separator" *ngIf="hasSelectedTodos"></div>
+
+                    <button md-icon-button [mdMenuTriggerFor]="labelMenu" *ngIf="hasSelectedTodos">
+                        <md-icon>label</md-icon>
+                    </button>
+                    <md-menu #labelMenu="mdMenu">
+                        <button md-menu-item *ngFor="let tag of tags" (click)="toggleTagOnSelectedTodos(tag.id)">
+                            {{tag.title}}
+                        </button>
+                    </md-menu>
+
+                </div>
+                <!-- / CONTENT TOOLBAR -->
+
+                <!-- CONTENT -->
+                <div class="content">
+
+                    <div fxLayout="row" fxFill>
+
+                        <fuse-todo-list perfect-scrollbar fxFlex></fuse-todo-list>
+
+                        <fuse-todo-details fxFlex perfect-scrollbar></fuse-todo-details>
+
+                    </div>
+
+                </div>
+                <!-- / CONTENT -->
+
+            </div>
+            <!-- / CONTENT CARD -->
+
+        </div>
+        <!-- / CENTER -->
+
+    </md-sidenav-container>
+
+</div>

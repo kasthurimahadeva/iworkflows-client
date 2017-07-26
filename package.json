@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^4.3.1",
     "@angular/router": "^4.3.1",
     "@swimlane/ngx-datatable": "^9.3.1",
+    "@swimlane/ngx-dnd": "^2.2.0",
     "angular-calendar": "^0.19.0",
     "angular-in-memory-web-api": "^0.3.2",
     "core-js": "^2.4.1",

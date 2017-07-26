@@ -178,7 +178,7 @@ export class ChatService implements Resolve<any>
     }
 
     /**
-     * The Mail App Main Resolver
+     * The Chat App Main Resolver
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}

@@ -39,6 +39,6 @@ const routes: Routes = [
         ChatService
     ]
 })
-export class ChatModule
+export class FuseChatModule
 {
 }
