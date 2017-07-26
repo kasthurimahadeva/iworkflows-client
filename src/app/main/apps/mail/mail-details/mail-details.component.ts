@@ -15,6 +15,7 @@ export class MailDetailsComponent implements OnInit, OnDestroy
     showDetails = false;
 
     onCurrentMailChanged: Subscription;
+    onLabelsChanged: Subscription;
 
     constructor(
         private mailService: MailService
@@ -24,15 +25,19 @@ export class MailDetailsComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-        // Set initial values
-        this.labels = this.mailService.labels;
-        this.mail = this.mailService.currentMail;
-
         // Subscribe to update the current mail
-        this.onCurrentMailChanged = this.mailService.onCurrentMailChanged
-                                        .subscribe(currentMail => {
-                                            this.mail = currentMail;
-                                        });
+        this.onCurrentMailChanged =
+            this.mailService.onCurrentMailChanged
+                .subscribe(currentMail => {
+                    this.mail = currentMail;
+                });
+
+        // Subscribe to update on label change
+        this.onLabelsChanged =
+            this.mailService.onLabelsChanged
+                .subscribe(labels => {
+                    this.labels = labels;
+                });
     }
 
     ngOnDestroy()

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { Mail } from '../../mail.model';
 import { MailService } from '../../mail.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,34 +12,21 @@ export class MailListItemComponent implements OnInit, OnDestroy
 {
     @Input() mail: Mail;
     labels: any[];
-    selected: boolean;
+    @HostBinding('class.selected') selected: boolean;
 
     onSelectedMailsChanged: Subscription;
+    onLabelsChanged: Subscription;
 
     constructor(
         private mailService: MailService
     )
     {
-
     }
 
     ngOnInit()
     {
         // Set the initial values
         this.mail = new Mail(this.mail);
-        this.labels = this.mailService.labels;
-
-        if ( this.mailService.selectedMails.length > 0 )
-        {
-            for ( const mail of this.mailService.selectedMails )
-            {
-                if ( mail.id === this.mail.id )
-                {
-                    this.selected = true;
-                    break;
-                }
-            }
-        }
 
         // Subscribe to update on selected mail change
         this.onSelectedMailsChanged =
@@ -58,6 +45,13 @@ export class MailListItemComponent implements OnInit, OnDestroy
                             }
                         }
                     }
+                });
+
+        // Subscribe to update on label change
+        this.onLabelsChanged =
+            this.mailService.onLabelsChanged
+                .subscribe(labels => {
+                    this.labels = labels;
                 });
     }
 

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import {
@@ -20,6 +22,7 @@ import { FusePipesModule } from '../pipes/pipes.module';
     imports     : [
         FlexLayoutModule,
         MaterialModule,
+        NgxDatatableModule,
         CommonModule,
         FormsModule,
         FusePipesModule,
@@ -28,6 +31,7 @@ import { FusePipesModule } from '../pipes/pipes.module';
     exports     : [
         FlexLayoutModule,
         MaterialModule,
+        NgxDatatableModule,
         CommonModule,
         FormsModule,
         FuseMdSidenavHelperDirective,

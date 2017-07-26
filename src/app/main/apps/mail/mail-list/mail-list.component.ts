@@ -28,12 +28,6 @@ export class MailListComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-        // Get mails for the first time
-        this.mails = this.mailService.mails;
-
-        // Get current mail for the first time if available
-        this.currentMail = this.mailService.currentMail || null;
-
         // Subscribe to update mails on changes
         this.onMailsChanged =
             this.mailService.onMailsChanged
@@ -52,11 +46,16 @@ export class MailListComponent implements OnInit, OnDestroy
 
                         // Handle the location changes
                         const labelHandle  = this.route.snapshot.params.labelHandle,
+                              filterHandle = this.route.snapshot.params.filterHandle,
                               folderHandle = this.route.snapshot.params.folderHandle;
 
                         if ( labelHandle )
                         {
                             this.location.go('apps/mail/label/' + labelHandle);
+                        }
+                        else if ( filterHandle )
+                        {
+                            this.location.go('apps/mail/filter/' + filterHandle);
                         }
                         else
                         {
@@ -83,11 +82,16 @@ export class MailListComponent implements OnInit, OnDestroy
     readMail(mailId)
     {
         const labelHandle  = this.route.snapshot.params.labelHandle,
+              filterHandle = this.route.snapshot.params.filterHandle,
               folderHandle = this.route.snapshot.params.folderHandle;
 
         if ( labelHandle )
         {
             this.location.go('apps/mail/label/' + labelHandle + '/' + mailId);
+        }
+        else if ( filterHandle )
+        {
+            this.location.go('apps/mail/filter/' + filterHandle + '/' + mailId);
         }
         else
         {

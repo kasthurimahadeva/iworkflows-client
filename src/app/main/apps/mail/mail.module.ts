@@ -53,7 +53,7 @@ const routes: Routes = [
     },
     {
         path      : '**',
-        redirectTo: 'inbox'
+        redirectTo: 'folder/inbox'
     }
 ];
 

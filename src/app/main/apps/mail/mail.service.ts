@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Mail } from './mail.model';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class MailService implements Resolve<any>
@@ -17,13 +17,13 @@ export class MailService implements Resolve<any>
     labels: any[];
     routeParams: any;
 
-    onMailsChanged = new Subject<Mail[]>();
-    onSelectedMailsChanged = new Subject<Mail[]>();
-    onCurrentMailChanged = new Subject<Mail>();
+    onMailsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
+    onSelectedMailsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
+    onCurrentMailChanged: BehaviorSubject<any> = new BehaviorSubject([]);
 
-    onFoldersChanged = new Subject<any[]>();
-    onFiltersChanged = new Subject<any[]>();
-    onLabelsChanged = new Subject<any[]>();
+    onFoldersChanged: BehaviorSubject<any> = new BehaviorSubject([]);
+    onFiltersChanged: BehaviorSubject<any> = new BehaviorSubject([]);
+    onLabelsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
 
     constructor(
         private http: Http

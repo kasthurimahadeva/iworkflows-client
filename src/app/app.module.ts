@@ -55,7 +55,6 @@ const appRoutes: Routes = [
 
         FuseLayoutModule,
 
-        // MailModule,
         ChatModule,
         ProjectModule,
 

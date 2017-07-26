@@ -12,23 +12,22 @@ export class MailComponent implements OnInit, OnDestroy
     hasSelectedMails: boolean;
     isIndeterminate: boolean;
     folders: any[];
+    filters: any[];
     labels: any[];
 
     onSelectedMailsChanged: Subscription;
+    onFoldersChanged: Subscription;
+    onFiltersChanged: Subscription;
+    onLabelsChanged: Subscription;
 
     constructor(
         private mailService: MailService
     )
     {
-
     }
 
     ngOnInit()
     {
-        // Get the values for the first time
-        this.labels = this.mailService.labels;
-        this.folders = this.mailService.folders;
-
         this.onSelectedMailsChanged =
             this.mailService.onSelectedMailsChanged
                 .subscribe(selectedMails => {
@@ -38,11 +37,32 @@ export class MailComponent implements OnInit, OnDestroy
                         this.isIndeterminate = (selectedMails.length !== this.mailService.mails.length && selectedMails.length > 0);
                     }, 0);
                 });
+
+        this.onFoldersChanged =
+            this.mailService.onFoldersChanged
+                .subscribe(folders => {
+                    this.folders = this.mailService.folders;
+                });
+
+        this.onFiltersChanged =
+            this.mailService.onFiltersChanged
+                .subscribe(folders => {
+                    this.filters = this.mailService.filters;
+                });
+
+        this.onLabelsChanged =
+            this.mailService.onLabelsChanged
+                .subscribe(labels => {
+                    this.labels = this.mailService.labels;
+                });
     }
 
     ngOnDestroy()
     {
         this.onSelectedMailsChanged.unsubscribe();
+        this.onFoldersChanged.unsubscribe();
+        this.onFiltersChanged.unsubscribe();
+        this.onLabelsChanged.unsubscribe();
     }
 
     toggleSelectAll()
