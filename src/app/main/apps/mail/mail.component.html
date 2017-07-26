@@ -59,6 +59,8 @@
                         <button md-menu-item (click)="selectMails('important', false)">Unimportant</button>
                     </md-menu>
 
+                    <div class="toolbar-separator" *ngIf="hasSelectedMails"></div>
+
                     <button md-icon-button (click)="setFolderOnSelectedMails(4)" *ngIf="hasSelectedMails">
                         <md-icon>delete</md-icon>
                     </button>
