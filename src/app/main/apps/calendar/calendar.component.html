@@ -25,7 +25,9 @@
                     <button md-button class="mat-icon-button"
                             mwlCalendarToday
                             [(viewDate)]="viewDate"
+                            (viewDateChange)="selectedDay = {date:$event}"
                             aria-label="Today" md-tooltip="today">
+                        <!--(click)="selectedDay = viewDate"-->
                         <md-icon>today</md-icon>
                     </button>
 
@@ -54,19 +56,20 @@
                         mwlCalendarPreviousView
                         [view]="view"
                         [(viewDate)]="viewDate"
+                        (viewDateChange)="selectedDay = {date:$event}"
                         aria-label="Previous">
                     <md-icon>chevron_left</md-icon>
                 </button>
 
                 <div class="title">
-                    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
-                    <!--{{calendarView.title}}-->
+                    {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
                 </div>
 
                 <button md-button class="mat-icon-button arrow"
                         mwlCalendarNextView
                         [view]="view"
                         [(viewDate)]="viewDate"
+                        (viewDateChange)="selectedDay = {date:$event}"
                         aria-label="Next">
                     <md-icon>chevron_right</md-icon>
                 </button>
@@ -92,23 +95,28 @@
                 [refresh]="refresh"
                 [activeDayIsOpen]="activeDayIsOpen"
                 (dayClicked)="dayClicked($event.day)"
-                (eventClicked)="handleEvent('Clicked', $event.event)"
-                (eventTimesChanged)="eventTimesChanged($event)">
+                (eventClicked)="editEvent('edit', $event.event)"
+                (eventTimesChanged)="eventTimesChanged($event)"
+                (beforeViewRender)="beforeMonthViewRender($event)">
             </mwl-calendar-month-view>
             <mwl-calendar-week-view
                 *ngSwitchCase="'week'"
                 [viewDate]="viewDate"
+                (viewDateChange)="selectedDay = {date:$event}"
                 [events]="events"
                 [refresh]="refresh"
-                (eventClicked)="handleEvent('Clicked', $event.event)"
+                (dayClicked)="dayClicked($event.day)"
+                (eventClicked)="editEvent('edit', $event.event)"
                 (eventTimesChanged)="eventTimesChanged($event)">
             </mwl-calendar-week-view>
             <mwl-calendar-day-view
                 *ngSwitchCase="'day'"
                 [viewDate]="viewDate"
+                (viewDateChange)="selectedDay = {date:$event}"
                 [events]="events"
                 [refresh]="refresh"
-                (eventClicked)="handleEvent('Clicked', $event.event)"
+                (dayClicked)="dayClicked($event.day)"
+                (eventClicked)="editEvent('edit', $event.event)"
                 (eventTimesChanged)="eventTimesChanged($event)">
             </mwl-calendar-day-view>
         </div>

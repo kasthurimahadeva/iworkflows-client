@@ -11,23 +11,26 @@ import {
     FuseMdSidenavTogglerDirective
 } from '../directives/md-sidenav-helper/md-sidenav-helper.directive';
 import { FusePipesModule } from '../pipes/pipes.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-    declarations: [
+    declarations   : [
         FuseMdSidenavHelperDirective,
-        FuseMdSidenavTogglerDirective
+        FuseMdSidenavTogglerDirective,
+        FuseConfirmDialogComponent
     ],
-    imports     : [
+    imports        : [
         FlexLayoutModule,
         MaterialModule,
         CommonModule,
         FormsModule,
         FusePipesModule,
         PerfectScrollbarModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ColorPickerModule
     ],
-    exports     : [
+    exports        : [
         FlexLayoutModule,
         MaterialModule,
         CommonModule,
@@ -36,8 +39,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         FuseMdSidenavTogglerDirective,
         FusePipesModule,
         PerfectScrollbarModule,
-        ReactiveFormsModule
-    ]
+        ReactiveFormsModule,
+        ColorPickerModule
+    ],
+    entryComponents: [FuseConfirmDialogComponent]
 })
 
 export class SharedModule

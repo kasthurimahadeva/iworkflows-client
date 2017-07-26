@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CalendarComponent } from './calendar.component';
 import { CalendarService } from './calendar.service';
 import { CalendarModule } from 'angular-calendar';
-import { EventDialogComponent } from './event-dialog/event-dialog.component';
+import { EventFormDialogComponent } from './event-form/event-form.component';
+import { EventDetailDialogComponent } from './event-detail/event-detail.component';
 
 const routes: Routes = [
     {
@@ -23,12 +24,13 @@ const routes: Routes = [
     ],
     declarations   : [
         CalendarComponent,
-        EventDialogComponent,
+        EventFormDialogComponent,
+        EventDetailDialogComponent,
     ],
     providers      : [
         CalendarService
     ],
-    entryComponents: [EventDialogComponent]
+    entryComponents: [EventFormDialogComponent, EventDetailDialogComponent]
 })
 export class FuseCalendarModule
 {
