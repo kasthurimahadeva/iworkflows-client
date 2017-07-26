@@ -122,7 +122,10 @@ export class TodoDetailsComponent implements OnInit, OnDestroy
 
     ngOnDestroy()
     {
-        this.onFormChange.unsubscribe();
+        if ( this.onFormChange )
+        {
+            this.onFormChange.unsubscribe();
+        }
         this.onCurrentTodoChanged.unsubscribe();
     }
 }

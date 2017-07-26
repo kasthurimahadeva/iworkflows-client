@@ -15,7 +15,6 @@ export class MainSidenavComponent implements OnInit, OnDestroy
     accounts: object;
     selectedAccount: string;
 
-    // onFoldersChanged: Subscription;
     onFiltersChanged: Subscription;
     onTagsChanged: Subscription;
 
@@ -47,8 +46,7 @@ export class MainSidenavComponent implements OnInit, OnDestroy
 
     ngOnDestroy()
     {
-        // this.onFoldersChanged.unsubscribe();
         this.onFiltersChanged.unsubscribe();
-        // this.onTagsChanged.unsubscribe();
+        this.onTagsChanged.unsubscribe();
     }
 }

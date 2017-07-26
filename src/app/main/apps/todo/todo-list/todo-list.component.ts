@@ -43,12 +43,12 @@ export class TodoListComponent implements OnInit, OnDestroy
                         this.currentTodo = null;
 
                         // Handle the location changes
-                        const tagId        = this.route.snapshot.params.tagId,
+                        const tagHandle    = this.route.snapshot.params.tagHandle,
                               filterHandle = this.route.snapshot.params.filterHandle;
 
-                        if ( tagId )
+                        if ( tagHandle )
                         {
-                            this.location.go('apps/todo/tag/' + tagId);
+                            this.location.go('apps/todo/tag/' + tagHandle);
                         }
                         else if ( filterHandle )
                         {
@@ -74,12 +74,12 @@ export class TodoListComponent implements OnInit, OnDestroy
      */
     readTodo(todoId)
     {
-        const tagId        = this.route.snapshot.params.tagId,
+        const tagHandle        = this.route.snapshot.params.tagHandle,
               filterHandle = this.route.snapshot.params.filterHandle;
 
-        if ( tagId )
+        if ( tagHandle )
         {
-            this.location.go('apps/todo/tag/' + tagId + '/' + todoId);
+            this.location.go('apps/todo/tag/' + tagHandle + '/' + todoId);
         }
         else if ( filterHandle )
         {
