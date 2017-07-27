@@ -1,0 +1,65 @@
+<div id="register" fxLayout="column" perfect-scrollbar>
+
+    <div id="register-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="register-form">
+            <div class="logo md-accent-bg">
+                <span>F</span>
+            </div>
+
+            <div class="title">CREATE AN ACCOUNT</div>
+
+            <form name="registerForm" [formGroup]="registerForm" novalidate>
+
+                <md-input-container>
+                    <input mdInput placeholder="Name" formControlName="name">
+                    <md-error *ngIf="registerFormErrors.name.required">
+                        Name is required
+                    </md-error>
+                </md-input-container>
+
+                <md-input-container>
+                    <input mdInput placeholder="Email" formControlName="email">
+                    <md-error *ngIf="registerFormErrors.email.required">
+                        Email is required
+                    </md-error>
+                    <md-error *ngIf="!registerFormErrors.email.required && registerFormErrors.email.email">
+                        Please enter a valid email address
+                    </md-error>
+                </md-input-container>
+
+                <md-input-container>
+                    <input mdInput placeholder="Password" formControlName="password">
+                    <md-error *ngIf="registerFormErrors.password.required">
+                        Password is required
+                    </md-error>
+                </md-input-container>
+
+                <md-input-container>
+                    <input mdInput placeholder="Password Confirm" formControlName="passwordConfirm">
+                    <md-error *ngIf="registerFormErrors.passwordConfirm.required">
+                        Password confirmation is required
+                    </md-error>
+                </md-input-container>
+
+                <div class="terms" fxLayout="row" fxLayoutAlign="center center">
+                    <md-checkbox name="terms" aria-label="I read and accept" required>
+                        <span>I read and accept</span>
+                    </md-checkbox>
+                    <a href="#">terms and conditions</a>
+                </div>
+
+                <button md-raised-button color="primary" class="submit-button" aria-label="CREATE AN ACCOUNT"
+                        [disabled]="registerForm.invalid" type="submit">
+                    CREATE AN ACCOUNT
+                </button>
+
+            </form>
+
+            <div class="register" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">Already have an account?</span>
+                <a class="link" [routerLink]="'/pages/auth/login'">Login</a>
+            </div>
+        </div>
+    </div>
+</div>

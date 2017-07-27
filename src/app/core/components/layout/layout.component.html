@@ -6,81 +6,27 @@
 
 <div id="wrapper">
 
-    <!-- NAVIGATION: None -->
-    <ng-container *ngIf="layoutSettings.navigation === 'none'">
+    <fuse-navbar *ngIf="layoutSettings.navigation === 'left'"></fuse-navbar>
 
-        <div class="content-wrapper">
+    <div class="content-wrapper">
 
-            <!-- TOOLBAR: Below -->
-            <ng-container *ngIf="layoutSettings.toolbar === 'below'">
-                <fuse-toolbar class="below"></fuse-toolbar>
-            </ng-container>
-            <!-- / TOOLBAR: Below -->
+        <!-- TOOLBAR: Below -->
+        <ng-container *ngIf="layoutSettings.toolbar === 'below'">
+            <fuse-toolbar class="below"></fuse-toolbar>
+        </ng-container>
+        <!-- / TOOLBAR: Below -->
 
-            <fuse-content perfect-scrollbar></fuse-content>
+        <fuse-content perfect-scrollbar></fuse-content>
 
-            <!-- FOOTER: Below -->
-            <ng-container *ngIf="layoutSettings.footer === 'below'">
-                <fuse-footer class="below"></fuse-footer>
-            </ng-container>
-            <!-- / FOOTER: Below -->
+        <!-- FOOTER: Below -->
+        <ng-container *ngIf="layoutSettings.footer === 'below'">
+            <fuse-footer class="below"></fuse-footer>
+        </ng-container>
+        <!-- / FOOTER: Below -->
 
-        </div>
+    </div>
 
-    </ng-container>
-    <!-- / NAVIGATION: None -->
-
-    <!-- NAVIGATION: Left -->
-    <ng-container *ngIf="layoutSettings.navigation === 'left'">
-
-        <fuse-navbar></fuse-navbar>
-
-        <div class="content-wrapper">
-
-            <!-- TOOLBAR: Below -->
-            <ng-container *ngIf="layoutSettings.toolbar === 'below'">
-                <fuse-toolbar class="below"></fuse-toolbar>
-            </ng-container>
-            <!-- / TOOLBAR: Below -->
-
-            <fuse-content perfect-scrollbar></fuse-content>
-
-            <!-- FOOTER: Below -->
-            <ng-container *ngIf="layoutSettings.footer === 'below'">
-                <fuse-footer class="below"></fuse-footer>
-            </ng-container>
-            <!-- / FOOTER: Below -->
-
-        </div>
-
-    </ng-container>
-    <!-- / NAVIGATION: Left -->
-
-    <!-- NAVIGATION: Right -->
-    <ng-container *ngIf="layoutSettings.navigation === 'right'">
-
-        <div class="content-wrapper">
-
-            <!-- TOOLBAR: Below -->
-            <ng-container *ngIf="layoutSettings.toolbar === 'below'">
-                <fuse-toolbar class="below"></fuse-toolbar>
-            </ng-container>
-            <!-- / TOOLBAR: Below -->
-
-            <fuse-content perfect-scrollbar></fuse-content>
-
-            <!-- FOOTER: Below -->
-            <ng-container *ngIf="layoutSettings.footer === 'below'">
-                <fuse-footer class="below"></fuse-footer>
-            </ng-container>
-            <!-- / FOOTER: Below -->
-
-        </div>
-
-        <fuse-navbar></fuse-navbar>
-
-    </ng-container>
-    <!-- / NAVIGATION: Right -->
+    <fuse-navbar *ngIf="layoutSettings.navigation === 'right'"></fuse-navbar>
 
 </div>
 

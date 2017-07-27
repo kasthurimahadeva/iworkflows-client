@@ -1,5 +1,5 @@
 <div *ngIf="mails.length === 0" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <span class="hint-text">There are no messages!</span>
+    <span class="no-messages-text hint-text">There are no messages!</span>
 </div>
 
 <fuse-mail-list-item md-ripple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"

@@ -1,33 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FuseLayoutService } from '../../../../core/services/layout.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector   : 'fuse-project',
     templateUrl: './project.component.html',
     styleUrls  : ['./project.component.scss']
 })
-export class ProjectComponent implements OnInit
+export class ProjectComponent implements OnInit, OnDestroy
 {
-    layoutSettings: any;
+    onSettingsChanged: Subscription;
+    layoutSettings: { navigation: string, toolbar: string, footer: string };
 
     constructor(private layoutService: FuseLayoutService)
     {
-        /*this.layoutService.setSettings({
-            navigation: 'left',
-            toolbar   : 'above',
-            footer    : 'above'
-        });*/
-        // this.layoutSettings = Object.assign(this.layoutSettings, this.layoutService.getSettings());
-    }
-
-    onSettingsChanged()
-    {
-        this.layoutService.setSettings({...this.layoutSettings});
+        this.onSettingsChanged =
+            this.layoutService.onSettingsChanged
+                .subscribe(
+                    (newSettings) => {
+                        this.layoutSettings = newSettings;
+                    }
+                );
     }
 
     ngOnInit()
     {
-        this.layoutSettings = this.layoutService.getSettings();
     }
 
+    ngOnDestroy()
+    {
+        this.onSettingsChanged.unsubscribe();
+    }
+
+    onLayoutSettingsChanged()
+    {
+        this.layoutService.onSettingsChanged.next(this.layoutSettings);
+    }
 }

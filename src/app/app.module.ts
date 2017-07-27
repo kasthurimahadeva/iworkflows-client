@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import 'hammerjs';
-import { ChatModule } from './main/apps/chat/chat.module';
 import { ProjectModule } from './main/apps/dashboards/project/project.module';
 import { FuseLayoutService } from './core/services/layout.service';
 import { FuseNavigationService } from './core/components/navigation/navigation.service';
@@ -14,13 +13,13 @@ import { FuseMatchMedia } from './core/services/match-media.service';
 import { FuseNavbarService } from './core/components/layout/navbar/navbar.service';
 import { SharedModule } from './core/modules/shared.module';
 import { FuseMdSidenavHelperService } from './core/directives/md-sidenav-helper/md-sidenav-helper.service';
-import { UIPageLayoutsModule } from './main/ui/page-layouts/page-layouts.module';
 import { FuseLayoutModule } from './core/components/layout/layout.module';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { HttpModule } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
-import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic/src/platform_providers';
+import { PagesModule } from './main/pages/pages.module';
+import { UIModule } from './main/ui/ui.module';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -66,7 +65,8 @@ const appRoutes: Routes = [
 
         ProjectModule,
 
-        UIPageLayoutsModule
+        PagesModule,
+        UIModule
     ],
     providers   : [
         FuseNavigationService,

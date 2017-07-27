@@ -1,5 +1,5 @@
 Navigation:
-<md-radio-group [(ngModel)]="layoutSettings.navigation" (ngModelChange)="onSettingsChanged()">
+<md-radio-group [(ngModel)]="layoutSettings.navigation" (ngModelChange)="onLayoutSettingsChanged()">
     <md-radio-button value="left">Left</md-radio-button>
     <md-radio-button value="right">Right</md-radio-button>
     <md-radio-button value="none">None</md-radio-button>
@@ -9,7 +9,7 @@ Navigation:
 <br>
 
 Toolbar:
-<md-radio-group [(ngModel)]="layoutSettings.toolbar" (ngModelChange)="onSettingsChanged()">
+<md-radio-group [(ngModel)]="layoutSettings.toolbar" (ngModelChange)="onLayoutSettingsChanged()">
     <md-radio-button value="below">Below</md-radio-button>
     <md-radio-button value="above">Above</md-radio-button>
     <md-radio-button value="none">None</md-radio-button>
@@ -19,7 +19,7 @@ Toolbar:
 <br>
 
 Footer:
-<md-radio-group [(ngModel)]="layoutSettings.footer" (ngModelChange)="onSettingsChanged()">
+<md-radio-group [(ngModel)]="layoutSettings.footer" (ngModelChange)="onLayoutSettingsChanged()">
     <md-radio-button value="below">Below</md-radio-button>
     <md-radio-button value="above">Above</md-radio-button>
     <md-radio-button value="none">None</md-radio-button>

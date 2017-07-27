@@ -325,34 +325,24 @@ export class FuseNavigation
                                 'url'  : '/ui/page-layouts/simple/full-width'
                             },
                             {
-                                'title': 'Left Sidebar',
+                                'title': 'Left Sidenav',
                                 'type' : 'nav-item',
-                                'url'  : '/ui/page-layouts/simple/left-sidebar'
+                                'url'  : '/ui/page-layouts/simple/left-sidenav'
                             },
                             {
-                                'title': 'Left Sidebar Inner',
+                                'title': 'Left Sidenav 2',
                                 'type' : 'nav-item',
-                                'url'  : '/ui/page-layouts/simple/left-sidebar-inner'
+                                'url'  : '/ui/page-layouts/simple/left-sidenav-2'
                             },
                             {
-                                'title': 'Left Sidebar Floating',
+                                'title': 'Right Sidenav',
                                 'type' : 'nav-item',
-                                'url'  : '/ui/page-layouts/simple/left-sidebar-floating'
+                                'url'  : '/ui/page-layouts/simple/right-sidenav'
                             },
                             {
-                                'title': 'Right Sidebar',
+                                'title': 'Right Sidenav 2',
                                 'type' : 'nav-item',
-                                'url'  : '/ui/page-layouts/simple/right-sidebar'
-                            },
-                            {
-                                'title': 'Right Sidebar Inner',
-                                'type' : 'nav-item',
-                                'url'  : '/ui/page-layouts/simple/sidebar-inner'
-                            },
-                            {
-                                'title': 'Right Sidebar Floating',
-                                'type' : 'nav-item',
-                                'url'  : '/ui/page-layouts/simple/right-sidebar-floating'
+                                'url'  : '/ui/page-layouts/simple/right-sidenav-2'
                             },
                             {
                                 'title': 'Tabbed',

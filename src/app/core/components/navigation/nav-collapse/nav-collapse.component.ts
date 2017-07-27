@@ -21,8 +21,7 @@ export class FuseNavCollapseComponent implements OnInit
          * When navigation changed
          */
         router.events.subscribe(
-            (event) =>
-            {
+            (event) => {
                 if ( event instanceof NavigationEnd )
                 {
                     /**
@@ -30,6 +29,7 @@ export class FuseNavCollapseComponent implements OnInit
                      */
                     if ( this.isUrlInChildren(this.item, event.urlAfterRedirects) )
                     {
+                        // console.log(this.item);
                         this.expand();
                     }
                     else
@@ -44,8 +44,7 @@ export class FuseNavCollapseComponent implements OnInit
          * Whenever a navigaiton collapse item toggled
          */
         this.navigationService.onNavCollapseToggled.subscribe(
-            (clickedItem) =>
-            {
+            (clickedItem) => {
                 if ( clickedItem.children )
                 {
                     /**
@@ -116,20 +115,23 @@ export class FuseNavCollapseComponent implements OnInit
         {
             return false;
         }
+
         for ( let i = 0; i < arr.children.length; i++ )
         {
             if ( arr.children[i].children )
             {
-                return this.isUrlInChildren(arr.children[i], url);
-            }
-            else
-            {
-                if ( arr.children[i].url === url )
+                if ( this.isUrlInChildren(arr.children[i], url) )
                 {
                     return true;
                 }
             }
+
+            if ( arr.children[i].url === url )
+            {
+                return true;
+            }
         }
+
         return false;
     }
 
