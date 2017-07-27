@@ -15,6 +15,7 @@ import {
 import { FusePipesModule } from '../pipes/pipes.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { NgxDnDModule } from '@swimlane/ngx-dnd';
 
 @NgModule({
     declarations   : [
@@ -31,7 +32,8 @@ import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm
         FusePipesModule,
         PerfectScrollbarModule,
         ReactiveFormsModule,
-        ColorPickerModule
+        ColorPickerModule,
+        NgxDnDModule
     ],
     exports        : [
         FlexLayoutModule,
@@ -44,7 +46,8 @@ import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm
         FusePipesModule,
         PerfectScrollbarModule,
         ReactiveFormsModule,
-        ColorPickerModule
+        ColorPickerModule,
+        NgxDnDModule
     ],
     entryComponents: [FuseConfirmDialogComponent]
 })

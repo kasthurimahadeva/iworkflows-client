@@ -2,16 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { MailFakeDb } from './mail';
 import { ChatFakeDb } from './chat';
 import { CalendarFakeDb } from './calendar';
-import {
-    startOfDay,
-    endOfDay,
-    subDays,
-    addDays,
-    endOfMonth,
-    isSameDay,
-    isSameMonth,
-    addHours
-} from 'date-fns';
+import { TodoFakeDb } from './todo';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -25,7 +16,10 @@ export class FuseFakeDbService implements InMemoryDbService
             'chat-contacts': ChatFakeDb.contacts,
             'chat-chats'   : ChatFakeDb.chats,
             'chat-user'    : ChatFakeDb.user,
-            'calendar'     : CalendarFakeDb.data
+            'calendar'     : CalendarFakeDb.data,
+            'todo-todos'   : TodoFakeDb.todos,
+            'todo-filters' : TodoFakeDb.filters,
+            'todo-tags'    : TodoFakeDb.tags
         };
     }
 

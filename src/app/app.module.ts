@@ -32,11 +32,15 @@ const appRoutes: Routes = [
     },
     {
         path        : 'apps/chat',
-        loadChildren: './main/apps/chat/chat.module#ChatModule'
+        loadChildren: './main/apps/chat/chat.module#FuseChatModule'
     },
     {
         path        : 'apps/calendar',
         loadChildren: './main/apps/calendar/calendar.module#FuseCalendarModule'
+    },
+    {
+        path        : 'apps/todo',
+        loadChildren: './main/apps/todo/todo.module#FuseTodoModule'
     },
     {
         path      : '**',
