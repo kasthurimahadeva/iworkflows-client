@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationStart, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationStart, Router, NavigationEnd, Route, RouterState } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/operator/filter';
@@ -10,9 +10,6 @@ import 'rxjs/add/operator/mergeMap';
 export class FuseLayoutService
 {
     defaultSettings: { navigation: string, toolbar: string, footer: string };
-
-    // onSettingsChanged = new EventEmitter<{ navigation: string, toolbar: string, footer: string }>();
-
     onSettingsChanged: BehaviorSubject<{ navigation: string, toolbar: string, footer: string }>;
 
     /**
@@ -33,25 +30,7 @@ export class FuseLayoutService
             (event) => {
                 if ( event instanceof NavigationStart )
                 {
-                    const routerConfig = router.config;
-
-                    const currentRouteConfig = routerConfig.find((config) => {
-                        return '/' + config.path === event.url;
-                    });
-
-                    if ( !currentRouteConfig || !currentRouteConfig.data )
-                    {
-                        return;
-                    }
-
-                    if ( currentRouteConfig.data.layout )
-                    {
-                        this.setSettings(currentRouteConfig.data.layout);
-                    }
-                    else
-                    {
-                        this.setSettings(this.defaultSettings);
-                    }
+                    this.setSettings(this.defaultSettings);
                 }
             }
         );

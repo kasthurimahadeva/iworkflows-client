@@ -15,6 +15,12 @@ export class RegisterComponent implements OnInit
 
     constructor(private layoutService: FuseLayoutService, private formBuilder: FormBuilder)
     {
+        this.layoutService.setSettings({
+            navigation: 'none',
+            toolbar   : 'none',
+            footer    : 'none'
+        });
+
         this.registerFormErrors = {
             name           : {},
             email          : {},

@@ -8,37 +8,16 @@ import { RegisterComponent } from './authentication/register/register.component'
 
 const routes = [
     {
-        path     : 'pages/auth/login',
-        component: LoginComponent,
-        data     : {
-            layout: {
-                navigation: 'none',
-                toolbar   : 'none',
-                footer    : 'none'
-            }
-        }
+        path       : 'pages/auth/login',
+        component  : LoginComponent
     },
     {
-        path     : 'pages/auth/login-2',
-        component: Login2Component,
-        data     : {
-            layout: {
-                navigation: 'none',
-                toolbar   : 'none',
-                footer    : 'none'
-            }
-        }
+        path       : 'pages/auth/login-2',
+        component  : Login2Component
     },
     {
-        path     : 'pages/auth/register',
-        component: RegisterComponent,
-        data     : {
-            layout: {
-                navigation: 'none',
-                toolbar   : 'none',
-                footer    : 'none'
-            }
-        }
+        path       : 'pages/auth/register',
+        component  : RegisterComponent
     }
 ];
 
