@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { FuseUtils } from '../../../core/fuseUtils';
 
 @Injectable()
 export class ChatService implements Resolve<any>
@@ -80,7 +81,7 @@ export class ChatService implements Resolve<any>
                 return item.id === contactId;
             });
 
-            const chatId = this.guidGenerator();
+            const chatId = FuseUtils.genearateGUID();
 
             const chat = {
                 id    : chatId,
@@ -242,19 +243,5 @@ export class ChatService implements Resolve<any>
                     resolve(response.json().data[0]);
                 }, reject);
         });
-    }
-
-    /**
-     * Random ID Generator
-     * @returns {string}
-     */
-    guidGenerator()
-    {
-        function S4()
-        {
-            return (((1 + Math.random()) * 0x10000) || 0).toString(16).substring(1);
-        }
-
-        return (S4() + S4());
     }
 }

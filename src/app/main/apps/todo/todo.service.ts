@@ -4,8 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Todo } from './todo.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
 import { FuseUtils } from '../../../core/fuseUtils';
+import { Subject } from 'rxjs/Subject';
+import { Location } from '@angular/common';
 
 @Injectable()
 export class TodoService implements Resolve<any>
@@ -26,8 +27,10 @@ export class TodoService implements Resolve<any>
     onFiltersChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onTagsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onSearchTextChanged: BehaviorSubject<any> = new BehaviorSubject('');
+    onNewTodoClicked: Subject<any> = new Subject();
 
-    constructor(private http: Http)
+    constructor(private http: Http,
+                private location: Location)
     {
         this.selectedTodos = [];
     }
@@ -317,6 +320,23 @@ export class TodoService implements Resolve<any>
         });
 
         this.onCurrentTodoChanged.next(this.currentTodo);
+
+        const tagHandle    = this.routeParams.tagHandle,
+              filterHandle = this.routeParams.filterHandle;
+
+        if ( tagHandle )
+        {
+            this.location.go('apps/todo/tag/' + tagHandle + '/' + id);
+        }
+        else if ( filterHandle )
+        {
+            this.location.go('apps/todo/filter/' + filterHandle + '/' + id);
+        }
+        else
+        {
+            this.location.go('apps/todo/all/' + id);
+        }
+
     }
 
     /**
@@ -360,15 +380,35 @@ export class TodoService implements Resolve<any>
 
                     this.getTodos().then(todos => {
 
-                        if ( todos && this.currentTodo )
-                        {
-                            this.setCurrentTodo(this.currentTodo.id);
-                        }
+                        this.setCurrentTodo(todo.id);
 
                         resolve(todos);
 
                     }, reject);
                 });
         });
+    }
+
+    /**
+     * Update the todo
+     * @param todo
+     * @returns {Promise<any>}
+     */
+    updateTodos(todos)
+    {
+
+      /*  return new Promise((resolve, reject) => {
+
+            this.http.post('api/todo-todos/', {...todos})
+
+                .subscribe(response => {
+
+                    this.getTodos().then(_todos => {
+                        console.log(response);
+                        resolve(_todos);
+                    }, reject);
+                });
+        });*/
+
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TodoService } from '../../todo.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 @Component({
     selector   : 'fuse-todo-main-sidenav',
@@ -18,7 +19,7 @@ export class MainSidenavComponent implements OnInit, OnDestroy
     onFiltersChanged: Subscription;
     onTagsChanged: Subscription;
 
-    constructor(private todoService: TodoService)
+    constructor(private todoService: TodoService, private router: Router)
     {
         // Data
         this.accounts = {
@@ -48,5 +49,14 @@ export class MainSidenavComponent implements OnInit, OnDestroy
     {
         this.onFiltersChanged.unsubscribe();
         this.onTagsChanged.unsubscribe();
+    }
+
+    newTodo()
+    {
+        this.router.navigate(['/apps/todo/all']).then(() => {
+            setTimeout(() => {
+                this.todoService.onNewTodoClicked.next('');
+            });
+        });
     }
 }

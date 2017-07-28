@@ -46,14 +46,16 @@
 
     <div class="todo-content">
 
-        <form [formGroup]="todoForm">
+        <form [formGroup]="todoForm" (submit)="addTodo()">
 
             <md-input-container class="title mt-8" floatPlaceholder="never" fxFill>
                     <textarea mdInput
+                              #titleInput
                               name="title"
                               formControlName="title"
                               placeholder="Title"
-                              mdTextareaAutosize>
+                              mdTextareaAutosize
+                              required>
                     </textarea>
             </md-input-container>
 
@@ -96,6 +98,11 @@
                            mdAutosizeMinRows="6">
                  </textarea>
             </md-input-container>
+
+            <button *ngIf="formType === 'new'"
+                    md-raised-button class="mat-accent"
+                    [disabled]="todoForm.invalid">SAVE
+            </button>
         </form>
 
     </div>
