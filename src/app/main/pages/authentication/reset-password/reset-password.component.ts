@@ -4,16 +4,19 @@ import { FuseLayoutService } from '../../../../core/services/layout.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-register',
-    templateUrl: './register.component.html',
-    styleUrls  : ['./register.component.scss']
+    selector   : 'fuse-reset-password',
+    templateUrl: './reset-password.component.html',
+    styleUrls  : ['./reset-password.component.scss']
 })
-export class RegisterComponent implements OnInit
+export class ResetPasswordComponent implements OnInit
 {
-    registerForm: FormGroup;
-    registerFormErrors: any;
+    resetPasswordForm: FormGroup;
+    resetPasswordFormErrors: any;
 
-    constructor(private layoutService: FuseLayoutService, private formBuilder: FormBuilder)
+    constructor(
+        private layoutService: FuseLayoutService,
+        private formBuilder: FormBuilder
+    )
     {
         this.layoutService.setSettings({
             navigation: 'none',
@@ -21,8 +24,7 @@ export class RegisterComponent implements OnInit
             footer    : 'none'
         });
 
-        this.registerFormErrors = {
-            name           : {},
+        this.resetPasswordFormErrors = {
             email          : {},
             password       : {},
             passwordConfirm: {}
@@ -31,37 +33,35 @@ export class RegisterComponent implements OnInit
 
     ngOnInit()
     {
-
-        this.registerForm = this.formBuilder.group({
-            name           : ['', Validators.required],
+        this.resetPasswordForm = this.formBuilder.group({
             email          : ['', [Validators.required, Validators.email]],
             password       : ['', Validators.required],
             passwordConfirm: ['', Validators.required]
         });
 
-        this.registerForm.valueChanges.subscribe(() => {
-            this.onRegisterFormValuesChanged();
+        this.resetPasswordForm.valueChanges.subscribe(() => {
+            this.onResetPasswordFormValuesChanged();
         });
     }
 
-    onRegisterFormValuesChanged()
+    onResetPasswordFormValuesChanged()
     {
-        for ( const field in this.registerFormErrors )
+        for ( const field in this.resetPasswordFormErrors )
         {
-            if ( !this.registerFormErrors.hasOwnProperty(field) )
+            if ( this.resetPasswordFormErrors.hasOwnProperty(field) )
             {
                 continue;
             }
 
             // Clear previous errors
-            this.registerFormErrors[field] = {};
+            this.resetPasswordFormErrors[field] = {};
 
             // Get the control
-            const control = this.registerForm.get(field);
+            const control = this.resetPasswordForm.get(field);
 
             if ( control && control.dirty && !control.valid )
             {
-                this.registerFormErrors[field] = control.errors;
+                this.resetPasswordFormErrors[field] = control.errors;
             }
         }
     }

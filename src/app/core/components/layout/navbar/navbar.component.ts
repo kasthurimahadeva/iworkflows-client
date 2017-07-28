@@ -1,13 +1,14 @@
-import {Component, HostBinding, HostListener, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, HostBinding, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppComponent } from '../../../../app.component';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMatchMedia } from '../../../services/match-media.service';
 import { FuseNavbarService } from './navbar.service';
 
 @Component({
-    selector   : 'fuse-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls  : ['./navbar.component.scss']
+    selector     : 'fuse-navbar',
+    templateUrl  : './navbar.component.html',
+    styleUrls    : ['./navbar.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class FuseNavbarComponent implements OnInit, OnDestroy
 {
@@ -31,17 +32,18 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
         this.isFoldedOpen = false;
         this.updateCssClasses();
 
-        this.matchMediaWatcher = this.fuseMatchMedia.onMediaChange.subscribe((mediaStep) =>
-        {
-            if ( mediaStep === 'xs' )
-            {
-                this.closeBar();
-            }
-            else
-            {
-                this.openBar();
-            }
-        });
+        this.matchMediaWatcher =
+            this.fuseMatchMedia.onMediaChange
+                .subscribe((mediaStep) => {
+                    if ( mediaStep === 'xs' )
+                    {
+                        this.closeBar();
+                    }
+                    else
+                    {
+                        this.openBar();
+                    }
+                });
     }
 
     openBar()

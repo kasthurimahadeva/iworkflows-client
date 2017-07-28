@@ -1,13 +1,30 @@
-<div id="register" fxLayout="column" perfect-scrollbar>
+<div id="register" fxLayout="row" fxLayoutAlign="start">
 
-    <div id="register-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+    <div id="register-intro" fxFlex fxHide fxShow.gt-xs>
+        <div class="logo">
+            <span>F</span>
+        </div>
+
+        <div class="title">
+            Welcome to the FUSE!
+        </div>
+
+        <div class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat,
+            vel convallis elit fermentum pellentesque. Sed mollis velit facilisis facilisis viverra.
+        </div>
+    </div>
+
+    <div id="register-form-wrapper" perfect-scrollbar>
 
         <div id="register-form">
-            <div class="logo md-accent-bg">
+
+            <div class="logo" fxHide.gt-xs>
                 <span>F</span>
             </div>
 
             <div class="title">CREATE AN ACCOUNT</div>
+            <div class="description">Sed mollis velit facilisis facilisis viverra</div>
 
             <form name="registerForm" [formGroup]="registerForm" novalidate>
 
@@ -58,7 +75,7 @@
 
             <div class="register" fxLayout="column" fxLayoutAlign="center center">
                 <span class="text">Already have an account?</span>
-                <a class="link" [routerLink]="'/pages/auth/login'">Login</a>
+                <a class="link" [routerLink]="'/pages/auth/login-2'">Login</a>
             </div>
         </div>
     </div>

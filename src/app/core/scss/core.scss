@@ -27,6 +27,7 @@
 @include angular-material-typography($custom-typography);
 
 // Partials
+@import "partials/reset";
 @import "partials/normalize";
 @import "partials/spacing";
 @import "partials/global";

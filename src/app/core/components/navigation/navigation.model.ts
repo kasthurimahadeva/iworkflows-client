@@ -101,7 +101,7 @@ export class FuseNavigation
                     {
                         'title': 'Login v2',
                         'type' : 'nav-item',
-                        'url'  : '/pages/auth/login-v2'
+                        'url'  : '/pages/auth/login-2'
                     },
                     {
                         'title': 'Register',
@@ -111,7 +111,7 @@ export class FuseNavigation
                     {
                         'title': 'Register v2',
                         'type' : 'nav-item',
-                        'url'  : '/pages/auth/register-v2'
+                        'url'  : '/pages/auth/register-2'
                     },
                     {
                         'title': 'Forgot Password',
@@ -126,7 +126,7 @@ export class FuseNavigation
                     {
                         'title': 'Lock Screen',
                         'type' : 'nav-item',
-                        'url'  : '/pages/auth/lock-screen'
+                        'url'  : '/pages/auth/lock'
                     }
                 ]
             },
@@ -144,12 +144,12 @@ export class FuseNavigation
                     {
                         'title': '404',
                         'type' : 'nav-item',
-                        'url'  : '/pages/errors/404'
+                        'url'  : '/pages/errors/error-404'
                     },
                     {
                         'title': '500',
                         'type' : 'nav-item',
-                        'url'  : '/pages/errors/500'
+                        'url'  : '/pages/errors/error-500'
                     }
                 ]
             },

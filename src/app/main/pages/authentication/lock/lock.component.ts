@@ -4,14 +4,14 @@ import { FuseLayoutService } from '../../../../core/services/layout.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-login',
-    templateUrl: './login.component.html',
-    styleUrls  : ['./login.component.scss']
+    selector   : 'fuse-lock',
+    templateUrl: './lock.component.html',
+    styleUrls  : ['./lock.component.scss']
 })
-export class LoginComponent implements OnInit
+export class LockComponent implements OnInit
 {
-    loginForm: FormGroup;
-    loginFormErrors: any;
+    lockForm: FormGroup;
+    lockFormErrors: any;
 
     constructor(
         private layoutService: FuseLayoutService,
@@ -24,42 +24,42 @@ export class LoginComponent implements OnInit
             footer    : 'none'
         });
 
-        this.loginFormErrors = {
-            email   : {},
+        this.lockFormErrors = {
+            username: {},
             password: {}
         };
     }
 
     ngOnInit()
     {
-        this.loginForm = this.formBuilder.group({
-            email   : ['', [Validators.required, Validators.email]],
+        this.lockForm = this.formBuilder.group({
+            username: [{value: 'Katherine', disabled: true}, Validators.required],
             password: ['', Validators.required]
         });
 
-        this.loginForm.valueChanges.subscribe(() => {
-            this.onLoginFormValuesChanged();
+        this.lockForm.valueChanges.subscribe(() => {
+            this.onLockFormValuesChanged();
         });
     }
 
-    onLoginFormValuesChanged()
+    onLockFormValuesChanged()
     {
-        for ( const field in this.loginFormErrors )
+        for ( const field in this.lockFormErrors )
         {
-            if ( !this.loginFormErrors.hasOwnProperty(field) )
+            if ( this.lockFormErrors.hasOwnProperty(field) )
             {
                 continue;
             }
 
             // Clear previous errors
-            this.loginFormErrors[field] = {};
+            this.lockFormErrors[field] = {};
 
             // Get the control
-            const control = this.loginForm.get(field);
+            const control = this.lockForm.get(field);
 
             if ( control && control.dirty && !control.valid )
             {
-                this.loginFormErrors[field] = control.errors;
+                this.lockFormErrors[field] = control.errors;
             }
         }
     }

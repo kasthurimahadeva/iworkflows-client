@@ -1,0 +1,48 @@
+<div id="lock" fxLayout="column" perfect-scrollbar>
+
+    <div id="lock-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="lock-form">
+
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayout.sm="column" fxLayoutAlign.sm="center center">
+                <div class="avatar-container">
+                    <img class="avatar big" src="assets/images/avatars/katherine.jpg">
+                    <md-icon class="s-36">lock</md-icon>
+                </div>
+
+                <div fxLayout="column" fxLayoutAlign="start" fxLayoutAlign.sm="center center" fxFlex>
+                    <div class="title">YOUR SESSION IS LOCKED</div>
+                    <div class="subtitle">
+                        Due to inactivity, your session is locked. Enter your password to continue.
+                    </div>
+                </div>
+            </div>
+
+            <form name="lockForm" [formGroup]="lockForm" novalidate>
+
+                <md-input-container>
+                    <input mdInput placeholder="Username" formControlName="username">
+                </md-input-container>
+
+                <md-input-container>
+                    <input mdInput placeholder="Password" formControlName="password">
+                    <md-error *ngIf="lockFormErrors.password.required">
+                        Password is required
+                    </md-error>
+                </md-input-container>
+
+                <button md-raised-button class="submit-button" color="primary"
+                        aria-label="UNLOCK" [disabled]="lockForm.invalid">
+                    UNLOCK
+                </button>
+            </form>
+
+            <div class="message">
+                <a class="link" [routerLink]="'/pages/auth/login'">Are you not Katherine?</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

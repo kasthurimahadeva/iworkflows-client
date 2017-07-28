@@ -43,18 +43,20 @@ export class Login2Component implements OnInit
     {
         for ( const field in this.loginFormErrors )
         {
-            if ( this.loginFormErrors.hasOwnProperty(field) )
+            if ( !this.loginFormErrors.hasOwnProperty(field) )
             {
-                // Clear previous errors
-                this.loginFormErrors[field] = {};
+                continue;
+            }
 
-                // Get the control
-                const control = this.loginForm.get(field);
+            // Clear previous errors
+            this.loginFormErrors[field] = {};
 
-                if ( control && control.dirty && !control.valid )
-                {
-                    this.loginFormErrors[field] = control.errors;
-                }
+            // Get the control
+            const control = this.loginForm.get(field);
+
+            if ( control && control.dirty && !control.valid )
+            {
+                this.loginFormErrors[field] = control.errors;
             }
         }
     }

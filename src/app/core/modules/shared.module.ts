@@ -16,12 +16,14 @@ import { FusePipesModule } from '../pipes/pipes.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
+import { FuseCountdownComponent } from '../components/countdown/countdown.component';
 
 @NgModule({
     declarations   : [
         FuseMdSidenavHelperDirective,
         FuseMdSidenavTogglerDirective,
-        FuseConfirmDialogComponent
+        FuseConfirmDialogComponent,
+        FuseCountdownComponent
     ],
     imports        : [
         FlexLayoutModule,
@@ -47,7 +49,8 @@ import { NgxDnDModule } from '@swimlane/ngx-dnd';
         PerfectScrollbarModule,
         ReactiveFormsModule,
         ColorPickerModule,
-        NgxDnDModule
+        NgxDnDModule,
+        FuseCountdownComponent
     ],
     entryComponents: [FuseConfirmDialogComponent]
 })
