@@ -24,8 +24,10 @@ export class FuseLayoutService
             footer    : 'none' // 'above', 'below', none
         };
 
+        // Create the behavior subject
         this.onSettingsChanged = new BehaviorSubject(this.defaultSettings);
 
+        // Reload the default settings on every navigation start
         router.events.subscribe(
             (event) => {
                 if ( event instanceof NavigationStart )

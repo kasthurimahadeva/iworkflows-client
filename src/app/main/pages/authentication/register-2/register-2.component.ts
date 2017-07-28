@@ -4,11 +4,11 @@ import { FuseLayoutService } from '../../../../core/services/layout.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-register',
-    templateUrl: './register.component.html',
-    styleUrls  : ['./register.component.scss']
+    selector   : 'fuse-register-2',
+    templateUrl: './register-2.component.html',
+    styleUrls  : ['./register-2.component.scss']
 })
-export class RegisterComponent implements OnInit
+export class Register2Component implements OnInit
 {
     registerForm: FormGroup;
     registerFormErrors: any;
@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit
 
     ngOnInit()
     {
-
         this.registerForm = this.formBuilder.group({
             name           : ['', Validators.required],
             email          : ['', [Validators.required, Validators.email]],

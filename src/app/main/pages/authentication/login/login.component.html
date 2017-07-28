@@ -34,11 +34,13 @@
                         Remember Me
                     </md-checkbox>
 
-                    <a class="forgot-password">Forgot Password?</a>
+                    <a class="forgot-password" [routerLink]="'/pages/auth/forgot-password'">
+                        Forgot Password?
+                    </a>
                 </div>
 
                 <button md-raised-button color="primary" class="submit-button" aria-label="LOG IN"
-                        [disabled]="loginForm.invalid" type="submit">
+                        [disabled]="loginForm.invalid">
                     LOGIN
                 </button>
 

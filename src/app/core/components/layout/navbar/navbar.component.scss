@@ -1,6 +1,16 @@
 @import "../../../scss/fuse";
 
-:host {
+body {
+
+    &.fuse-nav-bar-folded {
+
+        .content-wrapper {
+            padding-left: 64px !important;
+        }
+    }
+}
+
+fuse-navbar {
     display: flex;
     flex-direction: column;
     width: 256px;
@@ -75,16 +85,6 @@
                 margin-left: 16px;
                 font-size: 16px;
             }
-        }
-
-        .toggle-button-navbar {
-            /* border-radius: 50%;
-             position: relative;
-             cursor: pointer;
-             width: 32px;
-             height: 32px;
-             padding: 4px;
-             box-sizing: border-box;*/
         }
     }
 
