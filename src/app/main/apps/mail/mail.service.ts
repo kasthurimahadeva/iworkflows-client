@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Mail } from './mail.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { FuseUtils } from "app/core/fuseUtils";
 
 @Injectable()
 export class MailService implements Resolve<any>
@@ -11,6 +12,7 @@ export class MailService implements Resolve<any>
     mails: Mail[];
     selectedMails: Mail[];
     currentMail: Mail;
+    searchText = '';
 
     folders: any[];
     filters: any[];
@@ -24,10 +26,9 @@ export class MailService implements Resolve<any>
     onFoldersChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onFiltersChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onLabelsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
+    onSearchTextChanged: BehaviorSubject<any> = new BehaviorSubject('');
 
-    constructor(
-        private http: Http
-    )
+    constructor(private http: Http)
     {
         this.selectedMails = [];
     }
@@ -58,6 +59,19 @@ export class MailService implements Resolve<any>
                     {
                         this.setCurrentMail(null);
                     }
+
+                    this.onSearchTextChanged.subscribe(searchText => {
+                        if ( searchText !== '' )
+                        {
+                            this.searchText = searchText;
+                            this.getMails();
+                        }
+                        else
+                        {
+                            this.searchText = searchText;
+                            this.getMails();
+                        }
+                    });
 
                     resolve();
                 },
@@ -154,6 +168,8 @@ export class MailService implements Resolve<any>
                                 return new Mail(mail);
                             });
 
+                            this.mails = FuseUtils.filterArrayByString(this.mails, this.searchText);
+
                             this.onMailsChanged.next(this.mails);
 
                             resolve(this.mails);
@@ -178,6 +194,8 @@ export class MailService implements Resolve<any>
                     this.mails = mails.json().data.map(mail => {
                         return new Mail(mail);
                     });
+
+                    this.mails = FuseUtils.filterArrayByString(this.mails, this.searchText);
 
                     this.onMailsChanged.next(this.mails);
 
@@ -206,6 +224,8 @@ export class MailService implements Resolve<any>
                             this.mails = mails.json().data.map(mail => {
                                 return new Mail(mail);
                             });
+
+                            this.mails = FuseUtils.filterArrayByString(this.mails, this.searchText);
 
                             this.onMailsChanged.next(this.mails);
 

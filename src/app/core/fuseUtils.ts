@@ -3,6 +3,11 @@ export class FuseUtils
 
     public static filterArrayByString(mainArr, searchText)
     {
+        if ( searchText === '' )
+        {
+            return mainArr;
+        }
+
         searchText = searchText.toLowerCase();
 
         return mainArr.filter(itemObj => {

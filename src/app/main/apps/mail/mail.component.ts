@@ -16,15 +16,12 @@ export class MailComponent implements OnInit, OnDestroy
     folders: any[];
     filters: any[];
     labels: any[];
-    mails: any[];
     searchInput: FormControl;
 
     onSelectedMailsChanged: Subscription;
     onFoldersChanged: Subscription;
     onFiltersChanged: Subscription;
     onLabelsChanged: Subscription;
-    onMailsChanged: Subscription;
-
 
     constructor(private mailService: MailService)
     {
@@ -33,12 +30,6 @@ export class MailComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-        // Subscribe to update mails on changes
-        this.onMailsChanged =
-            this.mailService.onMailsChanged
-                .subscribe(mails => {
-                    this.mails = mails;
-                });
 
         this.onSelectedMailsChanged =
             this.mailService.onSelectedMailsChanged
@@ -73,15 +64,7 @@ export class MailComponent implements OnInit, OnDestroy
             .debounceTime(300)
             .distinctUntilChanged()
             .subscribe(searchText => {
-                if ( searchText !== '' )
-                {
-                    const newArr = FuseUtils.filterArrayByString(this.mails, searchText);
-                    this.mailService.onMailsChanged.next(newArr);
-                }
-                else
-                {
-                    this.mailService.getMails();
-                }
+                this.mailService.onSearchTextChanged.next(searchText);
             });
     }
 
