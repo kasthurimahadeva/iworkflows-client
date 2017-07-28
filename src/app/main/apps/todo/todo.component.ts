@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { TodoService } from './todo.service';
+import { FormControl } from '@angular/forms';
+import { Todo } from './todo.model';
 
 @Component({
     selector   : 'fuse-todo',
@@ -13,6 +15,7 @@ export class TodoComponent implements OnInit, OnDestroy
     isIndeterminate: boolean;
     filters: any[];
     tags: any[];
+    searchInput: FormControl;
 
     onSelectedTodosChanged: Subscription;
     onFiltersChanged: Subscription;
@@ -20,10 +23,12 @@ export class TodoComponent implements OnInit, OnDestroy
 
     constructor(private todoService: TodoService)
     {
+        this.searchInput = new FormControl('');
     }
 
     ngOnInit()
     {
+
         this.onSelectedTodosChanged =
             this.todoService.onSelectedTodosChanged
                 .subscribe(selectedTodos => {
@@ -45,6 +50,13 @@ export class TodoComponent implements OnInit, OnDestroy
                 .subscribe(tags => {
                     this.tags = this.todoService.tags;
                 });
+
+        this.searchInput.valueChanges
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .subscribe(searchText => {
+                this.todoService.onSearchTextChanged.next(searchText);
+            });
     }
 
     ngOnDestroy()

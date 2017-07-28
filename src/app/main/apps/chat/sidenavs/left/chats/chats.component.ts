@@ -14,6 +14,7 @@ export class ChatsSidenavComponent implements OnInit
     chats: any[];
     contacts: any[];
     chatSearch: any;
+    searchText = '';
 
     constructor(private chatService: ChatService,
                 private fuseMdSidenavService: FuseMdSidenavHelperService,

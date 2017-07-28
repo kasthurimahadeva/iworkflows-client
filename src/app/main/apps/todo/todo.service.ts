@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Todo } from './todo.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subscription } from 'rxjs/Subscription';
+import { FuseUtils } from '../../../core/fuseUtils';
 
 @Injectable()
 export class TodoService implements Resolve<any>
@@ -11,6 +13,7 @@ export class TodoService implements Resolve<any>
     todos: Todo[];
     selectedTodos: Todo[];
     currentTodo: Todo;
+    searchText = '';
 
     filters: any[];
     tags: any[];
@@ -22,6 +25,7 @@ export class TodoService implements Resolve<any>
 
     onFiltersChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onTagsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
+    onSearchTextChanged: BehaviorSubject<any> = new BehaviorSubject('');
 
     constructor(private http: Http)
     {
@@ -55,6 +59,18 @@ export class TodoService implements Resolve<any>
                         this.setCurrentTodo(null);
                     }
 
+                    this.onSearchTextChanged.subscribe(searchText => {
+                        if ( searchText !== '' )
+                        {
+                            this.searchText = searchText;
+                            this.getTodos();
+                        }
+                        else
+                        {
+                            this.searchText = searchText;
+                            this.getTodos();
+                        }
+                    });
                     resolve();
                 },
                 reject
@@ -129,6 +145,8 @@ export class TodoService implements Resolve<any>
                         return new Todo(todo);
                     });
 
+                    this.todos = FuseUtils.filterArrayByString(this.todos, this.searchText);
+
                     this.onTodosChanged.next(this.todos);
 
                     resolve(this.todos);
@@ -160,6 +178,8 @@ export class TodoService implements Resolve<any>
                         return new Todo(todo);
                     });
 
+                    this.todos = FuseUtils.filterArrayByString(this.todos, this.searchText);
+
                     this.onTodosChanged.next(this.todos);
 
                     resolve(this.todos);
@@ -187,6 +207,8 @@ export class TodoService implements Resolve<any>
                             this.todos = todos.json().data.map(todo => {
                                 return new Todo(todo);
                             });
+
+                            this.todos = FuseUtils.filterArrayByString(this.todos, this.searchText);
 
                             this.onTodosChanged.next(this.todos);
 

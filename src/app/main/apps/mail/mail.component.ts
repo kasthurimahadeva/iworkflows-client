@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from './mail.service';
 import { Subscription } from 'rxjs/Subscription';
+import { FormControl } from '@angular/forms';
+import { FuseUtils } from '../../../core/fuseUtils';
 
 @Component({
     selector   : 'fuse-mail',
@@ -14,20 +16,21 @@ export class MailComponent implements OnInit, OnDestroy
     folders: any[];
     filters: any[];
     labels: any[];
+    searchInput: FormControl;
 
     onSelectedMailsChanged: Subscription;
     onFoldersChanged: Subscription;
     onFiltersChanged: Subscription;
     onLabelsChanged: Subscription;
 
-    constructor(
-        private mailService: MailService
-    )
+    constructor(private mailService: MailService)
     {
+        this.searchInput = new FormControl('');
     }
 
     ngOnInit()
     {
+
         this.onSelectedMailsChanged =
             this.mailService.onSelectedMailsChanged
                 .subscribe(selectedMails => {
@@ -55,6 +58,14 @@ export class MailComponent implements OnInit, OnDestroy
                 .subscribe(labels => {
                     this.labels = this.mailService.labels;
                 });
+
+
+        this.searchInput.valueChanges
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .subscribe(searchText => {
+                this.mailService.onSearchTextChanged.next(searchText);
+            });
     }
 
     ngOnDestroy()

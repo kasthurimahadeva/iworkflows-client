@@ -29,7 +29,7 @@
 
                     <div class="search" flex fxLayout="row" fxLayoutAlign="start center">
                         <md-icon>search</md-icon>
-                        <input fxFlex type="text" placeholder="Search for an todo">
+                        <input [formControl]="searchInput" placeholder="Search for an todo" fxFlex>
                     </div>
                 </div>
 
