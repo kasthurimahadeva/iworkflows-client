@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { TodoService } from './todo.service';
+import { FormControl } from '@angular/forms';
+import { Todo } from './todo.model';
+import { FuseUtils } from '../../../core/fuseUtils';
 
 @Component({
     selector   : 'fuse-todo',
@@ -11,19 +14,30 @@ export class TodoComponent implements OnInit, OnDestroy
 {
     hasSelectedTodos: boolean;
     isIndeterminate: boolean;
+    todos: Todo[];
     filters: any[];
     tags: any[];
+    searchInput: FormControl;
 
+    onTodosChanged: Subscription;
     onSelectedTodosChanged: Subscription;
     onFiltersChanged: Subscription;
     onTagsChanged: Subscription;
 
     constructor(private todoService: TodoService)
     {
+        this.searchInput = new FormControl('');
     }
 
     ngOnInit()
     {
+        // Subscribe to update todos on changes
+        this.onTodosChanged =
+            this.todoService.onTodosChanged
+                .subscribe(todos => {
+                    this.todos = todos;
+                });
+
         this.onSelectedTodosChanged =
             this.todoService.onSelectedTodosChanged
                 .subscribe(selectedTodos => {
@@ -45,6 +59,21 @@ export class TodoComponent implements OnInit, OnDestroy
                 .subscribe(tags => {
                     this.tags = this.todoService.tags;
                 });
+
+        this.searchInput.valueChanges
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .subscribe(searchText => {
+                if ( searchText !== '' )
+                {
+                    const newArr = FuseUtils.filterArrayByString(this.todos, searchText);
+                    this.todoService.onTodosChanged.next(newArr);
+                }
+                else
+                {
+                    this.todoService.getTodos();
+                }
+            });
     }
 
     ngOnDestroy()

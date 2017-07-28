@@ -82,7 +82,7 @@
 
                     <md-icon>search</md-icon>
 
-                    <input [(ngModel)]="chatSearch.name" type="text" placeholder="Search or start new chat" fxFlex>
+                    <input [(ngModel)]="searchText" type="text" placeholder="Search or start new chat" fxFlex>
 
                 </div>
             </div>
@@ -106,12 +106,12 @@
         <!-- CHATS LIST-->
         <div class="chat-list" fxLayout="column">
 
-            <div md-subheader *ngIf="(user.chatList | filterBy: chatSearch).length > 0">
+            <div md-subheader *ngIf="(user.chatList | filter: searchText).length > 0">
                 Chats
             </div>
 
             <button md-button class="contact"
-                    *ngFor="let chat of user.chatList | filterBy: chatSearch"
+                    *ngFor="let chat of user.chatList | filter: searchText"
                     (click)="getChat(chat.contactId)" ngClass="{'unread':contact.unread}">
 
                 <div fxLayout="row" fxLayoutAlign="start center">
@@ -146,13 +146,13 @@
         <!-- CONTACTS LIST-->
         <div class="contact-list" fxLayout="column">
 
-            <div md-subheader *ngIf="(contacts| filterBy: chatSearch).length > 0">
+            <div md-subheader *ngIf="(contacts| filter: searchText).length > 0">
                 Contacts
             </div>
 
             <button md-button class="contact"
                     ng-show="chatSearch"
-                    *ngFor="let contact of contacts| filterBy: chatSearch"
+                    *ngFor="let contact of contacts| filter: searchText"
                     (click)="getChat(contact.id)">
 
                 <div fxLayout="row" fxLayoutAlign="start center">
@@ -171,7 +171,7 @@
         <!-- / CONTACTS LIST-->
 
         <!-- NO RESULTS MESSAGE -->
-        <div *ngIf="(contacts| filterBy: chatSearch).length === 0" class="no-results-message">
+        <div *ngIf="(contacts| filter: searchText).length === 0" class="no-results-message">
             No results..
         </div>
         <!-- NO RESULTS MESSAGE-->
