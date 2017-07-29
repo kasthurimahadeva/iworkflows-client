@@ -46,6 +46,7 @@ h6, .h6 {
 
 // Links
 a {
+    color: mat-color($accent);
     text-decoration: none;
 
     &:hover, &:active {

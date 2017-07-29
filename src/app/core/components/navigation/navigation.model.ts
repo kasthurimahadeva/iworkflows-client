@@ -258,23 +258,6 @@ export class FuseNavigation
                 ]
             },
             {
-                'title'   : 'Tables',
-                'type'    : 'nav-collapse',
-                'icon'    : 'border_all',
-                'children': [
-                    {
-                        'title': 'Simple Table',
-                        'type' : 'nav-item',
-                        'url'  : '/ui/tables/simple-table'
-                    },
-                    {
-                        'title': 'Data Table',
-                        'type' : 'nav-item',
-                        'url'  : '/ui/tables/data-table'
-                    }
-                ]
-            },
-            {
                 'title'   : 'Page Layouts',
                 'type'    : 'nav-collapse',
                 'icon'    : 'view_quilt',
@@ -369,47 +352,17 @@ export class FuseNavigation
                 'type' : 'subheader'
             },
             {
-                'title'   : 'Charts',
+                'title'   : 'Datatable',
                 'type'    : 'nav-collapse',
-                'icon'    : 'poll',
+                'icon'    : 'border_all',
                 'children': [
                     {
-                        'title': 'nvD3',
+                        'title': 'Smart Table',
                         'type' : 'nav-item',
-                        'url'  : '/components/charts/nvd3'
+                        'url'  : '/component/tables/smart-table'
                     }
                 ]
             },
-            {
-                'title': 'Collapse',
-                'type' : 'nav-item',
-                'icon' : 'add_box',
-                'url'  : '/components/collapse'
-            },
-            {
-                'title': 'Modal',
-                'type' : 'nav-item',
-                'icon' : 'picture_in_picture',
-                'url'  : '/components/modal'
-            },
-            {
-                'title': 'Popovers',
-                'type' : 'nav-item',
-                'icon' : 'chat_buble',
-                'url'  : '/components/popovers'
-            },
-            {
-                'title': 'Snackbar',
-                'type' : 'nav-item',
-                'icon' : 'call_to_action',
-                'url'  : '/components/snackbar'
-            },
-            {
-                'title': 'Tooltips',
-                'type' : 'nav-item',
-                'icon' : 'live_help',
-                'url'  : '/components/tooltips'
-            }
         ];
     }
 }

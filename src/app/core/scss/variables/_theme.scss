@@ -1,8 +1,41 @@
 @import '~@angular/material/theming';
 
+$mat-fusedark: (
+    50: #ececee,
+    100: #c5c6cb,
+    200: #9ea1a9,
+    300: #7d818c,
+    400: #5c616f,
+    500: #3c4252,
+    600: #353a48,
+    700: #2d323e,
+    800: #262933,
+    900: #1e2129,
+    A100: #c5c6cb,
+    A200: #9ea1a9,
+    A400: #5c616f,
+    A700: #2d323e,
+    contrast: (
+        50: $black-87-opacity,
+        100: $black-87-opacity,
+        200: $black-87-opacity,
+        300: white,
+        400: white,
+        500: $white-87-opacity,
+        600: $white-87-opacity,
+        700: $white-87-opacity,
+        800: $white-87-opacity,
+        900: $white-87-opacity,
+        A100: $black-87-opacity,
+        A200: $white-87-opacity,
+        A400: $white-87-opacity,
+        A700: $white-87-opacity,
+    )
+);
+
 // Palettes
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-blue, A200, A100, A400);
+$primary: mat-palette($mat-fusedark);
+$accent: mat-palette($mat-blue, 600, 400, 700);
 $warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
