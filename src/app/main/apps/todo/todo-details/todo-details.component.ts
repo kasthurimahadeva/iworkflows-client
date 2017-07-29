@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { Todo } from '../todo.model';
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FuseUtils } from '../../../../core/fuseUtils';
 
 @Component({
     selector   : 'fuse-todo-details',
@@ -13,16 +14,18 @@ export class TodoDetailsComponent implements OnInit, OnDestroy
 {
     todo: Todo;
     tags: any[];
+    formType: string;
     todoForm: FormGroup;
+    @ViewChildren('titleInput') titleInputField;
 
     onFormChange: any;
     onCurrentTodoChanged: Subscription;
     onTagsChanged: Subscription;
+    onNewTodoClicked: Subscription;
 
     constructor(private todoService: TodoService,
                 private formBuilder: FormBuilder)
     {
-
 
     }
 
@@ -31,12 +34,16 @@ export class TodoDetailsComponent implements OnInit, OnDestroy
         // Subscribe to update the current todo
         this.onCurrentTodoChanged =
             this.todoService.onCurrentTodoChanged
-                .subscribe(currentTodo => {
-                    this.todo = currentTodo;
+                .subscribe(todo => {
+
+                    this.formType = 'edit';
+
+                    this.todo = todo;
 
                     if ( this.todo )
                     {
                         this.todoForm = this.createTodoForm();
+
                         this.onFormChange = this.todoForm.valueChanges
                             .debounceTime(500)
                             .distinctUntilChanged()
@@ -52,6 +59,23 @@ export class TodoDetailsComponent implements OnInit, OnDestroy
                 .subscribe(labels => {
                     this.tags = labels;
                 });
+
+        // Subscribe to update on tag change
+        this.onNewTodoClicked = this.todoService.onNewTodoClicked
+            .subscribe(() => {
+                this.todo = new Todo({});
+                this.todo.id = FuseUtils.genearateGUID();
+                this.formType = 'new';
+                this.todoForm = this.createTodoForm();
+                this.focusTitleField();
+            });
+    }
+
+    focusTitleField()
+    {
+        setTimeout(() => {
+            this.titleInputField.first.nativeElement.focus();
+        });
     }
 
     createTodoForm()
@@ -120,12 +144,20 @@ export class TodoDetailsComponent implements OnInit, OnDestroy
         this.todoService.toggleTagOnTodo(tagId, this.todo);
     }
 
+    addTodo()
+    {
+        this.todoService.updateTodo(this.todoForm.getRawValue());
+    }
+
     ngOnDestroy()
     {
         if ( this.onFormChange )
         {
             this.onFormChange.unsubscribe();
         }
+
         this.onCurrentTodoChanged.unsubscribe();
+
+        this.onNewTodoClicked.unsubscribe();
     }
 }

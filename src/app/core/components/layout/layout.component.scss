@@ -12,6 +12,7 @@ fuse-layout {
             display: flex;
             flex-direction: column;
             flex: 1;
+            overflow: hidden;
 
             fuse-content {
                 display: flex;

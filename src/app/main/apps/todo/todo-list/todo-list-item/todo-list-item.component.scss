@@ -24,6 +24,12 @@
         user-select: none;
     }
 
+    &.move-disabled {
+        .handle {
+            display: none;
+        }
+    }
+
     .tags {
         font-size: 12px;
 

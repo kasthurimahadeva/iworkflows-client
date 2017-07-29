@@ -74,29 +74,12 @@ export class TodoListComponent implements OnInit, OnDestroy
      */
     readTodo(todoId)
     {
-        const tagHandle        = this.route.snapshot.params.tagHandle,
-              filterHandle = this.route.snapshot.params.filterHandle;
-
-        if ( tagHandle )
-        {
-            this.location.go('apps/todo/tag/' + tagHandle + '/' + todoId);
-        }
-        else if ( filterHandle )
-        {
-            this.location.go('apps/todo/filter/' + filterHandle + '/' + todoId);
-        }
-        else
-        {
-            this.location.go('apps/todo/all/' + todoId);
-        }
-
         // Set current todo
         this.todoService.setCurrentTodo(todoId);
     }
 
-    log(ev)
+    onDrop(ev)
     {
-        console.info(this.todos);
-        console.info(ev);
+        this.todoService.updateTodos(this.todos);
     }
 }
