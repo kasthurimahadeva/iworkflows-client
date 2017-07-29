@@ -183,77 +183,77 @@ export class FuseNavigation
                     {
                         'title': 'Alerts',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/alerts'
+                        'url'  : '/ui/elements/alerts'
                     },
                     {
                         'title': 'Badges',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/badges'
+                        'url'  : '/ui/elements/badges'
                     },
                     {
                         'title': 'Breadcrumb',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/breadcrumb'
+                        'url'  : '/ui/elements/breadcrumb'
                     },
                     {
                         'title': 'Buttons',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/buttons'
+                        'url'  : '/ui/elements/buttons'
                     },
                     {
                         'title': 'Button Group',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/button-group'
+                        'url'  : '/ui/elements/button-group'
                     },
                     {
                         'title': 'Cards',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/cards'
+                        'url'  : '/ui/elements/cards'
                     },
                     {
                         'title': 'Dropdowns',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/dropdowns'
+                        'url'  : '/ui/elements/dropdowns'
                     },
                     {
                         'title': 'Forms',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/forms'
+                        'url'  : '/ui/elements/forms'
                     },
                     {
                         'title': 'Input Group',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/input-group'
+                        'url'  : '/ui/elements/input-group'
                     },
                     {
                         'title': 'Jumbotron',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/jumbotron'
+                        'url'  : '/ui/elements/jumbotron'
                     },
                     {
                         'title': 'List Group',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/list-group'
+                        'url'  : '/ui/elements/list-group'
                     },
                     {
                         'title': 'Navs',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/navs'
+                        'url'  : '/ui/elements/navs'
                     },
                     {
                         'title': 'Navbar',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/navbar'
+                        'url'  : '/ui/elements/navbar'
                     },
                     {
                         'title': 'Pagination',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/pagination'
+                        'url'  : '/ui/elements/pagination'
                     },
                     {
                         'title': 'Progress',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/elements/progress'
+                        'url'  : '/ui/elements/progress'
                     }
                 ]
             },
@@ -265,12 +265,12 @@ export class FuseNavigation
                     {
                         'title': 'Simple Table',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/tables/simple-table'
+                        'url'  : '/ui/tables/simple-table'
                     },
                     {
                         'title': 'Data Table',
                         'type' : 'nav-item',
-                        'url'  : '/user-interface/tables/data-table'
+                        'url'  : '/ui/tables/data-table'
                     }
                 ]
             },
@@ -362,7 +362,7 @@ export class FuseNavigation
                 'title': 'Colors',
                 'type' : 'nav-item',
                 'icon' : 'color_lens',
-                'url'  : '/user-interface/colors'
+                'url'  : '/ui/colors'
             },
             {
                 'title': 'COMPONENTS',

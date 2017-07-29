@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { UIPageLayoutsModule } from './page-layouts/page-layouts.module';
+import { UIColorsModule } from './colors/colors.module';
 
 
 @NgModule({
-    imports     : [
+    imports: [
+        UIColorsModule,
         UIPageLayoutsModule
     ]
 })
