@@ -12,6 +12,10 @@ import { LockComponent } from './authentication/lock/lock.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { Error404Component } from './errors/404/error-404.component';
 import { Error500Component } from './errors/500/error-500.component';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileModule } from './profile/profile.module';
+import { ProfileService } from './profile/profile.service';
 
 const routes = [
     {
@@ -53,13 +57,25 @@ const routes = [
     {
         path     : 'pages/errors/error-500',
         component: Error500Component
+    },
+    {
+        path     : 'pages/maintenance',
+        component: MaintenanceComponent
+    },
+    {
+        path     : 'pages/profile',
+        component: ProfileComponent,
+        resolve  : {
+            profile: ProfileService
+        }
     }
 ];
 
 @NgModule({
     imports     : [
         SharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        ProfileModule
     ],
     declarations: [
         LoginComponent,
@@ -71,7 +87,11 @@ const routes = [
         LockComponent,
         ComingSoonComponent,
         Error404Component,
-        Error500Component
+        Error500Component,
+        MaintenanceComponent
+    ],
+    providers   : [
+        ProfileService
     ]
 })
 export class PagesModule

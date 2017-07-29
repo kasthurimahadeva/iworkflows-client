@@ -1,17 +1,12 @@
 @import '~@angular/material/theming';
 
+// Palettes
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-blue, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
 $warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($primary, $accent, $warn);
-
-$custom-typography: mat-typography-config(
-    $font-family: 'Roboto, "Helvetica Neue", sans-serif'
-);
 
 $background: map-get($theme, background);
 $foreground: map-get($theme, foreground);

@@ -1,0 +1,43 @@
+<div id="profile" class="page-layout simple tabbed">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+         fxLayoutAlign.gt-sm="space-between end">
+
+        <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="start center">
+            <img class="profile-image avatar huge" src="assets/images/avatars/katherine.jpg">
+            <div class="name">Katherine Wilson</div>
+        </div>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+            <button md-raised-button color="accent" aria-label="Follow">Follow</button>
+            <button md-raised-button color="primary" aria-label="Send Message">Send Message</button>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <md-tab-group md-dynamic-height="true">
+
+            <md-tab label="Timeline">
+                <fuse-profile-timeline></fuse-profile-timeline>
+            </md-tab>
+
+            <md-tab label="About">
+                <fuse-profile-about></fuse-profile-about>
+            </md-tab>
+
+            <md-tab label="Photos & Videos">
+                <fuse-profile-photos-videos></fuse-profile-photos-videos>
+            </md-tab>
+
+        </md-tab-group>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

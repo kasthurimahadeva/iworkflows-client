@@ -162,7 +162,7 @@ export class FuseNavigation
             {
                 'title': 'Profile',
                 'type' : 'nav-item',
-                'icon' : 'account',
+                'icon' : 'person',
                 'url'  : '/pages/profile'
             },
             {

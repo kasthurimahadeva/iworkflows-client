@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from './mail.service';
 import { Subscription } from 'rxjs/Subscription';
 import { FormControl } from '@angular/forms';
-import { FuseUtils } from '../../../core/fuseUtils';
 
 @Component({
     selector   : 'fuse-mail',
@@ -30,7 +29,6 @@ export class MailComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-
         this.onSelectedMailsChanged =
             this.mailService.onSelectedMailsChanged
                 .subscribe(selectedMails => {
