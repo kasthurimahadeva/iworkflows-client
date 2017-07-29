@@ -17,7 +17,10 @@ $matColorsMap: (
     deep-orange:$mat-deep-orange,
     brown:$mat-brown,
     grey:$mat-grey,
-    blue-grey:$mat-blue-grey
+    blue-grey:$mat-blue-grey,
+    primary:$primary,
+    accent: $accent,
+    warn: $warn
 );
 
 $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700;
@@ -98,4 +101,73 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
             }
         }
     }
+}
+
+
+
+
+
+
+// Black text
+.black-fg,
+.black-text {
+    color: rgba(0, 0, 0, 0.87) !important;
+
+    &.secondary-text,
+    .secondary-text,
+    &.mat-icon,
+    .mat-icon,
+    &.icon,
+    .icon {
+        color: rgba(0, 0, 0, 0.54) !important;
+    }
+
+    &.hint-text,
+    .hint-text,
+    &.disabled-text,
+    .disabled-text {
+        color: rgba(0, 0, 0, 0.26) !important;
+    }
+
+    &.divider,
+    .divider,
+    &.faint-text,
+    .faint-text {
+        color: rgba(0, 0, 0, 0.12) !important;
+    }
+}
+
+// White text
+.white-fg,
+.white-text {
+    color: rgb(255, 255, 255) !important;
+
+    &.secondary-text,
+    .secondary-text,
+    &.mat-icon,
+    .mat-icon,
+    &.icon,
+    .icon {
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    &.hint-text,
+    .hint-text,
+    &.disabled-text,
+    .disabled-text {
+        color: rgba(255, 255, 255, 0.30) !important;
+    }
+
+    &.divider,
+    .divider,
+    &.faint-text,
+    .faint-text {
+        color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    // Angular material element color override
+    .mat-icon {
+        color: #FFFFFF;
+    }
+
 }
