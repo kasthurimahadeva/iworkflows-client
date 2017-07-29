@@ -5,6 +5,7 @@ import { ChatFakeDb } from './chat';
 import { CalendarFakeDb } from './calendar';
 import { TodoFakeDb } from './todo';
 import { ProfileFakeDb } from './profile';
+import { ContactsFakeDb } from './contacts';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -24,7 +25,8 @@ export class FuseFakeDbService implements InMemoryDbService
             'todo-tags'            : TodoFakeDb.tags,
             'profile-timeline'     : ProfileFakeDb.timeline,
             'profile-photos-videos': ProfileFakeDb.photosVideos,
-            'profile-about'        : ProfileFakeDb.about
+            'profile-about'        : ProfileFakeDb.about,
+            'contacts'             : ContactsFakeDb.contacts
         };
     }
 }

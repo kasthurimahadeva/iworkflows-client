@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import {
@@ -17,6 +16,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
 import { FuseCountdownComponent } from '../components/countdown/countdown.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
     declarations   : [
@@ -28,19 +28,18 @@ import { FuseCountdownComponent } from '../components/countdown/countdown.compon
     imports        : [
         FlexLayoutModule,
         MaterialModule,
-        NgxDatatableModule,
         CommonModule,
         FormsModule,
         FusePipesModule,
         PerfectScrollbarModule,
         ReactiveFormsModule,
         ColorPickerModule,
-        NgxDnDModule
+        NgxDnDModule,
+        NgxDatatableModule
     ],
     exports        : [
         FlexLayoutModule,
         MaterialModule,
-        NgxDatatableModule,
         CommonModule,
         FormsModule,
         FuseMdSidenavHelperDirective,
@@ -50,9 +49,12 @@ import { FuseCountdownComponent } from '../components/countdown/countdown.compon
         ReactiveFormsModule,
         ColorPickerModule,
         NgxDnDModule,
-        FuseCountdownComponent
+        FuseCountdownComponent,
+        NgxDatatableModule
     ],
-    entryComponents: [FuseConfirmDialogComponent]
+    entryComponents: [
+        FuseConfirmDialogComponent
+    ]
 })
 
 export class SharedModule

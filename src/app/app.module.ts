@@ -20,6 +20,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { PagesModule } from './main/pages/pages.module';
 import { UIModule } from './main/ui/ui.module';
+import { ComponentsModule } from './main/components/components.module';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
         ProjectModule,
 
         PagesModule,
-        UIModule
+        UIModule,
+        ComponentsModule
     ],
     providers   : [
         FuseNavigationService,

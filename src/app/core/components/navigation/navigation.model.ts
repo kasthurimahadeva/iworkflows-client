@@ -352,14 +352,14 @@ export class FuseNavigation
                 'type' : 'subheader'
             },
             {
-                'title'   : 'Datatable',
+                'title'   : 'Datatables',
                 'type'    : 'nav-collapse',
                 'icon'    : 'border_all',
                 'children': [
                     {
-                        'title': 'Smart Table',
+                        'title': 'ngx-datatable',
                         'type' : 'nav-item',
-                        'url'  : '/component/tables/smart-table'
+                        'url'  : '/components/datatables/ngx-datatable'
                     }
                 ]
             },
