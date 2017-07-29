@@ -16,7 +16,7 @@ export class ColorsComponent implements OnInit
     constructor()
     {
         this.colors = MatColors.all;
-        this.updateSelectedColor('red');
+        this.updateSelectedColor('primary');
     }
 
     ngOnInit()

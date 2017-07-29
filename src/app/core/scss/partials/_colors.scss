@@ -1,26 +1,26 @@
 $matColorsMap: (
-    red: $mat-red,
-    pink:$mat-pink,
-    purple:$mat-purple,
-    deep-purple:$mat-deep-purple,
-    indigo:$mat-indigo,
-    blue:$mat-blue,
-    light-blue:$mat-light-blue,
-    cyan:$mat-cyan,
-    teal:$mat-teal,
-    green:$mat-green,
-    light-green:$mat-light-green,
-    lime:$mat-lime,
-    yellow:$mat-yellow,
-    amber:$mat-amber,
-    orange:$mat-orange,
-    deep-orange:$mat-deep-orange,
-    brown:$mat-brown,
-    grey:$mat-grey,
-    blue-grey:$mat-blue-grey,
-    primary:$primary,
-    accent: $accent,
-    warn: $warn
+        red: $mat-red,
+        pink:$mat-pink,
+        purple:$mat-purple,
+        deep-purple:$mat-deep-purple,
+        indigo:$mat-indigo,
+        blue:$mat-blue,
+        light-blue:$mat-light-blue,
+        cyan:$mat-cyan,
+        teal:$mat-teal,
+        green:$mat-green,
+        light-green:$mat-light-green,
+        lime:$mat-lime,
+        yellow:$mat-yellow,
+        amber:$mat-amber,
+        orange:$mat-orange,
+        deep-orange:$mat-deep-orange,
+        brown:$mat-brown,
+        grey:$mat-grey,
+        blue-grey:$mat-blue-grey,
+        primary:$primary,
+        accent: $accent,
+        warn: $warn
 );
 
 $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700;
@@ -39,6 +39,19 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         .md-#{$colorName}-#{$hue}-bg {
             background-color: $bgColor !important;
             color: $fgColor;
+
+            .secondary-text {
+                color: rgba($fgColor, .7);
+            }
+
+            .hint-text {
+                color: rgba($fgColor, .3);
+            }
+
+            .fade-text {
+                color: rgba($fgColor, .12);
+            }
+
         }
 
         .#{$colorName}-#{$hue}-fg {
@@ -70,6 +83,19 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
             .md-#{$colorName}-bg {
                 background-color: $bgColor !important;
                 color: $fgColor;
+
+                .secondary-text {
+                    color: rgba($fgColor, .7);
+                }
+
+                .hint-text {
+                    color: rgba($fgColor, .3);
+                }
+
+                .fade-text {
+                    color: rgba($fgColor, .12);
+                }
+
             }
 
             .#{$colorName}-bg {
@@ -102,11 +128,6 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         }
     }
 }
-
-
-
-
-
 
 // Black text
 .black-fg,
