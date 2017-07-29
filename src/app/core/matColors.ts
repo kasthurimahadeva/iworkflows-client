@@ -637,19 +637,12 @@ const matColors = {
     },
 };
 
+/**
+ // Color palettes from the Material Design spec.
+ // See https://www.google.com/design/spec/style/color.html
+ */
 export class MatColors
 {
-    // public static colors =
-    // Color palettes from the Material Design spec.
-    // See https://www.google.com/design/spec/style/color.html
-    //
-
-    public static black87 = black87;
-    public static white87 = white87;
-    public static black12 = black12;
-    public static white12 = white12;
-    public static black6 = black6;
-    public static white6 = white6;
     public static all = matColors;
 
     public static getColor(colorName)
