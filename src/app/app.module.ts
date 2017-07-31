@@ -8,7 +8,6 @@ import 'hammerjs';
 import { ProjectModule } from './main/apps/dashboards/project/project.module';
 import { FuseLayoutService } from './core/services/layout.service';
 import { FuseNavigationService } from './core/components/navigation/navigation.service';
-import { SidenavComponent } from './core/components/sidenav/sidenav.component';
 import { FuseMatchMedia } from './core/services/match-media.service';
 import { FuseNavbarService } from './core/components/layout/navbar/navbar.service';
 import { SharedModule } from './core/modules/shared.module';
@@ -51,8 +50,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent,
-        SidenavComponent
+        AppComponent
     ],
     imports     : [
         BrowserModule,
