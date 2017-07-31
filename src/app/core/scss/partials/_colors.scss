@@ -1,30 +1,83 @@
+// Material colors map
 $matColorsMap: (
-        red: $mat-red,
-        pink:$mat-pink,
-        purple:$mat-purple,
-        deep-purple:$mat-deep-purple,
-        indigo:$mat-indigo,
-        blue:$mat-blue,
-        light-blue:$mat-light-blue,
-        cyan:$mat-cyan,
-        teal:$mat-teal,
-        green:$mat-green,
-        light-green:$mat-light-green,
-        lime:$mat-lime,
-        yellow:$mat-yellow,
-        amber:$mat-amber,
-        orange:$mat-orange,
-        deep-orange:$mat-deep-orange,
-        brown:$mat-brown,
-        grey:$mat-grey,
-        blue-grey:$mat-blue-grey,
-        primary:$primary,
-        accent: $accent,
-        warn: $warn
+    red: $mat-red,
+    pink: $mat-pink,
+    purple: $mat-purple,
+    deep-purple: $mat-deep-purple,
+    indigo: $mat-indigo,
+    blue: $mat-blue,
+    light-blue: $mat-light-blue,
+    cyan: $mat-cyan,
+    teal: $mat-teal,
+    green: $mat-green,
+    light-green: $mat-light-green,
+    lime: $mat-lime,
+    yellow: $mat-yellow,
+    amber: $mat-amber,
+    orange: $mat-orange,
+    deep-orange: $mat-deep-orange,
+    brown: $mat-brown,
+    grey: $mat-grey,
+    blue-grey: $mat-blue-grey,
+    primary: $primary,
+    accent: $accent,
+    warn: $warn
 );
 
+// Material color hues list
 $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700;
 
+// Color classes generator mixin
+@mixin generateColorClasses($colorName, $bgColor, $fgColor, $hue) {
+
+    .#{$colorName}#{$hue}-bg {
+        background-color: $bgColor !important;
+    }
+
+    .md-#{$colorName}#{$hue}-bg {
+        background-color: $bgColor !important;
+        color: $fgColor;
+
+        .secondary-text {
+            color: rgba($fgColor, .7);
+        }
+
+        .hint-text {
+            color: rgba($fgColor, .3);
+        }
+
+        .fade-text {
+            color: rgba($fgColor, .12);
+        }
+
+    }
+
+    .#{$colorName}#{$hue}-fg {
+        color: $bgColor !important;
+    }
+
+    .#{$colorName}#{$hue}-border {
+        border-color: $bgColor !important;
+    }
+
+    .#{$colorName}#{$hue}-border-top {
+        border-top-color: $bgColor !important;
+    }
+
+    .#{$colorName}#{$hue}-border-right {
+        border-right-color: $bgColor !important;
+    }
+
+    .#{$colorName}#{$hue}-border-bottom {
+        border-bottom-color: $bgColor !important;
+    }
+
+    .#{$colorName}#{$hue}-border-left {
+        border-left-color: $bgColor !important;
+    }
+}
+
+// Generate the color classes...
 @each $colorName, $colorMap in $matColorsMap {
 
     @each $hue in $matColorHues {
@@ -32,99 +85,11 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         $bgColor: map-get($colorMap, $hue);
         $fgColor: map-get(map-get($colorMap, 'contrast'), $hue);
 
-        .#{$colorName}-#{$hue}-bg {
-            background-color: $bgColor !important;
-        }
+        @include generateColorClasses($colorName, $bgColor, $fgColor, '-#{$hue}');
 
-        .md-#{$colorName}-#{$hue}-bg {
-            background-color: $bgColor !important;
-            color: $fgColor;
-
-            .secondary-text {
-                color: rgba($fgColor, .7);
-            }
-
-            .hint-text {
-                color: rgba($fgColor, .3);
-            }
-
-            .fade-text {
-                color: rgba($fgColor, .12);
-            }
-
-        }
-
-        .#{$colorName}-#{$hue}-fg {
-            color: $bgColor !important;
-        }
-
-        .#{$colorName}-#{$hue}-border {
-            border-color: $bgColor !important;
-        }
-
-        .#{$colorName}-#{$hue}-border-top {
-            border-top-color: $bgColor !important;
-        }
-
-        .#{$colorName}-#{$hue}-border-right {
-            border-right-color: $bgColor !important;
-        }
-
-        .#{$colorName}-#{$hue}-border-bottom {
-            border-bottom-color: $bgColor !important;
-        }
-
-        .#{$colorName}-#{$hue}-border-left {
-            border-left-color: $bgColor !important;
-        }
-
+        // Run the generator one more time for default values (500)
         @if ($hue == 500) {
-
-            .md-#{$colorName}-bg {
-                background-color: $bgColor !important;
-                color: $fgColor;
-
-                .secondary-text {
-                    color: rgba($fgColor, .7);
-                }
-
-                .hint-text {
-                    color: rgba($fgColor, .3);
-                }
-
-                .fade-text {
-                    color: rgba($fgColor, .12);
-                }
-
-            }
-
-            .#{$colorName}-bg {
-                background-color: $bgColor !important;
-            }
-
-            .#{$colorName}-fg {
-                color: $bgColor !important;
-            }
-
-            .#{$colorName}-border {
-                border-color: $bgColor !important;
-            }
-
-            .#{$colorName}-border-top {
-                border-top-color: $bgColor !important;
-            }
-
-            .#{$colorName}-border-right {
-                border-right-color: $bgColor !important;
-            }
-
-            .#{$colorName}-border-bottom {
-                border-bottom-color: $bgColor !important;
-            }
-
-            .#{$colorName}-border-left {
-                border-left-color: $bgColor !important;
-            }
+            @include generateColorClasses($colorName, $bgColor, $fgColor, '');
         }
     }
 }
@@ -147,7 +112,7 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     .hint-text,
     &.disabled-text,
     .disabled-text {
-        color: rgba(0, 0, 0, 0.26) !important;
+        color: rgba(0, 0, 0, 0.38) !important;
     }
 
     &.divider,
@@ -164,11 +129,7 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     color: rgb(255, 255, 255) !important;
 
     &.secondary-text,
-    .secondary-text,
-    &.mat-icon,
-    .mat-icon,
-    &.icon,
-    .icon {
+    .secondary-text {
         color: rgba(255, 255, 255, 0.70) !important;
     }
 
@@ -176,7 +137,7 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     .hint-text,
     &.disabled-text,
     .disabled-text {
-        color: rgba(255, 255, 255, 0.30) !important;
+        color: rgba(255, 255, 255, 0.50) !important;
     }
 
     &.divider,
@@ -184,11 +145,6 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     &.faint-text,
     .faint-text {
         color: rgba(255, 255, 255, 0.12) !important;
-    }
-
-    // Angular material element color override
-    .mat-icon {
-        color: #FFFFFF;
     }
 
 }
