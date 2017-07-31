@@ -3,10 +3,11 @@
     .nav-subheader {
         display: flex;
         align-items: center;
-        height: 56px;
-        color: rgba(0, 0, 0, .54);
+        height: 48px;
         font-weight: 500;
         padding-left: 24px;
+        margin-top: 8px;
+        font-size: 12px;
         white-space: nowrap;
     }
 
@@ -22,7 +23,7 @@
             overflow: hidden;
             cursor: pointer;
             user-select: none;
-            color: rgba(0, 0, 0, .87);
+            color: currentColor;
 
             > span {
                 flex: 1;
@@ -61,11 +62,11 @@
                 min-width: 16px;
                 min-height: 16px;
                 line-height: 16px;
-                color: map_get($mat-light-theme-foreground, icon);;
             }
         }
 
         &.nav-collapse {
+            display: block;
 
             > .children {
 
@@ -85,6 +86,19 @@
                         }
                     }
                 }
+            }
+        }
+
+    }
+
+    > .nav-item {
+
+        &.nav-collapse {
+            background: transparent;
+            transition: background 200ms ease-in-out;
+
+            &.open {
+                background: rgba(0, 0, 0, 0.12);
             }
         }
     }

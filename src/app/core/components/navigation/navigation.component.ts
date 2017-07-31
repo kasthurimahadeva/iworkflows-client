@@ -9,7 +9,7 @@ import { FuseNavigationService } from './navigation.service';
 })
 export class FuseNavigationComponent
 {
-    navigation: object[];
+    navigation: any[];
 
     constructor(private navigationService: FuseNavigationService)
     {
