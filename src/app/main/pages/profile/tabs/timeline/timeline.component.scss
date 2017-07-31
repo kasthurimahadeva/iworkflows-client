@@ -5,8 +5,7 @@
     #timeline {
         max-width: 1200px;
 
-        .timeline {
-            padding: 8px;
+        .timeline-content {
 
             .add-post {
                 margin-bottom: 0;
@@ -217,7 +216,7 @@
         }
 
         .timeline-sidebar {
-            padding: 8px 8px 8px 32px;
+            padding-left: 32px;
 
             @include media-breakpoint('sm') {
                 padding: 8px

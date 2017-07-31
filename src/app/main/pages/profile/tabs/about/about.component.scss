@@ -5,8 +5,7 @@
     #about {
         max-width: 1200px;
 
-        .about {
-            padding: 8px;
+        .about-content {
 
             .general {
 
@@ -35,7 +34,7 @@
         }
 
         .about-sidebar {
-            padding: 8px 8px 8px 32px;
+            padding-left: 32px;
 
             @include media-breakpoint('sm') {
                 padding: 8px

@@ -7,7 +7,6 @@
     .center {
 
         .header {
-            padding: 0 !important;
 
             .search-wrapper {
                 @include mat-elevation(7);
@@ -36,16 +35,6 @@
                         outline: none;
                     }
                 }
-            }
-        }
-
-        .content-card {
-
-            .toolbar {
-            }
-
-            .content {
-                padding: 0 !important;
             }
         }
     }
