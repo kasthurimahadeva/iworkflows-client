@@ -12,18 +12,6 @@ export class NgxDatatableComponent implements OnInit
     loadingIndicator = true;
     reorderable = true;
 
-    columns = [
-        {
-            prop: 'name'
-        },
-        {
-            prop: 'lastName'
-        },
-        {
-            prop: 'company'
-        }
-    ];
-
     constructor(private http: Http)
     {
 
