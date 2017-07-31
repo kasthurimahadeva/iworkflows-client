@@ -1,5 +1,15 @@
 :host {
 
+    .folded:not(.folded-open) & {
+        .nav-link {
+
+            > span {
+                opacity: 0;
+                transition: opacity 200ms ease;
+            }
+        }
+    }
+
     .nav-link {
         .collapse-arrow {
             transition: transform .3s ease-in-out, opacity .25s ease-in-out .1s;

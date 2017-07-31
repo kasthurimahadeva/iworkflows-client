@@ -32,6 +32,10 @@ fuse-navbar {
             width: 64px;
             min-width: 64px;
             max-width: 64px;
+
+            .navbar-header {
+                padding: 0 16px 0 16px;
+            }
         }
 
         &.folded-open {
@@ -62,6 +66,7 @@ fuse-navbar {
         height: 64px;
         min-height: 64px;
         justify-content: space-between;
+        transition: padding 200ms ease;
 
         .logo {
             display: flex;
