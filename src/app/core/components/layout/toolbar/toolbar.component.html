@@ -1,13 +1,87 @@
-<md-toolbar>
+<md-toolbar class="p-0 mat-elevation-z1 md-white-bg">
 
-    <button md-button class="toggle-button-navbar mat-icon-button" fuseNavbar="openBar" fxHide.gt-xs>
-        <md-icon>menu</md-icon>
-    </button>
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
 
-    <span>Toolbar</span>
+        <div fxFlex fxLayout="row" fxLayoutAlign="start center">
 
-    <button md-button class="toggle-button-navbar mat-icon-button" fuseMdSidenavToggler="quick-panel">
-        <md-icon>menu</md-icon>
-    </button>
+            <button md-button class="toggle-button-navbar mat-icon-button" fuseNavbar="openBar" fxHide.gt-xs>
+                <md-icon>menu</md-icon>
+            </button>
 
+            <div class="toolbar-separator" fxHide.gt-xs></div>
+
+            <div class="px-16">Shortcuts</div>
+        </div>
+
+        <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
+
+            <md-spinner *ngIf="showSpinner" class="loading-spinner mx-8"></md-spinner>
+
+            <button md-button [mdMenuTriggerFor]="userMenu"
+                    class="user-button">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <img class="avatar" src="assets/images/avatars/profile.jpg">
+                    <span class="username mr-12" fxShow.gt-sm>John Doe</span>
+                    <md-icon class="s-16" fxHide.xs>keyboard_arrow_down</md-icon>
+                </div>
+            </button>
+
+            <md-menu #userMenu="mdMenu">
+
+                <button md-menu-item>
+                    <md-icon>account_circle</md-icon>
+                    <span>My Profile</span>
+                </button>
+
+                <button md-menu-item class="">
+                    <md-icon>mail</md-icon>
+                    <span>Inbox</span>
+                </button>
+
+                <button md-menu-item class="">
+                    <md-icon>exit_to_app</md-icon>
+                    <span>Logout</span>
+                </button>
+
+            </md-menu>
+
+            <div class="toolbar-separator"></div>
+
+            <button md-icon-button
+                    class="search-button"
+                    aria-label="Search">
+                <md-icon class="icon">search</md-icon>
+            </button>
+
+            <div class="toolbar-separator"></div>
+
+            <button md-button
+                    class="language-button"
+                    [mdMenuTriggerFor]="languageMenu">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <img class="flag mr-8" [src]="'assets/images/flags/'+selectedLanguage.flag+'.png'">
+                    <span class="iso text-uppercase">{{selectedLanguage.id}}</span>
+                </div>
+            </button>
+
+            <md-menu #languageMenu="mdMenu">
+                <button md-menu-item *ngFor="let lang of languages" (click)="selectedLanguage = lang">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <img class="flag mr-16" [src]="'assets/images/flags/'+lang.flag+'.png'">
+                        <span class="iso">{{lang.title}}</span>
+                    </div>
+                </button>
+            </md-menu>
+
+            <div class="toolbar-separator"></div>
+
+            <button md-icon-button
+                    class="mat-icon-button quick-panel-toggle-button"
+                    fuseMdSidenavToggler="quick-panel"
+                    aria-label="Toggle quick panel">
+                <md-icon class="icon">format_list_bulleted</md-icon>
+            </button>
+
+        </div>
+    </div>
 </md-toolbar>
