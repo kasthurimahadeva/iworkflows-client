@@ -13,6 +13,16 @@
             max-#{$prop}: $length !important;
         }
     }
+
+    // Percentage
+    @for $i from 0 through 20 {
+        $i-p: 5 * $i;
+        $size-p: 5% * $i;
+
+        .#{$abbrev}-#{$i-p}-p {
+            #{$prop}: $size-p !important;
+        }
+    }
 }
 
 // ######################
