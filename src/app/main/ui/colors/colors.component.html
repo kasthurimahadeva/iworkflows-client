@@ -4,7 +4,7 @@
     <div class="header md-accent-bg p-24" fxLayout="row" fxLayoutAlign="space-between center">
         <h1 class="title">Colors</h1>
 
-        <a md-raised-button class="reference-button"
+        <a md-raised-button class="reference-button md-white-bg"
            href="https://www.google.com/design/spec/style/color.html#color-color-palette"
            target="_blank">
             <md-icon>link</md-icon>
@@ -27,6 +27,12 @@
             <md-tab *ngFor="let color of (colors | keys)" label="{{color.key}}">
                 <ng-template md-tab-label>
                     <span class="text-capitalize">{{color.key}}</span>
+                </ng-template>
+            </md-tab>
+
+            <md-tab *ngFor="let color of ['white', 'black']" label="{{color}}">
+                <ng-template md-tab-label>
+                    <span class="text-capitalize">{{color}}</span>
                 </ng-template>
             </md-tab>
 
@@ -54,8 +60,8 @@
                     <div class="colored-bg p-8" [ngClass]="'md-'+selectedColor+'-bg'" fxFlex="30">
                         <div class="pb-4">.{{'md-'+selectedColor+'-bg'}}</div>
                         <div class="secondary-text pb-4">.secondary-text</div>
-                        <div class="hint-text pb-4">.hint-text</div>
-                        <div class="fade-text">.fade-text</div>
+                        <div class="hint-text pb-4">.hint-text, .disabled-text</div>
+                        <div class="divider">.divider</div>
                     </div>
 
                     <div fxFlex="30">
@@ -67,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="color" fxLayout="column" fxFlex="1 0 auto">
+            <div class="color" fxLayout="column" fxFlex="1 0 auto" *ngIf="selectedColor != 'black' && selectedColor != 'white'">
 
                 <div class="colored-bg p-8"
                      *ngFor="let hue of ['50','100','200','300','400','500','600','700','800','900','A100','A200','A400','A700']"
@@ -79,8 +85,8 @@
                     <div class="colored-bg p-8" [ngClass]="'md-'+selectedColor+'-'+hue+'-bg'" fxFlex="30">
                         <div class="pb-4">.{{'md-'+selectedColor+'-'+hue+'-bg'}}</div>
                         <div class="secondary-text pb-4">.secondary-text</div>
-                        <div class="hint-text pb-4">.hint-text</div>
-                        <div class="fade-text">.fade-text</div>
+                        <div class="hint-text pb-4">.hint-text, .disabled-text</div>
+                        <div class="divider">.divider</div>
                     </div>
 
                     <div class="p-8" fxFlex="30" fxLayoutAlign="start center">.{{selectedColor+'-'+hue+'-bg'}}</div>
@@ -90,6 +96,7 @@
                         .{{selectedColor+'-'+hue+'-fg'}}
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
