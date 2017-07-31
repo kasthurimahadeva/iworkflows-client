@@ -1,0 +1,21 @@
+:host {
+
+    .loading-spinner {
+        width: 32px;
+        height: 32px;
+    }
+
+    .user-button,
+    .search-button,
+    .language-button,
+    .quick-panel-toggle-button {
+        min-width: 64px;
+        height: 64px;
+    }
+
+    .toolbar-separator {
+        height: 64px;
+        width: 1px;
+        background: rgba(0, 0, 0, .12);
+    }
+}
