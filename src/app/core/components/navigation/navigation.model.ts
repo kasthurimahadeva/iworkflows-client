@@ -33,28 +33,6 @@ export class FuseNavigation
                 'url'  : '/apps/calendar'
             },
             {
-                'title'   : 'Ecommerce',
-                'type'    : 'nav-collapse',
-                'icon'    : 'shopping_cart',
-                'children': [
-                    {
-                        'title': 'Products',
-                        'type' : 'nav-item',
-                        'url'  : '/apps/e-commerce/products'
-                    },
-                    {
-                        'title': 'Product',
-                        'type' : 'nav-item',
-                        'url'  : '/apps/e-commerce/product'
-                    },
-                    {
-                        'title': 'Orders',
-                        'type' : 'nav-item',
-                        'url'  : '/apps/e-commerce/orders'
-                    }
-                ]
-            },
-            {
                 'title': 'Mail',
                 'type' : 'nav-item',
                 'icon' : 'email',
@@ -150,6 +128,23 @@ export class FuseNavigation
                         'title': '500',
                         'type' : 'nav-item',
                         'url'  : '/pages/errors/error-500'
+                    }
+                ]
+            },
+            {
+                'title'   : 'Invoice',
+                'type'    : 'nav-collapse',
+                'icon'    : 'receipt',
+                'children': [
+                    {
+                        'title': 'Modern',
+                        'type' : 'nav-item',
+                        'url'  : '/pages/invoice/modern'
+                    },
+                    {
+                        'title': 'Classic',
+                        'type' : 'nav-item',
+                        'url'  : '/pages/invoice/classic'
                     }
                 ]
             },
