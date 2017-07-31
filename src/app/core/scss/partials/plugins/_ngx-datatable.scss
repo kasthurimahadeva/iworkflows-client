@@ -1,0 +1,63 @@
+.ngx-datatable {
+
+    &.material {
+        @include mat-elevation(4);
+
+        .empty-row {
+            display: flex;
+            align-items: center;
+            line-height: 1;
+            height: 56px;
+            padding: 0 24px;
+        }
+
+        .datatable-header {
+
+            .datatable-header-cell {
+                display: inline-flex;
+                align-items: center;
+                line-height: 1;
+                min-height: 48px;
+                padding: 0 24px;
+                font-size: 13px;
+            }
+        }
+
+        .datatable-body {
+
+            .datatable-row-left,
+            .datatable-row-center,
+            .datatable-row-right {
+                min-height: 48px;
+            }
+
+            .datatable-row-wrapper {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+                .datatable-body-cell {
+                    display: inline-flex;
+                    align-items: center;
+                    line-height: 1;
+                    min-height: 48px;
+                    padding: 0 24px;
+                }
+            }
+        }
+
+        .datatable-footer {
+            border: none;
+
+            .datatable-footer-inner {
+                padding: 0 24px;
+
+                .page-count {
+                    padding: 0;
+                }
+
+                .datatable-pager {
+                    margin: 0 0 0 24px;
+                }
+            }
+        }
+    }
+}

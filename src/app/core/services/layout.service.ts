@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationStart, Router, NavigationEnd, Route, RouterState } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/operator/filter';
@@ -20,7 +20,7 @@ export class FuseLayoutService
         // Set the default settings
         this.defaultSettings = {
             navigation: 'left', // 'right', 'left', 'top', none
-            toolbar   : 'none', // 'above', 'below', none
+            toolbar   : 'below', // 'above', 'below', none
             footer    : 'none' // 'above', 'below', none
         };
 
