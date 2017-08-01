@@ -1,0 +1,83 @@
+<div id="file-manager" class="page-layout simple right-sidenav" fxLayout="row">
+
+    <md-sidenav-container>
+
+        <!-- SIDENAV -->
+        <md-sidenav class="sidenav p-24" align="start" opened="false" mode="over"
+                    fuseMdSidenavHelper="simple-left-sidenav">
+            Sidenav
+        </md-sidenav>
+        <!-- / SIDENAV -->
+
+        <!-- CENTER -->
+        <div class="center" fxFlex perfect-scrollbar>
+
+            <!-- HEADER -->
+            <div class="header md-accent-bg p-24" fxLayout="column">
+
+                <!-- TOOLBAR -->
+                <div class="toolbar" fxLayout="row" fxLayoutAlign="space-between center">
+
+                    <div class="left-side" fxLayout="row">
+                        <button md-button class="mat-icon-button sidenav-toggle"
+                                fuseMdSidenavToggler="simple-left-sidenav">
+                            <md-icon>menu</md-icon>
+                        </button>
+
+                        <button md-button class="mat-icon-button sidenav-toggle"
+                                fuseMdSidenavToggler="simple-right-sidenav"
+                                fxHide.gt-md>
+                            <md-icon>menu</md-icon>
+                        </button>
+                    </div>
+
+                    <div class="right-side" fxLayout="row">
+                        <button md-button class="mat-icon-button" aria-label="Search" md-tooltip="Search">
+                            <md-icon>search</md-icon>
+                        </button>
+                    </div>
+                </div>
+                <!-- / TOOLBAR -->
+
+                <!-- BREADCRUMB -->
+                <div class="breadcrumb text-truncate" fxLayout="row" fxLayoutAlign="start center">
+                    <span data-ng-repeat="path in vm.path">
+                        {{path}}
+                        <md-icon md-font-icon="icon-chevron-right" class="icon separator"></md-icon>
+                    </span>
+                </div>
+                <!-- / BREADCRUMB -->
+
+                <!-- ADD FILE BUTTON -->
+                <div id="file-uploader">
+                    <button md-fab class="add-file-button mat-accent"
+                            aria-label="Add file">
+                        <md-icon>add</md-icon>
+                    </button>
+                </div>
+                <!-- / ADD FILE BUTTON -->
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <fuse-file-list></fuse-file-list>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CENTER -->
+
+        <!-- SIDENAV -->
+        <md-sidenav class="sidenav mat-sidenav-opened" align="end" opened="true" mode="side"
+                    fuseMdSidenavHelper="simple-right-sidenav" md-is-locked-open="gt-md">
+            <fuse-file-manager-details-sidenav></fuse-file-manager-details-sidenav>
+        </md-sidenav>
+        <!-- / SIDENAV -->
+
+    </md-sidenav-container>
+
+</div>

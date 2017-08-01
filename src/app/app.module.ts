@@ -43,6 +43,10 @@ const appRoutes: Routes = [
         loadChildren: './main/apps/todo/todo.module#FuseTodoModule'
     },
     {
+        path        : 'apps/file-manager',
+        loadChildren: './main/apps/file-manager/file-manager.module#FuseFileManagerModule'
+    },
+    {
         path      : '**',
         redirectTo: 'apps/dashboards/project'
     }

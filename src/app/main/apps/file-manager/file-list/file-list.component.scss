@@ -1,0 +1,29 @@
+:host {
+    .ngx-datatable {
+        background: transparent;
+        box-shadow: none;
+    }
+    .type-icon {
+
+        &.folder {
+            &:before {
+                content: 'folder';
+                color: #FFB300;
+            }
+        }
+
+        &.document {
+            &:before {
+                content: 'insert_drive_file';
+                color: #1565C0;
+            }
+        }
+
+        &.spreadsheet {
+            &:before {
+                content: 'insert_chart';
+                color: #4CAF50;
+            }
+        }
+    }
+}

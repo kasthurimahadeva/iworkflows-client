@@ -6,6 +6,7 @@ import { CalendarFakeDb } from './calendar';
 import { TodoFakeDb } from './todo';
 import { ProfileFakeDb } from './profile';
 import { ContactsFakeDb } from './contacts';
+import { FileManagerFakeDb } from './file-manager';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -26,7 +27,8 @@ export class FuseFakeDbService implements InMemoryDbService
             'profile-timeline'     : ProfileFakeDb.timeline,
             'profile-photos-videos': ProfileFakeDb.photosVideos,
             'profile-about'        : ProfileFakeDb.about,
-            'contacts'             : ContactsFakeDb.contacts
+            'contacts'             : ContactsFakeDb.contacts,
+            'file-manager'         : FileManagerFakeDb.files
         };
     }
 }

@@ -1,0 +1,44 @@
+<ngx-datatable
+    class="material"
+    [rows]="rows"
+    [loadingIndicator]="loadingIndicator"
+    [columnMode]="'force'"
+    [headerHeight]="48"
+    [footerHeight]="56"
+    [rowHeight]="'auto'"
+    [scrollbarH]="true"
+    [reorderable]="reorderable"
+    [selected]="selected"
+    [selectionType]="'single'"
+    (select)='onSelect($event)'
+    [limit]="10">
+
+    <ngx-datatable-column [width]="48"
+                          [canAutoResize]="false"
+                          [sortable]="false">
+
+        <ng-template ngx-datatable-header-template>
+
+        </ng-template>
+
+        <ng-template ngx-datatable-cell-template let-row="row">
+            <md-icon class="type-icon" [class]="row.type"></md-icon>
+        </ng-template>
+
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Name" prop="name">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Type" prop="type">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Owner" prop="owner">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Size" prop="size">
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Last Modified" prop="modified">
+    </ngx-datatable-column>
+</ngx-datatable>
