@@ -313,6 +313,11 @@ export class FuseNavigation
                                 'url'  : '/ui/page-layouts/simple/left-sidenav-2'
                             },
                             {
+                                'title': 'Left Sidenav 3',
+                                'type' : 'nav-item',
+                                'url'  : '/ui/page-layouts/simple/left-sidenav-3'
+                            },
+                            {
                                 'title': 'Right Sidenav',
                                 'type' : 'nav-item',
                                 'url'  : '/ui/page-layouts/simple/right-sidenav'

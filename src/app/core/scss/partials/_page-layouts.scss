@@ -280,6 +280,10 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
             }
 
             > md-sidenav-container {
+                display: flex;
+                background: none;
+                z-index: 2;
+                width: 100%;
 
                 .sidenav {
                     width: 240px;
@@ -305,6 +309,7 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                 }
 
                 .mat-sidenav-content {
+                    flex: 1;
                     overflow: visible;
 
                     .header {
