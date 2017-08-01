@@ -8,6 +8,7 @@ import { ProfileFakeDb } from './profile';
 import { ContactsFakeDb } from './contacts';
 import { InvoiceFakeDb } from './invoice';
 import { FileManagerFakeDb } from './file-manager';
+import { SearchFakeDb } from './search';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -30,7 +31,9 @@ export class FuseFakeDbService implements InMemoryDbService
             'profile-about'        : ProfileFakeDb.about,
             'contacts'             : ContactsFakeDb.contacts,
             'invoice'              : InvoiceFakeDb.invoice,
-            'file-manager'         : FileManagerFakeDb.files
+            'file-manager'         : FileManagerFakeDb.files,
+            'search-classic'       : SearchFakeDb.classic,
+            'search-table'         : SearchFakeDb.table
         };
     }
 }

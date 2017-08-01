@@ -32,6 +32,7 @@ import {
     MdTableModule,
     MdTabsModule,
 } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk';
 
 @NgModule({
     imports: [
@@ -65,7 +66,8 @@ import {
         MdTableModule,
         MdTabsModule,
         MdToolbarModule,
-        MdTooltipModule
+        MdTooltipModule,
+        CdkTableModule
     ],
     exports: [
         MdAutocompleteModule,
@@ -98,7 +100,8 @@ import {
         MdTableModule,
         MdTabsModule,
         MdToolbarModule,
-        MdTooltipModule
+        MdTooltipModule,
+        CdkTableModule
     ],
 })
 export class MaterialModule

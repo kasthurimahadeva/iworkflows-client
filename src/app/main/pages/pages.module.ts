@@ -13,12 +13,15 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { Error404Component } from './errors/404/error-404.component';
 import { Error500Component } from './errors/500/error-500.component';
 import { InvoiceModernComponent } from './invoices/modern/modern.component';
-import { MaintenanceComponent } from './maintenance/maintenance.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ProfileModule } from './profile/profile.module';
-import { ProfileService } from './profile/profile.service';
 import { InvoiceCompactComponent } from './invoices/compact/compact.component';
 import { InvoiceService } from './invoices/invoice.service';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { ProfileModule } from './profile/profile.module';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileService } from './profile/profile.service';
+import { SearchModule } from './search/search.module';
+import { SearchComponent } from './search/search.component';
+import { SearchService } from './search/search.service';
 
 const routes = [
     {
@@ -85,6 +88,13 @@ const routes = [
         resolve  : {
             profile: ProfileService
         }
+    },
+    {
+        path     : 'pages/search',
+        component: SearchComponent,
+        resolve  : {
+            search: SearchService
+        }
     }
 ];
 
@@ -92,7 +102,8 @@ const routes = [
     imports     : [
         SharedModule,
         RouterModule.forChild(routes),
-        ProfileModule
+        ProfileModule,
+        SearchModule
     ],
     declarations: [
         LoginComponent,
@@ -111,7 +122,8 @@ const routes = [
     ],
     providers   : [
         InvoiceService,
-        ProfileService
+        ProfileService,
+        SearchService
     ]
 })
 export class PagesModule
