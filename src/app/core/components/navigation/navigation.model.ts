@@ -139,12 +139,12 @@ export class FuseNavigation
                     {
                         'title': 'Modern',
                         'type' : 'nav-item',
-                        'url'  : '/pages/invoice/modern'
+                        'url'  : '/pages/invoices/modern'
                     },
                     {
-                        'title': 'Classic',
+                        'title': 'Compact',
                         'type' : 'nav-item',
-                        'url'  : '/pages/invoice/classic'
+                        'url'  : '/pages/invoices/compact'
                     }
                 ]
             },
