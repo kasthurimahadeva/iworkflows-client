@@ -11,11 +11,12 @@ import { CardedRightSidenav2Component } from './carded/right-sidenav-2/right-sid
 import { SimpleFullWidthComponent } from './simple/fullwidth/fullwidth.component';
 import { SimpleLeftSidenavComponent } from './simple/left-sidenav/left-sidenav.component';
 import { SimpleLeftSidenav2Component } from './simple/left-sidenav-2/left-sidenav-2.component';
+import { SimpleLeftSidenav3Component } from './simple/left-sidenav-3/left-sidenav-3.component';
 import { SimpleRightSidenavComponent } from './simple/right-sidenav/right-sidenav.component';
 import { SimpleRightSidenav2Component } from './simple/right-sidenav-2/right-sidenav-2.component';
+import { SimpleRightSidenav3Component } from './simple/right-sidenav-3/right-sidenav-3.component';
 import { TabbedComponent } from './simple/tabbed/tabbed.component';
 import { BlankComponent } from './blank/blank.component';
-import { SimpleLeftSidenav3Component } from './simple/left-sidenav-3/left-sidenav-3.component';
 
 const routes: Routes = [
     {
@@ -66,10 +67,10 @@ const routes: Routes = [
         path     : 'ui/page-layouts/simple/right-sidenav-2',
         component: SimpleRightSidenav2Component
     },
-    /*{
+    {
         path     : 'ui/page-layouts/simple/right-sidenav-3',
         component: SimpleRightSidenav3Component
-    },*/
+    },
     {
         path     : 'ui/page-layouts/simple/tabbed',
         component: TabbedComponent
@@ -99,6 +100,7 @@ const routes: Routes = [
         SimpleLeftSidenav3Component,
         SimpleRightSidenavComponent,
         SimpleRightSidenav2Component,
+        SimpleRightSidenav3Component,
         TabbedComponent,
         BlankComponent
     ]

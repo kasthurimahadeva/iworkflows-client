@@ -12,10 +12,13 @@ import { LockComponent } from './authentication/lock/lock.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { Error404Component } from './errors/404/error-404.component';
 import { Error500Component } from './errors/500/error-500.component';
+import { InvoiceModernComponent } from './invoices/modern/modern.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileModule } from './profile/profile.module';
 import { ProfileService } from './profile/profile.service';
+import { InvoiceCompactComponent } from './invoices/compact/compact.component';
+import { InvoiceService } from './invoices/invoice.service';
 
 const routes = [
     {
@@ -59,6 +62,20 @@ const routes = [
         component: Error500Component
     },
     {
+        path     : 'pages/invoices/compact',
+        component: InvoiceCompactComponent,
+        resolve  : {
+            invoice: InvoiceService
+        }
+    },
+    {
+        path     : 'pages/invoices/modern',
+        component: InvoiceModernComponent,
+        resolve  : {
+            invoice: InvoiceService
+        }
+    },
+    {
         path     : 'pages/maintenance',
         component: MaintenanceComponent
     },
@@ -88,9 +105,12 @@ const routes = [
         ComingSoonComponent,
         Error404Component,
         Error500Component,
+        InvoiceCompactComponent,
+        InvoiceModernComponent,
         MaintenanceComponent
     ],
     providers   : [
+        InvoiceService,
         ProfileService
     ]
 })

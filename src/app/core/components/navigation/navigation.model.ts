@@ -139,12 +139,12 @@ export class FuseNavigation
                     {
                         'title': 'Modern',
                         'type' : 'nav-item',
-                        'url'  : '/pages/invoice/modern'
+                        'url'  : '/pages/invoices/modern'
                     },
                     {
-                        'title': 'Classic',
+                        'title': 'Compact',
                         'type' : 'nav-item',
-                        'url'  : '/pages/invoice/classic'
+                        'url'  : '/pages/invoices/compact'
                     }
                 ]
             },
@@ -326,6 +326,11 @@ export class FuseNavigation
                                 'title': 'Right Sidenav 2',
                                 'type' : 'nav-item',
                                 'url'  : '/ui/page-layouts/simple/right-sidenav-2'
+                            },
+                            {
+                                'title': 'Right Sidenav 3',
+                                'type' : 'nav-item',
+                                'url'  : '/ui/page-layouts/simple/right-sidenav-3'
                             },
                             {
                                 'title': 'Tabbed',

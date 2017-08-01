@@ -1,26 +1,21 @@
 // Page Layouts
-$header-height: 200px;
-$header-height-sm: 160px;
+$carded-header-height: 200px !default;
+$carded-header-height-sm: 160px !default;
+$carded-toolbar-height: 64px !default;
 
-$card-toolbar-height: 64px;
-$card-header-height: $header-height - $card-toolbar-height;
-$card-header-height-sm: $header-height-sm - $card-toolbar-height;
+$header-height: 120px !default;
+$header-height-sm: 100px !default;
+
+// Calculate toolbarless header height
+$carded-header-height-without-toolbar: $carded-header-height - $carded-toolbar-height;
+$carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-toolbar-height;
 
 .page-layout {
     position: relative;
     overflow: hidden;
 
-    // Top bg
-    .top-bg {
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        right: 0;
-        left: 0;
-        height: $header-height;
-    }
-
     // Carded layout
+
     &.carded {
         display: flex;
         flex-direction: row;
@@ -28,6 +23,20 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
         height: 100%;
         min-width: 100%;
         min-height: 100%;
+
+        // Top bg
+        .top-bg {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: $carded-header-height;
+
+            @include media-breakpoint('sm') {
+                height: $carded-header-height-sm;
+            }
+        }
 
         // Fullwidth
         &.fullwidth {
@@ -58,34 +67,40 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                 margin-right: 32px;
 
                 .header {
-                    height: $card-header-height;
-                    min-height: $card-header-height;
-                    max-height: $card-header-height;
+                    height: $carded-header-height-without-toolbar;
+                    min-height: $carded-header-height-without-toolbar;
+                    max-height: $carded-header-height-without-toolbar;
+
+                    @include media-breakpoint('sm') {
+                        height: $carded-header-height-without-toolbar-sm;
+                        min-height: $carded-header-height-without-toolbar-sm;
+                        max-height: $carded-header-height-without-toolbar-sm;
+                    }
                 }
 
                 .content-card {
                     display: flex;
                     flex-direction: column;
                     flex: 1;
-                    background: mat-color($background, background);
                     overflow: hidden;
+                    background: mat-color($background, background);
                     @include mat-elevation(7);
 
                     .toolbar {
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
-                        height: $card-toolbar-height;
-                        min-height: $card-toolbar-height;
-                        max-height: $card-toolbar-height;
                         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                        height: $carded-toolbar-height;
+                        min-height: $carded-toolbar-height;
+                        max-height: $carded-toolbar-height;
                     }
 
                     .content {
                         display: flex;
                         flex: 1;
-                        background: mat-color($background, background);
                         overflow: auto;
+                        background: mat-color($background, background);
                     }
                 }
             }
@@ -130,9 +145,9 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                     }
 
                     .header {
-                        height: $header-height;
-                        min-height: $header-height;
-                        max-height: $header-height;
+                        height: $carded-header-height;
+                        min-height: $carded-header-height;
+                        max-height: $carded-header-height;
                     }
 
                     .content {
@@ -158,17 +173,17 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
 
                         .header {
                             display: flex;
-                            height: $card-header-height;
-                            min-height: $card-header-height;
-                            max-height: $card-header-height;
+                            height: $carded-header-height-without-toolbar;
+                            min-height: $carded-header-height-without-toolbar;
+                            max-height: $carded-header-height-without-toolbar;
                         }
 
                         .content-card {
                             display: flex;
                             flex-direction: column;
                             flex: 1;
-                            background: mat-color($background, background);
                             overflow: hidden;
+                            background: mat-color($background, background);
                             @include mat-elevation(7);
 
                             .toolbar {
@@ -176,10 +191,10 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                                 justify-content: flex-start;
                                 align-items: center;
                                 flex: 1;
-                                height: $card-toolbar-height;
-                                min-height: $card-toolbar-height;
-                                max-height: $card-toolbar-height;
                                 border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                                height: $carded-toolbar-height;
+                                min-height: $carded-toolbar-height;
+                                max-height: $carded-toolbar-height;
 
                                 .sidenav-toggle {
                                     margin: 0 8px 0 0 !important;
@@ -249,6 +264,16 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
     // Simple layout
     &.simple {
 
+        // Top bg
+        .top-bg {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: $header-height;
+        }
+
         // Fullwidth
         &.fullwidth,
         &.inner-sidenav {
@@ -275,6 +300,33 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
 
                     > .center {
                         overflow: hidden;
+                    }
+                }
+            }
+
+            // Inner Sidenav
+            &.inner-sidenav {
+
+                > md-sidenav-container {
+
+                    .sidenav {
+
+                        &.md-is-locked-open {
+                            height: auto;
+                        }
+                    }
+
+                    .mat-sidenav-content {
+                        display: flex;
+                        height: auto;
+
+                        .center {
+                            @include mat-elevation(0);
+
+                            .content {
+                                @include mat-elevation(4);
+                            }
+                        }
                     }
                 }
             }
@@ -309,6 +361,7 @@ $card-header-height-sm: $header-height-sm - $card-toolbar-height;
                 }
 
                 .mat-sidenav-content {
+                    display: flex;
                     flex: 1;
                     overflow: visible;
 
