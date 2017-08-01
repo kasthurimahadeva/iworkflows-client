@@ -37,6 +37,26 @@
         .#{$abbrev}-#{$size} {
             #{$prop}: $length !important;
         }
+    }
+
+    @for $index from 0 through 64 {
+        $size: $index * 4;
+        $length: #{$size}px;
+
+        .#{$abbrev}x-#{$size} {
+            #{$prop}-right: $length !important;
+            #{$prop}-left: $length !important;
+        }
+
+        .#{$abbrev}y-#{$size} {
+            #{$prop}-top: $length !important;
+            #{$prop}-bottom: $length !important;
+        }
+    }
+
+    @for $index from 0 through 64 {
+        $size: $index * 4;
+        $length: #{$size}px;
 
         .#{$abbrev}t-#{$size} {
             #{$prop}-top: $length !important;
@@ -52,16 +72,6 @@
 
         .#{$abbrev}l-#{$size} {
             #{$prop}-left: $length !important;
-        }
-
-        .#{$abbrev}x-#{$size} {
-            #{$prop}-right: $length !important;
-            #{$prop}-left: $length !important;
-        }
-
-        .#{$abbrev}y-#{$size} {
-            #{$prop}-top: $length !important;
-            #{$prop}-bottom: $length !important;
         }
     }
 }

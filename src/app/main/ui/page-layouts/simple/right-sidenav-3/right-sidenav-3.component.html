@@ -1,4 +1,4 @@
-<div class="page-layout simple left-sidenav inner-sidenav" fxLayout="column">
+<div class="page-layout simple right-sidenav inner-sidenav" fxLayout="column">
 
     <!-- HEADER -->
     <div class="header md-accent-bg p-24" fxLayout="row" fxLayoutAlign="start center">
@@ -10,22 +10,13 @@
         </button>
 
         <div>
-            <h2>Left inner sidenav with content scroll</h2>
+            <h2>Right inner sidenav with content scroll</h2>
         </div>
 
     </div>
     <!-- / HEADER -->
 
     <md-sidenav-container>
-
-        <!-- SIDENAV -->
-        <md-sidenav class="sidenav mat-sidenav-opened" align="start" opened="true" mode="side"
-                    fuseMdSidenavHelper="simple-left-sidenav" md-is-locked-open="gt-md">
-
-            <fuse-demo-sidenav></fuse-demo-sidenav>
-
-        </md-sidenav>
-        <!-- / SIDENAV -->
 
         <!-- CENTER -->
         <div class="center p-24">
@@ -40,6 +31,15 @@
 
         </div>
         <!-- / CENTER -->
+
+        <!-- SIDENAV -->
+        <md-sidenav class="sidenav mat-sidenav-opened" align="end" opened="true" mode="side"
+                    fuseMdSidenavHelper="simple-left-sidenav" md-is-locked-open="gt-md">
+
+            <fuse-demo-sidenav></fuse-demo-sidenav>
+
+        </md-sidenav>
+        <!-- / SIDENAV -->
 
     </md-sidenav-container>
 

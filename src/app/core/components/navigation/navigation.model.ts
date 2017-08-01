@@ -328,6 +328,11 @@ export class FuseNavigation
                                 'url'  : '/ui/page-layouts/simple/right-sidenav-2'
                             },
                             {
+                                'title': 'Right Sidenav 3',
+                                'type' : 'nav-item',
+                                'url'  : '/ui/page-layouts/simple/right-sidenav-3'
+                            },
+                            {
                                 'title': 'Tabbed',
                                 'type' : 'nav-item',
                                 'url'  : '/ui/page-layouts/simple/tabbed'
