@@ -17,10 +17,10 @@
     </div>
 
     <div>
-        <div class="title">{{selected.name}}</div>
+        <div class="title mb-8">{{selected.name}}</div>
         <div class="subtitle secondary-text">
             <span>Edited</span>
-            : {{selected.modified}}
+            <span>: {{selected.modified}}</span>
         </div>
     </div>
 </div>
@@ -30,15 +30,14 @@
 <div class="content p-24" perfect-scrollbar>
 
     <div class="file-details">
+
         <div class="preview file-icon" fxLayout="row" fxLayoutAlign="center center">
-            <md-icon class="{{selected.type}} s-48"></md-icon>
+            <md-icon class="type-icon s-48" [class]="selected.type"></md-icon>
         </div>
 
-        <md-list class="offline-switch">
-            <md-list-item>
-                <md-slide-toggle ([ngModel])="selected.offline">Available Offline</md-slide-toggle>
-            </md-list-item>
-        </md-list>
+        <div class="offline-switch">
+            <md-slide-toggle ([ngModel])="selected.offline" labelPosition="before">Available Offline</md-slide-toggle>
+        </div>
 
         <div class="title">Info</div>
 
