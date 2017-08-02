@@ -28,27 +28,27 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 const appRoutes: Routes = [
     {
         path        : 'apps/mail',
-        loadChildren: './main/apps/mail/mail.module#FuseMailModule'
+        loadChildren: './main/content/apps/mail/mail.module#FuseMailModule'
     },
     {
         path        : 'apps/chat',
-        loadChildren: './main/apps/chat/chat.module#FuseChatModule'
+        loadChildren: './main/content/apps/chat/chat.module#FuseChatModule'
     },
     {
         path        : 'apps/calendar',
-        loadChildren: './main/apps/calendar/calendar.module#FuseCalendarModule'
+        loadChildren: './main/content/apps/calendar/calendar.module#FuseCalendarModule'
     },
     {
         path        : 'apps/todo',
-        loadChildren: './main/apps/todo/todo.module#FuseTodoModule'
+        loadChildren: './main/content/apps/todo/todo.module#FuseTodoModule'
     },
     {
         path        : 'apps/file-manager',
-        loadChildren: './main/apps/file-manager/file-manager.module#FuseFileManagerModule'
+        loadChildren: './main/content/apps/file-manager/file-manager.module#FuseFileManagerModule'
     },
     {
         path        : 'apps/contacts',
-        loadChildren: './main/apps/contacts/contacts.module#FuseContactsModule'
+        loadChildren: './main/content/apps/contacts/contacts.module#FuseContactsModule'
     },
     {
         path      : '**',
