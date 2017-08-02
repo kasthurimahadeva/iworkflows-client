@@ -11,18 +11,16 @@ export class ContactsComponent implements OnInit
 {
 
     selected: any;
-    pathArr: string[];
 
-    constructor(private fileManagerService: ContactsService)
+    constructor(private contactsService: ContactsService)
     {
 
     }
 
     ngOnInit()
     {
-        this.fileManagerService.onFileSelected.subscribe(selected => {
+        this.contactsService.onContactSelected.subscribe(selected => {
             this.selected = selected;
-            this.pathArr = selected.location.split('>');
         });
     }
 

@@ -1,51 +1,75 @@
 <md-table #table [dataSource]="dataSource">
 
-    <!-- Type Column -->
-    <ng-container cdkColumnDef="icon">
+    <!-- Checkbox Column -->
+    <ng-container cdkColumnDef="checkbox">
         <md-header-cell *cdkHeaderCellDef></md-header-cell>
-        <md-cell *cdkCellDef="let row">
-            <md-icon class="type-icon" [class]="row.type"></md-icon>
+        <md-cell *cdkCellDef="let contact">
+            Check
+        </md-cell>
+    </ng-container>
+
+    <!-- Avatar Column -->
+    <ng-container cdkColumnDef="avatar">
+        <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
+        <md-cell *cdkCellDef="let contact">
+            <img class="avatar" *ngIf="contact.avatar" [alt]="contact.name"
+                 [src]="contact.avatar"/>
         </md-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container cdkColumnDef="name">
         <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.name}}</md-cell>
+        <md-cell *cdkCellDef="let contact">
+            <p class="text-truncate font-weight-600">{{contact.name}} {{contact.lastName}}</p>
+        </md-cell>
     </ng-container>
 
-    <!-- Type Column -->
-    <ng-container cdkColumnDef="type">
-        <md-header-cell *cdkHeaderCellDef>Type</md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.type}}</md-cell>
+    <!-- Email Column -->
+    <ng-container cdkColumnDef="email">
+        <md-header-cell *cdkHeaderCellDef>Email</md-header-cell>
+        <md-cell *cdkCellDef="let contact">
+            <p class="email text-truncate" fxShow.gt-sm>
+                {{contact.email}}
+            </p>
+        </md-cell>
     </ng-container>
 
-    <!-- Owner Column -->
-    <ng-container cdkColumnDef="owner">
-        <md-header-cell *cdkHeaderCellDef>Owner</md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.owner}}</md-cell>
+    <!-- Phone Column -->
+    <ng-container cdkColumnDef="phone">
+        <md-header-cell *cdkHeaderCellDef>Phone</md-header-cell>
+        <md-cell *cdkCellDef="let contact">
+            <p class="phone text-truncate" fxShow.gt-md>
+                {{contact.phone}}
+            </p>
+        </md-cell>
     </ng-container>
 
-    <!-- Size Column -->
-    <ng-container cdkColumnDef="size">
-        <md-header-cell *cdkHeaderCellDef>Size</md-header-cell>
-        <md-cell *cdkCellDef="let row">{{row.size === '' ? '-': row.size}}</md-cell>
+    <!-- Job Title Column -->
+    <ng-container cdkColumnDef="jobTitle">
+        <md-header-cell *cdkHeaderCellDef>Job title</md-header-cell>
+        <md-cell *cdkCellDef="let contact">
+            <p class="job-title text-truncate" fxShow.gt-lg>
+                {{contact.jobTitle}}
+            </p>
+        </md-cell>
     </ng-container>
 
-    <!-- Modified Column -->
-    <ng-container cdkColumnDef="modified">
-        <md-header-cell *cdkHeaderCellDef>Modified</md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.modified}}</md-cell>
+    <!-- Company Column -->
+    <ng-container cdkColumnDef="company">
+        <md-header-cell *cdkHeaderCellDef>Company</md-header-cell>
+        <md-cell *cdkCellDef="let contact">
+            <p class="company text-truncate" fxShow.gt-lg>
+                {{contact.company}}
+            </p>
+        </md-cell>
     </ng-container>
 
-    <!-- Detail Button Column -->
-    <ng-container cdkColumnDef="detail-button">
+    <!-- Buttons Column -->
+    <ng-container cdkColumnDef="buttons">
         <md-header-cell *cdkHeaderCellDef></md-header-cell>
         <md-cell *cdkCellDef="let row">
-            <button md-icon-button class="sidenav-toggle"
-                    fuseMdSidenavToggler="file-manager-right-sidenav">
-                <md-icon>info</md-icon>
-            </button>
+            Buttons
         </md-cell>
     </ng-container>
 
