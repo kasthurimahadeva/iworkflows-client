@@ -1,0 +1,29 @@
+@import "src/app/core/scss/fuse";
+
+:host {
+    .mat-table {
+        background: transparent;
+        box-shadow: none;
+
+        .mat-row {
+            position: relative;
+            cursor: pointer;
+
+            .mat-cell {
+
+                &.mat-column-icon {
+                    flex: 0 1 auto;
+                    padding: 0 24px 0 0;
+                }
+
+                &.mat-column-detail-button {
+                    flex: 0 1 auto;
+                    padding: 0 24px 0 0;
+                    @include media-breakpoint('gt-md') {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

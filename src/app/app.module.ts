@@ -47,6 +47,10 @@ const appRoutes: Routes = [
         loadChildren: './main/apps/file-manager/file-manager.module#FuseFileManagerModule'
     },
     {
+        path        : 'apps/contacts',
+        loadChildren: './main/apps/contacts/contacts.module#FuseContactsModule'
+    },
+    {
         path      : '**',
         redirectTo: 'apps/dashboards/project'
     }
