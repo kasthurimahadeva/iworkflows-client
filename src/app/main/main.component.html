@@ -1,0 +1,51 @@
+<md-sidenav-container>
+
+    <div id="fuse-main-content">
+
+        <!-- TOOLBAR: Above -->
+        <ng-container *ngIf="layoutSettings.toolbar === 'above'">
+            <fuse-toolbar class="above"></fuse-toolbar>
+        </ng-container>
+        <!-- / TOOLBAR: Above -->
+
+        <div id="wrapper">
+
+            <fuse-navbar class="md-primary-bg" *ngIf="layoutSettings.navigation === 'left'"></fuse-navbar>
+
+            <div class="content-wrapper">
+
+                <!-- TOOLBAR: Below -->
+                <ng-container *ngIf="layoutSettings.toolbar === 'below'">
+                    <fuse-toolbar class="below"></fuse-toolbar>
+                </ng-container>
+                <!-- / TOOLBAR: Below -->
+
+                <fuse-content perfect-scrollbar></fuse-content>
+
+                <!-- FOOTER: Below -->
+                <ng-container *ngIf="layoutSettings.footer === 'below'">
+                    <fuse-footer class="below"></fuse-footer>
+                </ng-container>
+                <!-- / FOOTER: Below -->
+
+            </div>
+
+            <fuse-navbar class="md-primary-bg" *ngIf="layoutSettings.navigation === 'right'"></fuse-navbar>
+
+        </div>
+
+        <!-- FOOTER: Above -->
+        <ng-container *ngIf="layoutSettings.footer === 'above'">
+            <fuse-footer class="above"></fuse-footer>
+        </ng-container>
+        <!-- FOOTER: Above -->
+
+    </div>
+
+    <!-- QUICK PANEL -->
+    <md-sidenav fuseMdSidenavHelper="quick-panel" align="end">
+        quick-panel
+    </md-sidenav>
+    <!-- / QUICK PANEL -->
+
+</md-sidenav-container>
