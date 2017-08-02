@@ -19,7 +19,7 @@ export class NgxDatatableComponent implements OnInit
 
     ngOnInit()
     {
-        this.http.get('api/contacts')
+        this.http.get('api/contacts-contacts')
             .subscribe(contacts => {
                 this.rows = contacts.json().data;
                 this.loadingIndicator = false;
