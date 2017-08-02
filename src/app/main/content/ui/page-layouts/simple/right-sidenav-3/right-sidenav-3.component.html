@@ -19,10 +19,10 @@
     <md-sidenav-container>
 
         <!-- CENTER -->
-        <div class="center p-24">
+        <div class="center p-24" perfect-scrollbar>
 
             <!-- CONTENT -->
-            <div class="content p-24" perfect-scrollbar>
+            <div class="content p-24 mat-elevation-z4">
 
                 <fuse-demo-content></fuse-demo-content>
 
@@ -36,7 +36,11 @@
         <md-sidenav class="sidenav mat-sidenav-opened" align="end" opened="true" mode="side"
                     fuseMdSidenavHelper="simple-left-sidenav" md-is-locked-open="gt-md">
 
-            <fuse-demo-sidenav></fuse-demo-sidenav>
+            <div class="sidenav-content" perfect-scrollbar>
+
+                <fuse-demo-sidenav></fuse-demo-sidenav>
+
+            </div>
 
         </md-sidenav>
         <!-- / SIDENAV -->

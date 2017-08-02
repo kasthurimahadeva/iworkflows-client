@@ -314,6 +314,10 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         &.md-is-locked-open {
                             height: auto;
                         }
+
+                        .sidenav-content {
+                            height: 100%;
+                        }
                     }
 
                     .mat-sidenav-content {
@@ -321,10 +325,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         height: auto;
 
                         .center {
+                            flex: 1;
+                            min-height: 100%;
                             @include mat-elevation(0);
 
                             .content {
-                                @include mat-elevation(4);
+                                display: flex;
+                                flex: 1;
+                                min-height: 100%;
                             }
                         }
                     }

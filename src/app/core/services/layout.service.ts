@@ -44,7 +44,7 @@ export class FuseLayoutService
      */
     setSettings(settings)
     {
-        const newSettings = Object.assign({}, this.defaultSettings, settings);
-        this.onSettingsChanged.next(newSettings);
+        // const newSettings = Object.assign({}, this.defaultSettings, settings);
+        // this.onSettingsChanged.next(newSettings);
     }
 }

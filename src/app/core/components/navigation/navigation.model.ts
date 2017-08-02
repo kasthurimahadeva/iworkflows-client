@@ -170,7 +170,7 @@ export class FuseNavigation
                 'title': 'USER INTERFACE',
                 'type' : 'subheader'
             },
-            {
+            /*{
                 'title'   : 'Elements',
                 'type'    : 'nav-collapse',
                 'icon'    : 'layers',
@@ -251,6 +251,12 @@ export class FuseNavigation
                         'url'  : '/ui/elements/progress'
                     }
                 ]
+            },*/
+            {
+                'title': 'Typography',
+                'type' : 'nav-item',
+                'icon' : 'text_fields',
+                'url'  : '/ui/typography'
             },
             {
                 'title'   : 'Page Layouts',

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { NavigationEnd, Router } from '@angular/router';
 
