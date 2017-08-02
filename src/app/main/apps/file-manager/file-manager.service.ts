@@ -7,8 +7,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class FileManagerService implements Resolve<any>
 {
-    files: any[];
-    onFileSelected = new BehaviorSubject<any>(null);
+    onFilesChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onFileSelected: BehaviorSubject<any> = new BehaviorSubject({});
 
     constructor(private http: Http)
     {
@@ -29,7 +29,6 @@ export class FileManagerService implements Resolve<any>
                 this.getFiles()
             ]).then(
                 ([files]) => {
-                    this.files = files;
                     resolve();
                 },
                 reject
@@ -42,6 +41,8 @@ export class FileManagerService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/file-manager')
                 .subscribe(response => {
+                    this.onFilesChanged.next(response.json().data);
+                    this.onFileSelected.next(response.json().data[0]);
                     resolve(response.json().data);
                 }, reject);
         });

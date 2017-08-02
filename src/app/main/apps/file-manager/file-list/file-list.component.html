@@ -1,44 +1,58 @@
-<ngx-datatable
-    class="material"
-    [rows]="rows"
-    [loadingIndicator]="loadingIndicator"
-    [columnMode]="'force'"
-    [headerHeight]="48"
-    [footerHeight]="56"
-    [rowHeight]="'auto'"
-    [scrollbarH]="true"
-    [reorderable]="reorderable"
-    [selected]="selected"
-    [selectionType]="'single'"
-    (select)='onSelect($event)'
-    [limit]="10">
+<md-table #table [dataSource]="dataSource">
 
-    <ngx-datatable-column [width]="48"
-                          [canAutoResize]="false"
-                          [sortable]="false">
-
-        <ng-template ngx-datatable-header-template>
-
-        </ng-template>
-
-        <ng-template ngx-datatable-cell-template let-row="row">
+    <!-- Type Column -->
+    <ng-container cdkColumnDef="icon">
+        <md-header-cell *cdkHeaderCellDef></md-header-cell>
+        <md-cell *cdkCellDef="let row">
             <md-icon class="type-icon" [class]="row.type"></md-icon>
-        </ng-template>
+        </md-cell>
+    </ng-container>
 
-    </ngx-datatable-column>
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="name">
+        <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
+        <md-cell *cdkCellDef="let row"> {{row.name}}</md-cell>
+    </ng-container>
 
-    <ngx-datatable-column name="Name" prop="name" [width]="200">
-    </ngx-datatable-column>
+    <!-- Type Column -->
+    <ng-container cdkColumnDef="type">
+        <md-header-cell *cdkHeaderCellDef>Type</md-header-cell>
+        <md-cell *cdkCellDef="let row"> {{row.type}}</md-cell>
+    </ng-container>
 
-    <ngx-datatable-column name="Type" prop="type" [width]="200">
-    </ngx-datatable-column>
+    <!-- Owner Column -->
+    <ng-container cdkColumnDef="owner">
+        <md-header-cell *cdkHeaderCellDef>Owner</md-header-cell>
+        <md-cell *cdkCellDef="let row"> {{row.owner}}</md-cell>
+    </ng-container>
 
-    <ngx-datatable-column name="Owner" prop="owner" [width]="200">
-    </ngx-datatable-column>
+    <!-- Size Column -->
+    <ng-container cdkColumnDef="size">
+        <md-header-cell *cdkHeaderCellDef>Size</md-header-cell>
+        <md-cell *cdkCellDef="let row">{{row.size === '' ? '-': row.size}}</md-cell>
+    </ng-container>
 
-    <ngx-datatable-column name="Size" prop="size" [width]="200">
-    </ngx-datatable-column>
+    <!-- Modified Column -->
+    <ng-container cdkColumnDef="modified">
+        <md-header-cell *cdkHeaderCellDef>Modified</md-header-cell>
+        <md-cell *cdkCellDef="let row"> {{row.modified}}</md-cell>
+    </ng-container>
 
-    <ngx-datatable-column name="Last Modified" prop="modified" [width]="200">
-    </ngx-datatable-column>
-</ngx-datatable>
+    <!-- Detail Button Column -->
+    <ng-container cdkColumnDef="detail-button">
+        <md-header-cell *cdkHeaderCellDef></md-header-cell>
+        <md-cell *cdkCellDef="let row">
+            <button md-icon-button class="sidenav-toggle"
+                    fuseMdSidenavToggler="file-manager-right-sidenav">
+                <md-icon>info</md-icon>
+            </button>
+        </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"
+            (click)="onSelect(row)"
+            [ngClass]="{'md-light-blue-50-bg':row == selected}"
+            md-ripple>
+    </md-row>
+</md-table>

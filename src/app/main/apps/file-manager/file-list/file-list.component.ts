@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FileManagerService } from '../file-manager.service';
+import { DataSource } from '@angular/cdk';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector   : 'fuse-file-list',
@@ -9,28 +11,46 @@ import { FileManagerService } from '../file-manager.service';
 })
 export class FileListComponent implements OnInit
 {
-
-    rows: any[];
-    selected = [];
-
-    loadingIndicator = false;
-    reorderable = true;
+    files: any;
+    dataSource: FilesDataSource | null;
+    displayedColumns = ['icon', 'name', 'type', 'owner', 'size', 'modified', 'detail-button'];
+    selected: any;
 
     constructor(private fileManagerService: FileManagerService)
     {
-
+        this.fileManagerService.onFilesChanged.subscribe(files => {
+            this.files = files;
+        });
+        this.fileManagerService.onFileSelected.subscribe(selected => {
+            this.selected = selected;
+        });
     }
 
     ngOnInit()
     {
-        this.rows = this.fileManagerService.files;
-        this.selected = [this.rows[0]];
-        this.fileManagerService.onFileSelected.next(this.selected[0]);
+        this.dataSource = new FilesDataSource(this.fileManagerService);
     }
 
-    onSelect(ev)
+    onSelect(selected)
     {
-        this.fileManagerService.onFileSelected.next(this.selected[0]);
+        this.fileManagerService.onFileSelected.next(selected);
+    }
+}
+
+export class FilesDataSource extends DataSource<any>
+{
+    constructor(private fileManagerService: FileManagerService)
+    {
+        super();
     }
 
+    /** Connect function called by the table to retrieve one stream containing the data to render. */
+    connect(): Observable<any[]>
+    {
+        return this.fileManagerService.onFilesChanged;
+    }
+
+    disconnect()
+    {
+    }
 }
