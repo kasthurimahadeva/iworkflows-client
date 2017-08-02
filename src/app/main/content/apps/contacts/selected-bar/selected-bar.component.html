@@ -1,0 +1,37 @@
+<div fxFlex fxLayout="row" fxLayoutAlign="start center" class="p-24">
+
+    <div class="close-button-wrapper" fxFlex="220px" (click)="deselectAll()">
+        <button class="p-8" md-button fxLayout="row" fxLayoutAlign="start center">
+            <md-icon class="mr-8">arrow_back</md-icon>
+            <span class="text-uppercase">Back</span>
+        </button>
+    </div>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+
+        <div>
+            <span class="selected-contacts-count">
+                <span>{{selectedContacts.length}}</span>
+                <span>selected</span>
+            </span>
+
+            <button md-icon-button [mdMenuTriggerFor]="selectMenu">
+                <md-icon>arrow_drop_down</md-icon>
+            </button>
+            <md-menu #selectMenu="mdMenu">
+                <button md-menu-item (click)="selectAll()">Select all</button>
+                <button md-menu-item (click)="deselectAll()">Deselect all</button>
+            </md-menu>
+
+        </div>
+
+        <div class="multi-select-actions">
+            <button md-icon-button (click)="deleteSelectedContacts($event)"
+                    aria-label="delete selected">
+                <md-icon>delete</md-icon>
+            </button>
+        </div>
+
+    </div>
+
+</div>

@@ -1,54 +1,42 @@
-<!-- SIDENAV HEADER -->
-<div class="header p-24" fxLayout="column" fxLayoutAlign="space-between">
+<div class="sidenav-content p-24 pr-4">
 
-    <div class="logo" fxLayout="row" fxLayoutAlign="start center">
-        <md-icon class="logo-icon mr-16">folder</md-icon>
-        <span class="logo-text h1">File Manager</span>
-    </div>
+    <div class="card md-white-bg mat-elevation-z4">
+        <!-- SIDENAV HEADER -->
+        <div class="header p-24" fxLayout="row" fxLayoutAlign="start center">
 
-</div>
-<!-- / SIDENAV HEADER -->
+            <!-- USER -->
+            <img [src]="user.avatar" class="avatar mr-16" [alt]="user.name"/>
+            <span class="h5">{{user.name}}</span>
+            <!-- / USER -->
 
-<!-- SIDENAV CONTENT -->
-<div class="content py-16" perfect-scrollbar>
-
-    <div class="nav">
-
-        <div class="nav-item" aria-label="inbox">
-            <a class="nav-link" md-ripple>
-                <md-icon class="nav-link-icon">folder</md-icon>
-                <span class="title">My Files</span>
-            </a>
         </div>
+        <!-- / SIDENAV HEADER -->
 
-        <div class="nav-item" aria-label="starred">
-            <a class="nav-link" md-ripple>
-                <md-icon class="nav-link-icon">star</md-icon>
-                <div class="title">Starred</div>
-            </a>
-        </div>
+        <!-- SIDENAV CONTENT -->
+        <div class="content py-16" perfect-scrollbar>
 
-        <div class="nav-item" aria-label="starred">
-            <a class="nav-link" md-ripple>
-                <md-icon class="nav-link-icon">folder_shared</md-icon>
-                <div class="title">Sharred with me</div>
-            </a>
-        </div>
+            <div class="nav">
 
-        <div class="nav-item" aria-label="starred">
-            <a class="nav-link" md-ripple>
-                <md-icon class="nav-link-icon">access_time</md-icon>
-                <div class="title">Recent</div>
-            </a>
-        </div>
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" md-ripple>
+                        <span class="title">All Contacts</span>
+                    </a>
+                </div>
 
-        <div class="nav-item" aria-label="starred">
-            <a class="nav-link" md-ripple>
-                <md-icon class="nav-link-icon">not_interested</md-icon>
-                <div class="title">Offline</div>
-            </a>
+                <div class="nav-item" aria-label="starred">
+                    <a class="nav-link" md-ripple>
+                        <div class="title">Freequently contacted</div>
+                    </a>
+                </div>
+
+                <div class="nav-item" aria-label="starred">
+                    <a class="nav-link" md-ripple>
+                        <div class="title">Starred Contacts</div>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
-
 </div>
 <!-- / SIDENAV CONTENT -->

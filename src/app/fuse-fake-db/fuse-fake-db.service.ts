@@ -30,6 +30,7 @@ export class FuseFakeDbService implements InMemoryDbService
             'profile-photos-videos': ProfileFakeDb.photosVideos,
             'profile-about'        : ProfileFakeDb.about,
             'contacts-contacts'    : ContactsFakeDb.contacts,
+            'contacts-user'        : ContactsFakeDb.user,
             'invoice'              : InvoiceFakeDb.invoice,
             'file-manager'         : FileManagerFakeDb.files,
             'search-classic'       : SearchFakeDb.classic,

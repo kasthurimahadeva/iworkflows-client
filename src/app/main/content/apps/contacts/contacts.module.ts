@@ -5,6 +5,7 @@ import { MainSidenavComponent } from './sidenavs/main/main.component';
 import { ContactsComponent } from './contacts.component';
 import { ContactsService } from './contacts.service';
 import { ContactListComponent } from './contact-list/contact-list.component';
+import { SelectedBarComponent } from './selected-bar/selected-bar.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,7 @@ const routes: Routes = [
     declarations: [
         ContactsComponent,
         ContactListComponent,
+        SelectedBarComponent,
         MainSidenavComponent
     ],
     providers   : [

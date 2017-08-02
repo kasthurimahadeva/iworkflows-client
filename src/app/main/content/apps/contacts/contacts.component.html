@@ -1,7 +1,7 @@
-<div id="contacts" class="page-layout simple left-sidenav inner-sidenav" fxfxLayout="column">
+<div id="contacts" class="page-layout simple left-sidenav inner-sidenav" fxLayout="column">
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24" fxfxLayout="row" fxLayoutAlign="space-between center">
+    <div class="header md-accent-bg p-24" fxLayout="row" fxLayoutAlign="space-between center">
 
         <!-- APP TITLE -->
         <div fxLayout="row" fxLayoutAlign="start center">
@@ -26,7 +26,7 @@
                 <md-icon>search</md-icon>
             </label>
             <md-input-container md-no-float class="m-0" floatPlaceholder="never">
-                <input mdInput id="search" placeholder="Search for anyone">
+                <input mdInput [formControl]="searchInput" id="search" placeholder="Search for anything">
             </md-input-container>
         </div>
         <!-- / SEARCH -->
@@ -34,15 +34,17 @@
     </div>
     <!-- / HEADER -->
 
+    <!-- SELECTED BAR -->
+    <fuse-selected-bar class="md-accent-600-bg" *ngIf="hasSelectedContacts" [@slideInTop]></fuse-selected-bar>
+    <!-- / SELECTED BAR -->
+
     <md-sidenav-container>
 
         <!-- SIDENAV -->
         <md-sidenav class="sidenav mat-sidenav-opened" align="start" opened="true" mode="side"
                     fuseMdSidenavHelper="contacts-main-sidenav" md-is-locked-open="gt-md">
 
-            <div class="sidenav-content" perfect-scrollbar>
-                <fuse-contacts-main-sidenav></fuse-contacts-main-sidenav>
-            </div>
+            <fuse-contacts-main-sidenav></fuse-contacts-main-sidenav>
 
         </md-sidenav>
         <!-- / SIDENAV -->
@@ -51,7 +53,7 @@
         <div class="center p-24" perfect-scrollbar>
 
             <!-- CONTENT -->
-            <div class="content p-24 md-white-bg mat-elevation-z4">
+            <div class="content md-white-bg mat-elevation-z4">
 
                 <fuse-contacts-contact-list></fuse-contacts-contact-list>
 

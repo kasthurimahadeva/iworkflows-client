@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactsService } from '../../contacts.service';
 
 @Component({
     selector   : 'fuse-contacts-main-sidenav',
@@ -7,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainSidenavComponent implements OnInit
 {
-    selected: any;
+    user: any;
 
-    constructor()
+    constructor(private contactsService: ContactsService)
     {
-
+        this.contactsService.onUserDataChanged.subscribe(user => {
+            this.user = user;
+        });
     }
 
     ngOnInit()
