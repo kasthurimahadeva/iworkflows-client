@@ -18,9 +18,14 @@ export class ContactsService implements Resolve<any>
 
     onSearchTextChanged: Subject<any> = new Subject();
 
+    onFilterChanged: Subject<any> = new Subject();
+
     contacts: Contact[];
     user: any;
     selectedContacts: string[] = [];
+
+    searchText: string;
+    filterBy: string;
 
     constructor(private http: Http)
     {
@@ -44,7 +49,13 @@ export class ContactsService implements Resolve<any>
                 ([files]) => {
 
                     this.onSearchTextChanged.subscribe(searchText => {
-                        this.getContacts(searchText);
+                        this.searchText = searchText;
+                        this.getContacts();
+                    });
+
+                    this.onFilterChanged.subscribe(filter => {
+                        this.filterBy = filter;
+                        this.getContacts();
                     });
 
                     resolve();
@@ -55,7 +66,7 @@ export class ContactsService implements Resolve<any>
         });
     }
 
-    getContacts(searchText?): Promise<any>
+    getContacts(): Promise<any>
     {
         return new Promise((resolve, reject) => {
                 this.http.get('api/contacts-contacts')
@@ -63,9 +74,23 @@ export class ContactsService implements Resolve<any>
 
                         this.contacts = response.json().data;
 
-                        if ( searchText && searchText !== '' )
+                        if ( this.filterBy === 'starred' )
                         {
-                            this.contacts = FuseUtils.filterArrayByString(this.contacts, searchText);
+                            this.contacts = this.contacts.filter(_contact => {
+                                return this.user.starred.includes(_contact.id);
+                            });
+                        }
+
+                        if ( this.filterBy === 'frequent' )
+                        {
+                            this.contacts = this.contacts.filter(_contact => {
+                                return this.user.frequentContacts.includes(_contact.id);
+                            });
+                        }
+
+                        if ( this.searchText && this.searchText !== '' )
+                        {
+                            this.contacts = FuseUtils.filterArrayByString(this.contacts, this.searchText);
                         }
 
                         this.contacts = this.contacts.map(contact => {
@@ -180,6 +205,7 @@ export class ContactsService implements Resolve<any>
             this.http.post('api/contacts-user/' + this.user.id, {...userData})
                 .subscribe(response => {
                     this.getUserData();
+                    this.getContacts();
                     resolve(response);
                 });
         });

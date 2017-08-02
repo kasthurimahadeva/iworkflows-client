@@ -6,6 +6,7 @@ import { ContactsComponent } from './contacts.component';
 import { ContactsService } from './contacts.service';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { SelectedBarComponent } from './selected-bar/selected-bar.component';
+import { ContactFormDialogComponent } from './contact-form/contact-form.component';
 
 const routes: Routes = [
     {
@@ -19,19 +20,21 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports     : [
+    imports        : [
         SharedModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [
+    declarations   : [
         ContactsComponent,
         ContactListComponent,
         SelectedBarComponent,
-        MainSidenavComponent
+        MainSidenavComponent,
+        ContactFormDialogComponent
     ],
-    providers   : [
+    providers      : [
         ContactsService
-    ]
+    ],
+    entryComponents: [ContactFormDialogComponent]
 })
 export class FuseContactsModule
 {

@@ -94,9 +94,9 @@
     </ng-container>
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-    <md-row *cdkRowDef="let row; columns: displayedColumns;"
-            (click)="onSelect(row)"
-            [ngClass]="{'md-light-blue-50-bg':checkboxes[row.id]}"
+    <md-row *cdkRowDef="let contact; columns: displayedColumns;"
+            (click)="editContact(contact)"
+            [ngClass]="{'md-light-blue-50-bg':checkboxes[contact.id]}"
             md-ripple>
     </md-row>
 </md-table>

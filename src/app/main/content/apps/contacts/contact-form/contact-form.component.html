@@ -1,0 +1,218 @@
+<md-toolbar md-dialog-title class="mat-accent m-0">
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="title dialog-title">{{dialogTitle}}</span>
+        <button md-button class="mat-icon-button"
+                (click)="dialogRef.close()"
+                aria-label="Close dialog">
+            <md-icon>close</md-icon>
+        </button>
+    </div>
+
+    <md-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
+        <img [src]="contact.avatar" class=" avatar contact-avatar huge"
+             [alt]="contact.name"/>
+        <div class="contact-name">{{contact.name}}</div>
+    </md-toolbar-row>
+</md-toolbar>
+
+<div md-dialog-content class="p-24 m-0" perfect-scrollbar>
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">account_circle</md-icon>
+        <md-input-container fxFlex>
+            <input placeholder="Name" mdInput="" ng-required md-autofocus>
+        </md-input-container>
+    </div>
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12"></md-icon>
+        <md-input-container fxFlex>
+            <input placeholder="Lastname" mdInput>
+        </md-input-container>
+    </div>
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">star</md-icon>
+        <md-input-container fxFlex>
+            <input mdInput placeholder="Nickname">
+        </md-input-container>
+    </div>
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">phone</md-icon>
+        <md-input-container fxFlex>
+            <input mdInput placeholder="Phone number">
+        </md-input-container>
+    </div>
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">email</md-icon>
+        <md-input-container fxFlex>
+            <input mdInput type="email" placeholder="Email">
+        </md-input-container>
+    </div>
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">domain</md-icon>
+        <md-input-container fxFlex>
+            <input mdInput placeholder="Company">
+        </md-input-container>
+    </div>
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">work</md-icon>
+        <md-input-container fxFlex>
+            <input mdInput placeholder="Job title">
+        </md-input-container>
+    </div>
+
+    <!--
+            <md-datepicker class="birthday-input" ng-model="contact.birthday" md-placeholder="Birthday"
+                           ng-required="false">
+            </md-datepicker>-->
+
+    <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">home</md-icon>
+        <md-input-container fxFlex>
+            <input mdInput placeholder="Address">
+        </md-input-container>
+    </div>
+
+    <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
+        <md-icon class="mr-12 mt-12">note</md-icon>
+        <md-input-container fxFlex>
+            <textarea placeholder="Notes" mdInput type="text" max-rows="4"></textarea>
+        </md-input-container>
+    </div>
+
+
+</div>
+<!--
+
+<form name="contactForm" [formGroup]="contactForm" class="event-form" fxLayout="column" fxFlex>
+
+    <md-input-container>
+        <input mdInput
+               name="title"
+               formControlName="title"
+               placeholder="Title"
+               required>
+    </md-input-container>
+
+    <div class="py-16" fxFlex="1 0 auto" fxLayout="row">
+        <md-slide-toggle
+            name="allDay"
+            formControlName="allDay"
+            class="mr-24"
+            aria-label="All day">
+            All Day
+        </md-slide-toggle>
+    </div>
+
+    <div class="py-16" fxFlex="1 0 auto" fxLayout="row" formGroupName="color">
+        <md-input-container class="mr-24">
+            <input mdInput
+                   name="primary color"
+                   formControlName="primary"
+                   placeholder="Primary color"
+                   [(colorPicker)]="event.color.primary"
+                   [style.background]="event.color.primary"
+                   (colorPickerChange)="event.color.primary = $event; contactForm.patchValue({color:{primary:$event}})"/>
+        </md-input-container>
+        <md-input-container>
+            <input mdInput
+                   name="secondary color"
+                   formControlName="secondary"
+                   placeholder="Secondary color"
+                   [(colorPicker)]="event.color.secondary"
+                   [style.background]="event.color.secondary"
+                   (colorPickerChange)="event.color.secondary = $event; contactForm.patchValue({color:{secondary:$event}})"/>
+        </md-input-container>
+    </div>
+
+    <div fxFlex="1 0 auto" fxLayout="row">
+
+        <md-input-container class="mr-24">
+            <input mdInput
+                   name="start"
+                   formControlName="start"
+                   [mdDatepicker]="startDatePicker"
+                   placeholder="Start Date">
+            <button mdSuffix [mdDatepickerToggle]="startDatePicker"></button>
+        </md-input-container>
+        <md-datepicker #startDatePicker></md-datepicker>
+
+        <md-input-container class="no-errors-spacer" flex md-no-float>
+            <input mdInput ng-model="calendarEvent.startTime" placeholder="Start Time">
+        </md-input-container>
+
+    </div>
+
+    <div fxFlex="1 0 auto" fxLayout="row">
+
+        <md-input-container class="mr-24">
+            <input mdInput
+                   name="end"
+                   formControlName="end"
+                   [mdDatepicker]="endDatePicker"
+                   placeholder="End Date">
+            <button mdSuffix [mdDatepickerToggle]="endDatePicker"></button>
+        </md-input-container>
+        <md-datepicker #endDatePicker></md-datepicker>
+
+        <md-input-container class="no-errors-spacer" flex md-no-float>
+            <input mdInput ng-model="calendarEvent.endTime" placeholder="End Time">
+        </md-input-container>
+
+    </div>
+
+    <md-input-container formGroupName="meta">
+        <input mdInput
+               name="location"
+               formControlName="location"
+               placeholder="Location">
+    </md-input-container>
+
+    <md-input-container formGroupName="meta">
+
+            <textarea mdInput
+                      formControlName="notes"
+                      placeholder="Notes"
+                      md-maxlength="250"
+                      max-rows="4">
+            </textarea>
+    </md-input-container>
+
+</form>
+
+<div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+
+    <button *ngIf="action !=='edit'"
+            md-raised-button
+            (click)="dialogRef.close(contactForm)"
+            class="save-button mat-accent"
+            [disabled]="contactForm.invalid"
+            aria-label="SAVE">
+        SAVE
+    </button>
+
+    <button *ngIf="action ==='edit'"
+            md-raised-button
+            (click)="dialogRef.close(['save',contactForm])"
+            class="save-button mat-accent"
+            [disabled]="contactForm.invalid"
+            aria-label="SAVE">
+        SAVE
+    </button>
+
+    <button *ngIf="action ==='edit'"
+            md-button
+            class="mat-icon-button"
+            (click)="dialogRef.close(['delete',contactForm])"
+            aria-label="Delete"
+            md-tooltip="Delete">
+        <md-icon>delete</md-icon>
+    </button>
+
+</div>
+-->

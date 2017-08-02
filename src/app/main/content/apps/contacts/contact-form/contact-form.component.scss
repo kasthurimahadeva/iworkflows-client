@@ -1,0 +1,16 @@
+.contact-form-dialog {
+    .mat-dialog-container {
+        padding: 0;
+        max-width: 400px;
+        width: 400px;
+
+        .toolbar-bottom {
+            height: 200px;
+        }
+    }
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+}

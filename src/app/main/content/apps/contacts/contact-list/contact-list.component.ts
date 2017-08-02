@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { DataSource } from '@angular/cdk';
 import { Observable } from 'rxjs/Observable';
+import { ContactFormDialogComponent } from '../contact-form/contact-form.component';
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector   : 'fuse-contacts-contact-list',
@@ -10,6 +13,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ContactListComponent implements OnInit
 {
+    @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
+
     contacts: any;
     user: any;
     dataSource: FilesDataSource | null;
@@ -17,7 +22,14 @@ export class ContactListComponent implements OnInit
     selectedContacts: any[];
     checkboxes: {};
 
-    constructor(private contactsService: ContactsService)
+    dialogRef: any;
+
+    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
+
+    constructor(
+        private contactsService: ContactsService,
+        public dialog: MdDialog
+    )
     {
         this.contactsService.onContactsChanged.subscribe(contacts => {
 
@@ -48,9 +60,47 @@ export class ContactListComponent implements OnInit
         this.dataSource = new FilesDataSource(this.contactsService);
     }
 
-    onSelect(selected)
+    editContact(contact)
     {
         // this.fileManagerService.onContactSelected.next(selected);
+
+        this.dialogRef = this.dialog.open(ContactFormDialogComponent, {
+            panelClass: 'contact-form-dialog',
+            data      : {
+                contact: contact,
+                action : 'edit'
+            }
+        });
+
+        /*   this.dialogRef.afterClosed()
+               .subscribe(response => {
+                   if ( !response )
+                   {
+                       return;
+                   }
+                   const actionType: string = response[0];
+                   const formData: FormGroup = response[1];
+                   switch ( actionType )
+                   {
+                       /!**
+                        * Save
+                        *!/
+                       case 'save':
+
+                           this.events[eventIndex] = Object.assign(this.events[eventIndex], formData.getRawValue());
+                           this.refresh.next(true);
+
+                           break;
+                       /!**
+                        * Delete
+                        *!/
+                       case 'delete':
+
+                           this.deleteEvent(event);
+
+                           break;
+                   }
+               });*/
     }
 
     onSelectedChange(contactId)

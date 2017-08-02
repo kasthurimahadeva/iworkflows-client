@@ -9,9 +9,11 @@ import { ContactsService } from '../../contacts.service';
 export class MainSidenavComponent implements OnInit
 {
     user: any;
+    filterBy: string;
 
     constructor(private contactsService: ContactsService)
     {
+        this.filterBy = 'all';
         this.contactsService.onUserDataChanged.subscribe(user => {
             this.user = user;
         });
@@ -21,4 +23,9 @@ export class MainSidenavComponent implements OnInit
     {
     }
 
+    changeFilter(filter)
+    {
+        this.filterBy = filter;
+        this.contactsService.onFilterChanged.next(this.filterBy);
+    }
 }
