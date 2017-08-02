@@ -5,12 +5,13 @@ import { CalendarComponent } from './calendar.component';
 import { CalendarService } from './calendar.service';
 import { CalendarModule } from 'angular-calendar';
 import { EventFormDialogComponent } from './event-form/event-form.component';
-import { EventDetailDialogComponent } from './event-detail/event-detail.component';
 
 const routes: Routes = [
     {
-        path   : '**', component: CalendarComponent, children: [],
-        resolve: {
+        path     : '**',
+        component: CalendarComponent,
+        children : [],
+        resolve  : {
             chat: CalendarService
         }
     }
@@ -24,13 +25,12 @@ const routes: Routes = [
     ],
     declarations   : [
         CalendarComponent,
-        EventFormDialogComponent,
-        EventDetailDialogComponent,
+        EventFormDialogComponent
     ],
     providers      : [
         CalendarService
     ],
-    entryComponents: [EventFormDialogComponent, EventDetailDialogComponent]
+    entryComponents: [EventFormDialogComponent]
 })
 export class FuseCalendarModule
 {
