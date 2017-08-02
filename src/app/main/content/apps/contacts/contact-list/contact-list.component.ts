@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { ContactsService } from '../contacts.service';
 import { DataSource } from '@angular/cdk';
 import { Observable } from 'rxjs/Observable';
@@ -11,17 +10,17 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ContactListComponent implements OnInit
 {
-    files: any;
+    contacts: any;
     dataSource: FilesDataSource | null;
-    displayedColumns = ['icon', 'name', 'type', 'owner', 'size', 'modified', 'detail-button'];
+    displayedColumns = ['checkbox', 'avatar', 'name', 'email', 'phone', 'jobTitle', 'buttons'];
     selected: any;
 
     constructor(private fileManagerService: ContactsService)
     {
-        this.fileManagerService.onFilesChanged.subscribe(files => {
-            this.files = files;
+        this.fileManagerService.onContactsChanged.subscribe(files => {
+            this.contacts = files;
         });
-        this.fileManagerService.onFileSelected.subscribe(selected => {
+        this.fileManagerService.onContactSelected.subscribe(selected => {
             this.selected = selected;
         });
     }
@@ -33,13 +32,13 @@ export class ContactListComponent implements OnInit
 
     onSelect(selected)
     {
-        this.fileManagerService.onFileSelected.next(selected);
+        this.fileManagerService.onContactSelected.next(selected);
     }
 }
 
 export class FilesDataSource extends DataSource<any>
 {
-    constructor(private fileManagerService: ContactsService)
+    constructor(private contactsService: ContactsService)
     {
         super();
     }
@@ -47,7 +46,7 @@ export class FilesDataSource extends DataSource<any>
     /** Connect function called by the table to retrieve one stream containing the data to render. */
     connect(): Observable<any[]>
     {
-        return this.fileManagerService.onFilesChanged;
+        return this.contactsService.onContactsChanged;
     }
 
     disconnect()

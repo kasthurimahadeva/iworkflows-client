@@ -7,15 +7,15 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class ContactsService implements Resolve<any>
 {
-    onFilesChanged: BehaviorSubject<any> = new BehaviorSubject({});
-    onFileSelected: BehaviorSubject<any> = new BehaviorSubject({});
+    onContactsChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onContactSelected: BehaviorSubject<any> = new BehaviorSubject({});
 
     constructor(private http: Http)
     {
     }
 
     /**
-     * The File Manager App Main Resolver
+     * The Contacts App Main Resolver
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -26,7 +26,7 @@ export class ContactsService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getFiles()
+                this.getContacts()
             ]).then(
                 ([files]) => {
                     resolve();
@@ -36,13 +36,13 @@ export class ContactsService implements Resolve<any>
         });
     }
 
-    getFiles(): Promise<any>
+    getContacts(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/file-manager')
+            this.http.get('api/contacts-contacts')
                 .subscribe(response => {
-                    this.onFilesChanged.next(response.json().data);
-                    this.onFileSelected.next(response.json().data[0]);
+                    this.onContactsChanged.next(response.json().data);
+                    this.onContactSelected.next(response.json().data[0]);
                     resolve(response.json().data);
                 }, reject);
         });
