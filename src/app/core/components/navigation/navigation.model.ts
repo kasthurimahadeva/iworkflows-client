@@ -253,6 +253,12 @@ export class FuseNavigation
                 ]
             },*/
             {
+                'title': 'Icons',
+                'type' : 'nav-item',
+                'icon' : 'photo',
+                'url'  : '/ui/icons'
+            },
+            {
                 'title': 'Typography',
                 'type' : 'nav-item',
                 'icon' : 'text_fields',
