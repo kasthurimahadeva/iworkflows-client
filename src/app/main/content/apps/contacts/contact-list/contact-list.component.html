@@ -72,18 +72,18 @@
         <md-header-cell *cdkHeaderCellDef></md-header-cell>
         <md-cell *cdkCellDef="let contact">
             <div fxFlex="row" fxLayoutAlign="end center">
-                <button md-icon-button (click)="toggleStar(contact.id)" aria-label="Toggle star">
+                <button md-icon-button (click)="$event.stopPropagation();toggleStar(contact.id)" aria-label="Toggle star">
                     <md-icon *ngIf="user.starred.includes(contact.id)">star</md-icon>
                     <md-icon *ngIf="!user.starred.includes(contact.id)">star_outline</md-icon>
                 </button>
 
                 <button md-icon-button [mdMenuTriggerFor]="moreMenu" aria-label="More"
-                        ng-click="$mdOpenMenu($event)">
+                        (click)="$event.stopPropagation();">
                     <md-icon>more_vert</md-icon>
                 </button>
 
                 <md-menu #moreMenu="mdMenu">
-                    <button md-menu-item aria-label="remove" (click)="removeContact(contact.id)">
+                    <button md-menu-item aria-label="remove" (click)="deleteContact(contact)">
                         <md-icon>delete</md-icon>
                         <span>Remove</span>
                     </button>
@@ -100,3 +100,10 @@
             md-ripple>
     </md-row>
 </md-table>
+
+
+<!-- ADD CONTACT BUTTON -->
+<button md-fab class="md-accent-bg" id="add-contact-button" (click)="newContact($event)" aria-label="add contact">
+    <md-icon>person_add</md-icon>
+</button>
+<!-- / ADD CONTACT BUTTON -->

@@ -50,7 +50,7 @@
         <!-- / SIDENAV -->
 
         <!-- CENTER -->
-        <div class="center p-24" perfect-scrollbar>
+        <div class="center p-24 pr-92" perfect-scrollbar>
 
             <!-- CONTENT -->
             <div class="content md-white-bg mat-elevation-z4">
@@ -66,85 +66,3 @@
     </md-sidenav-container>
 
 </div>
-
-
-<!--
-
-<div id="file-manager" class="page-layout simple right-sidenav" fxfxLayout="row">
-
-    <md-sidenav-container>
-
-        &lt;!&ndash; SIDENAV &ndash;&gt;
-        <md-sidenav class="sidenav left-sidenav" align="start" opened="false" mode="over"
-                    fuseMdSidenavHelper="file-manager-left-sidenav">
-            <fuse-contacts-main-sidenav></fuse-contacts-main-sidenav>
-        </md-sidenav>
-        &lt;!&ndash; / SIDENAV &ndash;&gt;
-
-        &lt;!&ndash; CENTER &ndash;&gt;
-        <div class="center" fxFlex perfect-scrollbar>
-
-            &lt;!&ndash; HEADER &ndash;&gt;
-            <div class="header md-accent-bg p-24" fxfxLayout="column" fxLayoutAlign="space-between start">
-
-                &lt;!&ndash; TOOLBAR &ndash;&gt;
-                <div class="toolbar w-100-p" fxFlex fxfxLayout="row" fxLayoutAlign="space-between start">
-
-                    <div class="left-side" fxfxLayout="row">
-                        <button md-icon-button class="sidenav-toggle"
-                                fuseMdSidenavToggler="file-manager-left-sidenav">
-                            <md-icon>menu</md-icon>
-                        </button>
-
-                        <button md-icon-button class="sidenav-toggle"
-                                fuseMdSidenavToggler="file-manager-right-sidenav"
-                                fxHide.gt-md>
-                            <md-icon>menu</md-icon>
-                        </button>
-                    </div>
-
-                    <div class="right-side" fxfxLayout="row">
-                        <button md-button class="mat-icon-button" aria-label="Search" md-tooltip="Search">
-                            <md-icon>search</md-icon>
-                        </button>
-                    </div>
-                </div>
-                &lt;!&ndash; / TOOLBAR &ndash;&gt;
-
-                &lt;!&ndash; BREADCRUMB &ndash;&gt;
-                <div class="breadcrumb text-truncate h1 pl-72" fxfxLayout="row" fxLayoutAlign="start center">
-                    <div *ngFor="let path of pathArr; last  as isLast" fxfxLayout="row" fxLayoutAlign="start center">
-                        <span>{{path}}</span>
-                        <md-icon *ngIf="!isLast" class="separator">chevron_right</md-icon>
-                    </div>
-                </div>
-                &lt;!&ndash; / BREADCRUMB &ndash;&gt;
-
-                &lt;!&ndash; ADD FILE BUTTON &ndash;&gt;
-                <div class="file-uploader">
-                    <input hidden type="file" #fileInput/>
-                    <button type="submit" md-fab
-                            class="add-file-button mat-accent"
-                            (click)="fileInput.click()"
-                            aria-label="Add file">
-                        <md-icon>add</md-icon>
-                    </button>
-                </div>
-                &lt;!&ndash; / ADD FILE BUTTON &ndash;&gt;
-
-            </div>
-            &lt;!&ndash; / HEADER &ndash;&gt;
-
-            &lt;!&ndash; CONTENT &ndash;&gt;
-            <div class="content">
-                <fuse-contacts-contact-list></fuse-contacts-contact-list>
-            </div>
-            &lt;!&ndash; / CONTENT &ndash;&gt;
-
-        </div>
-        &lt;!&ndash; / CENTER &ndash;&gt;
-
-    </md-sidenav-container>
-
-</div>
--->

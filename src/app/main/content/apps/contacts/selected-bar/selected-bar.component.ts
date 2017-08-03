@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../contacts.service';
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector   : 'fuse-selected-bar',
@@ -11,8 +13,12 @@ export class SelectedBarComponent implements OnInit
     selectedContacts: string[];
     hasSelectedContacts: boolean;
     isIndeterminate: boolean;
+    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
 
-    constructor(private contactsService: ContactsService)
+    constructor(
+        private contactsService: ContactsService,
+        public dialog: MdDialog
+    )
     {
         this.contactsService.onSelectedContactsChanged
             .subscribe(selectedContacts => {
@@ -41,7 +47,19 @@ export class SelectedBarComponent implements OnInit
 
     deleteSelectedContacts()
     {
+        this.confirmDialogRef = this.dialog.open(FuseConfirmDialogComponent, {
+            disableClose: false
+        });
 
+        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete all selected contacts?';
+
+        this.confirmDialogRef.afterClosed().subscribe(result => {
+            if ( result )
+            {
+                this.contactsService.deleteSelectedContacts();
+            }
+            this.confirmDialogRef = null;
+        });
     }
 
 }
