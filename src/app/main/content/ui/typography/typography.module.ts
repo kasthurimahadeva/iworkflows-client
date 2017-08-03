@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../../../core/modules/shared.module';
+import { RouterModule, Routes } from '@angular/router';
+
 import { TypographyComponent } from './typography.component';
+import { TypographyHeadingsComponent } from './tabs/headings/headings.component';
+import { TypographyInlineTextElementsComponent } from './tabs/inline-text-elements/inline-text-elements.component';
+import { TypographyBlockquotesListsComponent } from './tabs/blockquotes-lists/blockquotes-lists.component';
+import { TypographyHelpersComponent } from './tabs/helpers/helpers.component';
 
 const routes: Routes = [
     {
@@ -16,7 +21,11 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ],
     declarations: [
-        TypographyComponent
+        TypographyComponent,
+        TypographyHeadingsComponent,
+        TypographyInlineTextElementsComponent,
+        TypographyBlockquotesListsComponent,
+        TypographyHelpersComponent
     ]
 })
 export class UITypographyModule
