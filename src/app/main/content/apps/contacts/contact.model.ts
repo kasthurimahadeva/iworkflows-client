@@ -1,3 +1,5 @@
+import { FuseUtils } from '../../../../core/fuseUtils';
+
 export class Contact
 {
     id: string;
@@ -16,20 +18,18 @@ export class Contact
     constructor(contact)
     {
         {
-
-            this.id = contact.id;
-            this.name = contact.name;
-            this.lastName = contact.lastName;
-            this.avatar = contact.avatar;
-            this.nickname = contact.nickname;
-            this.company = contact.company;
-            this.jobTitle = contact.jobTitle;
-            this.email = contact.email;
-            this.phone = contact.phone;
-            this.address = contact.address;
-            this.birthday = contact.birhday;
-            this.notes = contact.notes;
+            this.id = contact.id || FuseUtils.genearateGUID();
+            this.name = contact.name || '';
+            this.lastName = contact.lastName || '';
+            this.avatar = contact.avatar || 'assets/images/avatars/profile.jpg';
+            this.nickname = contact.nickname || '';
+            this.company = contact.company || '';
+            this.jobTitle = contact.jobTitle || '';
+            this.email = contact.email || '';
+            this.phone = contact.phone || '';
+            this.address = contact.address || '';
+            this.birthday = contact.birhday || '';
+            this.notes = contact.notes || '';
         }
     }
-
 }

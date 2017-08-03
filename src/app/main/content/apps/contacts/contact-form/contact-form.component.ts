@@ -26,12 +26,12 @@ export class ContactFormDialogComponent implements OnInit
         private formBuilder: FormBuilder
     )
     {
-        this.contact = data.contact;
         this.action = data.action;
 
         if ( this.action === 'edit' )
         {
             this.dialogTitle = 'Edit Contact';
+            this.contact = data.contact;
         }
         else
         {
@@ -39,7 +39,7 @@ export class ContactFormDialogComponent implements OnInit
             this.contact = new Contact({});
         }
 
-        // this.contactForm = this.createContactForm();
+        this.contactForm = this.createContactForm();
     }
 
     ngOnInit()
@@ -48,20 +48,19 @@ export class ContactFormDialogComponent implements OnInit
 
     createContactForm()
     {
-        return new FormGroup({
-            title : new FormControl(this.event.title),
-            start : new FormControl(this.event.start),
-            end   : new FormControl(this.event.end),
-            allDay: new FormControl(this.event.allDay),
-            color : this.formBuilder.group({
-                primary  : new FormControl(this.event.color.primary),
-                secondary: new FormControl(this.event.color.secondary)
-            }),
-            meta  :
-                this.formBuilder.group({
-                    location: new FormControl(this.event.meta.location),
-                    notes   : new FormControl(this.event.meta.notes)
-                })
+        return this.formBuilder.group({
+            id      : [this.contact.id],
+            name    : [this.contact.name],
+            lastName: [this.contact.lastName],
+            avatar  : [this.contact.avatar],
+            nickname: [this.contact.nickname],
+            company : [this.contact.company],
+            jobTitle: [this.contact.jobTitle],
+            email   : [this.contact.email],
+            phone   : [this.contact.phone],
+            address : [this.contact.address],
+            birthday: [this.contact.birthday],
+            notes   : [this.contact.notes]
         });
     }
 }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ContactFormDialogComponent } from '../contact-form/contact-form.component';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector   : 'fuse-contacts-contact-list',
@@ -60,10 +61,30 @@ export class ContactListComponent implements OnInit
         this.dataSource = new FilesDataSource(this.contactsService);
     }
 
+    newContact()
+    {
+        this.dialogRef = this.dialog.open(ContactFormDialogComponent, {
+            panelClass: 'contact-form-dialog',
+            data      : {
+                action: 'new'
+            }
+        });
+
+        this.dialogRef.afterClosed()
+            .subscribe((response: FormGroup) => {
+                if ( !response )
+                {
+                    return;
+                }
+
+                this.contactsService.updateContact(response.getRawValue());
+
+            });
+
+    }
+
     editContact(contact)
     {
-        // this.fileManagerService.onContactSelected.next(selected);
-
         this.dialogRef = this.dialog.open(ContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
@@ -72,35 +93,55 @@ export class ContactListComponent implements OnInit
             }
         });
 
-        /*   this.dialogRef.afterClosed()
-               .subscribe(response => {
-                   if ( !response )
-                   {
-                       return;
-                   }
-                   const actionType: string = response[0];
-                   const formData: FormGroup = response[1];
-                   switch ( actionType )
-                   {
-                       /!**
-                        * Save
-                        *!/
-                       case 'save':
+        this.dialogRef.afterClosed()
+            .subscribe(response => {
+                if ( !response )
+                {
+                    return;
+                }
+                const actionType: string = response[0];
+                const formData: FormGroup = response[1];
+                switch ( actionType )
+                {
+                    /**
+                     * Save
+                     */
+                    case 'save':
 
-                           this.events[eventIndex] = Object.assign(this.events[eventIndex], formData.getRawValue());
-                           this.refresh.next(true);
+                        this.contactsService.updateContact(formData.getRawValue());
 
-                           break;
-                       /!**
-                        * Delete
-                        *!/
-                       case 'delete':
+                        break;
+                    /**
+                     * Delete
+                     */
+                    case 'delete':
 
-                           this.deleteEvent(event);
+                        this.deleteContact(contact);
 
-                           break;
-                   }
-               });*/
+                        break;
+                }
+            });
+    }
+
+    /**
+     * Delete Contact
+     */
+    deleteContact(contact)
+    {
+        this.confirmDialogRef = this.dialog.open(FuseConfirmDialogComponent, {
+            disableClose: false
+        });
+
+        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
+
+        this.confirmDialogRef.afterClosed().subscribe(result => {
+            if ( result )
+            {
+                this.contactsService.deleteContact(contact);
+            }
+            this.confirmDialogRef = null;
+        });
+
     }
 
     onSelectedChange(contactId)
@@ -120,11 +161,6 @@ export class ContactListComponent implements OnInit
         }
 
         this.contactsService.updateUserData(this.user);
-    }
-
-    removeContact(contactId)
-    {
-
     }
 }
 

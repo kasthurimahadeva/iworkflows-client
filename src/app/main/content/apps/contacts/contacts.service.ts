@@ -152,7 +152,6 @@ export class ContactsService implements Resolve<any>
      */
     toggleSelectAll()
     {
-        console.info(this.selectedContacts);
         if ( this.selectedContacts.length > 0 )
         {
             this.deselectContacts();
@@ -194,6 +193,7 @@ export class ContactsService implements Resolve<any>
 
             this.http.post('api/contacts-contacts/' + contact.id, {...contact})
                 .subscribe(response => {
+                    this.getContacts();
                     resolve(response);
                 });
         });
@@ -217,6 +217,27 @@ export class ContactsService implements Resolve<any>
 
         // Trigger the next event
         this.onSelectedContactsChanged.next(this.selectedContacts);
+    }
+
+    deleteContact(contact)
+    {
+        const contactIndex = this.contacts.indexOf(contact);
+        this.contacts.splice(contactIndex, 1);
+        this.onContactsChanged.next(this.contacts);
+    }
+
+    deleteSelectedContacts()
+    {
+        for ( const contactId of this.selectedContacts )
+        {
+            const contact = this.contacts.find(_contact => {
+                return _contact.id === contactId;
+            });
+            const contactIndex = this.contacts.indexOf(contact);
+            this.contacts.splice(contactIndex, 1);
+        }
+        this.onContactsChanged.next(this.contacts);
+        this.deselectContacts();
     }
 
 }
