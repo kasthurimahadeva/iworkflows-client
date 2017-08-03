@@ -8,6 +8,7 @@ import { FuseNavbarComponent } from './navbar/navbar.component';
 import { FuseToolbarComponent } from './toolbar/toolbar.component';
 import { FuseNavigationModule } from '../core/components/navigation/navigation.module';
 import { FuseNavbarToggleDirective } from './navbar/navbar-toggle.directive';
+import { QuickPanelComponent } from './quick-panel/quick-panel.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { FuseNavbarToggleDirective } from './navbar/navbar-toggle.directive';
         FuseMainComponent,
         FuseNavbarComponent,
         FuseToolbarComponent,
-        FuseNavbarToggleDirective
+        FuseNavbarToggleDirective,
+        QuickPanelComponent
     ],
     imports     : [
         SharedModule,
