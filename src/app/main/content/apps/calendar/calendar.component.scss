@@ -12,6 +12,14 @@
 
     .cal-day-cell {
 
+        @include media-breakpoint(lg) {
+            min-height: 150px;
+        }
+
+        @include media-breakpoint(gt-lg) {
+            min-height: 200px;
+        }
+
         &.cal-open {
             @include mat-elevation(3);
         }
