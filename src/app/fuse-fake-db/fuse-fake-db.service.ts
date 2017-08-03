@@ -9,6 +9,7 @@ import { ContactsFakeDb } from './contacts';
 import { InvoiceFakeDb } from './invoice';
 import { FileManagerFakeDb } from './file-manager';
 import { SearchFakeDb } from './search';
+import { QuickPanelFakeDb } from './quick-panel';
 import { IconsFakeDb } from './icons';
 
 export class FuseFakeDbService implements InMemoryDbService
@@ -36,6 +37,8 @@ export class FuseFakeDbService implements InMemoryDbService
             'file-manager'         : FileManagerFakeDb.files,
             'search-classic'       : SearchFakeDb.classic,
             'search-table'         : SearchFakeDb.table,
+            'quick-panel-notes'    : QuickPanelFakeDb.notes,
+            'quick-panel-events'   : QuickPanelFakeDb.events,
             'icons'                : IconsFakeDb.icons
         };
     }
