@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, OnInit } from '@angular/core';
 import * as hljs from 'highlight.js';
 
 @Component({
@@ -10,7 +10,7 @@ export class FuseHljsComponent implements OnInit
 {
     hljs: any;
 
-    @Input('source') source: any;
+    @ContentChild('source') source: ElementRef;
     @Input('lang') lang: string;
 
     constructor(
@@ -22,12 +22,37 @@ export class FuseHljsComponent implements OnInit
 
     ngOnInit()
     {
-        if ( !this.source && this.lang )
+        const originalSource = this.source.nativeElement.value;
+
+        if ( !originalSource || !this.lang )
         {
             return;
         }
 
+        // Split the source into lines
+        const sourceLines = originalSource.split('\n');
+
+        // Find the first non-whitespace char index in
+        // the first line of the source code
+        const indexOfFirstChar = sourceLines[0].search(/\S|$/);
+
+        // Generate the trimmed source
+        let source = '';
+
+        // Iterate through all the lines and trim the
+        // beginning white space depending on the index
+        sourceLines.forEach((line, index) => {
+
+            source = source + line.substr(indexOfFirstChar, line.length);
+
+            if ( index !== sourceLines.length - 1 )
+            {
+                source = source + '\n';
+            }
+        });
+
         this.elementRef.nativeElement.innerHTML =
-            `<pre><code class="highlight">` + this.hljs.highlight(this.lang, this.source).value + `</code></pre>`;
+            `<pre><code class="highlight">` + this.hljs.highlight(this.lang, source).value + `</code></pre>`;
     }
 }
+

@@ -259,6 +259,12 @@ export class FuseNavigation
                 'url'  : '/ui/typography'
             },
             {
+                'title': 'Helper Classes',
+                'type' : 'nav-item',
+                'icon' : 'help',
+                'url'  : '/ui/helper-classes'
+            },
+            {
                 'title'   : 'Page Layouts',
                 'type'    : 'nav-collapse',
                 'icon'    : 'view_quilt',
