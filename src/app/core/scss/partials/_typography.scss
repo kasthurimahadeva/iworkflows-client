@@ -49,8 +49,11 @@ a {
     color: mat-color($accent);
     text-decoration: none;
 
-    &:hover, &:active {
-        text-decoration: underline;
+    &:not(.mat-button):not(.mat-raised-button):not(.mat-icon-button) {
+
+        &:hover, &:active {
+            text-decoration: underline;
+        }
     }
 }
 
