@@ -392,6 +392,12 @@ export class FuseNavigation
                     }
                 ]
             },
+            {
+                'title': 'Price Tables',
+                'type' : 'nav-item',
+                'icon' : 'view_carousel',
+                'url'  : '/components/price-tables'
+            }
         ];
     }
 }
