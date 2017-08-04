@@ -9,6 +9,7 @@ import { FuseToolbarComponent } from './toolbar/toolbar.component';
 import { FuseNavigationModule } from '../core/components/navigation/navigation.module';
 import { FuseNavbarToggleDirective } from './navbar/navbar-toggle.directive';
 import { QuickPanelComponent } from './quick-panel/quick-panel.component';
+import { FuseThemeOptionsComponent } from '../core/components/theme-options/theme-options.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { QuickPanelComponent } from './quick-panel/quick-panel.component';
         FuseNavbarComponent,
         FuseToolbarComponent,
         FuseNavbarToggleDirective,
+        FuseThemeOptionsComponent,
         QuickPanelComponent
     ],
     imports     : [

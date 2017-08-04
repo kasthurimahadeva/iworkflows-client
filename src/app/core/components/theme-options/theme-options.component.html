@@ -1,0 +1,40 @@
+<button #openButton *ngIf="!isOpened" md-icon-button class="open-button md-primary-bg mat-elevation-z2" (click)="openBar()">
+    <md-icon>settings</md-icon>
+</button>
+
+<div #panel class="theme-options-panel md-white-bg mat-elevation-z2 p-16">
+
+    <button md-icon-button class="close-button" (click)="closeBar()">
+        <md-icon>close</md-icon>
+    </button>
+
+    <md-list>
+        <h3 md-subheader>Navigation:</h3>
+        <md-list-item>
+            <md-radio-group [(ngModel)]="layoutSettings.navigation" (ngModelChange)="onLayoutSettingsChanged()">
+                <md-radio-button class="mr-8" value="left">Left</md-radio-button>
+                <md-radio-button class="mr-8" value="right">Right</md-radio-button>
+                <md-radio-button class="mr-8" value="none">None</md-radio-button>
+            </md-radio-group>
+        </md-list-item>
+
+        <h3 md-subheader>Toolbar:</h3>
+        <md-list-item>
+            <md-radio-group [(ngModel)]="layoutSettings.toolbar" (ngModelChange)="onLayoutSettingsChanged()">
+                <md-radio-button class="mr-8" value="below">Below</md-radio-button>
+                <md-radio-button class="mr-8" value="above">Above</md-radio-button>
+                <md-radio-button class="mr-8" value="none">None</md-radio-button>
+            </md-radio-group>
+        </md-list-item>
+
+        <h3 md-subheader>Footer:</h3>
+        <md-list-item>
+            <md-radio-group [(ngModel)]="layoutSettings.footer" (ngModelChange)="onLayoutSettingsChanged()">
+                <md-radio-button class="mr-8" value="below">Below</md-radio-button>
+                <md-radio-button class="mr-8" value="above">Above</md-radio-button>
+                <md-radio-button class="mr-8" value="none">None</md-radio-button>
+            </md-radio-group>
+        </md-list-item>
+
+    </md-list>
+</div>
