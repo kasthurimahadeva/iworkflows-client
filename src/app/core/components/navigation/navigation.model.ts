@@ -253,6 +253,12 @@ export class FuseNavigation
                 ]
             },*/
             {
+                'title': 'Forms',
+                'type' : 'nav-item',
+                'icon' : 'web_asset',
+                'url'  : '/ui/forms'
+            },
+            {
                 'title': 'Icons',
                 'type' : 'nav-item',
                 'icon' : 'photo',
