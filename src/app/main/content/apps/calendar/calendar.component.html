@@ -18,7 +18,7 @@
                 <!-- TOOLBAR -->
                 <div class="toolbar" fxLayout="row" fxLayoutAlign="start center">
 
-                    <button md-button class="mat-icon-button" aria-label="Search" md-tooltip="search">
+                    <button md-button class="mat-icon-button" aria-label="Search" md-tooltip="Search">
                         <md-icon>search</md-icon>
                     </button>
 
@@ -26,23 +26,23 @@
                             mwlCalendarToday
                             [(viewDate)]="viewDate"
                             (viewDateChange)="selectedDay = {date:$event}"
-                            aria-label="Today" md-tooltip="today">
+                            aria-label="Today" md-tooltip="Today">
                         <!--(click)="selectedDay = viewDate"-->
                         <md-icon>today</md-icon>
                     </button>
 
                     <button md-button class="mat-icon-button" (click)="view='day'"
-                            aria-label="Day" md-tooltip="day">
+                            aria-label="Day" md-tooltip="Day">
                         <md-icon>view_day</md-icon>
                     </button>
 
                     <button md-button class="mat-icon-button" (click)="view='week'"
-                            aria-label="Week" md-tooltip="week">
+                            aria-label="Week" md-tooltip="Week">
                         <md-icon>view_week</md-icon>
                     </button>
 
                     <button md-button class="mat-icon-button" (click)="view='month'"
-                            aria-label="Month" md-tooltip="month">
+                            aria-label="Month" md-tooltip="Month">
                         <md-icon>view_module</md-icon>
                     </button>
                 </div>
