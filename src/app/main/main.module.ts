@@ -10,6 +10,7 @@ import { FuseNavigationModule } from '../core/components/navigation/navigation.m
 import { FuseNavbarToggleDirective } from './navbar/navbar-toggle.directive';
 import { QuickPanelComponent } from './quick-panel/quick-panel.component';
 import { FuseThemeOptionsComponent } from '../core/components/theme-options/theme-options.component';
+import { FuseShortcutsModule } from '../core/components/shortcuts/shortcuts.module';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { FuseThemeOptionsComponent } from '../core/components/theme-options/them
     imports     : [
         SharedModule,
         RouterModule,
-        FuseNavigationModule
+        FuseNavigationModule,
+        FuseShortcutsModule
     ],
     exports     : [
         FuseMainComponent

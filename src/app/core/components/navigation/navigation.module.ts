@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../../modules/shared.module';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {FuseNavSubheaderComponent} from './nav-subheader/nav-subheader.component';
 import {FuseNavigationComponent} from './navigation.component';
 import {FuseNavItemComponent} from './nav-item/nav-item.component';

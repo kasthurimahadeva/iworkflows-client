@@ -59,7 +59,7 @@ export class FuseNavigation
             {
                 'title': 'To-Do',
                 'type' : 'nav-item',
-                'icon' : 'checkbox_cricle',
+                'icon' : 'check_box',
                 'url'  : '/apps/todo'
             },
             {

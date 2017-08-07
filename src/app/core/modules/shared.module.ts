@@ -48,12 +48,12 @@ import { FuseHljsComponent } from '../components/hljs/hljs.component';
         FuseMdSidenavHelperDirective,
         FuseMdSidenavTogglerDirective,
         FusePipesModule,
+        FuseCountdownComponent,
+        FuseHljsComponent,
         PerfectScrollbarModule,
         ReactiveFormsModule,
         ColorPickerModule,
         NgxDnDModule,
-        FuseCountdownComponent,
-        FuseHljsComponent,
         NgxDatatableModule
     ],
     entryComponents: [
