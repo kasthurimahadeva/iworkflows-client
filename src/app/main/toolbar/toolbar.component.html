@@ -49,11 +49,7 @@
 
             <div class="toolbar-separator"></div>
 
-            <button md-icon-button
-                    class="search-button"
-                    aria-label="Search">
-                <md-icon class="icon">search</md-icon>
-            </button>
+            <fuse-search-bar (onInput)="search($event)"></fuse-search-bar>
 
             <div class="toolbar-separator"></div>
 
