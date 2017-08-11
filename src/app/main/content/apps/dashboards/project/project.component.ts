@@ -1,39 +1,174 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseLayoutService } from '../../../../../core/services/layout.service';
-import { Subscription } from 'rxjs/Subscription';
+import { ProjectsDashboardService } from './projects.service';
+import * as shape from 'd3-shape';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { DataSource } from '@angular/cdk';
 
 @Component({
-    selector   : 'fuse-project',
-    templateUrl: './project.component.html',
-    styleUrls  : ['./project.component.scss']
+    selector     : 'fuse-project',
+    templateUrl  : './project.component.html',
+    styleUrls    : ['./project.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ProjectComponent implements OnInit, OnDestroy
 {
-    onSettingsChanged: Subscription;
-    layoutSettings: { navigation: string, toolbar: string, footer: string };
+    projects: any[];
+    selectedProject: any;
 
-    constructor(private layoutService: FuseLayoutService)
+    widgets: any;
+    widget5: any = {};
+    widget6: any = {};
+    widget7: any = {};
+    widget8: any = {};
+    widget9: any = {};
+    widget11: any = {};
+
+    dateNow = Date.now();
+
+    constructor(private projectsDashboardService: ProjectsDashboardService)
     {
-        this.onSettingsChanged =
-            this.layoutService.onSettingsChanged
-                .subscribe(
-                    (newSettings) => {
-                        this.layoutSettings = newSettings;
-                    }
-                );
+        this.projects = this.projectsDashboardService.projects;
+
+        this.selectedProject = this.projects[0];
+
+        this.widgets = this.projectsDashboardService.widgets;
+
+        /**
+         * Widget 5
+         */
+        this.widget5 = {
+            currentRange  : 'TW',
+            xAxis         : true,
+            yAxis         : true,
+            gradient      : false,
+            legend        : false,
+            showXAxisLabel: false,
+            xAxisLabel    : 'Days',
+            showYAxisLabel: false,
+            yAxisLabel    : 'Isues',
+            scheme        : {
+                domain: ['#42BFF7', '#C6ECFD', '#C7B42C', '#AAAAAA']
+            },
+            onSelect      : (ev) => {
+                console.log(ev);
+            },
+            supporting    : {
+                currentRange  : '',
+                xAxis         : false,
+                yAxis         : false,
+                gradient      : false,
+                legend        : false,
+                showXAxisLabel: false,
+                xAxisLabel    : 'Days',
+                showYAxisLabel: false,
+                yAxisLabel    : 'Isues',
+                scheme        : {
+                    domain: ['#42BFF7', '#C6ECFD', '#C7B42C', '#AAAAAA']
+                },
+                curve         : shape.curveBasis
+            }
+        };
+
+        /**
+         * Widget 6
+         */
+        this.widget6 = {
+            currentRange : 'TW',
+            legend       : false,
+            explodeSlices: false,
+            labels       : true,
+            doughnut     : true,
+            gradient     : false,
+            scheme       : {
+                domain: ['#f44336', '#9c27b0', '#03a9f4', '#e91e63']
+            },
+            onSelect     : (ev) => {
+                console.log(ev);
+            }
+        };
+
+        /**
+         * Widget 7
+         */
+        this.widget7 = {
+            currentRange: 'T'
+        };
+
+        /**
+         * Widget 8
+         */
+        this.widget8 = {
+            legend       : false,
+            explodeSlices: false,
+            labels       : true,
+            doughnut     : false,
+            gradient     : false,
+            scheme       : {
+                domain: ['#f44336', '#9c27b0', '#03a9f4', '#e91e63', '#ffc107']
+            },
+            onSelect     : (ev) => {
+                console.log(ev);
+            }
+        };
+
+        /**
+         * Widget 9
+         */
+        this.widget9 = {
+            currentRange  : 'TW',
+            xAxis         : false,
+            yAxis         : false,
+            gradient      : false,
+            legend        : false,
+            showXAxisLabel: false,
+            xAxisLabel    : 'Days',
+            showYAxisLabel: false,
+            yAxisLabel    : 'Isues',
+            scheme        : {
+                domain: ['#42BFF7', '#C6ECFD', '#C7B42C', '#AAAAAA']
+            },
+            curve         : shape.curveBasis
+        };
+
+        setInterval(() => {
+            this.dateNow = Date.now();
+        }, 1000);
+
     }
 
     ngOnInit()
     {
+        /**
+         * Widget 11
+         */
+        this.widget11.onContactsChanged = new BehaviorSubject({});
+        this.widget11.onContactsChanged.next(this.widgets.widget11.table.rows);
+        this.widget11.dataSource = new FilesDataSource(this.widget11);
     }
 
     ngOnDestroy()
     {
-        this.onSettingsChanged.unsubscribe();
     }
 
-    onLayoutSettingsChanged()
+}
+
+export class FilesDataSource extends DataSource<any>
+{
+    constructor(private widget11)
     {
-        this.layoutService.onSettingsChanged.next(this.layoutSettings);
+        super();
+    }
+
+    /** Connect function called by the table to retrieve one stream containing the data to render. */
+    connect(): Observable<any[]>
+    {
+        return this.widget11.onContactsChanged;
+    }
+
+    disconnect()
+    {
     }
 }
+

@@ -18,11 +18,6 @@ export class FuseNavigation
                         'type' : 'nav-item',
                         'title': 'Project',
                         'url'  : '/apps/dashboards/project'
-                    },
-                    {
-                        'type' : 'nav-item',
-                        'title': 'Server',
-                        'url'  : '/apps/dashboards/server'
                     }
                 ]
             },

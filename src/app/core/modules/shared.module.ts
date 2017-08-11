@@ -19,6 +19,7 @@ import { FuseMatchMedia } from '../services/match-media.service';
 import { FuseNavbarService } from '../../main/navbar/navbar.service';
 import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-sidenav-helper.service';
 import { FuseHljsComponent } from '../components/hljs/hljs.component';
+import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
 
 @NgModule({
     declarations   : [
@@ -26,7 +27,8 @@ import { FuseHljsComponent } from '../components/hljs/hljs.component';
         FuseMdSidenavTogglerDirective,
         FuseConfirmDialogComponent,
         FuseCountdownComponent,
-        FuseHljsComponent
+        FuseHljsComponent,
+        FuseIfOnDomDirective
     ],
     imports        : [
         FlexLayoutModule,
@@ -54,7 +56,8 @@ import { FuseHljsComponent } from '../components/hljs/hljs.component';
         ReactiveFormsModule,
         ColorPickerModule,
         NgxDnDModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        FuseIfOnDomDirective
     ],
     entryComponents: [
         FuseConfirmDialogComponent
