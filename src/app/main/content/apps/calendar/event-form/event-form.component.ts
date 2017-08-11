@@ -4,6 +4,7 @@ import { CalendarEvent } from 'angular-calendar';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import 'rxjs/Rx';
 import { CalendarEventModel } from '../event.model';
+import { MatColors } from '../../../../../core/matColors';
 
 @Component({
     selector     : 'fuse-calendar-event-form-dialog',
@@ -18,10 +19,13 @@ export class EventFormDialogComponent implements OnInit
     dialogTitle: string;
     eventForm: FormGroup;
     action: string;
+    presetColors = MatColors.presets;
 
-    constructor(public dialogRef: MdDialogRef<EventFormDialogComponent>,
-                @Inject(MD_DIALOG_DATA) private data: any,
-                private formBuilder: FormBuilder)
+    constructor(
+        public dialogRef: MdDialogRef<EventFormDialogComponent>,
+        @Inject(MD_DIALOG_DATA) private data: any,
+        private formBuilder: FormBuilder
+    )
     {
         this.event = data.event;
         this.action = data.action;
@@ -33,7 +37,10 @@ export class EventFormDialogComponent implements OnInit
         else
         {
             this.dialogTitle = 'New Event';
-            this.event = new CalendarEventModel({start: data.date, end: data.date});
+            this.event = new CalendarEventModel({
+                start: data.date,
+                end  : data.date
+            });
         }
 
         this.eventForm = this.createEventForm();

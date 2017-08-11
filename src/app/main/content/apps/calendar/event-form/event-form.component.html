@@ -38,6 +38,8 @@
                        formControlName="primary"
                        placeholder="Primary color"
                        [(colorPicker)]="event.color.primary"
+                       cpWidth="290px"
+                       [cpPresetColors]="presetColors"
                        [style.background]="event.color.primary"
                        (colorPickerChange)="event.color.primary = $event; eventForm.patchValue({color:{primary:$event}})"/>
             </md-input-container>
@@ -47,6 +49,8 @@
                        formControlName="secondary"
                        placeholder="Secondary color"
                        [(colorPicker)]="event.color.secondary"
+                       cpWidth="290px"
+                       [cpPresetColors]="presetColors"
                        [style.background]="event.color.secondary"
                        (colorPickerChange)="event.color.secondary = $event; eventForm.patchValue({color:{secondary:$event}})"/>
             </md-input-container>
