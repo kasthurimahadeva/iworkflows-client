@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { FuseNavigationService } from '../navigation/navigation.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class FuseShortcutsComponent implements OnInit
     navigationItems: any[];
     filteredNavigationItems: any[];
     searching = false;
+    @ViewChild('searchInput') searchInputField;
 
     constructor(private fuseNavigationService: FuseNavigationService)
     {
@@ -83,5 +84,17 @@ export class FuseShortcutsComponent implements OnInit
         }
 
         this.shortcutItems.push(itemToToggle);
+    }
+
+    isInShortcuts(navigationItem)
+    {
+        return this.shortcutItems.find(item => {
+            return item.url === navigationItem.url;
+        });
+    }
+
+    onMenuOpen()
+    {
+        this.searchInputField.nativeElement.focus();
     }
 }

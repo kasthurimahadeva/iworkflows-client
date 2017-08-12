@@ -7,36 +7,38 @@
 
             <a md-icon-button mdTooltip="{{shortcutItem.title}}" [routerLink]="shortcutItem.url">
                 <md-icon *ngIf="shortcutItem.icon">{{shortcutItem.icon}}</md-icon>
-                <span *ngIf="!shortcutItem.icon" class="h2 secondary-text text-bold">{{shortcutItem.titleAbbr}}</span>
+                <span *ngIf="!shortcutItem.icon" class="h2 secondary-text text-bold">
+                    {{shortcutItem.title.substr(0, 1).toUpperCase()}}
+                </span>
             </a>
 
         </div>
 
-        <button md-icon-button [mdMenuTriggerFor]="addMenu">
-            <md-icon>add</md-icon>
+        <button md-icon-button [mdMenuTriggerFor]="addMenu" md-tooltip="Click to add/remove shortcut" (onMenuOpen)="onMenuOpen()">
+            <md-icon class="amber-600-fg">star</md-icon>
         </button>
 
     </div>
 
-    <md-menu #addMenu="mdMenu">
+    <md-menu #addMenu="mdMenu" class="w-240">
 
-        <md-input-container class="px-16" (click)="$event.stopPropagation()">
-            <input mdInput placeholder="Search for an app or a page" (input)="search($event)">
+        <md-input-container class="px-16 w-100-p" (click)="$event.stopPropagation()" floatPlaceholder="never">
+            <input #searchInput mdInput placeholder="Search for an app or a page" (input)="search($event)">
         </md-input-container>
 
         <md-divider></md-divider>
+        <md-nav-list *ngIf="!searching" style="max-height: 312px; overflow: auto" perfect-scrollbar>
 
-        <md-nav-list *ngIf="!searching" style="max-height: 312px; overflow: auto">
-            <h3 md-subheader>Current Shortcuts</h3>
             <md-list-item *ngFor="let shortcutItem of shortcutItems"
                           (click)="toggleShortcut($event, shortcutItem)">
                 <div class="w-100-p" fxLayout="row" fxLayoutAlign="start center">
                     <md-icon md-list-icon class="mr-8" *ngIf="shortcutItem.icon">{{shortcutItem.icon}}</md-icon>
                     <span class="h2 w-32 h-32 p-4 mr-8 secondary-text text-bold" fxLayout="row"
                           fxLayoutAlign="center center" *ngIf="!shortcutItem.icon">
-                        {{shortcutItem.titleAbbr}}
+                        {{shortcutItem.title.substr(0, 1).toUpperCase()}}
                     </span>
-                    <p md-line>{{shortcutItem.title}}</p>
+                    <p md-line fxFlex>{{shortcutItem.title}}</p>
+                    <md-icon class="ml-8">star</md-icon>
                 </div>
             </md-list-item>
             <md-list-item *ngIf="shortcutItems.length === 0">
@@ -46,20 +48,20 @@
             </md-list-item>
         </md-nav-list>
 
-        <md-nav-list *ngIf="searching" style="max-height: 312px; overflow: auto">
+        <md-nav-list *ngIf="searching" style="max-height: 312px; overflow: auto" perfect-scrollbar>
             <md-list-item *ngFor="let navigationItem of filteredNavigationItems"
                           (click)="toggleShortcut($event, navigationItem)">
                 <div class="w-100-p" fxLayout="row" fxLayoutAlign="start center">
                     <md-icon md-list-icon class="mr-8" *ngIf="navigationItem.icon">{{navigationItem.icon}}</md-icon>
                     <span class="h2 w-32 h-32 p-4 mr-8 secondary-text text-bold" fxLayout="row"
                           fxLayoutAlign="center center" *ngIf="!navigationItem.icon">
-                        {{navigationItem.titleAbbr}}
+                        {{navigationItem.title.substr(0, 1).toUpperCase()}}
                     </span>
-                    <p md-line>{{navigationItem.title}}</p>
+                    <p md-line fxFlex>{{navigationItem.title}}</p>
+                    <md-icon class="ml-8" *ngIf="isInShortcuts(navigationItem)">star</md-icon>
                 </div>
             </md-list-item>
         </md-nav-list>
-
     </md-menu>
 
 </div>

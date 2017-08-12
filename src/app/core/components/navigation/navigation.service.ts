@@ -44,10 +44,10 @@ export class FuseNavigationService
             if ( navItem.type === 'nav-item' )
             {
                 this.flatNavigation.push({
-                    title    : navItem.title,
-                    titleAbbr: navItem.title.substr(0, 1).toUpperCase(),
-                    icon     : navItem.icon || false,
-                    url      : navItem.url
+                    title: navItem.title,
+                    type : navItem.type,
+                    icon : navItem.icon || false,
+                    url  : navItem.url
                 });
 
                 continue;
