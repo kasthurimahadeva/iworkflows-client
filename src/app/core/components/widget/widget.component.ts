@@ -11,6 +11,7 @@ import { FuseWidgetToggleDirective } from './widget-toggle.directive';
 export class FuseWidgetComponent implements OnInit, AfterContentInit
 {
     @HostBinding('class.flipped') flipped = false;
+    @ContentChildren(FuseWidgetToggleDirective, {descendants: true}) toggleButtons: QueryList<FuseWidgetToggleDirective>;
 
     constructor(private el: ElementRef, private renderer: Renderer2)
     {
@@ -25,10 +26,8 @@ export class FuseWidgetComponent implements OnInit, AfterContentInit
     {
         setTimeout(() => {
 
-            const flipButtons = this.el.nativeElement.querySelectorAll('.fuse-widget-flip-button');
-
-            flipButtons.forEach(flipButton => {
-                this.renderer.listen(flipButton, 'click', () => {
+            this.toggleButtons.forEach(flipButton => {
+                this.renderer.listen(flipButton.el.nativeElement, 'click', () => {
                     this.toggle();
                 });
             });

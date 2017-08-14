@@ -60,8 +60,11 @@
             </md-input-container>
 
             <div class="tags mb-24" fxFlexFill fxLayout="row" fxLayoutWrap>
-                <div class="tag" *ngFor="let tagId of todo.tags"
-                     [ngStyle]="{background: tags | getById:tagId:'color'}">{{tags | getById:tagId:'title'}}
+                <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tagId of todo.tags">
+
+                    <div class="tag-color" [ngStyle]="{'background-color': tags | getById:tagId:'color'}"></div>
+
+                    <div class="tag-label">{{tags | getById:tagId:'title'}}</div>
                 </div>
             </div>
 

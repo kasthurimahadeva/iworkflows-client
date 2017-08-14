@@ -40,7 +40,7 @@ fuse-widget {
         transform: rotateY(180deg);
         backface-visibility: hidden;
 
-        .fuse-widget-flip-button {
+        [fuseWidgetToggle] {
             position: absolute;
             top: 0;
             right: 0;
