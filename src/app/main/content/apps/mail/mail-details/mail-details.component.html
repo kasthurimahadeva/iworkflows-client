@@ -10,11 +10,14 @@
         <div>
             <div class="subject" flex>{{mail.subject}}</div>
 
-            <div class="labels">
+            <div class="labels" fxLayout="row" fxLayoutWrap>
                 <div class="label" *ngFor="let labelId of mail.labels"
-                     [ngStyle]="{background: labels | getById:labelId:'color'}">{{labels | getById:labelId:'title'}}
+                     fxLayout="row" fxLayoutAlign="start center">
+                    <div class="label-color" [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
+                    <div class="label-title">{{labels | getById:labelId:'title'}}</div>
                 </div>
             </div>
+
         </div>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">

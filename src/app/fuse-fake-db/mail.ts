@@ -119,8 +119,8 @@ export class MailFakeDb
             'important'     : false,
             'hasAttachments': false,
             'labels'        : [
-                3,
-                4
+                1,
+                3
             ],
             'folder'        : 0
         },

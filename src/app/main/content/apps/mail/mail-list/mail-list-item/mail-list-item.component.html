@@ -22,14 +22,15 @@
         <div class="message text-truncate" *ngIf="mail?.message">
 
             {{mail.message | htmlToPlaintext | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
-
-            <div class="labels">
-                <div class="label" *ngFor="let labelId of mail.labels"
-                     [ngStyle]="{background: labels | getById:labelId:'color'}">{{labels | getById:labelId:'title'}}
-                </div>
-            </div>
         </div>
 
+        <div class="labels" fxLayout="row" fxLayoutWrap>
+            <div class="label" *ngFor="let labelId of mail.labels"
+                 fxLayout="row" fxLayoutAlign="start center">
+                <div class="label-color" [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
+                <div class="label-title">{{labels | getById:labelId:'title'}}</div>
+            </div>
+        </div>
     </div>
 
     <div fxLayout="column" fxLayoutAlign="space-between end">
