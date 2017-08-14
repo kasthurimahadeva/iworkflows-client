@@ -106,3 +106,44 @@
     margin-top: auto !important;
     margin-bottom: auto !important;
 }
+
+
+// Border helpers
+$border-style: 1px solid rgba(0, 0, 0, 0.12);
+
+.border,
+.b {
+    border: $border-style;
+}
+
+.border-top,
+.bt {
+    border-top: $border-style;
+}
+
+.border-right,
+.br {
+    border-right: $border-style;
+}
+
+.border-bottom,
+.bb {
+    border-bottom: $border-style;
+}
+
+.border-left,
+.bl {
+    border-left: $border-style;
+}
+
+.border-horizontal,
+.b-x {
+    border-left: $border-style;
+    border-right: $border-style;
+}
+
+.border-vertical,
+.by {
+    border-top: $border-style;
+    border-bottom: $border-style;
+}
