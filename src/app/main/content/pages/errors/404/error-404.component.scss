@@ -3,11 +3,12 @@
 :host {
 
     #error-404 {
+        width: 100%;
+        overflow: auto;
 
         .content {
             width: 90%;
             max-width: 512px !important;
-            margin-top: 128px;
 
             .error-code {
                 font-size: 112px;

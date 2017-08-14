@@ -1,5 +1,7 @@
 :host {
     position: relative;
+    display: flex;
+    flex: 0 1 auto;
     z-index: 4;
 
     &.below{

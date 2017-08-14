@@ -41,6 +41,8 @@
     }
 
     .sidenav-content {
+        overflow: auto;
+
         .contact-list, .chat-list {
 
             .mat-subheader {

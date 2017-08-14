@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+// import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -36,7 +36,7 @@ import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-do
         CommonModule,
         FormsModule,
         FusePipesModule,
-        PerfectScrollbarModule,
+        // PerfectScrollbarModule,
         ReactiveFormsModule,
         ColorPickerModule,
         NgxDnDModule,
@@ -52,7 +52,7 @@ import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-do
         FusePipesModule,
         FuseCountdownComponent,
         FuseHljsComponent,
-        PerfectScrollbarModule,
+        // PerfectScrollbarModule,
         ReactiveFormsModule,
         ColorPickerModule,
         NgxDnDModule,

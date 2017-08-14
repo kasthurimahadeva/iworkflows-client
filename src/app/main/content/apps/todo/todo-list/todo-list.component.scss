@@ -1,5 +1,11 @@
 :host {
+    display: flex;
+    flex: 1 0 auto;
     flex-direction: column;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    overflow-y: auto;
     background: #FAFAFA;
     position: relative;
     padding: 0;

@@ -69,14 +69,18 @@
                         <md-icon>folder</md-icon>
                     </button>
                     <md-menu #folderMenu="mdMenu">
-                        <button md-menu-item *ngFor="let folder of folders" (click)="setFolderOnSelectedMails(folder.id)">{{folder.title}}</button>
+                        <button md-menu-item *ngFor="let folder of folders"
+                                (click)="setFolderOnSelectedMails(folder.id)">{{folder.title}}
+                        </button>
                     </md-menu>
 
                     <button md-icon-button [mdMenuTriggerFor]="labelMenu" *ngIf="hasSelectedMails">
                         <md-icon>label</md-icon>
                     </button>
                     <md-menu #labelMenu="mdMenu">
-                        <button md-menu-item *ngFor="let label of labels" (click)="toggleLabelOnSelectedMails(label.id)">{{label.title}}</button>
+                        <button md-menu-item *ngFor="let label of labels"
+                                (click)="toggleLabelOnSelectedMails(label.id)">{{label.title}}
+                        </button>
                     </md-menu>
 
                 </div>
@@ -85,13 +89,9 @@
                 <!-- CONTENT -->
                 <div class="content">
 
-                    <div fxLayout="row" fxFill>
+                    <fuse-mail-list perfect-scrollbar></fuse-mail-list>
 
-                        <fuse-mail-list fxFlex perfect-scrollbar></fuse-mail-list>
-
-                        <fuse-mail-details fxFlex perfect-scrollbar></fuse-mail-details>
-
-                    </div>
+                    <fuse-mail-details perfect-scrollbar></fuse-mail-details>
 
                 </div>
                 <!-- / CONTENT -->

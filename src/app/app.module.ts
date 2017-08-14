@@ -11,16 +11,16 @@ import 'hammerjs';
 import { SharedModule } from './core/modules/shared.module';
 import { AppComponent } from './app.component';
 import { ProjectModule } from './main/content/apps/dashboards/project/project.module';
-import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+// import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
 import { PagesModule } from './main/content/pages/pages.module';
 import { UIModule } from './main/content/ui/ui.module';
 import { ComponentsModule } from './main/content/components/components.module';
 
-const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+/*const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
-};
+};*/
 
 const appRoutes: Routes = [
     {
@@ -67,7 +67,7 @@ const appRoutes: Routes = [
 
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 125}),
 
-        PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
+        // PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
 
         FuseMainModule,
 

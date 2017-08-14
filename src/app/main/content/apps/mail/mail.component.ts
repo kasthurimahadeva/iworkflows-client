@@ -58,12 +58,12 @@ export class MailComponent implements OnInit, OnDestroy
                 });
 
 
-        this.searchInput.valueChanges
+        /*this.searchInput.valueChanges
             .debounceTime(300)
             .distinctUntilChanged()
             .subscribe(searchText => {
                 this.mailService.onSearchTextChanged.next(searchText);
-            });
+            });*/
     }
 
     ngOnDestroy()

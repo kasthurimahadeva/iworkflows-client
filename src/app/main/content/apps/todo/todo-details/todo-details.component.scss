@@ -2,8 +2,12 @@
 
 :host {
     display: flex;
+    flex: 1 0 auto;
     flex-direction: column;
-    flex: 1;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    overflow-y: auto;
     background: #FFFFFF;
     padding: 24px;
 

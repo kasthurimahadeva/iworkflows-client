@@ -8,10 +8,11 @@ fuse-main {
         display: flex;
         flex: 1;
 
-        .mat-sidenav-content {
+        > .mat-sidenav-content {
             display: flex;
             flex: 1;
             overflow: hidden;
+            height: 100vh;
 
             #fuse-main-content {
                 display: flex;
@@ -22,6 +23,7 @@ fuse-main {
                 #wrapper {
                     display: flex;
                     flex: 1;
+                    overflow: hidden;
 
                     .content-wrapper {
                         display: flex;
@@ -38,6 +40,8 @@ fuse-main {
                             overflow-y: auto;
 
                             > *:not(router-outlet):not(.ps__scrollbar-x-rail):not(.ps__scrollbar-y-rail) {
+                                display: flex;
+                                flex: 1;
                                 width: 100%;
                                 min-width: 100%;
                             }

@@ -34,7 +34,14 @@
                         position: absolute;
                         bottom: -28px;
                         left: 16px;
+                        z-index: 999;
                     }
+                }
+
+                .content{
+                    display: flex;
+                    flex: 1;
+                    overflow: auto;
                 }
             }
         }
