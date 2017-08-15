@@ -31,13 +31,23 @@ export class FuseNavigation
                 'title': 'Mail',
                 'type' : 'nav-item',
                 'icon' : 'email',
-                'url'  : '/apps/mail'
+                'url'  : '/apps/mail',
+                'badge': {
+                    'title': 25,
+                    'bg'   : '#F44336',
+                    'fg'   : '#FFFFFF'
+                }
             },
             {
                 'title': 'Chat',
                 'type' : 'nav-item',
                 'icon' : 'chat',
-                'url'  : '/apps/chat'
+                'url'  : '/apps/chat',
+                'badge': {
+                    'title': 13,
+                    'bg'   : '#09d261',
+                    'fg'   : '#FFFFFF'
+                }
             },
             {
                 'title': 'File Manager',
@@ -55,7 +65,12 @@ export class FuseNavigation
                 'title': 'To-Do',
                 'type' : 'nav-item',
                 'icon' : 'check_box',
-                'url'  : '/apps/todo'
+                'url'  : '/apps/todo',
+                'badge': {
+                    'title': 3,
+                    'bg'   : '#FF6F00',
+                    'fg'   : '#FFFFFF'
+                }
             },
             {
                 'title': 'PAGES',

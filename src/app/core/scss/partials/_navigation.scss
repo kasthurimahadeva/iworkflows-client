@@ -14,7 +14,7 @@
     .nav-item {
 
         .nav-link {
-            text-decoration: none!important;
+            text-decoration: none !important;
             display: flex;
             align-items: center;
             height: 48px;
@@ -25,9 +25,20 @@
             user-select: none;
             color: currentColor;
 
-            > span {
+            > .nav-link-title {
                 flex: 1;
                 white-space: nowrap;
+            }
+
+            .nav-link-badge {
+                min-width: 20px;
+                height: 20px;
+                line-height: 20px;
+                padding: 0 7px;
+                font-size: 11px;
+                font-weight: 500;
+                border-radius: 20px;
+                transition: opacity 0.2s ease-in-out 0.1s;
             }
 
             &:hover {
@@ -47,6 +58,11 @@
 
                 &, .nav-link-icon {
                     color: mat-color($accent, default-contrast);
+                }
+
+                .nav-link-badge {
+                    background: #FFFFFF !important;
+                    color: rgba(0, 0, 0, 0.87) !important;
                 }
             }
 
