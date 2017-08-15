@@ -7,6 +7,7 @@ import { MailListItemComponent } from './mail-list/mail-list-item/mail-list-item
 import { MailListComponent } from './mail-list/mail-list.component';
 import { MailDetailsComponent } from './mail-details/mail-details.component';
 import { MailService } from './mail.service';
+import { MailComposeDialogComponent } from './dialogs/compose/compose.component';
 
 const routes: Routes = [
     {
@@ -58,20 +59,22 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [
+    declarations   : [
         MailComponent,
         MailListComponent,
         MailListItemComponent,
         MailDetailsComponent,
-        MainSidenavComponent
+        MainSidenavComponent,
+        MailComposeDialogComponent
     ],
-    imports     : [
+    imports        : [
         SharedModule,
         RouterModule.forChild(routes)
     ],
-    providers   : [
+    providers      : [
         MailService
-    ]
+    ],
+    entryComponents: [MailComposeDialogComponent]
 })
 export class FuseMailModule
 {

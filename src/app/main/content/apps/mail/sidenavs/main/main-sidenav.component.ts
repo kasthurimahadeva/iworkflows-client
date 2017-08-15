@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from '../../mail.service';
 import { Subscription } from 'rxjs/Subscription';
+import { MailComposeDialogComponent } from '../../dialogs/compose/compose.component';
+import { MdDialog } from '@angular/material';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector   : 'fuse-mail-main-sidenav',
@@ -14,13 +17,15 @@ export class MainSidenavComponent implements OnInit, OnDestroy
     labels: any[];
     accounts: object;
     selectedAccount: string;
+    dialogRef: any;
 
     onFoldersChanged: Subscription;
     onFiltersChanged: Subscription;
     onLabelsChanged: Subscription;
 
     constructor(
-        private mailService: MailService
+        private mailService: MailService,
+        public dialog: MdDialog
     )
     {
         // Data
@@ -51,6 +56,37 @@ export class MainSidenavComponent implements OnInit, OnDestroy
                 .subscribe(labels => {
                     this.labels = labels;
                 });
+    }
+
+    composeDialog()
+    {
+        this.dialogRef = this.dialog.open(MailComposeDialogComponent, {
+            panelClass: 'mail-compose-dialog'
+        });
+        this.dialogRef.afterClosed()
+            .subscribe(response => {
+                if ( !response )
+                {
+                    return;
+                }
+                const actionType: string = response[0];
+                const formData: FormGroup = response[1];
+                switch ( actionType )
+                {
+                    /**
+                     * Send
+                     */
+                    case 'send':
+                        console.log('new Mail', formData.getRawValue());
+                        break;
+                    /**
+                     * Delete
+                     */
+                    case 'delete':
+                        console.log('delete Mail');
+                        break;
+                }
+            });
     }
 
     ngOnDestroy()
