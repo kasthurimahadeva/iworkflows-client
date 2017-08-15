@@ -1,8 +1,9 @@
-import { Component, HostBinding, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMatchMedia } from '../../core/services/match-media.service';
 import { FuseNavbarService } from './navbar.service';
+import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
     selector     : 'fuse-navbar',
@@ -13,37 +14,68 @@ import { FuseNavbarService } from './navbar.service';
 export class FuseNavbarComponent implements OnInit, OnDestroy
 {
     @HostBinding('class.close') isClosed: boolean;
-    @HostBinding('class.open') isOpened: boolean = !this.isClosed;
-
     @HostBinding('class.folded') isFoldedActive: boolean;
     @HostBinding('class.folded-open') isFoldedOpen: boolean;
+    @HostBinding('class.initialized') initialized: boolean;
+    @Input('folded') foldedByDefault = false;
 
     matchMediaWatcher: Subscription;
 
     constructor(
         private bodyEl: AppComponent,
         private fuseMatchMedia: FuseMatchMedia,
-        private navBarService: FuseNavbarService
+        private navBarService: FuseNavbarService,
+        public media: ObservableMedia
     )
     {
         navBarService.setNavBar(this);
-        this.isClosed = false;
-        this.isFoldedActive = false;
-        this.isFoldedOpen = false;
-        this.updateCssClasses();
 
         this.matchMediaWatcher =
             this.fuseMatchMedia.onMediaChange
                 .subscribe((mediaStep) => {
-                    if ( mediaStep === 'xs' )
-                    {
-                        this.closeBar();
-                    }
-                    else
-                    {
-                        this.openBar();
-                    }
+                    setTimeout(() => {
+
+                        if ( mediaStep === 'xs' )
+                        {
+                            this.closeBar();
+                            this.deActivateFolded();
+                        }
+                        else
+                        {
+                            this.openBar();
+                        }
+                    });
                 });
+    }
+
+    ngOnInit()
+    {
+        this.isClosed = false;
+        this.isFoldedActive = this.foldedByDefault;
+        this.isFoldedOpen = false;
+        this.initialized = false;
+        this.updateCssClasses();
+
+        setTimeout(() => {
+            this.initialized = true;
+        });
+
+        if ( this.media.isActive('xs') )
+        {
+            this.closeBar();
+            this.deActivateFolded();
+        }
+        else
+        {
+            if ( !this.foldedByDefault )
+            {
+                this.deActivateFolded();
+            }
+            else
+            {
+                this.activateFolded();
+            }
+        }
     }
 
     openBar()
@@ -74,14 +106,25 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
     {
         if ( !this.isFoldedActive )
         {
-            this.isFoldedActive = true;
-            this.bodyEl.addClass('fuse-nav-bar-folded');
+            this.activateFolded();
         }
         else
         {
-            this.isFoldedActive = false;
-            this.bodyEl.removeClass('fuse-nav-bar-folded');
+            this.deActivateFolded();
         }
+    }
+
+    activateFolded()
+    {
+        this.isFoldedActive = true;
+        this.bodyEl.addClass('fuse-nav-bar-folded');
+        this.isFoldedOpen = false;
+    }
+
+    deActivateFolded()
+    {
+        this.isFoldedActive = false;
+        this.bodyEl.removeClass('fuse-nav-bar-folded');
         this.isFoldedOpen = false;
     }
 
@@ -109,11 +152,6 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
             this.bodyEl.addClass('fuse-nav-bar-closed');
             this.bodyEl.removeClass('fuse-nav-bar-opened');
         }
-    }
-
-    ngOnInit()
-    {
-
     }
 
     ngOnDestroy()

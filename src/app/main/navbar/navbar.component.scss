@@ -5,7 +5,14 @@ body {
     &.fuse-nav-bar-folded {
 
         .content-wrapper {
-            padding-left: 64px !important;
+
+            &:last-child {
+                padding-left: 64px !important;
+            }
+
+            &:first-child {
+                padding-right: 64px !important;
+            }
         }
     }
 }
@@ -27,6 +34,13 @@ fuse-navbar {
     &.folded {
         position: absolute;
 
+        &.left-navbar {
+            left: 0;
+        }
+        &.right-navbar {
+            right: 0;
+        }
+
         &:not(.folded-open) {
             width: 64px;
             min-width: 64px;
@@ -42,20 +56,35 @@ fuse-navbar {
         }
     }
 
-    &.open {
-        transform: translateX(0) !important;
-    }
-
     &.close {
-        transform: translateX(-100%) !important;
+        &.left-navbar {
+            transform: translateX(-100%) !important;
+        }
+        &.right-navbar {
+            transform: translateX(100%) !important;
+        }
+        box-shadow: none;
     }
 
     @include media-breakpoint('xs') {
         position: absolute;
         top: 0;
-        left: 0;
         bottom: 0;
-        transform: translateX(-100%);
+        &.left-navbar {
+            left: 0;
+        }
+        &.right-navbar {
+            right: 0;
+        }
+
+        &:not(.initialized) {
+            &.left-navbar {
+                transform: translateX(-100%);
+            }
+            &.right-navbar {
+                transform: translateX(100%);
+            }
+        }
     }
 
     .navbar-header {

@@ -10,18 +10,20 @@ export class FuseNavbarToggleDirective
     @Input() fuseNavbar: string;
     navbar: FuseNavbarComponent;
 
-    constructor(navbar: FuseNavbarService)
+    constructor(private navbarService: FuseNavbarService)
     {
-        this.navbar = navbar.getNavBar();
     }
 
     @HostListener('click')
     onClick()
     {
+        this.navbar = this.navbarService.getNavBar();
+
         if ( !this.navbar[this.fuseNavbar] )
         {
             return;
         }
+
         this.navbar[this.fuseNavbar]();
     }
 }
