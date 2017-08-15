@@ -23,8 +23,6 @@ import { FuseConfirmDialogComponent } from '../../../../core/components/confirm-
 })
 export class CalendarComponent implements OnInit
 {
-    @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
-
     view: string;
 
     viewDate: Date;
