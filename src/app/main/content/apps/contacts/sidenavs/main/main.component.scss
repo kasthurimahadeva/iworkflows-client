@@ -1,3 +1,5 @@
+@import "src/app/core/scss/fuse";
+
 :host {
     display: flex;
     flex-direction: column;
@@ -7,11 +9,21 @@
     .sidenav-content {
         display: flex;
         flex-direction: column;
+        padding: 0;
+
+        @include media-breakpoint(gt-md) {
+            padding: 24px 4px 24px 24px;
+        }
 
         .card {
             display: flex;
             flex-direction: column;
             flex: 0 1 auto;
+            padding: 0;
+
+            @include media-breakpoint(gt-md) {
+                @include mat-elevation(4);
+            }
 
             > .header {
                 flex: 0 1 auto;
@@ -22,5 +34,6 @@
                 flex: 0 1 auto;
             }
         }
+
     }
 }
