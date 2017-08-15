@@ -1,6 +1,6 @@
 <a class="nav-link" md-ripple (click)="toggleOpen($event)">
     <md-icon class="nav-link-icon" *ngIf="item.icon">{{item.icon}}</md-icon>
-    <span>{{item.title}}</span>
+    <span class="nav-link-title">{{item.title}}</span>
     <md-icon class="collapse-arrow">keyboard_arrow_right</md-icon>
 </a>
 <div class="children" [@slideInOut]="isOpen">

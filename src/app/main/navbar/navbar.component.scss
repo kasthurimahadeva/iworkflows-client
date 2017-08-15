@@ -13,6 +13,12 @@ body {
             &:first-child {
                 padding-right: 64px !important;
             }
+
+            &:first-child:last-child {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
         }
     }
 }
