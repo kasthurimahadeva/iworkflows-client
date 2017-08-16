@@ -16,10 +16,12 @@ export class TodoComponent implements OnInit, OnDestroy
     filters: any[];
     tags: any[];
     searchInput: FormControl;
+    currentTodo: Todo;
 
     onSelectedTodosChanged: Subscription;
     onFiltersChanged: Subscription;
     onTagsChanged: Subscription;
+    onCurrentTodoChanged: Subscription;
 
     constructor(private todoService: TodoService)
     {
@@ -57,6 +59,24 @@ export class TodoComponent implements OnInit, OnDestroy
             .subscribe(searchText => {
                 this.todoService.onSearchTextChanged.next(searchText);
             });
+
+        this.onCurrentTodoChanged =
+            this.todoService.onCurrentTodoChanged
+                .subscribe(currentTodo => {
+                    if ( !currentTodo )
+                    {
+                        this.currentTodo = null;
+                    }
+                    else
+                    {
+                        this.currentTodo = currentTodo;
+                    }
+                });
+    }
+
+    deSelectCurrentTodo()
+    {
+        this.todoService.onCurrentTodoChanged.next(null);
     }
 
     ngOnDestroy()
@@ -64,6 +84,7 @@ export class TodoComponent implements OnInit, OnDestroy
         this.onSelectedTodosChanged.unsubscribe();
         this.onFiltersChanged.unsubscribe();
         this.onTagsChanged.unsubscribe();
+        this.onCurrentTodoChanged.unsubscribe();
     }
 
     toggleSelectAll()

@@ -19,7 +19,7 @@
             <!-- CONTENT HEADER -->
             <div class="header" fxLayout="row" fxLayoutAlign="start center">
 
-                <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                <div class="search-wrapper md-white-bg" fxFlex fxLayout="row" fxLayoutAlign="start center">
 
                     <button md-button class="mat-icon-button sidenav-toggle"
                             fuseMdSidenavToggler="carded-left-sidenav"
@@ -37,48 +37,54 @@
             <!-- / CONTENT HEADER -->
 
             <!-- CONTENT CARD -->
-            <div class="content-card">
+            <div class="content-card md-white-bg" [ngClass]="{'current-todo-selected':currentTodo}">
 
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar px-24 py-8">
+                    <div *ngIf="!currentTodo">
+                        <md-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedTodos"
+                                     [indeterminate]="isIndeterminate"></md-checkbox>
 
-                    <md-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedTodos"
-                                 [indeterminate]="isIndeterminate"></md-checkbox>
-
-                    <button md-icon-button [mdMenuTriggerFor]="selectMenu">
-                        <md-icon>arrow_drop_down</md-icon>
-                    </button>
-                    <md-menu #selectMenu="mdMenu">
-                        <button md-menu-item (click)="selectTodos()">All</button>
-                        <button md-menu-item (click)="deselectTodos()">None</button>
-                        <button md-menu-item (click)="selectTodos('read', true)">Read</button>
-                        <button md-menu-item (click)="selectTodos('read', false)">Unread</button>
-                        <button md-menu-item (click)="selectTodos('starred', true)">Starred</button>
-                        <button md-menu-item (click)="selectTodos('starred', false)">Unstarred</button>
-                        <button md-menu-item (click)="selectTodos('important', true)">Important</button>
-                        <button md-menu-item (click)="selectTodos('important', false)">Unimportant</button>
-                    </md-menu>
-
-                    <div class="toolbar-separator" *ngIf="hasSelectedTodos"></div>
-
-                    <button md-icon-button [mdMenuTriggerFor]="labelMenu" *ngIf="hasSelectedTodos">
-                        <md-icon>label</md-icon>
-                    </button>
-                    <md-menu #labelMenu="mdMenu">
-                        <button md-menu-item *ngFor="let tag of tags" (click)="toggleTagOnSelectedTodos(tag.id)">
-                            {{tag.title}}
+                        <button md-icon-button [mdMenuTriggerFor]="selectMenu">
+                            <md-icon>arrow_drop_down</md-icon>
                         </button>
-                    </md-menu>
+                        <md-menu #selectMenu="mdMenu">
+                            <button md-menu-item (click)="selectTodos()">All</button>
+                            <button md-menu-item (click)="deselectTodos()">None</button>
+                            <button md-menu-item (click)="selectTodos('read', true)">Read</button>
+                            <button md-menu-item (click)="selectTodos('read', false)">Unread</button>
+                            <button md-menu-item (click)="selectTodos('starred', true)">Starred</button>
+                            <button md-menu-item (click)="selectTodos('starred', false)">Unstarred</button>
+                            <button md-menu-item (click)="selectTodos('important', true)">Important</button>
+                            <button md-menu-item (click)="selectTodos('important', false)">Unimportant</button>
+                        </md-menu>
 
+                        <div class="toolbar-separator" *ngIf="hasSelectedTodos"></div>
+
+                        <button md-icon-button [mdMenuTriggerFor]="labelMenu" *ngIf="hasSelectedTodos">
+                            <md-icon>label</md-icon>
+                        </button>
+                        <md-menu #labelMenu="mdMenu">
+                            <button md-menu-item *ngFor="let tag of tags" (click)="toggleTagOnSelectedTodos(tag.id)">
+                                {{tag.title}}
+                            </button>
+                        </md-menu>
+                    </div>
+
+                    <div *ngIf="currentTodo">
+                        <button md-icon-button (click)="deSelectCurrentTodo()">
+                            <md-icon>arrow_back</md-icon>
+                        </button>
+                    </div>
                 </div>
                 <!-- / CONTENT TOOLBAR -->
 
                 <!-- CONTENT -->
-                <div class="content">
+                <div class="content" fxFlexAlign="row">
 
-                    <fuse-todo-list perfect-scrollbar></fuse-todo-list>
+                    <fuse-todo-list perfect-scrollbar fxFlex></fuse-todo-list>
 
-                    <fuse-todo-details perfect-scrollbar></fuse-todo-details>
+                    <fuse-todo-details perfect-scrollbar fxFlex></fuse-todo-details>
 
                 </div>
                 <!-- / CONTENT -->

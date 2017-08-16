@@ -24,7 +24,6 @@
                     height: 56px;
                     line-height: 56px;
                     padding: 18px;
-                    background: #FFFFFF;
 
                     input {
                         height: 56px;
@@ -32,6 +31,35 @@
                         color: rgba(0, 0, 0, 0.54);
                         border: none;
                         outline: none;
+                    }
+                }
+            }
+        }
+
+        .content-card {
+
+            @include media-breakpoint(xs) {
+
+                fuse-mail-list,
+                fuse-mail-details {
+                    flex: 1 0 100%;
+                }
+
+                fuse-mail-details {
+                    display: none !important;
+                }
+
+                &.current-mail-selected {
+
+                    .content {
+
+                        fuse-mail-list {
+                            display: none !important;
+                        }
+
+                        fuse-mail-details {
+                            display: flex !important;
+                        }
                     }
                 }
             }

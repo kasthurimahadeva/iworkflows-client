@@ -14,7 +14,6 @@
                     margin: 0;
                     width: 56px;
                     height: 56px;
-                    background: #FFF;
                     border-radius: 0;
                     border-right: 1px solid rgba(0, 0, 0, .12);
                 }
@@ -24,7 +23,6 @@
                     height: 56px;
                     line-height: 56px;
                     padding: 18px;
-                    background: #FFFFFF;
 
                     input {
                         height: 56px;
@@ -32,6 +30,34 @@
                         color: rgba(0, 0, 0, 0.54);
                         border: none;
                         outline: none;
+                    }
+                }
+            }
+        }
+
+        .content-card{
+            @include media-breakpoint-down(lg) {
+
+                fuse-todo-list,
+                fuse-todo-details {
+                    flex: 1 0 100%;
+                }
+
+                fuse-todo-details {
+                    display: none !important;
+                }
+
+                &.current-todo-selected {
+
+                    .content {
+
+                        fuse-todo-list {
+                            display: none !important;
+                        }
+
+                        fuse-todo-details {
+                            display: flex !important;
+                        }
                     }
                 }
             }

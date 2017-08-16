@@ -18,9 +18,11 @@ export class TodoListComponent implements OnInit, OnDestroy
     onTodosChanged: Subscription;
     onCurrentTodoChanged: Subscription;
 
-    constructor(private route: ActivatedRoute,
-                private todoService: TodoService,
-                private location: Location)
+    constructor(
+        private route: ActivatedRoute,
+        private todoService: TodoService,
+        private location: Location
+    )
     {
     }
 
@@ -53,6 +55,10 @@ export class TodoListComponent implements OnInit, OnDestroy
                         else if ( filterHandle )
                         {
                             this.location.go('apps/todo/filter/' + filterHandle);
+                        }
+                        else
+                        {
+                            this.location.go('apps/todo/all');
                         }
                     }
                     else

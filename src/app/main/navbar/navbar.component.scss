@@ -72,7 +72,7 @@ fuse-navbar {
         box-shadow: none;
     }
 
-    @include media-breakpoint('xs') {
+    @include media-breakpoint('lt-md') {
         position: absolute;
         top: 0;
         bottom: 0;

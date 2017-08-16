@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from './mail.service';
 import { Subscription } from 'rxjs/Subscription';
 import { FormControl } from '@angular/forms';
+import { Mail } from './mail.model';
 
 @Component({
     selector   : 'fuse-mail',
@@ -16,11 +17,13 @@ export class MailComponent implements OnInit, OnDestroy
     filters: any[];
     labels: any[];
     searchInput: FormControl;
+    currentMail: Mail;
 
     onSelectedMailsChanged: Subscription;
     onFoldersChanged: Subscription;
     onFiltersChanged: Subscription;
     onLabelsChanged: Subscription;
+    onCurrentMailChanged: Subscription;
 
     constructor(private mailService: MailService)
     {
@@ -57,6 +60,18 @@ export class MailComponent implements OnInit, OnDestroy
                     this.labels = this.mailService.labels;
                 });
 
+        this.onCurrentMailChanged =
+            this.mailService.onCurrentMailChanged
+                .subscribe(currentMail => {
+                    if ( !currentMail )
+                    {
+                        this.currentMail = null;
+                    }
+                    else
+                    {
+                        this.currentMail = currentMail;
+                    }
+                });
 
         /*this.searchInput.valueChanges
             .debounceTime(300)
@@ -72,6 +87,8 @@ export class MailComponent implements OnInit, OnDestroy
         this.onFoldersChanged.unsubscribe();
         this.onFiltersChanged.unsubscribe();
         this.onLabelsChanged.unsubscribe();
+        this.onCurrentMailChanged.unsubscribe();
+
     }
 
     toggleSelectAll()
@@ -87,6 +104,11 @@ export class MailComponent implements OnInit, OnDestroy
     deselectMails()
     {
         this.mailService.deselectMails();
+    }
+
+    deSelectCurrentMail()
+    {
+        this.mailService.onCurrentMailChanged.next(null);
     }
 
     toggleLabelOnSelectedMails(labelId)

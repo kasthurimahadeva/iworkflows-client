@@ -49,7 +49,7 @@ $mat-fusedark: (
 
 // Palettes
 $primary: mat-palette($mat-fusedark);
-$accent: mat-palette($mat-blue, 600, 400, 700);
+$accent: mat-palette($mat-light-blue, 600, 400, 700);
 $warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).

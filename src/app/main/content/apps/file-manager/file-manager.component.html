@@ -45,8 +45,8 @@
                 <!-- ADD FILE BUTTON -->
                 <div class="file-uploader">
                     <input hidden type="file" #fileInput/>
-                    <button type="submit" md-fab
-                            class="add-file-button mat-accent"
+                    <button md-fab
+                            class="add-file-button mat-warn"
                             (click)="fileInput.click()"
                             aria-label="Add file">
                         <md-icon>add</md-icon>
@@ -58,7 +58,7 @@
             <!-- / HEADER -->
 
             <!-- CONTENT -->
-            <div class="content" perfect-scrollbar>
+            <div class="content md-white-bg" perfect-scrollbar>
                 <fuse-file-list></fuse-file-list>
             </div>
             <!-- / CONTENT -->

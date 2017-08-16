@@ -2,9 +2,9 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
 import { CalendarEvent } from 'angular-calendar';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import 'rxjs/Rx';
 import { CalendarEventModel } from '../event.model';
 import { MatColors } from '../../../../../core/matColors';
+import 'rxjs/Rx';
 
 @Component({
     selector     : 'fuse-calendar-event-form-dialog',

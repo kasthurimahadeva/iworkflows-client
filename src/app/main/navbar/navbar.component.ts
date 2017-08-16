@@ -35,7 +35,7 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
                 .subscribe((mediaStep) => {
                     setTimeout(() => {
 
-                        if ( mediaStep === 'xs' )
+                        if ( this.media.isActive('lt-md') )
                         {
                             this.closeBar();
                             this.deActivateFolded();
@@ -60,7 +60,7 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
             this.initialized = true;
         });
 
-        if ( this.media.isActive('xs') )
+        if ( this.media.isActive('lt-md') )
         {
             this.closeBar();
             this.deActivateFolded();

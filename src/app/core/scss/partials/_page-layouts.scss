@@ -79,7 +79,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     flex-direction: column;
                     flex: 1;
                     overflow: hidden;
-                    background: mat-color($background, background);
                     @include mat-elevation(7);
 
                     .toolbar {
@@ -96,7 +95,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         display: flex;
                         flex: 1;
                         overflow: auto;
-                        background: mat-color($background, background);
                     }
                 }
             }
@@ -186,7 +184,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                             flex-direction: column;
                             flex: 1;
                             overflow: hidden;
-                            background: mat-color($background, background);
                             @include mat-elevation(7);
 
                             .toolbar {
@@ -209,7 +206,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                             .content {
                                 display: flex;
                                 flex: 1;
-                                background: mat-color($background, background);
                                 overflow: auto;
                             }
                         }
@@ -402,7 +398,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         @include mat-elevation(7);
 
                         .content {
-                            background: mat-color($background, background);
                         }
                     }
                 }

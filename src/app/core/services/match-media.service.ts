@@ -14,23 +14,6 @@ export class FuseMatchMedia
     {
         this.activeMediaQuery = '';
 
-        /*this.onMediaChange = Observable.create((observer: Observer<string>) =>
-        {
-            this.observableMedia.subscribe((change: MediaChange) =>
-            {
-                if ( this.activeMediaQuery !== change.mqAlias )
-                {
-                    this.activeMediaQuery = change.mqAlias;
-                    observer.next(this.activeMediaQuery);
-                }
-            });
-        });*/
-
-        /*this.onMediaChange = Observable.create((observer: Observer<string>) =>
-        {
-
-        });*/
-
         this.observableMedia.subscribe((change: MediaChange) =>
         {
             if ( this.activeMediaQuery !== change.mqAlias )
