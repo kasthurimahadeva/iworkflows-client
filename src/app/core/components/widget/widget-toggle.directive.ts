@@ -1,4 +1,4 @@
-import { AfterViewInit, ContentChild, Directive, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
     selector: '[fuseWidgetToggle]'

@@ -391,7 +391,7 @@ export class TodoService implements Resolve<any>
 
     /**
      * Update the todo
-     * @param todo
+     * @param todos
      * @returns {Promise<any>}
      */
     updateTodos(todos)

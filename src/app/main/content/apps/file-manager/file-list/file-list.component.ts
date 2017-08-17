@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { FileManagerService } from '../file-manager.service';
 import { DataSource } from '@angular/cdk';
 import { Observable } from 'rxjs/Observable';

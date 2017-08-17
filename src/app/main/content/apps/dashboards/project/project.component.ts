@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FuseLayoutService } from '../../../../../core/services/layout.service';
 import { ProjectsDashboardService } from './projects.service';
 import * as shape from 'd3-shape';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';

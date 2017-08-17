@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { style, animate, sequence, AnimationBuilder, AnimationPlayer } from '@angular/animations';
+import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseLayoutService } from '../../services/layout.service';
 

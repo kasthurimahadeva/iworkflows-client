@@ -1,5 +1,5 @@
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
-import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { EventFormDialogComponent } from './event-form/event-form.component';
@@ -41,8 +41,10 @@ export class CalendarComponent implements OnInit
 
     selectedDay: any;
 
-    constructor(public dialog: MdDialog,
-                public calendarService: CalendarService)
+    constructor(
+        public dialog: MdDialog,
+        public calendarService: CalendarService
+    )
     {
         this.view = 'month';
         this.viewDate = new Date();
@@ -123,7 +125,6 @@ export class CalendarComponent implements OnInit
         }
 
     }
-
 
     /**
      * Day clicked

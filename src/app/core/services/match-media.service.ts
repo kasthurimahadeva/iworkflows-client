@@ -1,6 +1,4 @@
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()

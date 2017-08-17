@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FuseNavigationService } from '../navigation/navigation.service';
 
 @Component({

@@ -78,11 +78,7 @@ export class FuseUtils
 
     public static searchInSting(value, searchText)
     {
-        if ( value.toLowerCase().includes(searchText) )
-        {
-            return true;
-        }
-        return false;
+        return value.toLowerCase().includes(searchText);
     }
 
     public static genearateGUID()

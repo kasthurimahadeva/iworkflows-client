@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } f
 import { Todo } from '../../todo.model';
 import { TodoService } from '../../todo.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, ActivatedRouteSnapshot, Route, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector     : 'fuse-todo-list-item',
@@ -21,8 +21,10 @@ export class TodoListItemComponent implements OnInit, OnDestroy
     onSelectedTodosChanged: Subscription;
     onTagsChanged: Subscription;
 
-    constructor(private todoService: TodoService,
-                private route: ActivatedRoute)
+    constructor(
+        private todoService: TodoService,
+        private route: ActivatedRoute
+    )
     {
         // Disable move if path is not /all
         if ( route.snapshot.url[0].path !== 'all' )
