@@ -218,8 +218,8 @@
         .timeline-sidebar {
             padding-left: 32px;
 
-            @include media-breakpoint('sm') {
-                padding: 8px
+            @include media-breakpoint-down('sm') {
+                padding: 0;
             }
 
             .latest-activity {
