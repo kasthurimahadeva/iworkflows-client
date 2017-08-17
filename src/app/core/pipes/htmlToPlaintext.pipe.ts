@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({name: 'htmlToPlaintext'})
 export class HtmlToPlaintextPipe implements PipeTransform

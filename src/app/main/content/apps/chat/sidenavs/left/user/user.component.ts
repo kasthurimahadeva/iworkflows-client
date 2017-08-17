@@ -26,13 +26,13 @@ export class UserSidenavComponent implements OnInit, OnDestroy
     ngOnInit()
     {
         this.onFormChange = this.userForm.valueChanges
-            .debounceTime(500)
-            .distinctUntilChanged()
-            .subscribe(data => {
-                this.user.mood = data.mood;
-                this.user.status = data.status;
-                this.chatService.updateUserData(this.user);
-            });
+                                .debounceTime(500)
+                                .distinctUntilChanged()
+                                .subscribe(data => {
+                                    this.user.mood = data.mood;
+                                    this.user.status = data.status;
+                                    this.chatService.updateUserData(this.user);
+                                });
     }
 
     changeLeftSidenavView(view)

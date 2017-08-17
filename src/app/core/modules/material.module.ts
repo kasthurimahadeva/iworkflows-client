@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
     MdAutocompleteModule,
     MdButtonModule,
@@ -30,7 +30,7 @@ import {
     MdSnackBarModule,
     MdSortModule,
     MdTableModule,
-    MdTabsModule,
+    MdTabsModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk';
 
@@ -102,7 +102,7 @@ import { CdkTableModule } from '@angular/cdk';
         MdToolbarModule,
         MdTooltipModule,
         CdkTableModule
-    ],
+    ]
 })
 export class MaterialModule
 {

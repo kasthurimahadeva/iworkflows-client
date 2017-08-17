@@ -28,7 +28,12 @@ export class FuseFormsComponent implements OnInit
     ngOnInit()
     {
         this.form = this.formBuilder.group({
-            company   : [{value: 'Google', disabled: true}, Validators.required],
+            company   : [
+                {
+                    value   : 'Google',
+                    disabled: true
+                }, Validators.required
+            ],
             firstName : ['', Validators.required],
             lastName  : ['', Validators.required],
             address   : ['', Validators.required],

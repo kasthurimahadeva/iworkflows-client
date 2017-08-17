@@ -12,8 +12,7 @@ export class FuseMatchMedia
     {
         this.activeMediaQuery = '';
 
-        this.observableMedia.subscribe((change: MediaChange) =>
-        {
+        this.observableMedia.subscribe((change: MediaChange) => {
             if ( this.activeMediaQuery !== change.mqAlias )
             {
                 this.activeMediaQuery = change.mqAlias;

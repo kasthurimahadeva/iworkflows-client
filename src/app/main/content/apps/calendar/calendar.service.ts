@@ -45,7 +45,10 @@ export class CalendarService implements Resolve<any>
     updateEvents(events)
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/calendar/events', {id: 'events', data: [...events]})
+            this.http.post('api/calendar/events', {
+                id  : 'events',
+                data: [...events]
+            })
                 .subscribe(response => {
                     this.getEvents();
                 }, reject);

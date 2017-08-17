@@ -46,17 +46,13 @@ import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 
-
 /** ALL Firefox browsers require the following to support `@angular/animation`. **/
 import 'web-animations-js';  // Run `npm install --save web-animations-js`.
-
-
 
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
-
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
@@ -75,6 +71,7 @@ import 'intl/locale-data/jsonp/en';
 /**
  * Fix for ngx-chart to work on ie11
  */
-if (typeof SVGElement.prototype.contains === 'undefined') {
+if ( typeof SVGElement.prototype.contains === 'undefined' )
+{
     SVGElement.prototype.contains = HTMLDivElement.prototype.contains;
 }

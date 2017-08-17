@@ -79,7 +79,6 @@ export class ChatViewComponent implements OnInit, AfterViewInit
 
     }
 
-
     reply(event)
     {
         // Message

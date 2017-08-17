@@ -4,9 +4,9 @@ import { FuseLayoutService } from '../../../../../core/services/layout.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-lock',
+    selector: 'fuse-lock',
     templateUrl: './lock.component.html',
-    styleUrls  : ['./lock.component.scss']
+    styleUrls: ['./lock.component.scss']
 })
 export class LockComponent implements OnInit
 {
@@ -33,7 +33,12 @@ export class LockComponent implements OnInit
     ngOnInit()
     {
         this.lockForm = this.formBuilder.group({
-            username: [{value: 'Katherine', disabled: true}, Validators.required],
+            username: [
+                {
+                    value   : 'Katherine',
+                    disabled: true
+                }, Validators.required
+            ],
             password: ['', Validators.required]
         });
 

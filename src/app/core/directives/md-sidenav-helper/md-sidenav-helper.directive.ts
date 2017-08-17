@@ -44,8 +44,7 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
             this.mdSidenav.close();
         }
 
-        this.matchMediaSubscription = this.fuseMatchMedia.onMediaChange.subscribe(() =>
-        {
+        this.matchMediaSubscription = this.fuseMatchMedia.onMediaChange.subscribe(() => {
             if ( this.observableMedia.isActive(this.mdIsLockedOpenBreakpoint) )
             {
                 this.isLockedOpen = true;
@@ -64,8 +63,7 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
 
     ngAfterViewInit()
     {
-        setTimeout(() =>
-        {
+        setTimeout(() => {
             this.stopTransition = false;
         }, 0);
     }

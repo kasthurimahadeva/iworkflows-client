@@ -6,10 +6,10 @@
 export const environment = {
     production: false,
     firebase  : {
-        apiKey           : 'AIzaSyDYFfhaC5QaKPgPhh8YqohjhfUpcYlg33c',
+        apiKey     : 'AIzaSyDYFfhaC5QaKPgPhh8YqohjhfUpcYlg33c',
         // authDomain       : '<your-project-authdomain>',
-        databaseURL      : 'https://fuse2-demo.firebaseio.com/',
-        projectId        : 'fuse2-demo',
+        databaseURL: 'https://fuse2-demo.firebaseio.com/',
+        projectId  : 'fuse2-demo'
         // storageBucket    : '<your-storage-bucket>',
         // messagingSenderId: '<your-messaging-sender-id>'
     }

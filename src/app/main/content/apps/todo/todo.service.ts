@@ -29,8 +29,10 @@ export class TodoService implements Resolve<any>
     onSearchTextChanged: BehaviorSubject<any> = new BehaviorSubject('');
     onNewTodoClicked: Subject<any> = new Subject();
 
-    constructor(private http: Http,
-                private location: Location)
+    constructor(
+        private http: Http,
+        private location: Location
+    )
     {
         this.selectedTodos = [];
     }
@@ -80,7 +82,6 @@ export class TodoService implements Resolve<any>
             );
         });
     }
-
 
     /**
      * Get all filters
@@ -397,18 +398,18 @@ export class TodoService implements Resolve<any>
     updateTodos(todos)
     {
 
-      /*  return new Promise((resolve, reject) => {
+        /*  return new Promise((resolve, reject) => {
 
-            this.http.post('api/todo-todos/', {...todos})
+              this.http.post('api/todo-todos/', {...todos})
 
-                .subscribe(response => {
+                  .subscribe(response => {
 
-                    this.getTodos().then(_todos => {
-                        console.log(response);
-                        resolve(_todos);
-                    }, reject);
-                });
-        });*/
+                      this.getTodos().then(_todos => {
+                          console.log(response);
+                          resolve(_todos);
+                      }, reject);
+                  });
+          });*/
 
     }
 }

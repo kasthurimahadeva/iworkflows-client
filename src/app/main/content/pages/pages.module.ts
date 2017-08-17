@@ -17,7 +17,7 @@ import { ProfileModule } from './profile/profile.module';
 import { SearchModule } from './search/search.module';
 
 @NgModule({
-    imports  : [
+    imports: [
         // Auth
         LoginModule,
         Login2Module,

@@ -16,9 +16,11 @@ export class ChatsSidenavComponent implements OnInit
     chatSearch: any;
     searchText = '';
 
-    constructor(private chatService: ChatService,
-                private fuseMdSidenavService: FuseMdSidenavHelperService,
-                public media: ObservableMedia)
+    constructor(
+        private chatService: ChatService,
+        private fuseMdSidenavService: FuseMdSidenavHelperService,
+        public media: ObservableMedia
+    )
     {
         this.chatSearch = {
             name: ''

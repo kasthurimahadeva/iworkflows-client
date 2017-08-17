@@ -8,25 +8,25 @@
         <!-- ID Column -->
         <ng-container cdkColumnDef="name">
             <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+            <md-cell *cdkCellDef="let row"> {{row.name}}</md-cell>
         </ng-container>
 
         <!-- Progress Column -->
         <ng-container cdkColumnDef="position">
             <md-header-cell *cdkHeaderCellDef>Position</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.position}} </md-cell>
+            <md-cell *cdkCellDef="let row"> {{row.position}}</md-cell>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container cdkColumnDef="office">
             <md-header-cell *cdkHeaderCellDef>Office</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.office}} </md-cell>
+            <md-cell *cdkCellDef="let row"> {{row.office}}</md-cell>
         </ng-container>
 
         <!-- Color Column -->
         <ng-container cdkColumnDef="salary">
             <md-header-cell *cdkHeaderCellDef>Salary</md-header-cell>
-            <md-cell *cdkCellDef="let row"> {{row.salary | currency:'USD':true}} </md-cell>
+            <md-cell *cdkCellDef="let row"> {{row.salary | currency:'USD':true}}</md-cell>
         </ng-container>
 
         <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>

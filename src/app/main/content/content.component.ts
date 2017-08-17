@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
-    selector     : 'fuse-content',
-    templateUrl  : './content.component.html',
-    styleUrls    : ['./content.component.scss']
+    selector   : 'fuse-content',
+    templateUrl: './content.component.html',
+    styleUrls  : ['./content.component.scss']
 })
 export class FuseContentComponent implements OnInit
 {
     constructor(
-        private router: Router,
+        private router: Router
         // private perfectScrollbarDirective: PerfectScrollbarDirective
     )
     {
@@ -19,12 +19,10 @@ export class FuseContentComponent implements OnInit
 
     ngOnInit()
     {
-        this.router.events.subscribe((event) =>
-            {
+        this.router.events.subscribe((event) => {
                 if ( event instanceof NavigationEnd )
                 {
-                    setTimeout(() =>
-                    {
+                    setTimeout(() => {
                         // this.perfectScrollbarDirective.scrollToTop();
                     }, 0);
                 }

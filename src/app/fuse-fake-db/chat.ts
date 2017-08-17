@@ -43,98 +43,98 @@ export class ChatFakeDb
             'name'  : 'Christy',
             'avatar': 'assets/images/avatars/Christy.jpg',
             'status': 'offline',
-            'mood'  : 'We always hold hands. If I let go, she shops.',
+            'mood'  : 'We always hold hands. If I let go, she shops.'
         },
         {
             'id'    : '5725a680bc670af746c435e2',
             'name'  : 'Copeland',
             'avatar': 'assets/images/avatars/Copeland.jpg',
             'status': 'online',
-            'mood'  : 'I get enough exercise just pushing my luck.',
+            'mood'  : 'I get enough exercise just pushing my luck.'
         },
         {
             'id'    : '5725a680e7eb988a58ddf303',
             'name'  : 'Estes',
             'avatar': 'assets/images/avatars/Estes.jpg',
             'status': 'away',
-            'mood'  : 'What comes after the man bun hairstyle? The he-hive!',
+            'mood'  : 'What comes after the man bun hairstyle? The he-hive!'
         },
         {
             'id'    : '5725a680dcb077889f758961',
             'name'  : 'Harper',
             'avatar': 'assets/images/avatars/Harper.jpg',
             'status': 'offline',
-            'mood'  : 'Always try to be modest and be proud of it!',
+            'mood'  : 'Always try to be modest and be proud of it!'
         },
         {
             'id'    : '5725a6806acf030f9341e925',
             'name'  : 'Helen',
             'avatar': 'assets/images/avatars/Helen.jpg',
             'status': 'away',
-            'mood'  : 'Why are there stitch marks on zombies? Who\'s giving them medical attention?',
+            'mood'  : 'Why are there stitch marks on zombies? Who\'s giving them medical attention?'
         },
         {
             'id'    : '5725a680ae1ae9a3c960d487',
             'name'  : 'Henderson',
             'avatar': 'assets/images/avatars/Henderson.jpg',
             'status': 'offline',
-            'mood'  : 'I can\'t decide if people who wear pajamas in public have given up on life or are living it to the fullest.',
+            'mood'  : 'I can\'t decide if people who wear pajamas in public have given up on life or are living it to the fullest.'
         },
         {
             'id'    : '5725a680b8d240c011dd224b',
             'name'  : 'Josefina',
             'avatar': 'assets/images/avatars/Josefina.jpg',
             'status': 'online',
-            'mood'  : 'The fastest way to being happy is to make other people happy. You go first',
+            'mood'  : 'The fastest way to being happy is to make other people happy. You go first'
         },
         {
             'id'    : '5725a68034cb3968e1f79eac',
             'name'  : 'Katina',
             'avatar': 'assets/images/avatars/Katina.jpg',
             'status': 'away',
-            'mood'  : 'If I was a rat,,, I wouldn\'t give anyone my ass.',
+            'mood'  : 'If I was a rat,,, I wouldn\'t give anyone my ass.'
         },
         {
             'id'    : '5725a6801146cce777df2a08',
             'name'  : 'Lily',
             'avatar': 'assets/images/avatars/Lily.jpg',
             'status': 'do-not-disturb',
-            'mood'  : 'A zip line but from the sofa to the fridge',
+            'mood'  : 'A zip line but from the sofa to the fridge'
         },
         {
             'id'    : '5725a6808a178bfd034d6ecf',
             'name'  : 'Mai',
             'avatar': 'assets/images/avatars/Mai.jpg',
             'status': 'away',
-            'mood'  : 'If a girl tells you she has a nipple ring, the only correct response is \'I don\'t believe you.\'',
+            'mood'  : 'If a girl tells you she has a nipple ring, the only correct response is \'I don\'t believe you.\''
         },
         {
             'id'    : '5725a680653c265f5c79b5a9',
             'name'  : 'Nancy',
             'avatar': 'assets/images/avatars/Nancy.jpg',
             'status': 'do-not-disturb',
-            'mood'  : 'Prison counts as a gated community, right?',
+            'mood'  : 'Prison counts as a gated community, right?'
         },
         {
             'id'    : '5725a680bbcec3cc32a8488a',
             'name'  : 'Nora',
             'avatar': 'assets/images/avatars/Nora.jpg',
             'status': 'do-not-disturb',
-            'mood'  : 'I never date left handed women. Righty tighty, lefty loosey.',
+            'mood'  : 'I never date left handed women. Righty tighty, lefty loosey.'
         },
         {
             'id'    : '5725a6803d87f1b77e17b62b',
             'name'  : 'Odessa',
             'avatar': 'assets/images/avatars/Odessa.jpg',
             'status': 'away',
-            'mood'  : 'A day without sunshine is like, night.',
+            'mood'  : 'A day without sunshine is like, night.'
         },
         {
             'id'    : '5725a680e87cb319bd9bd673',
             'name'  : 'Reyna',
             'avatar': 'assets/images/avatars/Reyna.jpg',
             'status': 'offline',
-            'mood'  : 'I can\'t wait for summer in Canada...',
+            'mood'  : 'I can\'t wait for summer in Canada...'
         },
         {
             'id'    : '5725a6802d10e277a0f35775',
@@ -142,42 +142,42 @@ export class ChatFakeDb
             'avatar': 'assets/images/avatars/Shauna.jpg',
             'status': 'online',
             'mood'  : 'My take home pay doesn’t ven take me home.',
-            'unread': null,
+            'unread': null
         },
         {
             'id'    : '5725a680aef1e5cf26dd3d1f',
             'name'  : 'Shepard',
             'avatar': 'assets/images/avatars/Shepard.jpg',
             'status': 'online',
-            'mood'  : 'I don\'t speak Spanish, but I\'m pretty sure \'Dora\' means \'annoying\'',
+            'mood'  : 'I don\'t speak Spanish, but I\'m pretty sure \'Dora\' means \'annoying\''
         },
         {
             'id'    : '5725a680cd7efa56a45aea5d',
             'name'  : 'Tillman',
             'avatar': 'assets/images/avatars/Tillman.jpg',
             'status': 'do-not-disturb',
-            'mood'  : '',
+            'mood'  : ''
         },
         {
             'id'    : '5725a680fb65c91a82cb35e2',
             'name'  : 'Trevino',
             'avatar': 'assets/images/avatars/Trevino.jpg',
             'status': 'away',
-            'mood'  : 'Apparently, a rat and a plastic tube does not count as a DIY abortion kit.',
+            'mood'  : 'Apparently, a rat and a plastic tube does not count as a DIY abortion kit.'
         },
         {
             'id'    : '5725a68018c663044be49cbf',
             'name'  : 'Tyson',
             'avatar': 'assets/images/avatars/Tyson.jpg',
             'status': 'do-not-disturb',
-            'mood'  : 'I\'m wondering why life keeps teaching me lessons I have no desire to learn...',
+            'mood'  : 'I\'m wondering why life keeps teaching me lessons I have no desire to learn...'
         },
         {
             'id'    : '5725a6809413bf8a0a5272b1',
             'name'  : 'Velazquez',
             'avatar': 'assets/images/avatars/Velazquez.jpg',
             'status': 'online',
-            'mood'  : 'Modulation in all things.',
+            'mood'  : 'Modulation in all things.'
         }
     ];
 
