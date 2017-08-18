@@ -4,6 +4,7 @@ import { FuseMatchMedia } from '../../core/services/match-media.service';
 import { FuseNavbarService } from './navbar.service';
 import { ObservableMedia } from '@angular/flex-layout';
 import { FuseMainComponent } from '../main.component';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector     : 'fuse-navbar',
@@ -25,7 +26,8 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
         private fuseMainComponentEl: FuseMainComponent,
         private fuseMatchMedia: FuseMatchMedia,
         private navBarService: FuseNavbarService,
-        public media: ObservableMedia
+        public media: ObservableMedia,
+        private router: Router
     )
     {
         navBarService.setNavBar(this);
@@ -46,6 +48,20 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
                         }
                     });
                 });
+
+        router.events.subscribe(
+            (event) => {
+                if ( event instanceof NavigationEnd )
+                {
+                    if ( this.media.isActive('lt-lg') )
+                    {
+                        setTimeout(() => {
+                            this.closeBar();
+                        });
+                    }
+                }
+            }
+        );
     }
 
     ngOnInit()
