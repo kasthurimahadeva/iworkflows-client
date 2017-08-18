@@ -1,9 +1,9 @@
 import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { AppComponent } from '../../app.component';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMatchMedia } from '../../core/services/match-media.service';
 import { FuseNavbarService } from './navbar.service';
 import { ObservableMedia } from '@angular/flex-layout';
+import { FuseMainComponent } from '../main.component';
 
 @Component({
     selector     : 'fuse-navbar',
@@ -22,7 +22,7 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
     matchMediaWatcher: Subscription;
 
     constructor(
-        private bodyEl: AppComponent,
+        private fuseMainComponentEl: FuseMainComponent,
         private fuseMatchMedia: FuseMatchMedia,
         private navBarService: FuseNavbarService,
         public media: ObservableMedia
@@ -117,14 +117,14 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
     activateFolded()
     {
         this.isFoldedActive = true;
-        this.bodyEl.addClass('fuse-nav-bar-folded');
+        this.fuseMainComponentEl.addClass('fuse-nav-bar-folded');
         this.isFoldedOpen = false;
     }
 
     deActivateFolded()
     {
         this.isFoldedActive = false;
-        this.bodyEl.removeClass('fuse-nav-bar-folded');
+        this.fuseMainComponentEl.removeClass('fuse-nav-bar-folded');
         this.isFoldedOpen = false;
     }
 
@@ -144,13 +144,13 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
     {
         if ( this.isClosed )
         {
-            this.bodyEl.addClass('fuse-nav-bar-opened');
-            this.bodyEl.removeClass('fuse-nav-bar-closed');
+            this.fuseMainComponentEl.addClass('fuse-nav-bar-opened');
+            this.fuseMainComponentEl.removeClass('fuse-nav-bar-closed');
         }
         else
         {
-            this.bodyEl.addClass('fuse-nav-bar-closed');
-            this.bodyEl.removeClass('fuse-nav-bar-opened');
+            this.fuseMainComponentEl.addClass('fuse-nav-bar-closed');
+            this.fuseMainComponentEl.removeClass('fuse-nav-bar-opened');
         }
     }
 

@@ -1,31 +1,14 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
+import { FuseSplashScreenService } from './core/services/splash-screen.service';
 
 @Component({
-    selector   : 'body',
+    selector   : 'fuse-root',
     templateUrl: './app.component.html',
     styleUrls  : ['./app.component.scss']
 })
-export class AppComponent implements OnInit
+export class AppComponent
 {
-    constructor(
-        private _renderer: Renderer2,
-        private _elementRef: ElementRef
-    )
+    constructor(private fuseSplashScreen: FuseSplashScreenService)
     {
-    }
-
-    addClass(className: string)
-    {
-        this._renderer.addClass(this._elementRef.nativeElement, className);
-    }
-
-    removeClass(className: string)
-    {
-        this._renderer.removeClass(this._elementRef.nativeElement, className);
-    }
-
-    ngOnInit()
-    {
-
     }
 }

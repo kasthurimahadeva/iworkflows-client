@@ -17,6 +17,7 @@ import { FuseMainModule } from './main/main.module';
 import { PagesModule } from './main/content/pages/pages.module';
 import { UIModule } from './main/content/ui/ui.module';
 import { ComponentsModule } from './main/content/components/components.module';
+import { FuseSplashScreenService } from './core/services/splash-screen.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -76,6 +77,9 @@ const appRoutes: Routes = [
         PagesModule,
         UIModule,
         ComponentsModule
+    ],
+    providers: [
+        FuseSplashScreenService
     ],
     bootstrap   : [
         AppComponent

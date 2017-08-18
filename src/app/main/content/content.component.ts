@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,8 @@ import { NavigationEnd, Router } from '@angular/router';
 export class FuseContentComponent implements OnInit
 {
     constructor(
-        private router: Router
-        // private perfectScrollbarDirective: PerfectScrollbarDirective
+        private router: Router,
+        private perfectScrollbarDirective: PerfectScrollbarDirective
     )
     {
 
@@ -23,7 +23,7 @@ export class FuseContentComponent implements OnInit
                 if ( event instanceof NavigationEnd )
                 {
                     setTimeout(() => {
-                        // this.perfectScrollbarDirective.scrollToTop();
+                        this.perfectScrollbarDirective.scrollToTop();
                     }, 0);
                 }
             }
