@@ -7,7 +7,7 @@ import { ProfileService } from '../../profile.service';
     templateUrl: './photos-videos.component.html',
     styleUrls  : ['./photos-videos.component.scss']
 })
-export class ProfilePhotosVideosComponent implements OnInit
+export class FuseProfilePhotosVideosComponent implements OnInit
 {
     photosVideos: any;
 

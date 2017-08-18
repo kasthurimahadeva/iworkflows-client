@@ -7,7 +7,7 @@ import { FuseLayoutService } from '../../../../../core/services/layout.service';
     templateUrl: './error-500.component.html',
     styleUrls  : ['./error-500.component.scss']
 })
-export class Error500Component implements OnInit
+export class FuseError500Component implements OnInit
 {
     constructor(private layoutService: FuseLayoutService)
     {

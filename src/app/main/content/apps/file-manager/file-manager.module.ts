@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { FileManagerComponent } from './file-manager.component';
+import { FuseFileManagerComponent } from './file-manager.component';
 import { FileManagerService } from './file-manager.service';
-import { FileListComponent } from './file-list/file-list.component';
-import { MainSidenavComponent } from './sidenavs/main/main.component';
-import { DetailsSidenavComponent } from './sidenavs/details/details.component';
+import { FuseFileManagerFileListComponent } from './file-list/file-list.component';
+import { FuseFileManagerMainSidenavComponent } from './sidenavs/main/main.component';
+import { FuseFileManagerDetailsSidenavComponent } from './sidenavs/details/details.component';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: FileManagerComponent,
+        component: FuseFileManagerComponent,
         children : [],
         resolve  : {
             files: FileManagerService
@@ -24,10 +24,10 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ],
     declarations: [
-        FileManagerComponent,
-        FileListComponent,
-        MainSidenavComponent,
-        DetailsSidenavComponent
+        FuseFileManagerComponent,
+        FuseFileManagerFileListComponent,
+        FuseFileManagerMainSidenavComponent,
+        FuseFileManagerDetailsSidenavComponent
     ],
     providers   : [
         FileManagerService

@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { ProfileComponent } from './profile.component';
-import { ProfileTimelineComponent } from './tabs/timeline/timeline.component';
-import { ProfileAboutComponent } from './tabs/about/about.component';
-import { ProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos.component';
+import { FuseProfileComponent } from './profile.component';
+import { FuseProfileTimelineComponent } from './tabs/timeline/timeline.component';
+import { FuseProfileAboutComponent } from './tabs/about/about.component';
+import { FuseProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos.component';
 import { ProfileService } from './profile.service';
 
 const routes = [
     {
         path     : 'pages/profile',
-        component: ProfileComponent,
+        component: FuseProfileComponent,
         resolve  : {
             profile: ProfileService
         }
@@ -20,10 +20,10 @@ const routes = [
 
 @NgModule({
     declarations: [
-        ProfileComponent,
-        ProfileTimelineComponent,
-        ProfileAboutComponent,
-        ProfilePhotosVideosComponent
+        FuseProfileComponent,
+        FuseProfileTimelineComponent,
+        FuseProfileAboutComponent,
+        FuseProfilePhotosVideosComponent
     ],
     imports     : [
         SharedModule,

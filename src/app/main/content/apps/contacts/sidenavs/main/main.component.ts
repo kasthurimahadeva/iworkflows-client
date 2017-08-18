@@ -6,7 +6,7 @@ import { ContactsService } from '../../contacts.service';
     templateUrl: './main.component.html',
     styleUrls  : ['./main.component.scss']
 })
-export class MainSidenavComponent implements OnInit
+export class FuseContactsMainSidenavComponent implements OnInit
 {
     user: any;
     filterBy: string;

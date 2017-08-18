@@ -8,7 +8,7 @@ import { ObservableMedia } from '@angular/flex-layout';
     templateUrl: './chats.component.html',
     styleUrls  : ['./chats.component.scss']
 })
-export class ChatsSidenavComponent implements OnInit
+export class FuseChatChatsSidenavComponent implements OnInit
 {
     user: any;
     chats: any[];
@@ -64,6 +64,6 @@ export class ChatsSidenavComponent implements OnInit
 
     logout()
     {
-        console.info('logout triggered');
+        console.log('logout triggered');
     }
 }

@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { SearchClassicComponent } from './tabs/classic/classic.component';
-import { SearchTableComponent } from './tabs/table/table.component';
-import { SearchComponent } from './search.component';
+import { FuseSearchClassicComponent } from './tabs/classic/classic.component';
+import { FuseSearchTableComponent } from './tabs/table/table.component';
+import { FuseSearchComponent } from './search.component';
 import { SearchService } from './search.service';
 
 const routes = [
     {
         path     : 'pages/search',
-        component: SearchComponent,
+        component: FuseSearchComponent,
         resolve  : {
             search: SearchService
         }
@@ -19,9 +19,9 @@ const routes = [
 
 @NgModule({
     declarations: [
-        SearchComponent,
-        SearchClassicComponent,
-        SearchTableComponent
+        FuseSearchComponent,
+        FuseSearchClassicComponent,
+        FuseSearchTableComponent
     ],
     imports     : [
         SharedModule,

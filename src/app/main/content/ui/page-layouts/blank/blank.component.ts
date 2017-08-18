@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './blank.component.html',
     styleUrls  : ['./blank.component.scss']
 })
-export class BlankComponent
+export class FuseBlankComponent
 {
     constructor()
     {

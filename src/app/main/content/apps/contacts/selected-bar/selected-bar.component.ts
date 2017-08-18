@@ -8,7 +8,7 @@ import { FuseConfirmDialogComponent } from '../../../../../core/components/confi
     templateUrl: './selected-bar.component.html',
     styleUrls  : ['./selected-bar.component.scss']
 })
-export class SelectedBarComponent implements OnInit
+export class FuseContactsSelectedBarComponent implements OnInit
 {
     selectedContacts: string[];
     hasSelectedContacts: boolean;

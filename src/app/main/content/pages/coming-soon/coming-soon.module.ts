@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { ComingSoonComponent } from './coming-soon.component';
+import { FuseComingSoonComponent } from './coming-soon.component';
 
 const routes = [
     {
         path     : 'pages/coming-soon',
-        component: ComingSoonComponent
+        component: FuseComingSoonComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        ComingSoonComponent
+        FuseComingSoonComponent
     ],
     imports     : [
         SharedModule,

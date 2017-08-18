@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { FuseDemoModule } from '../../../../core/components/demo/demo.module';
-import { ColorsComponent } from './colors.component';
+import { FuseColorsComponent } from './colors.component';
 
 const routes: Routes = [
     {
         path     : 'ui/colors',
-        component: ColorsComponent
+        component: FuseColorsComponent
     }
 ];
 
@@ -18,7 +18,7 @@ const routes: Routes = [
         FuseDemoModule
     ],
     declarations: [
-        ColorsComponent
+        FuseColorsComponent
     ]
 })
 export class UIColorsModule

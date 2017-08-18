@@ -7,7 +7,7 @@ import { FuseLayoutService } from '../../../../core/services/layout.service';
     templateUrl: './maintenance.component.html',
     styleUrls  : ['./maintenance.component.scss']
 })
-export class MaintenanceComponent implements OnInit
+export class FuseMaintenanceComponent implements OnInit
 {
     constructor(private layoutService: FuseLayoutService)
     {

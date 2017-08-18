@@ -8,7 +8,7 @@ import 'rxjs/Rx';
     templateUrl: './user.component.html',
     styleUrls  : ['./user.component.scss']
 })
-export class UserSidenavComponent implements OnInit, OnDestroy
+export class FuseChatUserSidenavComponent implements OnInit, OnDestroy
 {
     user: any;
     onFormChange: any;

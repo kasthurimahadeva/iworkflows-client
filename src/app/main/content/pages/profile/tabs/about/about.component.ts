@@ -6,7 +6,7 @@ import { ProfileService } from '../../profile.service';
     templateUrl: './about.component.html',
     styleUrls  : ['./about.component.scss']
 })
-export class ProfileAboutComponent implements OnInit
+export class FuseProfileAboutComponent implements OnInit
 {
     about: any;
 

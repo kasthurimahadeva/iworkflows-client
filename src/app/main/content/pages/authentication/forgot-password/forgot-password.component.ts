@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     templateUrl: './forgot-password.component.html',
     styleUrls  : ['./forgot-password.component.scss']
 })
-export class ForgotPasswordComponent implements OnInit
+export class FuseForgotPasswordComponent implements OnInit
 {
     forgotPasswordForm: FormGroup;
     forgotPasswordFormErrors: any;

@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls    : ['./todo-list-item.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TodoListItemComponent implements OnInit, OnDestroy
+export class FuseTodoListItemComponent implements OnInit, OnDestroy
 {
     @Input() todo: Todo;
     tags: any[];

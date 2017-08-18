@@ -10,7 +10,7 @@ import { FormControl } from '@angular/forms';
     encapsulation: ViewEncapsulation.None,
     animations   : [Animations.slideInTop]
 })
-export class ContactsComponent implements OnInit
+export class FuseContactsComponent implements OnInit
 {
     hasSelectedContacts: boolean;
     searchInput: FormControl;

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './helpers.component.html',
     styleUrls  : ['./helpers.component.scss']
 })
-export class TypographyHelpersComponent
+export class FuseTypographyHelpersComponent
 {
 
     constructor()

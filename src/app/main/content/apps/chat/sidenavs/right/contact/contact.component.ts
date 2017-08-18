@@ -6,7 +6,7 @@ import { ChatService } from '../../../chat.service';
     templateUrl: './contact.component.html',
     styleUrls  : ['./contact.component.scss']
 })
-export class ContactSidenavComponent implements OnInit
+export class FuseChatContactSidenavComponent implements OnInit
 {
     contact: any;
 

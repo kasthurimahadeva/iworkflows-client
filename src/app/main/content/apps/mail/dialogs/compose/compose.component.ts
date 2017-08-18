@@ -8,12 +8,12 @@ import { FormControl, FormGroup } from '@angular/forms';
     styleUrls    : ['./compose.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class MailComposeDialogComponent implements OnInit
+export class FuseMailComposeDialogComponent implements OnInit
 {
     composeForm: FormGroup;
 
     constructor(
-        public dialogRef: MdDialogRef<MailComposeDialogComponent>,
+        public dialogRef: MdDialogRef<FuseMailComposeDialogComponent>,
         @Inject(MD_DIALOG_DATA) private data: any
     )
     {

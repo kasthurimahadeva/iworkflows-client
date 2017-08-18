@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './fullwidth.component.html',
     styleUrls  : ['./fullwidth.component.scss']
 })
-export class CardedFullWidthComponent
+export class FuseCardedFullWidthComponent
 {
     constructor()
     {

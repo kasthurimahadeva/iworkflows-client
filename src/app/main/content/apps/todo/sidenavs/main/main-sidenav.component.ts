@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     templateUrl: './main-sidenav.component.html',
     styleUrls  : ['./main-sidenav.component.scss']
 })
-export class MainSidenavComponent implements OnInit, OnDestroy
+export class FuseTodoMainSidenavComponent implements OnInit, OnDestroy
 {
     folders: any[];
     filters: any[];

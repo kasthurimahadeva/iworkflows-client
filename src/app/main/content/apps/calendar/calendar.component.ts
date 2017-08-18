@@ -2,7 +2,7 @@ import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMo
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { MdDialog, MdDialogRef } from '@angular/material';
-import { EventFormDialogComponent } from './event-form/event-form.component';
+import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
 import { FormGroup } from '@angular/forms';
 import { CalendarEventModel } from './event.model';
 import { CalendarService } from './calendar.service';
@@ -21,7 +21,7 @@ import { FuseConfirmDialogComponent } from '../../../../core/components/confirm-
     styleUrls      : ['./calendar.component.scss'],
     encapsulation  : ViewEncapsulation.None
 })
-export class CalendarComponent implements OnInit
+export class FuseCalendarComponent implements OnInit
 {
     view: string;
 
@@ -199,7 +199,7 @@ export class CalendarComponent implements OnInit
     {
         const eventIndex = this.events.indexOf(event);
 
-        this.dialogRef = this.dialog.open(EventFormDialogComponent, {
+        this.dialogRef = this.dialog.open(FuseCalendarEventFormDialogComponent, {
             panelClass: 'event-form-dialog',
             data      : {
                 event : event,
@@ -243,7 +243,7 @@ export class CalendarComponent implements OnInit
      */
     addEvent(): void
     {
-        this.dialogRef = this.dialog.open(EventFormDialogComponent, {
+        this.dialogRef = this.dialog.open(FuseCalendarEventFormDialogComponent, {
             panelClass: 'event-form-dialog',
             data      : {
                 action: 'new',

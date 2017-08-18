@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { RegisterComponent } from './register.component';
+import { FuseRegisterComponent } from './register.component';
 
 const routes = [
     {
         path     : 'pages/auth/register',
-        component: RegisterComponent
+        component: FuseRegisterComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        RegisterComponent
+        FuseRegisterComponent
     ],
     imports     : [
         SharedModule,

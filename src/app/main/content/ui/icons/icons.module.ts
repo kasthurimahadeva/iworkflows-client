@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { IconsComponent } from './icons.component';
+import { FuseIconsComponent } from './icons.component';
 
 const routes: Routes = [
     {
         path     : 'ui/icons',
-        component: IconsComponent
+        component: FuseIconsComponent
     }
 ];
 
@@ -16,7 +16,7 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ],
     declarations: [
-        IconsComponent
+        FuseIconsComponent
     ]
 })
 export class UIIconsModule

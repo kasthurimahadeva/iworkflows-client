@@ -41,7 +41,7 @@ export class FuseNavCollapseComponent implements OnInit
         );
 
         /**
-         * Whenever a navigaiton collapse item toggled
+         * Whenever a navigation collapse item toggled
          */
         this.navigationService.onNavCollapseToggled.subscribe(
             (clickedItem) => {

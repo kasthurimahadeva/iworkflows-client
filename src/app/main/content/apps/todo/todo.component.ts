@@ -9,7 +9,7 @@ import { Todo } from './todo.model';
     templateUrl: './todo.component.html',
     styleUrls  : ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit, OnDestroy
+export class FuseTodoComponent implements OnInit, OnDestroy
 {
     hasSelectedTodos: boolean;
     isIndeterminate: boolean;

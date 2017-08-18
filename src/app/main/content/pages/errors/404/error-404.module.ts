@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { Error404Component } from './error-404.component';
+import { FuseError404Component } from './error-404.component';
 
 const routes = [
     {
         path     : 'pages/errors/error-404',
-        component: Error404Component
+        component: FuseError404Component
     }
 ];
 
 @NgModule({
     declarations: [
-        Error404Component
+        FuseError404Component
     ],
     imports     : [
         SharedModule,

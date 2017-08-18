@@ -11,7 +11,7 @@ import { DataSource } from '@angular/cdk';
     styleUrls    : ['./project.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ProjectComponent implements OnInit, OnDestroy
+export class FuseProjectComponent implements OnInit, OnDestroy
 {
     projects: any[];
     selectedProject: any;

@@ -1,52 +1,52 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { TodoComponent } from './todo.component';
+import { FuseTodoComponent } from './todo.component';
 import { TodoService } from './todo.service';
-import { MainSidenavComponent } from './sidenavs/main/main-sidenav.component';
-import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoDetailsComponent } from './todo-details/todo-details.component';
+import { FuseTodoMainSidenavComponent } from './sidenavs/main/main-sidenav.component';
+import { FuseTodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
+import { FuseTodoListComponent } from './todo-list/todo-list.component';
+import { FuseTodoDetailsComponent } from './todo-details/todo-details.component';
 
 const routes: Routes = [
     {
         path     : 'all',
-        component: TodoComponent,
+        component: FuseTodoComponent,
         resolve  : {
             todo: TodoService
         }
     },
     {
         path     : 'all/:todoId',
-        component: TodoComponent,
+        component: FuseTodoComponent,
         resolve  : {
             todo: TodoService
         }
     },
     {
         path     : 'tag/:tagHandle',
-        component: TodoComponent,
+        component: FuseTodoComponent,
         resolve  : {
             todo: TodoService
         }
     },
     {
         path     : 'tag/:tagHandle/:todoId',
-        component: TodoComponent,
+        component: FuseTodoComponent,
         resolve  : {
             todo: TodoService
         }
     },
     {
         path     : 'filter/:filterHandle',
-        component: TodoComponent,
+        component: FuseTodoComponent,
         resolve  : {
             todo: TodoService
         }
     },
     {
         path     : 'filter/:filterHandle/:todoId',
-        component: TodoComponent,
+        component: FuseTodoComponent,
         resolve  : {
             todo: TodoService
         }
@@ -59,11 +59,11 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        TodoComponent,
-        MainSidenavComponent,
-        TodoListItemComponent,
-        TodoListComponent,
-        TodoDetailsComponent
+        FuseTodoComponent,
+        FuseTodoMainSidenavComponent,
+        FuseTodoListItemComponent,
+        FuseTodoListComponent,
+        FuseTodoDetailsComponent
     ],
     imports     : [
         SharedModule,

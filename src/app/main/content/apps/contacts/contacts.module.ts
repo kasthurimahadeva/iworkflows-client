@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { MainSidenavComponent } from './sidenavs/main/main.component';
-import { ContactsComponent } from './contacts.component';
+import { FuseContactsMainSidenavComponent } from './sidenavs/main/main.component';
+import { FuseContactsComponent } from './contacts.component';
 import { ContactsService } from './contacts.service';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { SelectedBarComponent } from './selected-bar/selected-bar.component';
-import { ContactFormDialogComponent } from './contact-form/contact-form.component';
+import { FuseContactsContactListComponent } from './contact-list/contact-list.component';
+import { FuseContactsSelectedBarComponent } from './selected-bar/selected-bar.component';
+import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: ContactsComponent,
+        component: FuseContactsComponent,
         children : [],
         resolve  : {
             contacts: ContactsService
@@ -25,16 +25,16 @@ const routes: Routes = [
         RouterModule.forChild(routes)
     ],
     declarations   : [
-        ContactsComponent,
-        ContactListComponent,
-        SelectedBarComponent,
-        MainSidenavComponent,
-        ContactFormDialogComponent
+        FuseContactsComponent,
+        FuseContactsContactListComponent,
+        FuseContactsSelectedBarComponent,
+        FuseContactsMainSidenavComponent,
+        FuseContactsContactFormDialogComponent
     ],
     providers      : [
         ContactsService
     ],
-    entryComponents: [ContactFormDialogComponent]
+    entryComponents: [FuseContactsContactFormDialogComponent]
 })
 export class FuseContactsModule
 {

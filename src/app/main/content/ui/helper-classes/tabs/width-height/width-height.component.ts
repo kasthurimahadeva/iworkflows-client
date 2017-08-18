@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './width-height.component.html',
     styleUrls  : ['./width-height.component.scss']
 })
-export class HelperClassesWidthHeightComponent
+export class FuseHelperClassesWidthHeightComponent
 {
 
     constructor()

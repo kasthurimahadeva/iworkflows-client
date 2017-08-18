@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
     templateUrl: './todo-list.component.html',
     styleUrls  : ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit, OnDestroy
+export class FuseTodoListComponent implements OnInit, OnDestroy
 {
     todos: Todo[];
     currentTodo: Todo;

@@ -7,7 +7,7 @@ import { ChatService } from './chat.service';
     styleUrls    : ['./chat.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ChatComponent implements OnInit
+export class FuseChatComponent implements OnInit
 {
     selectedChat: any;
 

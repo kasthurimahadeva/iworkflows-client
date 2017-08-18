@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: './file-list.component.html',
     styleUrls  : ['./file-list.component.scss']
 })
-export class FileListComponent implements OnInit
+export class FuseFileManagerFileListComponent implements OnInit
 {
     files: any;
     dataSource: FilesDataSource | null;

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { FuseSplashScreenService } from '../../core/services/splash-screen.service';
 
 @Component({
     selector   : 'fuse-toolbar',

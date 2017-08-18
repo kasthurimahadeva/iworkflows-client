@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     templateUrl: './lock.component.html',
     styleUrls: ['./lock.component.scss']
 })
-export class LockComponent implements OnInit
+export class FuseLockComponent implements OnInit
 {
     lockForm: FormGroup;
     lockFormErrors: any;

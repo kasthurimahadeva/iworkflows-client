@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { ForgotPasswordComponent } from './forgot-password.component';
+import { FuseForgotPasswordComponent } from './forgot-password.component';
 
 const routes = [
     {
         path     : 'pages/auth/forgot-password',
-        component: ForgotPasswordComponent
+        component: FuseForgotPasswordComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        ForgotPasswordComponent
+        FuseForgotPasswordComponent
     ],
     imports     : [
         SharedModule,

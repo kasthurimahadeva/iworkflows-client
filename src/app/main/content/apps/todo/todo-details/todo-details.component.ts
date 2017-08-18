@@ -10,7 +10,7 @@ import { FuseUtils } from '../../../../../core/fuseUtils';
     templateUrl: './todo-details.component.html',
     styleUrls  : ['./todo-details.component.scss']
 })
-export class TodoDetailsComponent implements OnInit, OnDestroy
+export class FuseTodoDetailsComponent implements OnInit, OnDestroy
 {
     todo: Todo;
     tags: any[];
@@ -66,7 +66,7 @@ export class TodoDetailsComponent implements OnInit, OnDestroy
         this.onNewTodoClicked = this.todoService.onNewTodoClicked
                                     .subscribe(() => {
                                         this.todo = new Todo({});
-                                        this.todo.id = FuseUtils.genearateGUID();
+                                        this.todo.id = FuseUtils.generateGUID();
                                         this.formType = 'new';
                                         this.todoForm = this.createTodoForm();
                                         this.focusTitleField();

@@ -81,7 +81,7 @@ export class ChatService implements Resolve<any>
                 return item.id === contactId;
             });
 
-            const chatId = FuseUtils.genearateGUID();
+            const chatId = FuseUtils.generateGUID();
 
             const chat = {
                 id    : chatId,

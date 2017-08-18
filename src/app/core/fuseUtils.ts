@@ -81,7 +81,7 @@ export class FuseUtils
         return value.toLowerCase().includes(searchText);
     }
 
-    public static genearateGUID()
+    public static generateGUID()
     {
         function S4()
         {

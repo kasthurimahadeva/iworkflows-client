@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectComponent } from './project.component';
+import { FuseProjectComponent } from './project.component';
 import { SharedModule } from '../../../../../core/modules/shared.module';
 import { ProjectsDashboardService } from './projects.service';
 import { FuseWidgetModule } from '../../../../../core/components/widget/widget.module';
@@ -9,7 +9,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 const routes: Routes = [
     {
         path     : 'apps/dashboards/project',
-        component: ProjectComponent,
+        component: FuseProjectComponent,
         resolve  : {
             data: ProjectsDashboardService
         }
@@ -24,7 +24,7 @@ const routes: Routes = [
         NgxChartsModule
     ],
     declarations: [
-        ProjectComponent
+        FuseProjectComponent
     ],
     providers   : [
         ProjectsDashboardService

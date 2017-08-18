@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     templateUrl: './login-2.component.html',
     styleUrls  : ['./login-2.component.scss']
 })
-export class Login2Component implements OnInit
+export class FuseLogin2Component implements OnInit
 {
     loginForm: FormGroup;
     loginFormErrors: any;

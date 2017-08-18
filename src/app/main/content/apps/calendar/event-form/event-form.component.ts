@@ -13,7 +13,7 @@ import 'rxjs/Rx';
     encapsulation: ViewEncapsulation.None
 })
 
-export class EventFormDialogComponent implements OnInit
+export class FuseCalendarEventFormDialogComponent implements OnInit
 {
     event: CalendarEvent;
     dialogTitle: string;
@@ -22,7 +22,7 @@ export class EventFormDialogComponent implements OnInit
     presetColors = MatColors.presets;
 
     constructor(
-        public dialogRef: MdDialogRef<EventFormDialogComponent>,
+        public dialogRef: MdDialogRef<FuseCalendarEventFormDialogComponent>,
         @Inject(MD_DIALOG_DATA) private data: any,
         private formBuilder: FormBuilder
     )

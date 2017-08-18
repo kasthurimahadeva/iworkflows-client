@@ -7,7 +7,7 @@ import { FileManagerService } from './file-manager.service';
     styleUrls    : ['./file-manager.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FileManagerComponent implements OnInit
+export class FuseFileManagerComponent implements OnInit
 {
 
     selected: any;

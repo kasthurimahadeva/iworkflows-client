@@ -6,7 +6,7 @@ import { SearchService } from '../../search.service';
     templateUrl: './classic.component.html',
     styleUrls  : ['./classic.component.scss']
 })
-export class SearchClassicComponent implements OnInit
+export class FuseSearchClassicComponent implements OnInit
 {
     classic: any;
 

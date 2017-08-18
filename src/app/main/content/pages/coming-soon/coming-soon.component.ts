@@ -8,7 +8,7 @@ import { FuseLayoutService } from '../../../../core/services/layout.service';
     templateUrl: './coming-soon.component.html',
     styleUrls  : ['./coming-soon.component.scss']
 })
-export class ComingSoonComponent implements OnInit
+export class FuseComingSoonComponent implements OnInit
 {
     comingSoonForm: FormGroup;
     comingSoonFormErrors: any;

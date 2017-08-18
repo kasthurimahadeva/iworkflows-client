@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './left-sidenav.component.html',
     styleUrls  : ['./left-sidenav.component.scss']
 })
-export class SimpleLeftSidenavComponent
+export class FuseSimpleLeftSidenavComponent
 {
     constructor()
     {

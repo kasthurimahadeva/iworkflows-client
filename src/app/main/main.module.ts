@@ -10,7 +10,7 @@ import { FuseNavbarComponent } from './navbar/navbar.component';
 import { FuseToolbarComponent } from './toolbar/toolbar.component';
 import { FuseNavigationModule } from '../core/components/navigation/navigation.module';
 import { FuseNavbarToggleDirective } from './navbar/navbar-toggle.directive';
-import { QuickPanelComponent } from './quick-panel/quick-panel.component';
+import { FuseQuickPanelComponent } from './quick-panel/quick-panel.component';
 import { FuseThemeOptionsComponent } from '../core/components/theme-options/theme-options.component';
 import { FuseShortcutsModule } from '../core/components/shortcuts/shortcuts.module';
 import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.module';
@@ -24,7 +24,7 @@ import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.mo
         FuseToolbarComponent,
         FuseNavbarToggleDirective,
         FuseThemeOptionsComponent,
-        QuickPanelComponent
+        FuseQuickPanelComponent
     ],
     imports     : [
         SharedModule,

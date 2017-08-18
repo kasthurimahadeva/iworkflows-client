@@ -9,7 +9,7 @@ import { Mail } from './mail.model';
     templateUrl: './mail.component.html',
     styleUrls  : ['./mail.component.scss']
 })
-export class MailComponent implements OnInit, OnDestroy
+export class FuseMailComponent implements OnInit, OnDestroy
 {
     hasSelectedMails: boolean;
     isIndeterminate: boolean;

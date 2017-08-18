@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './padding-margin.component.html',
     styleUrls  : ['./padding-margin.component.scss']
 })
-export class HelperClassesPaddingMarginComponent
+export class FuseHelperClassesPaddingMarginComponent
 {
 
     constructor()

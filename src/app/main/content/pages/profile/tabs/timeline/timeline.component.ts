@@ -6,7 +6,7 @@ import { ProfileService } from '../../profile.service';
     templateUrl: './timeline.component.html',
     styleUrls  : ['./timeline.component.scss']
 })
-export class ProfileTimelineComponent implements OnInit
+export class FuseProfileTimelineComponent implements OnInit
 {
     timeline: any;
 

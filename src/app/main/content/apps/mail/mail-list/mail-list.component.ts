@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
     templateUrl: './mail-list.component.html',
     styleUrls  : ['./mail-list.component.scss']
 })
-export class MailListComponent implements OnInit, OnDestroy
+export class FuseMailListComponent implements OnInit, OnDestroy
 {
     mails: Mail[];
     currentMail: Mail;

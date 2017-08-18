@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { CalendarComponent } from './calendar.component';
+import { FuseCalendarComponent } from './calendar.component';
 import { CalendarService } from './calendar.service';
 import { CalendarModule } from 'angular-calendar';
-import { EventFormDialogComponent } from './event-form/event-form.component';
+import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: CalendarComponent,
+        component: FuseCalendarComponent,
         children : [],
         resolve  : {
             chat: CalendarService
@@ -24,13 +24,13 @@ const routes: Routes = [
         CalendarModule.forRoot()
     ],
     declarations   : [
-        CalendarComponent,
-        EventFormDialogComponent
+        FuseCalendarComponent,
+        FuseCalendarEventFormDialogComponent
     ],
     providers      : [
         CalendarService
     ],
-    entryComponents: [EventFormDialogComponent]
+    entryComponents: [FuseCalendarEventFormDialogComponent]
 })
 export class FuseCalendarModule
 {

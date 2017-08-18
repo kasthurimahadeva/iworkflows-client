@@ -6,7 +6,7 @@ import { InvoiceService } from '../invoice.service';
     templateUrl: './compact.component.html',
     styleUrls  : ['./compact.component.scss']
 })
-export class InvoiceCompactComponent
+export class FuseInvoiceCompactComponent
 {
     invoice: any;
 

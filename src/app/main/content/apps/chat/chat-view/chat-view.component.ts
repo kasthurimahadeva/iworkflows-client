@@ -8,7 +8,7 @@ import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
     templateUrl: './chat-view.component.html',
     styleUrls  : ['./chat-view.component.scss']
 })
-export class ChatViewComponent implements OnInit, AfterViewInit
+export class FuseChatViewComponent implements OnInit, AfterViewInit
 {
     user: any;
     chat: any;

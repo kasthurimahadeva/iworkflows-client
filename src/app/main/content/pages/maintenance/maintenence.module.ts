@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { MaintenanceComponent } from './maintenance.component';
+import { FuseMaintenanceComponent } from './maintenance.component';
 
 const routes = [
     {
         path     : 'pages/maintenance',
-        component: MaintenanceComponent
+        component: FuseMaintenanceComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        MaintenanceComponent
+        FuseMaintenanceComponent
     ],
     imports     : [
         SharedModule,

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './headings.component.html',
     styleUrls  : ['./headings.component.scss']
 })
-export class TypographyHeadingsComponent
+export class FuseTypographyHeadingsComponent
 {
 
     constructor()

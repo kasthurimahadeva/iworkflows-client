@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './blockquotes-lists.component.html',
     styleUrls  : ['./blockquotes-lists.component.scss']
 })
-export class TypographyBlockquotesListsComponent
+export class FuseTypographyBlockquotesListsComponent
 {
 
     constructor()

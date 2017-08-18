@@ -7,7 +7,7 @@ import { DataSource } from '@angular/cdk';
     templateUrl: './table.component.html',
     styleUrls  : ['./table.component.scss']
 })
-export class SearchTableComponent implements OnInit
+export class FuseSearchTableComponent implements OnInit
 {
     table: any;
     dataSource: SearchTableDataSource;

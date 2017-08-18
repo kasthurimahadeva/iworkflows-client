@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     templateUrl: './register.component.html',
     styleUrls  : ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit
+export class FuseRegisterComponent implements OnInit
 {
     registerForm: FormGroup;
     registerFormErrors: any;

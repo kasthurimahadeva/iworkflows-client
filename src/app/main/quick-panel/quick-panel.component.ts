@@ -7,7 +7,7 @@ import { Http } from '@angular/http';
     styleUrls    : ['./quick-panel.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class QuickPanelComponent implements OnInit
+export class FuseQuickPanelComponent implements OnInit
 {
     date: Date;
     settings: any;

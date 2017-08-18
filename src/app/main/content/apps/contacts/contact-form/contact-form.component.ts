@@ -12,7 +12,7 @@ import { Contact } from '../contact.model';
     encapsulation: ViewEncapsulation.None
 })
 
-export class ContactFormDialogComponent implements OnInit
+export class FuseContactsContactFormDialogComponent implements OnInit
 {
     event: CalendarEvent;
     dialogTitle: string;
@@ -21,7 +21,7 @@ export class ContactFormDialogComponent implements OnInit
     contact: Contact;
 
     constructor(
-        public dialogRef: MdDialogRef<ContactFormDialogComponent>,
+        public dialogRef: MdDialogRef<FuseContactsContactFormDialogComponent>,
         @Inject(MD_DIALOG_DATA) private data: any,
         private formBuilder: FormBuilder
     )

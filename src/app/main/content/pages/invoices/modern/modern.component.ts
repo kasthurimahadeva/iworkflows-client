@@ -6,7 +6,7 @@ import { InvoiceService } from '../invoice.service';
     templateUrl: './modern.component.html',
     styleUrls  : ['./modern.component.scss']
 })
-export class InvoiceModernComponent
+export class FuseInvoiceModernComponent
 {
     invoice: any;
 

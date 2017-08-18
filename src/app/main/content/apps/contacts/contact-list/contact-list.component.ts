@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { DataSource } from '@angular/cdk';
 import { Observable } from 'rxjs/Observable';
-import { ContactFormDialogComponent } from '../contact-form/contact-form.component';
+import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 import { FormGroup } from '@angular/forms';
@@ -12,7 +12,7 @@ import { FormGroup } from '@angular/forms';
     templateUrl: './contact-list.component.html',
     styleUrls  : ['./contact-list.component.scss']
 })
-export class ContactListComponent implements OnInit
+export class FuseContactsContactListComponent implements OnInit
 {
     @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
 
@@ -63,7 +63,7 @@ export class ContactListComponent implements OnInit
 
     newContact()
     {
-        this.dialogRef = this.dialog.open(ContactFormDialogComponent, {
+        this.dialogRef = this.dialog.open(FuseContactsContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 action: 'new'
@@ -85,7 +85,7 @@ export class ContactListComponent implements OnInit
 
     editContact(contact)
     {
-        this.dialogRef = this.dialog.open(ContactFormDialogComponent, {
+        this.dialogRef = this.dialog.open(FuseContactsContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 contact: contact,

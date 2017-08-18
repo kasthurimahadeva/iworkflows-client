@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
     templateUrl: './icons.component.html',
     styleUrls  : ['./icons.component.scss']
 })
-export class IconsComponent implements OnInit
+export class FuseIconsComponent implements OnInit
 {
     icons: string[];
     filteredIcons: string[];

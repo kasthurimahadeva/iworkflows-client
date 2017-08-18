@@ -8,7 +8,7 @@ import { ChatService } from '../../chat.service';
     styleUrls  : ['./left.component.scss'],
     animations : [Animations.slideInLeft, Animations.slideInRight]
 })
-export class LeftSidenavComponent implements OnInit
+export class FuseChatLeftSidenavComponent implements OnInit
 {
     view: string;
 

@@ -1,53 +1,53 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { MailComponent } from './mail.component';
-import { MainSidenavComponent } from './sidenavs/main/main-sidenav.component';
-import { MailListItemComponent } from './mail-list/mail-list-item/mail-list-item.component';
-import { MailListComponent } from './mail-list/mail-list.component';
-import { MailDetailsComponent } from './mail-details/mail-details.component';
+import { FuseMailComponent } from './mail.component';
+import { FuseMailMainSidenavComponent } from './sidenavs/main/main-sidenav.component';
+import { FuseMailListItemComponent } from './mail-list/mail-list-item/mail-list-item.component';
+import { FuseMailListComponent } from './mail-list/mail-list.component';
+import { FuseMailDetailsComponent } from './mail-details/mail-details.component';
 import { MailService } from './mail.service';
-import { MailComposeDialogComponent } from './dialogs/compose/compose.component';
+import { FuseMailComposeDialogComponent } from './dialogs/compose/compose.component';
 
 const routes: Routes = [
     {
         path     : 'label/:labelHandle',
-        component: MailComponent,
+        component: FuseMailComponent,
         resolve  : {
             mail: MailService
         }
     },
     {
         path     : 'label/:labelHandle/:mailId',
-        component: MailComponent,
+        component: FuseMailComponent,
         resolve  : {
             mail: MailService
         }
     },
     {
         path     : 'filter/:filterHandle',
-        component: MailComponent,
+        component: FuseMailComponent,
         resolve  : {
             mail: MailService
         }
     },
     {
         path     : 'filter/:filterHandle/:mailId',
-        component: MailComponent,
+        component: FuseMailComponent,
         resolve  : {
             mail: MailService
         }
     },
     {
         path     : ':folderHandle',
-        component: MailComponent,
+        component: FuseMailComponent,
         resolve  : {
             mail: MailService
         }
     },
     {
         path     : ':folderHandle/:mailId',
-        component: MailComponent,
+        component: FuseMailComponent,
         resolve  : {
             mail: MailService
         }
@@ -60,12 +60,12 @@ const routes: Routes = [
 
 @NgModule({
     declarations   : [
-        MailComponent,
-        MailListComponent,
-        MailListItemComponent,
-        MailDetailsComponent,
-        MainSidenavComponent,
-        MailComposeDialogComponent
+        FuseMailComponent,
+        FuseMailListComponent,
+        FuseMailListItemComponent,
+        FuseMailDetailsComponent,
+        FuseMailMainSidenavComponent,
+        FuseMailComposeDialogComponent
     ],
     imports        : [
         SharedModule,
@@ -74,7 +74,7 @@ const routes: Routes = [
     providers      : [
         MailService
     ],
-    entryComponents: [MailComposeDialogComponent]
+    entryComponents: [FuseMailComposeDialogComponent]
 })
 export class FuseMailModule
 {

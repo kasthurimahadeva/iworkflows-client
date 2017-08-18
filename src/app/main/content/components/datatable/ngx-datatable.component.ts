@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
     templateUrl: './ngx-datatable.component.html',
     styleUrls  : ['./ngx-datatable.component.scss']
 })
-export class NgxDatatableComponent implements OnInit
+export class FuseNgxDatatableComponent implements OnInit
 {
     rows: any[];
     loadingIndicator = true;

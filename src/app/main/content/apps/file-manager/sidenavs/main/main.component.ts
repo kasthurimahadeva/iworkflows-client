@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './main.component.html',
     styleUrls  : ['./main.component.scss']
 })
-export class MainSidenavComponent implements OnInit
+export class FuseFileManagerMainSidenavComponent implements OnInit
 {
     selected: any;
 

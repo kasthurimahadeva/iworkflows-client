@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from '../../mail.service';
 import { Subscription } from 'rxjs/Subscription';
-import { MailComposeDialogComponent } from '../../dialogs/compose/compose.component';
+import { FuseMailComposeDialogComponent } from '../../dialogs/compose/compose.component';
 import { MdDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { FormGroup } from '@angular/forms';
     templateUrl: './main-sidenav.component.html',
     styleUrls  : ['./main-sidenav.component.scss']
 })
-export class MainSidenavComponent implements OnInit, OnDestroy
+export class FuseMailMainSidenavComponent implements OnInit, OnDestroy
 {
     folders: any[];
     filters: any[];
@@ -60,7 +60,7 @@ export class MainSidenavComponent implements OnInit, OnDestroy
 
     composeDialog()
     {
-        this.dialogRef = this.dialog.open(MailComposeDialogComponent, {
+        this.dialogRef = this.dialog.open(FuseMailComposeDialogComponent, {
             panelClass: 'mail-compose-dialog'
         });
         this.dialogRef.afterClosed()

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './tabbed.component.html',
     styleUrls  : ['./tabbed.component.scss']
 })
-export class TabbedComponent
+export class FuseTabbedComponent
 {
     constructor()
     {

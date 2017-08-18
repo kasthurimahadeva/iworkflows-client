@@ -6,7 +6,7 @@ import { FileManagerService } from '../../file-manager.service';
     templateUrl: './details.component.html',
     styleUrls  : ['./details.component.scss']
 })
-export class DetailsSidenavComponent implements OnInit
+export class FuseFileManagerDetailsSidenavComponent implements OnInit
 {
 
     selected: any;

@@ -6,7 +6,7 @@ import { MatColors } from '../../../../core/matColors';
     templateUrl: './colors.component.html',
     styleUrls  : ['./colors.component.scss']
 })
-export class ColorsComponent implements OnInit
+export class FuseColorsComponent implements OnInit
 {
     colors: {};
     selectedColor: string;

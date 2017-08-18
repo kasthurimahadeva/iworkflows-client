@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { LockComponent } from './lock.component';
+import { FuseLockComponent } from './lock.component';
 
 const routes = [
     {
         path     : 'pages/auth/lock',
-        component: LockComponent
+        component: FuseLockComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        LockComponent
+        FuseLockComponent
     ],
     imports     : [
         SharedModule,

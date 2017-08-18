@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { LoginComponent } from './login.component';
+import { FuseLoginComponent } from './login.component';
 
 const routes = [
     {
         path     : 'pages/auth/login',
-        component: LoginComponent
+        component: FuseLoginComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        LoginComponent
+        FuseLoginComponent
     ],
     imports     : [
         SharedModule,
