@@ -10,6 +10,9 @@ $header-height-sm: 100px !default;
 $carded-header-height-without-toolbar: $carded-header-height - $carded-toolbar-height;
 $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-toolbar-height;
 
+// Top bg image
+$top-bg-image: url('assets/images/backgrounds/header-bg.png');
+
 .page-layout {
     position: relative;
     overflow-x: hidden;
@@ -31,6 +34,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             right: 0;
             left: 0;
             height: $carded-header-height;
+            background-image: $top-bg-image;
 
             @include media-breakpoint('sm') {
                 height: $carded-header-height-sm;
@@ -269,13 +273,8 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
         min-width: 100%;
 
         // Top bg
-        .top-bg {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: $header-height;
+        .header {
+            background-image: $top-bg-image;
         }
 
         // Fullwidth
