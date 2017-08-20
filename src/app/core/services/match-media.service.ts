@@ -5,7 +5,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 export class FuseMatchMedia
 {
     activeMediaQuery: string;
-    // onMediaChange: Observable<string>;
     onMediaChange: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(private observableMedia: ObservableMedia)

@@ -1,20 +1,32 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FuseNavigationService } from '../navigation/navigation.service';
+import { Subscription } from 'rxjs/Subscription';
+import { ObservableMedia } from '@angular/flex-layout';
+import { FuseMatchMedia } from '../../services/match-media.service';
 
 @Component({
     selector   : 'fuse-shortcuts',
     templateUrl: './shortcuts.component.html',
     styleUrls  : ['./shortcuts.component.scss']
 })
-export class FuseShortcutsComponent implements OnInit
+export class FuseShortcutsComponent implements OnInit, OnDestroy
 {
     shortcutItems: any[] = [];
     navigationItems: any[];
     filteredNavigationItems: any[];
     searching = false;
-    @ViewChild('searchInput') searchInputField;
+    mobileShortcutsPanelActive = false;
+    matchMediaSubscription: Subscription;
 
-    constructor(private fuseNavigationService: FuseNavigationService)
+    @ViewChild('searchInput') searchInputField;
+    @ViewChild('shortcuts') shortcutsEl: ElementRef;
+
+    constructor(
+        private renderer: Renderer2,
+        private observableMedia: ObservableMedia,
+        private fuseMatchMedia: FuseMatchMedia,
+        private fuseNavigationService: FuseNavigationService
+    )
     {
         this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation();
     }
@@ -48,6 +60,19 @@ export class FuseShortcutsComponent implements OnInit
                 'url'  : '/apps/todo'
             }
         ];
+
+        this.matchMediaSubscription =
+            this.fuseMatchMedia.onMediaChange.subscribe(() => {
+                if ( this.observableMedia.isActive('gt-sm') )
+                {
+                    this.hideMobileShortcutsPanel();
+                }
+            });
+    }
+
+    ngOnDestroy()
+    {
+        this.matchMediaSubscription.unsubscribe();
     }
 
     search(event)
@@ -96,5 +121,17 @@ export class FuseShortcutsComponent implements OnInit
     onMenuOpen()
     {
         this.searchInputField.nativeElement.focus();
+    }
+
+    showMobileShortcutsPanel()
+    {
+        this.mobileShortcutsPanelActive = true;
+        this.renderer.addClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
+    }
+
+    hideMobileShortcutsPanel()
+    {
+        this.mobileShortcutsPanelActive = false;
+        this.renderer.removeClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
     }
 }
