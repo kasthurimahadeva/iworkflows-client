@@ -31,7 +31,7 @@ export class TodoService implements Resolve<any>
 
     constructor(
         private http: Http,
-        private location: Location
+        private location: Location // Set current todo
     )
     {
         this.selectedTodos = [];
@@ -320,7 +320,7 @@ export class TodoService implements Resolve<any>
             return todo.id === id;
         });
 
-        this.onCurrentTodoChanged.next(this.currentTodo);
+        this.onCurrentTodoChanged.next([this.currentTodo, 'edit']);
 
         const tagHandle    = this.routeParams.tagHandle,
               filterHandle = this.routeParams.filterHandle;

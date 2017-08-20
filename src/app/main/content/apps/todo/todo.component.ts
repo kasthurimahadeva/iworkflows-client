@@ -62,7 +62,7 @@ export class FuseTodoComponent implements OnInit, OnDestroy
 
         this.onCurrentTodoChanged =
             this.todoService.onCurrentTodoChanged
-                .subscribe(currentTodo => {
+                .subscribe(([currentTodo, formType]) => {
                     if ( !currentTodo )
                     {
                         this.currentTodo = null;
@@ -76,7 +76,7 @@ export class FuseTodoComponent implements OnInit, OnDestroy
 
     deSelectCurrentTodo()
     {
-        this.todoService.onCurrentTodoChanged.next(null);
+        this.todoService.onCurrentTodoChanged.next([null, null]);
     }
 
     ngOnDestroy()

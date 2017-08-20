@@ -36,14 +36,14 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
         // Subscribe to update the current todo
         this.onCurrentTodoChanged =
             this.todoService.onCurrentTodoChanged
-                .subscribe(todo => {
+                .subscribe(([todo, formType]) => {
 
-                    this.formType = 'edit';
-
-                    this.todo = todo;
-
-                    if ( this.todo )
+                    if ( todo && formType === 'edit' )
                     {
+                        this.formType = 'edit';
+
+                        this.todo = todo;
+
                         this.todoForm = this.createTodoForm();
 
                         this.onFormChange = this.todoForm.valueChanges
@@ -70,6 +70,7 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
                                         this.formType = 'new';
                                         this.todoForm = this.createTodoForm();
                                         this.focusTitleField();
+                                        this.todoService.onCurrentTodoChanged.next([this.todo, 'new']);
                                     });
     }
 

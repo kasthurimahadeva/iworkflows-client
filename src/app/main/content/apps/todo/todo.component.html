@@ -41,7 +41,7 @@
 
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar px-24 py-8">
-                    <div *ngIf="!currentTodo">
+                    <div fxFlex="row" fxLayoutAlign="start center">
                         <md-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedTodos"
                                      [indeterminate]="isIndeterminate"></md-checkbox>
 
@@ -71,7 +71,7 @@
                         </md-menu>
                     </div>
 
-                    <div *ngIf="currentTodo">
+                    <div *ngIf="currentTodo" fxHide.gt-lg>
                         <button md-icon-button (click)="deSelectCurrentTodo()">
                             <md-icon>arrow_back</md-icon>
                         </button>

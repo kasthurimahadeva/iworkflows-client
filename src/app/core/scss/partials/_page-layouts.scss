@@ -35,6 +35,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             left: 0;
             height: $carded-header-height;
             background-image: $top-bg-image;
+            background-size: cover;
 
             @include media-breakpoint('sm') {
                 height: $carded-header-height-sm;
@@ -273,8 +274,9 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         min-width: 100%;
 
         // Top bg
-        .header {
+        > .header {
             background-image: $top-bg-image;
+            background-size: cover;
         }
 
         // Fullwidth
