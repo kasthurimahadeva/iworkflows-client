@@ -1,6 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="start center">
 
-    <md-icon class="handle mr-16" ngxDragHandle (click)="$event.stopPropagation()" fxFlex="0 1 auto">drag_handle
+    <md-icon class="handle mr-16" ngxDragHandle (click)="$event.stopPropagation()" fxFlex="0 1 auto" fxHide.xs>
+        drag_handle
     </md-icon>
 
     <md-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
@@ -36,18 +37,20 @@
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
 
-            <button md-button class="mat-icon-button" (click)="toggleImportant($event)" aria-label="Toggle important">
+            <button md-button class="mat-icon-button" (click)="toggleImportant($event)" aria-label="Toggle important"
+                    fxHide.xs>
                 <md-icon *ngIf="todo.important">error</md-icon>
                 <md-icon *ngIf="!todo.important">error_outline</md-icon>
             </button>
 
-            <button md-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
+            <button md-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star"
+                    fxHide.xs>
                 <md-icon *ngIf="todo.starred">star</md-icon>
                 <md-icon *ngIf="!todo.starred">star_outline</md-icon>
             </button>
 
             <button md-button [mdMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
-                    ng-click="$mdOpenMenu($event)">
+                    ng-click="$mdOpenMenu($event)" fxHide.xs>
                 <md-icon>more_vert</md-icon>
             </button>
 

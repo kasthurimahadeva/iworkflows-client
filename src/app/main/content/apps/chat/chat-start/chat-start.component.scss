@@ -13,6 +13,12 @@
         line-height: 300px;
         text-align: center;
 
+        @include media-breakpoint-down('sm') {
+            width: 160px;
+            height: 160px;
+            line-height: 160px;
+        }
+
         md-icon {
             color: mat-color($accent);
         }

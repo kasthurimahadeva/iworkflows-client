@@ -8,15 +8,23 @@ md-icon {
     min-height: 24px;
     line-height: 24px;
 
-    @for $size from 2 through 128 {
+    @each $breakpoint in map-keys($grid-breakpoints) {
 
-        &.s-#{$size * 2} {
-            font-size: #{($size * 2) + 'px'} !important;
-            width: #{($size * 2) + 'px'} !important;
-            height: #{($size * 2) + 'px'} !important;
-            min-width: #{($size * 2) + 'px'} !important;
-            min-height: #{($size * 2) + 'px'} !important;
-            line-height: #{($size * 2) + 'px'} !important;
+        @include media-breakpoint-up($breakpoint) {
+
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+            @for $size from 2 through 128 {
+
+                &.s#{$infix}-#{$size * 2} {
+                    font-size: #{($size * 2) + 'px'} !important;
+                    width: #{($size * 2) + 'px'} !important;
+                    height: #{($size * 2) + 'px'} !important;
+                    min-width: #{($size * 2) + 'px'} !important;
+                    min-height: #{($size * 2) + 'px'} !important;
+                    line-height: #{($size * 2) + 'px'} !important;
+                }
+            }
         }
     }
 }

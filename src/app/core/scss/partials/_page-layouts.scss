@@ -37,7 +37,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             background-image: $top-bg-image;
             background-size: cover;
 
-            @include media-breakpoint('sm') {
+            @include media-breakpoint-down('sm') {
                 height: $carded-header-height-sm;
             }
         }
@@ -72,7 +72,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     min-height: $carded-header-height-without-toolbar;
                     max-height: $carded-header-height-without-toolbar;
 
-                    @include media-breakpoint('sm') {
+                    @include media-breakpoint-down('sm') {
                         height: $carded-header-height-without-toolbar-sm;
                         min-height: $carded-header-height-without-toolbar-sm;
                         max-height: $carded-header-height-without-toolbar-sm;
@@ -389,6 +389,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         height: $header-height;
                         min-height: $header-height;
                         max-height: $header-height;
+                        background-image: $top-bg-image;
                     }
 
                     .center {
@@ -432,4 +433,83 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         width: 100%;
         min-height: 100%;
     }
+
+    @include media-breakpoint-down('xs') {
+
+        // Activate single-scroll
+        &.carded {
+
+            &.fullwidth {
+
+                > .center {
+                    flex: 1 0 auto;
+                    max-height: none;
+                }
+            }
+
+            &.left-sidenav,
+            &.right-sidenav {
+
+                > md-sidenav-container {
+                    flex: 1 0 auto;
+                }
+            }
+        }
+
+        &.simple {
+
+            &.fullwidth {
+                overflow: visible;
+
+                > .content {
+                    flex: 1 0 auto;
+                }
+            }
+
+            &.left-sidenav,
+            &.right-sidenav {
+
+                > md-sidenav-container {
+                    flex: 1 0 auto !important;
+
+                    > .mat-sidenav-content {
+                        flex: 1 0 auto;
+
+                        > .center {
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+        // End - Activate single-scroll
+
+        // Smaller margins
+        &.carded {
+
+            &.fullwidth {
+
+                > .center {
+                    padding: 0 16px;
+                }
+            }
+
+            &.left-sidenav,
+            &.right-sidenav {
+
+                > md-sidenav-container {
+
+                    > .mat-sidenav-content {
+
+                        .center {
+                            margin: 0 16px;
+                        }
+                    }
+                }
+            }
+        }
+        // End - Smaller margins
+    }
 }
+
+

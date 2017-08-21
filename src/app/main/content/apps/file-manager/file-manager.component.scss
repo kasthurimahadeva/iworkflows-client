@@ -26,9 +26,15 @@
 
                 .header {
                     position: relative;
-                    height: 200px;
-                    min-height: 200px;
-                    max-height: 200px;
+                    height: 160px;
+                    min-height: 160px;
+                    max-height: 160px;
+
+                    @include media-breakpoint-down('sm'){
+                        height: 120px;
+                        min-height: 120px;
+                        max-height: 120px;
+                    }
 
                     .add-file-button {
                         position: absolute;
@@ -39,9 +45,6 @@
                 }
 
                 .content {
-                    display: flex;
-                    flex: 1;
-                    overflow: auto;
                 }
             }
         }
