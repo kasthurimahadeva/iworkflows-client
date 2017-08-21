@@ -1,7 +1,8 @@
-<div id="contacts" class="page-layout simple left-sidenav inner-sidenav" fxLayout="column">
+<div id="contacts" class="page-layout simple left-sidenav inner-sidenav" fxLayout="column" perfect-scrollbar>
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="header md-accent-bg p-24" fxLayout="column" fxLayoutAlign="start start"
+         fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
         <!-- APP TITLE -->
         <div fxLayout="row" fxLayoutAlign="start center">
@@ -21,7 +22,7 @@
         <!-- / APP TITLE -->
 
         <!-- SEARCH -->
-        <div class="search-input-wrapper" fxLayout="row" fxLayoutAlign="start center">
+        <div class="search-input-wrapper mt-16 ml-8 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
             <label for="search" class="mr-8">
                 <md-icon>search</md-icon>
             </label>
@@ -50,7 +51,7 @@
         <!-- / SIDENAV -->
 
         <!-- CENTER -->
-        <div class="center p-24 pr-92" perfect-scrollbar>
+        <div class="center p-24 pr-sm-92" perfect-scrollbar>
 
             <!-- CONTENT -->
             <div class="content md-white-bg mat-elevation-z4">

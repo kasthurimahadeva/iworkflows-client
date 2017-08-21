@@ -43,4 +43,8 @@
     bottom: 12px;
     right: 12px;
     padding: 0;
+
+    @include media-breakpoint-down('xs') {
+        top: 12px;
+    }
 }
