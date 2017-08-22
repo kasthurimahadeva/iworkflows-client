@@ -105,6 +105,50 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     }
 }
 
+@mixin generateMaterialElementColors($contrastColor) {
+
+    // If the contrast color is white...
+    $foreground: $mat-dark-theme-foreground;
+
+    // If the contrast color is black...
+    @if (rgba(black, 1) == rgba($contrastColor, 1)) {
+        $foreground: $mat-light-theme-foreground;
+    }
+
+    // Input
+    .mat-input-placeholder {
+        color: mat-color($foreground, hint-text);
+    }
+
+    .mat-input-underline {
+        background-color: mat-color($foreground, divider);
+    }
+
+    // Select
+    .mat-select-trigger,
+    .mat-select-arrow {
+        color: mat-color($foreground, hint-text);
+    }
+
+    .mat-select-underline {
+        background-color: mat-color($foreground, divider);
+    }
+
+    .mat-select-disabled .mat-select-value,
+    .mat-select-arrow,
+    .mat-select-trigger {
+        color: mat-color($foreground, hint-text);
+    }
+
+    .mat-select-content, .mat-select-panel-done-animating {
+        background: mat-color($background, card);
+    }
+
+    .mat-select-value {
+        color: mat-color($foreground, text);
+    }
+}
+
 // Color classes generator mixin
 @mixin generateColorClasses($colorName, $color, $contrastColor, $hue) {
 
@@ -119,6 +163,10 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         // Generate text color levels
         // based on current contrast color
         @include generateTextColorLevels($contrastColor);
+
+        // Generate material element colors
+        // based on current contrast color
+        @include generateMaterialElementColors($contrastColor);
     }
 
     .#{$colorName}#{$hue}-fg {
@@ -127,6 +175,10 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         // Generate text color levels
         // based on current contrast color
         @include generateTextColorLevels($color);
+
+        // Generate material element colors
+        // based on current contrast color
+        @include generateMaterialElementColors($color);
     }
 
     .#{$colorName}#{$hue}-border {
