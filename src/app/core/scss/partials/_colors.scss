@@ -116,6 +116,11 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         $foreground: $mat-light-theme-foreground;
     }
 
+    // Native Input
+    input[type="text"] {
+        color: mat-color($foreground, base);
+    }
+
     // Input
     .mat-input-placeholder {
         color: mat-color($foreground, hint-text);
