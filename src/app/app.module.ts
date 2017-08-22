@@ -4,14 +4,12 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import 'hammerjs';
 
 import { SharedModule } from './core/modules/shared.module';
 import { AppComponent } from './app.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
@@ -35,7 +33,6 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         SharedModule,
-        InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 125}),
         PerfectScrollbarModule.forRoot(),
         FuseMainModule,
         FuseSampleModule
