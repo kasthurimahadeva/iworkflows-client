@@ -5,7 +5,9 @@
     .fuse-search-bar {
         height: 64px;
         font-size: 13px;
-
+        @include media-breakpoint-down('xs') {
+            height: 56px;
+        }
         .fuse-search-bar-expander,
         .fuse-search-bar-collapser {
             cursor: pointer;
@@ -14,12 +16,20 @@
             width: 64px !important;
             height: 64px !important;
             line-height: 64px !important;
+            @include media-breakpoint-down('xs') {
+                height: 56px !important;
+                line-height: 56px !important;
+            }
         }
 
         .fuse-search-bar-loader {
             width: 64px !important;
             height: 64px !important;
             line-height: 64px !important;
+            @include media-breakpoint-down('xs') {
+                height: 56px !important;
+                line-height: 56px !important;
+            }
         }
 
         .fuse-search-bar-collapser {

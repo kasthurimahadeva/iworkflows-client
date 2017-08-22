@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseConfigService } from '../core/services/config.service';
 
@@ -12,6 +12,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
 {
     onSettingsChanged: Subscription;
     fuseSettings: any;
+    @HostBinding('class.disable-perfect-scrollbar') disableCustomScrollbars;
 
     constructor(
         private _renderer: Renderer2,
@@ -24,6 +25,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
                 .subscribe(
                     (newSettings) => {
                         this.fuseSettings = newSettings;
+                        this.disableCustomScrollbars = !this.fuseSettings.customScrollbars;
                     }
                 );
     }

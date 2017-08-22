@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { NavigationStart, Router } from '@angular/router';
+import { Platform } from '@angular/cdk';
 
 @Injectable()
 export class FuseConfigService
@@ -12,21 +13,33 @@ export class FuseConfigService
     /**
      * @param router
      */
-    constructor(private router: Router)
+    constructor(
+        private router: Router,
+        public platform: Platform
+    )
     {
         // Set the default settings
         this.defaultSettings = {
-            layout      : {
+            layout          : {
                 navigation: 'left', // 'right', 'left', 'top', none
                 toolbar   : 'below', // 'above', 'below', none
                 footer    : 'none' // 'above', 'below', none
             },
-            colorClasses: {
+            colorClasses    : {
                 toolbar: 'md-white-500-bg',
                 navbar : 'md-fuse-dark-500-bg',
                 footer : 'md-fuse-dark-800-bg'
-            }
+            },
+            customScrollbars: true
         };
+
+        /**
+         * Disable Custom Scrollbars if Browser is Mobile
+         */
+        if ( this.platform.ANDROID || this.platform.IOS )
+        {
+            this.defaultSettings.customScrollbars = false;
+        }
 
         this.settings = Object.assign({}, this.defaultSettings);
 
