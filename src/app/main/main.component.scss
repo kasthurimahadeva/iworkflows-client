@@ -1,8 +1,23 @@
+@import "src/app/core/scss/fuse";
+
 fuse-main {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
+
+    &.disable-perfect-scrollbar {
+
+        .ps {
+            -webkit-overflow-scrolling: touch !important;
+            overflow: auto !important;
+        }
+
+        .ps__scrollbar-x-rail,
+        .ps__scrollbar-y-rail {
+            display: none !important;
+        }
+    }
 
     > .mat-sidenav-container {
         display: flex;
@@ -13,6 +28,10 @@ fuse-main {
             flex: 1;
             overflow: hidden;
             height: 100vh;
+
+            @include media-breakpoint-down('sm') {
+                height: auto !important;
+            }
 
             #fuse-main-content {
                 display: flex;

@@ -20,10 +20,6 @@ import { ComponentsModule } from './main/content/components/components.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
 
-const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-    suppressScrollX: true
-};
-
 const appRoutes: Routes = [
     {
         path        : 'apps/mail',
@@ -69,7 +65,7 @@ const appRoutes: Routes = [
 
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 125}),
 
-        PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
+        PerfectScrollbarModule.forRoot(),
 
         FuseMainModule,
 
