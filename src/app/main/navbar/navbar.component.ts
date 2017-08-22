@@ -1,10 +1,12 @@
-import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMatchMedia } from '../../core/services/match-media.service';
 import { FuseNavbarService } from './navbar.service';
 import { ObservableMedia } from '@angular/flex-layout';
 import { FuseMainComponent } from '../main.component';
 import { NavigationEnd, Router } from '@angular/router';
+import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
+import { FuseNavigationService } from '../../core/components/navigation/navigation.service';
 
 @Component({
     selector     : 'fuse-navbar',
@@ -19,18 +21,27 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
     @HostBinding('class.folded-open') isFoldedOpen: boolean;
     @HostBinding('class.initialized') initialized: boolean;
     @Input('folded') foldedByDefault = false;
+    @ViewChild(PerfectScrollbarDirective) perfectScrollbarDirective;
 
     matchMediaWatcher: Subscription;
 
     constructor(
         private fuseMainComponentEl: FuseMainComponent,
         private fuseMatchMedia: FuseMatchMedia,
+        private fuseNavigationService: FuseNavigationService,
         private navBarService: FuseNavbarService,
         public media: ObservableMedia,
         private router: Router
     )
     {
         navBarService.setNavBar(this);
+
+        this.fuseNavigationService.onNavCollapseToggled.subscribe(() => {
+
+            setTimeout(() => {
+                this.perfectScrollbarDirective.update();
+            }, 310);
+        });
 
         this.matchMediaWatcher =
             this.fuseMatchMedia.onMediaChange
