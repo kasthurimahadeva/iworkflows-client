@@ -1,4 +1,5 @@
 <button md-icon-button
+        class="mat-elevation-z1"
         [mdMenuTriggerFor]="colorMenu"
         (onMenuOpen)="onMenuOpen()"
         [ngClass]="'md-'+selectedPalette+'-'+selectedHue+'-bg'">
@@ -64,6 +65,7 @@
                  class="colors" perfect-scrollbar>
                 <div class="color"
                      *ngFor="let hue of hues"
+                     [fxHide]="selectedPalette === 'white' && hue !== '500'|| selectedPalette === 'black' && hue !== '500'"
                      [ngClass]="'md-'+selectedPalette+'-'+hue+'-bg'"
                      (click)="selectHue(hue)"
                      fxLayout="row" fxLayoutAlign="start end" md-ink-ripple>

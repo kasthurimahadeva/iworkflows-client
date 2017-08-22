@@ -634,6 +634,50 @@ const matColors = {
             A400: 'white',
             A700: white87
         }
+    },
+    'fuse-dark': {
+        50      : '#ECECEE',
+        100     : '#C5C6CB',
+        200     : '#9EA1A9',
+        300     : '#7D818C',
+        400     : '#5C616F',
+        500     : '#3C4252',
+        600     : '#353A48',
+        700     : '#2D323E',
+        800     : '#262933',
+        900     : '#1E2129',
+        A100    : '#C5C6CB',
+        A200    : '#9EA1A9',
+        A400    : '#5C616F',
+        A700    : '#2D323E',
+        contrast: {
+            50  : black87,
+            100 : black87,
+            200 : black87,
+            300 : 'white',
+            400 : 'white',
+            500 : white87,
+            600 : white87,
+            700 : white87,
+            800 : white87,
+            900 : white87,
+            A100: black87,
+            A200: white87,
+            A400: white87,
+            A700: white87
+        }
+    },
+    white      : {
+        500     : 'white',
+        contrast: {
+            500: black87
+        }
+    },
+    black      : {
+        500     : 'black',
+        contrast: {
+            500: 'white'
+        }
     }
 };
 

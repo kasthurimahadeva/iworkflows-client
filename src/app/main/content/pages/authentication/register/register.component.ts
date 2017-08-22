@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FuseLayoutService } from '../../../../../core/services/layout.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FuseConfigService } from '../../../../../core/services/config.service';
 
 @Component({
     selector   : 'fuse-register',
@@ -13,12 +13,16 @@ export class FuseRegisterComponent implements OnInit
     registerForm: FormGroup;
     registerFormErrors: any;
 
-    constructor(private layoutService: FuseLayoutService, private formBuilder: FormBuilder)
+    constructor(
+        private fuseConfig: FuseConfigService,
+        private formBuilder: FormBuilder)
     {
-        this.layoutService.setSettings({
-            navigation: 'none',
-            toolbar   : 'none',
-            footer    : 'none'
+        this.fuseConfig.setSettings({
+            layout: {
+                navigation: 'none',
+                toolbar   : 'none',
+                footer    : 'none'
+            }
         });
 
         this.registerFormErrors = {

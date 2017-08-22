@@ -3,6 +3,11 @@
     flex: 0 1 auto;
     z-index: 3;
 
+    .mat-toolbar {
+        background: inherit;
+        color: inherit;
+    }
+
     &.above {
         position: relative;
         z-index: 99;

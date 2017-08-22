@@ -20,7 +20,7 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
     @Input() selectedHue = '';
     @Input() selectedFg = '';
     @Input() value: any;
-    @Output() valueChange = new EventEmitter();
+    @Output() onValueChange = new EventEmitter();
     @Output() selectedPaletteChange = new EventEmitter();
     @Output() selectedHueChange = new EventEmitter();
     @Output() selectedClassChange = new EventEmitter();
@@ -29,9 +29,9 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
 
     _selectedClass = '';
     @Input()
-    set selectedClass(value: string)
+    set selectedClass(value)
     {
-        if ( value !== '' && this._selectedClass !== value )
+        if ( value && value !== '' && this._selectedClass !== value )
         {
             const color = value.split('-');
             if ( color.length >= 5 )
@@ -55,9 +55,9 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
 
     _selectedBg = '';
     @Input()
-    set selectedBg(value: string)
+    set selectedBg(value)
     {
-        if ( value !== '' && this._selectedBg !== value )
+        if ( value && value !== '' && this._selectedBg !== value )
         {
             for ( const palette in this.colors )
             {
@@ -133,7 +133,6 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
             }
             else
             {
-                this.selectedClass = '';
                 this.selectedBg = '';
                 this.selectedFg = '';
             }
@@ -153,7 +152,7 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
             this.selectedFgChange.emit(this.selectedFg);
 
             this.value = this.selectedColor;
-            this.valueChange.emit(this.selectedColor);
+            this.onValueChange.emit(this.selectedColor);
         });
     }
 

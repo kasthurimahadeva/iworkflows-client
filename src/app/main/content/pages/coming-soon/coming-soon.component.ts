@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { FuseLayoutService } from '../../../../core/services/layout.service';
+import { FuseConfigService } from '../../../../core/services/config.service';
 
 @Component({
     selector   : 'fuse-coming-soon',
@@ -13,12 +13,17 @@ export class FuseComingSoonComponent implements OnInit
     comingSoonForm: FormGroup;
     comingSoonFormErrors: any;
 
-    constructor(private layoutService: FuseLayoutService, private formBuilder: FormBuilder)
+    constructor(
+        private fuseConfig: FuseConfigService,
+        private formBuilder: FormBuilder
+    )
     {
-        this.layoutService.setSettings({
-            navigation: 'none',
-            toolbar   : 'none',
-            footer    : 'none'
+        this.fuseConfig.setSettings({
+            layout: {
+                navigation: 'none',
+                toolbar   : 'none',
+                footer    : 'none'
+            }
         });
 
         this.comingSoonFormErrors = {

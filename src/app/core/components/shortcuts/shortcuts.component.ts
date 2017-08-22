@@ -3,6 +3,7 @@ import { FuseNavigationService } from '../navigation/navigation.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ObservableMedia } from '@angular/flex-layout';
 import { FuseMatchMedia } from '../../services/match-media.service';
+import { FuseConfigService } from '../../services/config.service';
 
 @Component({
     selector   : 'fuse-shortcuts',
@@ -16,7 +17,9 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
     filteredNavigationItems: any[];
     searching = false;
     mobileShortcutsPanelActive = false;
+    toolbarColor: string;
     matchMediaSubscription: Subscription;
+    onSettingsChanged: Subscription;
 
     @ViewChild('searchInput') searchInputField;
     @ViewChild('shortcuts') shortcutsEl: ElementRef;
@@ -25,10 +28,19 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
         private renderer: Renderer2,
         private observableMedia: ObservableMedia,
         private fuseMatchMedia: FuseMatchMedia,
-        private fuseNavigationService: FuseNavigationService
+        private fuseNavigationService: FuseNavigationService,
+        private fuseConfig: FuseConfigService
     )
     {
         this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation();
+
+        this.onSettingsChanged =
+            this.fuseConfig.onSettingsChanged
+                .subscribe(
+                    (newSettings) => {
+                        this.toolbarColor = newSettings.colorClasses.toolbar;
+                    }
+                );
     }
 
     ngOnInit()

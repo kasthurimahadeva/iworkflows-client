@@ -14,7 +14,6 @@ import { FusePipesModule } from '../pipes/pipes.module';
 import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { FuseCountdownComponent } from '../components/countdown/countdown.component';
 import { FuseNavigationService } from '../components/navigation/navigation.service';
-import { FuseLayoutService } from '../services/layout.service';
 import { FuseMatchMedia } from '../services/match-media.service';
 import { FuseNavbarService } from '../../main/navbar/navbar.service';
 import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-sidenav-helper.service';
@@ -67,7 +66,6 @@ import { FuseMaterialColorPickerComponent } from '../components/material-color-p
     ],
     providers      : [
         FuseNavigationService,
-        FuseLayoutService,
         FuseMatchMedia,
         FuseNavbarService,
         FuseMdSidenavHelperService

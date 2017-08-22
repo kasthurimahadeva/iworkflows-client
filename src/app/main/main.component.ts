@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
-import { FuseLayoutService } from '../core/services/layout.service';
 import { Subscription } from 'rxjs/Subscription';
+import { FuseConfigService } from '../core/services/config.service';
 
 @Component({
     selector     : 'fuse-main',
@@ -11,19 +11,19 @@ import { Subscription } from 'rxjs/Subscription';
 export class FuseMainComponent implements OnInit, OnDestroy
 {
     onSettingsChanged: Subscription;
-    layoutSettings: { navigation: string, toolbar: string, footer: string };
+    fuseSettings: any;
 
     constructor(
-        private layoutService: FuseLayoutService,
         private _renderer: Renderer2,
-        private _elementRef: ElementRef
+        private _elementRef: ElementRef,
+        private fuseConfig: FuseConfigService
     )
     {
         this.onSettingsChanged =
-            this.layoutService.onSettingsChanged
+            this.fuseConfig.onSettingsChanged
                 .subscribe(
                     (newSettings) => {
-                        this.layoutSettings = newSettings;
+                        this.fuseSettings = newSettings;
                     }
                 );
     }

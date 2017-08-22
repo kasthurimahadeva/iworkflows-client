@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FuseLayoutService } from '../../../../core/services/layout.service';
+import { FuseConfigService } from '../../../../core/services/config.service';
 
 @Component({
     selector   : 'fuse-maintenance',
@@ -9,12 +9,16 @@ import { FuseLayoutService } from '../../../../core/services/layout.service';
 })
 export class FuseMaintenanceComponent implements OnInit
 {
-    constructor(private layoutService: FuseLayoutService)
+    constructor(
+        private fuseConfig: FuseConfigService,
+    )
     {
-        this.layoutService.setSettings({
-            navigation: 'none',
-            toolbar   : 'none',
-            footer    : 'none'
+        this.fuseConfig.setSettings({
+            layout: {
+                navigation: 'none',
+                toolbar   : 'none',
+                footer    : 'none'
+            }
         });
     }
 

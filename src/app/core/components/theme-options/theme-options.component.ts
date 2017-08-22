@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-import { FuseLayoutService } from '../../services/layout.service';
+import { FuseConfigService } from '../../services/config.service';
 
 @Component({
     selector   : 'fuse-theme-options',
@@ -14,22 +14,31 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     @ViewChild('panel') panel;
 
     public player: AnimationPlayer;
+    fuseSettings: any;
 
     onSettingsChanged: Subscription;
-    layoutSettings: { navigation: string, toolbar: string, footer: string };
 
     constructor(
         private animationBuilder: AnimationBuilder,
-        private layoutService: FuseLayoutService
+        private fuseConfig: FuseConfigService
     )
     {
         this.onSettingsChanged =
-            this.layoutService.onSettingsChanged
+            this.fuseConfig.onSettingsChanged
                 .subscribe(
                     (newSettings) => {
-                        this.layoutSettings = newSettings;
+                        this.fuseSettings = newSettings;
                     }
                 );
+    }
+
+    ngOnInit()
+    {
+    }
+
+    onSettingsChange()
+    {
+        this.fuseConfig.setSettings(this.fuseSettings);
     }
 
     closeBar()
@@ -54,17 +63,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         this.player.play();
     }
 
-    ngOnInit()
-    {
-    }
-
     ngOnDestroy()
     {
         this.onSettingsChanged.unsubscribe();
-    }
-
-    onLayoutSettingsChanged()
-    {
-        this.layoutService.onSettingsChanged.next(this.layoutSettings);
     }
 }

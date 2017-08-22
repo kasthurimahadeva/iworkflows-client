@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FuseConfigService } from '../../services/config.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector   : 'fuse-search-bar',
@@ -8,12 +10,22 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FuseSearchBarComponent implements OnInit
 {
     collapsed: boolean;
-
+    toolbarColor: string;
     @Output() onInput: EventEmitter<any> = new EventEmitter();
+    onSettingsChanged: Subscription;
 
-    constructor()
+    constructor(
+        private fuseConfig: FuseConfigService
+    )
     {
         this.collapsed = true;
+        this.onSettingsChanged =
+            this.fuseConfig.onSettingsChanged
+                .subscribe(
+                    (newSettings) => {
+                        this.toolbarColor = newSettings.colorClasses.toolbar;
+                    }
+                );
     }
 
     ngOnInit()
