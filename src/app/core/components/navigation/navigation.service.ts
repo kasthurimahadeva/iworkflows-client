@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { FuseNavigation } from './navigation.model';
+import { FuseNavigation } from '../../../navigation.model';
 
 @Injectable()
 export class FuseNavigationService

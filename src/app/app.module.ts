@@ -10,44 +10,17 @@ import 'hammerjs';
 
 import { SharedModule } from './core/modules/shared.module';
 import { AppComponent } from './app.component';
-import { ProjectModule } from './main/content/apps/dashboards/project/project.module';
-import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
-import { PagesModule } from './main/content/pages/pages.module';
-import { UIModule } from './main/content/ui/ui.module';
-import { ComponentsModule } from './main/content/components/components.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
+import { FuseSampleModule } from './main/content/sample/sample.module';
 
 const appRoutes: Routes = [
     {
-        path        : 'apps/mail',
-        loadChildren: './main/content/apps/mail/mail.module#FuseMailModule'
-    },
-    {
-        path        : 'apps/chat',
-        loadChildren: './main/content/apps/chat/chat.module#FuseChatModule'
-    },
-    {
-        path        : 'apps/calendar',
-        loadChildren: './main/content/apps/calendar/calendar.module#FuseCalendarModule'
-    },
-    {
-        path        : 'apps/todo',
-        loadChildren: './main/content/apps/todo/todo.module#FuseTodoModule'
-    },
-    {
-        path        : 'apps/file-manager',
-        loadChildren: './main/content/apps/file-manager/file-manager.module#FuseFileManagerModule'
-    },
-    {
-        path        : 'apps/contacts',
-        loadChildren: './main/content/apps/contacts/contacts.module#FuseContactsModule'
-    },
-    {
         path      : '**',
-        redirectTo: 'apps/dashboards/project'
+        redirectTo: 'sample'
     }
 ];
 
@@ -62,20 +35,12 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         SharedModule,
-
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 125}),
-
         PerfectScrollbarModule.forRoot(),
-
         FuseMainModule,
-
-        ProjectModule,
-
-        PagesModule,
-        UIModule,
-        ComponentsModule
+        FuseSampleModule
     ],
-    providers: [
+    providers   : [
         FuseSplashScreenService,
         FuseConfigService
     ],
