@@ -20,6 +20,7 @@ import { FuseNavbarService } from '../../main/navbar/navbar.service';
 import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-sidenav-helper.service';
 import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
+import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
 
 @NgModule({
     declarations   : [
@@ -28,7 +29,8 @@ import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-do
         FuseConfirmDialogComponent,
         FuseCountdownComponent,
         FuseHljsComponent,
-        FuseIfOnDomDirective
+        FuseIfOnDomDirective,
+        FuseMaterialColorPickerComponent
     ],
     imports        : [
         FlexLayoutModule,
@@ -57,7 +59,8 @@ import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-do
         ColorPickerModule,
         NgxDnDModule,
         NgxDatatableModule,
-        FuseIfOnDomDirective
+        FuseIfOnDomDirective,
+        FuseMaterialColorPickerComponent
     ],
     entryComponents: [
         FuseConfirmDialogComponent

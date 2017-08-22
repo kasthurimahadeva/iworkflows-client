@@ -1,0 +1,79 @@
+<button md-icon-button
+        [mdMenuTriggerFor]="colorMenu"
+        (onMenuOpen)="onMenuOpen()"
+        [ngClass]="'md-'+selectedPalette+'-'+selectedHue+'-bg'">
+    <md-icon>palette</md-icon>
+</button>
+
+<md-menu #colorMenu="mdMenu" class="fuse-material-color-picker-menu">
+
+    <header [ngClass]="selectedColor?.class || 'md-accent-bg'"
+            class="mat-elevation-z4"
+            fxLayout="row"
+            fxLayoutAlign="space-between center">
+
+        <button md-icon-button
+                [style.visibility]="view==='hues'?'visible':'hidden'"
+                (click)="$event.stopPropagation();backToPaletteSelection()" aria-label="Palette">
+            <md-icon class="s-20">arrow_back</md-icon>
+        </button>
+
+        <span *ngIf="selectedColor?.palette">
+            {{selectedColor.palette}} {{selectedColor.hue}}
+        </span>
+
+        <span *ngIf="!selectedColor?.palette">
+            Select Color
+        </span>
+
+        <button md-icon-button
+                class="remove-color-button"
+                (click)="removeColor()"
+                aria-label="Remove Color">
+            <md-icon class="s-20">delete</md-icon>
+        </button>
+    </header>
+
+
+    <div [ngSwitch]="view" class="views">
+
+        <div class="view"
+             *ngSwitchCase="'palettes'"
+             [@slideInLeft]>
+
+            <div fxLayout="row" fxLayoutWrap
+                 fxLayoutAlign="start start"
+                 class="colors" perfect-scrollbar>
+                <div class="color"
+                     [ngClass]="'md-'+color.key+'-bg'"
+                     *ngFor="let color of (colors | keys)"
+                     (click)="$event.stopPropagation();selectPalette(color.key)"
+                     fxLayout="row" fxLayoutAlign="start end" md-ink-ripple>
+                    <span class="label">
+                        {{color.key}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="view"
+             *ngSwitchCase="'hues'"
+             [@slideInRight]>
+            <div fxLayout="row" fxLayoutWrap
+                 fxLayoutAlign="start start"
+                 class="colors" perfect-scrollbar>
+                <div class="color"
+                     *ngFor="let hue of hues"
+                     [ngClass]="'md-'+selectedPalette+'-'+hue+'-bg'"
+                     (click)="selectHue(hue)"
+                     fxLayout="row" fxLayoutAlign="start end" md-ink-ripple>
+                    <span class="label">
+                        {{hue}}
+                    </span>
+                    <md-icon *ngIf="selectedHue === hue" class="s-16">check</md-icon>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</md-menu>
