@@ -70,23 +70,119 @@ export class Animations
         transition('* => void', animate('300ms'))
     ]);
 
-    public static routerTransition = trigger('routerTransition', [
+    public static routerTransitionLeft = trigger('routerTransitionLeft', [
 
         transition('* => *', [
-            query(':enter, :leave', style({
-                position: 'absolute',
-                top     : 0,
-                bottom  : 0,
-                left    : 0,
-                right   : 0
-            })),
-            query(':enter', style({
-                transform: 'translateY(100%)',
-                opacity  : 0
-            })),
+            query('fuse-content > :enter, fuse-content > :leave', [
+                style({
+                    position: 'absolute',
+                    top     : 0,
+                    bottom  : 0,
+                    left    : 0,
+                    right   : 0
+                })
+            ]),
+            query('fuse-content > :enter', [
+                style({
+                    transform: 'translateX(100%)',
+                    opacity  : 0
+                })
+            ]),
             sequence([
                 group([
-                    query(':leave', [
+                    query('fuse-content > :leave', [
+                        style({
+                            transform: 'translateX(0)',
+                            opacity  : 1
+                        }),
+                        animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                            style({
+                                transform: 'translateX(-100%)',
+                                opacity  : 0
+                            }))
+                    ]),
+                    query('fuse-content > :enter', [
+                        style({transform: 'translateX(100%)'}),
+                        animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                            style({
+                                transform: 'translateX(0%)',
+                                opacity  : 1
+                            }))
+                    ])
+                ]),
+                query('fuse-content > :leave', animateChild()),
+                query('fuse-content > :enter', animateChild())
+            ])
+        ])
+    ]);
+
+    public static routerTransitionRight = trigger('routerTransitionRight', [
+
+        transition('* => *', [
+            query('fuse-content > :enter, fuse-content > :leave', [
+                style({
+                    position: 'absolute',
+                    top     : 0,
+                    bottom  : 0,
+                    left    : 0,
+                    right   : 0
+                })
+            ]),
+            query('fuse-content > :enter', [
+                style({
+                    transform: 'translateX(-100%)',
+                    opacity  : 0
+                })
+            ]),
+            sequence([
+                group([
+                    query('fuse-content > :leave', [
+                        style({
+                            transform: 'translateX(0)',
+                            opacity  : 1
+                        }),
+                        animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                            style({
+                                transform: 'translateX(100%)',
+                                opacity  : 0
+                            }))
+                    ]),
+                    query('fuse-content > :enter', [
+                        style({transform: 'translateX(-100%)'}),
+                        animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                            style({
+                                transform: 'translateX(0%)',
+                                opacity  : 1
+                            }))
+                    ])
+                ]),
+                query('fuse-content > :leave', animateChild()),
+                query('fuse-content > :enter', animateChild())
+            ])
+        ])
+    ]);
+
+    public static routerTransitionUp = trigger('routerTransitionUp', [
+
+        transition('* => *', [
+            query('fuse-content > :enter, fuse-content > :leave', [
+                style({
+                    position: 'absolute',
+                    top     : 0,
+                    bottom  : 0,
+                    left    : 0,
+                    right   : 0
+                })
+            ]),
+            query('fuse-content > :enter', [
+                style({
+                    transform: 'translateY(100%)',
+                    opacity  : 0
+                })
+            ]),
+            sequence([
+                group([
+                    query('fuse-content > :leave', [
                         style({
                             transform: 'translateY(0)',
                             opacity  : 1
@@ -97,7 +193,7 @@ export class Animations
                                 opacity  : 0
                             }))
                     ]),
-                    query(':enter', [
+                    query('fuse-content > :enter', [
                         style({transform: 'translateY(100%)'}),
                         animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
                             style({
@@ -106,9 +202,98 @@ export class Animations
                             }))
                     ])
                 ]),
-                query(':leave', animateChild()),
-                query(':enter', animateChild())
+                query('fuse-content > :leave', animateChild()),
+                query('fuse-content > :enter', animateChild())
             ])
+        ])
+    ]);
+
+    public static routerTransitionDown = trigger('routerTransitionDown', [
+
+        transition('* => *', [
+            query('fuse-content > :enter, fuse-content > :leave', [
+                style({
+                    position: 'absolute',
+                    top     : 0,
+                    bottom  : 0,
+                    left    : 0,
+                    right   : 0
+                })
+            ]),
+            query('fuse-content > :enter', [
+                style({
+                    transform: 'translateY(-100%)',
+                    opacity  : 0
+                })
+            ]),
+            sequence([
+                group([
+                    query('fuse-content > :leave', [
+                        style({
+                            transform: 'translateY(0)',
+                            opacity  : 1
+                        }),
+                        animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                            style({
+                                transform: 'translateY(100%)',
+                                opacity  : 0
+                            }))
+                    ]),
+                    query('fuse-content > :enter', [
+                        style({transform: 'translateY(-100%)'}),
+                        animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                            style({
+                                transform: 'translateY(0%)',
+                                opacity  : 1
+                            }))
+                    ])
+                ]),
+                query('fuse-content > :leave', animateChild()),
+                query('fuse-content > :enter', animateChild())
+            ])
+        ])
+    ]);
+
+    public static routerTransitionFade = trigger('routerTransitionFade', [
+
+        transition('* => *', [
+
+            query('fuse-content > :enter, fuse-content > :leave ', [
+                style({
+                    position: 'absolute',
+                    top     : 0,
+                    bottom  : 0,
+                    left    : 0,
+                    right   : 0
+                })
+            ]),
+            query('fuse-content > :enter', [
+                style({
+                    opacity: 0
+                })
+            ]),
+            sequence([
+                query('fuse-content > :leave', [
+                    style({
+                        opacity: 1
+                    }),
+                    animate('300ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                        style({
+                            opacity: 0
+                        }))
+                ]),
+                query('fuse-content > :enter', [
+                    style({
+                        opacity: 0
+                    }),
+                    animate('300ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                        style({
+                            opacity: 1
+                        }))
+                ])
+            ]),
+            query('fuse-content > :enter', animateChild()),
+            query('fuse-content > :leave', animateChild())
         ])
     ]);
 }

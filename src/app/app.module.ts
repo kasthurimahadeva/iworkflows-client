@@ -63,7 +63,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         SharedModule,
 
-        InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 125}),
+        InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 0}),
 
         PerfectScrollbarModule.forRoot(),
 
