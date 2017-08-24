@@ -11,13 +11,9 @@ import { Subject } from 'rxjs/Subject';
 export class ContactsService implements Resolve<any>
 {
     onContactsChanged: BehaviorSubject<any> = new BehaviorSubject({});
-
     onSelectedContactsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
-
     onUserDataChanged: BehaviorSubject<any> = new BehaviorSubject([]);
-
     onSearchTextChanged: Subject<any> = new Subject();
-
     onFilterChanged: Subject<any> = new Subject();
 
     contacts: Contact[];
@@ -39,7 +35,6 @@ export class ContactsService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-
         return new Promise((resolve, reject) => {
 
             Promise.all([

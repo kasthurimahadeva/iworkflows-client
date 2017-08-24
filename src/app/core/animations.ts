@@ -1,6 +1,6 @@
-import { sequence, trigger, stagger, animate, style, group, query as q, transition, keyframes, animateChild, state } from '@angular/animations';
+import { sequence, trigger, stagger, animate, style, group, query, transition, keyframes, animateChild, state } from '@angular/animations';
 
-const query = (s, a, o = {optional: true}) => q(s, a, o);
+// const query = (s, a, o = {optional: true}) => q(s, a, o);
 
 export class Animations
 {
@@ -81,13 +81,13 @@ export class Animations
                     left    : 0,
                     right   : 0
                 })
-            ]),
+            ], {optional: true}),
             query('fuse-content > :enter', [
                 style({
                     transform: 'translateX(100%)',
                     opacity  : 0
                 })
-            ]),
+            ], {optional: true}),
             sequence([
                 group([
                     query('fuse-content > :leave', [
@@ -100,7 +100,7 @@ export class Animations
                                 transform: 'translateX(-100%)',
                                 opacity  : 0
                             }))
-                    ]),
+                    ], {optional: true}),
                     query('fuse-content > :enter', [
                         style({transform: 'translateX(100%)'}),
                         animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
@@ -108,10 +108,10 @@ export class Animations
                                 transform: 'translateX(0%)',
                                 opacity  : 1
                             }))
-                    ])
+                    ], {optional: true})
                 ]),
-                query('fuse-content > :leave', animateChild()),
-                query('fuse-content > :enter', animateChild())
+                query('fuse-content > :leave', animateChild(), {optional: true}),
+                query('fuse-content > :enter', animateChild(), {optional: true})
             ])
         ])
     ]);
@@ -127,13 +127,13 @@ export class Animations
                     left    : 0,
                     right   : 0
                 })
-            ]),
+            ], {optional: true}),
             query('fuse-content > :enter', [
                 style({
                     transform: 'translateX(-100%)',
                     opacity  : 0
                 })
-            ]),
+            ], {optional: true}),
             sequence([
                 group([
                     query('fuse-content > :leave', [
@@ -146,7 +146,7 @@ export class Animations
                                 transform: 'translateX(100%)',
                                 opacity  : 0
                             }))
-                    ]),
+                    ], {optional: true}),
                     query('fuse-content > :enter', [
                         style({transform: 'translateX(-100%)'}),
                         animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
@@ -154,10 +154,10 @@ export class Animations
                                 transform: 'translateX(0%)',
                                 opacity  : 1
                             }))
-                    ])
+                    ], {optional: true})
                 ]),
-                query('fuse-content > :leave', animateChild()),
-                query('fuse-content > :enter', animateChild())
+                query('fuse-content > :leave', animateChild(), {optional: true}),
+                query('fuse-content > :enter', animateChild(), {optional: true})
             ])
         ])
     ]);
@@ -173,13 +173,13 @@ export class Animations
                     left    : 0,
                     right   : 0
                 })
-            ]),
+            ], {optional: true}),
             query('fuse-content > :enter', [
                 style({
                     transform: 'translateY(100%)',
                     opacity  : 0
                 })
-            ]),
+            ], {optional: true}),
             sequence([
                 group([
                     query('fuse-content > :leave', [
@@ -192,7 +192,7 @@ export class Animations
                                 transform: 'translateY(-100%)',
                                 opacity  : 0
                             }))
-                    ]),
+                    ], {optional: true}),
                     query('fuse-content > :enter', [
                         style({transform: 'translateY(100%)'}),
                         animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
@@ -200,10 +200,10 @@ export class Animations
                                 transform: 'translateY(0%)',
                                 opacity  : 1
                             }))
-                    ])
+                    ], {optional: true})
                 ]),
-                query('fuse-content > :leave', animateChild()),
-                query('fuse-content > :enter', animateChild())
+                query('fuse-content > :leave', animateChild(), {optional: true}),
+                query('fuse-content > :enter', animateChild(), {optional: true})
             ])
         ])
     ]);
@@ -219,13 +219,13 @@ export class Animations
                     left    : 0,
                     right   : 0
                 })
-            ]),
+            ], {optional: true}),
             query('fuse-content > :enter', [
                 style({
                     transform: 'translateY(-100%)',
                     opacity  : 0
                 })
-            ]),
+            ], {optional: true}),
             sequence([
                 group([
                     query('fuse-content > :leave', [
@@ -238,7 +238,7 @@ export class Animations
                                 transform: 'translateY(100%)',
                                 opacity  : 0
                             }))
-                    ]),
+                    ], {optional: true}),
                     query('fuse-content > :enter', [
                         style({transform: 'translateY(-100%)'}),
                         animate('400ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
@@ -246,10 +246,10 @@ export class Animations
                                 transform: 'translateY(0%)',
                                 opacity  : 1
                             }))
-                    ])
+                    ], {optional: true})
                 ]),
-                query('fuse-content > :leave', animateChild()),
-                query('fuse-content > :enter', animateChild())
+                query('fuse-content > :leave', animateChild(), {optional: true}),
+                query('fuse-content > :enter', animateChild(), {optional: true})
             ])
         ])
     ]);
@@ -266,13 +266,13 @@ export class Animations
                     left    : 0,
                     right   : 0
                 })
-            ]),
+            ], {optional: true}),
             query('fuse-content > :enter', [
                 style({
                     opacity: 0
                 })
-            ]),
-            sequence([
+            ], {optional: true}),
+            // sequence([
                 query('fuse-content > :leave', [
                     style({
                         opacity: 1
@@ -281,7 +281,7 @@ export class Animations
                         style({
                             opacity: 0
                         }))
-                ]),
+                ], {optional: true}),
                 query('fuse-content > :enter', [
                     style({
                         opacity: 0
@@ -290,10 +290,10 @@ export class Animations
                         style({
                             opacity: 1
                         }))
-                ])
-            ]),
-            query('fuse-content > :enter', animateChild()),
-            query('fuse-content > :leave', animateChild())
+                ], {optional: true}),
+            // ]),
+            query('fuse-content > :enter', animateChild(), {optional: true}),
+            query('fuse-content > :leave', animateChild(), {optional: true})
         ])
     ]);
 }

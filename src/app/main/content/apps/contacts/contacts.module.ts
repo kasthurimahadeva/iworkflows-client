@@ -12,7 +12,6 @@ const routes: Routes = [
     {
         path     : '**',
         component: FuseContactsComponent,
-        children : [],
         resolve  : {
             contacts: ContactsService
         }
