@@ -30,7 +30,8 @@ export class FuseConfigService
                 navbar : 'md-fuse-dark-500-bg',
                 footer : 'md-fuse-dark-800-bg'
             },
-            customScrollbars: true
+            customScrollbars: true,
+            routerAnimation : 'fadeIn'
         };
 
         /**

@@ -61,5 +61,35 @@
             </div>
         </md-list-item>
 
+        <md-divider></md-divider>
+
+        <h3 md-subheader>Animation:</h3>
+
+        <md-list-item>
+            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+                <h4>Router Animation</h4>
+                <md-select [(ngModel)]="fuseSettings.routerAnimation">
+                    <md-option value="none">
+                        None
+                    </md-option>
+                    <md-option value="slideUp">
+                        Slide up
+                    </md-option>
+                    <md-option value="slideDown">
+                        Slide down
+                    </md-option>
+                    <md-option value="slideRight">
+                        Slide right
+                    </md-option>
+                    <md-option value="slideLeft">
+                        Slide left
+                    </md-option>
+                    <md-option value="fadeIn">
+                        Fade in
+                    </md-option>
+                </md-select>
+            </div>
+        </md-list-item>
+
     </md-list>
 </div>

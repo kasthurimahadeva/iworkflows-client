@@ -4,9 +4,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-
 import 'hammerjs';
-
 import { SharedModule } from './core/modules/shared.module';
 import { AppComponent } from './app.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
