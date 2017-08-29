@@ -1,0 +1,107 @@
+<div id="navigation" class="page-layout simple fullwidth" perfect-scrollbar>
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon class="secondary-text s-16">home</md-icon>
+                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Navigation</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-navigation</code> is a custom built Fuse component allows you to create a multi-level collapsable
+            navigation.
+        </p>
+
+        <!--<div class="my-48">
+            <h2>Sample</h2>
+            <p fxLayout="row" fxLayoutAlign="start start">
+                <fuse-navigation></fuse-navigation>
+            </p>
+        </div>-->
+
+        <div class="my-48">
+            <h2>Usage</h2>
+            <p class="md-grey-200-bg py-8">
+                <fuse-hljs lang="html" class="source-code">
+                    <textarea #source hidden="hidden">
+                        <fuse-navigation></fuse-navigation>
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h2>Model</h2>
+            <p class="py-8">
+                <code>&lt;fuse-navigation&gt;&lt;/fuse-navigation&gt;</code> uses a service and a model file to populate
+                the entire navigation. It supports three different navigation items; <b>Subheader</b>,
+                <b>Collapsable</b> and <b>Item</b>. These items can be mixed and matched to create unique and complex
+                navigation layouts.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3>Header</h3>
+            <p class="md-grey-200-bg py-8">
+                <fuse-hljs lang="json" class="source-code">
+                    <textarea #source hidden="hidden">
+                        {
+                            'title': 'COMPONENTS',
+                            'type' : 'subheader'
+                        },
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3>Collapsable</h3>
+            <p class="md-grey-200-bg py-8">
+                <fuse-hljs lang="json" class="source-code">
+                    <textarea #source hidden="hidden">
+                        {
+                            'title'   : 'Datatables',
+                            'type'    : 'nav-collapse',
+                            'icon'    : 'border_all',
+                            'children': [
+                                {
+                                    'title': 'ngx-datatable',
+                                    'type' : 'nav-item',
+                                    'url'  : '/components/datatables/ngx-datatable'
+                                }
+                            ]
+                        },
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3>Item</h3>
+            <p class="md-grey-200-bg py-8">
+                <fuse-hljs lang="json" class="source-code">
+                    <textarea #source hidden="hidden">
+                        {
+                            'title': 'Countdown',
+                            'type' : 'nav-item',
+                            'icon' : 'settings_input_component',
+                            'url'  : '/components/countdown'
+                        },
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
