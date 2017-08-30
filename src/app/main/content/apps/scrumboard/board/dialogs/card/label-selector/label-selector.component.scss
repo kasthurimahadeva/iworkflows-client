@@ -1,0 +1,37 @@
+.scrumboard-labels-menu {
+
+    .mat-menu-content {
+        padding-bottom: 0;
+
+        .mat-checkbox-layout,
+        .mat-checkbox-label {
+            display: flex;
+            flex: 1;
+        }
+
+        .views {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            width: 240px;
+            min-width: 240px;
+            max-width: 240px;
+            min-height: 240px;
+
+            .view {
+                position: absolute;
+                width: 240px;
+                height: 100%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: 0;
+
+                > .header {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+    }
+}

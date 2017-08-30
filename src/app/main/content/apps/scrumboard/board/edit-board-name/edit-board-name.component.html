@@ -1,0 +1,21 @@
+<div *ngIf="!formActive" class="board-name" fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+    <span>{{board.name}}</span>
+    <button md-icon-button (click)="openForm()">
+        <md-icon class="s-16">edit_mode</md-icon>
+    </button>
+</div>
+
+
+<form [formGroup]="form" (submit)="onFormSubmit()"
+      class="board-name-form" fxFlex="1 0 auto"
+      *ngIf="formActive" fxFlex="row">
+
+    <input formControlName="name" #nameInput fxFlex="1 0 auto" placeholder="Write a board name">
+
+    <button md-icon-button fxFlex="0 1 auto">
+        <md-icon>check</md-icon>
+    </button>
+    <button md-icon-button fxFlex="0 1 auto" (click)="closeForm()">
+        <md-icon>close</md-icon>
+    </button>
+</form>

@@ -1,0 +1,452 @@
+<md-toolbar *ngIf="card" md-dialog-title class="md-accent-bg m-0">
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+            <!-- DUE DATE -->
+            <div class="due-date" fxFlex="0 1 auto">
+
+                <button *ngIf="card.due" md-icon-button class="" [mdMenuTriggerFor]="dueDateMenu">
+                    <md-icon>today</md-icon>
+                </button>
+
+                <md-menu #dueDateMenu="mdMenu" [overlapTrigger]="false">
+                    <button md-menu-item (click)="removeDueDate()">Remove Due Date</button>
+                </md-menu>
+
+                <md2-datepicker *ngIf="!card.due" [(ngModel)]="card.due" openOnFocus="true" placeholder="Set Date/Time" type="datetime"></md2-datepicker>
+            </div>
+            <!-- / DUE DATE -->
+
+            <!-- LABELS -->
+            <div class="labels" fxFlex="0 1 auto">
+
+                <button md-icon-button [mdMenuTriggerFor]="labelsMenu">
+                    <md-icon>label</md-icon>
+                </button>
+
+                <md-menu #labelsMenu="mdMenu" [overlapTrigger]="false" class="scrumboard-labels-menu">
+
+                    <fuse-scrumboard-label-selector [card]="card" (onCardLabelsChange)="updateCard()"></fuse-scrumboard-label-selector>
+
+                </md-menu>
+            </div>
+            <!-- / LABELS -->
+
+            <!-- MEMBERS -->
+            <div class="members" fxFlex="0 1 auto">
+
+                <button md-icon-button class="" [mdMenuTriggerFor]="membersMenu">
+                    <md-icon>account_circle</md-icon>
+                </button>
+
+                <md-menu #membersMenu="mdMenu" [overlapTrigger]="false">
+                    <div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
+                        <md-checkbox class="member px-12" [checked]="card.idMembers.indexOf(member.id) > -1"
+                                     *ngFor="let member of board.members"
+                                     (change)="toggleInArray(member.id, card.idMembers);updateCard()">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <img [alt]="member.name" [src]=" member.avatar" class="avatar"/>
+                                <p class="member-name">{{ member.name }}</p>
+                            </div>
+                        </md-checkbox>
+                    </div>
+                </md-menu>
+            </div>
+            <!-- / MEMBERS -->
+
+            <!-- ATTACHMENT -->
+            <button md-icon-button aria-label="Attachment">
+                <md-icon>attachment</md-icon>
+            </button>
+            <!-- / ATTACHMENT -->
+
+            <!-- CHECKLIST -->
+            <div class="due-date " fxFlex="0 1 auto">
+
+                <button md-icon-button class="" [mdMenuTriggerFor]="checklistMenu" #checklistMenuTrigger="mdMenuTrigger" (onMenuOpen)="onChecklistMenuOpen()">
+                    <md-icon>check_box</md-icon>
+                </button>
+
+                <md-menu #checklistMenu="mdMenu" [overlapTrigger]="false">
+
+                    <form class="px-16 py-8" #newChecklistForm="ngForm" (submit)="addChecklist(newChecklistForm)" (click)="$event.stopPropagation()"
+                          fxLayout="column" fxLayoutAlign="start end">
+
+                        <md-input-container floatPlaceholder="never" (click)="$event.stopPropagation()" fxFlex>
+                            <input #newCheckListTitleField mdInput ngModel #checklistTitle="ngModel" name="checklistTitle" placeholder="Checklist title" required>
+                        </md-input-container>
+
+                        <button md-raised-button class="mat-accent" aria-label="Add Checklist" [disabled]="!newChecklistForm.valid">Add Checklist</button>
+                    </form>
+
+                </md-menu>
+            </div>
+            <!-- / CHECKLIST -->
+
+            <!-- SUBSCRIBE -->
+            <div class="subscribe " fxFlex="0 1 auto">
+                <button md-icon-button class="" [mdMenuTriggerFor]="subscribeMenu">
+                    <md-icon>remove_red_eye</md-icon>
+                </button>
+                <md-menu #subscribeMenu="mdMenu" [overlapTrigger]="false">
+                    <button *ngIf="card.subscribed" md-menu-item (click)="toggleSubscribe()">
+                        Unsubscribe
+                    </button>
+                    <button *ngIf="!card.subscribed" md-menu-item (click)="toggleSubscribe()">
+                        Subscribe
+                    </button>
+                </md-menu>
+            </div>
+            <!-- / SUBSCRIBE -->
+
+            <!-- OPTIONS -->
+            <div class="options " fxFlex="0 1 auto">
+                <button md-icon-button class="" [mdMenuTriggerFor]="optionsMenu">
+                    <md-icon>more_horiz</md-icon>
+                </button>
+                <md-menu #optionsMenu="mdMenu" [overlapTrigger]="false">
+                    <button md-menu-item (click)="removeCard()">
+                        Remove Card
+                    </button>
+                </md-menu>
+            </div>
+            <!-- / OPTIONS -->
+        </div>
+
+        <!-- CLOSE DIALOG BUTTON -->
+        <button md-icon-button (click)="dialogRef.close()" aria-label="Close Dialog">
+            <md-icon>close</md-icon>
+        </button>
+        <!-- / CLOSE DIALOG BUTTON -->
+    </div>
+</md-toolbar>
+
+<div *ngIf="card" md-dialog-content class="p-24 m-0" perfect-scrollbar>
+
+    <div fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center"
+         fxLayout.xs="column" fxLayoutAlign="center center">
+
+        <!-- BREADCRUMB -->
+        <div class="card-breadcrumb mb-16 mb-sm-0" fxLayout="row" fxLayoutAlign="start center">
+            <span>{{board.name}}</span>
+            <md-icon class="s-20">chevron_right</md-icon>
+            <span>{{list.name}}</span>
+        </div>
+        <!-- / BREADCRUMB -->
+
+        <!-- DUE DATE -->
+        <div *ngIf="card.due" class="due-date" fxLayout="row" fxLayoutAlign="start center">
+
+            <md2-datepicker class="picker ml-8" [(ngModel)]="card.due" openOnFocus="true" type="datetime" format="dd/MM/y H:mm"></md2-datepicker>
+
+            <button md-icon-button class="remove-due-date" (click)="removeDueDate()">
+                <md-icon class="s-16">close</md-icon>
+            </button>
+        </div>
+        <!-- / DUE DATE -->
+
+    </div>
+
+    <!-- NAME -->
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <md-icon *ngIf="card.subscribed" class="card-subscribe s-20 mr-12">remove_red_eye</md-icon>
+        <div class="card-name">
+            <md-input-container floatPlaceholder="never" fxFlex>
+                <input mdInput [(ngModel)]="card.name" placeholder="Title" required (change)="updateCard()">
+            </md-input-container>
+        </div>
+    </div>
+    <!-- / NAME -->
+
+    <!-- DESCRIPTION -->
+    <div class="description">
+        <md-input-container fxFlex>
+            <textarea mdInput [(ngModel)]="card.description" placeholder="Description" columns="1" md-maxlength="150" max-rows="4" (change)="updateCard()"></textarea>
+        </md-input-container>
+    </div>
+    <!-- / DESCRIPTION -->
+
+    <!-- SECTIONS -->
+    <div class="sections">
+
+        <!-- LABELS SECTION -->
+        <div *ngIf="card.idLabels[0] || card.idMembers[0]" class="section"
+             fxLayout="column" fxLayout.gt-xs="row">
+
+            <div *ngIf="card.idLabels[0]" fxFlex class="labels">
+                <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                    <md-icon class="s-20">label</md-icon>
+                    <span class="section-title">Labels</span>
+                </div>
+                <div class="section-content">
+                    <md-chip-list class="label-chips">
+                        <md-chip class="label-chip mb-4"
+                                 *ngFor="let labelId of card.idLabels"
+                                 [class]="board.labels | getById:labelId:'color'"
+                                 fxLayout="row" fxLayoutAlign="start center">
+                            <span>{{board.labels|getById:labelId:'name'}}</span>
+                            <md-icon class="ml-8 s-16 chip-remove" (click)="toggleInArray(labelId, card.idLabels);updateCard()">close</md-icon>
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+
+            <div *ngIf="card.idMembers[0]" fxFlex class="members">
+                <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                    <md-icon class="s-20">supervisor_account</md-icon>
+                    <span class="section-title">Members</span>
+                </div>
+                <div class="section-content">
+                    <md-chip-list class="member-chips">
+                        <md-chip class="member-chip mb-4" *ngFor="let memberId of card.idMembers"
+                                 fxLayout="row" fxLayoutAlign="start center">
+                            <img class="member-chip-avatar" [src]="board.members | getById:memberId:'avatar'"
+                                 [md-tooltip]="board.members | getById:memberId:'name'">
+                            <md-icon class="ml-8 s-16 chip-remove" (click)="toggleInArray(memberId, card.idMembers);updateCard()">close</md-icon>
+                        </md-chip>
+                    </md-chip-list>
+                </div>
+            </div>
+        </div>
+        <!-- / LABELS SECTION -->
+
+        <!-- ATTACHMENTS SECTION -->
+        <div *ngIf="card.attachments[0]" class="section">
+
+            <div class="attachments">
+
+                <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                    <md-icon class="s-20">attachment</md-icon>
+                    <span class="section-title">Attachments</span>
+                </div>
+
+                <div class="section-content">
+
+                    <div class="attachment" *ngFor="let item of card.attachments" [ngSwitch]="item.type">
+
+                        <div *ngSwitchCase="'image'"
+                             fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center"
+                             fxLayout="column" fxLayoutAlign="center start">
+
+                            <div class="attachment-preview mat-elevation-z2"
+                                 [ngStyle]="{'background-image': 'url('+item.src+')'}">
+                            </div>
+
+                            <div class="attachment-content" fxLayout="column">
+
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                    <span class="attachment-name">{{item.name}}</span>
+                                    <md-icon *ngIf="card.idAttachmentCover === item.id"
+                                             class="yellow-700-fg attachment-is-cover s-20">star
+                                    </md-icon>
+                                </div>
+
+                                <span class="attachment-time">{{item.time}}</span>
+
+                                <div>
+                                    <button md-raised-button class="attachment-actions-button" [mdMenuTriggerFor]="attachmentActionsMenu">
+                                        <span fxLayout="row" fxLayoutAlign="center center">
+                                            <span>Actions</span>
+                                            <md-icon class="s-20">arrow_drop_down</md-icon>
+                                        </span>
+                                    </button>
+                                    <md-menu #attachmentActionsMenu="mdMenu">
+                                        <button md-menu-item (click)="toggleCoverImage(item.id)">
+                                            <span *ngIf="card.idAttachmentCover !== item.id">Make Cover</span>
+                                            <span *ngIf="card.idAttachmentCover === item.id">Remove Cover</span>
+                                        </button>
+                                        <button md-menu-item (click)="removeAttachment(item)">
+                                            Remove Attachment
+                                        </button>
+                                    </md-menu>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div *ngSwitchCase="'link'" fxLayout="row">
+                            <div class="attachment-preview mat-elevation-z2" fxLayout="column"
+                                 fxLayoutAlign="center center">
+                                <span>LINK</span>
+                            </div>
+                            <div class="attachment-content" fxLayout="column">
+                                <span class="attachment-url">{{item.url}}</span>
+                                <span class="attachment-time">{{item.time}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button md-button class="add-attachment-button" aria-label="add attachment">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <md-icon class="s-20">add</md-icon>
+                            <span>Add an attachment</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- / ATTACHMENTS SECTION -->
+
+        <!-- CHECKLISTS SECTION -->
+        <div class="section" *ngFor="let checklist of card.checklists">
+
+            <div class="checklist">
+
+                <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+
+                    <md-icon class="s-20">check_box</md-icon>
+
+                    <span fxFlex class="section-title">{{checklist.name}}</span>
+
+
+                    <div>
+                        <button md-icon-button class="checklist-actions-button" [mdMenuTriggerFor]="checklistActionsMenu">
+                            <md-icon class="s-20">more_vert</md-icon>
+                        </button>
+                        <md-menu #checklistActionsMenu="mdMenu">
+                            <button md-menu-item (click)="removeChecklist(checklist)">
+                                <md-icon>delete</md-icon>
+                                <span>Remove Checklist</span>
+                            </button>
+                        </md-menu>
+                    </div>
+
+                </div>
+
+                <div class="section-content">
+
+                    <div class="checklist-progress" fxLayout="row" fxLayoutAlign="start center">
+
+                        <span class="checklist-progress-value">
+                            {{checklist.checkItemsChecked}} / {{checklist.checkItems.length}}
+                        </span>
+
+                        <md-progress-bar class="mat-accent checklist-progressbar" mode="determinate"
+                                         value="{{100 * checklist.checkItemsChecked / checklist.checkItems.length}}">
+                        </md-progress-bar>
+                    </div>
+
+                    <div class="check-items">
+
+                        <div class="check-item" *ngFor="let checkItem of checklist.checkItems" fxLayout="row" fxLayoutAlign="space-between center">
+
+                            <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                <md-checkbox [(ngModel)]="checkItem.checked"
+                                             (change)="updateCheckedCount(checklist)"
+                                             aria-label="{{checkItem.name}}">
+                                </md-checkbox>
+                                <md-input-container fxFlex class="mx-12">
+                                    <input mdInput [(ngModel)]="checkItem.name">
+                                </md-input-container>
+                            </div>
+
+                            <button md-icon-button class="checklist-actions-button" (click)="removeChecklistItem(checkItem, checklist)">
+                                <md-icon class="s-20">delete</md-icon>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <form #newCheckItemForm="ngForm" (submit)="addCheckItem(newCheckItemForm,checklist)" name="newCheckItemForm" class="new-check-item-form"
+                          fxLayout="row" fxLayoutAlign="start center">
+
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+                            <md-icon class="s-20">add</md-icon>
+
+                            <md-input-container class="no-errors-spacer mx-12" fxFlex>
+                                <input mdInput ngModel #checkItem="ngModel" name="checkItem" placeholder="Add an item" autocomplete="off">
+                            </md-input-container>
+                        </div>
+
+                        <button md-raised-button
+                                [disabled]="!newCheckItemForm.valid || newCheckItemForm.pristine"
+                                class="mat-accent" aria-label="Add">
+                            <span>Add</span>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!-- / CHECKLISTS SECTION -->
+
+        <!-- COMMENTS SECTION -->
+        <div class="section">
+
+            <div class="comments">
+
+                <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                    <md-icon class="s-20">comment</md-icon>
+                    <span class="section-title">Comments</span>
+                </div>
+
+                <div class="section-content">
+                    <form name="cardCommentForm"
+                          #newCommentForm="ngForm" (submit)="addNewComment(newCommentForm)"
+                          ng-submit="vm.addNewComment(vm.newCommentText); vm.newCommentText =''"
+                          class="comment new-comment" fxLayout="column" fxLayoutAlign="start" no-validate>
+
+                        <div fxLayout="row">
+                            <img class="comment-member-avatar" src="assets/images/avatars/profile.jpg">
+                            <md-input-container fxFlex>
+                                <input mdInput name="newComment" ngModel #newComment="ngModel"
+                                       placeholder="Write a comment.." required>
+                            </md-input-container>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="end center">
+                            <button md-raised-button class="mat-accent"
+                                    [disabled]="!newCommentForm.valid || newCommentForm.pristine"
+                                    aria-label="Add">
+                                <span>Add</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="comment" fxLayout="row" *ngFor="let comment of card.comments">
+
+                        <img class="comment-member-avatar"
+                             [src]="board.members | getById: comment.idMember:'avatar'">
+
+                        <div fxLayout="column">
+                            <div class="comment-member-name">
+                                {{board.members | getById: comment.idMember:'name'}}
+                            </div>
+                            <div class="comment-bubble">{{comment.message}}</div>
+                            <div class="comment-time secondary-text">{{comment.time}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / COMMENTS SECTION -->
+
+        <!-- ACTIVITIES SECTION -->
+        <div *ngIf="card.activities[0]" class="section">
+
+            <div class="activities">
+
+                <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                    <md-icon class="s-20">list</md-icon>
+                    <span class="section-title">Activity</span>
+                </div>
+
+                <div class="section-content">
+                    <div class="activity" fxLayout="row" fxLayoutAlign="start center" *ngFor="let activity of card.activities">
+                        <img class="activity-member-avatar"
+                             [src]="board.members| getById:activity.idMember:'avatar'">
+                        <div class="activity-member-name">{{board.members| getById:activity.idMember:'name'}}</div>
+                        <div class="activity-message">{{activity.message}}</div>
+                        <div class="activity-time secondary-text">{{activity.time}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- / ACTIVITIES SECTION -->
+
+    </div>
+    <!-- / SECTIONS -->
+</div>

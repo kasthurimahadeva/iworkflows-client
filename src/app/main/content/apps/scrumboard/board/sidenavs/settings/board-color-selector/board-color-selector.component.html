@@ -1,0 +1,15 @@
+<md-list class="colors">
+    <!-- COLORS -->
+    <md-list-item class="color m-8 mat-elevation-z1"
+                  [ngClass]="'md-'+color.key+'-bg'"
+                  *ngFor="let color of (colors | keys)"
+                  (click)="setColor(color.key)"
+                  md-ripple>
+        <p fxFlex>{{color.key}}</p>
+        <md-icon class="s-16" *ngIf="color.key === board.settings.color">check</md-icon>
+        <button md-icon-button *ngIf="color.key === board.settings.color"  (click)="$event.stopPropagation();setColor('')">
+            <md-icon class="s-16">delete</md-icon>
+        </button>
+    </md-list-item>
+    <!-- / COLORS -->
+</md-list>

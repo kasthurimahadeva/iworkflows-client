@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChildren } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { Todo } from '../todo.model';
 import { Subscription } from 'rxjs/Subscription';
@@ -16,7 +16,7 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
     tags: any[];
     formType: string;
     todoForm: FormGroup;
-    @ViewChildren('titleInput') titleInputField;
+    @ViewChild('titleInput') titleInputField;
 
     onFormChange: any;
     onCurrentTodoChanged: Subscription;
@@ -77,7 +77,7 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
     focusTitleField()
     {
         setTimeout(() => {
-            this.titleInputField.first.nativeElement.focus();
+            this.titleInputField.nativeElement.focus();
         });
     }
 

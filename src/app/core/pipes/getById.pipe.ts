@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'getById'})
+@Pipe({
+    name: 'getById',
+    pure: false
+})
 export class GetByIdPipe implements PipeTransform
 {
     transform(value: any[], id: number, property: string): any

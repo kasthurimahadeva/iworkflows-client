@@ -1,0 +1,76 @@
+<div [ngSwitch]="view" class="views" (click)="$event.stopPropagation()">
+
+    <div class="view" *ngSwitchCase="'main'" [@slideInLeft]>
+
+        <!-- SIDENAV HEADER -->
+        <div class="header md-accent-bg px-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="column" fxLayoutAlign="center center">
+            <div>Settings</div>
+        </div>
+        <!-- / SIDENAV HEADER -->
+
+        <!-- SIDENAV CONTENT -->
+        <div class="content py-16" perfect-scrollbar>
+
+            <div class="nav">
+                <div class="nav-item">
+                    <div class="nav-link" md-ripple (click)="view = 'board-color'">
+                        <md-icon class="nav-link-icon">format_color_fill</md-icon>
+                        <p class="title">Board Color</p>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <div class="nav-link" md-ripple (click)="toggleCardCover()">
+                        <md-icon class="nav-link-icon">photo</md-icon>
+                        <p fxFlex class="title">Card Cover Images</p>
+                        <md-icon *ngIf="board.settings.cardCoverImages" class="s-18">check</md-icon>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <div class="nav-link" md-ripple (click)="toggleSubcription()">
+                        <md-icon class="nav-link-icon">remove_red_eye</md-icon>
+                        <p fxFlex class="title">Subscribe</p>
+                        <md-icon *ngIf="board.settings.subscribed" class="s-18">check</md-icon>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <div class="nav-link" md-ripple>
+                        <md-icon class="nav-link-icon">content_copy</md-icon>
+                        <p class="title">Copy Board</p>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <div class="nav-link" md-ripple>
+                        <md-icon class="nav-link-icon">delete</md-icon>
+                        <p class="title">Delete Board</p>
+                    </div>
+                </div>
+
+                <md-divider></md-divider>
+            </div>
+        </div>
+        <!-- / SIDENAV CONTENT -->
+    </div>
+
+    <div class="view" *ngSwitchCase="'board-color'" [@slideInRight]>
+
+        <!-- SIDENAV HEADER -->
+        <div class="header md-accent-bg px-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>Background Color</div>
+            <button md-icon-button (click)="view ='main'">
+                <md-icon class="s-16">arrow_back</md-icon>
+            </button>
+        </div>
+        <!-- / SIDENAV HEADER -->
+
+        <!-- SIDENAV CONTENT -->
+        <div class="content p-8" perfect-scrollbar>
+            <fuse-scrumboard-board-color-selector></fuse-scrumboard-board-color-selector>
+        </div>
+        <!-- / SIDENAV CONTENT -->
+
+    </div>
+</div>

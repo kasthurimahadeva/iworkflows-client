@@ -1,0 +1,86 @@
+<md-sidenav-container>
+
+    <div id="board">
+
+        <!-- HEADER -->
+        <div class="header md-accent-bg p-16 p-sm-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="column">
+
+            <div class="header-content" fxLayout="row" fxLayoutAlign="space-between" fxFlex="1 0 auto" fxLayoutWrap>
+
+                <!-- BOARD SELECTION BUTTON -->
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlexOrder="2" fxFlexOrder.gt-xs="1">
+                    <button md-raised-button class="mat-accent header-boards-button"
+                            [class]="'md-'+board.settings.color+'-700-bg'"
+                            routerLink="/apps/scrumboard/boards"
+                            aria-label="boards button">
+                        <md-icon>assessment</md-icon>
+                        <span>BOARDS</span>
+                    </button>
+                </div>
+                <!-- / BOARD SELECTION BUTTON -->
+
+                <!-- BOARD NAME -->
+                <div class="header-board-name mb-8 mb-sm-0"
+                     fxLayout="row" fxLayoutAlign="center center"
+                     fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center"
+                     fxFlex="1 0 100%" fxFlex.gt-xs="1 0 auto"
+                     fxFlexOrder="1" fxFlexOrder.gt-xs="2">
+                    <div>
+                        <md-icon *ngIf="board.settings.subscribed" class="board-subscribe s-16">remove_red_eye</md-icon>
+                        <fuse-scrumboard-edit-board-name
+                            fxFlex="1 0 auto"
+                            [board]="board"
+                            (onNameChanged)="onBoardNameChanged($event)">
+                        </fuse-scrumboard-edit-board-name>
+                    </div>
+                </div>
+                <!-- / BOARD NAME -->
+
+                <!-- TOOLBAR -->
+                <div class="toolbar" fxLayout="row" fxLayoutAlign="space-between center" fxFlexOrder="3">
+
+                    <!-- BOARD SETTINGS BUTTON -->
+                    <button md-icon-button (click)="settingsSidenav.toggle()"
+                            aria-label="Settings" md-tooltip="Settings">
+                        <md-icon>settings</md-icon>
+                    </button>
+                    <!-- / BOARD SETTINGS BUTTON -->
+                </div>
+                <!-- / TOOLBAR -->
+
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <div fxFlex class="board-content-wrapper p-16 p-sm-24">
+
+            <!-- BOARD -->
+            <div class="board-content ngx-dnd-container p-16 p-sm-24" [class]="board.settings.color+'-100-bg'" fxLayout="row"
+                 ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)">
+
+                <!-- LIST -->
+                <fuse-scrumboard-board-list
+                    class="scrumboard-board-list list-wrapper ngx-dnd-item"
+                    ngxDraggable
+                    *ngFor="let list of board.lists"
+                    [model]="list"
+                    [list]="list">
+                </fuse-scrumboard-board-list>
+                <!-- / LIST -->
+
+                <!-- NEW LIST BUTTON-->
+                <fuse-scrumboard-board-add-list class="new-list-wrapper" (onlistAdd)="onListAdd($event)"></fuse-scrumboard-board-add-list>
+                <!-- / NEW LIST BUTTON-->
+
+            </div>
+            <!-- / BOARD -->
+        </div>
+        <!-- primary content -->
+    </div>
+
+    <md-sidenav #settingsSidenav align="end">
+        <fuse-scrumboard-board-settings></fuse-scrumboard-board-settings>
+    </md-sidenav>
+
+</md-sidenav-container>
