@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ObservableMedia } from '@angular/flex-layout';
 import { FuseMatchMedia } from '../../services/match-media.service';
 import { FuseConfigService } from '../../services/config.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     selector   : 'fuse-shortcuts',
@@ -29,7 +30,8 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
         private observableMedia: ObservableMedia,
         private fuseMatchMedia: FuseMatchMedia,
         private fuseNavigationService: FuseNavigationService,
-        private fuseConfig: FuseConfigService
+        private fuseConfig: FuseConfigService,
+        private cookieService: CookieService
     )
     {
         this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation();
@@ -45,33 +47,42 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-        // User's shortcut items
-        this.shortcutItems = [
-            {
-                'title': 'Calendar',
-                'type' : 'nav-item',
-                'icon' : 'today',
-                'url'  : '/apps/calendar'
-            },
-            {
-                'title': 'Mail',
-                'type' : 'nav-item',
-                'icon' : 'email',
-                'url'  : '/apps/mail'
-            },
-            {
-                'title': 'Contacts',
-                'type' : 'nav-item',
-                'icon' : 'account_box',
-                'url'  : '/apps/contacts'
-            },
-            {
-                'title': 'To-Do',
-                'type' : 'nav-item',
-                'icon' : 'check_box',
-                'url'  : '/apps/todo'
-            }
-        ];
+        const cookieExists = this.cookieService.check('FUSE2.shortcuts');
+
+        if ( cookieExists )
+        {
+            this.shortcutItems = JSON.parse(this.cookieService.get('FUSE2.shortcuts'));
+        }
+        else
+        {
+            // User's shortcut items
+            this.shortcutItems = [
+                {
+                    'title': 'Calendar',
+                    'type' : 'nav-item',
+                    'icon' : 'today',
+                    'url'  : '/apps/calendar'
+                },
+                {
+                    'title': 'Mail',
+                    'type' : 'nav-item',
+                    'icon' : 'email',
+                    'url'  : '/apps/mail'
+                },
+                {
+                    'title': 'Contacts',
+                    'type' : 'nav-item',
+                    'icon' : 'account_box',
+                    'url'  : '/apps/contacts'
+                },
+                {
+                    'title': 'To-Do',
+                    'type' : 'nav-item',
+                    'icon' : 'check_box',
+                    'url'  : '/apps/todo'
+                }
+            ];
+        }
 
         this.matchMediaSubscription =
             this.fuseMatchMedia.onMediaChange.subscribe(() => {
@@ -115,12 +126,18 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
             if ( this.shortcutItems[i].url === itemToToggle.url )
             {
                 this.shortcutItems.splice(i, 1);
+
+                // Save to the cookies
+                this.cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
+
                 return;
             }
-
         }
 
         this.shortcutItems.push(itemToToggle);
+
+        // Save to the cookies
+        this.cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
     }
 
     isInShortcuts(navigationItem)

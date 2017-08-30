@@ -23,7 +23,8 @@ fuse-main {
         display: flex;
         flex: 1;
 
-        > .mat-sidenav-content {
+        > .mat-sidenav-content,
+        > .mat-drawer-content {
             display: flex;
             flex: 1;
             overflow: hidden;
