@@ -1,0 +1,114 @@
+@import "src/app/core/scss/fuse";
+
+:host {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 16px 0;
+    background-color: white;
+    color: #000;
+    border-radius: 2px;
+    transition: box-shadow 150ms ease;
+    cursor: pointer;
+
+    &.ui-sortable-helper {
+        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+
+    .list-card-sort-handle {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    .list-card-cover {
+    }
+
+    .list-card-details {
+        padding: 16px 16px 0 16px;
+
+        .list-card-labels {
+            margin-bottom: 6px;
+
+            .list-card-label {
+                width: 32px;
+                height: 6px;
+                border-radius: 6px;
+                margin: 0 6px 6px 0;
+            }
+        }
+
+        .list-card-name {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .list-card-badges {
+            margin-bottom: 12px;
+
+            .badge {
+                margin-right: 8px;
+                padding: 4px 8px;
+                border-radius: 2px;
+                background-color: rgba(0, 0, 0, 0.4);
+                color: #FFFFFF;
+
+                md-icon {
+                    margin-right: 4px;
+                }
+
+                &.due-date {
+                    background-color: mat-color(mat-palette($mat-green));;
+
+                    &.overdue {
+                        background-color: mat-color(mat-palette($mat-red));
+                    }
+                }
+
+                &.check-items {
+
+                    &.completed {
+                        background-color: mat-color(mat-palette($mat-green));
+                    }
+                }
+            }
+        }
+
+        .list-card-members {
+            margin-bottom: 12px;
+
+            .list-card-member {
+                margin-right: 8px;
+
+                .list-card-member-avatar {
+                    border-radius: 50%;
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+    }
+
+    .list-card-footer {
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        padding: 0 16px;
+
+        .list-card-footer-item {
+            height: 48px;
+            margin-right: 12px;
+            color: rgba(0, 0, 0, 0.66);
+
+            .value {
+                padding-left: 8px;
+            }
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+}

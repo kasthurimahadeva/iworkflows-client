@@ -73,6 +73,12 @@ export class FuseNavigation
                 }
             },
             {
+                'title': 'Scrumboard',
+                'type' : 'nav-item',
+                'icon' : 'assessment',
+                'url'  : '/apps/scrumboard'
+            },
+            {
                 'title': 'PAGES',
                 'type' : 'subheader'
             },

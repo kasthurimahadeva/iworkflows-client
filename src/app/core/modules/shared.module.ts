@@ -20,6 +20,7 @@ import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-s
 import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
 import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
+import { Md2Module } from 'md2';
 
 @NgModule({
     declarations   : [
@@ -41,7 +42,8 @@ import { FuseMaterialColorPickerComponent } from '../components/material-color-p
         ReactiveFormsModule,
         ColorPickerModule,
         NgxDnDModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        Md2Module
     ],
     exports        : [
         FlexLayoutModule,
@@ -59,7 +61,8 @@ import { FuseMaterialColorPickerComponent } from '../components/material-color-p
         NgxDnDModule,
         NgxDatatableModule,
         FuseIfOnDomDirective,
-        FuseMaterialColorPickerComponent
+        FuseMaterialColorPickerComponent,
+        Md2Module
     ],
     entryComponents: [
         FuseConfirmDialogComponent

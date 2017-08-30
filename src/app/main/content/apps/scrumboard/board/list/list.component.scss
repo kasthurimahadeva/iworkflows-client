@@ -1,0 +1,57 @@
+:host {
+    width: 344px;
+    min-width: 344px;
+    max-width: 344px;
+    padding-right: 24px;
+    height: 100%;
+
+    &.ui-sortable-helper .list {
+        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+
+    .list {
+        max-height: 100%;
+        background-color: #EEF0F2;
+        color: #000;
+        border-radius: 2px;
+        transition: box-shadow 150ms ease;
+
+        .list-header {
+            height: 64px;
+            min-height: 64px;
+            padding: 0 0 0 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+
+        }
+
+        .list-content {
+            position: relative;
+            overflow: hidden;
+            overflow-y: auto;
+            min-height: 0;
+
+            .list-cards {
+                position: relative;
+                min-height: 32px;
+                padding: 0 16px;
+
+                .card-sortable-placeholder {
+                    background: rgba(0, 0, 0, 0.06);
+                }
+
+                > div {
+                    transition: none !important;
+                }
+            }
+        }
+
+        .list-footer {
+            display: flex;
+            flex-direction: column;
+            flex: 1 0 auto;
+            min-height: 48px;
+        }
+
+    }
+}

@@ -1,0 +1,36 @@
+<!-- BOARDS -->
+<div id="boards" class="md-primary-400-bg" fxLayout="column" fxFlex>
+
+    <!-- BOARD SELECTION -->
+    <div id="board-selector" fxLayout="column" fxLayoutAlign="start center" fxFlex>
+
+        <h1>Scrumboard App</h1>
+
+        <!-- BOARD LIST -->
+        <div class="board-list" fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap>
+
+            <!-- BOARD -->
+            <div class="board-list-item" *ngFor="let board of boards"
+                 [routerLink]="'/apps/scrumboard/boards/'+board.id+'/'+board.uri"
+                 fxLayout="column" fxLayoutAlign="center center">
+                <md-icon class="s-64">assessment</md-icon>
+                <div class="board-name">{{board.name}}</div>
+            </div>
+            <!-- / BOARD -->
+
+            <!-- NEW BOARD BUTTON -->
+            <div class="board-list-item add-new-board" fxLayout="column" fxLayoutAlign="center center"
+                 (click)="newBoard()">
+                <md-icon class="s-64">add_circle</md-icon>
+                <div class="board-name">Add new board</div>
+            </div>
+            <!-- / NEW BOARD BUTTON -->
+
+        </div>
+        <!-- / BOARD LIST -->
+
+    </div>
+    <!-- / BOARD SELECTION -->
+
+</div>
+<!-- / BOARDS -->

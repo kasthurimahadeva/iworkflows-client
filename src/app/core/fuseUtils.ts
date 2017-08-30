@@ -90,4 +90,16 @@ export class FuseUtils
 
         return (S4() + S4());
     }
+
+    public static toggleInArray(item, array)
+    {
+        if ( array.indexOf(item) === -1 )
+        {
+            array.push(item);
+        }
+        else
+        {
+            array.splice(array.indexOf(item), 1);
+        }
+    }
 }
