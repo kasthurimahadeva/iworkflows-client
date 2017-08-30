@@ -33,17 +33,17 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
 
         if ( this.observableMedia.isActive(this.mdIsLockedOpenBreakpoint) )
         {
-            this.isLockedOpen = true;
-            this.mdSidenav.mode = 'side';
             setTimeout(() => {
+                this.isLockedOpen = true;
+                this.mdSidenav.mode = 'side';
                 this.mdSidenav.open();
             });
         }
         else
         {
-            this.isLockedOpen = false;
-            this.mdSidenav.mode = 'over';
             setTimeout(() => {
+                this.isLockedOpen = false;
+                this.mdSidenav.mode = 'over';
                 this.mdSidenav.close();
             });
         }
@@ -51,15 +51,19 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
         this.matchMediaSubscription = this.fuseMatchMedia.onMediaChange.subscribe(() => {
             if ( this.observableMedia.isActive(this.mdIsLockedOpenBreakpoint) )
             {
-                this.isLockedOpen = true;
-                this.mdSidenav.mode = 'side';
-                this.mdSidenav.open();
+                setTimeout(() => {
+                    this.isLockedOpen = true;
+                    this.mdSidenav.mode = 'side';
+                    this.mdSidenav.open();
+                });
             }
             else
             {
-                this.isLockedOpen = false;
-                this.mdSidenav.mode = 'over';
-                this.mdSidenav.close();
+                setTimeout(() => {
+                    this.isLockedOpen = false;
+                    this.mdSidenav.mode = 'over';
+                    this.mdSidenav.close();
+                });
             }
         });
 
