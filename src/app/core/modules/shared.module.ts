@@ -21,6 +21,7 @@ import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
 import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
 import { Md2Module } from 'md2';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
     declarations   : [
@@ -68,6 +69,7 @@ import { Md2Module } from 'md2';
         FuseConfirmDialogComponent
     ],
     providers      : [
+        CookieService,
         FuseNavigationService,
         FuseMatchMedia,
         FuseNavbarService,

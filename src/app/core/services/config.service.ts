@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { NavigationStart, Router } from '@angular/router';
-import { Platform } from '@angular/cdk';
+import { Platform } from '@angular/cdk/platform';
 
 @Injectable()
 export class FuseConfigService
@@ -12,6 +12,7 @@ export class FuseConfigService
 
     /**
      * @param router
+     * @param platform
      */
     constructor(
         private router: Router,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileManagerService } from '../file-manager.service';
-import { DataSource } from '@angular/cdk';
 import { Observable } from 'rxjs/Observable';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
     selector   : 'fuse-file-list',

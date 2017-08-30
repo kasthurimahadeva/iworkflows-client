@@ -3,7 +3,7 @@ import { ProjectsDashboardService } from './projects.service';
 import * as shape from 'd3-shape';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { DataSource } from '@angular/cdk';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
     selector     : 'fuse-project',

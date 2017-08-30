@@ -35,13 +35,17 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
         {
             this.isLockedOpen = true;
             this.mdSidenav.mode = 'side';
-            this.mdSidenav.open();
+            setTimeout(() => {
+                this.mdSidenav.open();
+            });
         }
         else
         {
             this.isLockedOpen = false;
             this.mdSidenav.mode = 'over';
-            this.mdSidenav.close();
+            setTimeout(() => {
+                this.mdSidenav.close();
+            });
         }
 
         this.matchMediaSubscription = this.fuseMatchMedia.onMediaChange.subscribe(() => {

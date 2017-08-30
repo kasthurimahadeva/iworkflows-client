@@ -1,0 +1,108 @@
+<div id="widget" class="page-layout simple fullwidth" perfect-scrollbar>
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon class="secondary-text s-16">home</md-icon>
+                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Widget</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-widget</code> is a custom built Fuse component allows to create flippable widget boxes.
+        </p>
+
+        <div class="my-48">
+            <h2>Sample</h2>
+
+            <div>
+                <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+
+                    <!-- Front -->
+                    <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                        <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between center">
+                            <div>Widget title</div>
+
+                            <button md-icon-button fuseWidgetToggle aria-label="more">
+                                <md-icon>more_vert</md-icon>
+                            </button>
+                        </div>
+
+                        <div class="pt-8 pb-32" fxLayout="column" fxLayoutAlign="center center">
+                            Widget Content
+                        </div>
+                    </div>
+                    <!-- / Front -->
+
+                    <!-- Back -->
+                    <div class="fuse-widget-back p-16 pt-32 md-white-bg mat-elevation-z2">
+                        <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                ng-click="flipWidget()" aria-label="Flip widget">
+                            <md-icon class="s-16">close</md-icon>
+                        </button>
+
+                        <div>
+                            More widget info
+                        </div>
+                    </div>
+                    <!-- / Back -->
+
+                </fuse-widget>
+            </div>
+        </div>
+
+
+        <div class="my-48">
+            <h2>Usage</h2>
+            <p class="md-grey-200-bg py-8">
+                <fuse-hljs lang="html" class="source-code">
+                    <textarea #source hidden="hidden">
+                        <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+
+                            <!-- Front -->
+                            <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div>Widget title</div>
+
+                                    <button md-icon-button fuseWidgetToggle aria-label="more">
+                                        <md-icon>more_vert</md-icon>
+                                    </button>
+                                </div>
+
+                                <div class="pt-8 pb-32" fxLayout="column" fxLayoutAlign="center center">
+                                    Widget Content
+                                </div>
+                            </div>
+                            <!-- / Front -->
+
+                            <!-- Back -->
+                            <div class="fuse-widget-back p-16 pt-32 md-white-bg mat-elevation-z2">
+                                <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                        ng-click="flipWidget()" aria-label="Flip widget">
+                                    <md-icon class="s-16">close</md-icon>
+                                </button>
+
+                                <div>
+                                    More widget info
+                                </div>
+                            </div>
+                            <!-- / Back -->
+
+                        </fuse-widget>
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+

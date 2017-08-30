@@ -311,7 +311,75 @@ export class FuseNavigation
                 'url'  : '/ui/colors'
             },
             {
+                'title': 'SERVICES',
+                'type' : 'subheader'
+            },
+            {
+                'title': 'Config',
+                'type' : 'nav-item',
+                'icon' : 'settings',
+                'url'  : '/services/config'
+            },
+            {
+                'title': 'Splash Screen',
+                'type' : 'nav-item',
+                'icon' : 'settings',
+                'url'  : '/services/splash-screen'
+            },
+            {
                 'title': 'COMPONENTS',
+                'type' : 'subheader'
+            },
+            {
+                'title': 'Countdown',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/countdown'
+            },
+            {
+                'title': 'Highlight.js',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/highlightjs'
+            },
+            {
+                'title': 'Material Color Picker',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/material-color-picker'
+            },
+            {
+                'title': 'Navigation',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/navigation'
+            },
+            {
+                'title': 'Price Tables',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/price-tables'
+            },
+            {
+                'title': 'Search Bar',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/search-bar'
+            },
+            {
+                'title': 'Shortcuts',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/shortcuts'
+            },
+            {
+                'title': 'Widget',
+                'type' : 'nav-item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/widget'
+            },
+            {
+                'title': '3RD PARTY COMPONENTS',
                 'type' : 'subheader'
             },
             {
@@ -322,16 +390,10 @@ export class FuseNavigation
                     {
                         'title': 'ngx-datatable',
                         'type' : 'nav-item',
-                        'url'  : '/components/datatables/ngx-datatable'
+                        'url'  : '/components-third-party/datatables/ngx-datatable'
                     }
                 ]
             },
-            {
-                'title': 'Price Tables',
-                'type' : 'nav-item',
-                'icon' : 'view_carousel',
-                'url'  : '/components/price-tables'
-            }
         ];
     }
 }

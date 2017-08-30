@@ -17,6 +17,8 @@ import { UIModule } from './main/content/ui/ui.module';
 import { ComponentsModule } from './main/content/components/components.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
+import { ComponentsThirdPartyModule } from './main/content/components-third-party/components-third-party.module';
+import { ServicesModule } from './main/content/services/services.module';
 
 const appRoutes: Routes = [
     {
@@ -75,7 +77,9 @@ const appRoutes: Routes = [
 
         PagesModule,
         UIModule,
-        ComponentsModule
+        ServicesModule,
+        ComponentsModule,
+        ComponentsThirdPartyModule
     ],
     providers   : [
         FuseSplashScreenService,

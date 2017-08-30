@@ -70,25 +70,18 @@
 
             <div fxFlexFill fxLayout="row">
 
-                <md-input-container fxFlex class="mr-16">
-                    <input mdInput
-                           name="start"
-                           formControlName="startDate"
-                           [mdDatepicker]="startDatePicker"
-                           placeholder="Start Date">
-                    <button mdSuffix [mdDatepickerToggle]="startDatePicker"></button>
-                </md-input-container>
-                <md-datepicker #startDatePicker></md-datepicker>
+                <md-form-field class="mr-24" fxFlex>
+                    <input mdInput [mdDatepicker]="startDatePicker" placeholder="Start Date">
+                    <md-datepicker-toggle mdSuffix [for]="startDatePicker"></md-datepicker-toggle>
+                    <md-datepicker #startDatePicker></md-datepicker>
+                </md-form-field>
 
-                <md-input-container fxFlex>
-                    <input mdInput
-                           name="dueDate"
-                           formControlName="dueDate"
-                           [mdDatepicker]="dueDatePicker"
-                           placeholder="Due Date">
-                    <button mdSuffix [mdDatepickerToggle]="dueDatePicker"></button>
-                </md-input-container>
-                <md-datepicker #dueDatePicker></md-datepicker>
+                <md-form-field fxFlex>
+                    <input mdInput [mdDatepicker]="dueDatePicker" placeholder="Due Date">
+                    <md-datepicker-toggle mdSuffix [for]="dueDatePicker"></md-datepicker-toggle>
+                    <md-datepicker #dueDatePicker></md-datepicker>
+                </md-form-field>
+
             </div>
 
             <md-input-container class="" fxFill>

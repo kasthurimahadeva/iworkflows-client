@@ -1,0 +1,70 @@
+<div id="config" class="page-layout simple fullwidth" perfect-scrollbar>
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon class="secondary-text s-16">home</md-icon>
+                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <span class="secondary-text">Services</span>
+            </div>
+            <div class="h2 mt-16">Config</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>Config</code> is a custom built Fuse service allows to have a granule control over the Fuse. It can be
+            used for changing theme options (layout, color etc.) by component basis.
+        </p>
+
+        <div class="my-48">
+            <h2>Usage</h2>
+            <p class="md-grey-200-bg py-8">
+                <fuse-hljs lang="ts" class="source-code">
+                    <textarea #source hidden="hidden">
+                        export class SomeComponent
+                        {
+                            settings: any;
+
+                            constructor(private fuseConfig: FuseConfigService)
+                            {
+                                // Subscribe to settings changed event
+                                this.fuseConfig.onSettingsChanged.subscribe(
+                                    (newSettings) => {
+                                        this.settings = newSettings;
+                                    }
+                                );
+                            }
+
+                            onInit(){
+
+                                // Fully customizable surroundings for this particular component
+                                this.fuseConfig.setSettings({
+                                    layout          : {
+                                        navigation: 'left',   // 'right', 'left', 'top', none
+                                        toolbar   : 'below',  // 'above', 'below', none
+                                        footer    : 'none'    // 'above', 'below', none
+                                    },
+                                    colorClasses    : {
+                                        toolbar: 'md-white-500-bg',
+                                        navbar : 'md-fuse-dark-500-bg',
+                                        footer : 'md-fuse-dark-800-bg'
+                                    },
+                                    customScrollbars: true,
+                                    routerAnimation : 'fadeIn'
+                                });
+                            }
+                        }
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
