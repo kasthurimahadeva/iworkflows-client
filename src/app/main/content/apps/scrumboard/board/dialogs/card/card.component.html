@@ -74,7 +74,7 @@
                     <form class="px-16 py-8" #newChecklistForm="ngForm" (submit)="addChecklist(newChecklistForm)" (click)="$event.stopPropagation()"
                           fxLayout="column" fxLayoutAlign="start end">
 
-                        <md-input-container floatPlaceholder="never" (click)="$event.stopPropagation()" fxFlex >
+                        <md-input-container floatPlaceholder="never" (click)="$event.stopPropagation()" fxFlex>
                             <input #newCheckListTitleField mdInput ngModel #checklistTitle="ngModel" name="checklistTitle" placeholder="Checklist title" required>
                         </md-input-container>
 
@@ -125,10 +125,11 @@
 
 <div *ngIf="card" md-dialog-content class="p-24 m-0" perfect-scrollbar>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center"
+         fxLayout.xs="column" fxLayoutAlign="center center">
 
         <!-- BREADCRUMB -->
-        <div class="card-breadcrumb" fxLayout="row" fxLayoutAlign="start center">
+        <div class="card-breadcrumb mb-16 mb-sm-0" fxLayout="row" fxLayoutAlign="start center">
             <span>{{board.name}}</span>
             <md-icon class="s-20">chevron_right</md-icon>
             <span>{{list.name}}</span>
@@ -171,7 +172,8 @@
     <div class="sections">
 
         <!-- LABELS SECTION -->
-        <div *ngIf="card.idLabels[0] || card.idMembers[0]" class="section" fxLayout="row">
+        <div *ngIf="card.idLabels[0] || card.idMembers[0]" class="section"
+             fxLayout="column" fxLayout.gt-xs="row">
 
             <div *ngIf="card.idLabels[0]" fxFlex class="labels">
                 <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
@@ -224,7 +226,9 @@
 
                     <div class="attachment" *ngFor="let item of card.attachments" [ngSwitch]="item.type">
 
-                        <div *ngSwitchCase="'image'" fxLayout="row">
+                        <div *ngSwitchCase="'image'"
+                             fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="start center"
+                             fxLayout="column" fxLayoutAlign="center start">
 
                             <div class="attachment-preview mat-elevation-z2"
                                  [ngStyle]="{'background-image': 'url('+item.src+')'}">

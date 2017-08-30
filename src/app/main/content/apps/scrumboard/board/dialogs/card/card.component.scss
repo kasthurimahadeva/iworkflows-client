@@ -59,10 +59,10 @@
 
             .card-name {
                 width: 100%;
-                font-size: 24px;
+                font-size: 22px;
 
-                .editable-input {
-                    font-size: 24px;
+                @include media-breakpoint(xs) {
+                    font-size: 14px;
                 }
             }
 

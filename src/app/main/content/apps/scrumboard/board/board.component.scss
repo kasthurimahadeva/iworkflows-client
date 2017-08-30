@@ -19,9 +19,7 @@
 
             > .header {
                 position: relative;
-                height: 96px;
                 min-height: 96px;
-                max-height: 96px;
                 background-image: none;
                 z-index: 49;
 
@@ -111,7 +109,6 @@
                     left: 0;
                     height: 100%;
                     background: #E5E7E8;
-                    padding: 24px;
                     overflow-y: hidden;
                     overflow-x: auto;
                     -webkit-overflow-scrolling: touch;
@@ -132,20 +129,4 @@
             }
         }
     }
-}
-
-.is-mobile {
-
-    #board {
-
-        .list-card {
-
-            .list-card-sort-handle {
-                display: block;
-            }
-        }
-    }
-}
-
-.list-card-sort-helper {
 }

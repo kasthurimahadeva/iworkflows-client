@@ -12,7 +12,7 @@
 
         <div fxFlex fxLayout="column" perfect-scrollbar>
 
-            <div class="label pl-12 mx-8 mb-8" *ngFor="let label of board.labels" fxFlex="1 0 auto" fxLayout="row" fxFlexAlign="space-between center"
+            <div class="label pl-12 mx-8 mb-8" *ngFor="let label of board.labels" fxFlex="0 0 auto" fxLayout="row" fxFlexAlign="space-between center"
                  [class]="label.color">
 
                 <md-checkbox fxFlex fxLayout="row" fxLayoutAlign="start center" [checked]="card.idLabels.indexOf(label.id) > -1"
@@ -41,7 +41,7 @@
                 <input mdInput placeholder="Name" [(ngModel)]="selectedLabel.name" (change)="onLabelChange()">
             </md-input-container>
 
-            <fuse-material-color-picker [(selectedClass)]="selectedLabel.color" class="ml-8" (change)="onLabelChange()"></fuse-material-color-picker>
+            <fuse-material-color-picker [(selectedClass)]="selectedLabel.color" class="ml-8" (change)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>
         </div>
 
     </div>

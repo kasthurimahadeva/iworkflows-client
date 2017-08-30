@@ -7,6 +7,7 @@ import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseScrumboardCardDialogComponent } from '../dialogs/card/card.component';
 import { FuseConfirmDialogComponent } from '../../../../../../core/components/confirm-dialog/confirm-dialog.component';
+import { Card } from '../../card.model';
 
 @Component({
     selector     : 'fuse-scrumboard-board-list',
@@ -56,24 +57,7 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
             return;
         }
 
-        const newCard = {
-            id               : FuseUtils.generateGUID(),
-            name             : newCardName,
-            description      : '',
-            idAttachmentCover: '',
-            idMembers        : [],
-            idLabels         : [],
-            attachments      : [],
-            subscribed       : false,
-            checklists       : [],
-            checkItems       : 0,
-            checkItemsChecked: 0,
-            comments         : [],
-            activities       : [],
-            due              : null
-        };
-
-        this.scrumboardService.addCard(this.list.id, newCard);
+        this.scrumboardService.addCard(this.list.id, new Card({name: newCardName}));
 
         setTimeout(() => {
             this.listScroll.scrollToBottom(0, 400);

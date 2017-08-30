@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ScrumboardService } from '../scrumboard.service';
 import { Subscription } from 'rxjs/Subscription';
-import { FuseUtils } from '../../../../../core/fuseUtils';
 import { Location } from '@angular/common';
+import { List } from '../list.model';
 
 @Component({
     selector   : 'fuse-scrumboard-board',
@@ -38,13 +38,8 @@ export class FuseScrumboardBoardComponent implements OnInit, OnDestroy
         {
             return;
         }
-        const newList = {
-            id     : FuseUtils.generateGUID(),
-            name   : newListName,
-            idCards: []
-        };
 
-        this.scrumboardService.addList(newList);
+        this.scrumboardService.addList(new List({name: newListName}));
     }
 
     onBoardNameChanged(newName)
