@@ -213,7 +213,7 @@ export class FuseScrumboardCardDialogComponent implements OnInit, OnDestroy
     onChecklistMenuOpen()
     {
         setTimeout(() => {
-            this.newCheckListTitleField._mdInputChild.focus();
+            this.newCheckListTitleField.nativeElement.focus();
         });
     }
 

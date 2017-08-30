@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,7 @@ export class FuseScrumboardBoardEditListNameComponent implements OnInit
     form: FormGroup;
     @Input() list;
     @Output() onNameChanged = new EventEmitter();
-    @ViewChildren('nameInput') nameInputField;
+    @ViewChild('nameInput') nameInputField;
 
     constructor(
         private formBuilder: FormBuilder
@@ -42,7 +42,7 @@ export class FuseScrumboardBoardEditListNameComponent implements OnInit
     focusNameField()
     {
         setTimeout(() => {
-            this.nameInputField.first.nativeElement.focus();
+            this.nameInputField.nativeElement.focus();
         });
     }
 

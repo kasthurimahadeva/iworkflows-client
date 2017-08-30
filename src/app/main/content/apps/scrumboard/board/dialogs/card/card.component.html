@@ -74,8 +74,8 @@
                     <form class="px-16 py-8" #newChecklistForm="ngForm" (submit)="addChecklist(newChecklistForm)" (click)="$event.stopPropagation()"
                           fxLayout="column" fxLayoutAlign="start end">
 
-                        <md-input-container floatPlaceholder="never" (click)="$event.stopPropagation()" fxFlex #newCheckListTitleField>
-                            <input mdInput ngModel #checklistTitle="ngModel" name="checklistTitle" placeholder="Checklist title" required>
+                        <md-input-container floatPlaceholder="never" (click)="$event.stopPropagation()" fxFlex >
+                            <input #newCheckListTitleField mdInput ngModel #checklistTitle="ngModel" name="checklistTitle" placeholder="Checklist title" required>
                         </md-input-container>
 
                         <button md-raised-button class="mat-accent" aria-label="Add Checklist" [disabled]="!newChecklistForm.valid">Add Checklist</button>

@@ -1,4 +1,4 @@
-import { Component, ContentChildren, EventEmitter, Input, OnInit, Output, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ export class FuseScrumboardBoardAddCardComponent implements OnInit
     formActive = false;
     form: FormGroup;
     @Output() onCardAdd = new EventEmitter();
-    @ViewChildren('nameInput') nameInputField;
+    @ViewChild('nameInput') nameInputField;
 
     constructor(
         private formBuilder: FormBuilder
@@ -40,7 +40,7 @@ export class FuseScrumboardBoardAddCardComponent implements OnInit
     focusNameField()
     {
         setTimeout(() => {
-            this.nameInputField.first._mdInputChild.focus();
+            this.nameInputField.nativeElement.focus();
         });
     }
 

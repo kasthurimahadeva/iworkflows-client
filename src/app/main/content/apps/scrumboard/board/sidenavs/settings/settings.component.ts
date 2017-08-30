@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ScrumboardService } from '../../../scrumboard.service';
+import { Animations } from '../../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-scrumboard-board-settings',
     templateUrl: './settings.component.html',
-    styleUrls  : ['./settings.component.scss']
+    styleUrls  : ['./settings.component.scss'],
+    animations : [Animations.slideInLeft, Animations.slideInRight]
 })
-export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit
+export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit, OnDestroy
 {
     board: any;
+    view = 'main';
     onBoardChanged: Subscription;
 
     constructor(
@@ -31,19 +34,17 @@ export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit
     toggleCardCover()
     {
         this.board.settings.cardCoverImages = !this.board.settings.cardCoverImages;
-        this.updateBoard();
+        this.scrumboardService.updateBoard();
     }
 
     toggleSubcription()
     {
         this.board.settings.subscribed = !this.board.settings.subscribed;
-        this.updateBoard();
-    }
-
-    updateBoard()
-    {
-        this.scrumboardService.onBoardChanged.next(this.board);
         this.scrumboardService.updateBoard();
     }
 
+    ngOnDestroy()
+    {
+        this.onBoardChanged.unsubscribe();
+    }
 }

@@ -13,6 +13,7 @@ import { FuseScrumboardCardDialogComponent } from './board/dialogs/card/card.com
 import { FuseScrumboardLabelSelectorComponent } from './board/dialogs/card/label-selector/label-selector.component';
 import { FuseScrumboardEditBoardNameComponent } from './board/edit-board-name/edit-board-name.component';
 import { FuseScrumboardBoardSettingsSidenavComponent } from './board/sidenavs/settings/settings.component';
+import { FuseScrumboardBoardColorSelectorComponent } from './board/sidenavs/settings/board-color-selector/board-color-selector.component';
 
 const routes: Routes = [
     {
@@ -47,7 +48,8 @@ const routes: Routes = [
         FuseScrumboardCardDialogComponent,
         FuseScrumboardLabelSelectorComponent,
         FuseScrumboardEditBoardNameComponent,
-        FuseScrumboardBoardSettingsSidenavComponent
+        FuseScrumboardBoardSettingsSidenavComponent,
+        FuseScrumboardBoardColorSelectorComponent
     ],
     imports        : [
         SharedModule,

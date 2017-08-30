@@ -11,8 +11,8 @@
 
     <form [formGroup]="form" (submit)="onFormSubmit()" class="add-card-form" fxLayout="column">
 
-        <md-input-container fxFlex floatPlaceholder="never" #nameInput>
-            <input mdInput formControlName="name" placeholder="Card title" autocomplete="off" required>
+        <md-input-container fxFlex floatPlaceholder="never" >
+            <input #nameInput mdInput formControlName="name" placeholder="Card title" autocomplete="off" required>
         </md-input-container>
 
         <div class="pl-8" fxLayout="row" fxLayoutAlign="space-between center">
