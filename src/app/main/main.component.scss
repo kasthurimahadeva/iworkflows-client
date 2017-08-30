@@ -58,6 +58,7 @@ fuse-main {
                             flex: 1;
                             flex-direction: row;
                             width: 100%;
+                            overflow: hidden;
 
                             > *:not(router-outlet):not(.ps__scrollbar-x-rail):not(.ps__scrollbar-y-rail) {
                                 display: flex;
