@@ -20,6 +20,7 @@ import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-s
 import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
 import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
     declarations   : [
@@ -65,6 +66,7 @@ import { FuseMaterialColorPickerComponent } from '../components/material-color-p
         FuseConfirmDialogComponent
     ],
     providers      : [
+        CookieService,
         FuseNavigationService,
         FuseMatchMedia,
         FuseNavbarService,

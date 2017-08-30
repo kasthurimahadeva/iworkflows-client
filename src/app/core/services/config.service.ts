@@ -12,6 +12,7 @@ export class FuseConfigService
 
     /**
      * @param router
+     * @param platform
      */
     constructor(
         private router: Router,

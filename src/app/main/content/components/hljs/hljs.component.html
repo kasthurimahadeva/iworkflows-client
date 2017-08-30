@@ -1,0 +1,66 @@
+<div id="hljs" class="page-layout simple fullwidth" perfect-scrollbar>
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon class="secondary-text s-16">home</md-icon>
+                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">highlight.js</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-hljs</code> is a custom built Fuse component allows to show syntax highlighted codes.
+        </p>
+
+        <div class="my-48">
+            <h2>Sample</h2>
+            <p fxLayout="row" fxLayoutAlign="start start">
+                <fuse-hljs lang="html" class="source-code">
+                    <textarea #source hidden="hidden">
+                        <div class="title">
+                            <span>Example Title</span>
+                        </div>
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h2>Usage</h2>
+            <p class="md-grey-200-bg py-8">
+                <fuse-hljs lang="html" class="source-code">
+                    <textarea #source hidden="hidden">
+&lt;fuse-hljs lang="html" class="source-code"&gt;
+    &lt;textarea #source hidden="hidden"&gt;
+        &lt;div class="title"&gt;
+            &lt;span&gt;Example Title&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/textarea&gt;
+&lt;/fuse-hljs&gt;
+                    </textarea>
+                </fuse-hljs>
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h2>Inputs</h2>
+            <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+                <code class="mr-16">lang</code>
+                <span>
+                    Language of the code to be highlighted. All highlight.js languages can be used.
+                </span>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+

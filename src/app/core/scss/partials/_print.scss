@@ -1,0 +1,51 @@
+/*----------------------------------------------------------------*/
+/*  Print
+/*----------------------------------------------------------------*/
+
+@media all {
+
+    /* Never show page break in normal view */
+    .page-break {
+        display: none;
+    }
+
+}
+
+@media print {
+
+    /* Page Styles */
+    @page {
+        //margin: 0.5cm;
+    }
+
+    /* Page break */
+    .page-break {
+        display: block;
+        break-after: always;
+        page-break-after: always;
+    }
+
+    /* General styles */
+    fuse-root {
+
+        fuse-navbar,
+        fuse-toolbar,
+        fuse-footer,
+        fuse-quick-panel,
+        fuse-theme-options,
+        .ps > .ps__scrollbar-x-rail,
+        .ps > .ps__scrollbar-y-rail {
+            display: none !important;
+        }
+
+        .ps {
+            overflow: visible !important;
+        }
+    }
+
+    /* Printable page specific styles */
+    .printable {
+        overflow: visible !important;
+        height: auto !important;
+    }
+}
