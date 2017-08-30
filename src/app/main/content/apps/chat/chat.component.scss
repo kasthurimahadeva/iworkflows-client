@@ -1,4 +1,6 @@
-#calendar {
+@import "src/app/core/scss/fuse";
+
+#chat {
     display: flex;
     flex: 1;
 
@@ -6,6 +8,10 @@
         padding: 32px !important;
         max-width: 1400px;
         margin: 0 auto;
+
+        @include media-breakpoint(xs) {
+            padding: 8px !important;
+        }
 
         .content-card {
             display: flex;
