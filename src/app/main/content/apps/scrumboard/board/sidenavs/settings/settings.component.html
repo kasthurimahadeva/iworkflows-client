@@ -3,7 +3,7 @@
     <div class="view" *ngSwitchCase="'main'" [@slideInLeft]>
 
         <!-- SIDENAV HEADER -->
-        <div class="header md-accent-bg p-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="column" fxLayoutAlign="center center">
+        <div class="header md-accent-bg px-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="column" fxLayoutAlign="center center">
             <div>Settings</div>
         </div>
         <!-- / SIDENAV HEADER -->
@@ -58,7 +58,7 @@
     <div class="view" *ngSwitchCase="'board-color'" [@slideInRight]>
 
         <!-- SIDENAV HEADER -->
-        <div class="header md-accent-bg p-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="header md-accent-bg px-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="row" fxLayoutAlign="space-between center">
             <div>Background Color</div>
             <button md-icon-button (click)="view ='main'">
                 <md-icon class="s-16">arrow_back</md-icon>

@@ -24,13 +24,15 @@
     <!-- LIST CONTENT -->
     <div class="list-content" fxLayout="column">
 
-        <div class="list-cards" ui-sortable="sortableCardOptions" ng-model="list.idCards" perfect-scrollbar #listScroll>
-
-            <fuse-scrumboard-board-card
-                (click)="openCardDialog(cardId)"
-                class="list-card mat-elevation-z2"
-                *ngFor="let cardId of list.idCards"
-                [cardId]="cardId">
+        <div class="list-cards ngx-dnd-container"
+             [model]="list.idCards" ngxDroppable="card" (out)="onDrop($event)"
+             perfect-scrollbar #listScroll>
+            <fuse-scrumboard-board-card ngxDraggable
+                                        (click)="openCardDialog(cardId)"
+                                        class="scrumboard-board-card mat-elevation-z2 ngx-dnd-item"
+                                        *ngFor="let cardId of list.idCards"
+                                        [model]="cardId"
+                                        [cardId]="cardId">
             </fuse-scrumboard-board-card>
         </div>
     </div>

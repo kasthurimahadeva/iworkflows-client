@@ -53,6 +53,11 @@ export class FuseScrumboardBoardComponent implements OnInit, OnDestroy
         this.location.go('/apps/scrumboard/boards/' + this.board.id + '/' + this.board.uri);
     }
 
+    onDrop(ev)
+    {
+        this.scrumboardService.updateBoard();
+    }
+
     ngOnDestroy()
     {
         this.onBoardChanged.unsubscribe();

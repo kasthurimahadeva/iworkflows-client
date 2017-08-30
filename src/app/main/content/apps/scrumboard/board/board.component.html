@@ -49,12 +49,15 @@
         <div fxFlex class="board-content-wrapper p-24">
 
             <!-- BOARD -->
-            <div class="board-content" [class]="board.settings.color+'-100-bg'" fxLayout="row">
+            <div class="board-content ngx-dnd-container" [class]="board.settings.color+'-100-bg'" fxLayout="row"
+                 ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)">
 
                 <!-- LIST -->
                 <fuse-scrumboard-board-list
-                    class="list-wrapper"
+                    class="scrumboard-board-list list-wrapper ngx-dnd-item"
+                    ngxDraggable
                     *ngFor="let list of board.lists"
+                    [model]="list"
                     [list]="list">
                 </fuse-scrumboard-board-list>
                 <!-- / LIST -->

@@ -24,6 +24,8 @@
 
             > .header {
                 flex: 0 1 auto;
+                height: 64px;
+                min-height: 64px;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
 

@@ -1,12 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ScrumboardService } from '../../../scrumboard.service';
 import * as moment from 'moment';
 
 @Component({
-    selector   : 'fuse-scrumboard-board-card',
-    templateUrl: './card.component.html',
-    styleUrls  : ['./card.component.scss']
+    selector     : 'fuse-scrumboard-board-card',
+    templateUrl  : './card.component.html',
+    styleUrls    : ['./card.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class FuseScrumboardBoardCardComponent implements OnInit
 {

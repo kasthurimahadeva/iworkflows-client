@@ -1,16 +1,18 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FuseUtils } from '../../../../../../core/fuseUtils';
 import { ScrumboardService } from 'app/main/content/apps/scrumboard/scrumboard.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseScrumboardCardDialogComponent } from '../dialogs/card/card.component';
+import { FuseConfirmDialogComponent } from '../../../../../../core/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
-    selector   : 'fuse-scrumboard-board-list',
-    templateUrl: './list.component.html',
-    styleUrls  : ['./list.component.scss']
+    selector     : 'fuse-scrumboard-board-list',
+    templateUrl  : './list.component.html',
+    styleUrls    : ['./list.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
 {
@@ -21,6 +23,8 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
     @ViewChild(PerfectScrollbarDirective) listScroll: PerfectScrollbarDirective;
 
     onBoardChanged: Subscription;
+
+    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
 
     constructor(
         private route: ActivatedRoute,
@@ -79,7 +83,18 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
 
     removeList(listId)
     {
-        this.scrumboardService.removeList(listId);
+        this.confirmDialogRef = this.dialog.open(FuseConfirmDialogComponent, {
+            disableClose: false
+        });
+
+        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete the list and it\'s all cards?';
+
+        this.confirmDialogRef.afterClosed().subscribe(result => {
+            if ( result )
+            {
+                this.scrumboardService.removeList(listId);
+            }
+        });
     }
 
     openCardDialog(cardId)
@@ -95,6 +110,11 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
             .subscribe(response => {
 
             });
+    }
+
+    onDrop(ev)
+    {
+        this.scrumboardService.updateBoard();
     }
 
     ngOnDestroy()

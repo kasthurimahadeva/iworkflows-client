@@ -1,9 +1,10 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef, MdMenuTrigger } from '@angular/material';
+import { MD_DIALOG_DATA, MdDialog, MdDialogRef, MdMenuTrigger } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 import { ScrumboardService } from '../../../scrumboard.service';
 import { NgForm } from '@angular/forms/src/forms';
 import { FuseUtils } from '../../../../../../../core/fuseUtils';
+import { FuseConfirmDialogComponent } from '../../../../../../../core/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector     : 'fuse-scrumboard-board-card-dialog',
@@ -23,9 +24,12 @@ export class FuseScrumboardCardDialogComponent implements OnInit, OnDestroy
     @ViewChild('checklistMenuTrigger') checklistMenu: MdMenuTrigger;
     @ViewChild('newCheckListTitleField') newCheckListTitleField;
 
+    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
+
     constructor(
         public dialogRef: MdDialogRef<FuseScrumboardCardDialogComponent>,
         @Inject(MD_DIALOG_DATA) private data: any,
+        public dialog: MdDialog,
         private scrumboardService: ScrumboardService
     )
     {
@@ -243,8 +247,19 @@ export class FuseScrumboardCardDialogComponent implements OnInit, OnDestroy
      */
     removeCard()
     {
-        this.dialogRef.close();
-        this.scrumboardService.removeCard(this.card.id, this.list.id);
+        this.confirmDialogRef = this.dialog.open(FuseConfirmDialogComponent, {
+            disableClose: false
+        });
+
+        this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete the card?';
+
+        this.confirmDialogRef.afterClosed().subscribe(result => {
+            if ( result )
+            {
+                this.dialogRef.close();
+                this.scrumboardService.removeCard(this.card.id, this.list.id);
+            }
+        });
     }
 
     /**
