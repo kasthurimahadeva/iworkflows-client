@@ -58,29 +58,23 @@
 
         <div fxFlex="1 0 auto" fxLayout="row">
 
-            <md-input-container class="mr-24">
-                <input mdInput
-                       name="start"
-                       formControlName="start"
-                       [mdDatepicker]="startDatePicker"
-                       placeholder="Start Date">
-                <button mdSuffix [mdDatepickerToggle]="startDatePicker"></button>
-            </md-input-container>
+            <md-form-field class="mr-24">
+                <input mdInput [mdDatepicker]="startDatePicker" placeholder="Start Date">
+                <md-datepicker-toggle mdSuffix [for]="startDatePicker"></md-datepicker-toggle>
+                <md-datepicker #startDatePicker></md-datepicker>
+            </md-form-field>
+
             <md-datepicker #startDatePicker></md-datepicker>
 
         </div>
 
         <div fxFlex="1 0 auto" fxLayout="row">
 
-            <md-input-container class="mr-24">
-                <input mdInput
-                       name="end"
-                       formControlName="end"
-                       [mdDatepicker]="endDatePicker"
-                       placeholder="End Date">
-                <button mdSuffix [mdDatepickerToggle]="endDatePicker"></button>
-            </md-input-container>
-            <md-datepicker #endDatePicker></md-datepicker>
+            <md-form-field class="mr-24">
+                <input mdInput [mdDatepicker]="endDatePicker" placeholder="End Date">
+                <md-datepicker-toggle mdSuffix [for]="endDatePicker"></md-datepicker-toggle>
+                <md-datepicker #endDatePicker></md-datepicker>
+            </md-form-field>
 
             <md-input-container class="no-errors-spacer" flex md-no-float>
                 <input mdInput ng-model="calendarEvent.endTime" placeholder="End Time">

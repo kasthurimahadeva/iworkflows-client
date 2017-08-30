@@ -19,7 +19,8 @@
                 width: 100%;
                 background: transparent;
 
-                .mat-sidenav-content {
+                > .mat-sidenav-content,
+                > .mat-drawer-content {
                     display: flex;
                     flex: 1 0 auto;
                     min-height: 100%;

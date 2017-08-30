@@ -32,7 +32,7 @@ import {
     MdTableModule,
     MdTabsModule
 } from '@angular/material';
-import { CdkTableModule } from '@angular/cdk';
+import { CdkTableModule } from '@angular/cdk/table';
 
 @NgModule({
     imports: [

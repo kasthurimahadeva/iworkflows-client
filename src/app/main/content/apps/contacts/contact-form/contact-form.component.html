@@ -69,14 +69,11 @@
         </div>
 
         <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-            <md-input-container fxFlex class="mr-24">
-                <button mdSuffix [mdDatepickerToggle]="birthdayDatePicker"></button>
-                <input mdInput
-                       name="birthday" formControlName="birthday"
-                       [mdDatepicker]="birthdayDatePicker"
-                       placeholder="Birthday">
-            </md-input-container>
-            <md-datepicker #birthdayDatePicker></md-datepicker>
+            <md-form-field class="mr-24" fxFlex>
+                <input mdInput [mdDatepicker]="birthdayDatePicker" placeholder="Birthday">
+                <md-datepicker-toggle mdSuffix [for]="birthdayDatePicker"></md-datepicker-toggle>
+                <md-datepicker #birthdayDatePicker></md-datepicker>
+            </md-form-field>
         </div>
 
         <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">

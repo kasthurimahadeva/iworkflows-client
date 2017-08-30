@@ -1,11 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ContactsService } from '../contacts.service';
-import { DataSource } from '@angular/cdk';
 import { Observable } from 'rxjs/Observable';
 import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 import { FormGroup } from '@angular/forms';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
     selector   : 'fuse-contacts-contact-list',
