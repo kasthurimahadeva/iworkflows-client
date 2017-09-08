@@ -1,4 +1,6 @@
 :host {
+    display: block !important;
+
     .board-name {
         text-overflow: ellipsis;
         overflow: hidden;

@@ -9,8 +9,8 @@
         max-width: 1400px;
         margin: 0 auto;
 
-        @include media-breakpoint(xs) {
-            padding: 8px !important;
+        @include media-breakpoint-down(md) {
+            padding: 0 !important;
         }
 
         .content-card {
@@ -31,6 +31,10 @@
                     flex: 1 0 auto;
                     min-height: 100%;
                     height: auto;
+                }
+
+                > .mat-drawer-content {
+                    max-width: 100%;
                 }
 
                 md-sidenav {
