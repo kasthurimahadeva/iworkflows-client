@@ -11,6 +11,10 @@
 
         .toolbar-bottom {
             height: 240px;
+
+            @include media-breakpoint-down(md) {
+                height: 180px;
+            }
         }
 
     }

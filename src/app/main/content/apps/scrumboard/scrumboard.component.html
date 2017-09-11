@@ -1,36 +1,31 @@
 <!-- BOARDS -->
-<div id="boards" class="md-primary-400-bg" fxLayout="column" fxFlex>
+<div id="boards" class="md-primary-400-bg" fxLayout="column" fxLayoutAlign="start center" fxFlex perfect-scrollbar>
 
-    <!-- BOARD SELECTION -->
-    <div id="board-selector" fxLayout="column" fxLayoutAlign="start center" fxFlex>
-
+    <div class="header pt-44 pt-md-88" fxFlex="0 0 auto">
         <h1>Scrumboard App</h1>
+    </div>
 
-        <!-- BOARD LIST -->
-        <div class="board-list" fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap>
+    <!-- BOARD LIST -->
+    <div class="board-list" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap>
 
-            <!-- BOARD -->
-            <div class="board-list-item" *ngFor="let board of boards"
-                 [routerLink]="'/apps/scrumboard/boards/'+board.id+'/'+board.uri"
-                 fxLayout="column" fxLayoutAlign="center center">
-                <md-icon class="s-64">assessment</md-icon>
-                <div class="board-name">{{board.name}}</div>
-            </div>
-            <!-- / BOARD -->
-
-            <!-- NEW BOARD BUTTON -->
-            <div class="board-list-item add-new-board" fxLayout="column" fxLayoutAlign="center center"
-                 (click)="newBoard()">
-                <md-icon class="s-64">add_circle</md-icon>
-                <div class="board-name">Add new board</div>
-            </div>
-            <!-- / NEW BOARD BUTTON -->
-
+        <!-- BOARD -->
+        <div class="board-list-item" *ngFor="let board of boards"
+             [routerLink]="'/apps/scrumboard/boards/'+board.id+'/'+board.uri"
+             fxLayout="column" fxLayoutAlign="center center">
+            <md-icon class="s-64">assessment</md-icon>
+            <div class="board-name">{{board.name}}</div>
         </div>
-        <!-- / BOARD LIST -->
+        <!-- / BOARD -->
+
+        <!-- NEW BOARD BUTTON -->
+        <div class="board-list-item add-new-board" fxLayout="column" fxLayoutAlign="center center"
+             (click)="newBoard()">
+            <md-icon class="s-64">add_circle</md-icon>
+            <div class="board-name">Add new board</div>
+        </div>
+        <!-- / NEW BOARD BUTTON -->
 
     </div>
-    <!-- / BOARD SELECTION -->
-
+    <!-- / BOARD LIST -->
 </div>
 <!-- / BOARDS -->
