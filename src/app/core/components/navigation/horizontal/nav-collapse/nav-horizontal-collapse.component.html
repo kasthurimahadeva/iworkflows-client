@@ -1,0 +1,19 @@
+<a class="nav-link" md-ripple>
+    <md-icon class="nav-link-icon" *ngIf="item.icon">{{item.icon}}</md-icon>
+    <span class="nav-link-title">{{item.title}}</span>
+    <md-icon class="collapse-arrow">keyboard_arrow_right</md-icon>
+</a>
+
+<div class="children" [ngClass]="{'open': isOpen}">
+
+    <div class="{{fuseSettings.colorClasses.navbar}}">
+
+        <ng-container *ngFor="let item of item.children">
+            <fuse-nav-horizontal-item *ngIf="item.type=='nav-item'" [item]="item"></fuse-nav-horizontal-item>
+            <fuse-nav-horizontal-collapse *ngIf="item.type=='nav-collapse'"
+                                          [item]="item"></fuse-nav-horizontal-collapse>
+        </ng-container>
+
+    </div>
+
+</div>

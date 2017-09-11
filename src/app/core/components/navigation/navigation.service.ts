@@ -5,21 +5,21 @@ import { FuseNavigation } from '../../../navigation.model';
 export class FuseNavigationService
 {
     onNavCollapseToggled = new EventEmitter<any>();
-    navigation: any[];
+    navigation: FuseNavigation;
     flatNavigation: any[] = [];
 
     constructor()
     {
-        this.navigation = new FuseNavigation().items;
+        this.navigation = new FuseNavigation();
     }
 
     /**
      * Get navigation array
      * @returns {any[]}
      */
-    getNavigation()
+    getNavigation(item)
     {
-        return this.navigation;
+        return this.navigation[item];
     }
 
     /**

@@ -19,19 +19,38 @@
         position: absolute;
         right: 0;
         top: 0;
-        width: 320px;
+        width: 360px;
         transform: translate3d(100%, 0, 0);
         z-index: 999;
 
         .close-button {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 8px;
+            right: 8px;
+        }
+    }
+
+    .theme-options-panel-overlay {
+        position: fixed;
+        display: block;
+        background: rgba(0, 0, 0, 0);
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 998;
+
+        &.hidden {
+            display: none;
         }
     }
 
     .mat-list .mat-list-item {
         font-size: 15px;
+    }
+
+    .mat-divider {
+        margin: 16px;
     }
 
     .open-button {

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FuseNavigationService } from './navigation.service';
 
 @Component({
@@ -9,11 +9,15 @@ import { FuseNavigationService } from './navigation.service';
 })
 export class FuseNavigationComponent
 {
-    navigation: any[];
+    verticalNavigation: any[];
+    horizontalNavigation: any[];
+
+    @Input('layout') layout = 'vertical';
 
     constructor(private navigationService: FuseNavigationService)
     {
-        this.navigation = navigationService.getNavigation();
+        this.verticalNavigation = navigationService.getNavigation('verticalNavItems');
+        this.horizontalNavigation = navigationService.getNavigation('horizontalNavItems');
     }
 
 }

@@ -1,20 +1,20 @@
 import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { FuseMatchMedia } from '../../core/services/match-media.service';
-import { FuseNavbarService } from './navbar.service';
+import { FuseMatchMedia } from '../../../core/services/match-media.service';
+import { FuseNavbarVerticalService } from './navbar-vertical.service';
 import { ObservableMedia } from '@angular/flex-layout';
-import { FuseMainComponent } from '../main.component';
+import { FuseMainComponent } from '../../main.component';
 import { NavigationEnd, Router } from '@angular/router';
 import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
-import { FuseNavigationService } from '../../core/components/navigation/navigation.service';
+import { FuseNavigationService } from '../../../core/components/navigation/navigation.service';
 
 @Component({
-    selector     : 'fuse-navbar',
-    templateUrl  : './navbar.component.html',
-    styleUrls    : ['./navbar.component.scss'],
+    selector     : 'fuse-navbar-vertical',
+    templateUrl  : './navbar-vertical.component.html',
+    styleUrls    : ['./navbar-vertical.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseNavbarComponent implements OnInit, OnDestroy
+export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 {
     @HostBinding('class.close') isClosed: boolean;
     @HostBinding('class.folded') isFoldedActive: boolean;
@@ -29,7 +29,7 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
         private fuseMainComponentEl: FuseMainComponent,
         private fuseMatchMedia: FuseMatchMedia,
         private fuseNavigationService: FuseNavigationService,
-        private navBarService: FuseNavbarService,
+        private navBarService: FuseNavbarVerticalService,
         public media: ObservableMedia,
         private router: Router
     )
