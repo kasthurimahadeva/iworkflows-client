@@ -22,8 +22,8 @@ export class FuseConfigService
         // Set the default settings
         this.defaultSettings = {
             layout          : {
-                navigation: 'top', // 'right', 'left', 'top', 'none'
-                toolbar   : 'above', // 'above', 'below', 'none'
+                navigation: 'left', // 'right', 'left', 'top', 'none'
+                toolbar   : 'below', // 'above', 'below', 'none'
                 footer    : 'below', // 'above', 'below', 'none'
                 mode      : 'fullwidth' // 'boxed', 'fullwidth'
             },
