@@ -20,8 +20,9 @@ import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-s
 import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
 import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
-import { Md2Module } from 'md2';
 import { CookieService } from 'ngx-cookie-service';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+
 
 @NgModule({
     declarations   : [
@@ -44,7 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
         ColorPickerModule,
         NgxDnDModule,
         NgxDatatableModule,
-        Md2Module
+        DateTimePickerModule
     ],
     exports        : [
         FlexLayoutModule,
@@ -63,7 +64,7 @@ import { CookieService } from 'ngx-cookie-service';
         NgxDatatableModule,
         FuseIfOnDomDirective,
         FuseMaterialColorPickerComponent,
-        Md2Module
+        DateTimePickerModule
     ],
     entryComponents: [
         FuseConfirmDialogComponent

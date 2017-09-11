@@ -7,6 +7,10 @@
             <!-- DUE DATE -->
             <div class="due-date" fxFlex="0 1 auto">
 
+                <button *ngIf="!card.due" md-icon-button class="" (click)="addDueDate()">
+                    <md-icon>today</md-icon>
+                </button>
+
                 <button *ngIf="card.due" md-icon-button class="" [mdMenuTriggerFor]="dueDateMenu">
                     <md-icon>today</md-icon>
                 </button>
@@ -15,7 +19,6 @@
                     <button md-menu-item (click)="removeDueDate()">Remove Due Date</button>
                 </md-menu>
 
-                <md2-datepicker *ngIf="!card.due" [(ngModel)]="card.due" openOnFocus="true" placeholder="Set Date/Time" type="datetime"></md2-datepicker>
             </div>
             <!-- / DUE DATE -->
 
@@ -139,11 +142,10 @@
         <!-- DUE DATE -->
         <div *ngIf="card.due" class="due-date" fxLayout="row" fxLayoutAlign="start center">
 
-            <md2-datepicker class="picker ml-8" [(ngModel)]="card.due" openOnFocus="true" type="datetime" format="dd/MM/y H:mm"></md2-datepicker>
+            <md-icon class="s-24 mr-8">today</md-icon>
 
-            <button md-icon-button class="remove-due-date" (click)="removeDueDate()">
-                <md-icon class="s-16">close</md-icon>
-            </button>
+            <owl-date-time [(ngModel)]="card.due" dateFormat="DD/MM/YYYY HH:mm"></owl-date-time>
+
         </div>
         <!-- / DUE DATE -->
 

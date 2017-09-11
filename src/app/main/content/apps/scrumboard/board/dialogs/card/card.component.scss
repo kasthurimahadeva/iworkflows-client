@@ -15,25 +15,6 @@
 
             .due-date {
 
-                md2-datepicker {
-                    min-width: initial;
-
-                    .md2-datepicker-trigger {
-                        padding: 0;
-
-                        .md2-datepicker-button {
-                            display: block;
-                            position: relative;
-                            top: 0;
-                            left: 0;
-                            line-height: normal;
-                        }
-
-                        .md2-datepicker-input {
-                            display: none;
-                        }
-                    }
-                }
             }
         }
 
@@ -67,24 +48,6 @@
             }
 
             .due-date {
-
-                md2-datepicker {
-                    width: 180px;
-                    min-width: 180px;
-
-                    .md2-datepicker-trigger {
-                        padding-top: 5px;
-                        padding-bottom: 5px;
-
-                        .md2-datepicker-button {
-                            top: 0;
-                        }
-
-                        .md2-datepicker-input {
-                            min-width: initial;
-                        }
-                    }
-                }
 
                 .remove-due-date {
                 }

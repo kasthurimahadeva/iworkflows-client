@@ -54,6 +54,15 @@ export class FuseScrumboardCardDialogComponent implements OnInit, OnDestroy
     }
 
     /**
+     * Add Due date
+     */
+    addDueDate()
+    {
+        this.card.due = new Date();
+        this.updateCard();
+    }
+
+    /**
      * Remove Due date
      */
     removeDueDate()
