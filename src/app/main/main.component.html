@@ -8,13 +8,22 @@
         </ng-container>
         <!-- / TOOLBAR: Above -->
 
+        <!-- NAVBAR: Top -->
+        <fuse-navbar-horizontal class="top-navbar" fxHide fxShow.gt-md
+                                [class]="fuseSettings.colorClasses.navbar"
+                                *ngIf="fuseSettings.layout.navigation === 'top'">
+        </fuse-navbar-horizontal>
+        <!-- / NAVBAR: Top -->
+
         <div id="wrapper">
 
-            <fuse-navbar [folded]="false"
-                         class="left-navbar"
-                         *ngIf="fuseSettings.layout.navigation === 'left'"
-                         [class]="fuseSettings.colorClasses.navbar">
-            </fuse-navbar>
+            <!-- NAVBAR: Left -->
+            <fuse-navbar-vertical [folded]="false"
+                                  fxShow [fxHide.gt-md]="fuseSettings.layout.navigation === 'top'"
+                                  class="left-navbar" [class]="fuseSettings.colorClasses.navbar"
+                                  *ngIf="fuseSettings.layout.navigation === 'left' || fuseSettings.layout.navigation === 'top'">
+            </fuse-navbar-vertical>
+            <!-- / NAVBAR: Left -->
 
             <div class="content-wrapper">
 
@@ -34,7 +43,13 @@
 
             </div>
 
-            <fuse-navbar [folded]="false" class="md-primary-700-bg right-navbar" *ngIf="fuseSettings.layout.navigation === 'right'"></fuse-navbar>
+            <!-- NAVBAR: Right -->
+            <fuse-navbar-vertical [folded]="false"
+                                  class="right-navbar"
+                                  [class]="fuseSettings.colorClasses.navbar"
+                                  *ngIf="fuseSettings.layout.navigation === 'right'">
+            </fuse-navbar-vertical>
+            <!-- / NAVBAR: Right -->
 
         </div>
 

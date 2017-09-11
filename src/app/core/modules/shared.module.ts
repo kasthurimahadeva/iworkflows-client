@@ -15,7 +15,7 @@ import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm
 import { FuseCountdownComponent } from '../components/countdown/countdown.component';
 import { FuseNavigationService } from '../components/navigation/navigation.service';
 import { FuseMatchMedia } from '../services/match-media.service';
-import { FuseNavbarService } from '../../main/navbar/navbar.service';
+import { FuseNavbarVerticalService } from '../../main/navbar/vertical/navbar-vertical.service';
 import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-sidenav-helper.service';
 import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
@@ -69,7 +69,7 @@ import { CookieService } from 'ngx-cookie-service';
         CookieService,
         FuseNavigationService,
         FuseMatchMedia,
-        FuseNavbarService,
+        FuseNavbarVerticalService,
         FuseMdSidenavHelperService
     ]
 })

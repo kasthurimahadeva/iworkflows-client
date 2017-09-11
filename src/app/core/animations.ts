@@ -4,6 +4,19 @@ import { sequence, trigger, stagger, animate, style, group, query, transition, k
 
 export class Animations
 {
+    public static fadeInOut = trigger('fadeInOut', [
+        state('0', style({
+            display: 'none',
+            opacity: 0
+        })),
+        state('1', style({
+            display: 'block',
+            opacity: 1
+        })),
+        transition('1 => 0', animate('300ms ease-out')),
+        transition('0 => 1', animate('300ms ease-in'))
+    ]);
+
     public static slideInOut = trigger('slideInOut', [
         state('0', style({
             height : '0px',

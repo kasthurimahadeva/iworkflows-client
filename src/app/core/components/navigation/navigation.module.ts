@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../modules/shared.module';
 import { RouterModule } from '@angular/router';
-import { FuseNavSubheaderComponent } from './nav-subheader/nav-subheader.component';
 import { FuseNavigationComponent } from './navigation.component';
-import { FuseNavItemComponent } from './nav-item/nav-item.component';
-import { FuseNavCollapseComponent } from './nav-collapse/nav-collapse.component';
+import { FuseNavVerticalItemComponent } from './vertical/nav-item/nav-vertical-item.component';
+import { FuseNavVerticalCollapseComponent } from './vertical/nav-collapse/nav-vertical-collapse.component';
+import { FuseNavVerticalSubheaderComponent } from './vertical/nav-subheader/nav-vertical-subheader.component';
+import { FuseNavHorizontalItemComponent } from './horizontal/nav-item/nav-horizontal-item.component';
+import { FuseNavHorizontalCollapseComponent } from './horizontal/nav-collapse/nav-horizontal-collapse.component';
 
 @NgModule({
     imports     : [
@@ -16,9 +18,11 @@ import { FuseNavCollapseComponent } from './nav-collapse/nav-collapse.component'
     ],
     declarations: [
         FuseNavigationComponent,
-        FuseNavSubheaderComponent,
-        FuseNavItemComponent,
-        FuseNavCollapseComponent
+        FuseNavVerticalSubheaderComponent,
+        FuseNavVerticalItemComponent,
+        FuseNavVerticalCollapseComponent,
+        FuseNavHorizontalItemComponent,
+        FuseNavHorizontalCollapseComponent
     ]
 })
 export class FuseNavigationModule

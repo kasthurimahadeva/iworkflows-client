@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { FuseConfigService } from '../../core/services/config.service';
 
 @Component({
     selector   : 'fuse-toolbar',
@@ -13,8 +14,12 @@ export class FuseToolbarComponent
     languages: any;
     selectedLanguage: any;
     showSpinner: boolean;
+    horizontalNav: boolean;
 
-    constructor(private router: Router)
+    constructor(
+        private router: Router,
+        private fuseConfig: FuseConfigService
+    )
     {
         this.userStatusOptions = [
             {
@@ -75,6 +80,11 @@ export class FuseToolbarComponent
                     this.showSpinner = false;
                 }
             });
+
+        this.fuseConfig.onSettingsChanged.subscribe((settings) => {
+            this.horizontalNav = settings.layout.navigation === 'top';
+        });
+
     }
 
     search(value)

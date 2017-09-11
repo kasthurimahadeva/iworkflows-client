@@ -13,6 +13,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
     onSettingsChanged: Subscription;
     fuseSettings: any;
     @HostBinding('class.disable-perfect-scrollbar') disableCustomScrollbars;
+    @HostBinding('class.boxed') boxed;
 
     constructor(
         private _renderer: Renderer2,
@@ -26,6 +27,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
                     (newSettings) => {
                         this.fuseSettings = newSettings;
                         this.disableCustomScrollbars = !this.fuseSettings.customScrollbars;
+                        this.boxed = this.fuseSettings.layout.mode === 'boxed';
                     }
                 );
     }

@@ -15,6 +15,30 @@
         color: inherit;
     }
 
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+            display: block;
+            background: #039BE5;
+            width: 32px;
+            min-width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: #FFF;
+            border-radius: 2px;
+        }
+
+        .logo-text {
+            margin-left: 16px;
+            font-size: 16px;
+        }
+    }
+
     .loading-spinner {
         width: 32px;
         height: 32px;

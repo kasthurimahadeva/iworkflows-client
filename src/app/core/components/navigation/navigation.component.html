@@ -1,11 +1,27 @@
-<div id="main-navigation" class="nav">
-    <ng-container *ngFor="let item of navigation">
+<div id="main-navigation" class="nav" [ngClass]="{'horizontal':layout === 'horizontal'}">
 
-        <fuse-nav-subheader *ngIf="item.type=='subheader'" [item]="item"></fuse-nav-subheader>
+    <ng-container *ngIf="layout === 'vertical'">
 
-        <fuse-nav-item *ngIf="item.type=='nav-item'" [item]="item"></fuse-nav-item>
+        <ng-container *ngFor="let item of verticalNavigation">
 
-        <fuse-nav-collapse *ngIf="item.type=='nav-collapse'" [item]="item"></fuse-nav-collapse>
+            <fuse-nav-vertical-subheader *ngIf="item.type=='subheader'" [item]="item"></fuse-nav-vertical-subheader>
+            <fuse-nav-vertical-item *ngIf="item.type=='nav-item'" [item]="item"></fuse-nav-vertical-item>
+            <fuse-nav-vertical-collapse *ngIf="item.type=='nav-collapse'" [item]="item"></fuse-nav-vertical-collapse>
+
+        </ng-container>
 
     </ng-container>
+
+    <ng-container *ngIf="layout === 'horizontal'">
+
+        <ng-container *ngFor="let item of horizontalNavigation">
+
+            <fuse-nav-horizontal-item *ngIf="item.type=='nav-item'" [item]="item"></fuse-nav-horizontal-item>
+            <fuse-nav-horizontal-collapse *ngIf="item.type=='nav-collapse'"
+                                          [item]="item"></fuse-nav-horizontal-collapse>
+
+        </ng-container>
+
+    </ng-container>
+
 </div>
