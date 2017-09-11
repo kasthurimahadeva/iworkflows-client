@@ -1,10 +1,11 @@
 export class FuseNavigation
 {
-    public items: any[];
+    public verticalNavItems: any[];
+    public horizontalNavItems: any[];
 
     constructor()
     {
-        this.items = [
+        this.verticalNavItems = [
             {
                 'title': 'APPS',
                 'type' : 'subheader'
@@ -19,6 +20,27 @@ export class FuseNavigation
                     'bg'   : '#F44336',
                     'fg'   : '#FFFFFF'
                 }
+            }
+        ];
+
+        this.horizontalNavItems = [
+            {
+                'title'   : 'Apps',
+                'icon'    : 'apps',
+                'type'    : 'nav-collapse',
+                'children': [
+                    {
+                        'title': 'Sample',
+                        'type' : 'nav-item',
+                        'icon' : 'email',
+                        'url'  : '/sample',
+                        'badge': {
+                            'title': 25,
+                            'bg'   : '#F44336',
+                            'fg'   : '#FFFFFF'
+                        }
+                    }
+                ]
             }
         ];
     }
