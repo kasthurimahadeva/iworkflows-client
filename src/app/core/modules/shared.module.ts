@@ -21,6 +21,8 @@ import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
 import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
 import { CookieService } from 'ngx-cookie-service';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+
 
 @NgModule({
     declarations   : [
@@ -42,7 +44,8 @@ import { CookieService } from 'ngx-cookie-service';
         ReactiveFormsModule,
         ColorPickerModule,
         NgxDnDModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        DateTimePickerModule
     ],
     exports        : [
         FlexLayoutModule,
@@ -60,7 +63,8 @@ import { CookieService } from 'ngx-cookie-service';
         NgxDnDModule,
         NgxDatatableModule,
         FuseIfOnDomDirective,
-        FuseMaterialColorPickerComponent
+        FuseMaterialColorPickerComponent,
+        DateTimePickerModule
     ],
     entryComponents: [
         FuseConfirmDialogComponent
