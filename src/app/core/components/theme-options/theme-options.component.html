@@ -13,37 +13,38 @@
     <md-list>
         <h3 md-subheader>Navigation:</h3>
         <md-list-item>
-            <md-radio-group [(ngModel)]="fuseSettings.layout.navigation" (ngModelChange)="onSettingsChange()">
-                <md-radio-button class="mr-8" value="top">Top</md-radio-button>
-                <md-radio-button class="mr-8" value="left">Left</md-radio-button>
-                <md-radio-button class="mr-8" value="right">Right</md-radio-button>
-                <md-radio-button class="mr-8" value="none">None</md-radio-button>
+            <md-radio-group [(ngModel)]="fuseSettings.layout.navigation" (ngModelChange)="onSettingsChange()"
+                            fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
+                <md-radio-button class="mr-8 mb-8" value="top">Top</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="left">Left</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="right">Right</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
             </md-radio-group>
         </md-list-item>
 
         <h3 md-subheader>Toolbar:</h3>
         <md-list-item>
             <md-radio-group [(ngModel)]="fuseSettings.layout.toolbar" (ngModelChange)="onSettingsChange()">
-                <md-radio-button class="mr-8" value="below">Below</md-radio-button>
-                <md-radio-button class="mr-8" value="above">Above</md-radio-button>
-                <md-radio-button class="mr-8" value="none">None</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
             </md-radio-group>
         </md-list-item>
 
         <h3 md-subheader>Footer:</h3>
         <md-list-item>
             <md-radio-group [(ngModel)]="fuseSettings.layout.footer" (ngModelChange)="onSettingsChange()">
-                <md-radio-button class="mr-8" value="below">Below</md-radio-button>
-                <md-radio-button class="mr-8" value="above">Above</md-radio-button>
-                <md-radio-button class="mr-8" value="none">None</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
             </md-radio-group>
         </md-list-item>
 
         <h3 md-subheader>Layout Mode:</h3>
         <md-list-item>
             <md-radio-group [(ngModel)]="fuseSettings.layout.mode" (ngModelChange)="onSettingsChange()">
-                <md-radio-button class="mr-8" value="boxed">Boxed</md-radio-button>
-                <md-radio-button class="mr-8" value="fullwidth">Fullwidth</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="boxed">Boxed</md-radio-button>
+                <md-radio-button class="mr-8 mb-8" value="fullwidth">Fullwidth</md-radio-button>
             </md-radio-group>
         </md-list-item>
 
@@ -53,22 +54,25 @@
 
         <md-list-item class="mb-8">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                <h4>Toolbar Color</h4>
-                <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.toolbar" (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
+                <h4 class="mr-8">Toolbar Color</h4>
+                <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.toolbar"
+                                            (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
             </div>
         </md-list-item>
 
         <md-list-item class="mb-8">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                <h4>Navigation Bar Color</h4>
-                <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.navbar" (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
+                <h4 class="mr-8">Navigation Bar Color</h4>
+                <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.navbar"
+                                            (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
             </div>
         </md-list-item>
 
         <md-list-item class="mb-8">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                <h4>Footer Color</h4>
-                <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.footer" (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
+                <h4 class="mr-8">Footer Color</h4>
+                <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.footer"
+                                            (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
             </div>
         </md-list-item>
 
