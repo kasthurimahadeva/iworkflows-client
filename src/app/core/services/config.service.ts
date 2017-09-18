@@ -30,7 +30,7 @@ export class FuseConfigService
             colorClasses    : {
                 toolbar: 'md-white-500-bg',
                 navbar : 'md-fuse-dark-500-bg',
-                footer : 'md-fuse-dark-800-bg'
+                footer : 'md-fuse-dark-700-bg'
             },
             customScrollbars: true,
             routerAnimation : 'fadeIn'

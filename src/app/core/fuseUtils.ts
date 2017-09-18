@@ -1,6 +1,5 @@
 export class FuseUtils
 {
-
     public static filterArrayByString(mainArr, searchText)
     {
         if ( searchText === '' )
@@ -17,7 +16,6 @@ export class FuseUtils
 
     public static searchInObj(itemObj, searchText)
     {
-
         for ( const prop in itemObj )
         {
             if ( !itemObj.hasOwnProperty(prop) )
@@ -29,7 +27,7 @@ export class FuseUtils
 
             if ( typeof value === 'string' )
             {
-                if ( this.searchInSting(value, searchText) )
+                if ( this.searchInString(value, searchText) )
                 {
                     return true;
                 }
@@ -41,7 +39,6 @@ export class FuseUtils
                 {
                     return true;
                 }
-
             }
 
             if ( typeof value === 'object' )
@@ -60,7 +57,7 @@ export class FuseUtils
         {
             if ( typeof value === 'string' )
             {
-                if ( this.searchInSting(value, searchText) )
+                if ( this.searchInString(value, searchText) )
                 {
                     return true;
                 }
@@ -76,7 +73,7 @@ export class FuseUtils
         }
     }
 
-    public static searchInSting(value, searchText)
+    public static searchInString(value, searchText)
     {
         return value.toLowerCase().includes(searchText);
     }
