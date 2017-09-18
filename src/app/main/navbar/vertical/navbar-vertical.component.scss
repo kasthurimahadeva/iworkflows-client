@@ -32,7 +32,7 @@ fuse-navbar-vertical {
     background-color: #FFFFFF;
     overflow-y: auto;
     overflow-x: hidden;
-    z-index: 3;
+    z-index: 4;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
     transition: all .3s cubic-bezier(.55, 0, .55, .2), width .1s linear, min-width .1s linear, max-width .1s linear;
     transform: translateX(0);
@@ -70,30 +70,36 @@ fuse-navbar-vertical {
     }
 
     &.close {
+        box-shadow: none;
+
         &.left-navbar {
             transform: translateX(-100%) !important;
         }
+
         &.right-navbar {
             transform: translateX(100%) !important;
         }
-        box-shadow: none;
     }
 
     @include media-breakpoint('lt-lg') {
         position: absolute;
         top: 0;
         bottom: 0;
+
         &.left-navbar {
             left: 0;
         }
+
         &.right-navbar {
             right: 0;
         }
 
         &:not(.initialized) {
+
             &.left-navbar {
                 transform: translateX(-100%);
             }
+
             &.right-navbar {
                 transform: translateX(100%);
             }

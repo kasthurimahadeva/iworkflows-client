@@ -143,18 +143,23 @@ export class FuseNavVerticalCollapseComponent implements OnInit
             return false;
         }
 
-        for ( const children of parent.children )
+        for ( let i = 0; i < parent.children.length; i++ )
         {
-            if ( children.url === url )
+            if ( parent.children[i].children )
+            {
+                if ( this.isUrlInChildren(parent.children[i], url) )
+                {
+                    return true;
+                }
+            }
+
+            if ( parent.children[i].url === url )
             {
                 return true;
             }
-
-            if ( children.children )
-            {
-                return this.isUrlInChildren(children, url);
-            }
         }
+
+        return false;
     }
 
     ngOnInit()
