@@ -45,6 +45,7 @@ fuse-navbar-vertical {
         &.left-navbar {
             left: 0;
         }
+
         &.right-navbar {
             right: 0;
         }
@@ -55,12 +56,16 @@ fuse-navbar-vertical {
             max-width: 64px;
 
             .navbar-header {
-                padding: 0 16px 0 16px;
+                padding: 0 13px;
+
+                .logo {
+
+                    .logo-text {
+                        opacity: 0;
+                        transition: opacity 200ms ease;
+                    }
+                }
             }
-        }
-
-        &.folded-open {
-
         }
     }
 
@@ -111,22 +116,14 @@ fuse-navbar-vertical {
             align-items: center;
 
             .logo-icon {
-                display: block;
-                background: #039BE5;
-                width: 32px;
-                min-width: 32px;
-                height: 32px;
-                line-height: 32px;
-                text-align: center;
-                font-size: 16px;
-                font-weight: 500;
-                color: #FFF;
-                border-radius: 2px;
+                width: 38px;
             }
 
             .logo-text {
-                margin-left: 16px;
-                font-size: 16px;
+                margin-left: 8px;
+                font-size: 20px;
+                font-weight: 300;
+                letter-spacing: 0.4px;
             }
         }
     }
