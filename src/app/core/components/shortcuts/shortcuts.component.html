@@ -47,7 +47,7 @@
             </md-input-container>
 
             <md-divider></md-divider>
-            <md-nav-list *ngIf="!searching" style="max-height: 312px; overflow: auto" perfect-scrollbar>
+            <md-nav-list *ngIf="!searching" style="max-height: 312px; overflow: auto" perfectScrollbar>
 
                 <md-list-item *ngFor="let shortcutItem of shortcutItems"
                               (click)="toggleShortcut($event, shortcutItem)">
@@ -68,7 +68,7 @@
                 </md-list-item>
             </md-nav-list>
 
-            <md-nav-list *ngIf="searching" style="max-height: 312px; overflow: auto" perfect-scrollbar>
+            <md-nav-list *ngIf="searching" style="max-height: 312px; overflow: auto" perfectScrollbar>
                 <md-list-item *ngFor="let navigationItem of filteredNavigationItems"
                               (click)="toggleShortcut($event, navigationItem)">
                     <div class="w-100-p" fxLayout="row" fxLayoutAlign="start center">
