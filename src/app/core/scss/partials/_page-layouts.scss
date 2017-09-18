@@ -309,10 +309,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     > .mat-drawer-content {
                         flex: 1 0 auto;
                         max-height: none;
-
-                        > .center {
-                            overflow: hidden;
-                        }
                     }
                 }
             }
@@ -483,10 +479,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     > .mat-sidenav-content,
                     > .mat-drawer-content {
                         flex: 1 0 auto;
-
-                        > .center {
-                            overflow: hidden;
-                        }
                     }
                 }
             }

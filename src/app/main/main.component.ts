@@ -1,6 +1,8 @@
-import { Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostBinding, Inject, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseConfigService } from '../core/services/config.service';
+import { Platform } from '@angular/cdk/platform';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
     selector     : 'fuse-main',
@@ -12,13 +14,14 @@ export class FuseMainComponent implements OnInit, OnDestroy
 {
     onSettingsChanged: Subscription;
     fuseSettings: any;
-    @HostBinding('class.disable-perfect-scrollbar') disableCustomScrollbars;
     @HostBinding('class.boxed') boxed;
 
     constructor(
         private _renderer: Renderer2,
         private _elementRef: ElementRef,
-        private fuseConfig: FuseConfigService
+        private fuseConfig: FuseConfigService,
+        private platform: Platform,
+        @Inject(DOCUMENT) private document: any
     )
     {
         this.onSettingsChanged =
@@ -26,10 +29,14 @@ export class FuseMainComponent implements OnInit, OnDestroy
                 .subscribe(
                     (newSettings) => {
                         this.fuseSettings = newSettings;
-                        this.disableCustomScrollbars = !this.fuseSettings.customScrollbars;
                         this.boxed = this.fuseSettings.layout.mode === 'boxed';
                     }
                 );
+
+        if ( this.platform.ANDROID || this.platform.IOS )
+        {
+            this.document.body.className += ' is-mobile';
+        }
     }
 
     ngOnInit()

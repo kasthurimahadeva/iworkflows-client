@@ -1,4 +1,4 @@
-<div id="calendar" class="page-layout simple fullwidth" perfectScrollbar>
+<div id="calendar" class="page-layout simple fullwidth" fusePerfectScrollbar>
 
     <!-- HEADER -->
     <div class="header" [ngClass]="viewDate | date:'MMM'">
@@ -86,7 +86,7 @@
     <!-- / HEADER -->
 
     <!-- CONTENT -->
-    <div class="content" perfectScrollbar>
+    <div class="content" fusePerfectScrollbar>
         <div [ngSwitch]="view">
             <mwl-calendar-month-view
                 *ngSwitchCase="'month'"

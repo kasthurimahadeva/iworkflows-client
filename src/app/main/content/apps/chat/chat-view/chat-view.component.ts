@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { ChatService } from '../chat.service';
 import { NgForm } from '@angular/forms';
-import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
+import { FusePerfectScrollbarDirective } from '../../../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 
 @Component({
     selector   : 'fuse-chat-view',
@@ -16,7 +16,7 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
     contact: any;
     replyInput: any;
     selectedChat: any;
-    @ViewChild(PerfectScrollbarDirective) directiveScroll: PerfectScrollbarDirective;
+    @ViewChild(FusePerfectScrollbarDirective) directiveScroll: FusePerfectScrollbarDirective;
     @ViewChildren('replyInput') replyInputField;
     @ViewChild('replyForm') replyForm: NgForm;
 

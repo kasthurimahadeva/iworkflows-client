@@ -3,11 +3,11 @@ import { FuseUtils } from '../../../../../../core/fuseUtils';
 import { ScrumboardService } from 'app/main/content/apps/scrumboard/scrumboard.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseScrumboardCardDialogComponent } from '../dialogs/card/card.component';
 import { FuseConfirmDialogComponent } from '../../../../../../core/components/confirm-dialog/confirm-dialog.component';
 import { Card } from '../../card.model';
+import { FusePerfectScrollbarDirective } from '../../../../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 
 @Component({
     selector     : 'fuse-scrumboard-board-list',
@@ -21,7 +21,7 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
     dialogRef: any;
 
     @Input() list;
-    @ViewChild(PerfectScrollbarDirective) listScroll: PerfectScrollbarDirective;
+    @ViewChild(FusePerfectScrollbarDirective) listScroll: FusePerfectScrollbarDirective;
 
     onBoardChanged: Subscription;
 

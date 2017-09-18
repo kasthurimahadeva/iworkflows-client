@@ -5,8 +5,8 @@ import { FuseNavbarVerticalService } from './navbar-vertical.service';
 import { ObservableMedia } from '@angular/flex-layout';
 import { FuseMainComponent } from '../../main.component';
 import { NavigationEnd, Router } from '@angular/router';
-import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { FuseNavigationService } from '../../../core/components/navigation/navigation.service';
+import { FusePerfectScrollbarDirective } from '../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 
 @Component({
     selector     : 'fuse-navbar-vertical',
@@ -21,7 +21,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
     @HostBinding('class.folded-open') isFoldedOpen: boolean;
     @HostBinding('class.initialized') initialized: boolean;
     @Input('folded') foldedByDefault = false;
-    @ViewChild(PerfectScrollbarDirective) perfectScrollbarDirective;
+    @ViewChild(FusePerfectScrollbarDirective) fusePerfectScrollbarDirective;
 
     matchMediaWatcher: Subscription;
 
@@ -39,7 +39,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
         this.fuseNavigationService.onNavCollapseToggled.subscribe(() => {
 
             setTimeout(() => {
-                this.perfectScrollbarDirective.update();
+                this.fusePerfectScrollbarDirective.update();
             }, 310);
         });
 
