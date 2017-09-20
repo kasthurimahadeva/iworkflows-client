@@ -35,12 +35,12 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         }
     }
 
-    ngOnInit(): void
+    ngOnInit()
     {
 
     }
 
-    ngAfterViewInit(): void
+    ngAfterViewInit()
     {
         if ( this.isMobile || this.isDisableCustomScrollbars )
         {
@@ -55,7 +55,7 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         });
     }
 
-    ngOnDestroy(): void
+    ngOnDestroy()
     {
         if ( !this.isInitialized )
         {

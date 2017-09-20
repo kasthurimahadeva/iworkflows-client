@@ -1,6 +1,4 @@
-import { sequence, trigger, stagger, animate, style, group, query, transition, keyframes, animateChild, state } from '@angular/animations';
-
-// const query = (s, a, o = {optional: true}) => q(s, a, o);
+import { sequence, trigger, animate, style, group, query, transition, animateChild, state } from '@angular/animations';
 
 export class Animations
 {

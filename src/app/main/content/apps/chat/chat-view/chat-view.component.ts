@@ -72,11 +72,12 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
         speed = speed || 400;
         if ( this.directiveScroll )
         {
+            this.directiveScroll.update();
+
             setTimeout(() => {
                 this.directiveScroll.scrollToBottom(0, speed);
             });
         }
-
     }
 
     reply(event)
