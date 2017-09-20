@@ -137,17 +137,8 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     @include mat-elevation(7);
 
                     &.md-is-locked-open {
-                        position: relative;
                         background: none;
                         box-shadow: none;
-                    }
-
-                    &.md-stop-transition {
-
-                        ~ .mat-sidenav-content,
-                        ~ .mat-drawer-content {
-                            transition: none;
-                        }
                     }
 
                     .header {
@@ -233,7 +224,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
 
                         ~ .mat-sidenav-content,
                         ~ .mat-drawer-content {
-                            margin-left: 0 !important;
 
                             .center {
                                 margin-left: 0;
@@ -257,7 +247,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
 
                         ~ .mat-sidenav-content,
                         ~ .mat-drawer-content {
-                            margin-right: 0 !important;
 
                             .center {
                                 margin-right: 0;
@@ -347,7 +336,8 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
 
             > md-sidenav-container {
                 display: flex;
-                flex-direction: column;
+                // flex-direction: column;
+                flex-direction: row;
                 flex: 1;
                 background: none;
                 z-index: 2;
@@ -366,14 +356,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         max-width: 220px;
                         box-shadow: none;
                         background: transparent;
-                    }
-
-                    &.md-stop-transition {
-
-                        ~ .mat-sidenav-content,
-                        ~ .mat-drawer-content {
-                            transition: none;
-                        }
                     }
 
                     .sidenav-content {

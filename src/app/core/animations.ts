@@ -267,7 +267,7 @@ export class Animations
 
     public static routerTransitionFade = trigger('routerTransitionFade', [
 
-        transition('* => *', [
+        transition('* => *', group([
 
             query('fuse-content > :enter, fuse-content > :leave ', [
                 style({
@@ -283,28 +283,26 @@ export class Animations
                     opacity: 0
                 })
             ], {optional: true}),
-            // sequence([
-                query('fuse-content > :leave', [
-                    style({
-                        opacity: 1
-                    }),
-                    animate('300ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
-                        style({
-                            opacity: 0
-                        }))
-                ], {optional: true}),
-                query('fuse-content > :enter', [
+            query('fuse-content > :leave', [
+                style({
+                    opacity: 1
+                }),
+                animate('300ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
                     style({
                         opacity: 0
-                    }),
-                    animate('300ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
-                        style({
-                            opacity: 1
-                        }))
-                ], {optional: true}),
-            // ]),
+                    }))
+            ], {optional: true}),
+            query('fuse-content > :enter', [
+                style({
+                    opacity: 0
+                }),
+                animate('300ms cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+                    style({
+                        opacity: 1
+                    }))
+            ], {optional: true}),
             query('fuse-content > :enter', animateChild(), {optional: true}),
             query('fuse-content > :leave', animateChild(), {optional: true})
-        ])
+        ]))
     ]);
 }

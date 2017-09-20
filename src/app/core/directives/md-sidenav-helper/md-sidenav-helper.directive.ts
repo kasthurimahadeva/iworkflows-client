@@ -73,7 +73,7 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
     {
         setTimeout(() => {
             this.stopTransition = false;
-        }, 0);
+        }, 300);
     }
 
     ngOnDestroy()
