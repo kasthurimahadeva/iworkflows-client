@@ -1,6 +1,6 @@
 export class NavigationModel
 {
-    model: any[];
+    public model: any[];
 
     constructor()
     {
