@@ -6,11 +6,13 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 import { FormGroup } from '@angular/forms';
 import { DataSource } from '@angular/cdk/collections';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-contacts-contact-list',
     templateUrl: './contact-list.component.html',
-    styleUrls  : ['./contact-list.component.scss']
+    styleUrls  : ['./contact-list.component.scss'],
+    animations   : fuseAnimations
 })
 export class FuseContactsContactListComponent implements OnInit
 {

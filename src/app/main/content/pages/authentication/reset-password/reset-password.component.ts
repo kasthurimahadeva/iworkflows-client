@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseConfigService } from '../../../../../core/services/config.service';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-reset-password',
     templateUrl: './reset-password.component.html',
-    styleUrls  : ['./reset-password.component.scss']
+    styleUrls  : ['./reset-password.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseResetPasswordComponent implements OnInit
 {

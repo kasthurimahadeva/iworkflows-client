@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '../../../../core/services/config.service';
+import { fuseAnimations } from '../../../../core/animations';
 
 @Component({
     selector   : 'fuse-coming-soon',
     templateUrl: './coming-soon.component.html',
-    styleUrls  : ['./coming-soon.component.scss']
+    styleUrls  : ['./coming-soon.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseComingSoonComponent implements OnInit
 {

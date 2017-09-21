@@ -10,7 +10,7 @@
 
                 <div fxLayout="row" fxLayoutAlign="space-between start">
 
-                    <span class="mat-display-1 mb-0">Welcome back, John!</span>
+                    <span class="mat-display-1 mb-0 welcome-message" *fuseIfOnDom [@animate]="{value:'*',params:{x:'50px'}}">Welcome back, John!</span>
 
                     <button md-icon-button fuseMdSidenavToggler="dashboards-right-sidenav" fxHide.gt-md>
                         <md-icon>menu</md-icon>
@@ -41,10 +41,10 @@
 
                     <md-tab label="Home">
 
-                        <div class="widget-group p-12" fxLayout="row" fxFlex="100" fxLayoutWrap>
+                        <div class="widget-group p-12" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
                             <!-- WIDGET 1 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -93,7 +93,7 @@
                             <!-- / WIDGET 1 -->
 
                             <!-- WIDGET 2 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -135,7 +135,7 @@
                             <!-- / WIDGET 2 -->
 
                             <!-- WIDGET 3 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -177,7 +177,7 @@
                             <!-- / WIDGET 3 -->
 
                             <!-- WIDGET 4 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -219,7 +219,7 @@
 
 
                             <!-- WIDGET 5 -->
-                            <fuse-widget class="" fxLayout="row" fxFlex="100">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="row" fxFlex="100">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -295,7 +295,7 @@
 
 
                             <!-- WIDGET 6 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -345,7 +345,7 @@
                             <!-- / WIDGET 6 -->
 
                             <!-- WIDGET 7 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -394,10 +394,10 @@
                     <md-tab label="Budget Summary">
 
                         <!-- WIDGET GROUP -->
-                        <div class="widget-group" fxLayout="row" fxFlex="100" fxLayoutWrap>
+                        <div class="widget-group" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
                             <!-- WIDGET 8 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -428,7 +428,7 @@
                             <!-- / WIDGET 8 -->
 
                             <!-- WIDGET 9 -->
-                            <fuse-widget class="" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -542,7 +542,7 @@
                             <!-- / WIDGET 9 -->
 
                             <!-- WIDGET 10 -->
-                            <fuse-widget class="" fxLayout="row" fxFlex="100">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="row" fxFlex="100">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -589,10 +589,10 @@
                     <md-tab label="Team Members">
 
                         <!-- WIDGET GROUP -->
-                        <div class="widget-group" fxLayout="row" fxFlex="100" fxLayoutWrap>
+                        <div class="widget-group" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
                             <!-- WIDGET 11 -->
-                            <fuse-widget class="" fxLayout="row" fxFlex="100">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="row" fxFlex="100">
 
                                 <!-- Front -->
                                 <div class="fuse-widget-front md-white-bg mat-elevation-z2">
@@ -687,15 +687,15 @@
         <!-- / CENTER -->
 
         <!-- SIDENAV -->
-        <md-sidenav class="sidenav mat-sidenav-opened" align="end" mode="side"
-                    fuseMdSidenavHelper="dashboards-right-sidenav" md-is-locked-open="gt-md">
+        <md-sidenav class="sidenav mat-sidenav-opened" align="end" mode="side" opened="true" fuseMdSidenavHelper="dashboards-right-sidenav" md-is-locked-open="gt-md">
 
             <div class="sidenav-content" fusePerfectScrollbar>
+
                 <!-- WIDGET GROUP -->
-                <div class="widget-group" fxLayout="column" fxFlex="100">
+                <div class="widget-group" fxLayout="column" fxFlex="100" *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
                     <!-- NOW WIDGET -->
-                    <fuse-widget class="sidenav-widget p-0">
+                    <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="sidenav-widget p-0">
 
                         <!-- Front -->
                         <div class="fuse-widget-front">
@@ -738,9 +738,8 @@
                     </fuse-widget>
                     <!-- / NOW WIDGET -->
 
-
                     <!-- WEATHER WIDGET -->
-                    <fuse-widget class="sidenav-widget p-0">
+                    <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="sidenav-widget p-0">
 
                         <!-- Front -->
                         <div class="fuse-widget-front">

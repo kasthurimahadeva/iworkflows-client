@@ -1,8 +1,10 @@
 <div id="about" class="p-24" fxLayout="row" fxLayoutWrap>
 
-    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65">
+    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65"
+         *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
-        <div class="profile-box info-box general" fxLayout="column">
+        <div class="profile-box info-box general" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
 
             <header class="md-accent-bg">
                 <div class="title">General Information</div>
@@ -36,7 +38,8 @@
 
         </div>
 
-        <div class="profile-box info-box work" fxLayout="column">
+        <div class="profile-box info-box work" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
 
             <header class="md-accent-bg">
                 <div class="title">Work</div>
@@ -65,7 +68,8 @@
             </div>
         </div>
 
-        <div class="profile-box info-box contact" fxLayout="column">
+        <div class="profile-box info-box contact" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
 
             <header class="md-accent-bg">
                 <div class="title">Contact</div>
@@ -100,9 +104,11 @@
 
     </div>
 
-    <div class="about-sidebar" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="35">
+    <div class="about-sidebar" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="35"
+         *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
-        <div class="profile-box friends" fxLayout="column">
+        <div class="profile-box friends" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
 
             <header class="md-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="title">Friends</div>
@@ -119,7 +125,8 @@
 
         </div>
 
-        <div class="profile-box groups" fxLayout="column">
+        <div class="profile-box groups" fxLayout="column"
+             [@animate]="{value:'*',params:{y:'100%'}}">
 
             <header class="md-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="title">Joined Groups</div>

@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { TodoService } from '../todo.service';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-todo-list',
     templateUrl: './todo-list.component.html',
-    styleUrls  : ['./todo-list.component.scss']
+    styleUrls  : ['./todo-list.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseTodoListComponent implements OnInit, OnDestroy
 {

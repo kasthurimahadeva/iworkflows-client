@@ -29,7 +29,8 @@
 <!-- SIDENAV CONTENT -->
 <div class="content p-24 md-white-bg" fusePerfectScrollbar>
 
-    <div class="file-details">
+    <div class="file-details"
+         *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms'}}">
 
         <div class="preview file-icon" fxLayout="row" fxLayoutAlign="center center">
             <md-icon class="type-icon s-48" [class]="selected.type"></md-icon>

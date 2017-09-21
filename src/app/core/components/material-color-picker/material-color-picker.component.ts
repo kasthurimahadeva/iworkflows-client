@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { MatColors } from '../../matColors';
-import { Animations } from '../../animations';
+import { fuseAnimations } from '../../animations';
 
 @Component({
     selector     : 'fuse-material-color-picker',
     templateUrl  : './material-color-picker.component.html',
     styleUrls    : ['./material-color-picker.component.scss'],
-    animations   : [Animations.slideInLeft, Animations.slideInRight],
+    animations   : fuseAnimations,
     encapsulation: ViewEncapsulation.None
 })
 export class FuseMaterialColorPickerComponent implements OnInit, OnChanges

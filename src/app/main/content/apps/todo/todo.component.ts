@@ -1,13 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { TodoService } from './todo.service';
 import { FormControl } from '@angular/forms';
 import { Todo } from './todo.model';
+import { fuseAnimations } from '../../../../core/animations';
 
 @Component({
     selector   : 'fuse-todo',
     templateUrl: './todo.component.html',
-    styleUrls  : ['./todo.component.scss']
+    styleUrls  : ['./todo.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseTodoComponent implements OnInit, OnDestroy
 {

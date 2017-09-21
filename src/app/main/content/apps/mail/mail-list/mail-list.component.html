@@ -2,6 +2,9 @@
     <span class="no-messages-text hint-text">There are no messages!</span>
 </div>
 
-<fuse-mail-list-item md-ripple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"
-                     [ngClass]="{'current-mail':mail?.id == currentMail?.id}">
-</fuse-mail-list-item>
+<div class="mail-list" *fuseIfOnDom [@animateStagger]="{value:'50'}">
+    <fuse-mail-list-item md-ripple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"
+                         [ngClass]="{'current-mail':mail?.id == currentMail?.id}"
+                         [@animate]="{value:'*',params:{y:'100%'}}">
+    </fuse-mail-list-item>
+</div>

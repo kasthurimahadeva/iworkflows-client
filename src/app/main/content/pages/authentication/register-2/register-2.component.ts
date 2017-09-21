@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseConfigService } from '../../../../../core/services/config.service';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-register-2',
     templateUrl: './register-2.component.html',
-    styleUrls  : ['./register-2.component.scss']
+    styleUrls  : ['./register-2.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseRegister2Component implements OnInit
 {
@@ -15,7 +17,8 @@ export class FuseRegister2Component implements OnInit
 
     constructor(
         private fuseConfig: FuseConfigService,
-        private formBuilder: FormBuilder)
+        private formBuilder: FormBuilder
+    )
     {
         this.fuseConfig.setSettings({
             layout: {

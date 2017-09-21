@@ -2,11 +2,11 @@
 <div fxLayout="column" fxLayoutAlign="space-between start"
      class="header p-24 md-accent-bg" class.gt-md="header p-24 white-fg">
     <div class="logo" fxFlex fxLayout="row" fxLayoutAlign="start center">
-        <md-icon class="logo-icon s-32">mail</md-icon>
-        <span class="logo-text">Mailbox</span>
+        <md-icon class="logo-icon s-32" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">mail</md-icon>
+        <span class="logo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Mailbox</span>
     </div>
 
-    <div class="account" fxLayout="column">
+    <div class="account" fxLayout="column" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms'}}">
         <div class="title">John Doe</div>
         <md-select class="account-selection" placeholder="Mail Selection"
                    floatPlaceholder="never"
@@ -21,7 +21,7 @@
 <!-- / SIDENAV HEADER -->
 
 <!-- SIDENAV CONTENT -->
-<div class="content" fusePerfectScrollbar>
+<div class="content" fusePerfectScrollbar *fuseIfOnDom [@animate]="{value:'*',params:{y:'50px'}}">
 
     <div class="p-24">
         <button md-raised-button fxFlex

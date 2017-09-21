@@ -1,42 +1,51 @@
 @import "../../../../core/scss/fuse";
 
-:host {
+#profile {
 
-    #profile {
+    .header {
+        height: 320px;
+        min-height: 320px;
+        max-height: 320px;
+        background: url('/assets/images/backgrounds/march.jpg') no-repeat 0 45%;
+        background-size: 100% auto;
 
-        .header {
-            height: 320px;
-            min-height: 320px;
-            max-height: 320px;
-            background: url('/assets/images/backgrounds/march.jpg') no-repeat 0 45%;
-            background-size: 100% auto;
+        .profile-image {
+            margin-right: 24px;
 
-            .profile-image {
-                margin-right: 24px;
-
-                @include media-breakpoint('sm') {
-                    margin: 0 0 16px 0;
-                }
+            @include media-breakpoint('sm') {
+                margin: 0 0 16px 0;
             }
+        }
 
-            .name {
-                font-size: 34px;
-                color: #FFFFFF;
+        .name {
+            font-size: 34px;
+            color: #FFFFFF;
 
-                @include media-breakpoint('sm') {
-                    margin-bottom: 32px;
-                }
+            @include media-breakpoint('sm') {
+                margin-bottom: 32px;
             }
+        }
 
-            .actions {
+        .actions {
 
-                button {
-                    text-transform: none;
-                    padding: 0 16px;
-                    height: 32px;
-                    line-height: 32px;
-                    margin: 0 0 0 8px;
-                }
+            button {
+                text-transform: none;
+                padding: 0 16px;
+                height: 32px;
+                line-height: 32px;
+                margin: 0 0 0 8px;
+            }
+        }
+    }
+
+    .content {
+        flex: 1;
+
+        md-tab-group {
+            height: 100%;
+
+            .mat-tab-body-wrapper {
+                flex-grow: 1;
             }
         }
     }

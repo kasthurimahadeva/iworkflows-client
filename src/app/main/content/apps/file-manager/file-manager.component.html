@@ -34,7 +34,8 @@
                 <!-- / TOOLBAR -->
 
                 <!-- BREADCRUMB -->
-                <div class="breadcrumb text-truncate h1 pl-72" fxLayout="row" fxLayoutAlign="start center">
+                <div class="breadcrumb text-truncate h1 pl-72" fxLayout="row" fxLayoutAlign="start center"
+                     *fuseIfOnDom [@animate]="{value:'*',params:{x:'50px'}}">
                     <div *ngFor="let path of pathArr; last  as isLast" fxLayout="row" fxLayoutAlign="start center">
                         <span>{{path}}</span>
                         <md-icon *ngIf="!isLast" class="separator">chevron_right</md-icon>
@@ -48,7 +49,8 @@
                     <button md-fab
                             class="add-file-button mat-warn"
                             (click)="fileInput.click()"
-                            aria-label="Add file">
+                            aria-label="Add file"
+                            *fuseIfOnDom [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
                         <md-icon>add</md-icon>
                     </button>
                 </div>

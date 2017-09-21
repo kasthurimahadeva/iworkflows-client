@@ -30,6 +30,15 @@
             }
 
             > .content {
+                flex: 1;
+
+                md-tab-group {
+                    height: 100%;
+
+                    .mat-tab-body-wrapper {
+                        flex-grow: 1;
+                    }
+                }
 
                 .mat-tab-label-container {
                     padding: 0 24px;

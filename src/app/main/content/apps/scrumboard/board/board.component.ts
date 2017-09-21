@@ -4,11 +4,13 @@ import { ScrumboardService } from '../scrumboard.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Location } from '@angular/common';
 import { List } from '../list.model';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-scrumboard-board',
     templateUrl: './board.component.html',
-    styleUrls  : ['./board.component.scss']
+    styleUrls  : ['./board.component.scss'],
+    animations  : fuseAnimations
 })
 export class FuseScrumboardBoardComponent implements OnInit, OnDestroy
 {

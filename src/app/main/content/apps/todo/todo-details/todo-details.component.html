@@ -1,6 +1,6 @@
 <div *ngIf="!todo" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <md-icon class="s-120 mb-12">check_box</md-icon>
-    <span class="hint-text mat-h1">Select a todo</span>
+    <md-icon class="s-120 mb-12 select-todo-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">check_box</md-icon>
+    <span class="hint-text mat-h1 select-todo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'400ms'}}">Select a todo</span>
 </div>
 
 <div *ngIf="todo">

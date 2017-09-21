@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../../chat.service';
 import { FuseMdSidenavHelperService } from '../../../../../../../core/directives/md-sidenav-helper/md-sidenav-helper.service';
 import { ObservableMedia } from '@angular/flex-layout';
+import { fuseAnimations } from '../../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-chat-chats-sidenav',
     templateUrl: './chats.component.html',
-    styleUrls  : ['./chats.component.scss']
+    styleUrls  : ['./chats.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseChatChatsSidenavComponent implements OnInit
 {

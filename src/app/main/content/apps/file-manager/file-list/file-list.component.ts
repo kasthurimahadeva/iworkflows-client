@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FileManagerService } from '../file-manager.service';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-file-list',
     templateUrl: './file-list.component.html',
-    styleUrls  : ['./file-list.component.scss']
+    styleUrls  : ['./file-list.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseFileManagerFileListComponent implements OnInit
 {

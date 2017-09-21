@@ -1,13 +1,13 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { FuseNavigationService } from '../../navigation.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { Animations } from '../../../../animations';
+import { fuseAnimations } from '../../../../animations';
 
 @Component({
     selector   : 'fuse-nav-vertical-collapse',
     templateUrl: './nav-vertical-collapse.component.html',
     styleUrls  : ['./nav-vertical-collapse.component.scss'],
-    animations : [Animations.slideInOut]
+    animations : fuseAnimations
 })
 export class FuseNavVerticalCollapseComponent implements OnInit
 {

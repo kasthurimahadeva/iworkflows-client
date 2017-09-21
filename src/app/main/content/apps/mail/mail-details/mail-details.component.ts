@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from '../mail.service';
 import { Mail } from '../mail.model';
 import { Subscription } from 'rxjs/Subscription';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-mail-details',
     templateUrl: './mail-details.component.html',
-    styleUrls  : ['./mail-details.component.scss']
+    styleUrls  : ['./mail-details.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseMailDetailsComponent implements OnInit, OnDestroy
 {

@@ -1,21 +1,21 @@
 <div id="register" fxLayout="row" fxLayoutAlign="start">
 
     <div id="register-intro" fxFlex fxHide fxShow.gt-xs>
-        <div class="logo">
+        <div class="logo" *fuseIfOnDom [@animate]="{value:'*',params:{scale:'0.2'}}">
             <span>F</span>
         </div>
 
-        <div class="title">
+        <div class="title" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
             Welcome to the FUSE!
         </div>
 
-        <div class="description">
+        <div class="description" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat,
             vel convallis elit fermentum pellentesque. Sed mollis velit facilisis facilisis viverra.
         </div>
     </div>
 
-    <div id="register-form-wrapper" fusePerfectScrollbar>
+    <div id="register-form-wrapper" fusePerfectScrollbar *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
 
         <div id="register-form">
 

@@ -4,12 +4,14 @@ import * as shape from 'd3-shape';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector     : 'fuse-project',
     templateUrl  : './project.component.html',
     styleUrls    : ['./project.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class FuseProjectComponent implements OnInit, OnDestroy
 {

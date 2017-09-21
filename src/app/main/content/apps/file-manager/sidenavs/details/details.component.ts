@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FileManagerService } from '../../file-manager.service';
+import { fuseAnimations } from '../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-file-manager-details-sidenav',
     templateUrl: './details.component.html',
-    styleUrls  : ['./details.component.scss']
+    styleUrls  : ['./details.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseFileManagerDetailsSidenavComponent implements OnInit
 {

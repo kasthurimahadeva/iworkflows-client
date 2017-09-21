@@ -101,7 +101,7 @@
 <div class="sidenav-content" fusePerfectScrollbar fxFlex>
 
     <!-- CHATS CONTENT -->
-    <div>
+    <div *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
         <!-- CHATS LIST-->
         <div class="chat-list" fxLayout="column">
@@ -112,7 +112,8 @@
 
             <button md-button class="contact"
                     *ngFor="let chat of user.chatList | filter: searchText"
-                    (click)="getChat(chat.contactId)" ngClass="{'unread':contact.unread}">
+                    (click)="getChat(chat.contactId)" ngClass="{'unread':contact.unread}"
+                    [@animate]="{value:'*',params:{y:'100%'}}">
 
                 <div fxLayout="row" fxLayoutAlign="start center">
 
@@ -152,7 +153,8 @@
             <button md-button class="contact"
                     ng-show="chatSearch"
                     *ngFor="let contact of contacts| filter: searchText"
-                    (click)="getChat(contact.id)">
+                    (click)="getChat(contact.id)"
+                    [@animate]="{value:'*',params:{y:'100%'}}">
 
                 <div fxLayout="row" fxLayoutAlign="start center">
                     <div class="avatar-wrapper" fxFlex="0 1 auto">

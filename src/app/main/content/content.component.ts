@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Animations } from '../../core/animations';
+import { fuseAnimations } from '../../core/animations';
 import { FuseConfigService } from '../../core/services/config.service';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
@@ -10,13 +10,7 @@ import 'rxjs/add/operator/map';
     selector   : 'fuse-content',
     templateUrl: './content.component.html',
     styleUrls  : ['./content.component.scss'],
-    animations : [
-        Animations.routerTransitionUp,
-        Animations.routerTransitionDown,
-        Animations.routerTransitionRight,
-        Animations.routerTransitionLeft,
-        Animations.routerTransitionFade
-    ]
+    animations : fuseAnimations
 })
 export class FuseContentComponent implements OnInit, OnDestroy
 {

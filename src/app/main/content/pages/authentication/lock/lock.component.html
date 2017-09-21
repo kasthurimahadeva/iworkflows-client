@@ -2,7 +2,7 @@
 
     <div id="lock-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
 
-        <div id="lock-form">
+        <div id="lock-form" *fuseIfOnDom [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
 
             <div fxLayout="row" fxLayoutAlign="start center" fxLayout.sm="column" fxLayoutAlign.sm="center center">
                 <div class="avatar-container">

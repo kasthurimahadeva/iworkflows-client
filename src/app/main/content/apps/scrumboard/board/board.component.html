@@ -50,11 +50,12 @@
         </div>
         <!-- / HEADER -->
 
-        <div fxFlex class="board-content-wrapper p-16 p-md-24">
+        <div fxFlex class="board-content-wrapper p-16 p-md-24" [class]="board.settings.color+'-100-bg'">
 
             <!-- BOARD -->
-            <div class="board-content ngx-dnd-container p-16 p-md-24" [class]="board.settings.color+'-100-bg'" fxLayout="row"
-                 ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)">
+            <div class="board-content ngx-dnd-container p-16 p-md-24" fxLayout="row"
+                 ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)"
+                 *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
                 <!-- LIST -->
                 <fuse-scrumboard-board-list
@@ -62,12 +63,15 @@
                     ngxDraggable
                     *ngFor="let list of board.lists"
                     [model]="list"
-                    [list]="list">
+                    [list]="list"
+                    [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}">
                 </fuse-scrumboard-board-list>
                 <!-- / LIST -->
 
                 <!-- NEW LIST BUTTON-->
-                <fuse-scrumboard-board-add-list class="new-list-wrapper" (onlistAdd)="onListAdd($event)"></fuse-scrumboard-board-add-list>
+                <fuse-scrumboard-board-add-list class="new-list-wrapper" (onlistAdd)="onListAdd($event)"
+                                                [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}">
+                </fuse-scrumboard-board-add-list>
                 <!-- / NEW LIST BUTTON-->
 
             </div>

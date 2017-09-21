@@ -4,11 +4,13 @@ import { Subscription } from 'rxjs/Subscription';
 import { FuseMailComposeDialogComponent } from '../../dialogs/compose/compose.component';
 import { MdDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
+import { fuseAnimations } from '../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-mail-main-sidenav',
     templateUrl: './main-sidenav.component.html',
-    styleUrls  : ['./main-sidenav.component.scss']
+    styleUrls  : ['./main-sidenav.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseMailMainSidenavComponent implements OnInit, OnDestroy
 {

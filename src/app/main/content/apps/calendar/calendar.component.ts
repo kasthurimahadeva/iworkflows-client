@@ -1,5 +1,5 @@
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
@@ -13,13 +13,14 @@ import {
     CalendarMonthViewDay
 } from 'angular-calendar';
 import { FuseConfirmDialogComponent } from '../../../../core/components/confirm-dialog/confirm-dialog.component';
+import { fuseAnimations } from '../../../../core/animations';
 
 @Component({
-    selector       : 'fuse-calendar',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl    : './calendar.component.html',
-    styleUrls      : ['./calendar.component.scss'],
-    encapsulation  : ViewEncapsulation.None
+    selector     : 'fuse-calendar',
+    templateUrl  : './calendar.component.html',
+    styleUrls    : ['./calendar.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class FuseCalendarComponent implements OnInit
 {

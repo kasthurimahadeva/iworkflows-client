@@ -1,4 +1,4 @@
-<md-table #table [dataSource]="dataSource">
+<md-table #table [dataSource]="dataSource" *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
     <!-- Type Column -->
     <ng-container cdkColumnDef="icon">
@@ -53,6 +53,8 @@
     <md-row *cdkRowDef="let row; columns: displayedColumns;"
             (click)="onSelect(row)"
             [ngClass]="{'md-light-blue-50-bg':row == selected}"
-            md-ripple>
+            md-ripple
+            [@animate]="{value:'*',params:{y:'100%'}}"
+    >
     </md-row>
 </md-table>

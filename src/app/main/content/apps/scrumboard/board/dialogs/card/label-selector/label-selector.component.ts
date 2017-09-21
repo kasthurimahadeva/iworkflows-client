@@ -2,14 +2,14 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsul
 import { Subscription } from 'rxjs/Subscription';
 import { ScrumboardService } from '../../../../scrumboard.service';
 import { FuseUtils } from '../../../../../../../../core/fuseUtils';
-import { Animations } from '../../../../../../../../core/animations';
+import { fuseAnimations } from '../../../../../../../../core/animations';
 
 @Component({
     selector     : 'fuse-scrumboard-label-selector',
     templateUrl  : './label-selector.component.html',
     styleUrls    : ['./label-selector.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : [Animations.slideInLeft, Animations.slideInRight]
+    animations   : fuseAnimations
 })
 
 export class FuseScrumboardLabelSelectorComponent implements OnInit, OnDestroy

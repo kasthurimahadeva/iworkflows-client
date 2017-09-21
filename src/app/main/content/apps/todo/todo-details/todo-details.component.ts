@@ -4,11 +4,13 @@ import { Todo } from '../todo.model';
 import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FuseUtils } from '../../../../../core/fuseUtils';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-todo-details',
     templateUrl: './todo-details.component.html',
-    styleUrls  : ['./todo-details.component.scss']
+    styleUrls  : ['./todo-details.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseTodoDetailsComponent implements OnInit, OnDestroy
 {

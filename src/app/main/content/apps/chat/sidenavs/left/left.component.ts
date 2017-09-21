@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Animations } from '../../../../../../core/animations';
+import { fuseAnimations } from '../../../../../../core/animations';
 import { ChatService } from '../../chat.service';
 
 @Component({
     selector   : 'fuse-chat-left-sidenav',
     templateUrl: './left.component.html',
     styleUrls  : ['./left.component.scss'],
-    animations : [Animations.slideInLeft, Animations.slideInRight]
+    animations : fuseAnimations
 })
 export class FuseChatLeftSidenavComponent implements OnInit
 {

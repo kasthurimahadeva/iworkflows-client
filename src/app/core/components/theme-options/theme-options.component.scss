@@ -15,6 +15,10 @@
     right: 0;
     top: 160px;
 
+    &.bar-closed .theme-options-panel {
+        display: none;
+    }
+
     .theme-options-panel {
         position: absolute;
         right: 0;
@@ -82,4 +86,5 @@
             opacity: 1;
         }
     }
+
 }

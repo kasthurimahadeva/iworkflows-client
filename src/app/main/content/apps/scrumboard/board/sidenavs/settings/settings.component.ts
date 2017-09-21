@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ScrumboardService } from '../../../scrumboard.service';
-import { Animations } from '../../../../../../../core/animations';
+import { fuseAnimations } from '../../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-scrumboard-board-settings',
     templateUrl: './settings.component.html',
     styleUrls  : ['./settings.component.scss'],
-    animations : [Animations.slideInLeft, Animations.slideInRight]
+    animations : fuseAnimations
 })
 export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit, OnDestroy
 {
@@ -19,7 +19,6 @@ export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit, OnDe
         private scrumboardService: ScrumboardService
     )
     {
-
     }
 
     ngOnInit()

@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TodoService } from '../../todo.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
+import { fuseAnimations } from '../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-todo-main-sidenav',
     templateUrl: './main-sidenav.component.html',
-    styleUrls  : ['./main-sidenav.component.scss']
+    styleUrls  : ['./main-sidenav.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseTodoMainSidenavComponent implements OnInit, OnDestroy
 {

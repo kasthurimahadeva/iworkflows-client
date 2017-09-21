@@ -1,5 +1,4 @@
 <div id="calendar" class="page-layout simple fullwidth" fusePerfectScrollbar>
-
     <!-- HEADER -->
     <div class="header" [ngClass]="viewDate | date:'MMM'">
 
@@ -9,9 +8,9 @@
 
                 <div class="logo mb-16 mb-sm-0" fxLayout="row" fxLayoutAlign="start center">
 
-                    <md-icon class="logo-icon">today</md-icon>
+                    <md-icon class="logo-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">today</md-icon>
 
-                    <span class="logo-text">Calendar</span>
+                    <span class="logo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Calendar</span>
 
                 </div>
 
@@ -50,7 +49,8 @@
             <!-- / TOOLBAR -->
 
             <!-- HEADER BOTTOM -->
-            <div class="header-bottom" fxLayout="row" fxLayoutAlign="center center">
+            <div class="header-bottom" fxLayout="row" fxLayoutAlign="center center"
+                 *fuseIfOnDom [@animate]="{value:'*',params:{delay:'150ms'}}">
 
                 <button md-button class="mat-icon-button arrow"
                         mwlCalendarPreviousView
@@ -78,7 +78,8 @@
         </div>
 
         <!-- ADD EVENT BUTTON -->
-        <button md-fab class="add-event-button mat-warn" (click)="addEvent()" aria-label="Add event">
+        <button md-fab class="add-event-button mat-warn" (click)="addEvent()" aria-label="Add event"
+                *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
             <md-icon>add</md-icon>
         </button>
         <!-- / ADD EVENT BUTTON -->
@@ -86,7 +87,7 @@
     <!-- / HEADER -->
 
     <!-- CONTENT -->
-    <div class="content" fusePerfectScrollbar>
+    <div class="content" fusePerfectScrollbar *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms',y:'50px'}}">
         <div [ngSwitch]="view">
             <mwl-calendar-month-view
                 *ngSwitchCase="'month'"

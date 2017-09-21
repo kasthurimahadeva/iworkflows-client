@@ -1,6 +1,6 @@
 <div *ngIf="!mail" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <md-icon class="s-128 mb-16">email</md-icon>
-    <span class="select-message-text hint-text">Select a message to read</span>
+    <md-icon class="s-128 mb-16 select-message-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">email</md-icon>
+    <span class="select-message-text hint-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'400ms'}}">Select a message to read</span>
 </div>
 
 <div *ngIf="mail">

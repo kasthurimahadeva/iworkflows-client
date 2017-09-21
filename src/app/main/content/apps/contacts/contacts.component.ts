@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ContactsService } from './contacts.service';
-import { Animations } from '../../../../core/animations';
+import { fuseAnimations } from '../../../../core/animations';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
     templateUrl  : './contacts.component.html',
     styleUrls    : ['./contacts.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : [Animations.slideInTop]
+    animations   : fuseAnimations
 })
 export class FuseContactsComponent implements OnInit
 {

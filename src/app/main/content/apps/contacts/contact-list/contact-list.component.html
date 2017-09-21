@@ -1,5 +1,5 @@
-<md-table #table [dataSource]="dataSource">
-
+<md-table #table [dataSource]="dataSource"
+          [@animateStagger]="{value:'50'}">
     <!-- Checkbox Column -->
     <ng-container cdkColumnDef="checkbox">
         <md-header-cell *cdkHeaderCellDef></md-header-cell>
@@ -95,15 +95,18 @@
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
     <md-row *cdkRowDef="let contact; columns: displayedColumns;"
+            class="contact"
             (click)="editContact(contact)"
             [ngClass]="{'md-light-blue-50-bg':checkboxes[contact.id]}"
-            md-ripple>
+            md-ripple
+            [@animate]="{value:'*',params:{y:'100%'}}">
     </md-row>
 </md-table>
 
 
 <!-- ADD CONTACT BUTTON -->
-<button md-fab class="md-accent-bg" id="add-contact-button" (click)="newContact()" aria-label="add contact">
+<button md-fab class="md-accent-bg" id="add-contact-button" (click)="newContact()" aria-label="add contact"
+        *fuseIfOnDom [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
     <md-icon>person_add</md-icon>
 </button>
 <!-- / ADD CONTACT BUTTON -->

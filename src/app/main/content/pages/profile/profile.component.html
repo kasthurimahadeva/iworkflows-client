@@ -6,11 +6,12 @@
 
         <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
              fxLayoutAlign.gt-sm="start center">
-            <img class="profile-image avatar huge" src="assets/images/avatars/katherine.jpg">
-            <div class="name">Katherine Wilson</div>
+            <img class="profile-image avatar huge" src="assets/images/avatars/katherine.jpg"
+                 *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            <div class="name" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Katherine Wilson</div>
         </div>
 
-        <div class="actions" fxLayout="row" fxLayoutAlign="end center">
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms'}}">
             <button md-raised-button color="accent" aria-label="Follow">Follow</button>
             <button md-raised-button color="primary" aria-label="Send Message">Send Message</button>
         </div>
@@ -21,7 +22,7 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <md-tab-group md-dynamic-height="true">
+        <md-tab-group dynamicHeight="true">
 
             <md-tab label="Timeline">
                 <fuse-profile-timeline></fuse-profile-timeline>

@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { MailService } from '../mail.service';
 import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
+import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-mail-list',
     templateUrl: './mail-list.component.html',
-    styleUrls  : ['./mail-list.component.scss']
+    styleUrls  : ['./mail-list.component.scss'],
+    animations : fuseAnimations
 })
 export class FuseMailListComponent implements OnInit, OnDestroy
 {
