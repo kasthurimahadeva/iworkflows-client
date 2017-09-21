@@ -1,16 +1,19 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { NavigationModel } from '../../../navigation.model';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class FuseNavigationService
 {
     onNavCollapseToggled = new EventEmitter<any>();
+    onNavigationModelChange: BehaviorSubject<any> = new BehaviorSubject({});
     navigationModel: NavigationModel;
     flatNavigation: any[] = [];
 
     constructor()
     {
         this.navigationModel = new NavigationModel();
+        this.onNavigationModelChange.next(this.navigationModel.model);
     }
 
     /**
@@ -20,6 +23,21 @@ export class FuseNavigationService
     getNavigationModel()
     {
         return this.navigationModel.model;
+    }
+
+    /**
+     * Set the navigation model
+     * @param model
+     */
+    setNavigationModel(model)
+    {
+        // console.log(model);
+
+        this.navigationModel = model;
+
+        console.log(this.navigationModel);
+
+        this.onNavigationModelChange.next(this.navigationModel.model);
     }
 
     /**
@@ -41,7 +59,7 @@ export class FuseNavigationService
                 continue;
             }
 
-            if ( navItem.type === 'nav-item' )
+            if ( navItem.type === 'item' )
             {
                 this.flatNavigation.push({
                     title: navItem.title,
@@ -53,7 +71,7 @@ export class FuseNavigationService
                 continue;
             }
 
-            if ( navItem.type === 'nav-collapse' )
+            if ( navItem.type === 'collapse' || navItem.type === 'group' )
             {
                 this.getFlatNavigation(navItem.children);
             }
