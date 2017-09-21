@@ -15,7 +15,10 @@ export class FuseNavVerticalCollapseComponent implements OnInit
     @HostBinding('class') classes = 'nav-collapse nav-item';
     @HostBinding('class.open') public isOpen = false;
 
-    constructor(private navigationService: FuseNavigationService, private router: Router)
+    constructor(
+        private navigationService: FuseNavigationService,
+        private router: Router
+    )
     {
         // Listen for route changes
         router.events.subscribe(
@@ -45,6 +48,13 @@ export class FuseNavVerticalCollapseComponent implements OnInit
                         // Check if the clicked item is one
                         // of the children of this item
                         if ( this.isChildrenOf(this.item, clickedItem) )
+                        {
+                            return;
+                        }
+
+                        // Check if the url can be found in
+                        // one of the children of this item
+                        if ( this.isUrlInChildren(this.item, this.router.url) )
                         {
                             return;
                         }

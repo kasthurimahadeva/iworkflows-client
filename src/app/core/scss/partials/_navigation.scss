@@ -11,6 +11,21 @@
         white-space: nowrap;
     }
 
+    .nav-group {
+
+        > .group-title {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 48px;
+            font-weight: 500;
+            padding-left: 24px;
+            margin-top: 8px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+    }
+
     .nav-item {
 
         .nav-link {
@@ -115,6 +130,31 @@
 
             &.open {
                 background: rgba(0, 0, 0, 0.12);
+            }
+        }
+    }
+
+    > .nav-group {
+
+        > .group-items {
+
+            > .nav-collapse {
+                background: transparent;
+                transition: background 200ms ease-in-out;
+
+                &.open {
+                    background: rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+    }
+
+    &.vertical {
+
+        .nav-group {
+
+            .group-title {
+                text-transform: uppercase;
             }
         }
     }

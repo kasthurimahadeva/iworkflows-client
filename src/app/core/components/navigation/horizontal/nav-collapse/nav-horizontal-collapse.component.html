@@ -9,9 +9,8 @@
     <div class="{{fuseSettings.colorClasses.navbar}}">
 
         <ng-container *ngFor="let item of item.children">
-            <fuse-nav-horizontal-item *ngIf="item.type=='nav-item'" [item]="item"></fuse-nav-horizontal-item>
-            <fuse-nav-horizontal-collapse *ngIf="item.type=='nav-collapse'"
-                                          [item]="item"></fuse-nav-horizontal-collapse>
+            <fuse-nav-horizontal-item *ngIf="item.type=='item'" [item]="item"></fuse-nav-horizontal-item>
+            <fuse-nav-horizontal-collapse *ngIf="item.type=='collapse'" [item]="item"></fuse-nav-horizontal-collapse>
         </ng-container>
 
     </div>

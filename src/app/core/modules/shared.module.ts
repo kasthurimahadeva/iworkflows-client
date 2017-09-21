@@ -12,7 +12,6 @@ import { FuseMdSidenavHelperDirective, FuseMdSidenavTogglerDirective } from '../
 import { FusePipesModule } from '../pipes/pipes.module';
 import { FuseConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { FuseCountdownComponent } from '../components/countdown/countdown.component';
-import { FuseNavigationService } from '../components/navigation/navigation.service';
 import { FuseMatchMedia } from '../services/match-media.service';
 import { FuseNavbarVerticalService } from '../../main/navbar/vertical/navbar-vertical.service';
 import { FuseMdSidenavHelperService } from '../directives/md-sidenav-helper/md-sidenav-helper.service';
@@ -70,7 +69,6 @@ import { CookieService } from 'ngx-cookie-service';
     ],
     providers      : [
         CookieService,
-        FuseNavigationService,
         FuseMatchMedia,
         FuseNavbarVerticalService,
         FuseMdSidenavHelperService
