@@ -1,27 +1,32 @@
-<div id="main-navigation" class="nav" [ngClass]="{'horizontal':layout === 'horizontal'}">
+<div id="main-navigation" class="nav"
+     [ngClass]="{'horizontal':layout === 'horizontal', 'vertical':layout === 'vertical'}">
 
+    <!-- Vertical Navigation Layout -->
     <ng-container *ngIf="layout === 'vertical'">
 
-        <ng-container *ngFor="let item of verticalNavigation">
+        <ng-container *ngFor="let item of navigationModel">
 
-            <fuse-nav-vertical-subheader *ngIf="item.type=='subheader'" [item]="item"></fuse-nav-vertical-subheader>
-            <fuse-nav-vertical-item *ngIf="item.type=='nav-item'" [item]="item"></fuse-nav-vertical-item>
-            <fuse-nav-vertical-collapse *ngIf="item.type=='nav-collapse'" [item]="item"></fuse-nav-vertical-collapse>
+            <fuse-nav-vertical-group *ngIf="item.type=='group'" [item]="item"></fuse-nav-vertical-group>
+            <fuse-nav-vertical-collapse *ngIf="item.type=='collapse'" [item]="item"></fuse-nav-vertical-collapse>
+            <fuse-nav-vertical-item *ngIf="item.type=='item'" [item]="item"></fuse-nav-vertical-item>
 
         </ng-container>
 
     </ng-container>
+    <!-- / Vertical Navigation Layout -->
 
+    <!-- Horizontal Navigation Layout -->
     <ng-container *ngIf="layout === 'horizontal'">
 
-        <ng-container *ngFor="let item of horizontalNavigation">
+        <ng-container *ngFor="let item of navigationModel">
 
+            <fuse-nav-horizontal-collapse *ngIf="item.type=='group'" [item]="item"></fuse-nav-horizontal-collapse>
+            <fuse-nav-horizontal-collapse *ngIf="item.type=='collapse'" [item]="item"></fuse-nav-horizontal-collapse>
             <fuse-nav-horizontal-item *ngIf="item.type=='nav-item'" [item]="item"></fuse-nav-horizontal-item>
-            <fuse-nav-horizontal-collapse *ngIf="item.type=='nav-collapse'"
-                                          [item]="item"></fuse-nav-horizontal-collapse>
 
         </ng-container>
 
     </ng-container>
+    <!-- / Horizontal Navigation Layout -->
 
 </div>

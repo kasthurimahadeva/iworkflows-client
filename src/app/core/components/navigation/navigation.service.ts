@@ -1,25 +1,25 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { FuseNavigation } from '../../../navigation.model';
+import { NavigationModel } from '../../../navigation.model';
 
 @Injectable()
 export class FuseNavigationService
 {
     onNavCollapseToggled = new EventEmitter<any>();
-    navigation: FuseNavigation;
+    navigationModel: NavigationModel;
     flatNavigation: any[] = [];
 
     constructor()
     {
-        this.navigation = new FuseNavigation();
+        this.navigationModel = new NavigationModel();
     }
 
     /**
-     * Get navigation array
+     * Get navigation model
      * @returns {any[]}
      */
-    getNavigation(item)
+    getNavigationModel()
     {
-        return this.navigation[item];
+        return this.navigationModel.model;
     }
 
     /**
@@ -31,7 +31,7 @@ export class FuseNavigationService
     {
         if ( !navigationItems )
         {
-            navigationItems = this.navigation;
+            navigationItems = this.navigationModel;
         }
 
         for ( const navItem of navigationItems )

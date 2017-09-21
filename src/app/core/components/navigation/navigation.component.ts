@@ -9,15 +9,13 @@ import { FuseNavigationService } from './navigation.service';
 })
 export class FuseNavigationComponent
 {
-    verticalNavigation: any[];
-    horizontalNavigation: any[];
+    navigationModel: any[];
 
     @Input('layout') layout = 'vertical';
 
     constructor(private navigationService: FuseNavigationService)
     {
-        this.verticalNavigation = navigationService.getNavigation('verticalNavItems');
-        this.horizontalNavigation = navigationService.getNavigation('horizontalNavItems');
+        this.navigationModel = navigationService.getNavigationModel();
     }
 
 }
