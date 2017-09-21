@@ -336,8 +336,8 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
 
             > md-sidenav-container {
                 display: flex;
-                // flex-direction: column;
-                flex-direction: row;
+                flex-direction: column;
+                //flex-direction: row;
                 flex: 1;
                 background: none;
                 z-index: 2;
