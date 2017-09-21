@@ -20,7 +20,6 @@ export class FuseNavigationComponent implements OnDestroy
         this.navigationModelChangeSubscription =
             this.fuseNavigationService.onNavigationModelChange
                 .subscribe((navigationModel) => {
-                    console.warn(navigationModel);
                     this.navigationModel = navigationModel;
                 });
     }
