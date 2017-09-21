@@ -50,13 +50,20 @@
         </div>
 
         <div class="my-48">
-            <h3>Header</h3>
+            <h3>Grouping</h3>
             <p class="md-grey-200-bg py-8">
                 <fuse-hljs lang="json" class="source-code">
                     <textarea #source hidden="hidden">
                         {
                             'title': 'COMPONENTS',
-                            'type' : 'subheader'
+                            'type' : 'group',
+                            'children': [
+                                {
+                                    'title': 'ngx-datatable',
+                                    'type' : 'item',
+                                    'url'  : '/components/datatables/ngx-datatable'
+                                }
+                            ]
                         },
                     </textarea>
                 </fuse-hljs>
@@ -70,7 +77,7 @@
                     <textarea #source hidden="hidden">
                         {
                             'title'   : 'Datatables',
-                            'type'    : 'nav-collapse',
+                            'type'    : 'collapse',
                             'icon'    : 'border_all',
                             'children': [
                                 {
@@ -92,7 +99,7 @@
                     <textarea #source hidden="hidden">
                         {
                             'title': 'Countdown',
-                            'type' : 'nav-item',
+                            'type' : 'item',
                             'icon' : 'settings_input_component',
                             'url'  : '/components/countdown'
                         },

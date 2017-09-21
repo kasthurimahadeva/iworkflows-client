@@ -49,7 +49,7 @@ export class FuseNavigationService
     {
         if ( !navigationItems )
         {
-            navigationItems = this.navigationModel;
+            navigationItems = this.navigationModel.model;
         }
 
         for ( const navItem of navigationItems )
