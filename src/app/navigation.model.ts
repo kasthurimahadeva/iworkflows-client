@@ -11,7 +11,7 @@ export class NavigationModel
                 'children': [
                     {
                         'title': 'Sample',
-                        'type' : 'nav-item',
+                        'type' : 'item',
                         'icon' : 'email',
                         'url'  : '/sample',
                         'badge': {
