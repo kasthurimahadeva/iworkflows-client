@@ -32,7 +32,7 @@
 
         @include media-breakpoint-down('xs') {
             top: -120px;
-            max-height: calc(100vh - 60px);
+            max-height: calc(100vh - 100px);
             width: 90vw;
         }
 

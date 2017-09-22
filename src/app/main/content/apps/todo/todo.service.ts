@@ -381,8 +381,6 @@ export class TodoService implements Resolve<any>
 
                     this.getTodos().then(todos => {
 
-                        this.setCurrentTodo(todo.id);
-
                         resolve(todos);
 
                     }, reject);
