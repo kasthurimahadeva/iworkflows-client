@@ -1,18 +1,16 @@
 <div fxLayout="row" fxLayoutAlign="start center">
 
-    <md-icon class="handle mr-16" ngxDragHandle (click)="$event.stopPropagation()" fxFlex="0 1 auto" fxHide.xs>
+    <md-icon class="handle mr-16" ngxDragHandle fxFlex="0 1 auto" fxHide.xs>
         drag_handle
     </md-icon>
 
     <md-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
-                 (click)="$event.stopPropagation()"
-                 class="mr-16"
-                 fxFlex="0 1 auto">
+                 class="mr-16" fxFlex="0 1 auto">
     </md-checkbox>
 
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
 
-        <div class="info" fxFlex FlexLayout="column">
+        <div class="info" fxFlex fxFlexLayout="column">
 
             <div class="title">
                 {{todo.title}}
@@ -25,9 +23,7 @@
             <div class="tags" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
 
                 <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tagId of todo.tags">
-
                     <div class="tag-color" [ngStyle]="{'background-color': tags | getById:tagId:'color'}"></div>
-
                     <div class="tag-label">{{tags | getById:tagId:'title'}}</div>
                 </div>
 
@@ -37,20 +33,20 @@
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
 
-            <button md-button class="mat-icon-button" (click)="toggleImportant($event)" aria-label="Toggle important"
-                    fxHide.xs>
+            <button md-button class="mat-icon-button" (click)="toggleImportant($event)"
+                    aria-label="Toggle important" fxHide.xs>
                 <md-icon *ngIf="todo.important">error</md-icon>
                 <md-icon *ngIf="!todo.important">error_outline</md-icon>
             </button>
 
-            <button md-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star"
-                    fxHide.xs>
+            <button md-button class="mat-icon-button" (click)="toggleStar($event)"
+                    aria-label="Toggle star" fxHide.xs>
                 <md-icon *ngIf="todo.starred">star</md-icon>
                 <md-icon *ngIf="!todo.starred">star_outline</md-icon>
             </button>
 
             <button md-button [mdMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
-                    ng-click="$mdOpenMenu($event)" fxHide.xs>
+                    (click)="$event.stopPropagation();" fxHide.xs>
                 <md-icon>more_vert</md-icon>
             </button>
 

@@ -219,7 +219,7 @@
             padding-left: 32px;
 
             @include media-breakpoint-down('sm') {
-                padding: 0;
+                padding: 32px 0 0 0;
             }
 
             .latest-activity {

@@ -8,6 +8,8 @@
     padding: 24px;
 
     .todo-header {
+        padding-bottom: 24px;
+        margin-bottom: 8px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
         .actions {
@@ -38,74 +40,10 @@
             }
         }
 
-        .to {
-            color: rgba(0, 0, 0, 0.54);
+        .dates {
 
-            .to-text {
-                margin-right: 4px;
-                text-transform: lowercase;
-            }
-        }
-
-        .info {
-            padding-bottom: 16px;
-
-            .avatar {
-                margin-right: 16px;
-                background-color: mat-color($accent);
-            }
-
-            .name {
-                margin-right: 8px;
-                font-weight: 500;
-            }
-
-            .toggle-details {
-                user-select: none;
-                text-decoration: underline;
-                padding-top: 16px;
-                cursor: pointer;
-                font-weight: 500;
-            }
-
-            .details {
-                padding-top: 8px;
-
-                .title {
-                    font-weight: 500;
-                    margin-right: 6px;
-                }
-
-                .detail {
-                    color: rgba(0, 0, 0, 0.54);
-                }
-            }
-
-        }
-    }
-
-    .todo-attachments {
-        padding: 24px 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.12);
-
-        .title {
-            margin-bottom: 16px;
-            font-weight: 500;
-        }
-
-        .attachment {
-
-            .preview {
-                width: 100px;
-                margin: 0 16px 8px 0;
-            }
-
-            .link {
-                margin-bottom: 2px;
-            }
-
-            .size {
-                font-size: 11px;
+            .mat-form-field {
+                width: auto !important;
             }
         }
     }

@@ -1,16 +1,21 @@
 <div *ngIf="!todo" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <md-icon class="s-120 mb-12 select-todo-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">check_box</md-icon>
-    <span class="hint-text mat-h1 select-todo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'400ms'}}">Select a todo</span>
+    <md-icon class="s-120 mb-12 select-todo-icon" *fuseIfOnDom
+             [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">check_box
+    </md-icon>
+    <span class="hint-text mat-h1 select-todo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'400ms'}}">Select
+        a todo
+    </span>
 </div>
 
 <div *ngIf="todo">
 
     <div class="todo-header" fxLayout="row" fxLayoutAlign="space-between center">
 
-        <button md-button class="mat-icon-button toggle-complete-button" (click)="toggleCompleted($event)"
+        <button md-button class="toggle-complete-button p-0" (click)="toggleCompleted($event)"
                 aria-label="Toggle completed" fxFlex="0 1 auto">
             <md-icon *ngIf="todo.completed">check_box</md-icon>
             <md-icon *ngIf="!todo.completed">check_box_outline_blank</md-icon>
+            <span>Mark as Done</span>
         </button>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
@@ -49,14 +54,16 @@
         <form [formGroup]="todoForm" (submit)="addTodo()">
 
             <md-input-container class="title mt-8" floatPlaceholder="never" fxFill>
-                    <textarea mdInput
-                              #titleInput
-                              name="title"
-                              formControlName="title"
-                              placeholder="Title"
-                              mdTextareaAutosize
-                              required>
-                    </textarea>
+                <textarea mdInput
+                          #titleInput
+                          name="title"
+                          formControlName="title"
+                          placeholder="Title"
+                          mdTextareaAutosize
+                          mdAutosizeMinRows="1"
+                          mdAutosizeMaxRows="2"
+                          required>
+                </textarea>
             </md-input-container>
 
             <div class="tags mb-24" fxFlexFill fxLayout="row" fxLayoutWrap>
@@ -68,9 +75,9 @@
                 </div>
             </div>
 
-            <div fxFlexFill fxLayout="row">
+            <div class="dates" fxFlexFill fxLayout="column" fxLayout.gt-xs="row">
 
-                <md-form-field class="mr-24" fxFlex>
+                <md-form-field class="mr-sm-24" fxFlex>
                     <input mdInput [mdDatepicker]="startDatePicker" placeholder="Start Date">
                     <md-datepicker-toggle mdSuffix [for]="startDatePicker"></md-datepicker-toggle>
                     <md-datepicker #startDatePicker></md-datepicker>
@@ -85,14 +92,16 @@
             </div>
 
             <md-input-container class="" fxFill>
-                 <textarea mdInput
-                           name="notes"
-                           formControlName="notes"
-                           placeholder="Notes"
-                           md-maxlength="500"
-                           mdTextareaAutosize
-                           mdAutosizeMinRows="6">
-                 </textarea>
+                <textarea mdInput #notes
+                          name="notes"
+                          formControlName="notes"
+                          placeholder="Notes"
+                          maxlength="500"
+                          mdTextareaAutosize
+                          mdAutosizeMinRows="1"
+                          mdAutosizeMaxRows="6">
+                </textarea>
+                <md-hint align="end">{{notes.value.length}} / 500</md-hint>
             </md-input-container>
 
             <button *ngIf="formType === 'new'"

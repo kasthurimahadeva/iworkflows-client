@@ -85,7 +85,7 @@
             </div>
 
             <button md-button [mdMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
-                    ng-click="$mdOpenMenu($event)">
+                    (click)="$event.stopPropagation()">
                 <md-icon>more_vert</md-icon>
             </button>
 

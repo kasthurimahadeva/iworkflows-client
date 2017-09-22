@@ -18,7 +18,7 @@
 
             #maintenance-form {
                 max-width: 384px;
-                padding: 32px;
+                padding: 48px;
                 background: #FFFFFF;
                 text-align: center;
                 @include mat-elevation(7);
@@ -30,14 +30,7 @@
 
                 .logo {
                     width: 128px;
-                    height: 128px;
-                    line-height: 128px;
-                    font-size: 86px;
-                    font-weight: 500;
                     margin: 32px auto;
-                    color: rgba(255, 255, 255, 1);
-                    border-radius: 2px;
-                    background: mat-color($accent);
                 }
 
                 .title {

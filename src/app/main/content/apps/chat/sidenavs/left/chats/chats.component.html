@@ -151,7 +151,6 @@
             </div>
 
             <button md-button class="contact"
-                    ng-show="chatSearch"
                     *ngFor="let contact of contacts| filter: searchText"
                     (click)="getChat(contact.id)"
                     [@animate]="{value:'*',params:{y:'100%'}}">

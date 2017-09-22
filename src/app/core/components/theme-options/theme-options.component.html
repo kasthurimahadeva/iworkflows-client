@@ -4,107 +4,95 @@
 
 <div class="theme-options-panel-overlay" #overlay [fxHide]="barClosed" [@fadeInOut]="!barClosed"></div>
 
-<div #panel class="theme-options-panel md-white-bg mat-elevation-z8 p-16">
+<div #panel class="theme-options-panel md-white-bg mat-elevation-z8">
 
     <button md-icon-button class="close-button" (click)="closeBar()">
         <md-icon>close</md-icon>
     </button>
 
-    <md-list>
-        <h3 md-subheader>Navigation:</h3>
-        <md-list-item>
-            <md-radio-group [(ngModel)]="fuseSettings.layout.navigation" (ngModelChange)="onSettingsChange()"
-                            fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
-                <md-radio-button class="mr-8 mb-8" value="top">Top</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="left">Left</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="right">Right</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
-            </md-radio-group>
-        </md-list-item>
+    <div class="theme-options-panel-inner" fxLayout="column" fxLayoutAlign="start start">
 
-        <h3 md-subheader>Toolbar:</h3>
-        <md-list-item>
-            <md-radio-group [(ngModel)]="fuseSettings.layout.toolbar" (ngModelChange)="onSettingsChange()">
-                <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
-            </md-radio-group>
-        </md-list-item>
+        <h3>Navigation:</h3>
+        <md-radio-group [(ngModel)]="fuseSettings.layout.navigation" (ngModelChange)="onSettingsChange()"
+                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <md-radio-button class="mr-8 mb-8" value="top">Top</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="left">Left</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="right">Right</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
+        </md-radio-group>
 
-        <h3 md-subheader>Footer:</h3>
-        <md-list-item>
-            <md-radio-group [(ngModel)]="fuseSettings.layout.footer" (ngModelChange)="onSettingsChange()">
-                <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
-            </md-radio-group>
-        </md-list-item>
+        <h3 class="mt-24">Toolbar:</h3>
+        <md-radio-group [(ngModel)]="fuseSettings.layout.toolbar" (ngModelChange)="onSettingsChange()"
+                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
+        </md-radio-group>
 
-        <h3 md-subheader>Layout Mode:</h3>
-        <md-list-item>
-            <md-radio-group [(ngModel)]="fuseSettings.layout.mode" (ngModelChange)="onSettingsChange()">
-                <md-radio-button class="mr-8 mb-8" value="boxed">Boxed</md-radio-button>
-                <md-radio-button class="mr-8 mb-8" value="fullwidth">Fullwidth</md-radio-button>
-            </md-radio-group>
-        </md-list-item>
+        <h3 class="mt-24">Footer:</h3>
+        <md-radio-group [(ngModel)]="fuseSettings.layout.footer" (ngModelChange)="onSettingsChange()"
+                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
+        </md-radio-group>
+
+        <h3 class="mt-24">Layout Mode:</h3>
+        <md-radio-group [(ngModel)]="fuseSettings.layout.mode" (ngModelChange)="onSettingsChange()"
+                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <md-radio-button class="mr-8 mb-8" value="boxed">Boxed</md-radio-button>
+            <md-radio-button class="mr-8 mb-8" value="fullwidth">Fullwidth</md-radio-button>
+        </md-radio-group>
 
         <md-divider></md-divider>
 
-        <h3 md-subheader>Colors:</h3>
+        <h3>Colors:</h3>
+        <div class="colors">
 
-        <md-list-item class="mb-8">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
                 <h4 class="mr-8">Toolbar Color</h4>
                 <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.toolbar"
                                             (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
             </div>
-        </md-list-item>
 
-        <md-list-item class="mb-8">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
                 <h4 class="mr-8">Navigation Bar Color</h4>
                 <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.navbar"
                                             (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
             </div>
-        </md-list-item>
 
-        <md-list-item class="mb-8">
             <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
                 <h4 class="mr-8">Footer Color</h4>
                 <fuse-material-color-picker [(selectedClass)]="fuseSettings.colorClasses.footer"
                                             (onValueChange)="onSettingsChange()"></fuse-material-color-picker>
             </div>
-        </md-list-item>
+
+        </div>
 
         <md-divider></md-divider>
 
-        <h3 md-subheader>Animation:</h3>
+        <h3>Router Animation:</h3>
+        <md-select class="p-0" [(ngModel)]="fuseSettings.routerAnimation">
+            <md-option value="none">
+                None
+            </md-option>
+            <md-option value="slideUp">
+                Slide up
+            </md-option>
+            <md-option value="slideDown">
+                Slide down
+            </md-option>
+            <md-option value="slideRight">
+                Slide right
+            </md-option>
+            <md-option value="slideLeft">
+                Slide left
+            </md-option>
+            <md-option value="fadeIn">
+                Fade in
+            </md-option>
+        </md-select>
 
-        <md-list-item>
-            <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                <h4>Router Animation</h4>
-                <md-select class="p-0" [(ngModel)]="fuseSettings.routerAnimation">
-                    <md-option value="none">
-                        None
-                    </md-option>
-                    <md-option value="slideUp">
-                        Slide up
-                    </md-option>
-                    <md-option value="slideDown">
-                        Slide down
-                    </md-option>
-                    <md-option value="slideRight">
-                        Slide right
-                    </md-option>
-                    <md-option value="slideLeft">
-                        Slide left
-                    </md-option>
-                    <md-option value="fadeIn">
-                        Fade in
-                    </md-option>
-                </md-select>
-            </div>
-        </md-list-item>
+    </div>
 
-    </md-list>
 </div>
