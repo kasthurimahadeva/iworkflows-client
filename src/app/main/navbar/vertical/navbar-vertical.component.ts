@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMatchMedia } from '../../../core/services/match-media.service';
 import { FuseNavbarVerticalService } from './navbar-vertical.service';
@@ -7,6 +7,7 @@ import { FuseMainComponent } from '../../main.component';
 import { NavigationEnd, Router } from '@angular/router';
 import { FuseNavigationService } from '../../../core/components/navigation/navigation.service';
 import { FusePerfectScrollbarDirective } from '../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
+import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 
 @Component({
     selector     : 'fuse-navbar-vertical',
@@ -16,6 +17,7 @@ import { FusePerfectScrollbarDirective } from '../../../core/directives/fuse-per
 })
 export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 {
+    private _backdropElement: HTMLElement | null = null;
     @HostBinding('class.close') isClosed: boolean;
     @HostBinding('class.folded') isFoldedActive: boolean;
     @HostBinding('class.folded-open') isFoldedOpen: boolean;
@@ -25,13 +27,18 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 
     matchMediaWatcher: Subscription;
 
+    player: AnimationPlayer;
+
     constructor(
-        private fuseMainComponentEl: FuseMainComponent,
+        private fuseMainComponent: FuseMainComponent,
         private fuseMatchMedia: FuseMatchMedia,
         private fuseNavigationService: FuseNavigationService,
         private navBarService: FuseNavbarVerticalService,
         public media: ObservableMedia,
-        private router: Router
+        private router: Router,
+        private _renderer: Renderer2,
+        private _elementRef: ElementRef,
+        private animationBuilder: AnimationBuilder
     )
     {
         navBarService.setNavBar(this);
@@ -56,6 +63,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
                         else
                         {
                             this.openBar();
+                            this._detachBackdrop();
                         }
                     });
                 });
@@ -109,12 +117,17 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
     {
         this.isClosed = false;
         this.updateCssClasses();
+        if ( this.media.isActive('lt-lg') )
+        {
+            this._attachBackdrop();
+        }
     }
 
     closeBar()
     {
         this.isClosed = true;
         this.updateCssClasses();
+        this._detachBackdrop();
     }
 
     toggleBar()
@@ -144,14 +157,14 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
     activateFolded()
     {
         this.isFoldedActive = true;
-        this.fuseMainComponentEl.addClass('fuse-nav-bar-folded');
+        this.fuseMainComponent.addClass('fuse-nav-bar-folded');
         this.isFoldedOpen = false;
     }
 
     deActivateFolded()
     {
         this.isFoldedActive = false;
-        this.fuseMainComponentEl.removeClass('fuse-nav-bar-folded');
+        this.fuseMainComponent.removeClass('fuse-nav-bar-folded');
         this.isFoldedOpen = false;
     }
 
@@ -171,13 +184,56 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
     {
         if ( this.isClosed )
         {
-            this.fuseMainComponentEl.addClass('fuse-nav-bar-opened');
-            this.fuseMainComponentEl.removeClass('fuse-nav-bar-closed');
+            this.fuseMainComponent.addClass('fuse-nav-bar-opened');
+            this.fuseMainComponent.removeClass('fuse-nav-bar-closed');
         }
         else
         {
-            this.fuseMainComponentEl.addClass('fuse-nav-bar-closed');
-            this.fuseMainComponentEl.removeClass('fuse-nav-bar-opened');
+            this.fuseMainComponent.addClass('fuse-nav-bar-closed');
+            this.fuseMainComponent.removeClass('fuse-nav-bar-opened');
+        }
+    }
+
+    private _attachBackdrop()
+    {
+        this._backdropElement = this._renderer.createElement('div');
+        this._backdropElement.classList.add('fuse-navbar-backdrop');
+
+        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdropElement);
+
+        this.player =
+            this.animationBuilder
+                .build([
+                    animate('400ms ease', style({opacity: 1}))
+                ]).create(this._backdropElement);
+
+        this.player.play();
+
+        this._backdropElement.addEventListener('click', () => {
+                this.closeBar();
+            }
+        );
+    }
+
+    private _detachBackdrop()
+    {
+        if ( this._backdropElement )
+        {
+            this.player =
+                this.animationBuilder
+                    .build([
+                        animate('400ms cubic-bezier(.25,.8,.25,1)', style({opacity: 0}))
+                    ]).create(this._backdropElement);
+
+            this.player.play();
+
+            this.player.onDone(() => {
+                if ( this._backdropElement )
+                {
+                    this._backdropElement.parentNode.removeChild(this._backdropElement);
+                    this._backdropElement = null;
+                }
+            });
         }
     }
 
