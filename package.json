@@ -5,9 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "hmr": "ng serve --hmr -e=hmr -sm=false",
-    "hmrs": "ng serve --hmr -e=hmr",
-    "build": "ng build",
+    "start-hmr": "ng serve --hmr -e=hmr -sm=false",
+    "start-hmr-sourcemaps": "ng serve --hmr -e=hmr",
+    "build": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build",
+    "build-prod": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
