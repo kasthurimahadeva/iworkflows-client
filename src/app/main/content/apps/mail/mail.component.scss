@@ -40,6 +40,10 @@
 
             @include media-breakpoint(xs) {
 
+                fuse-mail-list {
+                    border-right: none;
+                }
+
                 fuse-mail-list,
                 fuse-mail-details {
                     flex: 1 0 100%;
@@ -50,6 +54,14 @@
                 }
 
                 &.current-mail-selected {
+
+                    .toolbar {
+                        padding-left: 16px !important;
+
+                        .mail-selection {
+                            display: none !important;
+                        }
+                    }
 
                     .content {
 

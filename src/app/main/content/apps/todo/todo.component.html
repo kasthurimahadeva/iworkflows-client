@@ -41,7 +41,8 @@
 
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar px-24 py-8">
-                    <div fxFlex="row" fxLayoutAlign="start center">
+
+                    <div class="todo-selection" fxFlex="row" fxLayoutAlign="start center">
                         <md-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedTodos"
                                      [indeterminate]="isIndeterminate"></md-checkbox>
 
@@ -76,6 +77,7 @@
                             <md-icon>arrow_back</md-icon>
                         </button>
                     </div>
+
                 </div>
                 <!-- / CONTENT TOOLBAR -->
 

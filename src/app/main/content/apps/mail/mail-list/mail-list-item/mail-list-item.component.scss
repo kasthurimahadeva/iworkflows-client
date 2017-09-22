@@ -12,16 +12,19 @@
 
         .info {
 
-            .name,
-            .subject {
+            .name {
                 font-weight: 700;
             }
 
-            .message {
-            }
+            .row-2 {
 
-            .labels {
-                background: #FFFFFF;
+                .subject {
+                    font-weight: 700;
+                }
+
+                .labels {
+                    background: #FFFFFF;
+                }
             }
         }
     }
@@ -31,12 +34,11 @@
 
         .info {
 
-            .message {
+            .row-2 {
 
-            }
-
-            .labels {
-                background: #FFF8E1;
+                .labels {
+                    background: #FFF8E1;
+                }
             }
         }
     }
@@ -46,10 +48,11 @@
 
         .info {
 
-            .message {
-            }
-            .labels {
-                background: #E3F2FD;
+            .row-2 {
+
+                .labels {
+                    background: #E3F2FD;
+                }
             }
         }
     }
@@ -57,68 +60,70 @@
     .info {
         overflow: hidden;
         width: 0;
-        margin: 0 16px;
+        margin-left: 16px;
         position: relative;
 
-        .name {
-            font-size: 15px;
-            font-weight: 500;
-            padding-bottom: 8px;
+        .row-1 {
+            margin-bottom: 8px;
 
-            .avatar {
-                min-width: 32px;
-                width: 32px;
-                height: 32px;
-                line-height: 32px;
-                background-color: mat-color($accent);
+            .name {
+                font-size: 15px;
+                font-weight: 500;
+
+                .avatar {
+                    min-width: 32px;
+                    width: 32px;
+                    height: 32px;
+                    line-height: 32px;
+                    background-color: mat-color($accent);
+                }
+            }
+
+            .actions {
+                margin-left: 4px;
+
+                .mat-icon-button {
+                    width: 32px;
+                    height: 32px;
+                    line-height: 1;
+                }
             }
         }
 
-        .subject {
+        .row-2 {
 
-        }
+            .subject,
+            .message {
+                width: 100%;
+            }
 
-        .message {
-            position: relative;
-            color: rgba(0, 0, 0, 0.54);
-        }
+            .message {
+                position: relative;
+                color: rgba(0, 0, 0, 0.54);
+            }
 
-        .labels {
-            position: absolute;
-            background: #FAFAFA;
-            bottom: 0;
-            right: 0;
-            padding-left: 6px;
+            .labels {
+                position: absolute;
+                background: #FFFFFF;
+                bottom: 0;
+                right: 0;
+                padding-left: 6px;
 
-            .label {
-                font-size: 11px;
-                border-radius: 2px;
-                margin: 0 4px 0 0;
-                padding: 3px 8px;
-                background-color: rgba(0, 0, 0, 0.08);
+                .label {
+                    font-size: 11px;
+                    border-radius: 2px;
+                    margin: 0 4px 0 0;
+                    padding: 3px 8px;
+                    background-color: rgba(0, 0, 0, 0.08);
 
-                .label-color {
-                    width: 8px;
-                    height: 8px;
-                    margin-right: 8px;
-                    border-radius: 50%;
+                    .label-color {
+                        width: 8px;
+                        height: 8px;
+                        margin-right: 8px;
+                        border-radius: 50%;
+                    }
                 }
             }
         }
     }
-
-    .time {
-        margin: 0 8px 6px 8px;
-    }
-
-    .actions {
-
-        .md-icon-button {
-            margin: 0;
-            padding: 0;
-            width: 32px;
-            height: 32px;
-        }
-    }
-
 }

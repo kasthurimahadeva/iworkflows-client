@@ -36,6 +36,7 @@
         }
 
         .content-card {
+
             @include media-breakpoint-down(lg) {
 
                 fuse-todo-list,
@@ -48,6 +49,14 @@
                 }
 
                 &.current-todo-selected {
+
+                    .toolbar {
+                        padding-left: 16px !important;
+
+                        .todo-selection {
+                            display: none !important;
+                        }
+                    }
 
                     .content {
 
