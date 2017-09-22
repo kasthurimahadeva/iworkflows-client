@@ -1,15 +1,10 @@
-:host {
-    display: flex;
-    flex-direction: column;
-}
-
 .mail-compose-dialog {
     .mat-dialog-container {
         padding: 0;
         width: 720px;
 
         .compose-form {
-            
+
             .mat-input-container {
                 width: 100%;
             }
@@ -35,5 +30,11 @@
                 }
             }
         }
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
     }
 }

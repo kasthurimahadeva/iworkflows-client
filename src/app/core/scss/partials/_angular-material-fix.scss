@@ -9,9 +9,10 @@ md-sidenav-container {
 
     md-sidenav {
 
-        &.md-stop-transition {
+        &[md-is-locked-open].md-stop-transition {
             transition: none !important;
             transform: translate3d(0, 0, 0) !important;
+            opacity: 0;
 
             ~ .mat-sidenav-content,
             ~ .mat-drawer-content {

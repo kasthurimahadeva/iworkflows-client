@@ -1,109 +1,111 @@
-<md-toolbar md-dialog-title class="mat-accent m-0">
-    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-        <span class="title dialog-title">New Message</span>
-        <button md-button class="mat-icon-button"
-                (click)="dialogRef.close()"
-                aria-label="Close dialog">
-            <md-icon>close</md-icon>
-        </button>
-    </div>
-</md-toolbar>
+<div class="dialog-content-wrapper">
+    <md-toolbar md-dialog-title class="mat-accent m-0">
+        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">New Message</span>
+            <button md-button class="mat-icon-button"
+                    (click)="dialogRef.close()"
+                    aria-label="Close dialog">
+                <md-icon>close</md-icon>
+            </button>
+        </div>
+    </md-toolbar>
 
-<div md-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <div md-dialog-content class="p-24 m-0" fusePerfectScrollbar>
 
-    <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+        <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
 
-        <md-input-container>
-            <input mdInput name="from"
-                   placeholder="From"
-                   formControlName="from"
-                   type="email">
-        </md-input-container>
+            <md-input-container>
+                <input mdInput name="from"
+                       placeholder="From"
+                       formControlName="from"
+                       type="email">
+            </md-input-container>
 
-        <md-input-container ng-class="{'hidden-cc': vm.hiddenCC, 'hidden-bcc': vm.hiddenBCC}">
-            <input mdInput name="to"
-                   placeholder="To"
-                   formControlName="to"
-                   type="email" required>
-        </md-input-container>
+            <md-input-container ng-class="{'hidden-cc': vm.hiddenCC, 'hidden-bcc': vm.hiddenBCC}">
+                <input mdInput name="to"
+                       placeholder="To"
+                       formControlName="to"
+                       type="email" required>
+            </md-input-container>
 
-        <md-input-container>
-            <input mdInput
-                   name="cc"
-                   placeholder="Cc"
-                   formControlName="cc"
-                   type="email">
-        </md-input-container>
+            <md-input-container>
+                <input mdInput
+                       name="cc"
+                       placeholder="Cc"
+                       formControlName="cc"
+                       type="email">
+            </md-input-container>
 
-        <md-input-container>
-            <input mdInput
-                   name="bcc"
-                   placeholder="Bcc"
-                   formControlName="bcc"
-                   type="email">
-        </md-input-container>
+            <md-input-container>
+                <input mdInput
+                       name="bcc"
+                       placeholder="Bcc"
+                       formControlName="bcc"
+                       type="email">
+            </md-input-container>
 
-        <md-input-container>
-            <input mdInput name="subject"
-                   placeholder="Subject"
-                   formControlName="subject">
-        </md-input-container>
+            <md-input-container>
+                <input mdInput name="subject"
+                       placeholder="Subject"
+                       formControlName="subject">
+            </md-input-container>
 
-        <md-input-container>
+            <md-input-container>
             <textarea mdInput name="message"
                       placeholder="Message"
                       formControlName="message"
                       rows="6">
             </textarea>
-        </md-input-container>
+            </md-input-container>
 
-        <div class="attachment-list">
+            <div class="attachment-list">
 
-            <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
-                <div>
-                    <span class="filename">attachment-2.doc</span>
-                    <span class="size">(12 Kb)</span>
+                <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <span class="filename">attachment-2.doc</span>
+                        <span class="size">(12 Kb)</span>
+                    </div>
+
+                    <button md-icon-button aria-label="Delete attachment">
+                        <md-icon class="s-16">close</md-icon>
+                    </button>
                 </div>
 
-                <button md-icon-button aria-label="Delete attachment">
-                    <md-icon class="s-16">close</md-icon>
-                </button>
-            </div>
+                <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <span class="filename">attachment-1.jpg</span>
+                        <span class="size">(350 Kb)</span>
+                    </div>
 
-            <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
-                <div>
-                    <span class="filename">attachment-1.jpg</span>
-                    <span class="size">(350 Kb)</span>
+                    <button md-icon-button aria-label="Delete attachment">
+                        <md-icon class="s-16">close</md-icon>
+                    </button>
                 </div>
-
-                <button md-icon-button aria-label="Delete attachment">
-                    <md-icon class="s-16">close</md-icon>
-                </button>
             </div>
-        </div>
-    </form>
-</div>
-
-<div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
-        <button md-raised-button
-                (click)="dialogRef.close(['send',composeForm])"
-                class="save-button mat-accent"
-                [disabled]="composeForm.invalid"
-                aria-label="SAVE">
-            SEND
-        </button>
-
-        <button md-icon-button md-tooltip="Attach a file">
-            <md-icon>attach_file</md-icon>
-        </button>
+        </form>
     </div>
 
-    <button md-button
-            class="mat-icon-button"
-            (click)="dialogRef.close(['delete',composeForm])"
-            aria-label="Delete"
-            md-tooltip="Delete">
-        <md-icon>delete</md-icon>
-    </button>
+    <div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+            <button md-raised-button
+                    (click)="dialogRef.close(['send',composeForm])"
+                    class="save-button mat-accent"
+                    [disabled]="composeForm.invalid"
+                    aria-label="SAVE">
+                SEND
+            </button>
+
+            <button md-icon-button md-tooltip="Attach a file">
+                <md-icon>attach_file</md-icon>
+            </button>
+        </div>
+
+        <button md-button
+                class="mat-icon-button"
+                (click)="dialogRef.close(['delete',composeForm])"
+                aria-label="Delete"
+                md-tooltip="Delete">
+            <md-icon>delete</md-icon>
+        </button>
+    </div>
 </div>

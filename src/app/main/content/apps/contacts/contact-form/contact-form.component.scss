@@ -3,14 +3,20 @@
     .mat-dialog-container {
         padding: 0;
         width: 400px;
+        overflow: hidden;
+
+        .mat-toolbar {
+            min-height: initial;
+        }
 
         .toolbar-bottom {
-            height: 200px;
+            height: auto;
         }
     }
-}
 
-:host {
-    display: flex;
-    flex-direction: column;
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
 }

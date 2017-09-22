@@ -12,7 +12,7 @@ import { fuseAnimations } from '../../../../../core/animations';
     selector   : 'fuse-contacts-contact-list',
     templateUrl: './contact-list.component.html',
     styleUrls  : ['./contact-list.component.scss'],
-    animations   : fuseAnimations
+    animations : fuseAnimations
 })
 export class FuseContactsContactListComponent implements OnInit
 {
@@ -61,28 +61,6 @@ export class FuseContactsContactListComponent implements OnInit
     ngOnInit()
     {
         this.dataSource = new FilesDataSource(this.contactsService);
-    }
-
-    newContact()
-    {
-        this.dialogRef = this.dialog.open(FuseContactsContactFormDialogComponent, {
-            panelClass: 'contact-form-dialog',
-            data      : {
-                action: 'new'
-            }
-        });
-
-        this.dialogRef.afterClosed()
-            .subscribe((response: FormGroup) => {
-                if ( !response )
-                {
-                    return;
-                }
-
-                this.contactsService.updateContact(response.getRawValue());
-
-            });
-
     }
 
     editContact(contact)

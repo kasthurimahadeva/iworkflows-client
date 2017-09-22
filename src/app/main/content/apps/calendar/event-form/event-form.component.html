@@ -1,95 +1,98 @@
-<md-toolbar md-dialog-title class="mat-accent m-0">
-    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-        <span class="title dialog-title">{{dialogTitle}}</span>
-        <button md-button class="mat-icon-button"
-                (click)="dialogRef.close()"
-                aria-label="Close dialog">
-            <md-icon>close</md-icon>
-        </button>
-    </div>
-</md-toolbar>
-
-<div md-dialog-content class="p-24 m-0" fusePerfectScrollbar>
-
-    <form name="eventForm" [formGroup]="eventForm" class="event-form" fxLayout="column" fxFlex>
-
-        <md-input-container>
-            <input mdInput
-                   name="title"
-                   formControlName="title"
-                   placeholder="Title"
-                   required>
-        </md-input-container>
-
-        <div class="py-16" fxFlex="1 0 auto" fxLayout="row">
-            <md-slide-toggle
-                name="allDay"
-                formControlName="allDay"
-                class="mr-24"
-                aria-label="All day">
-                All Day
-            </md-slide-toggle>
+<div class="dialog-content-wrapper">
+    <md-toolbar md-dialog-title class="mat-accent m-0">
+        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button md-button class="mat-icon-button"
+                    (click)="dialogRef.close()"
+                    aria-label="Close dialog">
+                <md-icon>close</md-icon>
+            </button>
         </div>
+    </md-toolbar>
 
-        <div class="py-16" fxFlex="1 0 auto" fxLayout="row" formGroupName="color">
-            <md-input-container class="mr-24">
+    <div md-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+        <form name="eventForm" [formGroup]="eventForm" class="event-form w-100-p" fxLayout="column" fxFlex>
+
+            <md-input-container class="w-100-p">
                 <input mdInput
-                       name="primary color"
-                       formControlName="primary"
-                       placeholder="Primary color"
-                       [(colorPicker)]="event.color.primary"
-                       cpWidth="290px"
-                       [cpPresetColors]="presetColors"
-                       [style.background]="event.color.primary"
-                       (colorPickerChange)="event.color.primary = $event; eventForm.patchValue({color:{primary:$event}})"/>
+                       name="title"
+                       formControlName="title"
+                       placeholder="Title"
+                       required>
             </md-input-container>
-            <md-input-container>
+
+            <div class="py-16" fxFlex="1 0 auto" fxLayout="row">
+                <md-slide-toggle
+                    name="allDay"
+                    formControlName="allDay"
+                    class="mr-24"
+                    aria-label="All day">
+                    All Day
+                </md-slide-toggle>
+            </div>
+
+            <div class="py-16" fxFlex="1 0 auto" fxLayout="row" formGroupName="color">
+                <md-input-container class="mr-24" fxFlex>
+                    <input mdInput
+                           name="primary color"
+                           formControlName="primary"
+                           placeholder="Primary color"
+                           [(colorPicker)]="event.color.primary"
+                           cpWidth="290px"
+                           [cpPresetColors]="presetColors"
+                           [style.background]="event.color.primary"
+                           (colorPickerChange)="event.color.primary = $event; eventForm.patchValue({color:{primary:$event}})"/>
+                </md-input-container>
+                <md-input-container fxFlex>
+                    <input mdInput
+                           name="secondary color"
+                           formControlName="secondary"
+                           placeholder="Secondary color"
+                           [(colorPicker)]="event.color.secondary"
+                           cpWidth="290px"
+                           [cpPresetColors]="presetColors"
+                           [style.background]="event.color.secondary"
+                           (colorPickerChange)="event.color.secondary = $event; eventForm.patchValue({color:{secondary:$event}})"/>
+                </md-input-container>
+            </div>
+
+            <div fxFlex="1 0 auto" fxLayout="row">
+
+                <md-form-field class="mr-24" fxFlex>
+                    <input mdInput [mdDatepicker]="startDatePicker" placeholder="Start Date">
+                    <md-datepicker-toggle mdSuffix [for]="startDatePicker"></md-datepicker-toggle>
+                    <md-datepicker #startDatePicker></md-datepicker>
+                </md-form-field>
+
+                <md-input-container class="no-errors-spacer" fxFlex md-no-float>
+                    <input mdInput ng-model="calendarEvent.startTime" placeholder="Start Time">
+                </md-input-container>
+
+            </div>
+
+            <div fxFlex="1 0 auto" fxLayout="row">
+
+                <md-form-field class="mr-24" fxFlex>
+                    <input mdInput [mdDatepicker]="endDatePicker" placeholder="End Date">
+                    <md-datepicker-toggle mdSuffix [for]="endDatePicker"></md-datepicker-toggle>
+                    <md-datepicker #endDatePicker></md-datepicker>
+                </md-form-field>
+
+                <md-input-container class="no-errors-spacer" fxFlex md-no-float>
+                    <input mdInput ng-model="calendarEvent.endTime" placeholder="End Time">
+                </md-input-container>
+
+            </div>
+
+            <md-input-container formGroupName="meta" class="w-100-p">
                 <input mdInput
-                       name="secondary color"
-                       formControlName="secondary"
-                       placeholder="Secondary color"
-                       [(colorPicker)]="event.color.secondary"
-                       cpWidth="290px"
-                       [cpPresetColors]="presetColors"
-                       [style.background]="event.color.secondary"
-                       (colorPickerChange)="event.color.secondary = $event; eventForm.patchValue({color:{secondary:$event}})"/>
-            </md-input-container>
-        </div>
-
-        <div fxFlex="1 0 auto" fxLayout="row">
-
-            <md-form-field class="mr-24">
-                <input mdInput [mdDatepicker]="startDatePicker" placeholder="Start Date">
-                <md-datepicker-toggle mdSuffix [for]="startDatePicker"></md-datepicker-toggle>
-                <md-datepicker #startDatePicker></md-datepicker>
-            </md-form-field>
-
-            <md-datepicker #startDatePicker></md-datepicker>
-
-        </div>
-
-        <div fxFlex="1 0 auto" fxLayout="row">
-
-            <md-form-field class="mr-24">
-                <input mdInput [mdDatepicker]="endDatePicker" placeholder="End Date">
-                <md-datepicker-toggle mdSuffix [for]="endDatePicker"></md-datepicker-toggle>
-                <md-datepicker #endDatePicker></md-datepicker>
-            </md-form-field>
-
-            <md-input-container class="no-errors-spacer" flex md-no-float>
-                <input mdInput ng-model="calendarEvent.endTime" placeholder="End Time">
+                       name="location"
+                       formControlName="location"
+                       placeholder="Location">
             </md-input-container>
 
-        </div>
-
-        <md-input-container formGroupName="meta">
-            <input mdInput
-                   name="location"
-                   formControlName="location"
-                   placeholder="Location">
-        </md-input-container>
-
-        <md-input-container formGroupName="meta">
+            <md-input-container formGroupName="meta" class="w-100-p">
 
             <textarea mdInput
                       formControlName="notes"
@@ -97,39 +100,39 @@
                       md-maxlength="250"
                       max-rows="4">
             </textarea>
-        </md-input-container>
+            </md-input-container>
 
-    </form>
+        </form>
 
-</div>
+    </div>
 
-<div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
 
-    <button *ngIf="action !=='edit'"
-            md-raised-button
-            (click)="dialogRef.close(eventForm)"
-            class="save-button mat-accent"
-            [disabled]="eventForm.invalid"
-            aria-label="SAVE">
-        SAVE
-    </button>
+        <button *ngIf="action !=='edit'"
+                md-raised-button
+                (click)="dialogRef.close(eventForm)"
+                class="save-button mat-accent"
+                [disabled]="eventForm.invalid"
+                aria-label="SAVE">
+            SAVE
+        </button>
 
-    <button *ngIf="action ==='edit'"
-            md-raised-button
-            (click)="dialogRef.close(['save',eventForm])"
-            class="save-button mat-accent"
-            [disabled]="eventForm.invalid"
-            aria-label="SAVE">
-        SAVE
-    </button>
+        <button *ngIf="action ==='edit'"
+                md-raised-button
+                (click)="dialogRef.close(['save',eventForm])"
+                class="save-button mat-accent"
+                [disabled]="eventForm.invalid"
+                aria-label="SAVE">
+            SAVE
+        </button>
 
-    <button *ngIf="action ==='edit'"
-            md-button
-            class="mat-icon-button"
-            (click)="dialogRef.close(['delete',eventForm])"
-            aria-label="Delete"
-            md-tooltip="Delete">
-        <md-icon>delete</md-icon>
-    </button>
-
+        <button *ngIf="action ==='edit'"
+                md-button
+                class="mat-icon-button"
+                (click)="dialogRef.close(['delete',eventForm])"
+                aria-label="Delete"
+                md-tooltip="Delete">
+            <md-icon>delete</md-icon>
+        </button>
+    </div>
 </div>

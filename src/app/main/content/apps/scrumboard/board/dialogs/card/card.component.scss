@@ -1,10 +1,5 @@
 @import "src/app/core/scss/fuse";
 
-:host {
-    display: flex;
-    flex-direction: column;
-}
-
 .scrumboard-card-dialog {
 
     .mat-dialog-container {
@@ -386,6 +381,12 @@
             }
         }
 
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
     }
 }
 

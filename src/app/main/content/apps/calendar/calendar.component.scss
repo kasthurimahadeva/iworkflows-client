@@ -26,8 +26,8 @@
     }
 
     .cal-open-day-events {
-        background: #455A64;
-        box-shadow: inset 0 0 12px 0 rgba(0, 0, 0, 0.54);
+        background: whitesmoke;
+        box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.13);
         padding: 0;
         display: flex;
         flex-direction: column;
@@ -44,11 +44,11 @@
             transition: box-shadow 300ms ease;
 
             &:first-of-type {
-                margin-top: 16px;
+                margin-top: 24px;
             }
 
             &:last-of-type {
-                margin-bottom: 16px;
+                margin-bottom: 24px;
             }
 
             &:hover {
@@ -184,18 +184,25 @@
 
 #calendar {
     background: #FFFFFF;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     .header {
         height: 200px;
         min-height: 200px;
         max-height: 200px;
-        padding: 24px;
         position: relative;
         background-size: 100% auto;
         background-position: 0 50%;
         background-repeat: no-repeat;
         background-color: #FAFAFA;
         color: #FFFFFF;
+
+        @include media-breakpoint(xs) {
+            height: 164px;
+            min-height: 164px;
+            max-height: 164px;
+        }
 
         &:before {
             content: '';

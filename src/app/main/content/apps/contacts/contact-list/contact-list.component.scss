@@ -8,7 +8,7 @@
         box-shadow: none;
 
         .mat-column-checkbox {
-            flex: 0 1 64px;
+            flex: 0 1 48px;
         }
 
         .mat-column-avatar {
@@ -22,6 +22,7 @@
         .mat-row {
             position: relative;
             cursor: pointer;
+            padding-right: 8px;
 
             .mat-cell {
                 min-width: 0;
