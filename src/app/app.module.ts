@@ -11,6 +11,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FuseMainModule } from './main/main.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
+import { FuseNavigationService } from './core/components/navigation/navigation.service';
 import { FuseSampleModule } from './main/content/sample/sample.module';
 
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     ],
     providers   : [
         FuseSplashScreenService,
-        FuseConfigService
+        FuseConfigService,
+        FuseNavigationService
     ],
     bootstrap   : [
         AppComponent

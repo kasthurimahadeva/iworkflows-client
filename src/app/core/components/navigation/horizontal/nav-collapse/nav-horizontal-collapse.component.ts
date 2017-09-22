@@ -1,5 +1,5 @@
 import { Component, HostBinding, HostListener, Input, OnDestroy } from '@angular/core';
-import { Animations } from '../../../../animations';
+import { fuseAnimations } from '../../../../animations';
 import { FuseConfigService } from '../../../../services/config.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
     selector   : 'fuse-nav-horizontal-collapse',
     templateUrl: './nav-horizontal-collapse.component.html',
     styleUrls  : ['./nav-horizontal-collapse.component.scss'],
-    animations : [Animations.slideInOut]
+    animations : fuseAnimations
 })
 export class FuseNavHorizontalCollapseComponent implements OnDestroy
 {

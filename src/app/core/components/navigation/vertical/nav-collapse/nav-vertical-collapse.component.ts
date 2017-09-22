@@ -1,13 +1,13 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { FuseNavigationService } from '../../navigation.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { Animations } from '../../../../animations';
+import { fuseAnimations } from '../../../../animations';
 
 @Component({
     selector   : 'fuse-nav-vertical-collapse',
     templateUrl: './nav-vertical-collapse.component.html',
     styleUrls  : ['./nav-vertical-collapse.component.scss'],
-    animations : [Animations.slideInOut]
+    animations : fuseAnimations
 })
 export class FuseNavVerticalCollapseComponent implements OnInit
 {
@@ -15,21 +15,20 @@ export class FuseNavVerticalCollapseComponent implements OnInit
     @HostBinding('class') classes = 'nav-collapse nav-item';
     @HostBinding('class.open') public isOpen = false;
 
-    constructor(private navigationService: FuseNavigationService, private router: Router)
+    constructor(
+        private navigationService: FuseNavigationService,
+        private router: Router
+    )
     {
-        /**
-         * When navigation changed
-         */
+        // Listen for route changes
         router.events.subscribe(
             (event) => {
                 if ( event instanceof NavigationEnd )
                 {
-                    /**
-                     * Check if the url is child of the collapse
-                     */
+                    // Check if the url can be found in
+                    // one of the children of this item
                     if ( this.isUrlInChildren(this.item, event.urlAfterRedirects) )
                     {
-                        // console.log(this.item);
                         this.expand();
                     }
                     else
@@ -40,47 +39,53 @@ export class FuseNavVerticalCollapseComponent implements OnInit
             }
         );
 
-        /**
-         * Whenever a navigation collapse item toggled
-         */
-        this.navigationService.onNavCollapseToggled.subscribe(
-            (clickedItem) => {
-                if ( clickedItem.children )
-                {
-                    /**
-                     * if clicked collapse is child of this collapse
-                     * return
-                     */
-                    if ( this.item.children.indexOf(clickedItem) !== -1 )
+        // Listen for collapsing of any navigation item
+        this.navigationService.onNavCollapseToggled
+            .subscribe(
+                (clickedItem) => {
+                    if ( clickedItem.children )
                     {
-                        return;
-                    }
-                    /**
-                     * If collapsed item is not related with this collapse
-                     * collapse
-                     */
-                    if ( this.item !== clickedItem )
-                    {
-                        this.collapse();
+                        // Check if the clicked item is one
+                        // of the children of this item
+                        if ( this.isChildrenOf(this.item, clickedItem) )
+                        {
+                            return;
+                        }
+
+                        // Check if the url can be found in
+                        // one of the children of this item
+                        if ( this.isUrlInChildren(this.item, this.router.url) )
+                        {
+                            return;
+                        }
+
+                        // If the clicked item is not this item, collapse...
+                        if ( this.item !== clickedItem )
+                        {
+                            this.collapse();
+                        }
                     }
                 }
-            }
-        );
+            );
     }
 
     /**
-     * Toggle Collapse
+     * Toggle collapse
+     *
      * @param ev
      */
     toggleOpen(ev)
     {
         ev.preventDefault();
+
         this.isOpen = !this.isOpen;
+
+        // Navigation collapse toggled...
         this.navigationService.onNavCollapseToggled.emit(this.item);
     }
 
     /**
-     * Expand
+     * Expand the collapsable navigation
      */
     expand()
     {
@@ -88,11 +93,12 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         {
             return;
         }
+
         this.isOpen = true;
     }
 
     /**
-     * Collapse
+     * Collapse the collapsable navigation
      */
     collapse()
     {
@@ -104,40 +110,66 @@ export class FuseNavVerticalCollapseComponent implements OnInit
     }
 
     /**
-     * Checking the url is in children
-     * @param arr
-     * @param url
-     * @returns {any}
+     * Check if the given parent has the
+     * given item in one of its children
+     *
+     * @param parent
+     * @param item
+     * @return {any}
      */
-    isUrlInChildren(arr, url)
+    isChildrenOf(parent, item)
     {
-        if ( !arr.children )
+        if ( !parent.children )
         {
             return false;
         }
 
-        for ( let i = 0; i < arr.children.length; i++ )
+        if ( parent.children.indexOf(item) !== -1 )
         {
-            if ( arr.children[i].children )
+            return true;
+        }
+
+        for ( const children of parent.children )
+        {
+            if ( children.children )
             {
-                if ( this.isUrlInChildren(arr.children[i], url) )
+                return this.isChildrenOf(children, item);
+            }
+        }
+    }
+
+    /**
+     * Check if the given url can be found
+     * in one of the given parent's children
+     *
+     * @param parent
+     * @param url
+     * @returns {any}
+     */
+    isUrlInChildren(parent, url)
+    {
+        if ( !parent.children )
+        {
+            return false;
+        }
+
+        for ( let i = 0; i < parent.children.length; i++ )
+        {
+            if ( parent.children[i].children )
+            {
+                if ( this.isUrlInChildren(parent.children[i], url) )
                 {
                     return true;
                 }
             }
 
-            if ( arr.children[i].url === url )
+            if ( parent.children[i].url === url )
             {
                 return true;
             }
         }
 
         return false;
-    }
-
-    public isCollapsed(): boolean
-    {
-        return this.isOpen;
     }
 
     ngOnInit()

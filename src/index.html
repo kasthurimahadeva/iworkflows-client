@@ -10,7 +10,7 @@
         <meta name="description" content="Material design admin template with pre-built apps and pages">
         <meta name="keywords" content="HTML,CSS,AngularJS,Angular,Angular 4,Angular 5,Angular 6, Material">
         <meta name="author" content="Withinpixels">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -40,17 +40,12 @@
             }
 
             #fuse-splash-screen .logo {
-                width: 96px;
-                height: 96px;
-                line-height: 96px;
+                width: 128px;
                 margin: 0 auto;
-                font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-                font-size: 56px;
-                text-align: center;
-                border-radius: 2px;
-                background-color: #039BE5;
-                color: #FFFFFF;
-                box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.22);
+            }
+
+            #fuse-splash-screen .logo img {
+                filter: drop-shadow(0px 10px 6px rgba(0, 0, 0, 0.2))
             }
 
             #fuse-splash-screen .spinner-wrapper {
@@ -194,7 +189,7 @@
             <div class="center">
 
                 <div class="logo">
-                    <span>F</span>
+                    <img width="128" src="assets/images/logos/fuse.svg">
                 </div>
 
                 <!-- Material Design Spinner -->

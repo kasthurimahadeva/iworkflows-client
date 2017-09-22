@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit, HostListener, OnDestroy, HostBinding, AfterViewInit } from '@angular/core';
+import { Directive, Input, OnInit, HostListener, OnDestroy, HostBinding } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 import { FuseMdSidenavHelperService } from 'app/core/directives/md-sidenav-helper/md-sidenav-helper.service';
 import { FuseMatchMedia } from '../../services/match-media.service';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 @Directive({
     selector: '[fuseMdSidenavHelper]'
 })
-export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDestroy
+export class FuseMdSidenavHelperDirective implements OnInit, OnDestroy
 {
     matchMediaSubscription: Subscription;
 
@@ -38,6 +38,7 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
                 this.mdSidenav.mode = 'side';
                 this.mdSidenav.open();
             });
+            this.stopTransition = false;
         }
         else
         {
@@ -46,6 +47,10 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
                 this.mdSidenav.mode = 'over';
                 this.mdSidenav.close();
             });
+
+            setTimeout(() => {
+                this.stopTransition = false;
+            }, 3000);
         }
 
         this.matchMediaSubscription = this.fuseMatchMedia.onMediaChange.subscribe(() => {
@@ -67,13 +72,6 @@ export class FuseMdSidenavHelperDirective implements OnInit, AfterViewInit, OnDe
             }
         });
 
-    }
-
-    ngAfterViewInit()
-    {
-        setTimeout(() => {
-            this.stopTransition = false;
-        }, 0);
     }
 
     ngOnDestroy()

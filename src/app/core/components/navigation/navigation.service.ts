@@ -1,25 +1,43 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { FuseNavigation } from '../../../navigation.model';
+import { NavigationModel } from '../../../navigation.model';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class FuseNavigationService
 {
     onNavCollapseToggled = new EventEmitter<any>();
-    navigation: FuseNavigation;
+    onNavigationModelChange: BehaviorSubject<any> = new BehaviorSubject({});
+    navigationModel: NavigationModel;
     flatNavigation: any[] = [];
 
     constructor()
     {
-        this.navigation = new FuseNavigation();
+        this.navigationModel = new NavigationModel();
+        this.onNavigationModelChange.next(this.navigationModel.model);
     }
 
     /**
-     * Get navigation array
+     * Get navigation model
      * @returns {any[]}
      */
-    getNavigation(item)
+    getNavigationModel()
     {
-        return this.navigation[item];
+        return this.navigationModel.model;
+    }
+
+    /**
+     * Set the navigation model
+     * @param model
+     */
+    setNavigationModel(model)
+    {
+        // console.log(model);
+
+        this.navigationModel = model;
+
+        console.log(this.navigationModel);
+
+        this.onNavigationModelChange.next(this.navigationModel.model);
     }
 
     /**
@@ -31,7 +49,7 @@ export class FuseNavigationService
     {
         if ( !navigationItems )
         {
-            navigationItems = this.navigation;
+            navigationItems = this.navigationModel.model;
         }
 
         for ( const navItem of navigationItems )
@@ -41,7 +59,7 @@ export class FuseNavigationService
                 continue;
             }
 
-            if ( navItem.type === 'nav-item' )
+            if ( navItem.type === 'item' )
             {
                 this.flatNavigation.push({
                     title: navItem.title,
@@ -53,7 +71,7 @@ export class FuseNavigationService
                 continue;
             }
 
-            if ( navItem.type === 'nav-collapse' )
+            if ( navItem.type === 'collapse' || navItem.type === 'group' )
             {
                 this.getFlatNavigation(navItem.children);
             }

@@ -12,19 +12,6 @@ fuse-main {
         @include mat-elevation(8);
     }
 
-    &.disable-perfect-scrollbar {
-
-        .ps {
-            -webkit-overflow-scrolling: touch !important;
-            overflow: auto !important;
-        }
-
-        .ps__scrollbar-x-rail,
-        .ps__scrollbar-y-rail {
-            display: none !important;
-        }
-    }
-
     > .mat-sidenav-container {
         display: flex;
         flex: 1;

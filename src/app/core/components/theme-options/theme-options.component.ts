@@ -1,14 +1,14 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseConfigService } from '../../services/config.service';
-import { Animations } from '../../animations';
+import { fuseAnimations } from '../../animations';
 
 @Component({
     selector   : 'fuse-theme-options',
     templateUrl: './theme-options.component.html',
     styleUrls  : ['./theme-options.component.scss'],
-    animations : [Animations.fadeInOut]
+    animations : fuseAnimations
 })
 export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 {
@@ -18,9 +18,10 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 
     public player: AnimationPlayer;
     fuseSettings: any;
-    barClosed: boolean;
 
     onSettingsChanged: Subscription;
+
+    @HostBinding('class.bar-closed') barClosed: boolean;
 
     constructor(
         private animationBuilder: AnimationBuilder,
@@ -53,8 +54,6 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 
     closeBar()
     {
-        this.barClosed = true;
-
         this.player =
             this.animationBuilder
                 .build([
@@ -63,6 +62,10 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                 ]).create(this.panel.nativeElement);
 
         this.player.play();
+
+        this.player.onDone(() => {
+            this.barClosed = true;
+        });
     }
 
     openBar()

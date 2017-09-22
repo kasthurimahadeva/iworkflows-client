@@ -4,3 +4,38 @@
         border-radius: 50%;
     }
 }
+
+md-sidenav-container {
+
+    md-sidenav {
+
+        &[md-is-locked-open].md-stop-transition {
+            transition: none !important;
+            transform: translate3d(0, 0, 0) !important;
+            opacity: 0;
+
+            ~ .mat-sidenav-content,
+            ~ .mat-drawer-content {
+                transition: none !important;
+            }
+        }
+
+        &.mat-sidenav-opened {
+
+            &.mat-drawer-side {
+
+                ~ .mat-sidenav-content,
+                ~ .mat-drawer-content {
+                    transition: none !important;
+                    transform: translate3d(0, 0, 0) !important;
+                }
+            }
+        }
+
+        &.mat-drawer-end {
+        }
+    }
+
+    .mat-drawer-content {
+    }
+}
