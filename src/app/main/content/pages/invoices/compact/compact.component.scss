@@ -68,8 +68,7 @@
 
                             .logo {
                                 width: 96px;
-                                height: 96px;
-                                font-size: 72px;
+                                padding: 0 8px;
                                 border-right: 1px solid rgba(255, 255, 255, 0.7);
                             }
 
@@ -186,12 +185,7 @@
                         .logo {
                             width: 32px;
                             min-width: 32px;
-                            height: 32px;
-                            font-size: 17px;
-                            font-weight: 500;
                             margin-right: 24px;
-                            border-radius: 2px;
-                            overflow: hidden;
                         }
 
                         .small-note {
@@ -341,7 +335,6 @@
                             }
 
                             .logo {
-                                font-size: 14pt;
                                 margin-right: 8pt;
                             }
 

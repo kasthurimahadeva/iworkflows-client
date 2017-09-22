@@ -1,6 +1,6 @@
-<md-list class="date">
+<md-list class="date" cdk-focus-region-start>
 
-    <h3 md-subheader>
+    <h3 md-subheader cdk-focus-init>
         <span>Today</span>
     </h3>
 
@@ -16,7 +16,7 @@
     </div>
 </md-list>
 
-<md-divider></md-divider>
+<md-divider cdk-focus-region-end></md-divider>
 
 <md-list>
     <h3 md-subheader>
@@ -50,19 +50,22 @@
     </h3>
 
     <md-list-item>
-        <md-slide-toggle fxFlex class="mat-primary" [(ngModel)]="settings.notify" aria-label="Notifications" labelPosition="before">
+        <md-slide-toggle fxFlex class="mat-primary" [(ngModel)]="settings.notify" aria-label="Notifications"
+                         labelPosition="before">
             <h3>Notifications</h3>
         </md-slide-toggle>
     </md-list-item>
 
     <md-list-item>
-        <md-slide-toggle fxFlex class="mat-accent" [(ngModel)]="settings.cloud" aria-label="Cloud" labelPosition="before">
+        <md-slide-toggle fxFlex class="mat-accent" [(ngModel)]="settings.cloud" aria-label="Cloud"
+                         labelPosition="before">
             <h3>Cloud Sync</h3>
         </md-slide-toggle>
     </md-list-item>
 
     <md-list-item>
-        <md-slide-toggle fxFlex class="mat-warn" [(ngModel)]="settings.retro" aria-label="Retro Thrusters" labelPosition="before">
+        <md-slide-toggle fxFlex class="mat-warn" [(ngModel)]="settings.retro" aria-label="Retro Thrusters"
+                         labelPosition="before">
             <h3>Retro Thrusters</h3>
         </md-slide-toggle>
     </md-list-item>
