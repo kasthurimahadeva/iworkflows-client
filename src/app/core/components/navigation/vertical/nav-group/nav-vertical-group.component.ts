@@ -7,7 +7,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 })
 export class FuseNavVerticalGroupComponent implements OnInit
 {
-    @HostBinding('class') classes = 'nav-group';
+    @HostBinding('class') classes = 'nav-group nav-item';
     @Input() item: any;
 
     constructor()

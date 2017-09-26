@@ -12,6 +12,7 @@
     }
 
     .nav-group {
+        display: block;
 
         > .group-title {
             position: relative;
@@ -107,12 +108,20 @@
                         padding-left: 56px;
                     }
 
+                    &.nav-group {
+                        padding-left: 32px;
+                    }
+
                     > .children {
 
                         > .nav-item {
 
                             > .nav-link {
                                 padding-left: 72px;
+                            }
+
+                            &.nav-group {
+                                padding-left: 48px;
                             }
                         }
                     }
