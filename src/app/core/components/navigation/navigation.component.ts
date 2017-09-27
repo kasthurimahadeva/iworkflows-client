@@ -26,7 +26,6 @@ export class FuseNavigationComponent implements OnDestroy
 
     ngOnDestroy()
     {
-        console.warn('destroyed');
         this.navigationModelChangeSubscription.unsubscribe();
     }
 
