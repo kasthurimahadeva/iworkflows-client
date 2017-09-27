@@ -1,0 +1,31 @@
+<div class="page-layout simple fullwidth angular-material-element" fusePerfectScrollbar>
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+                <md-icon class="secondary-text s-16">home</md-icon>
+                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <span class="secondary-text">Components</span>
+                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <span class="secondary-text">Angular Material Elements</span>
+            </div>
+            <div class="h2 mt-16">{{title}}</div>
+        </div>
+
+        <a md-raised-button class="reference-button md-white-bg" href="https://material.io/icons/" target="_blank">
+            <md-icon>link</md-icon>
+            <span>Reference</span>
+        </a>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <div *ngFor="let example of examples">
+            <fuse-example-viewer [example]="example"></fuse-example-viewer>
+        </div>
+    </div>
+</div>
+

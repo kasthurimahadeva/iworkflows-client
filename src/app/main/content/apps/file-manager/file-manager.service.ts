@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class FileManagerService implements Resolve<any>
     onFilesChanged: BehaviorSubject<any> = new BehaviorSubject({});
     onFileSelected: BehaviorSubject<any> = new BehaviorSubject({});
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
     }
 
@@ -40,10 +40,10 @@ export class FileManagerService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/file-manager')
-                .subscribe(response => {
-                    this.onFilesChanged.next(response.json().data);
-                    this.onFileSelected.next(response.json().data[0]);
-                    resolve(response.json().data);
+                .subscribe((response: any) => {
+                    this.onFilesChanged.next(response.data);
+                    this.onFileSelected.next(response.data[0]);
+                    resolve(response.data);
                 }, reject);
         });
     }

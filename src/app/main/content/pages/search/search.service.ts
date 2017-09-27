@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class SearchService implements Resolve<any>
     classicOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
     tableOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
     }
 
@@ -46,8 +46,8 @@ export class SearchService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/search-classic')
-                .subscribe(classic => {
-                    this.classic = classic.json().data;
+                .subscribe((classic: any) => {
+                    this.classic = classic.data;
                     this.classicOnChanged.next(this.classic);
                     resolve(this.classic);
                 }, reject);
@@ -62,8 +62,8 @@ export class SearchService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/search-table')
-                .subscribe(table => {
-                    this.table = table.json().data;
+                .subscribe((table: any) => {
+                    this.table = table.data;
                     this.tableOnChanged.next(this.table);
                     resolve(this.table);
                 }, reject);

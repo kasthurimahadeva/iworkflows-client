@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Mail } from './mail.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FuseUtils } from 'app/core/fuseUtils';
@@ -28,7 +28,7 @@ export class MailService implements Resolve<any>
     onLabelsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onSearchTextChanged: BehaviorSubject<any> = new BehaviorSubject('');
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
         this.selectedMails = [];
     }
@@ -88,8 +88,8 @@ export class MailService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-folders')
-                .subscribe(response => {
-                    this.folders = response.json().data;
+                .subscribe((response: any) => {
+                    this.folders = response.data;
                     this.onFoldersChanged.next(this.folders);
                     resolve(this.folders);
                 }, reject);
@@ -104,8 +104,8 @@ export class MailService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-filters')
-                .subscribe(response => {
-                    this.filters = response.json().data;
+                .subscribe((response: any) => {
+                    this.filters = response.data;
                     this.onFiltersChanged.next(this.filters);
                     resolve(this.filters);
                 }, reject);
@@ -120,8 +120,8 @@ export class MailService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-labels')
-                .subscribe(response => {
-                    this.labels = response.json().data;
+                .subscribe((response: any) => {
+                    this.labels = response.data;
                     this.onLabelsChanged.next(this.labels);
                     resolve(this.labels);
                 }, reject);
@@ -157,14 +157,14 @@ export class MailService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/mail-folders?handle=' + handle)
-                .subscribe(folders => {
+                .subscribe((folders: any) => {
 
-                    const folderId = folders.json().data[0].id;
+                    const folderId = folders.data[0].id;
 
                     this.http.get('api/mail-mails?folder=' + folderId)
-                        .subscribe(mails => {
+                        .subscribe((mails: any) => {
 
-                            this.mails = mails.json().data.map(mail => {
+                            this.mails = mails.data.map(mail => {
                                 return new Mail(mail);
                             });
 
@@ -189,9 +189,9 @@ export class MailService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/mail-mails?' + handle + '=true')
-                .subscribe(mails => {
+                .subscribe((mails: any) => {
 
-                    this.mails = mails.json().data.map(mail => {
+                    this.mails = mails.data.map(mail => {
                         return new Mail(mail);
                     });
 
@@ -214,14 +214,14 @@ export class MailService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-labels?handle=' + handle)
-                .subscribe(labels => {
+                .subscribe((labels: any) => {
 
-                    const labelId = labels.json().data[0].id;
+                    const labelId = labels.data[0].id;
 
                     this.http.get('api/mail-mails?labels=' + labelId)
-                        .subscribe(mails => {
+                        .subscribe((mails: any) => {
 
-                            this.mails = mails.json().data.map(mail => {
+                            this.mails = mails.data.map(mail => {
                                 return new Mail(mail);
                             });
 

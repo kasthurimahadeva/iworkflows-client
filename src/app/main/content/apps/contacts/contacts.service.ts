@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Contact } from './contact.model';
 import { FuseUtils } from '../../../../core/fuseUtils';
@@ -23,7 +23,7 @@ export class ContactsService implements Resolve<any>
     searchText: string;
     filterBy: string;
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
     }
 
@@ -65,9 +65,9 @@ export class ContactsService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
                 this.http.get('api/contacts-contacts')
-                    .subscribe(response => {
+                    .subscribe((response: any) => {
 
-                        this.contacts = response.json().data;
+                        this.contacts = response.data;
 
                         if ( this.filterBy === 'starred' )
                         {
@@ -103,8 +103,8 @@ export class ContactsService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
                 this.http.get('api/contacts-user/5725a6802d10e277a0f35724')
-                    .subscribe(response => {
-                        this.user = response.json().data;
+                    .subscribe((response: any) => {
+                        this.user = response.data;
                         this.onUserDataChanged.next(this.user);
                         resolve(this.user);
                     }, reject);

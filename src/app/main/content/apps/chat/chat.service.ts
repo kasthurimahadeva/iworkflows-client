@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FuseUtils } from '../../../../core/fuseUtils';
@@ -19,7 +19,7 @@ export class ChatService implements Resolve<any>
     onLeftSidenavViewChanged = new Subject<any>();
     onRightSidenavViewChanged = new Subject<any>();
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
     }
 
@@ -47,8 +47,8 @@ export class ChatService implements Resolve<any>
 
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-chats/' + chatItem.id)
-                .subscribe(response => {
-                    const chat = response.json().data;
+                .subscribe((response: any) => {
+                    const chat = response.data;
 
                     const chatContact = this.contacts.find((contact) => {
                         return contact.id === contactId;
@@ -105,7 +105,7 @@ export class ChatService implements Resolve<any>
              * Post the created chat
              */
             this.http.post('api/chat-chats', {...chat})
-                .subscribe(response => {
+                .subscribe((response: any) => {
 
                     /**
                      * Post the new the user data
@@ -150,7 +150,7 @@ export class ChatService implements Resolve<any>
     updateUserData(userData)
     {
         this.http.post('api/chat-user/' + this.user.id, userData)
-            .subscribe(response => {
+            .subscribe((response: any) => {
                     this.user = userData;
                 }
             );
@@ -211,8 +211,8 @@ export class ChatService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-contacts')
-                .subscribe(response => {
-                    resolve(response.json().data);
+                .subscribe((response: any) => {
+                    resolve(response.data);
                 }, reject);
         });
     }
@@ -225,8 +225,8 @@ export class ChatService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-chats')
-                .subscribe(response => {
-                    resolve(response.json().data);
+                .subscribe((response: any) => {
+                    resolve(response.data);
                 }, reject);
         });
     }
@@ -239,8 +239,8 @@ export class ChatService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-user')
-                .subscribe(response => {
-                    resolve(response.json().data[0]);
+                .subscribe((response: any) => {
+                    resolve(response.data[0]);
                 }, reject);
         });
     }

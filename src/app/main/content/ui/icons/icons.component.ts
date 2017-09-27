@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector   : 'fuse-icons',
@@ -12,16 +12,15 @@ export class FuseIconsComponent implements OnInit
     filteredIcons: string[];
     loading = true;
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
-
     }
 
     ngOnInit()
     {
         this.http.get('api/icons')
-            .subscribe(icons => {
-                this.icons = icons.json().data;
+            .subscribe((icons: any) => {
+                this.icons = icons.data;
                 this.filteredIcons = this.icons;
                 this.loading = false;
             });

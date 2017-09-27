@@ -344,6 +344,194 @@ export class NavigationModel
                 'icon'    : 'settings_input_component',
                 'children': [
                     {
+                        'title'   : 'Angular Material Elements',
+                        'type'    : 'collapse',
+                        'icon'    : 'layers',
+                        'children': [
+                            {
+                                'title'   : 'Form Controls',
+                                'type'    : 'group',
+                                'children': [
+                                    {
+                                        'title': 'Autocomplete',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/autocomplete'
+                                    },
+                                    {
+                                        'title': 'Checkbox',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/checkbox'
+                                    },
+                                    {
+                                        'title': 'Datepicker',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/datepicker'
+                                    },
+                                    {
+                                        'title': 'Input',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/input'
+                                    },
+                                    {
+                                        'title': 'Radio button',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/radio-button'
+                                    },
+                                    {
+                                        'title': 'Select',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/select'
+                                    },
+                                    {
+                                        'title': 'Slider',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/slider'
+                                    },
+                                    {
+                                        'title': 'Slide toggle',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/slide-toggle'
+                                    }
+                                ]
+                            },
+                            {
+                                'title'   : 'Navigation',
+                                'type'    : 'group',
+                                'children': [
+                                    {
+                                        'title': 'Menu',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/menu'
+                                    },
+                                    {
+                                        'title': 'Sidenav',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/sidenav'
+                                    },
+                                    {
+                                        'title': 'Toolbar',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/toolbar'
+                                    }
+                                ]
+                            },
+                            {
+                                'title'   : 'Layout',
+                                'type'    : 'group',
+                                'children': [
+                                    {
+                                        'title': 'List',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/list'
+                                    },
+                                    {
+                                        'title': 'Grid list',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/grid-list'
+                                    },
+                                    {
+                                        'title': 'Card',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/card'
+                                    },
+                                    {
+                                        'title': 'Stepper',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/stepper'
+                                    },
+                                    {
+                                        'title': 'Tabs',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/tabs'
+                                    },
+                                    {
+                                        'title': 'Expansion Panel',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/expansion-panel'
+                                    }
+                                ]
+                            },
+                            {
+                                'title'   : 'Buttons & Indicators',
+                                'type'    : 'group',
+                                'children': [
+                                    {
+                                        'title': 'Button',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/button'
+                                    },
+                                    {
+                                        'title': 'Button toggle',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/button-toggle'
+                                    },
+                                    {
+                                        'title': 'Chips',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/chips'
+                                    },
+                                    {
+                                        'title': 'Icon',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/icon'
+                                    },
+                                    {
+                                        'title': 'Progress spinner',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/progress-spinner'
+                                    },
+                                    {
+                                        'title': 'Progress bar',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/progress-bar'
+                                    }
+                                ]
+                            },
+                            {
+                                'title'   : 'Popups & Modals',
+                                'type'    : 'group',
+                                'children': [
+                                    {
+                                        'title': 'Dialog',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/dialog'
+                                    },
+                                    {
+                                        'title': 'Tooltip',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/tooltip'
+                                    },
+                                    {
+                                        'title': 'Snackbar',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/snackbar'
+                                    }
+                                ]
+                            },
+                            {
+                                'title'   : 'Data table',
+                                'type'    : 'group',
+                                'children': [
+                                    {
+                                        'title': 'Table',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/data-table'
+                                    },
+                                    {
+                                        'title': 'Sort header',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/sort-header'
+                                    },
+                                    {
+                                        'title': 'Paginator',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/paginator'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         'title': 'Countdown',
                         'type' : 'item',
                         'icon' : 'settings_input_component',

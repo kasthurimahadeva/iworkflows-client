@@ -27,6 +27,7 @@ import {
     MdSliderModule,
     MdSlideToggleModule,
     MdSnackBarModule,
+    MdStepperModule,
     MdSortModule,
     MdTableModule,
     MdTabsModule
@@ -60,6 +61,7 @@ import { CdkTableModule } from '@angular/cdk/table';
         MdSliderModule,
         MdSlideToggleModule,
         MdSnackBarModule,
+        MdStepperModule,
         MdSortModule,
         MdTableModule,
         MdTabsModule,
@@ -93,6 +95,7 @@ import { CdkTableModule } from '@angular/cdk/table';
         MdSliderModule,
         MdSlideToggleModule,
         MdSnackBarModule,
+        MdStepperModule,
         MdSortModule,
         MdTableModule,
         MdTabsModule,

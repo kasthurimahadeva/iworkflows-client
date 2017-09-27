@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class ProfileService implements Resolve<any>
     aboutOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
     photosVideosOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
     }
 
@@ -49,8 +49,8 @@ export class ProfileService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/profile-timeline')
-                .subscribe(timeline => {
-                    this.timeline = timeline.json().data;
+                .subscribe((timeline: any) => {
+                    this.timeline = timeline.data;
                     this.timelineOnChanged.next(this.timeline);
                     resolve(this.timeline);
                 }, reject);
@@ -65,8 +65,8 @@ export class ProfileService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/profile-about')
-                .subscribe(about => {
-                    this.about = about.json().data;
+                .subscribe((about: any) => {
+                    this.about = about.data;
                     this.aboutOnChanged.next(this.about);
                     resolve(this.about);
                 }, reject);
@@ -81,8 +81,8 @@ export class ProfileService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/profile-photos-videos')
-                .subscribe(photosVideos => {
-                    this.photosVideos = photosVideos.json().data;
+                .subscribe((photosVideos: any) => {
+                    this.photosVideos = photosVideos.data;
                     this.photosVideosOnChanged.next(this.photosVideos);
                     resolve(this.photosVideos);
                 }, reject);

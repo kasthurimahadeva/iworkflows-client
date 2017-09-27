@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector   : 'fuse-ngx-datatable',
@@ -12,7 +12,7 @@ export class FuseNgxDatatableComponent implements OnInit
     loadingIndicator = true;
     reorderable = true;
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
 
     }
@@ -20,8 +20,8 @@ export class FuseNgxDatatableComponent implements OnInit
     ngOnInit()
     {
         this.http.get('api/contacts-contacts')
-            .subscribe(contacts => {
-                this.rows = contacts.json().data;
+            .subscribe((contacts: any) => {
+                this.rows = contacts.data;
                 this.loadingIndicator = false;
             });
     }

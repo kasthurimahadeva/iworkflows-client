@@ -9,6 +9,7 @@
             "outDir": "dist",
             "assets": [
                 "assets",
+                "app/main/content/components/angular-material",
                 "favicon.ico"
             ],
             "index": "index.html",

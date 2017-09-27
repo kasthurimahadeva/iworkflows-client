@@ -19,6 +19,8 @@ import { FuseConfigService } from './core/services/config.service';
 import { FuseNavigationService } from './core/components/navigation/navigation.service';
 import { ComponentsThirdPartyModule } from './main/content/components-third-party/components-third-party.module';
 import { ServicesModule } from './main/content/services/services.module';
+import { FuseAngularMaterialModule } from './main/content/components/angular-material/angular-material.module';
+import { MarkdownModule } from 'angular2-markdown';
 
 const appRoutes: Routes = [
     {
@@ -66,8 +68,12 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         SharedModule,
+        MarkdownModule.forRoot(),
 
-        InMemoryWebApiModule.forRoot(FuseFakeDbService, {delay: 0}),
+        InMemoryWebApiModule.forRoot(FuseFakeDbService, {
+            delay             : 0,
+            passThruUnknownUrl: true
+        }),
 
         FuseMainModule,
 
@@ -77,6 +83,7 @@ const appRoutes: Routes = [
         UIModule,
         ServicesModule,
         ComponentsModule,
+        FuseAngularMaterialModule,
         ComponentsThirdPartyModule
     ],
     providers   : [

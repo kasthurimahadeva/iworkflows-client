@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Todo } from './todo.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FuseUtils } from '../../../../core/fuseUtils';
@@ -30,7 +30,7 @@ export class TodoService implements Resolve<any>
     onNewTodoClicked: Subject<any> = new Subject();
 
     constructor(
-        private http: Http,
+        private http: HttpClient,
         private location: Location // Set current todo
     )
     {
@@ -91,8 +91,8 @@ export class TodoService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/todo-filters')
-                .subscribe(response => {
-                    this.filters = response.json().data;
+                .subscribe((response: any) => {
+                    this.filters = response.data;
                     this.onFiltersChanged.next(this.filters);
                     resolve(this.filters);
                 }, reject);
@@ -107,8 +107,8 @@ export class TodoService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/todo-tags')
-                .subscribe(response => {
-                    this.tags = response.json().data;
+                .subscribe((response: any) => {
+                    this.tags = response.data;
                     this.onTagsChanged.next(this.tags);
                     resolve(this.tags);
                 }, reject);
@@ -144,8 +144,8 @@ export class TodoService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/todo-todos')
-                .subscribe(todos => {
-                    this.todos = todos.json().data.map(todo => {
+                .subscribe((todos: any) => {
+                    this.todos = todos.data.map(todo => {
                         return new Todo(todo);
                     });
 
@@ -176,9 +176,9 @@ export class TodoService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             this.http.get('api/todo-todos?' + param)
-                .subscribe(todos => {
+                .subscribe((todos: any) => {
 
-                    this.todos = todos.json().data.map(todo => {
+                    this.todos = todos.data.map(todo => {
                         return new Todo(todo);
                     });
 
@@ -201,14 +201,14 @@ export class TodoService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/todo-tags?handle=' + handle)
-                .subscribe(tags => {
+                .subscribe((tags: any) => {
 
-                    const tagId = tags.json().data[0].id;
+                    const tagId = tags.data[0].id;
 
                     this.http.get('api/todo-todos?tags=' + tagId)
-                        .subscribe(todos => {
+                        .subscribe((todos: any) => {
 
-                            this.todos = todos.json().data.map(todo => {
+                            this.todos = todos.data.map(todo => {
                                 return new Todo(todo);
                             });
 

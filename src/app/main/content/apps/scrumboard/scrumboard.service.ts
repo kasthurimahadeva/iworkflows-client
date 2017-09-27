@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class ScrumboardService implements Resolve<any>
     onBoardsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onBoardChanged: BehaviorSubject<any> = new BehaviorSubject([]);
 
-    constructor(private http: Http)
+    constructor(private http: HttpClient)
     {
     }
 
@@ -44,8 +44,8 @@ export class ScrumboardService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/scrumboard-boards')
-                .subscribe(response => {
-                    this.boards = response.json().data;
+                .subscribe((response: any) => {
+                    this.boards = response.data;
                     this.onBoardsChanged.next(this.boards);
                     resolve(this.boards);
                 }, reject);
@@ -56,8 +56,8 @@ export class ScrumboardService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
             this.http.get('api/scrumboard-boards/' + boardId)
-                .subscribe(response => {
-                    this.board = response.json().data;
+                .subscribe((response: any) => {
+                    this.board = response.data;
                     this.onBoardChanged.next(this.board);
                     resolve(this.board);
                 }, reject);
