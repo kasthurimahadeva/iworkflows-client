@@ -29,7 +29,7 @@ import { ExpansionStepsExample } from '../../../../../assets/angular-material-ex
 import { GridListDynamicExample } from '../../../../../assets/angular-material-examples/grid-list-dynamic/grid-list-dynamic-example';
 import { GridListOverviewExample } from '../../../../../assets/angular-material-examples/grid-list-overview/grid-list-overview-example';
 import { IconOverviewExample } from '../../../../../assets/angular-material-examples/icon-overview/icon-overview-example';
-import { IconSvgExample } from '../../../../../assets/angular-material-examples/icon-svg-example/icon-svg-example';
+import { IconSvgExample } from '../../../../../assets/angular-material-examples/icon-svg/icon-svg-example';
 import { InputClearableExample } from '../../../../../assets/angular-material-examples/input-clearable/input-clearable-example';
 import { InputErrorsExample } from '../../../../../assets/angular-material-examples/input-errors/input-errors-example';
 import { InputFormExample } from '../../../../../assets/angular-material-examples/input-form/input-form-example';
