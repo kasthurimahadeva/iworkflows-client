@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class FuseNavigationService
 {
+    onNavCollapseToggle = new EventEmitter<any>();
     onNavCollapseToggled = new EventEmitter<any>();
     onNavigationModelChange: BehaviorSubject<any> = new BehaviorSubject({});
     navigationModel: NavigationModel;

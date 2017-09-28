@@ -1,9 +1,9 @@
 <div id="material-colors" class="page-layout simple tabbed" fxLayout="column" fusePerfectScrollbar>
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="header md-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
-        <div fxLayout="column" fxLayoutAlign="center start">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
                 <md-icon class="secondary-text s-16">home</md-icon>
                 <md-icon class="secondary-text s-16">chevron_right</md-icon>
@@ -12,7 +12,7 @@
             <div class="h1 mt-16">Colors</div>
         </div>
 
-        <a md-raised-button class="reference-button md-white-bg"
+        <a md-raised-button class="reference-button md-white-bg mt-16 mt-sm-0"
            href="https://www.google.com/design/spec/style/color.html#color-color-palette"
            target="_blank">
             <md-icon>link</md-icon>

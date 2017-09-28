@@ -1,8 +1,8 @@
 <div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="space-between">
-        <div fxLayout="column" fxLayoutAlign="center start">
+    <div class="header md-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
                 <md-icon class="secondary-text s-16">home</md-icon>
                 <md-icon class="secondary-text s-16">chevron_right</md-icon>
@@ -11,14 +11,12 @@
             <div class="h2 mt-16">ngx-datatable</div>
         </div>
 
-        <div fxLayout="row" fxLayoutAlign="start center">
-            <a md-raised-button class="md-white-bg"
-               href="https://github.com/swimlane/ngx-datatable"
-               target="_blank">
-                <md-icon>link</md-icon>
-                <span>Reference</span>
-            </a>
-        </div>
+        <a md-raised-button class="reference-button md-white-bg mt-16 mt-sm-0"
+           href="https://github.com/swimlane/ngx-datatable"
+           target="_blank">
+            <md-icon>link</md-icon>
+            <span>Reference</span>
+        </a>
     </div>
     <!-- / HEADER -->
 

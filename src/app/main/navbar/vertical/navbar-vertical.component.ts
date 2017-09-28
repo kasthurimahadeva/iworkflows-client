@@ -43,8 +43,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
     {
         navBarService.setNavBar(this);
 
-        this.fuseNavigationService.onNavCollapseToggled.subscribe(() => {
-
+        this.fuseNavigationService.onNavCollapseToggle.subscribe(() => {
             setTimeout(() => {
                 this.fusePerfectScrollbarDirective.update();
             }, 310);
