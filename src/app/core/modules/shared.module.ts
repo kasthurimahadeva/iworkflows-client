@@ -21,7 +21,6 @@ import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-do
 import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
 import { Md2Module } from 'md2';
 import { CookieService } from 'ngx-cookie-service';
-import { MarkdownModule } from 'angular2-markdown';
 
 @NgModule({
     declarations   : [
@@ -44,8 +43,7 @@ import { MarkdownModule } from 'angular2-markdown';
         ColorPickerModule,
         NgxDnDModule,
         NgxDatatableModule,
-        Md2Module,
-        MarkdownModule
+        Md2Module
     ],
     exports        : [
         FlexLayoutModule,
@@ -64,8 +62,7 @@ import { MarkdownModule } from 'angular2-markdown';
         NgxDatatableModule,
         FuseIfOnDomDirective,
         FuseMaterialColorPickerComponent,
-        Md2Module,
-        MarkdownModule
+        Md2Module
     ],
     entryComponents: [
         FuseConfirmDialogComponent
