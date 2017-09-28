@@ -7,7 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 import 'hammerjs';
 import { SharedModule } from './core/modules/shared.module';
 import { AppComponent } from './app.component';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FuseMainModule } from './main/main.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
@@ -32,7 +31,6 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         SharedModule,
-        PerfectScrollbarModule.forRoot(),
         FuseMainModule,
         FuseSampleModule
     ],
