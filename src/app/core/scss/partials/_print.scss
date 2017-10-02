@@ -4,8 +4,9 @@
 
 @media all {
 
-    /* Never show page break in normal view */
-    .page-break {
+    /* Never show page breaks in normal view */
+    .page-break-after,
+    .page-break-before {
         display: none;
     }
 
@@ -13,22 +14,30 @@
 
 @media print {
 
-    /* Page Styles */
-    @page {
-        //margin: 0.5cm;
+    /* html and body tweaks */
+    html, body {
+        height: auto !important;
+        overflow: initial !important;
     }
 
-    /* Page break */
-    .page-break {
+    /* Page breaks */
+    .page-break-after {
         display: block;
-        break-after: always;
         page-break-after: always;
+        position: relative;
+    }
+
+    .page-break-before {
+        display: block;
+        page-break-before: always;
+        position: relative;
     }
 
     /* General styles */
     fuse-root {
 
-        fuse-navbar,
+        fuse-navbar-vertical,
+        fuse-navbar-horizontal,
         fuse-toolbar,
         fuse-footer,
         fuse-quick-panel,
@@ -41,11 +50,16 @@
         .ps {
             overflow: visible !important;
         }
-    }
 
-    /* Printable page specific styles */
-    .printable {
-        overflow: visible !important;
-        height: auto !important;
+        .mat-drawer-container,
+        .mat-sidenav-container {
+            background-color: white !important;
+
+            .mat-drawer-content,
+            .mat-sidenav-content {
+                overflow: initial !important;
+                height: auto !important
+            }
+        }
     }
 }
