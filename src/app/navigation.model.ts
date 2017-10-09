@@ -117,9 +117,19 @@ export class NavigationModel
                                 'url'  : '/pages/auth/forgot-password'
                             },
                             {
+                                'title': 'Forgot Password 2',
+                                'type' : 'item',
+                                'url'  : '/pages/auth/forgot-password-2'
+                            },
+                            {
                                 'title': 'Reset Password',
                                 'type' : 'item',
                                 'url'  : '/pages/auth/reset-password'
+                            },
+                            {
+                                'title': 'Reset Password 2',
+                                'type' : 'item',
+                                'url'  : '/pages/auth/reset-password-2'
                             },
                             {
                                 'title': 'Lock Screen',
