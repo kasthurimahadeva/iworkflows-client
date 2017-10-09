@@ -32,11 +32,7 @@ export class FuseNavigationService
      */
     setNavigationModel(model)
     {
-        // console.log(model);
-
         this.navigationModel = model;
-
-        console.log(this.navigationModel);
 
         this.onNavigationModelChange.next(this.navigationModel.model);
     }

@@ -33,7 +33,7 @@ export class FuseConfigService
                 footer : 'md-fuse-dark-700-bg'
             },
             customScrollbars: true,
-            routerAnimation : 'fadeIn'
+            routerAnimation : 'fadeIn' // fadeIn, slideUp, slideDown, slideRight, slideLeft
         };
 
         /**
