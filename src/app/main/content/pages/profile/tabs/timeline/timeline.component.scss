@@ -38,7 +38,7 @@
                 }
             }
 
-            md-divider {
+            mat-divider {
                 border-top-width: 1px;
                 border-top-style: solid;
                 margin: 32px 0;
@@ -104,7 +104,7 @@
                             background-color: transparent;
                         }
 
-                        md-icon {
+                        mat-icon {
                             margin: 0 8px 0 0;
                         }
                     }
@@ -150,7 +150,7 @@
                         margin-bottom: 16px;
                         cursor: pointer;
 
-                        md-icon {
+                        mat-icon {
                             margin-left: 8px;
                         }
                     }

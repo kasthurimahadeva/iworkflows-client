@@ -12,35 +12,35 @@
 
             <form name="loginForm" [formGroup]="loginForm" novalidate>
 
-                <md-input-container>
-                    <input mdInput placeholder="Email" formControlName="email">
-                    <md-error *ngIf="loginFormErrors.email.required">
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="loginFormErrors.email.required">
                         Email is required
-                    </md-error>
-                    <md-error *ngIf="!loginFormErrors.email.required && loginFormErrors.email.email">
+                    </mat-error>
+                    <mat-error *ngIf="!loginFormErrors.email.required && loginFormErrors.email.email">
                         Please enter a valid email address
-                    </md-error>
-                </md-input-container>
+                    </mat-error>
+                </mat-form-field>
 
-                <md-input-container>
-                    <input mdInput placeholder="Password" formControlName="password">
-                    <md-error *ngIf="loginFormErrors.password.required">
+                <mat-form-field>
+                    <input matInput placeholder="Password" formControlName="password">
+                    <mat-error *ngIf="loginFormErrors.password.required">
                         Password is required
-                    </md-error>
-                </md-input-container>
+                    </mat-error>
+                </mat-form-field>
 
                 <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
                      fxLayoutAlign="space-between center">
-                    <md-checkbox class="remember-me" aria-label="Remember Me">
+                    <mat-checkbox class="remember-me" aria-label="Remember Me">
                         Remember Me
-                    </md-checkbox>
+                    </mat-checkbox>
 
                     <a class="forgot-password" [routerLink]="'/pages/auth/forgot-password'">
                         Forgot Password?
                     </a>
                 </div>
 
-                <button md-raised-button color="accent" class="submit-button" aria-label="LOG IN"
+                <button mat-raised-button color="accent" class="submit-button" aria-label="LOG IN"
                         [disabled]="loginForm.invalid">
                     LOGIN
                 </button>
@@ -51,11 +51,11 @@
                 <span class="text">OR</span>
             </div>
 
-            <button md-raised-button class="google">
+            <button mat-raised-button class="google">
                 Log in with Google
             </button>
 
-            <button md-raised-button class="facebook">
+            <button mat-raised-button class="facebook">
                 Log in with Facebook
             </button>
 

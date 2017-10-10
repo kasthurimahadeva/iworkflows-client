@@ -1,60 +1,60 @@
-<md-table #table [dataSource]="dataSource" *fuseIfOnDom [@animateStagger]="{value:'50'}">
+<mat-table #table [dataSource]="dataSource" *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
     <!-- Type Column -->
     <ng-container cdkColumnDef="icon">
-        <md-header-cell *cdkHeaderCellDef fxFlex="64px"></md-header-cell>
-        <md-cell *cdkCellDef="let row" fxFlex="64px">
-            <md-icon class="type-icon" [class]="row.type"></md-icon>
-        </md-cell>
+        <mat-header-cell *cdkHeaderCellDef fxFlex="64px"></mat-header-cell>
+        <mat-cell *cdkCellDef="let row" fxFlex="64px">
+            <mat-icon class="type-icon" [class]="row.type"></mat-icon>
+        </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container cdkColumnDef="name">
-        <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.name}}</md-cell>
+        <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *cdkCellDef="let row"> {{row.name}}</mat-cell>
     </ng-container>
 
     <!-- Type Column -->
     <ng-container cdkColumnDef="type">
-        <md-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Type</md-header-cell>
-        <md-cell *cdkCellDef="let row" fxHide fxShow.gt-md> {{row.type}}</md-cell>
+        <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Type</mat-header-cell>
+        <mat-cell *cdkCellDef="let row" fxHide fxShow.gt-md> {{row.type}}</mat-cell>
     </ng-container>
 
     <!-- Owner Column -->
     <ng-container cdkColumnDef="owner">
-        <md-header-cell *cdkHeaderCellDef fxHide.xs>Owner</md-header-cell>
-        <md-cell *cdkCellDef="let row" fxHide.xs> {{row.owner}}</md-cell>
+        <mat-header-cell *cdkHeaderCellDef fxHide.xs>Owner</mat-header-cell>
+        <mat-cell *cdkCellDef="let row" fxHide.xs> {{row.owner}}</mat-cell>
     </ng-container>
 
     <!-- Size Column -->
     <ng-container cdkColumnDef="size">
-        <md-header-cell *cdkHeaderCellDef fxHide.xs>Size</md-header-cell>
-        <md-cell *cdkCellDef="let row" fxHide.xs>{{row.size === '' ? '-': row.size}}</md-cell>
+        <mat-header-cell *cdkHeaderCellDef fxHide.xs>Size</mat-header-cell>
+        <mat-cell *cdkCellDef="let row" fxHide.xs>{{row.size === '' ? '-': row.size}}</mat-cell>
     </ng-container>
 
     <!-- Modified Column -->
     <ng-container cdkColumnDef="modified">
-        <md-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Modified</md-header-cell>
-        <md-cell *cdkCellDef="let row" fxHide fxShow.gt-md>{{row.modified}}</md-cell>
+        <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Modified</mat-header-cell>
+        <mat-cell *cdkCellDef="let row" fxHide fxShow.gt-md>{{row.modified}}</mat-cell>
     </ng-container>
 
     <!-- Detail Button Column -->
     <ng-container cdkColumnDef="detail-button">
-        <md-header-cell *cdkHeaderCellDef fxFlex="48px" fxHide.gt-md></md-header-cell>
-        <md-cell *cdkCellDef="let row" fxFlex="48px" fxHide.gt-md>
-            <button md-icon-button class="sidenav-toggle"
-                    fuseMdSidenavToggler="file-manager-right-sidenav">
-                <md-icon>info</md-icon>
+        <mat-header-cell *cdkHeaderCellDef fxFlex="48px" fxHide.gt-md></mat-header-cell>
+        <mat-cell *cdkCellDef="let row" fxFlex="48px" fxHide.gt-md>
+            <button mat-icon-button class="sidenav-toggle"
+                    fuseMatSidenavToggler="file-manager-right-sidenav">
+                <mat-icon>info</mat-icon>
             </button>
-        </md-cell>
+        </mat-cell>
     </ng-container>
 
-    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-    <md-row *cdkRowDef="let row; columns: displayedColumns;"
-            (click)="onSelect(row)"
-            [ngClass]="{'md-light-blue-50-bg':row == selected}"
-            md-ripple
-            [@animate]="{value:'*',params:{y:'100%'}}"
+    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *cdkRowDef="let row; columns: displayedColumns;"
+             (click)="onSelect(row)"
+             [ngClass]="{'mat-light-blue-50-bg':row == selected}"
+             matRipple
+             [@animate]="{value:'*',params:{y:'100%'}}"
     >
-    </md-row>
-</md-table>
+    </mat-row>
+</mat-table>

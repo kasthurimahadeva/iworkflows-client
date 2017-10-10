@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * @title Basic checkboxes
  */
 @Component({
-  selector: 'checkbox-overview-example',
-  templateUrl: 'checkbox-overview-example.html',
+    selector   : 'checkbox-overview-example',
+    templateUrl: 'checkbox-overview-example.html'
 })
-export class CheckboxOverviewExample {}
+export class CheckboxOverviewExample
+{
+}

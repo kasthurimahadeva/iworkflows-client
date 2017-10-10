@@ -10,12 +10,12 @@
         </fuse-scrumboard-board-edit-list-name>
 
         <div fxFlex="0 1 auto">
-            <button md-icon-button class="list-header-option-button" [mdMenuTriggerFor]="listMenu">
-                <md-icon>more_vert</md-icon>
+            <button mat-icon-button class="list-header-option-button" [matMenuTriggerFor]="listMenu">
+                <mat-icon>more_vert</mat-icon>
             </button>
-            <md-menu #listMenu="mdMenu">
-                <button md-menu-item (click)="removeList(list.id)">Remove List</button>
-            </md-menu>
+            <mat-menu #listMenu="matMenu">
+                <button mat-menu-item (click)="removeList(list.id)">Remove List</button>
+            </mat-menu>
         </div>
 
     </div>

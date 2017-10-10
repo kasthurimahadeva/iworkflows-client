@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../../chat.service';
-import { FuseMdSidenavHelperService } from '../../../../../../../core/directives/md-sidenav-helper/md-sidenav-helper.service';
+import { FuseMatSidenavHelperService } from '../../../../../../../core/directives/mat-sidenav-helper/mat-sidenav-helper.service';
 import { ObservableMedia } from '@angular/flex-layout';
 import { fuseAnimations } from '../../../../../../../core/animations';
 
@@ -20,7 +20,7 @@ export class FuseChatChatsSidenavComponent implements OnInit
 
     constructor(
         private chatService: ChatService,
-        private fuseMdSidenavService: FuseMdSidenavHelperService,
+        private fuseMatSidenavService: FuseMatSidenavHelperService,
         public media: ObservableMedia
     )
     {
@@ -50,7 +50,7 @@ export class FuseChatChatsSidenavComponent implements OnInit
 
         if ( !this.media.isActive('gt-md') )
         {
-            this.fuseMdSidenavService.getSidenav('chat-left-sidenav').toggle();
+            this.fuseMatSidenavService.getSidenav('chat-left-sidenav').toggle();
         }
     }
 

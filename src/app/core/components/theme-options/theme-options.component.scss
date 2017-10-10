@@ -14,6 +14,7 @@
     display: block;
     right: 0;
     top: 160px;
+    z-index: 998;
 
     &.bar-closed .theme-options-panel {
         display: none;
@@ -48,7 +49,7 @@
             color: rgba(0, 0, 0, 0.54);
         }
 
-        .mat-divider{
+        .mat-divider {
             display: block !important;
             width: 100%;
             margin: 24px 0 16px 0;
@@ -102,7 +103,7 @@
         opacity: .75;
         z-index: 998;
 
-        md-icon {
+        mat-icon {
             animation: rotating 3s linear infinite;
         }
 

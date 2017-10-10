@@ -2,29 +2,29 @@
 <div class="sidenav-header">
 
     <!-- USER TOOLBAR -->
-    <md-toolbar>
+    <mat-toolbar>
 
         <!-- TOOLBAR TOP -->
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
 
-            <button md-button class="mat-icon-button" (click)="changeLeftSidenavView('chats')" aria-label="back">
-                <md-icon>arrow_back</md-icon>
+            <button mat-button class="mat-icon-button" (click)="changeLeftSidenavView('chats')" aria-label="back">
+                <mat-icon>arrow_back</mat-icon>
             </button>
 
         </div>
         <!-- / TOOLBAR TOP -->
 
         <!-- TOOLBAR BOTTOM -->
-        <md-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
+        <mat-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
 
             <img [src]="user.avatar" class="avatar user-avatar huge" alt="{{user.name}}"/>
 
             <div class="user-name my-8">{{user.name}}</div>
 
-        </md-toolbar-row>
+        </mat-toolbar-row>
         <!-- / TOOLBAR BOTTOM -->
 
-    </md-toolbar>
+    </mat-toolbar>
     <!-- / USER TOOLBAR -->
 </div>
 
@@ -32,47 +32,47 @@
 <div class="sidenav-content p-16" fusePerfectScrollbar fxFlex>
 
     <!-- USER MOOD -->
-    <md-card>
+    <mat-card>
 
         <form [formGroup]="userForm" fxLayout="column">
 
-            <md-input-container class="mb-24" fxFlex="0 1 auto">
-                <textarea mdInput placeholder="Mood" name="mood"
+            <mat-form-field class="mb-24" fxFlex="0 1 auto">
+                <textarea matInput placeholder="Mood" name="mood"
                           formControlName="mood" rows="3"></textarea>
-            </md-input-container>
+            </mat-form-field>
 
-            <md-radio-group formControlName="status" fxLayout="column">
+            <mat-radio-group formControlName="status" fxLayout="column">
 
-                <md-radio-button value="online" class="py-8">
+                <mat-radio-button value="online" class="py-8">
                     <div fxLayout="row" fxLayoutAlign="start center">
-                        <md-icon class="status online mr-8"></md-icon>
+                        <mat-icon class="status online mr-8"></mat-icon>
                         <span class="mat-h4 m-0">Online</span>
                     </div>
-                </md-radio-button>
+                </mat-radio-button>
 
-                <md-radio-button value="away" class="py-8">
+                <mat-radio-button value="away" class="py-8">
                     <div fxLayout="row" fxLayoutAlign="start center">
-                        <md-icon class="status away mr-8"></md-icon>
+                        <mat-icon class="status away mr-8"></mat-icon>
                         <span class="mat-h4 m-0">Away</span>
                     </div>
-                </md-radio-button>
+                </mat-radio-button>
 
-                <md-radio-button value="do-not-disturb" class="py-8">
+                <mat-radio-button value="do-not-disturb" class="py-8">
                     <div fxLayout="row" fxLayoutAlign="start center">
-                        <md-icon class="status do-not-disturb mr-8"></md-icon>
+                        <mat-icon class="status do-not-disturb mr-8"></mat-icon>
                         <span class="mat-h4 m-0">Do not disturb</span>
                     </div>
-                </md-radio-button>
+                </mat-radio-button>
 
-                <md-radio-button value="offline" class="py-8">
+                <mat-radio-button value="offline" class="py-8">
                     <div fxLayout="row" fxLayoutAlign="start center">
-                        <md-icon class="status offline mr-8"></md-icon>
+                        <mat-icon class="status offline mr-8"></mat-icon>
                         <span class="mat-h4 m-0">Offline</span>
                     </div>
-                </md-radio-button>
-            </md-radio-group>
+                </mat-radio-button>
+            </mat-radio-group>
 
         </form>
-    </md-card>
+    </mat-card>
     <!-- / USER MOOD -->
 </div>

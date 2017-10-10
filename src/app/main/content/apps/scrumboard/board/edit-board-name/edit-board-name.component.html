@@ -1,7 +1,7 @@
 <div *ngIf="!formActive" class="board-name" fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
     <span>{{board.name}}</span>
-    <button md-icon-button (click)="openForm()">
-        <md-icon class="s-16">edit_mode</md-icon>
+    <button mat-icon-button (click)="openForm()">
+        <mat-icon class="s-16">edit_mode</mat-icon>
     </button>
 </div>
 
@@ -12,10 +12,10 @@
 
     <input formControlName="name" #nameInput fxFlex="1 0 auto" placeholder="Write a board name">
 
-    <button md-icon-button fxFlex="0 1 auto">
-        <md-icon>check</md-icon>
+    <button mat-icon-button fxFlex="0 1 auto">
+        <mat-icon>check</mat-icon>
     </button>
-    <button md-icon-button fxFlex="0 1 auto" (click)="closeForm()" type="button">
-        <md-icon>close</md-icon>
+    <button mat-icon-button fxFlex="0 1 auto" (click)="closeForm()" type="button">
+        <mat-icon>close</mat-icon>
     </button>
 </form>

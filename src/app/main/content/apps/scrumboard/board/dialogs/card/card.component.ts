@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialog, MdDialogRef, MdMenuTrigger } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatMenuTrigger } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 import { ScrumboardService } from '../../../scrumboard.service';
 import { NgForm } from '@angular/forms/src/forms';
@@ -21,15 +21,15 @@ export class FuseScrumboardCardDialogComponent implements OnInit, OnDestroy
     onBoardChanged: Subscription;
     toggleInArray = FuseUtils.toggleInArray;
 
-    @ViewChild('checklistMenuTrigger') checklistMenu: MdMenuTrigger;
+    @ViewChild('checklistMenuTrigger') checklistMenu: MatMenuTrigger;
     @ViewChild('newCheckListTitleField') newCheckListTitleField;
 
-    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
+    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
     constructor(
-        public dialogRef: MdDialogRef<FuseScrumboardCardDialogComponent>,
-        @Inject(MD_DIALOG_DATA) private data: any,
-        public dialog: MdDialog,
+        public dialogRef: MatDialogRef<FuseScrumboardCardDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private data: any,
+        public dialog: MatDialog,
         private scrumboardService: ScrumboardService
     )
     {

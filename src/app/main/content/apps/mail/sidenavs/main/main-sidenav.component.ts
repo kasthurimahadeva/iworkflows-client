@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MailService } from '../../mail.service';
 import { Subscription } from 'rxjs/Subscription';
 import { FuseMailComposeDialogComponent } from '../../dialogs/compose/compose.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 import { fuseAnimations } from '../../../../../../core/animations';
 
@@ -27,7 +27,7 @@ export class FuseMailMainSidenavComponent implements OnInit, OnDestroy
 
     constructor(
         private mailService: MailService,
-        public dialog: MdDialog
+        public dialog: MatDialog
     )
     {
         // Data

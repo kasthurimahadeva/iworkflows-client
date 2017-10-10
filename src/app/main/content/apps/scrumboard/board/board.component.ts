@@ -10,7 +10,7 @@ import { fuseAnimations } from '../../../../../core/animations';
     selector   : 'fuse-scrumboard-board',
     templateUrl: './board.component.html',
     styleUrls  : ['./board.component.scss'],
-    animations  : fuseAnimations
+    animations : fuseAnimations
 })
 export class FuseScrumboardBoardComponent implements OnInit, OnDestroy
 {

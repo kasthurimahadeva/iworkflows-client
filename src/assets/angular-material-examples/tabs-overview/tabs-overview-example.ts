@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * @title Basic tabs
  */
 @Component({
-  selector: 'tabs-overview-example',
-  templateUrl: 'tabs-overview-example.html',
+    selector   : 'tabs-overview-example',
+    templateUrl: 'tabs-overview-example.html'
 })
-export class TabsOverviewExample {}
+export class TabsOverviewExample
+{
+}

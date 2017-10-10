@@ -3,7 +3,7 @@
     <div class="big-circle mat-elevation-z1 app-logo" fxLayout="column" fxLayoutAlign="center center"
          *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
 
-        <md-icon class="s-64 s-md-128">chat</md-icon>
+        <mat-icon class="s-64 s-mat-128">chat</mat-icon>
 
     </div>
 
@@ -11,7 +11,7 @@
 
     <span fxHide fxShow.gt-md class="app-message" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms',y:'50px'}}">Select contact to start the chat!..</span>
 
-    <button md-raised-button fxHide.gt-md class="" fuseMdSidenavToggler="chat-left-sidenav">
+    <button mat-raised-button fxHide.gt-md class="" fuseMatSidenavToggler="chat-left-sidenav">
         Select contact to start the chat!..
     </button>
 

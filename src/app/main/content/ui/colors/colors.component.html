@@ -1,21 +1,21 @@
 <div id="material-colors" class="page-layout simple tabbed" fxLayout="column" fusePerfectScrollbar>
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
         <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
-                <md-icon class="secondary-text s-16">home</md-icon>
-                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <mat-icon class="secondary-text s-16">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">User Interface</span>
             </div>
             <div class="h1 mt-16">Colors</div>
         </div>
 
-        <a md-raised-button class="reference-button md-white-bg mt-16 mt-sm-0"
+        <a mat-raised-button class="reference-button mat-white-bg mt-16 mt-sm-0"
            href="https://www.google.com/design/spec/style/color.html#color-color-palette"
            target="_blank">
-            <md-icon>link</md-icon>
+            <mat-icon>link</mat-icon>
             <span>Reference</span>
         </a>
 
@@ -25,27 +25,27 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <md-tab-group class="color-tabs" md-dynamic-height="true" (selectChange)="selectColor($event)">
+        <mat-tab-group class="color-tabs" dynamicHeight="true" (selectChange)="selectColor($event)">
 
-            <md-tab *ngFor="let color of ['primary', 'accent', 'warn']" label="{{color}}">
-                <ng-template md-tab-label>
+            <mat-tab *ngFor="let color of ['primary', 'accent', 'warn']" label="{{color}}">
+                <ng-template mat-tab-label>
                     <span class="text-capitalize">{{color}}</span>
                 </ng-template>
-            </md-tab>
+            </mat-tab>
 
-            <md-tab *ngFor="let color of (colors | keys)" label="{{color.key}}">
-                <ng-template md-tab-label>
+            <mat-tab *ngFor="let color of (colors | keys)" label="{{color.key}}">
+                <ng-template mat-tab-label>
                     <span class="text-capitalize">{{color.key}}</span>
                 </ng-template>
-            </md-tab>
+            </mat-tab>
 
-            <md-tab *ngFor="let color of ['white', 'black']" label="{{color}}">
-                <ng-template md-tab-label>
+            <mat-tab *ngFor="let color of ['white', 'black']" label="{{color}}">
+                <ng-template mat-tab-label>
                     <span class="text-capitalize">{{color}}</span>
                 </ng-template>
-            </md-tab>
+            </mat-tab>
 
-        </md-tab-group>
+        </mat-tab-group>
 
         <div class="color-tabs-content p-24" fxLayout="column">
 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="color-header colored-bg p-8"
-                 [ngClass]="'md-'+selectedColor+'-bg'"
+                 [ngClass]="'mat-'+selectedColor+'-bg'"
                  fxLayout="column">
                 <div class="p-8">
                     <h3 class="text-capitalize">{{selectedColor}}</h3>
@@ -66,8 +66,8 @@
 
                     <div fxFlex="30" fxLayoutAlign="start center">500</div>
 
-                    <div class="colored-bg p-8" [ngClass]="'md-'+selectedColor+'-bg'" fxFlex="30">
-                        <div class="pb-4">.{{'md-'+selectedColor+'-bg'}}</div>
+                    <div class="colored-bg p-8" [ngClass]="'mat-'+selectedColor+'-bg'" fxFlex="30">
+                        <div class="pb-4">.{{'mat-'+selectedColor+'-bg'}}</div>
                         <div class="secondary-text pb-4">.secondary-text</div>
                         <div class="hint-text pb-4">.hint-text, .disabled-text</div>
                         <div class="divider">.divider</div>
@@ -91,8 +91,8 @@
 
                     <div class="p-8" fxFlex="30" fxLayoutAlign="start center">{{hue}}</div>
 
-                    <div class="colored-bg p-8" [ngClass]="'md-'+selectedColor+'-'+hue+'-bg'" fxFlex="30">
-                        <div class="pb-4">.{{'md-'+selectedColor+'-'+hue+'-bg'}}</div>
+                    <div class="colored-bg p-8" [ngClass]="'mat-'+selectedColor+'-'+hue+'-bg'" fxFlex="30">
+                        <div class="pb-4">.{{'mat-'+selectedColor+'-'+hue+'-bg'}}</div>
                         <div class="secondary-text pb-4">.secondary-text</div>
                         <div class="hint-text pb-4">.hint-text, .disabled-text</div>
                         <div class="divider">.divider</div>

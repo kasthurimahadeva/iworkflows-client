@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../contacts.service';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
@@ -13,11 +13,11 @@ export class FuseContactsSelectedBarComponent implements OnInit
     selectedContacts: string[];
     hasSelectedContacts: boolean;
     isIndeterminate: boolean;
-    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
+    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
     constructor(
         private contactsService: ContactsService,
-        public dialog: MdDialog
+        public dialog: MatDialog
     )
     {
         this.contactsService.onSelectedContactsChanged

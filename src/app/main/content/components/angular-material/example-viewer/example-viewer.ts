@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, Input, OnDestroy, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import 'rxjs/add/operator/first';
 import { CopierService } from '../../../../../core/components/copier/copier.service';
 import { EXAMPLE_COMPONENTS } from '../example-components';
@@ -49,7 +49,7 @@ export class FuseExampleViewerComponent implements AfterViewInit, OnDestroy
     showSource = false;
 
     constructor(
-        private snackbar: MdSnackBar,
+        private snackbar: MatSnackBar,
         private copier: CopierService,
         private _resolver: ComponentFactoryResolver
     )

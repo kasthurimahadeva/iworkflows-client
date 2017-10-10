@@ -2,31 +2,31 @@
 <div class="sidenav-header" *ngIf="contact">
 
     <!-- CONTACT TOOLBAR -->
-    <md-toolbar>
+    <mat-toolbar>
 
         <!-- TOOLBAR TOP -->
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
 
             <div>Contact Info</div>
 
-            <button md-button class="mat-icon-button" fuseMdSidenavToggler="chat-right-sidenav" aria-label="close">
-                <md-icon>close</md-icon>
+            <button mat-button class="mat-icon-button" fuseMatSidenavToggler="chat-right-sidenav" aria-label="close">
+                <mat-icon>close</mat-icon>
             </button>
 
         </div>
         <!-- / TOOLBAR TOP -->
 
         <!-- TOOLBAR BOTTOM -->
-        <md-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
+        <mat-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
 
             <img [src]="contact.avatar" class="avatar contact-avatar huge" alt="{{contact.name}}"/>
 
             <div class="contact-name my-8">{{contact.name}}</div>
 
-        </md-toolbar-row>
+        </mat-toolbar-row>
         <!-- / TOOLBAR BOTTOM -->
 
-    </md-toolbar>
+    </mat-toolbar>
     <!-- / CONTACT TOOLBAR -->
 </div>
 
@@ -34,14 +34,14 @@
 <div class="sidenav-content p-16" fusePerfectScrollbar fxFlex *ngIf="contact">
 
     <!-- CONTACT MOOD -->
-    <md-card>
+    <mat-card>
 
-        <md-input-container fxFlex>
-                <textarea mdInput placeholder="Mood" name="mood"
+        <mat-form-field fxFlex>
+                <textarea matInput placeholder="Mood" name="mood"
                           [value]="contact.mood" rows="3" disabled>
                 </textarea>
-        </md-input-container>
+        </mat-form-field>
 
-    </md-card>
+    </mat-card>
     <!-- / CONTACT MOOD -->
 </div>

@@ -2,23 +2,23 @@
 <div class="chat" fxFlex fxLayout="column">
 
     <!-- CHAT TOOLBAR -->
-    <md-toolbar class="chat-toolbar">
+    <mat-toolbar class="chat-toolbar">
 
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
 
             <div fxLayout="row" fxLayoutAlign="start center">
 
                 <!-- RESPONSIVE CHATS BUTTON-->
-                <div md-button fxHide.gt-md class="responsive-chats-button mat-icon-button mr-16"
-                     fuseMdSidenavToggler="chat-left-sidenav"
+                <div mat-button fxHide.gt-md class="responsive-chats-button mat-icon-button mr-16"
+                     fuseMatSidenavToggler="chat-left-sidenav"
                      aria-label="chats button">
-                    <md-icon class="s-36">chat</md-icon>
+                    <mat-icon class="s-36">chat</mat-icon>
                 </div>
                 <!-- / RESPONSIVE CHATS BUTTON-->
 
                 <!-- CHAT CONTACT-->
                 <div class="chat-contact" fxLayout="row" fxLayoutAlign="start center"
-                     fuseMdSidenavToggler="chat-right-sidenav" (click)="selectContact()">
+                     fuseMatSidenavToggler="chat-right-sidenav" (click)="selectContact()">
 
                     <div class="avatar-wrapper">
 
@@ -26,9 +26,9 @@
                              class="avatar"
                              alt="{{contact.name}}"/>
 
-                        <md-icon class="s-16 status"
-                                 [ngClass]="contact.status">
-                        </md-icon>
+                        <mat-icon class="s-16 status"
+                                  [ngClass]="contact.status">
+                        </mat-icon>
                     </div>
 
                     <div class="chat-contact-name">
@@ -40,20 +40,20 @@
             </div>
 
             <div>
-                <button md-button class="mat-icon-button" [mdMenuTriggerFor]="contactMenu"
+                <button mat-button class="mat-icon-button" [matMenuTriggerFor]="contactMenu"
                         aria-label="more">
-                    <md-icon>more_vert</md-icon>
+                    <mat-icon>more_vert</mat-icon>
                 </button>
 
-                <md-menu #contactMenu="mdMenu">
-                    <button md-menu-item fuseMdSidenavToggler="chat-right-sidenav" (click)="selectContact()">
+                <mat-menu #contactMenu="matMenu">
+                    <button mat-menu-item fuseMatSidenavToggler="chat-right-sidenav" (click)="selectContact()">
                         Contact Info
                     </button>
-                </md-menu>
+                </mat-menu>
             </div>
 
         </div>
-    </md-toolbar>
+    </mat-toolbar>
     <!-- / CHAT TOOLBAR -->
 
     <!-- CHAT CONTENT -->
@@ -98,13 +98,13 @@
               fxLayout="row"
               fxLayoutAlign="start center">
 
-            <md-input-container class="" fxFlex floatPlaceholder="never">
-                <textarea mdInput #replyInput placeholder="Type and hit enter to send message"
+            <mat-form-field class="" fxFlex floatPlaceholder="never">
+                <textarea matInput #replyInput placeholder="Type and hit enter to send message"
                           ngModel name="message"></textarea>
-            </md-input-container>
+            </mat-form-field>
 
-            <button md-fab class="" type="submit" aria-label="Send message">
-                <md-icon>send</md-icon>
+            <button mat-fab class="" type="submit" aria-label="Send message">
+                <mat-icon>send</mat-icon>
             </button>
 
         </form>

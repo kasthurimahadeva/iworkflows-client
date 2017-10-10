@@ -134,8 +134,15 @@ fuse-navbar-vertical {
         }
     }
 
-    .nav-bar-content {
+    .navbar-content {
         flex: 1;
+    }
+}
+
+fuse-navbar-horizontal + #wrapper > fuse-navbar-vertical {
+    display: none;
+    @include media-breakpoint-down(md) {
+        display: flex;
     }
 }
 

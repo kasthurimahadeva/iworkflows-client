@@ -129,7 +129,7 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
             {
                 this.selectedBg = MatColors.getColor(this.selectedPalette)[this.selectedHue];
                 this.selectedFg = MatColors.getColor(this.selectedPalette).contrast[this.selectedHue];
-                this.selectedClass = 'md-' + this.selectedPalette + '-' + this.selectedHue + '-bg';
+                this.selectedClass = 'mat-' + this.selectedPalette + '-' + this.selectedHue + '-bg';
             }
             else
             {

@@ -1,7 +1,7 @@
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
 import { FormGroup } from '@angular/forms';
 import { CalendarEventModel } from './event.model';
@@ -38,12 +38,12 @@ export class FuseCalendarComponent implements OnInit
 
     dialogRef: any;
 
-    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
+    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
     selectedDay: any;
 
     constructor(
-        public dialog: MdDialog,
+        public dialog: MatDialog,
         public calendarService: CalendarService
     )
     {

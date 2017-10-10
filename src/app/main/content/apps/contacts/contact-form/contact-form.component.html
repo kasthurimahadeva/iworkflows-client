@@ -1,104 +1,104 @@
 <div class="dialog-content-wrapper">
-    <md-toolbar md-dialog-title class="mat-accent m-0">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
             <span class="title dialog-title">{{dialogTitle}}</span>
-            <button md-button class="mat-icon-button"
+            <button mat-button class="mat-icon-button"
                     (click)="dialogRef.close()"
                     aria-label="Close dialog">
-                <md-icon>close</md-icon>
+                <mat-icon>close</mat-icon>
             </button>
         </div>
 
-        <md-toolbar-row class="toolbar-bottom py-8 py-sm-16" fxLayout="column" fxLayoutAlign="center center">
+        <mat-toolbar-row class="toolbar-bottom py-8 py-sm-16" fxLayout="column" fxLayoutAlign="center center">
             <img [src]="contact.avatar" class=" avatar contact-avatar huge"
                  [alt]="contact.name"/>
             <div class="contact-name">{{contact.name}}</div>
-        </md-toolbar-row>
-    </md-toolbar>
+        </mat-toolbar-row>
+    </mat-toolbar>
 
-    <div md-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
 
         <form [formGroup]="contactForm">
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">account_circle</md-icon>
-                <md-input-container fxFlex>
-                    <input name="name" formControlName="name" placeholder="Name" mdInput required>
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">account_circle</mat-icon>
+                <mat-form-field fxFlex>
+                    <input name="name" formControlName="name" placeholder="Name" matInput required>
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12"></md-icon>
-                <md-input-container fxFlex>
-                    <input name="lastName" formControlName="lastName" placeholder="Lastname" mdInput>
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12"></mat-icon>
+                <mat-form-field fxFlex>
+                    <input name="lastName" formControlName="lastName" placeholder="Lastname" matInput>
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">star</md-icon>
-                <md-input-container fxFlex>
-                    <input name="nickname" formControlName="nickname" mdInput placeholder="Nickname">
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">star</mat-icon>
+                <mat-form-field fxFlex>
+                    <input name="nickname" formControlName="nickname" matInput placeholder="Nickname">
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">phone</md-icon>
-                <md-input-container fxFlex>
-                    <input formControlName="phone" mdInput placeholder="Phone number">
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">phone</mat-icon>
+                <mat-form-field fxFlex>
+                    <input formControlName="phone" matInput placeholder="Phone number">
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">email</md-icon>
-                <md-input-container fxFlex>
-                    <input name="email" formControlName="email" mdInput type="email" placeholder="Email">
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">email</mat-icon>
+                <mat-form-field fxFlex>
+                    <input name="email" formControlName="email" matInput type="email" placeholder="Email">
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">domain</md-icon>
-                <md-input-container fxFlex>
-                    <input name="company" formControlName="company" mdInput placeholder="Company">
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">domain</mat-icon>
+                <mat-form-field fxFlex>
+                    <input name="company" formControlName="company" matInput placeholder="Company">
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">work</md-icon>
-                <md-input-container fxFlex>
-                    <input name="jobTitle" formControlName="jobTitle" mdInput placeholder="Job title">
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">work</mat-icon>
+                <mat-form-field fxFlex>
+                    <input name="jobTitle" formControlName="jobTitle" matInput placeholder="Job title">
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-form-field class="mr-24" fxFlex>
-                    <input mdInput [mdDatepicker]="birthdayDatePicker" placeholder="Birthday">
-                    <md-datepicker-toggle mdSuffix [for]="birthdayDatePicker"></md-datepicker-toggle>
-                    <md-datepicker #birthdayDatePicker></md-datepicker>
-                </md-form-field>
+                <mat-form-field class="mr-24" fxFlex>
+                    <input matInput [matDatepicker]="birthdayDatePicker" placeholder="Birthday">
+                    <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #birthdayDatePicker></mat-datepicker>
+                </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">home</md-icon>
-                <md-input-container fxFlex>
-                    <input name="address" formControlName="address" mdInput placeholder="Address">
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">home</mat-icon>
+                <mat-form-field fxFlex>
+                    <input name="address" formControlName="address" matInput placeholder="Address">
+                </mat-form-field>
             </div>
 
             <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
-                <md-icon class="mr-12 mt-12">note</md-icon>
-                <md-input-container fxFlex>
-                    <textarea name="notes" formControlName="notes" placeholder="Notes" mdInput type="text" max-rows="4"></textarea>
-                </md-input-container>
+                <mat-icon class="mr-12 mt-12">note</mat-icon>
+                <mat-form-field fxFlex>
+                    <textarea name="notes" formControlName="notes" placeholder="Notes" matInput type="text" max-rows="4"></textarea>
+                </mat-form-field>
             </div>
 
         </form>
 
     </div>
 
-    <div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
 
         <button *ngIf="action !=='edit'"
-                md-raised-button
+                mat-raised-button
                 (click)="dialogRef.close(contactForm)"
                 class="save-button mat-accent"
                 [disabled]="contactForm.invalid"
@@ -107,7 +107,7 @@
         </button>
 
         <button *ngIf="action ==='edit'"
-                md-raised-button
+                mat-raised-button
                 (click)="dialogRef.close(['save',contactForm])"
                 class="save-button mat-accent"
                 [disabled]="contactForm.invalid"
@@ -116,12 +116,12 @@
         </button>
 
         <button *ngIf="action ==='edit'"
-                md-button
+                mat-button
                 class="mat-icon-button"
                 (click)="dialogRef.close(['delete',contactForm])"
                 aria-label="Delete"
-                md-tooltip="Delete">
-            <md-icon>delete</md-icon>
+                matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
         </button>
 
     </div>

@@ -1,62 +1,62 @@
 <div class="dialog-content-wrapper">
-    <md-toolbar md-dialog-title class="mat-accent m-0">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
             <span class="title dialog-title">New Message</span>
-            <button md-button class="mat-icon-button"
+            <button mat-button class="mat-icon-button"
                     (click)="dialogRef.close()"
                     aria-label="Close dialog">
-                <md-icon>close</md-icon>
+                <mat-icon>close</mat-icon>
             </button>
         </div>
-    </md-toolbar>
+    </mat-toolbar>
 
-    <div md-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
 
         <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
 
-            <md-input-container>
-                <input mdInput name="from"
+            <mat-form-field>
+                <input matInput name="from"
                        placeholder="From"
                        formControlName="from"
                        type="email">
-            </md-input-container>
+            </mat-form-field>
 
-            <md-input-container>
-                <input mdInput name="to"
+            <mat-form-field>
+                <input matInput name="to"
                        placeholder="To"
                        formControlName="to"
                        type="email" required>
-            </md-input-container>
+            </mat-form-field>
 
-            <md-input-container>
-                <input mdInput
+            <mat-form-field>
+                <input matInput
                        name="cc"
                        placeholder="Cc"
                        formControlName="cc"
                        type="email">
-            </md-input-container>
+            </mat-form-field>
 
-            <md-input-container>
-                <input mdInput
+            <mat-form-field>
+                <input matInput
                        name="bcc"
                        placeholder="Bcc"
                        formControlName="bcc"
                        type="email">
-            </md-input-container>
+            </mat-form-field>
 
-            <md-input-container>
-                <input mdInput name="subject"
+            <mat-form-field>
+                <input matInput name="subject"
                        placeholder="Subject"
                        formControlName="subject">
-            </md-input-container>
+            </mat-form-field>
 
-            <md-input-container>
-            <textarea mdInput name="message"
+            <mat-form-field>
+            <textarea matInput name="message"
                       placeholder="Message"
                       formControlName="message"
                       rows="6">
             </textarea>
-            </md-input-container>
+            </mat-form-field>
 
             <div class="attachment-list">
 
@@ -66,8 +66,8 @@
                         <span class="size">(12 Kb)</span>
                     </div>
 
-                    <button md-icon-button aria-label="Delete attachment">
-                        <md-icon class="s-16">close</md-icon>
+                    <button mat-icon-button aria-label="Delete attachment">
+                        <mat-icon class="s-16">close</mat-icon>
                     </button>
                 </div>
 
@@ -77,17 +77,17 @@
                         <span class="size">(350 Kb)</span>
                     </div>
 
-                    <button md-icon-button aria-label="Delete attachment">
-                        <md-icon class="s-16">close</md-icon>
+                    <button mat-icon-button aria-label="Delete attachment">
+                        <mat-icon class="s-16">close</mat-icon>
                     </button>
                 </div>
             </div>
         </form>
     </div>
 
-    <div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
         <div>
-            <button md-raised-button
+            <button mat-raised-button
                     (click)="dialogRef.close(['send',composeForm])"
                     class="save-button mat-accent"
                     [disabled]="composeForm.invalid"
@@ -95,17 +95,17 @@
                 SEND
             </button>
 
-            <button md-icon-button md-tooltip="Attach a file">
-                <md-icon>attach_file</md-icon>
+            <button mat-icon-button matTooltip="Attach a file">
+                <mat-icon>attach_file</mat-icon>
             </button>
         </div>
 
-        <button md-button
+        <button mat-button
                 class="mat-icon-button"
                 (click)="dialogRef.close(['delete',composeForm])"
                 aria-label="Delete"
-                md-tooltip="Delete">
-            <md-icon>delete</md-icon>
+                matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
         </button>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="start center">
 
-    <md-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
-                 (click)="$event.stopPropagation();"></md-checkbox>
+    <mat-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
+                  (click)="$event.stopPropagation();"></mat-checkbox>
 
     <div class="info" fxFlex FlexLayout="column">
 
@@ -11,7 +11,7 @@
                 <img class="avatar" *ngIf="mail.from?.avatar" alt="{{mail.from?.name}}" src="{{mail.from?.avatar}}"/>
                 <div class="avatar" *ngIf="!mail.from?.avatar">{{mail.from?.name[0]}}</div>
                 <span class="text-truncate" *ngIf="mail?.from">{{mail.from?.name}}</span>
-                <md-icon *ngIf="mail.hasAttachments">attachment</md-icon>
+                <mat-icon *ngIf="mail.hasAttachments">attachment</mat-icon>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start center">
@@ -20,15 +20,15 @@
 
                 <!--<div class="actions" fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.gt-sm>
 
-                    <button md-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
-                        <md-icon *ngIf="mail.starred">star</md-icon>
-                        <md-icon *ngIf="!mail.starred">star_outline</md-icon>
+                    <button mat-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
+                        <mat-icon *ngIf="mail.starred">star</mat-icon>
+                        <mat-icon *ngIf="!mail.starred">star_outline</mat-icon>
                     </button>
 
-                    <button md-button class="mat-icon-button" (click)="toggleImportant($event)"
+                    <button mat-button class="mat-icon-button" (click)="toggleImportant($event)"
                             aria-label="Toggle important">
-                        <md-icon *ngIf="mail.important">label</md-icon>
-                        <md-icon *ngIf="!mail.important">label_outline</md-icon>
+                        <mat-icon *ngIf="mail.important">label</mat-icon>
+                        <mat-icon *ngIf="!mail.important">label_outline</mat-icon>
                     </button>
 
                 </div>-->

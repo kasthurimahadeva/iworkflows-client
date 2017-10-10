@@ -2,19 +2,19 @@
 
 :host {
 
-    md-sidenav-container {
+    mat-sidenav-container {
         width: 100%;
         height: 100%;
 
-        md-sidenav {
+        mat-sidenav {
             width: 320px !important;
             min-width: 320px !important;
             max-width: 320px !important;
         }
 
         #board {
-            flex-direction: column;
             display: flex;
+            flex-direction: column !important;
             height: 100%;
 
             > .header {
@@ -38,7 +38,7 @@
 
                         .editable-buttons {
 
-                            md-icon {
+                            mat-icon {
                                 color: #FFFFFF !important;
                             }
                         }
@@ -46,7 +46,7 @@
 
                     .right-side {
 
-                        > .md-button:last-child {
+                        > .mat-button:last-child {
                             margin-right: 0;
                         }
                     }

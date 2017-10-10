@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -13,8 +13,8 @@ export class FuseMailComposeDialogComponent implements OnInit
     composeForm: FormGroup;
 
     constructor(
-        public dialogRef: MdDialogRef<FuseMailComposeDialogComponent>,
-        @Inject(MD_DIALOG_DATA) private data: any
+        public dialogRef: MatDialogRef<FuseMailComposeDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private data: any
     )
     {
         this.composeForm = this.createComposeForm();

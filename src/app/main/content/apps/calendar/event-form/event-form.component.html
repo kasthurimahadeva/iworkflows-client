@@ -1,40 +1,40 @@
 <div class="dialog-content-wrapper">
-    <md-toolbar md-dialog-title class="mat-accent m-0">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
             <span class="title dialog-title">{{dialogTitle}}</span>
-            <button md-button class="mat-icon-button"
+            <button mat-button class="mat-icon-button"
                     (click)="dialogRef.close()"
                     aria-label="Close dialog">
-                <md-icon>close</md-icon>
+                <mat-icon>close</mat-icon>
             </button>
         </div>
-    </md-toolbar>
+    </mat-toolbar>
 
-    <div md-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
 
         <form name="eventForm" [formGroup]="eventForm" class="event-form w-100-p" fxLayout="column" fxFlex>
 
-            <md-input-container class="w-100-p">
-                <input mdInput
+            <mat-form-field class="w-100-p">
+                <input matInput
                        name="title"
                        formControlName="title"
                        placeholder="Title"
                        required>
-            </md-input-container>
+            </mat-form-field>
 
             <div class="py-16" fxFlex="1 0 auto" fxLayout="row">
-                <md-slide-toggle
+                <mat-slide-toggle
                     name="allDay"
                     formControlName="allDay"
                     class="mr-24"
                     aria-label="All day">
                     All Day
-                </md-slide-toggle>
+                </mat-slide-toggle>
             </div>
 
             <div class="py-16" fxFlex="1 0 auto" fxLayout="row" formGroupName="color">
-                <md-input-container class="mr-24" fxFlex>
-                    <input mdInput
+                <mat-form-field class="mr-24" fxFlex>
+                    <input matInput
                            name="primary color"
                            formControlName="primary"
                            placeholder="Primary color"
@@ -43,9 +43,9 @@
                            [cpPresetColors]="presetColors"
                            [style.background]="event.color.primary"
                            (colorPickerChange)="event.color.primary = $event; eventForm.patchValue({color:{primary:$event}})"/>
-                </md-input-container>
-                <md-input-container fxFlex>
-                    <input mdInput
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput
                            name="secondary color"
                            formControlName="secondary"
                            placeholder="Secondary color"
@@ -54,62 +54,62 @@
                            [cpPresetColors]="presetColors"
                            [style.background]="event.color.secondary"
                            (colorPickerChange)="event.color.secondary = $event; eventForm.patchValue({color:{secondary:$event}})"/>
-                </md-input-container>
+                </mat-form-field>
             </div>
 
             <div fxFlex="1 0 auto" fxLayout="row">
 
-                <md-form-field class="mr-24" fxFlex>
-                    <input mdInput [mdDatepicker]="startDatePicker" placeholder="Start Date">
-                    <md-datepicker-toggle mdSuffix [for]="startDatePicker"></md-datepicker-toggle>
-                    <md-datepicker #startDatePicker></md-datepicker>
-                </md-form-field>
+                <mat-form-field class="mr-24" fxFlex>
+                    <input matInput [matDatepicker]="startDatePicker" placeholder="Start Date">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
 
-                <md-input-container class="no-errors-spacer" fxFlex md-no-float>
-                    <input mdInput placeholder="Start Time">
-                </md-input-container>
+                <mat-form-field class="no-errors-spacer" fxFlex mat-no-float>
+                    <input matInput placeholder="Start Time">
+                </mat-form-field>
 
             </div>
 
             <div fxFlex="1 0 auto" fxLayout="row">
 
-                <md-form-field class="mr-24" fxFlex>
-                    <input mdInput [mdDatepicker]="endDatePicker" placeholder="End Date">
-                    <md-datepicker-toggle mdSuffix [for]="endDatePicker"></md-datepicker-toggle>
-                    <md-datepicker #endDatePicker></md-datepicker>
-                </md-form-field>
+                <mat-form-field class="mr-24" fxFlex>
+                    <input matInput [matDatepicker]="endDatePicker" placeholder="End Date">
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                </mat-form-field>
 
-                <md-input-container class="no-errors-spacer" fxFlex md-no-float>
-                    <input mdInput placeholder="End Time">
-                </md-input-container>
+                <mat-form-field class="no-errors-spacer" fxFlex mat-no-float>
+                    <input matInput placeholder="End Time">
+                </mat-form-field>
 
             </div>
 
-            <md-input-container formGroupName="meta" class="w-100-p">
-                <input mdInput
+            <mat-form-field formGroupName="meta" class="w-100-p">
+                <input matInput
                        name="location"
                        formControlName="location"
                        placeholder="Location">
-            </md-input-container>
+            </mat-form-field>
 
-            <md-input-container formGroupName="meta" class="w-100-p">
+            <mat-form-field formGroupName="meta" class="w-100-p">
 
-            <textarea mdInput
+            <textarea matInput
                       formControlName="notes"
                       placeholder="Notes"
-                      md-maxlength="250"
+                      mat-maxlength="250"
                       max-rows="4">
             </textarea>
-            </md-input-container>
+            </mat-form-field>
 
         </form>
 
     </div>
 
-    <div md-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
 
         <button *ngIf="action !=='edit'"
-                md-raised-button
+                mat-raised-button
                 (click)="dialogRef.close(eventForm)"
                 class="save-button mat-accent"
                 [disabled]="eventForm.invalid"
@@ -118,7 +118,7 @@
         </button>
 
         <button *ngIf="action ==='edit'"
-                md-raised-button
+                mat-raised-button
                 (click)="dialogRef.close(['save',eventForm])"
                 class="save-button mat-accent"
                 [disabled]="eventForm.invalid"
@@ -127,12 +127,12 @@
         </button>
 
         <button *ngIf="action ==='edit'"
-                md-button
+                mat-button
                 class="mat-icon-button"
                 (click)="dialogRef.close(['delete',eventForm])"
                 aria-label="Delete"
-                md-tooltip="Delete">
-            <md-icon>delete</md-icon>
+                matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
         </button>
     </div>
 </div>

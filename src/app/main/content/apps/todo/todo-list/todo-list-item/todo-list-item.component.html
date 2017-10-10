@@ -1,12 +1,12 @@
 <div fxLayout="row" fxLayoutAlign="start center">
 
-    <md-icon class="handle mr-16" ngxDragHandle fxFlex="0 1 auto" fxHide.xs>
+    <mat-icon class="handle mr-16" ngxDragHandle fxFlex="0 1 auto" fxHide.xs>
         drag_handle
-    </md-icon>
+    </mat-icon>
 
-    <md-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
-                 class="mr-16" fxFlex="0 1 auto">
-    </md-checkbox>
+    <mat-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
+                  class="mr-16" fxFlex="0 1 auto">
+    </mat-checkbox>
 
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
 
@@ -33,57 +33,57 @@
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
 
-            <button md-button class="mat-icon-button" (click)="toggleImportant($event)"
+            <button mat-button class="mat-icon-button" (click)="toggleImportant($event)"
                     aria-label="Toggle important" fxHide.xs>
-                <md-icon *ngIf="todo.important">error</md-icon>
-                <md-icon *ngIf="!todo.important">error_outline</md-icon>
+                <mat-icon *ngIf="todo.important">error</mat-icon>
+                <mat-icon *ngIf="!todo.important">error_outline</mat-icon>
             </button>
 
-            <button md-button class="mat-icon-button" (click)="toggleStar($event)"
+            <button mat-button class="mat-icon-button" (click)="toggleStar($event)"
                     aria-label="Toggle star" fxHide.xs>
-                <md-icon *ngIf="todo.starred">star</md-icon>
-                <md-icon *ngIf="!todo.starred">star_outline</md-icon>
+                <mat-icon *ngIf="todo.starred">star</mat-icon>
+                <mat-icon *ngIf="!todo.starred">star_outline</mat-icon>
             </button>
 
-            <button md-button [mdMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
+            <button mat-button [matMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
                     (click)="$event.stopPropagation();" fxHide.xs>
-                <md-icon>more_vert</md-icon>
+                <mat-icon>more_vert</mat-icon>
             </button>
 
-            <md-menu #moreMenu="mdMenu">
-                <button md-menu-item aria-label="toggle done" (click)="toggleCompleted($event)">
+            <mat-menu #moreMenu="matMenu">
+                <button mat-menu-item aria-label="toggle done" (click)="toggleCompleted($event)">
                     <ng-container *ngIf="todo.completed">
-                        <md-icon>check_box</md-icon>
+                        <mat-icon>check_box</mat-icon>
                         <span>Mark as undone</span>
                     </ng-container>
                     <ng-container *ngIf="!todo.completed">
-                        <md-icon>check_box_outline_blank</md-icon>
+                        <mat-icon>check_box_outline_blank</mat-icon>
                         <span>Mark as done</span>
                     </ng-container>
                 </button>
 
-                <button md-menu-item aria-label="toggle important" (click)="toggleImportant($event)">
+                <button mat-menu-item aria-label="toggle important" (click)="toggleImportant($event)">
                     <ng-container *ngIf="todo.important">
-                        <md-icon>error</md-icon>
+                        <mat-icon>error</mat-icon>
                         <span>Remove important</span>
                     </ng-container>
                     <ng-container *ngIf="!todo.important">
-                        <md-icon>error_outline</md-icon>
+                        <mat-icon>error_outline</mat-icon>
                         <span>Mark as important</span>
                     </ng-container>
                 </button>
 
-                <button md-menu-item aria-label="toggle star" (click)="toggleStar($event)">
+                <button mat-menu-item aria-label="toggle star" (click)="toggleStar($event)">
                     <ng-container *ngIf="todo.starred">
-                        <md-icon>star</md-icon>
+                        <mat-icon>star</mat-icon>
                         <span>Remove star</span>
                     </ng-container>
                     <ng-container *ngIf="!todo.starred">
-                        <md-icon>star_outline</md-icon>
+                        <mat-icon>star_outline</mat-icon>
                         <span>Add star</span>
                     </ng-container>
                 </button>
-            </md-menu>
+            </mat-menu>
 
         </div>
 

@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { Observable } from 'rxjs/Observable';
 import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 import { FormGroup } from '@angular/forms';
 import { DataSource } from '@angular/cdk/collections';
@@ -27,11 +27,11 @@ export class FuseContactsContactListComponent implements OnInit
 
     dialogRef: any;
 
-    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
+    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
     constructor(
         private contactsService: ContactsService,
-        public dialog: MdDialog
+        public dialog: MatDialog
     )
     {
         this.contactsService.onContactsChanged.subscribe(contacts => {

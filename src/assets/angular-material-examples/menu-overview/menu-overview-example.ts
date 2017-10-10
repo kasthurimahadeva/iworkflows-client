@@ -1,11 +1,13 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * @title Basic menu
  */
 @Component({
-  selector: 'menu-overview-example',
-  templateUrl: 'menu-overview-example.html',
-  styleUrls: ['menu-overview-example.css'],
+    selector   : 'menu-overview-example',
+    templateUrl: 'menu-overview-example.html',
+    styleUrls  : ['menu-overview-example.css']
 })
-export class MenuOverviewExample {}
+export class MenuOverviewExample
+{
+}

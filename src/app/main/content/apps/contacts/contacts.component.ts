@@ -3,7 +3,7 @@ import { ContactsService } from './contacts.service';
 import { fuseAnimations } from '../../../../core/animations';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Component({
     selector     : 'fuse-contacts',
@@ -20,7 +20,7 @@ export class FuseContactsComponent implements OnInit
 
     constructor(
         private contactsService: ContactsService,
-        public dialog: MdDialog
+        public dialog: MatDialog
     )
     {
         this.searchInput = new FormControl('');

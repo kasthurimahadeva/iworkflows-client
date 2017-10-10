@@ -25,17 +25,17 @@
                     If you would like to be notified when the app is ready, you can subscribe to our e-mail list.
                 </div>
 
-                <md-input-container>
-                    <input mdInput placeholder="Email" formControlName="email">
-                    <md-error *ngIf="comingSoonFormErrors.email.required">
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="comingSoonFormErrors.email.required">
                         Email is required
-                    </md-error>
-                    <md-error *ngIf="!comingSoonFormErrors.email.required && comingSoonFormErrors.email.email">
+                    </mat-error>
+                    <mat-error *ngIf="!comingSoonFormErrors.email.required && comingSoonFormErrors.email.email">
                         Please enter a valid email address
-                    </md-error>
-                </md-input-container>
+                    </mat-error>
+                </mat-form-field>
 
-                <button md-raised-button color="accent" class="subscribe-button" aria-label="SUBSCRIBE"
+                <button mat-raised-button color="accent" class="subscribe-button" aria-label="SUBSCRIBE"
                         [disabled]="comingSoonForm.invalid">
                     SUBSCRIBE
                 </button>

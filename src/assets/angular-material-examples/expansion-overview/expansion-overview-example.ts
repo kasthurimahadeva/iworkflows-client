@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * @title Basic expansion panel
  */
 @Component({
-  selector: 'expansion-overview-example',
-  templateUrl: 'expansion-overview-example.html',
+    selector   : 'expansion-overview-example',
+    templateUrl: 'expansion-overview-example.html'
 })
-export class ExpansionOverviewExample {}
+export class ExpansionOverviewExample
+{
+}

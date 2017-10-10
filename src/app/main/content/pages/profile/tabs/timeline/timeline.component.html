@@ -14,28 +14,28 @@
 
                     <div fxLayout="row" fxLayoutAlign="start center">
 
-                        <button md-icon-button aria-label="Add photo" md-tooltip="Add Photo">
-                            <md-icon>photo</md-icon>
+                        <button mat-icon-button aria-label="Add photo" matTooltip="Add Photo">
+                            <mat-icon>photo</mat-icon>
                         </button>
 
-                        <button md-icon-button aria-label="Mention somebody" md-tooltip="Mention somebody">
-                            <md-icon>person</md-icon>
+                        <button mat-icon-button aria-label="Mention somebody" matTooltip="Mention somebody">
+                            <mat-icon>person</mat-icon>
                         </button>
 
-                        <button md-icon-button aria-label="Add location" md-tooltip="Add location">
-                            <md-icon>location_on</md-icon>
+                        <button mat-icon-button aria-label="Add location" matTooltip="Add location">
+                            <mat-icon>location_on</mat-icon>
                         </button>
 
                     </div>
 
-                    <button md-raised-button color="accent" class="post-button" aria-label="POST">POST</button>
+                    <button mat-raised-button color="accent" class="post-button" aria-label="POST">POST</button>
                 </footer>
 
             </div>
 
         </div>
 
-        <md-divider></md-divider>
+        <mat-divider></mat-divider>
 
         <div class="timeline-item" *ngFor="let post of timeline.posts"
              [@animate]="{value:'*',params:{y:'100%'}}">
@@ -56,8 +56,8 @@
                     </div>
                 </div>
 
-                <button md-icon-button aria-label="More">
-                    <md-icon>more_vert</md-icon>
+                <button mat-icon-button aria-label="More">
+                    <mat-icon>more_vert</mat-icon>
                 </button>
             </header>
 
@@ -81,15 +81,15 @@
                 </div>
 
                 <div fxLayout="row" fxLayoutAlign="start center">
-                    <button md-button class="like-button">
+                    <button mat-button class="like-button">
                         <span fxLayout="row" fxLayoutAlign="start center">
-                            <md-icon class="s-16">favorite</md-icon>
+                            <mat-icon class="s-16">favorite</mat-icon>
                             <span>Like</span>&nbsp;<span>({{post.like}})</span>
                         </span>
                     </button>
-                    <button md-button class="share-button">
+                    <button mat-button class="share-button">
                         <span fxLayout="row" fxLayoutAlign="start center">
-                            <md-icon class="s-16">share</md-icon>
+                            <mat-icon class="s-16">share</mat-icon>
                             <span>Share</span>&nbsp;<span>({{post.share}})</span>
                         </span>
                     </button>
@@ -99,7 +99,7 @@
             <footer class="" fxLayout="column" fxLayoutAlign="start start">
                 <div *ngIf="post.comments" class="comment-count" fxLayout="row" fxLayoutAlign="start center">
                     {{post.comments.length}} comments
-                    <md-icon class="s-16">keyboard_arrow_down</md-icon>
+                    <mat-icon class="s-16">keyboard_arrow_down</mat-icon>
                 </div>
 
                 <div class="comment" fxLayout="row" fxFlexFill *ngFor="let comment of post.comments">
@@ -115,7 +115,7 @@
                         </div>
                         <div class="actions" fxLayout="row" fxLayoutAlign="space-between center">
                             <a href="#" class="reply-button">Reply</a>
-                            <md-icon fxFlex class="report-button s-16">flag</md-icon>
+                            <mat-icon fxFlex class="report-button s-16">flag</mat-icon>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
 
                     <form fxFlex>
                         <textarea placeholder="Add a comment..."></textarea>
-                        <button md-raised-button color="accent" class="post-comment-button" aria-label="Post Comment">
+                        <button mat-raised-button color="accent" class="post-comment-button" aria-label="Post Comment">
                             Post Comment
                         </button>
                     </form>
@@ -139,7 +139,7 @@
         <div class="profile-box latest-activity" fxLayout="column"
              *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms',y:'100%'}}">
 
-            <header class="md-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
+            <header class="mat-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="title">Latest Activity</div>
                 <div class="more secondary-text">See All</div>
             </header>

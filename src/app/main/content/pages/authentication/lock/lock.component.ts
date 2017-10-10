@@ -5,9 +5,9 @@ import { FuseConfigService } from '../../../../../core/services/config.service';
 import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
-    selector: 'fuse-lock',
+    selector   : 'fuse-lock',
     templateUrl: './lock.component.html',
-    styleUrls: ['./lock.component.scss'],
+    styleUrls  : ['./lock.component.scss'],
     animations : fuseAnimations
 })
 export class FuseLockComponent implements OnInit

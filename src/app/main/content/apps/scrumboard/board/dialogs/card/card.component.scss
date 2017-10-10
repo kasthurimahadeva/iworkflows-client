@@ -107,7 +107,7 @@
                     .section-header {
                         font-size: 16px;
 
-                        md-icon {
+                        mat-icon {
                             margin-right: 8px;
                             color: rgba(0, 0, 0, 0.6);
                         }
@@ -206,7 +206,7 @@
                                     margin: 12px 0 0 0;
                                     padding-left: 12px;
 
-                                    md-icon {
+                                    mat-icon {
                                         margin-left: 8px;
                                         color: rgba(0, 0, 0, 0.6);
                                     }
@@ -217,7 +217,7 @@
                         .add-attachment-button {
                             margin: 0;
 
-                            md-icon {
+                            mat-icon {
                                 color: rgba(0, 0, 0, 0.6);
                                 margin-right: 8px;
                             }
@@ -253,16 +253,16 @@
 
                             .check-item {
 
-                                md-checkbox {
+                                mat-checkbox {
                                     margin-bottom: 0;
 
-                                    .md-label {
+                                    .mat-label {
                                         font-size: 14px;
                                     }
 
-                                    &.md-checked {
+                                    &.mat-checked {
 
-                                        .md-label {
+                                        .mat-label {
                                             text-decoration: line-through;
                                             color: rgba(0, 0, 0, 0.6);
                                         }
@@ -274,11 +274,11 @@
                         .new-check-item-form {
                             padding-top: 16px;
 
-                            md-input-container {
+                            mat-form-field {
                                 margin: 0;
                             }
 
-                            .md-button {
+                            .mat-button {
                                 margin: 0 0 0 16px;
                             }
                         }
@@ -342,7 +342,7 @@
 
                             &.new-comment {
 
-                                md-input-container {
+                                mat-form-field {
                                     margin: 0;
                                 }
                             }

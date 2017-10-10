@@ -3,7 +3,7 @@
     <div class="view" *ngSwitchCase="'main'" [@slideInLeft]>
 
         <!-- SIDENAV HEADER -->
-        <div class="header md-accent-bg px-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="column" fxLayoutAlign="center center">
+        <div class="header mat-accent-bg px-24" [class]="'mat-'+board.settings.color+'-bg'" fxLayout="column" fxLayoutAlign="center center">
             <div>Settings</div>
         </div>
         <!-- / SIDENAV HEADER -->
@@ -13,43 +13,43 @@
 
             <div class="nav">
                 <div class="nav-item">
-                    <div class="nav-link" md-ripple (click)="view = 'board-color'">
-                        <md-icon class="nav-link-icon">format_color_fill</md-icon>
+                    <div class="nav-link" matRipple (click)="view = 'board-color'">
+                        <mat-icon class="nav-link-icon">format_color_fill</mat-icon>
                         <p class="title">Board Color</p>
                     </div>
                 </div>
 
                 <div class="nav-item">
-                    <div class="nav-link" md-ripple (click)="toggleCardCover()">
-                        <md-icon class="nav-link-icon">photo</md-icon>
+                    <div class="nav-link" matRipple (click)="toggleCardCover()">
+                        <mat-icon class="nav-link-icon">photo</mat-icon>
                         <p fxFlex class="title">Card Cover Images</p>
-                        <md-icon *ngIf="board.settings.cardCoverImages" class="s-18">check</md-icon>
+                        <mat-icon *ngIf="board.settings.cardCoverImages" class="s-18">check</mat-icon>
                     </div>
                 </div>
 
                 <div class="nav-item">
-                    <div class="nav-link" md-ripple (click)="toggleSubcription()">
-                        <md-icon class="nav-link-icon">remove_red_eye</md-icon>
+                    <div class="nav-link" matRipple (click)="toggleSubcription()">
+                        <mat-icon class="nav-link-icon">remove_red_eye</mat-icon>
                         <p fxFlex class="title">Subscribe</p>
-                        <md-icon *ngIf="board.settings.subscribed" class="s-18">check</md-icon>
+                        <mat-icon *ngIf="board.settings.subscribed" class="s-18">check</mat-icon>
                     </div>
                 </div>
 
                 <div class="nav-item">
-                    <div class="nav-link" md-ripple>
-                        <md-icon class="nav-link-icon">content_copy</md-icon>
+                    <div class="nav-link" matRipple>
+                        <mat-icon class="nav-link-icon">content_copy</mat-icon>
                         <p class="title">Copy Board</p>
                     </div>
                 </div>
 
                 <div class="nav-item">
-                    <div class="nav-link" md-ripple>
-                        <md-icon class="nav-link-icon">delete</md-icon>
+                    <div class="nav-link" matRipple>
+                        <mat-icon class="nav-link-icon">delete</mat-icon>
                         <p class="title">Delete Board</p>
                     </div>
                 </div>
 
-                <md-divider></md-divider>
+                <mat-divider></mat-divider>
             </div>
         </div>
         <!-- / SIDENAV CONTENT -->
@@ -58,10 +58,10 @@
     <div class="view" *ngSwitchCase="'board-color'" [@slideInRight]>
 
         <!-- SIDENAV HEADER -->
-        <div class="header md-accent-bg px-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="header mat-accent-bg px-24" [class]="'mat-'+board.settings.color+'-bg'" fxLayout="row" fxLayoutAlign="space-between center">
             <div>Background Color</div>
-            <button md-icon-button (click)="view ='main'">
-                <md-icon class="s-16">arrow_back</md-icon>
+            <button mat-icon-button (click)="view ='main'">
+                <mat-icon class="s-16">arrow_back</mat-icon>
             </button>
         </div>
         <!-- / SIDENAV HEADER -->

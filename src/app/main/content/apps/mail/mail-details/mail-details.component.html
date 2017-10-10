@@ -1,5 +1,5 @@
 <div *ngIf="!mail" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <md-icon class="s-128 mb-16 select-message-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">email</md-icon>
+    <mat-icon class="s-128 mb-16 select-message-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">email</mat-icon>
     <span class="select-message-text hint-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'400ms'}}">Select a message to read</span>
 </div>
 
@@ -21,14 +21,14 @@
         </div>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
-            <button md-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
-                <md-icon *ngIf="mail.starred">star</md-icon>
-                <md-icon *ngIf="!mail.starred">star_outline</md-icon>
+            <button mat-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
+                <mat-icon *ngIf="mail.starred">star</mat-icon>
+                <mat-icon *ngIf="!mail.starred">star_outline</mat-icon>
             </button>
 
-            <button md-button class="mat-icon-button" (click)="toggleImportant($event)" aria-label="Toggle important">
-                <md-icon *ngIf="mail.important">label</md-icon>
-                <md-icon *ngIf="!mail.important">label_outline</md-icon>
+            <button mat-button class="mat-icon-button" (click)="toggleImportant($event)" aria-label="Toggle important">
+                <mat-icon *ngIf="mail.important">label</mat-icon>
+                <mat-icon *ngIf="!mail.important">label_outline</mat-icon>
             </button>
         </div>
     </div>
@@ -84,27 +84,27 @@
                 </div>
             </div>
 
-            <button md-button [mdMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
+            <button mat-button [matMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
                     (click)="$event.stopPropagation()">
-                <md-icon>more_vert</md-icon>
+                <mat-icon>more_vert</mat-icon>
             </button>
 
-            <md-menu #moreMenu="mdMenu">
-                <button md-menu-item aria-label="Reply">
-                    <md-icon>reply</md-icon>
+            <mat-menu #moreMenu="matMenu">
+                <button mat-menu-item aria-label="Reply">
+                    <mat-icon>reply</mat-icon>
                     <span>Reply</span>
                 </button>
 
-                <button md-menu-item aria-label="Forward">
-                    <md-icon>forward</md-icon>
+                <button mat-menu-item aria-label="Forward">
+                    <mat-icon>forward</mat-icon>
                     <span>Forward</span>
                 </button>
 
-                <button md-menu-item aria-label="Print">
-                    <md-icon>print</md-icon>
+                <button mat-menu-item aria-label="Print">
+                    <mat-icon>print</mat-icon>
                     <span>Print</span>
                 </button>
-            </md-menu>
+            </mat-menu>
         </div>
 
         <div [innerHTML]="mail.message"></div>

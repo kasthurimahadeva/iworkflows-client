@@ -1,22 +1,23 @@
-import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Simple autocomplete
  */
 @Component({
-  selector: 'autocomplete-simple-example',
-  templateUrl: 'autocomplete-simple-example.html',
-  styleUrls: ['autocomplete-simple-example.css']
+    selector   : 'autocomplete-simple-example',
+    templateUrl: 'autocomplete-simple-example.html',
+    styleUrls  : ['autocomplete-simple-example.css']
 })
-export class AutocompleteSimpleExample {
+export class AutocompleteSimpleExample
+{
 
-  myControl: FormControl = new FormControl();
+    myControl: FormControl = new FormControl();
 
-  options = [
-    'One',
-    'Two',
-    'Three'
-   ];
+    options = [
+        'One',
+        'Two',
+        'Three'
+    ];
 
 }

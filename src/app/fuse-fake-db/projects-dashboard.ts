@@ -1622,7 +1622,7 @@ export class ProjectsDashboardDb
                     [
                         {
                             'value'  : 'Wireframing',
-                            'classes': 'md-primary-bg',
+                            'classes': 'mat-primary-bg',
                             'icon'   : ''
                         },
                         {
@@ -1654,7 +1654,7 @@ export class ProjectsDashboardDb
                     [
                         {
                             'value'  : 'Design',
-                            'classes': 'md-green-bg',
+                            'classes': 'mat-green-bg',
                             'icon'   : ''
                         },
                         {
@@ -1686,7 +1686,7 @@ export class ProjectsDashboardDb
                     [
                         {
                             'value'  : 'Coding',
-                            'classes': 'md-red-bg',
+                            'classes': 'mat-red-bg',
                             'icon'   : ''
                         },
                         {
@@ -1718,7 +1718,7 @@ export class ProjectsDashboardDb
                     [
                         {
                             'value'  : 'Marketing',
-                            'classes': 'md-accent-bg',
+                            'classes': 'mat-accent-bg',
                             'icon'   : ''
                         },
                         {
@@ -1750,7 +1750,7 @@ export class ProjectsDashboardDb
                     [
                         {
                             'value'  : 'Extra',
-                            'classes': 'md-orange-bg',
+                            'classes': 'mat-orange-bg',
                             'icon'   : ''
                         },
                         {

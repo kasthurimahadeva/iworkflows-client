@@ -1,8 +1,8 @@
 .example-card {
-  width: 400px;
+    width: 400px;
 }
 
 .example-header-image {
-  background-image: url('/assets/images/examples/shiba1.jpg');
-  background-size: cover;
+    background-image: url('/assets/images/examples/shiba1.jpg');
+    background-size: cover;
 }

@@ -6,7 +6,7 @@
         <div class="profile-box info-box general" fxLayout="column"
              [@animate]="{value:'*',params:{y:'100%'}}">
 
-            <header class="md-accent-bg">
+            <header class="mat-accent-bg">
                 <div class="title">General Information</div>
             </header>
 
@@ -26,7 +26,7 @@
                     <div class="info location" fxLayout="row" fxLayoutAlign="start center"
                          *ngFor="let location of about.general.locations">
                         <span>{{location}}</span>
-                        <md-icon class="s-16 ml-4">location_on</md-icon>
+                        <mat-icon class="s-16 ml-4">location_on</mat-icon>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
         <div class="profile-box info-box work" fxLayout="column"
              [@animate]="{value:'*',params:{y:'100%'}}">
 
-            <header class="md-accent-bg">
+            <header class="mat-accent-bg">
                 <div class="title">Work</div>
             </header>
 
@@ -71,7 +71,7 @@
         <div class="profile-box info-box contact" fxLayout="column"
              [@animate]="{value:'*',params:{y:'100%'}}">
 
-            <header class="md-accent-bg">
+            <header class="mat-accent-bg">
                 <div class="title">Contact</div>
             </header>
 
@@ -110,7 +110,7 @@
         <div class="profile-box friends" fxLayout="column"
              [@animate]="{value:'*',params:{y:'100%'}}">
 
-            <header class="md-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
+            <header class="mat-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="title">Friends</div>
                 <div class="more secondary-text">
                     <span>See 454 more...</span>
@@ -128,7 +128,7 @@
         <div class="profile-box groups" fxLayout="column"
              [@animate]="{value:'*',params:{y:'100%'}}">
 
-            <header class="md-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
+            <header class="mat-accent-bg" fxLayout="row" fxLayoutAlign="space-between center">
                 <div class="title">Joined Groups</div>
                 <div class="more secondary-text">
                     <span>See 6 more...</span>
@@ -151,8 +151,8 @@
                         </div>
                     </div>
 
-                    <button md-icon-button aria-label="More">
-                        <md-icon>more_vert</md-icon>
+                    <button mat-icon-button aria-label="More">
+                        <mat-icon>more_vert</mat-icon>
                     </button>
                 </div>
             </div>

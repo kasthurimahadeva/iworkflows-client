@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * @title List with selection
  */
 @Component({
-  selector: 'list-selection-example',
-  styleUrls: ['list-selection-example.css'],
-  templateUrl: 'list-selection-example.html',
+    selector   : 'list-selection-example',
+    styleUrls  : ['list-selection-example.css'],
+    templateUrl: 'list-selection-example.html'
 })
-export class ListSelectionExample {
-  typesOfShoes = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
+export class ListSelectionExample
+{
+    typesOfShoes = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 }

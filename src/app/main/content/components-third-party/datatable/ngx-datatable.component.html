@@ -1,20 +1,20 @@
 <div id="ngx-datatable" class="page-layout simple fullwidth" fusePerfectScrollbar>
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
         <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
-                <md-icon class="secondary-text s-16">home</md-icon>
-                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <mat-icon class="secondary-text s-16">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">Tables</span>
             </div>
             <div class="h2 mt-16">ngx-datatable</div>
         </div>
 
-        <a md-raised-button class="reference-button md-white-bg mt-16 mt-sm-0"
+        <a mat-raised-button class="reference-button mat-white-bg mt-16 mt-sm-0"
            href="https://github.com/swimlane/ngx-datatable"
            target="_blank">
-            <md-icon>link</md-icon>
+            <mat-icon>link</mat-icon>
             <span>Reference</span>
         </a>
     </div>
@@ -48,12 +48,12 @@
                                   [sortable]="false">
                 <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
                              let-selectFn="selectFn">
-                    <md-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"></md-checkbox>
+                    <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"></mat-checkbox>
                 </ng-template>
 
                 <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
                              let-onCheckboxChangeFn="onCheckboxChangeFn">
-                    <md-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></md-checkbox>
+                    <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>
                 </ng-template>
             </ngx-datatable-column>
 

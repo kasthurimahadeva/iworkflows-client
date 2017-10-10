@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * @title Basic icons
  */
 @Component({
-  selector: 'icon-overview-example',
-  templateUrl: 'icon-overview-example.html',
+    selector   : 'icon-overview-example',
+    templateUrl: 'icon-overview-example.html'
 })
-export class IconOverviewExample {}
+export class IconOverviewExample
+{
+}

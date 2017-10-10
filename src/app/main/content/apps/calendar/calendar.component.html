@@ -9,7 +9,7 @@
 
                 <div class="logo mb-16 mb-sm-0" fxLayout="row" fxLayoutAlign="start center">
 
-                    <md-icon class="logo-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">today</md-icon>
+                    <mat-icon class="logo-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">today</mat-icon>
 
                     <span class="logo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Calendar</span>
 
@@ -18,32 +18,32 @@
                 <!-- TOOLBAR -->
                 <div class="toolbar" fxLayout="row" fxLayoutAlign="start center">
 
-                    <button md-button class="mat-icon-button" aria-label="Search" md-tooltip="Search">
-                        <md-icon>search</md-icon>
+                    <button mat-button class="mat-icon-button" aria-label="Search" matTooltip="Search">
+                        <mat-icon>search</mat-icon>
                     </button>
 
-                    <button md-button class="mat-icon-button"
+                    <button mat-button class="mat-icon-button"
                             mwlCalendarToday
                             [(viewDate)]="viewDate"
                             (viewDateChange)="selectedDay = {date:$event}"
-                            aria-label="Today" md-tooltip="Today">
+                            aria-label="Today" matTooltip="Today">
                         <!--(click)="selectedDay = viewDate"-->
-                        <md-icon>today</md-icon>
+                        <mat-icon>today</mat-icon>
                     </button>
 
-                    <button md-button class="mat-icon-button" (click)="view='day'"
-                            aria-label="Day" md-tooltip="Day">
-                        <md-icon>view_day</md-icon>
+                    <button mat-button class="mat-icon-button" (click)="view='day'"
+                            aria-label="Day" matTooltip="Day">
+                        <mat-icon>view_day</mat-icon>
                     </button>
 
-                    <button md-button class="mat-icon-button" (click)="view='week'"
-                            aria-label="Week" md-tooltip="Week">
-                        <md-icon>view_week</md-icon>
+                    <button mat-button class="mat-icon-button" (click)="view='week'"
+                            aria-label="Week" matTooltip="Week">
+                        <mat-icon>view_week</mat-icon>
                     </button>
 
-                    <button md-button class="mat-icon-button" (click)="view='month'"
-                            aria-label="Month" md-tooltip="Month">
-                        <md-icon>view_module</md-icon>
+                    <button mat-button class="mat-icon-button" (click)="view='month'"
+                            aria-label="Month" matTooltip="Month">
+                        <mat-icon>view_module</mat-icon>
                     </button>
                 </div>
             </div>
@@ -53,35 +53,35 @@
             <div class="header-bottom" fxLayout="row" fxLayoutAlign="center center"
                  *fuseIfOnDom [@animate]="{value:'*',params:{delay:'150ms'}}">
 
-                <button md-button class="mat-icon-button arrow"
+                <button mat-button class="mat-icon-button arrow"
                         mwlCalendarPreviousView
                         [view]="view"
                         [(viewDate)]="viewDate"
                         (viewDateChange)="selectedDay = {date:$event}"
                         aria-label="Previous">
-                    <md-icon>chevron_left</md-icon>
+                    <mat-icon>chevron_left</mat-icon>
                 </button>
 
                 <div class="title">
                     {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
                 </div>
 
-                <button md-button class="mat-icon-button arrow"
+                <button mat-button class="mat-icon-button arrow"
                         mwlCalendarNextView
                         [view]="view"
                         [(viewDate)]="viewDate"
                         (viewDateChange)="selectedDay = {date:$event}"
                         aria-label="Next">
-                    <md-icon>chevron_right</md-icon>
+                    <mat-icon>chevron_right</mat-icon>
                 </button>
             </div>
             <!-- / HEADER BOTTOM -->
         </div>
 
         <!-- ADD EVENT BUTTON -->
-        <button md-fab class="add-event-button mat-warn" (click)="addEvent()" aria-label="Add event"
+        <button mat-fab class="add-event-button mat-warn" (click)="addEvent()" aria-label="Add event"
                 *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
-            <md-icon>add</md-icon>
+            <mat-icon>add</mat-icon>
         </button>
         <!-- / ADD EVENT BUTTON -->
     </div>

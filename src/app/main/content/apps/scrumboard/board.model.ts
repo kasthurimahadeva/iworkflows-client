@@ -6,17 +6,17 @@ const sampleLabels = [
     {
         'id'   : '56027e4119ad3a5dc28b36cd',
         'name' : 'Design',
-        'color': 'md-red-500-bg'
+        'color': 'mat-red-500-bg'
     },
     {
         'id'   : '5640635e19ad3a5dc21416b2',
         'name' : 'App',
-        'color': 'md-blue-500-bg'
+        'color': 'mat-blue-500-bg'
     },
     {
         'id'   : '6540635g19ad3s5dc31412b2',
         'name' : 'Feature',
-        'color': 'md-green-400-bg'
+        'color': 'mat-green-400-bg'
     }
 ];
 

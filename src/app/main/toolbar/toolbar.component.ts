@@ -13,7 +13,7 @@ export class FuseToolbarComponent
     userStatusOptions: any[];
     languages: any;
     selectedLanguage: any;
-    showSpinner: boolean;
+    showLoadingBar: boolean;
     horizontalNav: boolean;
 
     constructor(
@@ -73,11 +73,11 @@ export class FuseToolbarComponent
             (event) => {
                 if ( event instanceof NavigationStart )
                 {
-                    this.showSpinner = true;
+                    this.showLoadingBar = true;
                 }
                 if ( event instanceof NavigationEnd )
                 {
-                    this.showSpinner = false;
+                    this.showLoadingBar = false;
                 }
             });
 

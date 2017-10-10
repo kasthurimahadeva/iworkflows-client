@@ -1,19 +1,19 @@
 <div id="dashboard-project" class="page-layout simple right-sidenav" fxLayout="row">
 
-    <md-sidenav-container>
+    <mat-sidenav-container>
 
         <!-- CENTER -->
         <div class="center" fxFlex fusePerfectScrollbar>
 
             <!-- HEADER -->
-            <div class="header md-accent-bg p-24 pb-0" fxLayout="column" fxLayoutAlign="space-between">
+            <div class="header mat-accent-bg p-24 pb-0" fxLayout="column" fxLayoutAlign="space-between">
 
                 <div fxLayout="row" fxLayoutAlign="space-between start">
 
                     <span class="mat-display-1 mb-0 welcome-message" *fuseIfOnDom [@animate]="{value:'*',params:{x:'50px'}}">Welcome back, John!</span>
 
-                    <button md-icon-button fuseMdSidenavToggler="dashboards-right-sidenav" fxHide.gt-md>
-                        <md-icon>menu</md-icon>
+                    <button mat-icon-button fuseMatSidenavToggler="dashboards-right-sidenav" fxHide.gt-md>
+                        <mat-icon>menu</mat-icon>
                     </button>
                 </div>
 
@@ -21,15 +21,15 @@
 
                     <div class="selected-project">{{selectedProject.name}}</div>
 
-                    <button md-icon-button class="project-selector" [mdMenuTriggerFor]="projectsMenu" aria-label="Select project">
-                        <md-icon>more_horiz</md-icon>
+                    <button mat-icon-button class="project-selector" [matMenuTriggerFor]="projectsMenu" aria-label="Select project">
+                        <mat-icon>more_horiz</mat-icon>
                     </button>
 
-                    <md-menu #projectsMenu="mdMenu">
-                        <button md-menu-item *ngFor="let project of projects" (click)="selectedProject = project">
+                    <mat-menu #projectsMenu="matMenu">
+                        <button mat-menu-item *ngFor="let project of projects" (click)="selectedProject = project">
                             <span>{{project.name}}</span>
                         </button>
-                    </md-menu>
+                    </mat-menu>
                 </div>
             </div>
             <!-- / HEADER -->
@@ -37,9 +37,9 @@
             <!-- CONTENT -->
             <div class="content">
 
-                <md-tab-group dynamicHeight>
+                <mat-tab-group dynamicHeight>
 
-                    <md-tab label="Home">
+                    <mat-tab label="Home">
 
                         <div class="widget-group p-12" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
@@ -47,18 +47,18 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between center">
-                                        <md-select class="simplified font-size-16" [(ngModel)]="widgets.widget1.currentRange"
-                                                   aria-label="Change range">
-                                            <md-option *ngFor="let range of widgets.widget1.ranges | keys"
-                                                       [value]="range.key">
+                                        <mat-select class="simplified font-size-16" [(ngModel)]="widgets.widget1.currentRange"
+                                                    aria-label="Change range">
+                                            <mat-option *ngFor="let range of widgets.widget1.ranges | keys"
+                                                        [value]="range.key">
                                                 {{range.value}}
-                                            </md-option>
-                                        </md-select>
+                                            </mat-option>
+                                        </mat-select>
 
-                                        <button md-icon-button fuseWidgetToggle aria-label="more">
-                                            <md-icon>more_vert</md-icon>
+                                        <button mat-icon-button fuseWidgetToggle aria-label="more">
+                                            <mat-icon>more_vert</mat-icon>
                                         </button>
 
                                     </div>
@@ -78,10 +78,10 @@
                                 <!-- / Front -->
 
                                 <!-- Back -->
-                                <div class="fuse-widget-back p-16 pt-32 md-white-bg mat-elevation-z2">
-                                    <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                                    <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                             aria-label="Flip widget">
-                                        <md-icon class="s-16">close</md-icon>
+                                        <mat-icon class="s-16">close</mat-icon>
                                     </button>
 
                                     <div>
@@ -97,12 +97,12 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget2.title}}</div>
 
-                                        <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button" aria-label="more">
-                                            <md-icon>more_vert</md-icon>
+                                        <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button" aria-label="more">
+                                            <mat-icon>more_vert</mat-icon>
                                         </button>
                                     </div>
 
@@ -121,10 +121,10 @@
                                 <!-- / Front -->
 
                                 <!-- Back -->
-                                <div class="fuse-widget-back p-16 pt-32 md-white-bg mat-elevation-z2">
-                                    <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                                    <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                             aria-label="Flip widget">
-                                        <md-icon class="s-16">close</md-icon>
+                                        <mat-icon class="s-16">close</mat-icon>
                                     </button>
 
                                     <div>
@@ -140,12 +140,12 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget3.title}}</div>
 
-                                        <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button" aria-label="more">
-                                            <md-icon>more_vert</md-icon>
+                                        <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button" aria-label="more">
+                                            <mat-icon>more_vert</mat-icon>
                                         </button>
                                     </div>
 
@@ -164,10 +164,10 @@
                                 <!-- / Front -->
 
                                 <!-- Back -->
-                                <div class="fuse-widget-back p-16 pt-32 md-white-bg mat-elevation-z2">
-                                    <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                                    <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                             aria-label="Flip widget">
-                                        <md-icon class="s-16">close</md-icon>
+                                        <mat-icon class="s-16">close</mat-icon>
                                     </button>
 
                                     <div>
@@ -183,12 +183,12 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget4.title}}</div>
 
-                                        <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button" aria-label="more">
-                                            <md-icon>more_vert</md-icon>
+                                        <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button" aria-label="more">
+                                            <mat-icon>more_vert</mat-icon>
                                         </button>
                                     </div>
 
@@ -206,10 +206,10 @@
                                 <!-- / Front -->
 
                                 <!-- Back -->
-                                <div class="fuse-widget-back p-16 pt-32 md-white-bg mat-elevation-z2">
-                                    <button md-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
+                                <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                                    <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                             aria-label="Flip widget">
-                                        <md-icon class="s-16">close</md-icon>
+                                        <mat-icon class="s-16">close</mat-icon>
                                     </button>
 
                                     <div>
@@ -226,14 +226,14 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="row" fxFlex="100">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
 
                                     <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
 
                                         <div fxFlex class="py-8 h3">{{widgets.widget5.title}}</div>
 
                                         <div fxFlex="0 1 auto" class="py-8" fxLayout="row">
-                                            <button md-button class="px-16"
+                                            <button mat-button class="px-16"
                                                     *ngFor="let range of widgets.widget5.ranges | keys"
                                                     (click)="widget5.currentRange = range.key"
                                                     [disabled]="widget5.currentRange == range.key">
@@ -302,17 +302,17 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
 
                                     <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget6.title}}</div>
                                         <div class="py-16">
-                                            <md-select class="simplified" [(ngModel)]="widget6.currentRange" aria-label="Change range">
-                                                <md-option *ngFor="let range of widgets.widget6.ranges | keys"
-                                                           [value]="range.key">
+                                            <mat-select class="simplified" [(ngModel)]="widget6.currentRange" aria-label="Change range">
+                                                <mat-option *ngFor="let range of widgets.widget6.ranges | keys"
+                                                            [value]="range.key">
                                                     {{range.value}}
-                                                </md-option>
-                                            </md-select>
+                                                </mat-option>
+                                            </mat-select>
                                         </div>
                                     </div>
 
@@ -352,19 +352,19 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
 
                                     <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget7.title}}</div>
 
                                         <div class="py-16">
-                                            <md-select class="simplified" [(ngModel)]="widget7.currentRange"
-                                                       aria-label="Change range">
-                                                <md-option *ngFor="let range of widgets.widget7.ranges | keys"
-                                                           [value]="range.key">
+                                            <mat-select class="simplified" [(ngModel)]="widget7.currentRange"
+                                                        aria-label="Change range">
+                                                <mat-option *ngFor="let range of widgets.widget7.ranges | keys"
+                                                            [value]="range.key">
                                                     {{range.value}}
-                                                </md-option>
-                                            </md-select>
+                                                </mat-option>
+                                            </mat-select>
                                         </div>
                                     </div>
 
@@ -378,8 +378,8 @@
                                             </div>
                                         </div>
 
-                                        <button md-icon-button aria-label="More information">
-                                            <md-icon>more_vert</md-icon>
+                                        <button mat-icon-button aria-label="More information">
+                                            <mat-icon>more_vert</mat-icon>
                                         </button>
                                     </div>
 
@@ -393,9 +393,9 @@
                         <!-- / WIDGET GROUP -->
 
 
-                    </md-tab>
+                    </mat-tab>
 
-                    <md-tab label="Budget Summary">
+                    <mat-tab label="Budget Summary">
 
                         <!-- WIDGET GROUP -->
                         <div class="widget-group" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom [@animateStagger]="{value:'50'}">
@@ -404,12 +404,12 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="h3 p-16">
                                         {{widgets.widget8.title}}
                                     </div>
 
-                                    <md-divider></md-divider>
+                                    <mat-divider></mat-divider>
 
                                     <div class="h-400">
                                         <ngx-charts-pie-chart
@@ -435,17 +435,17 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget9.title}}</div>
 
                                         <div class="py-16">
-                                            <md-select [(ngModel)]="widget9.currentRange" aria-label="Change range">
-                                                <md-option *ngFor="let range of widgets.widget9.ranges | keys"
-                                                           [value]="range.key">
+                                            <mat-select [(ngModel)]="widget9.currentRange" aria-label="Change range">
+                                                <mat-option *ngFor="let range of widgets.widget9.ranges | keys"
+                                                            [value]="range.key">
                                                     {{range.value}}
-                                                </md-option>
-                                            </md-select>
+                                                </mat-option>
+                                            </mat-select>
 
                                         </div>
                                     </div>
@@ -549,7 +549,7 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="row" fxFlex="100">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
 
                                     <div class="simple-table-container" ms-responsive-table>
                                         <div class=" table-title">
@@ -572,7 +572,7 @@
                                                         <span class="p-4" [class]="cell.classes">
                                                             {{cell.value}}
                                                         </span>
-                                                        <md-icon *ngIf="cell.icon" class="s-16">{{cell.icon}}</md-icon>
+                                                        <mat-icon *ngIf="cell.icon" class="s-16">{{cell.icon}}</mat-icon>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -588,9 +588,9 @@
                         </div>
                         <!-- / WIDGET GROUP -->
 
-                    </md-tab>
+                    </mat-tab>
 
-                    <md-tab label="Team Members">
+                    <mat-tab label="Team Members">
 
                         <!-- WIDGET GROUP -->
                         <div class="widget-group" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom [@animateStagger]="{value:'50'}">
@@ -599,7 +599,7 @@
                             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="row" fxFlex="100">
 
                                 <!-- Front -->
-                                <div class="fuse-widget-front md-white-bg mat-elevation-z2">
+                                <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
 
                                     <div class="p-24 mb-8 border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h2">{{widgets.widget11.title}}</div>
@@ -608,70 +608,70 @@
                                         </div>
                                     </div>
 
-                                    <md-table #table [dataSource]="widget11.dataSource">
+                                    <mat-table #table [dataSource]="widget11.dataSource">
 
                                         <!-- Avatar Column -->
                                         <ng-container cdkColumnDef="avatar">
-                                            <md-header-cell fxFlex="64px" *cdkHeaderCellDef></md-header-cell>
-                                            <md-cell fxFlex="64px" *cdkCellDef="let contact">
+                                            <mat-header-cell fxFlex="64px" *cdkHeaderCellDef></mat-header-cell>
+                                            <mat-cell fxFlex="64px" *cdkCellDef="let contact">
                                                 <img class="avatar" *ngIf="contact.avatar" [alt]="contact.name"
                                                      [src]="contact.avatar"/>
-                                            </md-cell>
+                                            </mat-cell>
                                         </ng-container>
 
                                         <!-- Name Column -->
                                         <ng-container cdkColumnDef="name">
-                                            <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-                                            <md-cell *cdkCellDef="let contact">
+                                            <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let contact">
                                                 <p class="text-truncate font-weight-600">{{contact.name}} {{contact.lastName}}</p>
-                                            </md-cell>
+                                            </mat-cell>
                                         </ng-container>
 
                                         <!-- Position Column -->
                                         <ng-container cdkColumnDef="position">
-                                            <md-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Position</md-header-cell>
-                                            <md-cell *cdkCellDef="let contact" fxHide fxShow.gt-sm>
+                                            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Position</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-sm>
                                                 <p class="position text-truncate">
                                                     {{contact.position}}
                                                 </p>
-                                            </md-cell>
+                                            </mat-cell>
                                         </ng-container>
 
                                         <!-- Office Column -->
                                         <ng-container cdkColumnDef="office">
-                                            <md-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Office</md-header-cell>
-                                            <md-cell *cdkCellDef="let contact" fxHide fxShow.gt-md>
+                                            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Office</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-md>
                                                 <p class="office text-truncate">
                                                     {{contact.office}}
                                                 </p>
-                                            </md-cell>
+                                            </mat-cell>
                                         </ng-container>
 
 
                                         <!-- Email Column -->
                                         <ng-container cdkColumnDef="email">
-                                            <md-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Email</md-header-cell>
-                                            <md-cell *cdkCellDef="let contact" fxHide fxShow.gt-sm>
+                                            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Email</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-sm>
                                                 <p class="email text-truncate">
                                                     {{contact.email}}
                                                 </p>
-                                            </md-cell>
+                                            </mat-cell>
                                         </ng-container>
 
                                         <!-- Phone Column -->
                                         <ng-container cdkColumnDef="phone">
-                                            <md-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Phone</md-header-cell>
-                                            <md-cell *cdkCellDef="let contact" fxHide fxShow.gt-md>
+                                            <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Phone</mat-header-cell>
+                                            <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-md>
                                                 <p class="phone text-truncate">
                                                     {{contact.phone}}
                                                 </p>
-                                            </md-cell>
+                                            </mat-cell>
                                         </ng-container>
 
-                                        <md-header-row *cdkHeaderRowDef="widgets.widget11.table.columns"></md-header-row>
-                                        <md-row *cdkRowDef="let contact; columns: widgets.widget11.table.columns;">
-                                        </md-row>
-                                    </md-table>
+                                        <mat-header-row *cdkHeaderRowDef="widgets.widget11.table.columns"></mat-header-row>
+                                        <mat-row *cdkRowDef="let contact; columns: widgets.widget11.table.columns;">
+                                        </mat-row>
+                                    </mat-table>
                                 </div>
                                 <!-- / Front -->
 
@@ -681,8 +681,8 @@
                         </div>
                         <!-- / WIDGET GROUP -->
 
-                    </md-tab>
-                </md-tab-group>
+                    </mat-tab>
+                </mat-tab-group>
 
             </div>
             <!-- / CONTENT -->
@@ -691,7 +691,7 @@
         <!-- / CENTER -->
 
         <!-- SIDENAV -->
-        <md-sidenav class="sidenav mat-sidenav-opened" align="end" mode="side" opened="true" fuseMdSidenavHelper="dashboards-right-sidenav" md-is-locked-open="gt-md">
+        <mat-sidenav class="sidenav mat-sidenav-opened" align="end" mode="side" opened="true" fuseMatSidenavHelper="dashboards-right-sidenav" mat-is-locked-open="gt-md">
 
             <div class="sidenav-content" fusePerfectScrollbar>
 
@@ -709,15 +709,15 @@
                                 <div class="h3">{{dateNow | date: 'EEEE, h:m:ss'}}</div>
 
                                 <div>
-                                    <button md-icon-button [mdMenuTriggerFor]="moreMenu" aria-label="more">
-                                        <md-icon>more_vert</md-icon>
+                                    <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="more">
+                                        <mat-icon>more_vert</mat-icon>
                                     </button>
 
-                                    <md-menu #moreMenu="mdMenu">
-                                        <button md-menu-item aria-label="Flip widget">
+                                    <mat-menu #moreMenu="matMenu">
+                                        <button mat-menu-item aria-label="Flip widget">
                                             Details
                                         </button>
-                                    </md-menu>
+                                    </mat-menu>
                                 </div>
                             </div>
 
@@ -735,7 +735,7 @@
                                 </div>
                             </div>
 
-                            <md-divider></md-divider>
+                            <mat-divider></mat-divider>
                         </div>
                         <!-- / Front -->
 
@@ -751,28 +751,28 @@
                             <div class="pl-16 pr-8 py-16" fxLayout="row" fxLayoutAlign="space-between center">
 
                                 <div class="h4" fxLayout="row" fxLayoutAlign="start center">
-                                    <md-icon class="mr-8">place</md-icon>
+                                    <mat-icon class="mr-8">place</mat-icon>
                                     {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].name}}
                                 </div>
 
                                 <div>
-                                    <button md-icon-button [mdMenuTriggerFor]="moreMenu" aria-label="more">
-                                        <md-icon>more_vert</md-icon>
+                                    <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="more">
+                                        <mat-icon>more_vert</mat-icon>
                                     </button>
 
-                                    <md-menu #moreMenu="mdMenu">
-                                        <button md-menu-item aria-label="Flip widget">
+                                    <mat-menu #moreMenu="matMenu">
+                                        <button mat-menu-item aria-label="Flip widget">
                                             Details
                                         </button>
-                                    </md-menu>
+                                    </mat-menu>
                                 </div>
                             </div>
 
                             <div class="p-16 pb-32" fxLayout="column" fxLayoutAlign="center center">
 
                                 <div fxLayout="row" fxLayoutAlign="center center">
-                                    <md-icon fontSet="meteocons" [fontIcon]="widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].icon"
-                                             class="icon s-40 mr-16"></md-icon>
+                                    <mat-icon fontSet="meteocons" [fontIcon]="widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].icon"
+                                              class="icon s-40 mr-16"></mat-icon>
                                     <span class="mat-display-2 m-0 font-weight-300 secondary-text">
                                         {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].temp[widgets.weatherWidget.tempUnit]}}
                                     </span>
@@ -783,7 +783,7 @@
 
                             <div class="grey-300-bg p-16" fxLayout="row" fxLayoutAlign="space-between center">
                                 <div fxLayout="row" fxLayoutAlign="start center">
-                                    <md-icon fontSet="meteocons" fontIcon="icon-windy" class="mr-8 s-16"></md-icon>
+                                    <mat-icon fontSet="meteocons" fontIcon="icon-windy" class="mr-8 s-16"></mat-icon>
                                     <span>
                                         {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].windSpeed[widgets.weatherWidget.speedUnit]}}
                                     </span>
@@ -791,12 +791,12 @@
                                 </div>
 
                                 <div fxLayout="row" fxLayoutAlign="start center">
-                                    <md-icon fontSet="meteocons" fontIcon="icon-compass" class="mr-8 s-16"></md-icon>
+                                    <mat-icon fontSet="meteocons" fontIcon="icon-compass" class="mr-8 s-16"></mat-icon>
                                     <span>{{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].windDirection}}</span>
                                 </div>
 
                                 <div fxLayout="row" fxLayoutAlign="start center">
-                                    <md-icon fontSet="meteocons" fontIcon="icon-rainy" class="mr-8 s-16"></md-icon>
+                                    <mat-icon fontSet="meteocons" fontIcon="icon-rainy" class="mr-8 s-16"></mat-icon>
                                     <span>{{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].rainProbability}}</span>
                                 </div>
                             </div>
@@ -806,7 +806,7 @@
                                      *ngFor="let day of widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].next3Days">
                                     <span class="h4">{{day.name}}</span>
                                     <div fxLayout="row" fxLayoutAlign="start center">
-                                        <md-icon fontSet="meteocons" [fontIcon]="day.icon" class="mr-16"></md-icon>
+                                        <mat-icon fontSet="meteocons" [fontIcon]="day.icon" class="mr-16"></mat-icon>
                                         <span class="h2">{{day.temp[widgets.weatherWidget.tempUnit]}}</span>
                                         <span class="h2 font-weight-300 secondary-text text-super">&deg;</span>
                                         <span class="h2 font-weight-300 secondary-text">{{widgets.weatherWidget.tempUnit}}</span>
@@ -814,7 +814,7 @@
                                 </div>
                             </div>
 
-                            <md-divider></md-divider>
+                            <mat-divider></mat-divider>
 
                         </div>
                         <!-- / Front -->
@@ -826,9 +826,9 @@
                 <!-- / WIDGET GROUP -->
             </div>
 
-        </md-sidenav>
+        </mat-sidenav>
         <!-- / SIDENAV -->
 
-    </md-sidenav-container>
+    </mat-sidenav-container>
 
 </div>

@@ -7,7 +7,7 @@
             <div fxLayout="row" fxLayoutAlign="start center" fxLayout.sm="column" fxLayoutAlign.sm="center center">
                 <div class="avatar-container">
                     <img class="avatar big" src="assets/images/avatars/katherine.jpg">
-                    <md-icon class="s-36">lock</md-icon>
+                    <mat-icon class="s-36">lock</mat-icon>
                 </div>
 
                 <div fxLayout="column" fxLayoutAlign="start" fxLayoutAlign.sm="center center" fxFlex>
@@ -20,18 +20,18 @@
 
             <form name="lockForm" [formGroup]="lockForm" novalidate>
 
-                <md-input-container>
-                    <input mdInput placeholder="Username" formControlName="username">
-                </md-input-container>
+                <mat-form-field>
+                    <input matInput placeholder="Username" formControlName="username">
+                </mat-form-field>
 
-                <md-input-container>
-                    <input mdInput placeholder="Password" formControlName="password">
-                    <md-error *ngIf="lockFormErrors.password.required">
+                <mat-form-field>
+                    <input matInput placeholder="Password" formControlName="password">
+                    <mat-error *ngIf="lockFormErrors.password.required">
                         Password is required
-                    </md-error>
-                </md-input-container>
+                    </mat-error>
+                </mat-form-field>
 
-                <button md-raised-button class="submit-button" color="accent"
+                <button mat-raised-button class="submit-button" color="accent"
                         aria-label="UNLOCK" [disabled]="lockForm.invalid">
                     UNLOCK
                 </button>

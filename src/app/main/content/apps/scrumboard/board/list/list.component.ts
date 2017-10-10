@@ -3,7 +3,7 @@ import { FuseUtils } from '../../../../../../core/fuseUtils';
 import { ScrumboardService } from 'app/main/content/apps/scrumboard/scrumboard.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseScrumboardCardDialogComponent } from '../dialogs/card/card.component';
 import { FuseConfirmDialogComponent } from '../../../../../../core/components/confirm-dialog/confirm-dialog.component';
 import { Card } from '../../card.model';
@@ -25,12 +25,12 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
 
     onBoardChanged: Subscription;
 
-    confirmDialogRef: MdDialogRef<FuseConfirmDialogComponent>;
+    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
     constructor(
         private route: ActivatedRoute,
         private scrumboardService: ScrumboardService,
-        public dialog: MdDialog
+        public dialog: MatDialog
     )
     {
     }

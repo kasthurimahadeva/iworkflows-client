@@ -1,12 +1,12 @@
 <div id="search" class="page-layout simple tabbed" fusePerfectScrollbar>
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+    <div class="header mat-accent-bg p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
          fxLayoutAlign.gt-sm="space-between end">
 
-        <md-input-container class="w-100-p">
-            <input mdInput name="search" placeholder="Search...">
-        </md-input-container>
+        <mat-form-field class="w-100-p">
+            <input matInput name="search" placeholder="Search...">
+        </mat-form-field>
 
     </div>
     <!-- / HEADER -->
@@ -14,17 +14,17 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <md-tab-group md-dynamic-height="true">
+        <mat-tab-group dynamicHeight="true">
 
-            <md-tab label="Classic">
+            <mat-tab label="Classic">
                 <fuse-search-classic></fuse-search-classic>
-            </md-tab>
+            </mat-tab>
 
-            <md-tab label="Table">
+            <mat-tab label="Table">
                 <fuse-search-table></fuse-search-table>
-            </md-tab>
+            </mat-tab>
 
-        </md-tab-group>
+        </mat-tab-group>
 
     </div>
     <!-- / CONTENT -->

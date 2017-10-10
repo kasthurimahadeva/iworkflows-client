@@ -12,8 +12,8 @@
         </div>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="end center" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms'}}">
-            <button md-raised-button color="accent" aria-label="Follow">Follow</button>
-            <button md-raised-button color="primary" aria-label="Send Message">Send Message</button>
+            <button mat-raised-button color="accent" aria-label="Follow">Follow</button>
+            <button mat-raised-button color="primary" aria-label="Send Message">Send Message</button>
         </div>
 
     </div>
@@ -22,21 +22,21 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <md-tab-group dynamicHeight="true">
+        <mat-tab-group dynamicHeight="true">
 
-            <md-tab label="Timeline">
+            <mat-tab label="Timeline">
                 <fuse-profile-timeline></fuse-profile-timeline>
-            </md-tab>
+            </mat-tab>
 
-            <md-tab label="About">
+            <mat-tab label="About">
                 <fuse-profile-about></fuse-profile-about>
-            </md-tab>
+            </mat-tab>
 
-            <md-tab label="Photos & Videos">
+            <mat-tab label="Photos & Videos">
                 <fuse-profile-photos-videos></fuse-profile-photos-videos>
-            </md-tab>
+            </mat-tab>
 
-        </md-tab-group>
+        </mat-tab-group>
 
     </div>
     <!-- / CONTENT -->

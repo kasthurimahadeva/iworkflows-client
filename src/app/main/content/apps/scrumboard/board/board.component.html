@@ -1,31 +1,31 @@
-<md-sidenav-container>
+<mat-sidenav-container>
 
     <div id="board">
 
         <!-- HEADER -->
-        <div class="header md-accent-bg p-16 p-md-24" [class]="'md-'+board.settings.color+'-bg'" fxLayout="column">
+        <div class="header mat-accent-bg p-16 p-mat-24" [class]="'mat-'+board.settings.color+'-bg'" fxLayout="column">
 
             <div class="header-content" fxLayout="row" fxLayoutAlign="space-between" fxFlex="1 0 auto" fxLayoutWrap>
 
                 <!-- BOARD SELECTION BUTTON -->
                 <div fxLayout="row" fxLayoutAlign="center center" fxFlexOrder="2" fxFlexOrder.gt-xs="1">
-                    <button md-raised-button class="mat-accent header-boards-button"
-                            [class]="'md-'+board.settings.color+'-700-bg'"
+                    <button mat-raised-button class="mat-accent header-boards-button"
+                            [class]="'mat-'+board.settings.color+'-700-bg'"
                             routerLink="/apps/scrumboard/boards"
                             aria-label="boards button">
-                        <md-icon>assessment</md-icon>
+                        <mat-icon>assessment</mat-icon>
                         <span>BOARDS</span>
                     </button>
                 </div>
                 <!-- / BOARD SELECTION BUTTON -->
 
                 <!-- BOARD NAME -->
-                <div class="header-board-name mb-8 mb-md-0"
+                <div class="header-board-name mb-8 mb-mat-0"
                      fxLayout="row" fxLayoutAlign="center center"
                      fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center"
                      fxFlex="1 0 100%" fxFlex.gt-xs="1 0 auto"
                      fxFlexOrder="1" fxFlexOrder.gt-xs="2">
-                    <md-icon *ngIf="board.settings.subscribed" class="board-subscribe s-16">remove_red_eye</md-icon>
+                    <mat-icon *ngIf="board.settings.subscribed" class="board-subscribe s-16">remove_red_eye</mat-icon>
                     <fuse-scrumboard-edit-board-name
                         [board]="board"
                         (onNameChanged)="onBoardNameChanged($event)">
@@ -37,9 +37,9 @@
                 <div class="toolbar" fxLayout="row" fxLayoutAlign="space-between center" fxFlexOrder="3">
 
                     <!-- BOARD SETTINGS BUTTON -->
-                    <button md-icon-button (click)="settingsSidenav.toggle()"
-                            aria-label="Settings" md-tooltip="Settings">
-                        <md-icon>settings</md-icon>
+                    <button mat-icon-button (click)="settingsSidenav.toggle()"
+                            aria-label="Settings" matTooltip="Settings">
+                        <mat-icon>settings</mat-icon>
                     </button>
                     <!-- / BOARD SETTINGS BUTTON -->
                 </div>
@@ -50,10 +50,10 @@
         </div>
         <!-- / HEADER -->
 
-        <div fxFlex class="board-content-wrapper p-16 p-md-24" [class]="board.settings.color+'-100-bg'">
+        <div fxFlex class="board-content-wrapper p-16 p-mat-24" [class]="board.settings.color+'-100-bg'">
 
             <!-- BOARD -->
-            <div class="board-content ngx-dnd-container p-16 p-md-24" fxLayout="row"
+            <div class="board-content ngx-dnd-container p-16 p-mat-24" fxLayout="row"
                  ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)"
                  *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
@@ -80,8 +80,8 @@
         <!-- primary content -->
     </div>
 
-    <md-sidenav #settingsSidenav align="end">
+    <mat-sidenav #settingsSidenav align="end">
         <fuse-scrumboard-board-settings></fuse-scrumboard-board-settings>
-    </md-sidenav>
+    </mat-sidenav>
 
-</md-sidenav-container>
+</mat-sidenav-container>

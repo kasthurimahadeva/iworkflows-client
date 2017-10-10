@@ -7,11 +7,11 @@
 }
 
 // Fix: "Sidenav opening with animations for the first time"
-md-sidenav-container {
+mat-sidenav-container {
 
-    md-sidenav {
+    mat-sidenav {
 
-        &[md-is-locked-open].md-stop-transition {
+        &[mat-is-locked-open].mat-stop-transition {
             transition: none !important;
             transform: translate3d(0, 0, 0) !important;
             opacity: 0;

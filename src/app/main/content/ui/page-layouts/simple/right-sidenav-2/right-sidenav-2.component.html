@@ -1,17 +1,17 @@
 <div class="page-layout simple right-sidenav single-scroll" fusePerfectScrollbar>
 
-    <md-sidenav-container>
+    <mat-sidenav-container>
 
         <!-- CENTER -->
         <div class="center" fusePerfectScrollbar>
 
             <!-- HEADER -->
-            <div class="header md-accent-bg p-24" fxLayout="row" fxLayoutAlign="start center">
+            <div class="header mat-accent-bg p-24" fxLayout="row" fxLayoutAlign="start center">
 
-                <button md-button class="mat-icon-button sidenav-toggle"
-                        fuseMdSidenavToggler="simple-right-sidenav-2"
+                <button mat-button class="mat-icon-button sidenav-toggle"
+                        fuseMatSidenavToggler="simple-right-sidenav-2"
                         fxHide.gt-md>
-                    <md-icon>menu</md-icon>
+                    <mat-icon>menu</mat-icon>
                 </button>
 
                 <div>
@@ -22,7 +22,7 @@
             <!-- / HEADER -->
 
             <!-- CONTENT -->
-            <div class="content p-24 md-white-bg">
+            <div class="content p-24 mat-white-bg">
 
                 <fuse-demo-content></fuse-demo-content>
 
@@ -33,14 +33,14 @@
         <!-- / CENTER -->
 
         <!-- SIDENAV -->
-        <md-sidenav class="sidenav mat-sidenav-opened p-24" align="end" opened="true" mode="side"
-                    fuseMdSidenavHelper="simple-right-sidenav-2" md-is-locked-open="gt-md">
+        <mat-sidenav class="sidenav mat-sidenav-opened p-24" align="end" opened="true" mode="side"
+                     fuseMatSidenavHelper="simple-right-sidenav-2" mat-is-locked-open="gt-md">
 
             <fuse-demo-sidenav></fuse-demo-sidenav>
 
-        </md-sidenav>
+        </mat-sidenav>
         <!-- / SIDENAV -->
 
-    </md-sidenav-container>
+    </mat-sidenav-container>
 
 </div>

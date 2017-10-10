@@ -12,7 +12,7 @@
         cursor: pointer;
         border-radius: 2px;
 
-        md-icon {
+        mat-icon {
             margin-right: 8px;
             color: rgba(0, 0, 0, 0.6);
         }
@@ -29,7 +29,7 @@
             padding: 8px;
             border-top: 1px solid rgba(0, 0, 0, 0.12);
 
-            md-input-container {
+            mat-form-field {
                 width: 100%;
                 margin: 0;
                 padding: 12px 8px;

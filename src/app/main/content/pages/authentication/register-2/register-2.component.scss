@@ -86,7 +86,7 @@
                     width: 100%;
                     padding-top: 32px;
 
-                    md-input-container {
+                    mat-form-field {
                         width: 100%;
 
                         @include media-breakpoint('xs') {
@@ -94,7 +94,7 @@
                         }
                     }
 
-                    md-checkbox {
+                    mat-checkbox {
                         margin: 0;
                     }
 
@@ -166,7 +166,7 @@
                             width: 60%;
                         }
 
-                        md-icon {
+                        mat-icon {
                             color: #FFFFFF;
                             margin: 0 8px 0 0;
                         }

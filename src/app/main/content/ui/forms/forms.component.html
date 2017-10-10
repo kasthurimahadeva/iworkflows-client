@@ -1,11 +1,11 @@
 <div id="forms" class="page-layout simple fullwidth" fxLayout="column" fusePerfectScrollbar>
 
     <!-- HEADER -->
-    <div class="header md-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="column" fxLayoutAlign="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
-                <md-icon class="secondary-text s-16">home</md-icon>
-                <md-icon class="secondary-text s-16">chevron_right</md-icon>
+                <mat-icon class="secondary-text s-16">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">User Interface</span>
             </div>
             <div class="h1 mt-16">Forms</div>
@@ -25,87 +25,87 @@
 
         <div fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="row">
 
-            <form class="md-white-bg mat-elevation-z4 p-24 mr-24 mb-24" fxLayout="column" fxLayoutAlign="start"
+            <form class="mat-white-bg mat-elevation-z4 p-24 mr-24 mb-24" fxLayout="column" fxLayoutAlign="start"
                   fxFlex="1 0 auto" name="form" [formGroup]="form">
 
                 <div class="h2 mb-24">Reactive Form Example</div>
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <md-input-container fxFlex="100">
-                        <input mdInput placeholder="Company (disabled)" formControlName="company">
-                    </md-input-container>
+                    <mat-form-field fxFlex="100">
+                        <input matInput placeholder="Company (disabled)" formControlName="company">
+                    </mat-form-field>
 
                 </div>
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <md-input-container fxFlex="50">
-                        <input mdInput placeholder="First name" formControlName="firstName">
-                        <md-error *ngIf="formErrors.firstName.required">
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="First name" formControlName="firstName">
+                        <mat-error *ngIf="formErrors.firstName.required">
                             Required
-                        </md-error>
-                    </md-input-container>
+                        </mat-error>
+                    </mat-form-field>
 
-                    <md-input-container fxFlex="50">
-                        <input mdInput placeholder="Last name" formControlName="lastName">
-                        <md-error *ngIf="formErrors.lastName.required">
+                    <mat-form-field fxFlex="50">
+                        <input matInput placeholder="Last name" formControlName="lastName">
+                        <mat-error *ngIf="formErrors.lastName.required">
                             Required
-                        </md-error>
-                    </md-input-container>
+                        </mat-error>
+                    </mat-form-field>
 
                 </div>
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto" fxLayoutWrap>
 
-                    <md-input-container fxFlex="100">
-                        <textarea mdInput placeholder="Address" formControlName="address">
+                    <mat-form-field fxFlex="100">
+                        <textarea matInput placeholder="Address" formControlName="address">
                             1600 Amphitheatre Pkwy
                         </textarea>
-                        <md-error *ngIf="formErrors.address.required">
+                        <mat-error *ngIf="formErrors.address.required">
                             Required
-                        </md-error>
-                    </md-input-container>
+                        </mat-error>
+                    </mat-form-field>
 
-                    <md-input-container fxFlex="100">
-                        <textarea mdInput placeholder="Address 2" formControlName="address2"></textarea>
-                        <md-error *ngIf="formErrors.address2.required">
+                    <mat-form-field fxFlex="100">
+                        <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+                        <mat-error *ngIf="formErrors.address2.required">
                             Required
-                        </md-error>
-                    </md-input-container>
+                        </mat-error>
+                    </mat-form-field>
 
                 </div>
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <md-input-container fxFlex="33">
-                        <input mdInput placeholder="City" formControlName="city">
-                        <md-error *ngIf="formErrors.city.required">
+                    <mat-form-field fxFlex="33">
+                        <input matInput placeholder="City" formControlName="city">
+                        <mat-error *ngIf="formErrors.city.required">
                             Required
-                        </md-error>
-                    </md-input-container>
+                        </mat-error>
+                    </mat-form-field>
 
-                    <md-input-container fxFlex="34">
-                        <input mdInput placeholder="State" formControlName="state">
-                        <md-error *ngIf="formErrors.state.required">
+                    <mat-form-field fxFlex="34">
+                        <input matInput placeholder="State" formControlName="state">
+                        <mat-error *ngIf="formErrors.state.required">
                             Required
-                        </md-error>
-                    </md-input-container>
+                        </mat-error>
+                    </mat-form-field>
 
-                    <md-input-container fxFlex="33">
-                        <input mdInput #postalCode placeholder="Postal Code" value="94043"
+                    <mat-form-field fxFlex="33">
+                        <input matInput #postalCode placeholder="Postal Code" value="94043"
                                formControlName="postalCode">
-                        <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-                        <md-error *ngIf="formErrors.postalCode.maxlength">
+                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                        <mat-error *ngIf="formErrors.postalCode.maxlength">
                             Postal Code needs to be max. {{formErrors.postalCode.maxlength.requiredLength}} characters
-                        </md-error>
-                    </md-input-container>
+                        </mat-error>
+                    </mat-form-field>
 
                 </div>
 
             </form>
 
-            <div class="form-errors-model md-white-bg p-24 mat-elevation-z4">
+            <div class="form-errors-model mat-white-bg p-24 mat-elevation-z4">
 
                 <div class="h2 mb-24">Reactive Form Errors Model</div>
 

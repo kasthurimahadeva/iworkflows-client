@@ -1,11 +1,13 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * @title Multi-row toolbar
  */
 @Component({
-  selector: 'toolbar-multirow-example',
-  templateUrl: 'toolbar-multirow-example.html',
-  styleUrls: ['toolbar-multirow-example.css'],
+    selector   : 'toolbar-multirow-example',
+    templateUrl: 'toolbar-multirow-example.html',
+    styleUrls  : ['toolbar-multirow-example.css']
 })
-export class ToolbarMultirowExample {}
+export class ToolbarMultirowExample
+{
+}

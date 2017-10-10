@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CalendarEvent } from 'angular-calendar';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CalendarEventModel } from '../event.model';
@@ -22,8 +22,8 @@ export class FuseCalendarEventFormDialogComponent implements OnInit
     presetColors = MatColors.presets;
 
     constructor(
-        public dialogRef: MdDialogRef<FuseCalendarEventFormDialogComponent>,
-        @Inject(MD_DIALOG_DATA) private data: any,
+        public dialogRef: MatDialogRef<FuseCalendarEventFormDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private data: any,
         private formBuilder: FormBuilder
     )
     {

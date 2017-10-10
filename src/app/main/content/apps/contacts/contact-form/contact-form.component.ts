@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CalendarEvent } from 'angular-calendar';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import 'rxjs/Rx';
@@ -21,8 +21,8 @@ export class FuseContactsContactFormDialogComponent implements OnInit
     contact: Contact;
 
     constructor(
-        public dialogRef: MdDialogRef<FuseContactsContactFormDialogComponent>,
-        @Inject(MD_DIALOG_DATA) private data: any,
+        public dialogRef: MatDialogRef<FuseContactsContactFormDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private data: any,
         private formBuilder: FormBuilder
     )
     {

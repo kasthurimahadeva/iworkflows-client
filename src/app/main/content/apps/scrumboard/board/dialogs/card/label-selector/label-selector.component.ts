@@ -23,7 +23,7 @@ export class FuseScrumboardLabelSelectorComponent implements OnInit, OnDestroy
     newLabel = {
         'id'   : '',
         'name' : '',
-        'color': 'md-blue-400-bg'
+        'color': 'mat-blue-400-bg'
     };
     toggleInArray = FuseUtils.toggleInArray;
 

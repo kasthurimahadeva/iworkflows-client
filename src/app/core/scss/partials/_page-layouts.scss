@@ -112,12 +112,12 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             // Single scroll
             &.single-scroll {
 
-                > md-sidenav-container {
+                > mat-sidenav-container {
                     flex: 1 0 auto;
                 }
             }
 
-            > md-sidenav-container {
+            > mat-sidenav-container {
                 display: flex;
                 flex: 1;
                 background: none;
@@ -136,7 +136,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     overflow-y: hidden;
                     @include mat-elevation(7);
 
-                    &.md-is-locked-open {
+                    &.mat-is-locked-open {
                         background: none;
                         box-shadow: none;
                     }
@@ -216,11 +216,11 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         &.left-sidenav {
 
             // Sidenav
-            > md-sidenav-container {
+            > mat-sidenav-container {
 
                 .sidenav {
 
-                    &.md-is-locked-open {
+                    &.mat-is-locked-open {
 
                         ~ .mat-sidenav-content,
                         ~ .mat-drawer-content {
@@ -238,12 +238,12 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         &.right-sidenav {
 
             // Sidenav
-            > md-sidenav-container {
+            > mat-sidenav-container {
 
                 .sidenav {
                     order: 999;
 
-                    &.md-is-locked-open {
+                    &.mat-is-locked-open {
 
                         ~ .mat-sidenav-content,
                         ~ .mat-drawer-content {
@@ -295,7 +295,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             // Single scroll
             &.single-scroll {
 
-                > md-sidenav-container {
+                > mat-sidenav-container {
                     flex: 1 0 auto;
 
                     > .mat-sidenav-content,
@@ -309,7 +309,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             // Inner Sidenav
             &.inner-sidenav {
 
-                > md-sidenav-container {
+                > mat-sidenav-container {
                     flex: 1;
 
                     .sidenav {
@@ -338,7 +338,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                 }
             }
 
-            > md-sidenav-container {
+            > mat-sidenav-container {
                 display: flex;
                 flex-direction: column;
                 //flex-direction: row;
@@ -354,7 +354,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     z-index: 51;
                     @include mat-elevation(7);
 
-                    &.md-is-locked-open {
+                    &.mat-is-locked-open {
                         width: 220px;
                         min-width: 220px;
                         max-width: 220px;
@@ -440,7 +440,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             &.left-sidenav,
             &.right-sidenav {
 
-                > md-sidenav-container {
+                > mat-sidenav-container {
                     flex: 1 0 auto;
                 }
             }
@@ -458,7 +458,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             &.left-sidenav,
             &.right-sidenav {
 
-                > md-sidenav-container {
+                > mat-sidenav-container {
                     flex: 1 0 auto !important;
 
                     > .mat-sidenav-content,
@@ -483,7 +483,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             &.left-sidenav,
             &.right-sidenav {
 
-                > md-sidenav-container {
+                > mat-sidenav-container {
 
                     > .mat-sidenav-content,
                     > .mat-drawer-content {

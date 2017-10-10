@@ -1,6 +1,6 @@
-<md-list class="date" cdk-focus-region-start>
+<mat-list class="date" cdk-focus-region-start>
 
-    <h3 md-subheader cdk-focus-init>
+    <h3 matSubheader cdk-focus-init>
         <span>Today</span>
     </h3>
 
@@ -14,59 +14,59 @@
             <span> {{date | date:'MMMM'}}</span>
         </div>
     </div>
-</md-list>
+</mat-list>
 
-<md-divider cdk-focus-region-end></md-divider>
+<mat-divider cdk-focus-region-end></mat-divider>
 
-<md-list>
-    <h3 md-subheader>
+<mat-list>
+    <h3 matSubheader>
         <span>Events</span>
     </h3>
 
-    <md-list-item *ngFor="let event of events">
-        <h3 md-line>{{event.title}}</h3>
-        <p md-line class="secondary-text">{{event.detail}}</p>
-    </md-list-item>
-</md-list>
+    <mat-list-item *ngFor="let event of events">
+        <h3 matLine>{{event.title}}</h3>
+        <p matLine class="secondary-text">{{event.detail}}</p>
+    </mat-list-item>
+</mat-list>
 
-<md-divider></md-divider>
+<mat-divider></mat-divider>
 
-<md-list>
-    <h3 md-subheader>
+<mat-list>
+    <h3 matSubheader>
         <span>Notes</span>
     </h3>
 
-    <md-list-item *ngFor="let note of notes">
-        <h3 md-line>{{note.title}}</h3>
-        <p md-line class="secondary-text">{{note.detail}}</p>
-    </md-list-item>
-</md-list>
+    <mat-list-item *ngFor="let note of notes">
+        <h3 matLine>{{note.title}}</h3>
+        <p matLine class="secondary-text">{{note.detail}}</p>
+    </mat-list-item>
+</mat-list>
 
-<md-divider></md-divider>
+<mat-divider></mat-divider>
 
-<md-list>
-    <h3 md-subheader>
+<mat-list>
+    <h3 matSubheader>
         <span>Quick Settings</span>
     </h3>
 
-    <md-list-item>
-        <md-slide-toggle fxFlex class="mat-primary" [(ngModel)]="settings.notify" aria-label="Notifications"
-                         labelPosition="before">
+    <mat-list-item>
+        <mat-slide-toggle fxFlex class="mat-primary" [(ngModel)]="settings.notify" aria-label="Notifications"
+                          labelPosition="before">
             <h3>Notifications</h3>
-        </md-slide-toggle>
-    </md-list-item>
+        </mat-slide-toggle>
+    </mat-list-item>
 
-    <md-list-item>
-        <md-slide-toggle fxFlex class="mat-accent" [(ngModel)]="settings.cloud" aria-label="Cloud"
-                         labelPosition="before">
+    <mat-list-item>
+        <mat-slide-toggle fxFlex class="mat-accent" [(ngModel)]="settings.cloud" aria-label="Cloud"
+                          labelPosition="before">
             <h3>Cloud Sync</h3>
-        </md-slide-toggle>
-    </md-list-item>
+        </mat-slide-toggle>
+    </mat-list-item>
 
-    <md-list-item>
-        <md-slide-toggle fxFlex class="mat-warn" [(ngModel)]="settings.retro" aria-label="Retro Thrusters"
-                         labelPosition="before">
+    <mat-list-item>
+        <mat-slide-toggle fxFlex class="mat-warn" [(ngModel)]="settings.retro" aria-label="Retro Thrusters"
+                          labelPosition="before">
             <h3>Retro Thrusters</h3>
-        </md-slide-toggle>
-    </md-list-item>
-</md-list>
+        </mat-slide-toggle>
+    </mat-list-item>
+</mat-list>

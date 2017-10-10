@@ -10,7 +10,7 @@ import { FuseConfigService } from '../../../../../core/services/config.service';
 export class FuseError500Component implements OnInit
 {
     constructor(
-        private fuseConfig: FuseConfigService,
+        private fuseConfig: FuseConfigService
     )
     {
         this.fuseConfig.setSettings({

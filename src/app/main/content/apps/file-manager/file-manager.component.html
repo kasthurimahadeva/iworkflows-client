@@ -1,33 +1,33 @@
 <div id="file-manager" class="page-layout simple right-sidenav" fusePerfectScrollbar>
 
-    <md-sidenav-container>
+    <mat-sidenav-container>
 
         <!-- SIDENAV -->
-        <md-sidenav class="sidenav left-sidenav" align="start" opened="false" mode="over"
-                    fuseMdSidenavHelper="file-manager-left-sidenav">
+        <mat-sidenav class="sidenav left-sidenav" align="start" opened="false" mode="over"
+                     fuseMatSidenavHelper="file-manager-left-sidenav">
             <fuse-file-manager-main-sidenav></fuse-file-manager-main-sidenav>
-        </md-sidenav>
+        </mat-sidenav>
         <!-- / SIDENAV -->
 
         <!-- CENTER -->
         <div class="center" fxFlex>
 
             <!-- HEADER -->
-            <div class="header md-accent-bg p-24" fxLayout="column" fxLayoutAlign="space-between start">
+            <div class="header mat-accent-bg p-24" fxLayout="column" fxLayoutAlign="space-between start">
 
                 <!-- TOOLBAR -->
                 <div class="toolbar w-100-p" fxFlex fxLayout="row" fxLayoutAlign="space-between start">
 
                     <div class="left-side" fxLayout="row">
-                        <button md-icon-button class="sidenav-toggle"
-                                fuseMdSidenavToggler="file-manager-left-sidenav">
-                            <md-icon>menu</md-icon>
+                        <button mat-icon-button class="sidenav-toggle"
+                                fuseMatSidenavToggler="file-manager-left-sidenav">
+                            <mat-icon>menu</mat-icon>
                         </button>
                     </div>
 
                     <div class="right-side" fxLayout="row">
-                        <button md-button class="mat-icon-button" aria-label="Search" md-tooltip="Search">
-                            <md-icon>search</md-icon>
+                        <button mat-button class="mat-icon-button" aria-label="Search" matTooltip="Search">
+                            <mat-icon>search</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                      *fuseIfOnDom [@animate]="{value:'*',params:{x:'50px'}}">
                     <div *ngFor="let path of pathArr; last  as isLast" fxLayout="row" fxLayoutAlign="start center">
                         <span>{{path}}</span>
-                        <md-icon *ngIf="!isLast" class="separator">chevron_right</md-icon>
+                        <mat-icon *ngIf="!isLast" class="separator">chevron_right</mat-icon>
                     </div>
                 </div>
                 <!-- / BREADCRUMB -->
@@ -46,12 +46,12 @@
                 <!-- ADD FILE BUTTON -->
                 <div class="file-uploader">
                     <input hidden type="file" #fileInput/>
-                    <button md-fab
+                    <button mat-fab
                             class="add-file-button mat-warn"
                             (click)="fileInput.click()"
                             aria-label="Add file"
                             *fuseIfOnDom [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
-                        <md-icon>add</md-icon>
+                        <mat-icon>add</mat-icon>
                     </button>
                 </div>
                 <!-- / ADD FILE BUTTON -->
@@ -60,7 +60,7 @@
             <!-- / HEADER -->
 
             <!-- CONTENT -->
-            <div class="content md-white-bg" fusePerfectScrollbar>
+            <div class="content mat-white-bg" fusePerfectScrollbar>
                 <fuse-file-list></fuse-file-list>
             </div>
             <!-- / CONTENT -->
@@ -69,11 +69,11 @@
         <!-- / CENTER -->
 
         <!-- SIDENAV -->
-        <md-sidenav class="sidenav right-sidenav mat-sidenav-opened" align="end" opened="true" mode="side"
-                    fuseMdSidenavHelper="file-manager-right-sidenav" md-is-locked-open="gt-md">
+        <mat-sidenav class="sidenav right-sidenav mat-sidenav-opened" align="end" opened="true" mode="side"
+                     fuseMatSidenavHelper="file-manager-right-sidenav" mat-is-locked-open="gt-md">
             <fuse-file-manager-details-sidenav></fuse-file-manager-details-sidenav>
-        </md-sidenav>
+        </mat-sidenav>
         <!-- / SIDENAV -->
 
-    </md-sidenav-container>
+    </mat-sidenav-container>
 </div>
