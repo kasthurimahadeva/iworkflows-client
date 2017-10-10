@@ -378,6 +378,11 @@ export class NavigationModel
                                         'url'  : '/components/angular-material/datepicker'
                                     },
                                     {
+                                        'title': 'Form field',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/form-field'
+                                    },
+                                    {
                                         'title': 'Input',
                                         'type' : 'item',
                                         'url'  : '/components/angular-material/input'

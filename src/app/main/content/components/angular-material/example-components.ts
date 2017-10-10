@@ -26,6 +26,13 @@ import { DialogElementsExampleDialog, DialogElementsExample } from '../../../../
 import { DialogOverviewExampleDialog, DialogOverviewExample } from '../../../../../assets/angular-material-examples/dialog-overview/dialog-overview-example';
 import { ExpansionOverviewExample } from '../../../../../assets/angular-material-examples/expansion-overview/expansion-overview-example';
 import { ExpansionStepsExample } from '../../../../../assets/angular-material-examples/expansion-steps/expansion-steps-example';
+import { MyTelInput, FormFieldCustomControlExample } from '../../../../../assets/angular-material-examples/form-field-custom-control/form-field-custom-control-example';
+import { FormFieldErrorExample } from '../../../../../assets/angular-material-examples/form-field-error/form-field-error-example';
+import { FormFieldHintExample } from '../../../../../assets/angular-material-examples/form-field-hint/form-field-hint-example';
+import { FormFieldOverviewExample } from '../../../../../assets/angular-material-examples/form-field-overview/form-field-overview-example';
+import { FormFieldPlaceholderExample } from '../../../../../assets/angular-material-examples/form-field-placeholder/form-field-placeholder-example';
+import { FormFieldPrefixSuffixExample } from '../../../../../assets/angular-material-examples/form-field-prefix-suffix/form-field-prefix-suffix-example';
+import { FormFieldThemingExample } from '../../../../../assets/angular-material-examples/form-field-theming/form-field-theming-example';
 import { GridListDynamicExample } from '../../../../../assets/angular-material-examples/grid-list-dynamic/grid-list-dynamic-example';
 import { GridListOverviewExample } from '../../../../../assets/angular-material-examples/grid-list-overview/grid-list-overview-example';
 import { IconOverviewExample } from '../../../../../assets/angular-material-examples/icon-overview/icon-overview-example';
@@ -94,6 +101,15 @@ export const COMPONENT_MAP = {
         'datepicker-filter',
         'datepicker-touch',
         'datepicker-api'
+    ],
+    'form-field'      : [
+        'form-field-overview',
+        'form-field-placeholder',
+        'form-field-hint',
+        'form-field-error',
+        'form-field-prefix-suffix',
+        'form-field-theming',
+        'form-field-custom-control'
     ],
     'input'           : [
         'input-overview',
@@ -167,7 +183,8 @@ export const COMPONENT_MAP = {
     ],
     'chips'           : [
         'chips-overview',
-        'chips-input'
+        'chips-input',
+        'chips-stacked'
     ],
     'icon'            : [
         'icon-overview',
@@ -375,6 +392,48 @@ export const EXAMPLE_COMPONENTS = {
     'expansion-steps'              : {
         title          : 'Expansion panel as accordion',
         component      : ExpansionStepsExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'form-field-custom-control'    : {
+        title          : 'Form field with custom telephone number input control. ',
+        component      : FormFieldCustomControlExample,
+        additionalFiles: ['form-field-custom-control-example.html'],
+        selectorName   : 'FormFieldCustomControlExample, MyTelInput'
+    },
+    'form-field-error'             : {
+        title          : 'Form field with error messages ',
+        component      : FormFieldErrorExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'form-field-hint'              : {
+        title          : 'Form field with hints ',
+        component      : FormFieldHintExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'form-field-overview'          : {
+        title          : 'Simple form field ',
+        component      : FormFieldOverviewExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'form-field-placeholder'       : {
+        title          : 'Form field with placeholder ',
+        component      : FormFieldPlaceholderExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'form-field-prefix-suffix'     : {
+        title          : 'Form field with prefix & suffix ',
+        component      : FormFieldPrefixSuffixExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'form-field-theming'           : {
+        title          : 'Form field theming ',
+        component      : FormFieldThemingExample,
         additionalFiles: null,
         selectorName   : null
     },
@@ -707,6 +766,13 @@ export const EXAMPLE_LIST = [
     DialogOverviewExample,
     ExpansionOverviewExample,
     ExpansionStepsExample,
+    MyTelInput, FormFieldCustomControlExample,
+    FormFieldErrorExample,
+    FormFieldHintExample,
+    FormFieldOverviewExample,
+    FormFieldPlaceholderExample,
+    FormFieldPrefixSuffixExample,
+    FormFieldThemingExample,
     GridListDynamicExample,
     GridListOverviewExample,
     IconOverviewExample,

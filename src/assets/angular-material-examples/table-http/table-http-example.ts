@@ -109,7 +109,7 @@ export class ExampleDataSource extends DataSource<GithubIssue>
                          .startWith(null)
                          .switchMap(() => {
                              setTimeout(() => {
-                                 this.isLoadingResults = true;
+                             this.isLoadingResults = true;
                              });
                              return this.exampleDatabase.getRepoIssues(
                                  this.sort.active, this.sort.direction, this.paginator.pageIndex);
@@ -125,8 +125,8 @@ export class ExampleDataSource extends DataSource<GithubIssue>
                          .catch(() => {
                              // Catch if the GitHub API has reached its rate limit. Return empty data.
                              setTimeout(() => {
-                                 this.isLoadingResults = false;
-                                 this.isRateLimitReached = true;
+                             this.isLoadingResults = false;
+                             this.isRateLimitReached = true;
                              });
                              return Observable.of([]);
                          });

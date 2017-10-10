@@ -122,10 +122,10 @@ export class ExampleDatabase
     {
         // Fill up the database with 100 users.
         setTimeout(() => {
-            for ( let i = 0; i < 100; i++ )
-            {
-                this.addUser();
-            }
+        for ( let i = 0; i < 100; i++ )
+        {
+            this.addUser();
+        }
         });
     }
 
