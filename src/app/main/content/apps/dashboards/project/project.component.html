@@ -49,18 +49,18 @@
                                 <!-- Front -->
                                 <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="pl-16 pr-8 py-16 h-52" fxLayout="row" fxLayoutAlign="space-between center">
-                                        <mat-select class="simplified font-size-16" [(ngModel)]="widgets.widget1.currentRange"
-                                                    aria-label="Change range">
-                                            <mat-option *ngFor="let range of widgets.widget1.ranges | keys"
-                                                        [value]="range.key">
-                                                {{range.value}}
-                                            </mat-option>
-                                        </mat-select>
-
+                                        <mat-form-field>
+                                            <mat-select class="simplified font-size-16" [(ngModel)]="widgets.widget1.currentRange"
+                                                        aria-label="Change range">
+                                                <mat-option *ngFor="let range of widgets.widget1.ranges | keys"
+                                                            [value]="range.key">
+                                                    {{range.value}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
                                         <button mat-icon-button fuseWidgetToggle aria-label="more">
                                             <mat-icon>more_vert</mat-icon>
                                         </button>
-
                                     </div>
 
                                     <div class="pt-8 pb-32" fxLayout="column" fxLayoutAlign="center center">
@@ -306,14 +306,14 @@
 
                                     <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget6.title}}</div>
-                                        <div class="py-16">
+                                        <mat-form-field>
                                             <mat-select class="simplified" [(ngModel)]="widget6.currentRange" aria-label="Change range">
                                                 <mat-option *ngFor="let range of widgets.widget6.ranges | keys"
                                                             [value]="range.key">
                                                     {{range.value}}
                                                 </mat-option>
                                             </mat-select>
-                                        </div>
+                                        </mat-form-field>
                                     </div>
 
                                     <div class="h-400">
@@ -356,8 +356,7 @@
 
                                     <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget7.title}}</div>
-
-                                        <div class="py-16">
+                                        <mat-form-field>
                                             <mat-select class="simplified" [(ngModel)]="widget7.currentRange"
                                                         aria-label="Change range">
                                                 <mat-option *ngFor="let range of widgets.widget7.ranges | keys"
@@ -365,7 +364,7 @@
                                                     {{range.value}}
                                                 </mat-option>
                                             </mat-select>
-                                        </div>
+                                        </mat-form-field>
                                     </div>
 
                                     <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center"
@@ -438,16 +437,14 @@
                                 <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
                                     <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center">
                                         <div class="h3">{{widgets.widget9.title}}</div>
-
-                                        <div class="py-16">
+                                        <mat-form-field>
                                             <mat-select [(ngModel)]="widget9.currentRange" aria-label="Change range">
                                                 <mat-option *ngFor="let range of widgets.widget9.ranges | keys"
                                                             [value]="range.key">
                                                     {{range.value}}
                                                 </mat-option>
                                             </mat-select>
-
-                                        </div>
+                                        </mat-form-field>
                                     </div>
 
                                     <div class="p-16" fxLayout="column" fxLayoutAlign="center" fxLayout.gt-xs="row"
