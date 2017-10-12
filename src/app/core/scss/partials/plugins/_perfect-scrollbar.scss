@@ -1,11 +1,12 @@
 .ps {
     position: relative;
 
-    > .ps__scrollbar-y-rail {
+    > .ps__rail-x {
         z-index: 99999;
     }
 
-    > .ps__scrollbar-y-rail {
+    > .ps__rail-y {
         z-index: 99999;
+        left: auto !important;
     }
 }

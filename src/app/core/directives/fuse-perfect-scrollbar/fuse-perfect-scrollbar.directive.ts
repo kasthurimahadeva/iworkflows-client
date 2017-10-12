@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, NgZone, OnDestroy, OnInit } from '@angular/core';
-import * as Ps from 'perfect-scrollbar';
+import PerfectScrollbar from 'perfect-scrollbar';
 import { FuseConfigService } from '../../services/config.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Platform } from '@angular/cdk/platform';
@@ -13,6 +13,7 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
     isDisableCustomScrollbars = false;
     isMobile = false;
     isInitialized = true;
+    ps;
 
     constructor(
         private element: ElementRef,
@@ -51,7 +52,7 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         this.zone.runOutsideAngular(() => {
 
             // Initialize the perfect-scrollbar
-            Ps.initialize(this.element.nativeElement);
+            this.ps = new PerfectScrollbar(this.element.nativeElement);
         });
     }
 
@@ -65,7 +66,7 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         this.onSettingsChanged.unsubscribe();
 
         // Destroy the perfect-scrollbar
-        Ps.destroy(this.element.nativeElement);
+        this.ps.destroy();
     }
 
     update()
@@ -76,7 +77,7 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         }
 
         // Update the perfect-scrollbar
-        Ps.update(this.element.nativeElement);
+        this.ps.update();
     }
 
     destroy()
