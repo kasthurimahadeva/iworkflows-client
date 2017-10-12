@@ -92,7 +92,7 @@ export class TodoService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/todo-filters')
                 .subscribe((response: any) => {
-                    this.filters = response.data;
+                    this.filters = response;
                     this.onFiltersChanged.next(this.filters);
                     resolve(this.filters);
                 }, reject);
@@ -108,7 +108,7 @@ export class TodoService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/todo-tags')
                 .subscribe((response: any) => {
-                    this.tags = response.data;
+                    this.tags = response;
                     this.onTagsChanged.next(this.tags);
                     resolve(this.tags);
                 }, reject);
@@ -145,7 +145,7 @@ export class TodoService implements Resolve<any>
 
             this.http.get('api/todo-todos')
                 .subscribe((todos: any) => {
-                    this.todos = todos.data.map(todo => {
+                    this.todos = todos.map(todo => {
                         return new Todo(todo);
                     });
 
@@ -178,7 +178,7 @@ export class TodoService implements Resolve<any>
             this.http.get('api/todo-todos?' + param)
                 .subscribe((todos: any) => {
 
-                    this.todos = todos.data.map(todo => {
+                    this.todos = todos.map(todo => {
                         return new Todo(todo);
                     });
 
@@ -203,12 +203,12 @@ export class TodoService implements Resolve<any>
             this.http.get('api/todo-tags?handle=' + handle)
                 .subscribe((tags: any) => {
 
-                    const tagId = tags.data[0].id;
+                    const tagId = tags[0].id;
 
                     this.http.get('api/todo-todos?tags=' + tagId)
                         .subscribe((todos: any) => {
 
-                            this.todos = todos.data.map(todo => {
+                            this.todos = todos.map(todo => {
                                 return new Todo(todo);
                             });
 

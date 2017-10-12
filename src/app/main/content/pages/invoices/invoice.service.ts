@@ -44,7 +44,7 @@ export class InvoiceService implements Resolve<any>
 
             this.http.get('api/invoice')
                 .subscribe((timeline: any) => {
-                    this.invoice = timeline.data;
+                    this.invoice = timeline;
                     this.invoiceOnChanged.next(this.invoice);
                     resolve(this.invoice);
                 }, reject);

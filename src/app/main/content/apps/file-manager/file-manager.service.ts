@@ -41,9 +41,9 @@ export class FileManagerService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/file-manager')
                 .subscribe((response: any) => {
-                    this.onFilesChanged.next(response.data);
-                    this.onFileSelected.next(response.data[0]);
-                    resolve(response.data);
+                    this.onFilesChanged.next(response);
+                    this.onFileSelected.next(response[0]);
+                    resolve(response);
                 }, reject);
         });
     }

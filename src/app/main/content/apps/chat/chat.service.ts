@@ -48,7 +48,7 @@ export class ChatService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-chats/' + chatItem.id)
                 .subscribe((response: any) => {
-                    const chat = response.data;
+                    const chat = response;
 
                     const chatContact = this.contacts.find((contact) => {
                         return contact.id === contactId;
@@ -212,7 +212,7 @@ export class ChatService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-contacts')
                 .subscribe((response: any) => {
-                    resolve(response.data);
+                    resolve(response);
                 }, reject);
         });
     }
@@ -226,7 +226,7 @@ export class ChatService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-chats')
                 .subscribe((response: any) => {
-                    resolve(response.data);
+                    resolve(response);
                 }, reject);
         });
     }
@@ -240,7 +240,7 @@ export class ChatService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/chat-user')
                 .subscribe((response: any) => {
-                    resolve(response.data[0]);
+                    resolve(response[0]);
                 }, reject);
         });
     }

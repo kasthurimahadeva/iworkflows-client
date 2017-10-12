@@ -89,7 +89,7 @@ export class MailService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-folders')
                 .subscribe((response: any) => {
-                    this.folders = response.data;
+                    this.folders = response;
                     this.onFoldersChanged.next(this.folders);
                     resolve(this.folders);
                 }, reject);
@@ -105,7 +105,7 @@ export class MailService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-filters')
                 .subscribe((response: any) => {
-                    this.filters = response.data;
+                    this.filters = response;
                     this.onFiltersChanged.next(this.filters);
                     resolve(this.filters);
                 }, reject);
@@ -121,7 +121,7 @@ export class MailService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/mail-labels')
                 .subscribe((response: any) => {
-                    this.labels = response.data;
+                    this.labels = response;
                     this.onLabelsChanged.next(this.labels);
                     resolve(this.labels);
                 }, reject);
@@ -159,12 +159,12 @@ export class MailService implements Resolve<any>
             this.http.get('api/mail-folders?handle=' + handle)
                 .subscribe((folders: any) => {
 
-                    const folderId = folders.data[0].id;
+                    const folderId = folders[0].id;
 
                     this.http.get('api/mail-mails?folder=' + folderId)
                         .subscribe((mails: any) => {
 
-                            this.mails = mails.data.map(mail => {
+                            this.mails = mails.map(mail => {
                                 return new Mail(mail);
                             });
 
@@ -191,7 +191,7 @@ export class MailService implements Resolve<any>
             this.http.get('api/mail-mails?' + handle + '=true')
                 .subscribe((mails: any) => {
 
-                    this.mails = mails.data.map(mail => {
+                    this.mails = mails.map(mail => {
                         return new Mail(mail);
                     });
 
@@ -216,12 +216,12 @@ export class MailService implements Resolve<any>
             this.http.get('api/mail-labels?handle=' + handle)
                 .subscribe((labels: any) => {
 
-                    const labelId = labels.data[0].id;
+                    const labelId = labels[0].id;
 
                     this.http.get('api/mail-mails?labels=' + labelId)
                         .subscribe((mails: any) => {
 
-                            this.mails = mails.data.map(mail => {
+                            this.mails = mails.map(mail => {
                                 return new Mail(mail);
                             });
 

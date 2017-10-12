@@ -35,7 +35,7 @@ export class CalendarService implements Resolve<any>
 
             this.http.get('api/calendar/events')
                 .subscribe((response: any) => {
-                    this.events = response.data.data;
+                    this.events = response.data;
                     this.onEventsUpdated.next(this.events);
                     resolve(this.events);
                 }, reject);

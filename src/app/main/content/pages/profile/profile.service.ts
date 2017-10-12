@@ -50,7 +50,7 @@ export class ProfileService implements Resolve<any>
 
             this.http.get('api/profile-timeline')
                 .subscribe((timeline: any) => {
-                    this.timeline = timeline.data;
+                    this.timeline = timeline;
                     this.timelineOnChanged.next(this.timeline);
                     resolve(this.timeline);
                 }, reject);
@@ -66,7 +66,7 @@ export class ProfileService implements Resolve<any>
 
             this.http.get('api/profile-about')
                 .subscribe((about: any) => {
-                    this.about = about.data;
+                    this.about = about;
                     this.aboutOnChanged.next(this.about);
                     resolve(this.about);
                 }, reject);
@@ -82,7 +82,7 @@ export class ProfileService implements Resolve<any>
 
             this.http.get('api/profile-photos-videos')
                 .subscribe((photosVideos: any) => {
-                    this.photosVideos = photosVideos.data;
+                    this.photosVideos = photosVideos;
                     this.photosVideosOnChanged.next(this.photosVideos);
                     resolve(this.photosVideos);
                 }, reject);

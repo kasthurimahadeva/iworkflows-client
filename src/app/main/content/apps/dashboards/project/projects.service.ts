@@ -43,8 +43,8 @@ export class ProjectsDashboardService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/projects-dashboard-projects')
                 .subscribe((response: any) => {
-                    this.projects = response.data;
-                    resolve(response.data);
+                    this.projects = response;
+                    resolve(response);
                 }, reject);
         });
     }
@@ -54,8 +54,8 @@ export class ProjectsDashboardService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/projects-dashboard-widgets')
                 .subscribe((response: any) => {
-                    this.widgets = response.data;
-                    resolve(response.data);
+                    this.widgets = response;
+                    resolve(response);
                 }, reject);
         });
     }

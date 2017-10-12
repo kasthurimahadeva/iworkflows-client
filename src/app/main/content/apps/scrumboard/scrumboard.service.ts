@@ -45,7 +45,7 @@ export class ScrumboardService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/scrumboard-boards')
                 .subscribe((response: any) => {
-                    this.boards = response.data;
+                    this.boards = response;
                     this.onBoardsChanged.next(this.boards);
                     resolve(this.boards);
                 }, reject);
@@ -57,7 +57,7 @@ export class ScrumboardService implements Resolve<any>
         return new Promise((resolve, reject) => {
             this.http.get('api/scrumboard-boards/' + boardId)
                 .subscribe((response: any) => {
-                    this.board = response.data;
+                    this.board = response;
                     this.onBoardChanged.next(this.board);
                     resolve(this.board);
                 }, reject);

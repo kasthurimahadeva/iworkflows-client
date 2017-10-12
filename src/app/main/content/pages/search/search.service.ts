@@ -47,7 +47,7 @@ export class SearchService implements Resolve<any>
 
             this.http.get('api/search-classic')
                 .subscribe((classic: any) => {
-                    this.classic = classic.data;
+                    this.classic = classic;
                     this.classicOnChanged.next(this.classic);
                     resolve(this.classic);
                 }, reject);
@@ -63,7 +63,7 @@ export class SearchService implements Resolve<any>
 
             this.http.get('api/search-table')
                 .subscribe((table: any) => {
-                    this.table = table.data;
+                    this.table = table;
                     this.tableOnChanged.next(this.table);
                     resolve(this.table);
                 }, reject);

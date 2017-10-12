@@ -67,7 +67,7 @@ export class ContactsService implements Resolve<any>
                 this.http.get('api/contacts-contacts')
                     .subscribe((response: any) => {
 
-                        this.contacts = response.data;
+                        this.contacts = response;
 
                         if ( this.filterBy === 'starred' )
                         {
@@ -104,7 +104,7 @@ export class ContactsService implements Resolve<any>
         return new Promise((resolve, reject) => {
                 this.http.get('api/contacts-user/5725a6802d10e277a0f35724')
                     .subscribe((response: any) => {
-                        this.user = response.data;
+                        this.user = response;
                         this.onUserDataChanged.next(this.user);
                         resolve(this.user);
                     }, reject);
