@@ -72,27 +72,28 @@
         <mat-divider></mat-divider>
 
         <h3>Router Animation:</h3>
-        <mat-select class="p-0" [(ngModel)]="fuseSettings.routerAnimation">
-            <mat-option value="none">
-                None
-            </mat-option>
-            <mat-option value="slideUp">
-                Slide up
-            </mat-option>
-            <mat-option value="slideDown">
-                Slide down
-            </mat-option>
-            <mat-option value="slideRight">
-                Slide right
-            </mat-option>
-            <mat-option value="slideLeft">
-                Slide left
-            </mat-option>
-            <mat-option value="fadeIn">
-                Fade in
-            </mat-option>
-        </mat-select>
-
+        <mat-form-field class="w-100-p">
+            <mat-select class="p-0" [(ngModel)]="fuseSettings.routerAnimation">
+                <mat-option value="none">
+                    None
+                </mat-option>
+                <mat-option value="slideUp">
+                    Slide up
+                </mat-option>
+                <mat-option value="slideDown">
+                    Slide down
+                </mat-option>
+                <mat-option value="slideRight">
+                    Slide right
+                </mat-option>
+                <mat-option value="slideLeft">
+                    Slide left
+                </mat-option>
+                <mat-option value="fadeIn">
+                    Fade in
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 
 </div>
