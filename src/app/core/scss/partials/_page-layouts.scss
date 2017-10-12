@@ -132,7 +132,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     min-width: 240px;
                     max-width: 240px;
                     height: auto;
-                    z-index: 2;
+                    z-index: 4;
                     overflow-y: hidden;
                     @include mat-elevation(7);
 
@@ -145,6 +145,12 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         height: $carded-header-height;
                         min-height: $carded-header-height;
                         max-height: $carded-header-height;
+
+                        @include media-breakpoint-down('sm') {
+                            height: $carded-header-height-sm;
+                            min-height: $carded-header-height-sm;
+                            max-height: $carded-header-height-sm;
+                        }
                     }
 
                     .content {
@@ -175,6 +181,12 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                             height: $carded-header-height-without-toolbar;
                             min-height: $carded-header-height-without-toolbar;
                             max-height: $carded-header-height-without-toolbar;
+
+                            @include media-breakpoint-down('sm') {
+                                height: $carded-header-height-without-toolbar-sm;
+                                min-height: $carded-header-height-without-toolbar-sm;
+                                max-height: $carded-header-height-without-toolbar-sm;
+                            }
                         }
 
                         .content-card {
@@ -341,7 +353,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             > mat-sidenav-container {
                 display: flex;
                 flex-direction: column;
-                //flex-direction: row;
                 flex: 1;
                 background: none;
                 z-index: 2;

@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import PerfectScrollbar from 'perfect-scrollbar';
 import { FuseConfigService } from '../../services/config.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -17,7 +17,6 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
 
     constructor(
         private element: ElementRef,
-        private zone: NgZone,
         private fuseConfig: FuseConfigService,
         private platform: Platform
     )
@@ -49,11 +48,8 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
             return;
         }
 
-        this.zone.runOutsideAngular(() => {
-
-            // Initialize the perfect-scrollbar
-            this.ps = new PerfectScrollbar(this.element.nativeElement);
-        });
+        // Initialize the perfect-scrollbar
+        this.ps = new PerfectScrollbar(this.element.nativeElement);
     }
 
     ngOnDestroy()
@@ -127,7 +123,6 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
 
             // PS has weird event sending order, this is a workaround for that
             this.update();
-
             this.update();
         }
         else if ( value !== this.element.nativeElement[target] )

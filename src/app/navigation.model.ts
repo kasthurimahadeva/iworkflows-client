@@ -117,7 +117,7 @@ export class NavigationModel
                                 'url'  : '/pages/auth/forgot-password'
                             },
                             {
-                                'title': 'Forgot Password 2',
+                                'title': 'Forgot Password v2',
                                 'type' : 'item',
                                 'url'  : '/pages/auth/forgot-password-2'
                             },
@@ -127,7 +127,7 @@ export class NavigationModel
                                 'url'  : '/pages/auth/reset-password'
                             },
                             {
-                                'title': 'Reset Password 2',
+                                'title': 'Reset Password v2',
                                 'type' : 'item',
                                 'url'  : '/pages/auth/reset-password-2'
                             },

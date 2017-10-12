@@ -32,6 +32,7 @@
 
         #chat-content {
             background: transparent;
+            overflow: auto;
 
             .message-row {
                 padding: 16px;
