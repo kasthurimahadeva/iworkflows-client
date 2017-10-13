@@ -17,8 +17,10 @@
             }
 
             #lock-form {
-                width: 384px;
-                max-width: 384px;
+                display: flex;
+                flex-direction: column;
+                width: 420px;
+                max-width: 420px;
                 padding: 48px 32px 32px 32px;
                 background: #FFFFFF;
                 @include mat-elevation(7);
@@ -28,24 +30,46 @@
                     width: 100%;
                 }
 
-                .title {
-                    font-size: 20px;
-                    margin-bottom: 8px;
-                }
+                .lock-form-header {
+                    display: flex;
+                    flex: 1 0 auto;
 
-                .subtitle {
-                    color: rgba(0, 0, 0, 0.54);
-                }
+                    .avatar-container {
+                        position: relative;
+                        margin-right: 16px;
 
-                .avatar-container {
-                    position: relative;
-                    margin-right: 16px;
+                        .avatar {
+                            margin: 0;
+                        }
 
-                    mat-icon {
-                        position: absolute;
-                        bottom: 0;
-                        right: 0;
-                        color: mat-color($mat-red, 500);
+                        @include media-breakpoint('xs') {
+                            margin-right: 0;
+                        }
+
+                        mat-icon {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            color: mat-color($mat-red, 500);
+                        }
+                    }
+
+                    .title {
+                        font-size: 20px;
+                        margin-bottom: 8px;
+
+                        @include media-breakpoint('xs') {
+                            margin-top: 16px;
+                            text-align: center;
+                        }
+                    }
+
+                    .subtitle {
+                        color: rgba(0, 0, 0, 0.54);
+
+                        @include media-breakpoint('xs') {
+                            text-align: center;
+                        }
                     }
                 }
 
