@@ -135,6 +135,11 @@ export class NavigationModel
                                 'title': 'Lock Screen',
                                 'type' : 'item',
                                 'url'  : '/pages/auth/lock'
+                            },
+                            {
+                                'title': 'Mail Confirmation',
+                                'type' : 'item',
+                                'url'  : '/pages/auth/mail-confirm'
                             }
                         ]
                     },

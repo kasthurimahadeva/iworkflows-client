@@ -6,9 +6,10 @@ import { RegisterModule } from './authentication/register/register.module';
 import { Register2Module } from './authentication/register-2/register-2.module';
 import { ForgotPasswordModule } from './authentication/forgot-password/forgot-password.module';
 import { ForgotPassword2Module } from './authentication/forgot-password-2/forgot-password-2.module';
-import { LockModule } from './authentication/lock/lock.module';
 import { ResetPasswordModule } from './authentication/reset-password/reset-password.module';
 import { ResetPassword2Module } from './authentication/reset-password-2/reset-password-2.module';
+import { LockModule } from './authentication/lock/lock.module';
+import { MailConfirmModule } from './authentication/mail-confirm/mail-confirm.module';
 import { ComingSoonModule } from './coming-soon/coming-soon.module';
 import { Error404Module } from './errors/404/error-404.module';
 import { Error500Module } from './errors/500/error-500.module';
@@ -31,6 +32,7 @@ import { SearchModule } from './search/search.module';
         ResetPasswordModule,
         ResetPassword2Module,
         LockModule,
+        MailConfirmModule,
 
         // Coming-soon
         ComingSoonModule,
