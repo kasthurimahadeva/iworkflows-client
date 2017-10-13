@@ -16,7 +16,12 @@
                         <button mat-menu-item (click)="removeDueDate()">Remove Due Date</button>
                     </mat-menu>
 
-                    <!--<md2-datepicker *ngIf="!card.due" [(ngModel)]="card.due" openOnFocus="true" placeholder="Set Date/Time" type="datetime"></md2-datepicker>-->
+                    <mat-form-field *ngIf="!card.due">
+                        <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due">
+                        <mat-datepicker-toggle matSuffix [for]="menuPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #menuPicker></mat-datepicker>
+                    </mat-form-field>
+
                 </div>
                 <!-- / DUE DATE -->
 
@@ -140,7 +145,11 @@
             <!-- DUE DATE -->
             <div *ngIf="card.due" class="due-date" fxLayout="row" fxLayoutAlign="start center">
 
-                <!--<md2-datepicker class="picker ml-8" [(ngModel)]="card.due" openOnFocus="true" type="datetime" format="dd/MM/y H:mm"></md2-datepicker>-->
+                <mat-form-field floatPlaceholder="never">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="card.due" placeholder="Choose a due date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
 
                 <button mat-icon-button class="remove-due-date" (click)="removeDueDate()">
                     <mat-icon class="s-16">close</mat-icon>

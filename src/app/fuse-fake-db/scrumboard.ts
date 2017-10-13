@@ -181,7 +181,7 @@ export class ScrumboardFakeDb
                             'time'    : '45 mins. ago'
                         }
                     ],
-                    'due'              : 'Tue Aug 29 2017 13:16:34 GMT+0300 (Turkey Standard Time)'
+                    'due'              : '2017-08-29T10:16:34.000Z'
                 },
                 {
                     'id'               : '5637273da9b93bb84743a0f9',
@@ -274,7 +274,7 @@ export class ScrumboardFakeDb
                         }
                     ],
                     'activities'       : [],
-                    'due'              : 'Fri Sep 07 2018 15:00:00 GMT+0300 (Turkey Standard Time)'
+                    'due'              : '2018-09-07T12:00:00.000Z'
                 },
                 {
                     'id'               : 'f6b9d7a9247e5d794a081927',
@@ -365,7 +365,7 @@ export class ScrumboardFakeDb
                     'checkItemsChecked': 0,
                     'comments'         : [],
                     'activities'       : [],
-                    'due'              : 'Wed Mar 08 2017 12:00:00 GMT+0300 (Turkey Standard Time)'
+                    'due'              : '2017-03-08T09:00:00.000Z'
                 },
                 {
                     'id'               : '80ed.24ad3b18e2668.f28fbbceeeff9.5a834620a42f1.5909be19a2bf2.6c4a54947ce2d.da356b0c1',
@@ -536,7 +536,7 @@ export class ScrumboardFakeDb
                     'checkItemsChecked': 3,
                     'comments'         : [],
                     'activities'       : [],
-                    'due'              : 'Fri Feb 02 2017 14:20:34 GMT+0300 (Turkey Standard Time)'
+                    'due'              : '2017-02-02T11:20:34.000Z'
                 }
             ],
             'members' : [
