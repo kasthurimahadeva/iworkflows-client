@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { FaqService } from './faq.service';
@@ -9,7 +9,7 @@ import { FuseUtils } from '../../../../core/fuseUtils';
     templateUrl: './faq.component.html',
     styleUrls  : ['./faq.component.scss']
 })
-export class FuseFaqComponent implements OnInit
+export class FuseFaqComponent implements OnInit, OnDestroy
 {
     faqs: any;
     faqsFiltered: any;
@@ -52,5 +52,10 @@ export class FuseFaqComponent implements OnInit
     prevStep()
     {
         this.step--;
+    }
+
+    ngOnDestroy()
+    {
+        this.onFaqsChanged.unsubscribe();
     }
 }
