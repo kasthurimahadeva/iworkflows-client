@@ -634,6 +634,12 @@ export class NavigationModel
                                 'url'  : '/components-third-party/datatables/ngx-datatable'
                             }
                         ]
+                    },
+                    {
+                        'title': 'Google Maps',
+                        'type' : 'item',
+                        'icon' : 'place',
+                        'url'  : '/components-third-party/google-maps'
                     }
                 ]
             }
