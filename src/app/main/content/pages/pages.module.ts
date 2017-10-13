@@ -15,6 +15,7 @@ import { Error500Module } from './errors/500/error-500.module';
 import { InvoiceCompactModule } from './invoices/compact/compact.module';
 import { InvoiceModernModule } from './invoices/modern/modern.module';
 import { MaintenanceModule } from './maintenance/maintenence.module';
+import { PricingModule } from './pricing/pricing.module';
 import { ProfileModule } from './profile/profile.module';
 import { SearchModule } from './search/search.module';
 
@@ -44,6 +45,9 @@ import { SearchModule } from './search/search.module';
 
         // Maintenance
         MaintenanceModule,
+
+        // Pricing
+        PricingModule,
 
         // Profile
         ProfileModule,

@@ -29,12 +29,12 @@ export class FuseQuickPanelComponent implements OnInit
     {
         this.http.get('api/quick-panel-notes')
             .subscribe((response: any) => {
-                this.notes = response.data;
+                this.notes = response;
             });
 
         this.http.get('api/quick-panel-events')
             .subscribe((response: any) => {
-                this.events = response.data;
+                this.events = response;
             });
 
     }

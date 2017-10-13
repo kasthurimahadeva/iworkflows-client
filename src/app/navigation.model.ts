@@ -185,6 +185,28 @@ export class NavigationModel
                         'url'  : '/pages/maintenance'
                     },
                     {
+                        'title'   : 'Pricing',
+                        'type'    : 'collapse',
+                        'icon'    : 'attach_money',
+                        'children': [
+                            {
+                                'title': 'Style 1',
+                                'type' : 'item',
+                                'url'  : '/pages/pricing/style-1'
+                            },
+                            {
+                                'title': 'Style 2',
+                                'type' : 'item',
+                                'url'  : '/pages/pricing/style-2'
+                            },
+                            {
+                                'title': 'Style 3',
+                                'type' : 'item',
+                                'url'  : '/pages/pricing/style-3'
+                            }
+                        ]
+                    },
+                    {
                         'title': 'Profile',
                         'type' : 'item',
                         'icon' : 'person',

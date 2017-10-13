@@ -20,7 +20,7 @@ export class FuseIconsComponent implements OnInit
     {
         this.http.get('api/icons')
             .subscribe((icons: any) => {
-                this.icons = icons.data;
+                this.icons = icons;
                 this.filteredIcons = this.icons;
                 this.loading = false;
             });
