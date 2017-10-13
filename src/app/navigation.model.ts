@@ -593,12 +593,6 @@ export class NavigationModel
                         'url'  : '/components/navigation'
                     },
                     {
-                        'title': 'Price Tables',
-                        'type' : 'item',
-                        'icon' : 'settings_input_component',
-                        'url'  : '/components/price-tables'
-                    },
-                    {
                         'title': 'Search Bar',
                         'type' : 'item',
                         'icon' : 'settings_input_component',
