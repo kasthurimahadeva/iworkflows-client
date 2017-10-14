@@ -10,22 +10,19 @@
 
             .due-date {
 
-                md2-datepicker {
-                    min-width: initial;
+                .mat-form-field {
+                    width: auto;
+                    margin: 0 8px;
 
-                    .md2-datepicker-trigger {
+                    .mat-form-field-wrapper {
                         padding: 0;
 
-                        .md2-datepicker-button {
-                            display: block;
-                            position: relative;
-                            top: 0;
-                            left: 0;
-                            line-height: normal;
-                        }
+                        .mat-form-field-flex {
+                            align-items: center;
 
-                        .md2-datepicker-input {
-                            display: none;
+                            .mat-input-element {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -62,24 +59,6 @@
             }
 
             .due-date {
-
-                md2-datepicker {
-                    width: 180px;
-                    min-width: 180px;
-
-                    .md2-datepicker-trigger {
-                        padding-top: 5px;
-                        padding-bottom: 5px;
-
-                        .md2-datepicker-button {
-                            top: 0;
-                        }
-
-                        .md2-datepicker-input {
-                            min-width: initial;
-                        }
-                    }
-                }
 
                 .remove-due-date {
                 }

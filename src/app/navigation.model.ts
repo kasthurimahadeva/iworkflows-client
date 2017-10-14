@@ -258,6 +258,12 @@ export class NavigationModel
                         'type' : 'item',
                         'icon' : 'search',
                         'url'  : '/pages/search'
+                    },
+                    {
+                        'title': 'Faq',
+                        'type' : 'item',
+                        'icon' : 'help',
+                        'url'  : '/pages/faq'
                     }
                 ]
             },

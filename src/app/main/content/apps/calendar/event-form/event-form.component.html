@@ -60,7 +60,9 @@
             <div fxFlex="1 0 auto" fxLayout="row">
 
                 <mat-form-field class="mr-24" fxFlex>
-                    <input matInput [matDatepicker]="startDatePicker" placeholder="Start Date">
+                    <input matInput [matDatepicker]="startDatePicker" placeholder="Start Date"
+                           name="start"
+                           formControlName="start">
                     <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
                     <mat-datepicker #startDatePicker></mat-datepicker>
                 </mat-form-field>
@@ -74,7 +76,9 @@
             <div fxFlex="1 0 auto" fxLayout="row">
 
                 <mat-form-field class="mr-24" fxFlex>
-                    <input matInput [matDatepicker]="endDatePicker" placeholder="End Date">
+                    <input matInput [matDatepicker]="endDatePicker" placeholder="End Date"
+                           name="end"
+                           formControlName="end">
                     <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
                     <mat-datepicker #endDatePicker></mat-datepicker>
                 </mat-form-field>

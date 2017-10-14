@@ -13,6 +13,7 @@ import { QuickPanelFakeDb } from './quick-panel';
 import { IconsFakeDb } from './icons';
 import { ProjectsDashboardDb } from './projects-dashboard';
 import { ScrumboardFakeDb } from './scrumboard';
+import { FaqFakeDb } from './faq';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -44,7 +45,8 @@ export class FuseFakeDbService implements InMemoryDbService
             'icons'                      : IconsFakeDb.icons,
             'projects-dashboard-projects': ProjectsDashboardDb.projects,
             'projects-dashboard-widgets' : ProjectsDashboardDb.widgets,
-            'scrumboard-boards'          : ScrumboardFakeDb.boards
+            'scrumboard-boards'          : ScrumboardFakeDb.boards,
+            'faq'                        : FaqFakeDb.data
         };
     }
 }

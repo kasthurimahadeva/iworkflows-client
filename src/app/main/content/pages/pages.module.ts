@@ -19,6 +19,7 @@ import { MaintenanceModule } from './maintenance/maintenence.module';
 import { PricingModule } from './pricing/pricing.module';
 import { ProfileModule } from './profile/profile.module';
 import { SearchModule } from './search/search.module';
+import { FaqModule } from './faq/faq.module';
 
 @NgModule({
     imports: [
@@ -55,7 +56,10 @@ import { SearchModule } from './search/search.module';
         ProfileModule,
 
         // Search
-        SearchModule
+        SearchModule,
+
+        // Faq
+        FaqModule
     ]
 })
 export class PagesModule
