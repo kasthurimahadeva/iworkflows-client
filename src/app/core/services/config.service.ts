@@ -28,12 +28,12 @@ export class FuseConfigService
                 mode      : 'fullwidth' // 'boxed', 'fullwidth'
             },
             colorClasses    : {
-                toolbar: 'md-white-500-bg',
-                navbar : 'md-fuse-dark-500-bg',
-                footer : 'md-fuse-dark-700-bg'
+                toolbar: 'mat-white-500-bg',
+                navbar : 'mat-fuse-dark-700-bg',
+                footer : 'mat-fuse-dark-900-bg'
             },
             customScrollbars: true,
-            routerAnimation : 'fadeIn'
+            routerAnimation : 'fadeIn' // fadeIn, slideUp, slideDown, slideRight, slideLeft
         };
 
         /**

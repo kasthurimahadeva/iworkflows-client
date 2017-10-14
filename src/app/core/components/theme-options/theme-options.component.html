@@ -1,50 +1,50 @@
-<button #openButton md-icon-button class="open-button md-primary-bg mat-elevation-z2" (click)="openBar()">
-    <md-icon>settings</md-icon>
+<button #openButton mat-icon-button class="open-button mat-primary-bg mat-elevation-z2" (click)="openBar()">
+    <mat-icon>settings</mat-icon>
 </button>
 
 <div class="theme-options-panel-overlay" #overlay [fxHide]="barClosed" [@fadeInOut]="!barClosed"></div>
 
-<div #panel class="theme-options-panel md-white-bg mat-elevation-z8">
+<div #panel class="theme-options-panel mat-white-bg mat-elevation-z8">
 
-    <button md-icon-button class="close-button" (click)="closeBar()">
-        <md-icon>close</md-icon>
+    <button mat-icon-button class="close-button" (click)="closeBar()">
+        <mat-icon>close</mat-icon>
     </button>
 
     <div class="theme-options-panel-inner" fxLayout="column" fxLayoutAlign="start start">
 
         <h3>Navigation:</h3>
-        <md-radio-group [(ngModel)]="fuseSettings.layout.navigation" (ngModelChange)="onSettingsChange()"
-                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
-            <md-radio-button class="mr-8 mb-8" value="top">Top</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="left">Left</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="right">Right</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
-        </md-radio-group>
+        <mat-radio-group [(ngModel)]="fuseSettings.layout.navigation" (ngModelChange)="onSettingsChange()"
+                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <mat-radio-button class="mr-8 mb-8" value="top">Top</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="left">Left</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="right">Right</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
+        </mat-radio-group>
 
         <h3 class="mt-24">Toolbar:</h3>
-        <md-radio-group [(ngModel)]="fuseSettings.layout.toolbar" (ngModelChange)="onSettingsChange()"
-                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
-            <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
-        </md-radio-group>
+        <mat-radio-group [(ngModel)]="fuseSettings.layout.toolbar" (ngModelChange)="onSettingsChange()"
+                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <mat-radio-button class="mr-8 mb-8" value="below">Below</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="above">Above</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
+        </mat-radio-group>
 
         <h3 class="mt-24">Footer:</h3>
-        <md-radio-group [(ngModel)]="fuseSettings.layout.footer" (ngModelChange)="onSettingsChange()"
-                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
-            <md-radio-button class="mr-8 mb-8" value="below">Below</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="above">Above</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="none">None</md-radio-button>
-        </md-radio-group>
+        <mat-radio-group [(ngModel)]="fuseSettings.layout.footer" (ngModelChange)="onSettingsChange()"
+                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <mat-radio-button class="mr-8 mb-8" value="below">Below</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="above">Above</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
+        </mat-radio-group>
 
         <h3 class="mt-24">Layout Mode:</h3>
-        <md-radio-group [(ngModel)]="fuseSettings.layout.mode" (ngModelChange)="onSettingsChange()"
-                        fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
-            <md-radio-button class="mr-8 mb-8" value="boxed">Boxed</md-radio-button>
-            <md-radio-button class="mr-8 mb-8" value="fullwidth">Fullwidth</md-radio-button>
-        </md-radio-group>
+        <mat-radio-group [(ngModel)]="fuseSettings.layout.mode" (ngModelChange)="onSettingsChange()"
+                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+            <mat-radio-button class="mr-8 mb-8" value="boxed">Boxed</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="fullwidth">Fullwidth</mat-radio-button>
+        </mat-radio-group>
 
-        <md-divider></md-divider>
+        <mat-divider></mat-divider>
 
         <h3>Colors:</h3>
         <div class="colors">
@@ -69,30 +69,31 @@
 
         </div>
 
-        <md-divider></md-divider>
+        <mat-divider></mat-divider>
 
         <h3>Router Animation:</h3>
-        <md-select class="p-0" [(ngModel)]="fuseSettings.routerAnimation">
-            <md-option value="none">
-                None
-            </md-option>
-            <md-option value="slideUp">
-                Slide up
-            </md-option>
-            <md-option value="slideDown">
-                Slide down
-            </md-option>
-            <md-option value="slideRight">
-                Slide right
-            </md-option>
-            <md-option value="slideLeft">
-                Slide left
-            </md-option>
-            <md-option value="fadeIn">
-                Fade in
-            </md-option>
-        </md-select>
-
+        <mat-form-field class="w-100-p">
+            <mat-select class="p-0" [(ngModel)]="fuseSettings.routerAnimation">
+                <mat-option value="none">
+                    None
+                </mat-option>
+                <mat-option value="slideUp">
+                    Slide up
+                </mat-option>
+                <mat-option value="slideDown">
+                    Slide down
+                </mat-option>
+                <mat-option value="slideRight">
+                    Slide right
+                </mat-option>
+                <mat-option value="slideLeft">
+                    Slide left
+                </mat-option>
+                <mat-option value="fadeIn">
+                    Fade in
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 
 </div>

@@ -13,6 +13,15 @@
     .mat-toolbar {
         background: inherit;
         color: inherit;
+        position: relative;
+
+        .loading-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
     }
 
     .logo {
@@ -22,11 +31,6 @@
         .logo-icon {
             width: 38px;
         }
-    }
-
-    .loading-spinner {
-        width: 32px;
-        height: 32px;
     }
 
     .user-button,

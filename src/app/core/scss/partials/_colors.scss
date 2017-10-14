@@ -51,12 +51,14 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     // If the base text color is black...
     @if (rgba(black, 1) == rgba($baseTextColor, 1)) {
 
-        &.secondary-text,
-        .secondary-text,
         .mat-icon,
-        .icon,
-        .md2-datepicker-button {
+        .icon {
             color: rgba(0, 0, 0, 0.54);
+        }
+
+        &.secondary-text,
+        .secondary-text {
+            color: rgba(0, 0, 0, 0.54) !important;
         }
 
         &.hint-text,
@@ -80,8 +82,7 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     @else {
 
         .mat-icon,
-        .icon,
-        .md2-datepicker-button {
+        .icon {
             color: rgba(255, 255, 255, 1);
         }
 
@@ -111,49 +112,60 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
 @mixin generateMaterialElementColors($contrastColor) {
 
     // If the contrast color is white...
-    $foreground: $mat-dark-theme-foreground;
+    $fuseForeground: (
+        base: white,
+        text: white,
+        hint-text: rgba(white, 0.5),
+        divider: rgba(white, 0.12),
+    );
 
     // If the contrast color is black...
     @if (rgba(black, 1) == rgba($contrastColor, 1)) {
-        $foreground: $mat-light-theme-foreground;
+
+        $fuseForeground: (
+            base: black,
+            hint-text: rgba(black, 0.38),
+            divider: rgba(black, 0.12),
+        );
     }
 
     // Native Input
     input[type="text"] {
-        color: mat-color($foreground, base);
+        color: map_get($fuseForeground, base);
     }
 
     // Input
     .mat-input-placeholder {
-        color: mat-color($foreground, hint-text);
+        color: map_get($fuseForeground, hint-text);
     }
 
     .mat-input-underline {
-        background-color: mat-color($foreground, divider);
+        background-color: map_get($fuseForeground, divider);
     }
 
     // Select
     .mat-select-trigger,
     .mat-select-arrow {
-        color: mat-color($foreground, hint-text);
+        color: map_get($fuseForeground, hint-text);
     }
 
     .mat-select-underline {
-        background-color: mat-color($foreground, divider);
+        background-color: map_get($fuseForeground, divider);
     }
 
     .mat-select-disabled .mat-select-value,
     .mat-select-arrow,
     .mat-select-trigger {
-        color: mat-color($foreground, hint-text);
+        color: map_get($fuseForeground, hint-text);
     }
 
-    .mat-select-content, .mat-select-panel-done-animating {
-        background: mat-color($background, card);
+    .mat-select-content,
+    .mat-select-panel-done-animating {
+        background: map_get($background, card);
     }
 
     .mat-select-value {
-        color: mat-color($foreground, text);
+        color: map_get($fuseForeground, text);
     }
 }
 
@@ -164,7 +176,7 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         background-color: $color !important;
     }
 
-    .md-#{$colorName}#{$hue}-bg {
+    .mat-#{$colorName}#{$hue}-bg {
         background-color: $color !important;
         color: $contrastColor !important;
 

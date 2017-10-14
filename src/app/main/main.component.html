@@ -1,6 +1,6 @@
-<md-sidenav-container>
+<mat-sidenav-container>
 
-    <div id="fuse-main-content" fxFlexFill>
+    <div id="fuse-main-content">
 
         <!-- TOOLBAR: Above -->
         <ng-container *ngIf="fuseSettings.layout.toolbar === 'above'">
@@ -19,8 +19,8 @@
 
             <!-- NAVBAR: Left -->
             <fuse-navbar-vertical [folded]="false"
-                                  fxShow [fxHide.gt-md]="fuseSettings.layout.navigation === 'top'"
-                                  class="left-navbar" [class]="fuseSettings.colorClasses.navbar"
+                                  class="left-navbar"
+                                  [class]="fuseSettings.colorClasses.navbar"
                                   *ngIf="fuseSettings.layout.navigation === 'left' || fuseSettings.layout.navigation === 'top'">
             </fuse-navbar-vertical>
             <!-- / NAVBAR: Left -->
@@ -62,11 +62,11 @@
     </div>
 
     <!-- QUICK PANEL -->
-    <md-sidenav fuseMdSidenavHelper="quick-panel" align="end">
+    <mat-sidenav fuseMatSidenavHelper="quick-panel" align="end">
         <fuse-quick-panel></fuse-quick-panel>
-    </md-sidenav>
+    </mat-sidenav>
     <!-- / QUICK PANEL -->
 
-</md-sidenav-container>
+</mat-sidenav-container>
 
 <fuse-theme-options></fuse-theme-options>

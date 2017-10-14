@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
     selector   : 'fuse-confirm-dialog',
@@ -10,7 +10,7 @@ export class FuseConfirmDialogComponent implements OnInit
 {
     public confirmMessage: string;
 
-    constructor(public dialogRef: MdDialogRef<FuseConfirmDialogComponent>)
+    constructor(public dialogRef: MatDialogRef<FuseConfirmDialogComponent>)
     {
     }
 

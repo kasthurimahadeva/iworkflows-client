@@ -46,14 +46,14 @@
         margin-top: 0;
         margin-bottom: 0;
     }
-    md-icon.status {
+    mat-icon.status {
         position: absolute;
         top: 28px;
         left: 28px;
     }
 }
 
-md-icon.status {
+mat-icon.status {
     border-radius: 50%;
 
     &.online {
@@ -116,7 +116,7 @@ md-icon.status {
         max-height: 48px;
         height: 48px;
 
-        md-icon {
+        mat-icon {
             margin: 0 16px 0 0;
         }
 
@@ -142,7 +142,7 @@ md-icon.status {
         }
     }
 
-    md-divider {
+    mat-divider {
         margin: 8px 0;
     }
 }
@@ -196,7 +196,7 @@ md-icon.status {
         background-color: #FFFFFF;
         width: 280px;
         border-radius: 2px;
-        margin: 24px 24px 0 0;
+        margin: 12px;
         overflow: hidden;
 
         &.style-1 {
@@ -234,7 +234,7 @@ md-icon.status {
                 }
             }
 
-            md-divider {
+            mat-divider {
                 margin: 16px 32px;
             }
 

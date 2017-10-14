@@ -8,7 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class FuseNavbarHorizontalComponent implements OnInit
 {
-    constructor() {
+    constructor()
+    {
     }
 
     ngOnInit()
