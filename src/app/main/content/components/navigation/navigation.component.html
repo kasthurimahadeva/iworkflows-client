@@ -21,13 +21,6 @@
             navigation.
         </p>
 
-        <!--<div class="my-48">
-            <h2>Sample</h2>
-            <p fxLayout="row" fxLayoutAlign="start start">
-                <fuse-navigation></fuse-navigation>
-            </p>
-        </div>-->
-
         <div class="my-48">
             <h2>Usage</h2>
             <p class="mat-grey-200-bg py-8">
@@ -55,15 +48,15 @@
                 <fuse-hljs lang="json" class="source-code">
                     <textarea #source hidden="hidden">
                         {
-                            'title': 'COMPONENTS',
-                            'type' : 'group',
-                            'children': [
-                                {
-                                    'title': 'ngx-datatable',
-                                    'type' : 'item',
-                                    'url'  : '/components/datatables/ngx-datatable'
-                                }
-                            ]
+                        'title': 'COMPONENTS',
+                        'type' : 'group',
+                        'children': [
+                        {
+                        'title': 'ngx-datatable',
+                        'type' : 'item',
+                        'url' : '/components/datatables/ngx-datatable'
+                        }
+                        ]
                         },
                     </textarea>
                 </fuse-hljs>
@@ -76,16 +69,16 @@
                 <fuse-hljs lang="json" class="source-code">
                     <textarea #source hidden="hidden">
                         {
-                            'title'   : 'Datatables',
-                            'type'    : 'collapse',
-                            'icon'    : 'border_all',
-                            'children': [
-                                {
-                                    'title': 'ngx-datatable',
-                                    'type' : 'nav-item',
-                                    'url'  : '/components/datatables/ngx-datatable'
-                                }
-                            ]
+                        'title' : 'Datatables',
+                        'type' : 'collapse',
+                        'icon' : 'border_all',
+                        'children': [
+                        {
+                        'title': 'ngx-datatable',
+                        'type' : 'nav-item',
+                        'url' : '/components/datatables/ngx-datatable'
+                        }
+                        ]
                         },
                     </textarea>
                 </fuse-hljs>
@@ -98,15 +91,112 @@
                 <fuse-hljs lang="json" class="source-code">
                     <textarea #source hidden="hidden">
                         {
-                            'title': 'Countdown',
-                            'type' : 'item',
-                            'icon' : 'settings_input_component',
-                            'url'  : '/components/countdown'
+                        'title': 'Countdown',
+                        'type' : 'item',
+                        'icon' : 'settings_input_component',
+                        'url' : '/components/countdown'
                         },
                     </textarea>
                 </fuse-hljs>
             </p>
         </div>
+
+        <div class="my-48">
+
+            <h2>Examples</h2>
+
+            <h4>Update navigation item on-the-fly</h4>
+
+            <p class="mat-grey-200-bg py-8">
+                <fuse-hljs lang="ts" class="source-code">
+                    <textarea #source hidden="hidden">
+                        updateMailBadge()
+                        {
+                            // Get the mail nav item
+                            const mailNavItem = this.navigationService.getNavigationItem('applications.mail');
+
+                            // Update the badge title
+                            mailNavItem.badge.title = 35;
+                        }
+                    </textarea>
+                </fuse-hljs>
+            </p>
+
+            <div class="mt-24 mb-64">
+
+                <button mat-button mat-raised-button color="accent" (click)="updateMailBadge()">
+                    Update Mail app badge
+                </button>
+
+            </div>
+
+            <h4>Add a subitem to the Calendar nav item</h4>
+
+            <p class="mat-grey-200-bg py-8">
+                <fuse-hljs lang="ts" class="source-code">
+                    <textarea #source hidden="hidden">
+                        addSubitemToCalendar()
+                        {
+                            // Prepare the new nav item
+                            const newNavItem = {
+                                id   : 'sub-item',
+                                title: 'Sub Item',
+                                type : 'item',
+                                url  : '/apps/calendar'
+                            };
+
+                            // Add the new nav item
+                            this.navigationService.addNavigationItem('applications.calendar', newNavItem);
+                        }
+                    </textarea>
+                </fuse-hljs>
+            </p>
+
+            <div class="mt-24 mb-64">
+
+                <button mat-button mat-raised-button color="accent" (click)="addSubitemToCalendar()">
+                    Add a subitem to the Calendar nav item
+                </button>
+
+            </div>
+
+            <h4>Add a nav item with custom function</h4>
+
+            <p class="mat-grey-200-bg py-8">
+                <fuse-hljs lang="ts" class="source-code">
+                    <textarea #source hidden="hidden">
+                        addNavItemWithCustomFunction()
+                        {
+                            // Prepare the new nav item
+                            const newNavItem = {
+                                id      : 'custom-item',
+                                title   : 'Custom Item',
+                                type    : 'item',
+                                function: () => {
+                                    alert('Custom function!');
+                                }
+                            };
+
+                            // Get the applications nav item
+                            const applicationsNavItem = this.navigationService.getNavigationItem('applications');
+
+                            // Add the new nav item at the beginning of the applications
+                            applicationsNavItem.children.unshift(newNavItem);
+                        }
+                    </textarea>
+                </fuse-hljs>
+            </p>
+
+            <div class="mt-24">
+
+                <button mat-button mat-raised-button color="accent" (click)="addNavItemWithCustomFunction()">
+                    Add a nav item with custom function
+                </button>
+
+            </div>
+
+        </div>
+
 
     </div>
 
