@@ -6,10 +6,12 @@ export class NavigationModel
     {
         this.model = [
             {
-                'title': 'Applications',
-                'type' : 'group',
+                'id'      : 'applications',
+                'title'   : 'Applications',
+                'type'    : 'group',
                 'children': [
                     {
+                        'id'   : 'sample',
                         'title': 'Sample',
                         'type' : 'item',
                         'icon' : 'email',
