@@ -2,6 +2,11 @@
 
     mat-sidenav-container {
 
+        .mat-drawer-content,
+        .mat-sidenav-content {
+            flex: 1 1 100%;
+        }
+
         .center {
 
             > .header {
