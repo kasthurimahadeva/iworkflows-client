@@ -5,9 +5,13 @@ import { FuseDemoModule } from '../../../../core/components/demo/demo.module';
 import { FuseCardedFullWidthComponent } from './carded/fullwidth/fullwidth.component';
 import { FuseCardedFullWidth2Component } from './carded/fullwidth-2/fullwidth-2.component';
 import { FuseCardedLeftSidenavComponent } from './carded/left-sidenav/left-sidenav.component';
+import { FuseCardedLeftSidenavTabbedComponent } from './carded/left-sidenav-tabbed/left-sidenav-tabbed.component';
 import { FuseCardedLeftSidenav2Component } from './carded/left-sidenav-2/left-sidenav-2.component';
+import { FuseCardedLeftSidenav2TabbedComponent } from './carded/left-sidenav-2-tabbed/left-sidenav-2-tabbed.component';
 import { FuseCardedRightSidenavComponent } from './carded/right-sidenav/right-sidenav.component';
+import { FuseCardedRightSidenavTabbedComponent } from './carded/right-sidenav-tabbed/right-sidenav-tabbed.component';
 import { FuseCardedRightSidenav2Component } from './carded/right-sidenav-2/right-sidenav-2.component';
+import { FuseCardedRightSidenav2TabbedComponent } from './carded/right-sidenav-2-tabbed/right-sidenav-2-tabbed.component';
 import { FuseSimpleFullWidthComponent } from './simple/fullwidth/fullwidth.component';
 import { FuseSimpleLeftSidenavComponent } from './simple/left-sidenav/left-sidenav.component';
 import { FuseSimpleLeftSidenav2Component } from './simple/left-sidenav-2/left-sidenav-2.component';
@@ -32,16 +36,32 @@ const routes: Routes = [
         component: FuseCardedLeftSidenavComponent
     },
     {
+        path     : 'ui/page-layouts/carded/left-sidenav-tabbed',
+        component: FuseCardedLeftSidenavTabbedComponent
+    },
+    {
         path     : 'ui/page-layouts/carded/left-sidenav-2',
         component: FuseCardedLeftSidenav2Component
+    },
+    {
+        path     : 'ui/page-layouts/carded/left-sidenav-2-tabbed',
+        component: FuseCardedLeftSidenav2TabbedComponent
     },
     {
         path     : 'ui/page-layouts/carded/right-sidenav',
         component: FuseCardedRightSidenavComponent
     },
     {
+        path     : 'ui/page-layouts/carded/right-sidenav-tabbed',
+        component: FuseCardedRightSidenavTabbedComponent
+    },
+    {
         path     : 'ui/page-layouts/carded/right-sidenav-2',
         component: FuseCardedRightSidenav2Component
+    },
+    {
+        path     : 'ui/page-layouts/carded/right-sidenav-2-tabbed',
+        component: FuseCardedRightSidenav2TabbedComponent
     },
     {
         path     : 'ui/page-layouts/simple/full-width',
@@ -91,9 +111,13 @@ const routes: Routes = [
         FuseCardedFullWidthComponent,
         FuseCardedFullWidth2Component,
         FuseCardedLeftSidenavComponent,
+        FuseCardedLeftSidenavTabbedComponent,
         FuseCardedLeftSidenav2Component,
+        FuseCardedLeftSidenav2TabbedComponent,
         FuseCardedRightSidenavComponent,
+        FuseCardedRightSidenavTabbedComponent,
         FuseCardedRightSidenav2Component,
+        FuseCardedRightSidenav2TabbedComponent,
         FuseSimpleFullWidthComponent,
         FuseSimpleLeftSidenavComponent,
         FuseSimpleLeftSidenav2Component,

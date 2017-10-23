@@ -331,10 +331,22 @@ export class NavigationModel
                                         'url'  : '/ui/page-layouts/carded/left-sidenav'
                                     },
                                     {
+                                        'id'   : 'left-sidenav-tabbed',
+                                        'title': 'Left Sidenav Tabbed',
+                                        'type' : 'item',
+                                        'url'  : '/ui/page-layouts/carded/left-sidenav-tabbed'
+                                    },
+                                    {
                                         'id'   : 'left-sidenav-2',
                                         'title': 'Left Sidenav 2',
                                         'type' : 'item',
                                         'url'  : '/ui/page-layouts/carded/left-sidenav-2'
+                                    },
+                                    {
+                                        'id'   : 'left-sidenav-2-tabbed',
+                                        'title': 'Left Sidenav 2 Tabbed',
+                                        'type' : 'item',
+                                        'url'  : '/ui/page-layouts/carded/left-sidenav-2-tabbed'
                                     },
                                     {
                                         'id'   : 'right-sidenav',
@@ -343,10 +355,22 @@ export class NavigationModel
                                         'url'  : '/ui/page-layouts/carded/right-sidenav'
                                     },
                                     {
+                                        'id'   : 'right-sidenav-tabbed',
+                                        'title': 'Right Sidenav Tabbed',
+                                        'type' : 'item',
+                                        'url'  : '/ui/page-layouts/carded/right-sidenav-tabbed'
+                                    },
+                                    {
                                         'id'   : 'right-sidenav-2',
                                         'title': 'Right Sidenav 2',
                                         'type' : 'item',
                                         'url'  : '/ui/page-layouts/carded/right-sidenav-2'
+                                    },
+                                    {
+                                        'id'   : 'right-sidenav-2-tabbed',
+                                        'title': 'Right Sidenav 2 Tabbed',
+                                        'type' : 'item',
+                                        'url'  : '/ui/page-layouts/carded/right-sidenav-2-tabbed'
                                     }
                                 ]
                             },
