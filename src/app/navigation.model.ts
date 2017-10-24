@@ -726,6 +726,13 @@ export class NavigationModel
                         'url'  : '/components/material-color-picker'
                     },
                     {
+                        'id'   : 'multi-language',
+                        'title': 'Multi Language',
+                        'type' : 'item',
+                        'icon' : 'settings_input_component',
+                        'url'  : '/components/multi-language'
+                    },
+                    {
                         'id'   : 'navigation',
                         'title': 'Navigation',
                         'type' : 'item',

@@ -30,13 +30,13 @@
                 class="mat-accent compose-dialog-button"
                 (click)="composeDialog()"
                 aria-label="Compose">
-            COMPOSE
+            {{ 'MAIL.COMPOSE' | translate }}
         </button>
     </div>
 
     <div class="nav">
 
-        <div class="nav-subheader">FOLDERS</div>
+        <div class="nav-subheader">{{ 'MAIL.FOLDERS' | translate }}</div>
 
         <div class="nav-item" *ngFor="let folder of folders">
             <a class="nav-link" matRipple [routerLink]="'/apps/mail/' + folder.handle" routerLinkActive="active">
@@ -45,7 +45,7 @@
             </a>
         </div>
 
-        <div class="nav-subheader">FILTERS</div>
+        <div class="nav-subheader">{{ 'MAIL.FILTERS' | translate }}</div>
 
         <div class="nav-item" *ngFor="let filter of filters">
             <a class="nav-link" matRipple [routerLink]="'/apps/mail/filter/' + filter.handle" routerLinkActive="active">
@@ -54,7 +54,7 @@
             </a>
         </div>
 
-        <div class="nav-subheader">LABELS</div>
+        <div class="nav-subheader">{{ 'MAIL.LABELS' | translate }}</div>
 
         <div class="nav-item" *ngFor="let label of labels">
             <a class="nav-link" matRipple [routerLink]="'/apps/mail/label/' + label.handle" routerLinkActive="active">

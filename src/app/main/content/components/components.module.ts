@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FuseCountdownDocsComponent } from './countdown/countdown.component';
 import { FuseHljsDocsComponent } from './hljs/hljs.component';
 import { FuseMaterialColorPickerDocsComponent } from './material-color-picker/material-color-picker.component';
+import { FuseMultiLanguageDocsComponent } from './multi-language/multi-language.component';
 import { FuseNavigationDocsComponent } from './navigation/navigation.component';
 import { FuseShortcutsDocsComponent } from './shortcuts/shortcuts.component';
 import { FuseSearchBarDocsComponent } from 'app/main/content/components/search-bar/search-bar.component';
@@ -22,6 +23,10 @@ const routes = [
     {
         path     : 'components/material-color-picker',
         component: FuseMaterialColorPickerDocsComponent
+    },
+    {
+        path     : 'components/multi-language',
+        component: FuseMultiLanguageDocsComponent
     },
     {
         path     : 'components/navigation',
@@ -51,6 +56,7 @@ const routes = [
         FuseCountdownDocsComponent,
         FuseHljsDocsComponent,
         FuseMaterialColorPickerDocsComponent,
+        FuseMultiLanguageDocsComponent,
         FuseNavigationDocsComponent,
         FuseSearchBarDocsComponent,
         FuseShortcutsDocsComponent,

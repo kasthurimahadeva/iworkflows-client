@@ -3,6 +3,9 @@ import { MailService } from './mail.service';
 import { Subscription } from 'rxjs/Subscription';
 import { FormControl } from '@angular/forms';
 import { Mail } from './mail.model';
+import { FuseTranslationLoaderService } from '../../../../core/services/translation-loader.service';
+import { locale as english } from './i18n/en';
+import { locale as turkish } from './i18n/tr';
 
 @Component({
     selector   : 'fuse-mail',
@@ -25,9 +28,13 @@ export class FuseMailComponent implements OnInit, OnDestroy
     onLabelsChanged: Subscription;
     onCurrentMailChanged: Subscription;
 
-    constructor(private mailService: MailService)
+    constructor(
+        private mailService: MailService,
+        private translationLoader: FuseTranslationLoaderService
+    )
     {
         this.searchInput = new FormControl('');
+        this.translationLoader.loadTranslations(english, turkish);
     }
 
     ngOnInit()

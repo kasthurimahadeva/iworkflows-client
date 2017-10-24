@@ -21,6 +21,7 @@ import { ComponentsThirdPartyModule } from './main/content/components-third-part
 import { ServicesModule } from './main/content/services/services.module';
 import { FuseAngularMaterialModule } from './main/content/components/angular-material/angular-material.module';
 import { MarkdownModule } from 'angular2-markdown';
+import { TranslateModule } from '@ngx-translate/core';
 
 const appRoutes: Routes = [
     {
@@ -69,6 +70,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         SharedModule,
         MarkdownModule.forRoot(),
+        TranslateModule.forRoot(),
 
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {
             delay             : 0,

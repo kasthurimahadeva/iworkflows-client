@@ -1,6 +1,10 @@
 <div *ngIf="!mail" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <mat-icon class="s-128 mb-16 select-message-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">email</mat-icon>
-    <span class="select-message-text hint-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'400ms'}}">Select a message to read</span>
+    <mat-icon class="s-128 mb-16 select-message-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+        email
+    </mat-icon>
+    <span class="select-message-text hint-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'400ms'}}">
+        <span>{{ 'MAIL.SELECT_A_MESSAGE_TO_READ' | translate }}</span>
+    </span>
 </div>
 
 <div *ngIf="mail">
