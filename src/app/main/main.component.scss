@@ -6,12 +6,6 @@ fuse-main {
     width: 100%;
     height: 100%;
 
-    &.boxed {
-        max-width: 1200px;
-        margin: 0 auto;
-        @include mat-elevation(8);
-    }
-
     > .mat-sidenav-container {
         display: flex;
         flex: 1;
@@ -71,5 +65,11 @@ fuse-main {
                 }
             }
         }
+    }
+
+    &[fuse-layout-mode="boxed"] {
+        max-width: 1200px;
+        margin: 0 auto;
+        @include mat-elevation(8);
     }
 }
