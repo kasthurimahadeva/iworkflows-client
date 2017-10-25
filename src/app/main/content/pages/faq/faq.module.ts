@@ -9,7 +9,7 @@ const routes = [
         path     : 'pages/faq',
         component: FuseFaqComponent,
         resolve  : {
-            search: FaqService
+            faq: FaqService
         }
     }
 ];
