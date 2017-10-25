@@ -20,6 +20,7 @@ import { PricingModule } from './pricing/pricing.module';
 import { ProfileModule } from './profile/profile.module';
 import { SearchModule } from './search/search.module';
 import { FaqModule } from './faq/faq.module';
+import { FuseKnowledgeBaseModule } from './knowledge-base/knowledge-base.module';
 
 @NgModule({
     imports: [
@@ -59,7 +60,10 @@ import { FaqModule } from './faq/faq.module';
         SearchModule,
 
         // Faq
-        FaqModule
+        FaqModule,
+
+        // Knowledge base
+        FuseKnowledgeBaseModule
     ]
 })
 export class PagesModule

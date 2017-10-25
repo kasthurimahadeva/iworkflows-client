@@ -264,6 +264,12 @@ export class NavigationModel
                         'type' : 'item',
                         'icon' : 'help',
                         'url'  : '/pages/faq'
+                    },
+                    {
+                        'title': 'Knowledge Base',
+                        'type' : 'item',
+                        'icon' : 'import_contacts',
+                        'url'  : '/pages/knowledge-base'
                     }
                 ]
             },
