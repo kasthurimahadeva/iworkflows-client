@@ -21,7 +21,7 @@ export class FuseNgxDatatableComponent implements OnInit
     {
         this.http.get('api/contacts-contacts')
             .subscribe((contacts: any) => {
-                this.rows = contacts.data;
+                this.rows = contacts;
                 this.loadingIndicator = false;
             });
     }
