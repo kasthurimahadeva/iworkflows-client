@@ -1,0 +1,13 @@
+.knowledgebase-article-dialog {
+
+    .mat-dialog-container {
+        padding: 0;
+        width: 720px;
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+}

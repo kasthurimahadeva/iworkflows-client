@@ -19,7 +19,9 @@ import { FuseHljsComponent } from '../components/hljs/hljs.component';
 import { FusePerfectScrollbarDirective } from '../directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { FuseIfOnDomDirective } from '../directives/fuse-if-on-dom/fuse-if-on-dom.directive';
 import { FuseMaterialColorPickerComponent } from '../components/material-color-picker/material-color-picker.component';
+import { FuseTranslationLoaderService } from '../services/translation-loader.service';
 import { CookieService } from 'ngx-cookie-service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     declarations   : [
@@ -59,7 +61,8 @@ import { CookieService } from 'ngx-cookie-service';
         NgxDnDModule,
         NgxDatatableModule,
         FuseIfOnDomDirective,
-        FuseMaterialColorPickerComponent
+        FuseMaterialColorPickerComponent,
+        TranslateModule
     ],
     entryComponents: [
         FuseConfirmDialogComponent
@@ -68,7 +71,8 @@ import { CookieService } from 'ngx-cookie-service';
         CookieService,
         FuseMatchMedia,
         FuseNavbarVerticalService,
-        FuseMatSidenavHelperService
+        FuseMatSidenavHelperService,
+        FuseTranslationLoaderService
     ]
 })
 

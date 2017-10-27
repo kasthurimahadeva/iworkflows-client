@@ -14,7 +14,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
 {
     onSettingsChanged: Subscription;
     fuseSettings: any;
-    @HostBinding('class.boxed') boxed;
+    @HostBinding('attr.fuse-layout-mode') layoutMode;
 
     constructor(
         private _renderer: Renderer2,
@@ -29,7 +29,7 @@ export class FuseMainComponent implements OnInit, OnDestroy
                 .subscribe(
                     (newSettings) => {
                         this.fuseSettings = newSettings;
-                        this.boxed = this.fuseSettings.layout.mode === 'boxed';
+                        this.layoutMode = this.fuseSettings.layout.mode;
                     }
                 );
 

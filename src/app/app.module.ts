@@ -12,6 +12,7 @@ import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
 import { FuseNavigationService } from './core/components/navigation/navigation.service';
 import { FuseSampleModule } from './main/content/sample/sample.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const appRoutes: Routes = [
     {
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         SharedModule,
+        TranslateModule.forRoot(),
         FuseMainModule,
         FuseSampleModule
     ],

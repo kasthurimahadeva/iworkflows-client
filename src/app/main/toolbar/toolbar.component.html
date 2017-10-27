@@ -71,12 +71,20 @@
             </button>
 
             <mat-menu #languageMenu="matMenu">
-                <button mat-menu-item *ngFor="let lang of languages" (click)="selectedLanguage = lang">
+
+                <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
                     <div fxLayout="row" fxLayoutAlign="start center">
                         <img class="flag mr-16" [src]="'assets/images/flags/'+lang.flag+'.png'">
                         <span class="iso">{{lang.title}}</span>
                     </div>
                 </button>
+
+                <button mat-menu-item [routerLink]="'/components/multi-language'">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <span>Learn more</span>
+                    </div>
+                </button>
+
             </mat-menu>
 
             <div class="toolbar-separator" fxHide fxShow.gt-xs></div>

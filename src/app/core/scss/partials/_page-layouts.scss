@@ -222,6 +222,62 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     }
                 }
             }
+
+            // Tabbed
+            &.tabbed {
+
+                > mat-sidenav-container {
+
+                    > .mat-sidenav-content,
+                    > .mat-drawer-content {
+                        width: calc(100% - 240px);
+
+                        .center {
+                            width: calc(100% - 32px);
+
+                            @include media-breakpoint-down('md') {
+                                width: calc(100% - 64px);
+                            }
+
+                            .header {
+                                flex: 1;
+                            }
+
+                            .content-card {
+
+                                .content {
+
+                                    .mat-tab-group {
+                                        overflow: hidden;
+
+                                        .mat-tab-header {
+
+                                            .mat-tab-label {
+                                                height: 64px;
+                                            }
+                                        }
+
+                                        .mat-tab-body {
+                                            overflow: hidden;
+
+                                            .mat-tab-body-content {
+                                                overflow: hidden;
+
+                                                .tab-content {
+                                                    position: relative;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    overflow: auto;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         // Left sidenav

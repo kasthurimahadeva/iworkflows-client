@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { FuseConfigService } from '../../core/services/config.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector   : 'fuse-toolbar',
@@ -18,7 +19,8 @@ export class FuseToolbarComponent
 
     constructor(
         private router: Router,
-        private fuseConfig: FuseConfigService
+        private fuseConfig: FuseConfigService,
+        private translate: TranslateService
     )
     {
         this.userStatusOptions = [
@@ -56,11 +58,6 @@ export class FuseToolbarComponent
                 'flag' : 'us'
             },
             {
-                'id'   : 'es',
-                'title': 'Spanish',
-                'flag' : 'es'
-            },
-            {
                 'id'   : 'tr',
                 'title': 'Turkish',
                 'flag' : 'tr'
@@ -91,5 +88,14 @@ export class FuseToolbarComponent
     {
         // Do your search here...
         console.log(value);
+    }
+
+    setLanguage(lang)
+    {
+        // Set the selected language for toolbar
+        this.selectedLanguage = lang;
+
+        // Use the selected language for translations
+        this.translate.use(lang.id);
     }
 }
