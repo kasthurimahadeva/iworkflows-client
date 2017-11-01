@@ -37,6 +37,10 @@ const appRoutes: Routes = [
         loadChildren: './main/content/apps/calendar/calendar.module#FuseCalendarModule'
     },
     {
+        path        : 'apps/e-commerce',
+        loadChildren: './main/content/apps/e-commerce/e-commerce.module#FuseEcommerceModule'
+    },
+    {
         path        : 'apps/todo',
         loadChildren: './main/content/apps/todo/todo.module#FuseTodoModule'
     },

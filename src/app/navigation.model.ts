@@ -33,6 +33,32 @@ export class NavigationModel
                         'url'  : '/apps/calendar'
                     },
                     {
+                        'id'      : 'e-commerce',
+                        'title'   : 'E-Commerce',
+                        'type'    : 'collapse',
+                        'icon'    : 'shopping_cart',
+                        'children': [
+                            {
+                                'id'   : 'dashboard',
+                                'title': 'Dashboard',
+                                'type' : 'item',
+                                'url'  : '/apps/e-commerce/dashboard'
+                            },
+                            {
+                                'id'   : 'dashboard',
+                                'title': 'Products',
+                                'type' : 'item',
+                                'url'  : '/apps/e-commerce/products'
+                            },
+                            {
+                                'id'   : 'dashboard',
+                                'title': 'Orders',
+                                'type' : 'item',
+                                'url'  : '/apps/e-commerce/orders'
+                            }
+                        ]
+                    },
+                    {
                         'id'   : 'mail',
                         'title': 'Mail',
                         'type' : 'item',
@@ -800,3 +826,4 @@ export class NavigationModel
         ];
     }
 }
+
