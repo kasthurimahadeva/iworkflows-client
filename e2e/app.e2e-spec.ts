@@ -1,14 +1,14 @@
-import { Fuse2Page } from './app.po';
+import { AppPage } from './app.po';
 
-describe('fuse2 App', () => {
-  let page: Fuse2Page;
+describe('angular5 App', () => {
+    let page: AppPage;
 
-  beforeEach(() => {
-    page = new Fuse2Page();
-  });
+    beforeEach(() => {
+        page = new AppPage();
+    });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
-  });
+    it('should display welcome message', () => {
+        page.navigateTo();
+        expect(page.getParagraphText()).toEqual('Welcome to app!');
+    });
 });
