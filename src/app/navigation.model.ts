@@ -711,6 +711,13 @@ export class NavigationModel
                         ]
                     },
                     {
+                        'id'   : 'cards',
+                        'title': 'Cards',
+                        'type' : 'item',
+                        'icon' : 'settings_input_component',
+                        'url'  : '/components/cards'
+                    },
+                    {
                         'id'   : 'countdown',
                         'title': 'Countdown',
                         'type' : 'item',

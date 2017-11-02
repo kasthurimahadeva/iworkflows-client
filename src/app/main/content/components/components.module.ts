@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
+import { FuseCardsDocsComponent } from './cards/cards.component';
 import { FuseCountdownDocsComponent } from './countdown/countdown.component';
 import { FuseHljsDocsComponent } from './hljs/hljs.component';
 import { FuseMaterialColorPickerDocsComponent } from './material-color-picker/material-color-picker.component';
@@ -12,6 +13,10 @@ import { FuseWidgetDocsComponent } from './widget/widget.component';
 import { FuseWidgetModule } from '../../../core/components/widget/widget.module';
 
 const routes = [
+    {
+        path     : 'components/cards',
+        component: FuseCardsDocsComponent
+    },
     {
         path     : 'components/countdown',
         component: FuseCountdownDocsComponent
@@ -53,6 +58,7 @@ const routes = [
         FuseWidgetModule
     ],
     declarations: [
+        FuseCardsDocsComponent,
         FuseCountdownDocsComponent,
         FuseHljsDocsComponent,
         FuseMaterialColorPickerDocsComponent,

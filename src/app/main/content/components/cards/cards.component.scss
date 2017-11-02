@@ -1,0 +1,29 @@
+@import "src/app/core/scss/fuse";
+
+:host {
+
+    .content {
+
+        .card-row {
+            display: flex;
+            width: 100%;
+            padding: 24px 24px 48px 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+            .card-preview {
+                display: flex;
+                min-width: 320px;
+            }
+
+            .card-source {
+                display: flex;
+                flex: 1;
+                max-height: 400px;
+                overflow: auto;
+                min-width: 400px;
+                margin-left: 24px;
+            }
+        }
+    }
+}

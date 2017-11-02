@@ -129,6 +129,17 @@ export const fuseAnimations = [
         transition('* => void', animate('300ms'))
     ]),
 
+    trigger('expandCollapse', [
+        state('void', style({
+            height: '0px'
+        })),
+        state('*', style({
+            height: '*'
+        })),
+        transition('void => *', animate('300ms ease-out')),
+        transition('* => void', animate('300ms ease-in'))
+    ]),
+
     trigger('routerTransitionLeft', [
 
         transition('* => *', [
