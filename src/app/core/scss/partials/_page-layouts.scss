@@ -96,7 +96,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         max-height: $carded-toolbar-height;
                     }
 
-                    .content {
+                    > .content {
                         display: flex;
                         flex: 1;
                         overflow: auto;

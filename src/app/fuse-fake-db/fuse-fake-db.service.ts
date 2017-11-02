@@ -15,6 +15,7 @@ import { ProjectsDashboardDb } from './projects-dashboard';
 import { ScrumboardFakeDb } from './scrumboard';
 import { FaqFakeDb } from './faq';
 import { KnowledgeBaseFakeDb } from './knowledge-base';
+import { ECommerceFakeDb } from './e-commerce';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -48,7 +49,10 @@ export class FuseFakeDbService implements InMemoryDbService
             'projects-dashboard-widgets' : ProjectsDashboardDb.widgets,
             'scrumboard-boards'          : ScrumboardFakeDb.boards,
             'faq'                        : FaqFakeDb.data,
-            'knowledge-base'             : KnowledgeBaseFakeDb.data
+            'knowledge-base'             : KnowledgeBaseFakeDb.data,
+            'e-commerce-dashboard'       : ECommerceFakeDb.dashboard,
+            'e-commerce-products'        : ECommerceFakeDb.products,
+            'e-commerce-orders'        : ECommerceFakeDb.orders
         };
     }
 }
