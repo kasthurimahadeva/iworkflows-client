@@ -166,7 +166,7 @@ export class FuseNavVerticalCollapseComponent implements OnInit
                 }
             }
 
-            if ( parent.children[i].url === url )
+            if ( parent.children[i].url === url || url.includes(parent.children[i].url) )
             {
                 return true;
             }
