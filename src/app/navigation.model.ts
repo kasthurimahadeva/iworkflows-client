@@ -52,9 +52,21 @@ export class NavigationModel
                             },
                             {
                                 'id'   : 'dashboard',
+                                'title': 'Product Detail',
+                                'type' : 'item',
+                                'url'  : '/apps/e-commerce/products/1/printed-dress'
+                            },
+                            {
+                                'id'   : 'dashboard',
                                 'title': 'Orders',
                                 'type' : 'item',
                                 'url'  : '/apps/e-commerce/orders'
+                            },
+                            {
+                                'id'   : 'dashboard',
+                                'title': 'Order Detail',
+                                'type' : 'item',
+                                'url'  : '/apps/e-commerce/orders/1'
                             }
                         ]
                     },
