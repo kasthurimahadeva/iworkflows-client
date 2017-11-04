@@ -45,28 +45,32 @@ export class NavigationModel
                                 'url'  : '/apps/e-commerce/dashboard'
                             },
                             {
-                                'id'   : 'dashboard',
-                                'title': 'Products',
-                                'type' : 'item',
-                                'url'  : '/apps/e-commerce/products'
+                                'id'        : 'products',
+                                'title'     : 'Products',
+                                'type'      : 'item',
+                                'url'       : '/apps/e-commerce/products',
+                                'exactMatch': true
                             },
                             {
-                                'id'   : 'dashboard',
-                                'title': 'Product Detail',
-                                'type' : 'item',
-                                'url'  : '/apps/e-commerce/products/1/printed-dress'
+                                'id'        : 'productDetail',
+                                'title'     : 'Product Detail',
+                                'type'      : 'item',
+                                'url'       : '/apps/e-commerce/products/1/printed-dress',
+                                'exactMatch': true
                             },
                             {
-                                'id'   : 'dashboard',
-                                'title': 'Orders',
-                                'type' : 'item',
-                                'url'  : '/apps/e-commerce/orders'
+                                'id'        : 'orders',
+                                'title'     : 'Orders',
+                                'type'      : 'item',
+                                'url'       : '/apps/e-commerce/orders',
+                                'exactMatch': true
                             },
                             {
-                                'id'   : 'dashboard',
-                                'title': 'Order Detail',
-                                'type' : 'item',
-                                'url'  : '/apps/e-commerce/orders/1'
+                                'id'        : 'orderDetail',
+                                'title'     : 'Order Detail',
+                                'type'      : 'item',
+                                'url'       : '/apps/e-commerce/orders/1',
+                                'exactMatch': true
                             }
                         ]
                     },
