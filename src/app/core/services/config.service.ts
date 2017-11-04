@@ -45,6 +45,7 @@ export class FuseConfigService
             this.defaultSettings.customScrollbars = false;
         }
 
+        // Set the settings from the default settings
         this.settings = Object.assign({}, this.defaultSettings);
 
         // Reload the default settings on every navigation start
@@ -59,7 +60,6 @@ export class FuseConfigService
 
         // Create the behavior subject
         this.onSettingsChanged = new BehaviorSubject(this.settings);
-
     }
 
     /**
@@ -68,7 +68,10 @@ export class FuseConfigService
      */
     setSettings(settings)
     {
+        // Set the settings from the given object
         this.settings = Object.assign({}, this.settings, settings);
+
+        // Trigger the event
         this.onSettingsChanged.next(this.settings);
     }
 }

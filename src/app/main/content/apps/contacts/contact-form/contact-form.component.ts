@@ -2,7 +2,6 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CalendarEvent } from 'angular-calendar';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import 'rxjs/Rx';
 import { Contact } from '../contact.model';
 
 @Component({

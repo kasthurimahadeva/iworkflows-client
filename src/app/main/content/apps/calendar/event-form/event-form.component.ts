@@ -4,7 +4,6 @@ import { CalendarEvent } from 'angular-calendar';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CalendarEventModel } from '../event.model';
 import { MatColors } from '../../../../../core/matColors';
-import 'rxjs/Rx';
 
 @Component({
     selector     : 'fuse-calendar-event-form-dialog',
