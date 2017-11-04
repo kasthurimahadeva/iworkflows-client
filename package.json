@@ -1,6 +1,6 @@
 {
   "name": "fuse2",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "license": "",
   "scripts": {
     "ng": "ng",
@@ -31,7 +31,7 @@
     "@ngx-translate/core": "8.0.0",
     "@swimlane/ngx-charts": "6.1.0",
     "@swimlane/ngx-datatable": "10.4.0",
-    "@swimlane/ngx-dnd": "3.0.0",
+    "@withinpixels/ngx-dnd": "3.1.0",
     "angular-calendar": "0.21.3",
     "angular-in-memory-web-api": "0.5.1",
     "angular2-markdown": "1.6.0",

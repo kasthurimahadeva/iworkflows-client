@@ -4,7 +4,7 @@
     <ng-container cdkColumnDef="icon">
         <mat-header-cell *cdkHeaderCellDef fxFlex="64px"></mat-header-cell>
         <mat-cell *cdkCellDef="let row" fxFlex="64px">
-            <mat-icon class="type-icon" [class]="row.type"></mat-icon>
+            <mat-icon class="type-icon" [ngClass]="row.type"></mat-icon>
         </mat-cell>
     </ng-container>
 

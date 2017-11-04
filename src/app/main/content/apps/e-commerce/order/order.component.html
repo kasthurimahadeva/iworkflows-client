@@ -359,13 +359,13 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-right">
-                                                            {{product.price | currency:'USD':true}}
+                                                            {{product.price | currency:'USD':'symbol'}}
                                                         </td>
                                                         <td class="text-right">
                                                             {{product.quantity}}
                                                         </td>
                                                         <td class="text-right">
-                                                            {{product.total | currency:'USD':true}}
+                                                            {{product.total | currency:'USD':'symbol'}}
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -375,19 +375,19 @@
                                                 <tbody>
                                                     <tr class="subtotal">
                                                         <td>SUBTOTAL</td>
-                                                        <td>{{order.subtotal | currency:'USD':true}}</td>
+                                                        <td>{{order.subtotal | currency:'USD':'symbol'}}</td>
                                                     </tr>
                                                     <tr class="tax">
                                                         <td>TAX</td>
-                                                        <td>{{order.tax | currency:'USD':true}}</td>
+                                                        <td>{{order.tax | currency:'USD':'symbol'}}</td>
                                                     </tr>
                                                     <tr class="discount">
                                                         <td>DISCOUNT</td>
-                                                        <td>-{{order.discount | currency:'USD':true}}</td>
+                                                        <td>-{{order.discount | currency:'USD':'symbol'}}</td>
                                                     </tr>
                                                     <tr class="total">
                                                         <td>TOTAL</td>
-                                                        <td>{{order.total | currency:'USD':true}}</td>
+                                                        <td>{{order.total | currency:'USD':'symbol'}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

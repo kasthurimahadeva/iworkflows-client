@@ -26,7 +26,7 @@
         <!-- Color Column -->
         <ng-container cdkColumnDef="salary">
             <mat-header-cell *cdkHeaderCellDef>Salary</mat-header-cell>
-            <mat-cell *cdkCellDef="let row"> {{row.salary | currency:'USD':true}}</mat-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.salary | currency:'USD':'symbol'}}</mat-cell>
         </ng-container>
 
         <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>

@@ -3,14 +3,14 @@
     <div id="board">
 
         <!-- HEADER -->
-        <div class="header mat-accent-bg p-16 p-mat-24" [class]="'mat-'+board.settings.color+'-bg'" fxLayout="column">
+        <div class="header mat-accent-bg p-16 p-mat-24" [ngClass]="'mat-'+board.settings.color+'-bg'" fxLayout="column">
 
             <div class="header-content" fxLayout="row" fxLayoutAlign="space-between" fxFlex="1 0 auto" fxLayoutWrap>
 
                 <!-- BOARD SELECTION BUTTON -->
                 <div fxLayout="row" fxLayoutAlign="center center" fxFlexOrder="2" fxFlexOrder.gt-xs="1">
                     <button mat-raised-button class="mat-accent header-boards-button"
-                            [class]="'mat-'+board.settings.color+'-700-bg'"
+                            [ngClass]="'mat-'+board.settings.color+'-700-bg'"
                             routerLink="/apps/scrumboard/boards"
                             aria-label="boards button">
                         <mat-icon>assessment</mat-icon>
@@ -50,7 +50,7 @@
         </div>
         <!-- / HEADER -->
 
-        <div fxFlex class="board-content-wrapper p-16 p-mat-24" [class]="board.settings.color+'-100-bg'">
+        <div fxFlex class="board-content-wrapper p-16 p-mat-24" [ngClass]="board.settings.color+'-100-bg'">
 
             <!-- BOARD -->
             <div class="board-content ngx-dnd-container p-16 p-mat-24" fxLayout="row"

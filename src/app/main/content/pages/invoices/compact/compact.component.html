@@ -67,13 +67,13 @@
                                 {{service.unit}}
                             </td>
                             <td class="text-right">
-                                {{service.unitPrice | currency:'USD':true}}
+                                {{service.unitPrice | currency:'USD':'symbol'}}
                             </td>
                             <td class="text-right">
                                 {{service.quantity}}
                             </td>
                             <td class="text-right">
-                                {{service.total | currency:'USD':true}}
+                                {{service.total | currency:'USD':'symbol'}}
                             </td>
                         </tr>
                         <!-- Double the invoice data for demo purposes -->
@@ -87,13 +87,13 @@
                                 {{service.unit}}
                             </td>
                             <td class="text-right">
-                                {{service.unitPrice | currency:'USD':true}}
+                                {{service.unitPrice | currency:'USD':'symbol'}}
                             </td>
                             <td class="text-right">
                                 {{service.quantity}}
                             </td>
                             <td class="text-right">
-                                {{service.total | currency:'USD':true}}
+                                {{service.total | currency:'USD':'symbol'}}
                             </td>
                         </tr>
                     </tbody>
@@ -103,19 +103,19 @@
                     <tbody>
                         <tr class="subtotal">
                             <td>SUBTOTAL</td>
-                            <td>{{invoice.subtotal | currency:'USD':true}}</td>
+                            <td>{{invoice.subtotal | currency:'USD':'symbol'}}</td>
                         </tr>
                         <tr class="tax">
                             <td>TAX</td>
-                            <td>{{invoice.tax | currency:'USD':true}}</td>
+                            <td>{{invoice.tax | currency:'USD':'symbol'}}</td>
                         </tr>
                         <tr class="discount">
                             <td>DISCOUNT</td>
-                            <td>-{{invoice.discount | currency:'USD':true}}</td>
+                            <td>-{{invoice.discount | currency:'USD':'symbol'}}</td>
                         </tr>
                         <tr class="total">
                             <td>TOTAL</td>
-                            <td>{{invoice.total | currency:'USD':true}}</td>
+                            <td>{{invoice.total | currency:'USD':'symbol'}}</td>
                         </tr>
                     </tbody>
                 </table>

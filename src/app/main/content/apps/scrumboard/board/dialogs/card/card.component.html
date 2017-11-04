@@ -194,7 +194,7 @@
                         <mat-chip-list class="label-chips">
                             <mat-chip class="label-chip mb-4"
                                       *ngFor="let labelId of card.idLabels"
-                                      [class]="board.labels | getById:labelId:'color'"
+                                      [ngClass]="board.labels | getById:labelId:'color'"
                                       fxLayout="row" fxLayoutAlign="start center">
                                 <span>{{board.labels|getById:labelId:'name'}}</span>
                                 <mat-icon class="ml-8 s-16 chip-remove" (click)="toggleInArray(labelId, card.idLabels);updateCard()">close</mat-icon>

@@ -566,7 +566,7 @@
                                             <tbody>
                                                 <tr *ngFor="let row of widgets.widget10.table.rows">
                                                     <td *ngFor="let cell of row">
-                                                        <span class="p-4" [class]="cell.classes">
+                                                        <span class="p-4" [ngClass]="cell.classes">
                                                             {{cell.value}}
                                                         </span>
                                                         <mat-icon *ngIf="cell.icon" class="s-16">{{cell.icon}}</mat-icon>
