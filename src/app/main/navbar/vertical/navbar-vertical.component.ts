@@ -57,11 +57,11 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
         private fuseMatchMedia: FuseMatchMedia,
         private fuseNavigationService: FuseNavigationService,
         private navBarService: FuseNavbarVerticalService,
-        public media: ObservableMedia,
         private router: Router,
         private _renderer: Renderer2,
         private _elementRef: ElementRef,
-        private animationBuilder: AnimationBuilder
+        private animationBuilder: AnimationBuilder,
+        public media: ObservableMedia
     )
     {
         navBarService.setNavBar(this);
@@ -222,15 +222,15 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 
     updateCssClasses()
     {
-        if ( this.isClosed )
+        if ( !this.isClosed )
         {
-            this.fuseMainComponent.addClass('fuse-nav-bar-opened');
-            this.fuseMainComponent.removeClass('fuse-nav-bar-closed');
+            this.fuseMainComponent.addClass('fuse-navbar-opened');
+            this.fuseMainComponent.removeClass('fuse-navbar-closed');
         }
         else
         {
-            this.fuseMainComponent.addClass('fuse-nav-bar-closed');
-            this.fuseMainComponent.removeClass('fuse-nav-bar-opened');
+            this.fuseMainComponent.addClass('fuse-navbar-closed');
+            this.fuseMainComponent.removeClass('fuse-navbar-opened');
         }
     }
 
