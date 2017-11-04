@@ -9,6 +9,9 @@ import { fuseAnimations } from '../../../../core/animations';
 })
 export class FuseCardsDocsComponent
 {
+    card9Expanded = false;
+    card10Expanded = false;
+
     constructor()
     {
 
