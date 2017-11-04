@@ -187,6 +187,11 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
         // Generate material element colors
         // based on current contrast color
         @include generateMaterialElementColors($contrastColor);
+
+        &[disabled] {
+            background-color: rgba($color, .12) !important;
+            color: rgba($contrastColor, .26) !important;
+        }
     }
 
     .#{$colorName}#{$hue}-fg {

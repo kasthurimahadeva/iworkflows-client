@@ -22,10 +22,11 @@ export class FuseConfigService
         // Set the default settings
         this.defaultSettings = {
             layout          : {
-                navigation: 'left', // 'right', 'left', 'top', 'none'
-                toolbar   : 'below', // 'above', 'below', 'none'
-                footer    : 'below', // 'above', 'below', 'none'
-                mode      : 'fullwidth' // 'boxed', 'fullwidth'
+                navigation      : 'left', // 'right', 'left', 'top', 'none'
+                navigationFolded: false, // true, false
+                toolbar         : 'below', // 'above', 'below', 'none'
+                footer          : 'below', // 'above', 'below', 'none'
+                mode            : 'fullwidth' // 'boxed', 'fullwidth'
             },
             colorClasses    : {
                 toolbar: 'mat-white-500-bg',
@@ -44,6 +45,7 @@ export class FuseConfigService
             this.defaultSettings.customScrollbars = false;
         }
 
+        // Set the settings from the default settings
         this.settings = Object.assign({}, this.defaultSettings);
 
         // Reload the default settings on every navigation start
@@ -58,7 +60,6 @@ export class FuseConfigService
 
         // Create the behavior subject
         this.onSettingsChanged = new BehaviorSubject(this.settings);
-
     }
 
     /**
@@ -67,7 +68,10 @@ export class FuseConfigService
      */
     setSettings(settings)
     {
+        // Set the settings from the given object
         this.settings = Object.assign({}, this.settings, settings);
+
+        // Trigger the event
         this.onSettingsChanged.next(this.settings);
     }
 }

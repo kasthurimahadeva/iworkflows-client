@@ -21,6 +21,12 @@
             <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
         </mat-radio-group>
 
+        <h3>Navigation Fold (for vertical navigation):</h3>
+        <mat-slide-toggle [(ngModel)]="fuseSettings.layout.navigationFolded"
+                          (change)="onSettingsChange()">
+            Folded
+        </mat-slide-toggle>
+
         <h3 class="mt-24">Toolbar:</h3>
         <mat-radio-group [(ngModel)]="fuseSettings.layout.toolbar" (ngModelChange)="onSettingsChange()"
                          fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>

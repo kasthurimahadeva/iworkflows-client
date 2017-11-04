@@ -195,6 +195,10 @@
 
         > .nav-item {
 
+            > .nav-link {
+                height: 56px;
+            }
+
             &.nav-collapse {
                 position: relative;
 

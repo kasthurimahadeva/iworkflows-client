@@ -4,13 +4,13 @@
 
         <!-- TOOLBAR: Above -->
         <ng-container *ngIf="fuseSettings.layout.toolbar === 'above'">
-            <fuse-toolbar class="above" [class]="fuseSettings.colorClasses.toolbar"></fuse-toolbar>
+            <fuse-toolbar class="above" [ngClass]="fuseSettings.colorClasses.toolbar"></fuse-toolbar>
         </ng-container>
         <!-- / TOOLBAR: Above -->
 
         <!-- NAVBAR: Top -->
         <fuse-navbar-horizontal class="top-navbar" fxHide fxShow.gt-md
-                                [class]="fuseSettings.colorClasses.navbar"
+                                [ngClass]="fuseSettings.colorClasses.navbar"
                                 *ngIf="fuseSettings.layout.navigation === 'top'">
         </fuse-navbar-horizontal>
         <!-- / NAVBAR: Top -->
@@ -18,9 +18,9 @@
         <div id="wrapper">
 
             <!-- NAVBAR: Left -->
-            <fuse-navbar-vertical [folded]="false"
+            <fuse-navbar-vertical [folded]="fuseSettings.layout.navigationFolded"
                                   class="left-navbar"
-                                  [class]="fuseSettings.colorClasses.navbar"
+                                  [ngClass]="fuseSettings.colorClasses.navbar"
                                   *ngIf="fuseSettings.layout.navigation === 'left' || fuseSettings.layout.navigation === 'top'">
             </fuse-navbar-vertical>
             <!-- / NAVBAR: Left -->
@@ -29,7 +29,7 @@
 
                 <!-- TOOLBAR: Below -->
                 <ng-container *ngIf="fuseSettings.layout.toolbar === 'below'">
-                    <fuse-toolbar class="below" [class]="fuseSettings.colorClasses.toolbar"></fuse-toolbar>
+                    <fuse-toolbar class="below" [ngClass]="fuseSettings.colorClasses.toolbar"></fuse-toolbar>
                 </ng-container>
                 <!-- / TOOLBAR: Below -->
 
@@ -37,16 +37,16 @@
 
                 <!-- FOOTER: Below -->
                 <ng-container *ngIf="fuseSettings.layout.footer === 'below'">
-                    <fuse-footer class="below" [class]="fuseSettings.colorClasses.footer"></fuse-footer>
+                    <fuse-footer class="below" [ngClass]="fuseSettings.colorClasses.footer"></fuse-footer>
                 </ng-container>
                 <!-- / FOOTER: Below -->
 
             </div>
 
             <!-- NAVBAR: Right -->
-            <fuse-navbar-vertical [folded]="false"
+            <fuse-navbar-vertical [folded]="fuseSettings.layout.navigationFolded"
                                   class="right-navbar"
-                                  [class]="fuseSettings.colorClasses.navbar"
+                                  [ngClass]="fuseSettings.colorClasses.navbar"
                                   *ngIf="fuseSettings.layout.navigation === 'right'">
             </fuse-navbar-vertical>
             <!-- / NAVBAR: Right -->
@@ -55,7 +55,7 @@
 
         <!-- FOOTER: Above -->
         <ng-container *ngIf="fuseSettings.layout.footer === 'above'">
-            <fuse-footer class="above" [class]="fuseSettings.colorClasses.footer"></fuse-footer>
+            <fuse-footer class="above" [ngClass]="fuseSettings.colorClasses.footer"></fuse-footer>
         </ng-container>
         <!-- FOOTER: Above -->
 

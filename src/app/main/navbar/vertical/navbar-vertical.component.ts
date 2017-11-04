@@ -18,12 +18,33 @@ import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/anim
 export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 {
     private _backdropElement: HTMLElement | null = null;
+    private _folded = false;
+
     @HostBinding('class.close') isClosed: boolean;
     @HostBinding('class.folded') isFoldedActive: boolean;
     @HostBinding('class.folded-open') isFoldedOpen: boolean;
     @HostBinding('class.initialized') initialized: boolean;
-    @Input('folded') foldedByDefault = false;
     @ViewChild(FusePerfectScrollbarDirective) fusePerfectScrollbarDirective;
+
+    @Input()
+    set folded(value: boolean)
+    {
+        this._folded = value;
+
+        if ( this._folded )
+        {
+            this.activateFolded();
+        }
+        else
+        {
+            this.deActivateFolded();
+        }
+    }
+
+    get folded(): boolean
+    {
+        return this._folded;
+    }
 
     matchMediaWatcher: Subscription;
     navigationServiceWatcher: Subscription;
@@ -36,11 +57,11 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
         private fuseMatchMedia: FuseMatchMedia,
         private fuseNavigationService: FuseNavigationService,
         private navBarService: FuseNavbarVerticalService,
-        public media: ObservableMedia,
         private router: Router,
         private _renderer: Renderer2,
         private _elementRef: ElementRef,
-        private animationBuilder: AnimationBuilder
+        private animationBuilder: AnimationBuilder,
+        public media: ObservableMedia
     )
     {
         navBarService.setNavBar(this);
@@ -88,7 +109,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
     ngOnInit()
     {
         this.isClosed = false;
-        this.isFoldedActive = this.foldedByDefault;
+        this.isFoldedActive = this._folded;
         this.isFoldedOpen = false;
         this.initialized = false;
         this.updateCssClasses();
@@ -104,7 +125,7 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
         }
         else
         {
-            if ( !this.foldedByDefault )
+            if ( !this._folded )
             {
                 this.deActivateFolded();
             }
@@ -124,6 +145,11 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 
     openBar()
     {
+        if ( !this.isClosed )
+        {
+            return;
+        }
+
         this.isClosed = false;
         this.updateCssClasses();
         if ( this.media.isActive('lt-lg') )
@@ -134,6 +160,11 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 
     closeBar()
     {
+        if ( this.isClosed )
+        {
+            return;
+        }
+
         this.isClosed = true;
         this.updateCssClasses();
         this._detachBackdrop();
@@ -191,15 +222,15 @@ export class FuseNavbarVerticalComponent implements OnInit, OnDestroy
 
     updateCssClasses()
     {
-        if ( this.isClosed )
+        if ( !this.isClosed )
         {
-            this.fuseMainComponent.addClass('fuse-nav-bar-opened');
-            this.fuseMainComponent.removeClass('fuse-nav-bar-closed');
+            this.fuseMainComponent.addClass('fuse-navbar-opened');
+            this.fuseMainComponent.removeClass('fuse-navbar-closed');
         }
         else
         {
-            this.fuseMainComponent.addClass('fuse-nav-bar-closed');
-            this.fuseMainComponent.removeClass('fuse-nav-bar-opened');
+            this.fuseMainComponent.addClass('fuse-navbar-closed');
+            this.fuseMainComponent.removeClass('fuse-navbar-opened');
         }
     }
 
