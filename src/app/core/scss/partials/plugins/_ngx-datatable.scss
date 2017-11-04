@@ -55,6 +55,7 @@
                     min-height: 48px;
                     transition: none;
                     padding: 0 24px;
+                    overflow: hidden;
                 }
             }
         }
@@ -82,6 +83,16 @@
 
                 .datatable-pager {
                     margin: 0 0 0 24px;
+
+                    .pager {
+
+                        li {
+
+                            a {
+                                text-decoration: none !important;
+                            }
+                        }
+                    }
                 }
             }
         }
