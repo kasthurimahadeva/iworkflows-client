@@ -1,14 +1,11 @@
-import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
-describe('Fuse App', () => {
-    let page: AppPage;
+export class Fuse2Page {
+    navigateTo() {
+        return browser.get('/');
+    }
 
-    beforeEach(() => {
-        page = new AppPage();
-    });
-
-    it('should display welcome message', () => {
-        page.navigateTo();
-        expect(page.getParagraphText()).toEqual('Welcome to app!');
-    });
-});
+    getParagraphText() {
+        return element(by.css('app-root h1')).getText();
+    }
+}

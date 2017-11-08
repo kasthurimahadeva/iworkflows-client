@@ -1,10 +1,10 @@
-import { AppPage } from './app.po';
+import { Fuse2Page } from './app.po';
 
-describe('angular5 App', () => {
-    let page: AppPage;
+describe('Fuse2 App', () => {
+    let page: Fuse2Page;
 
     beforeEach(() => {
-        page = new AppPage();
+        page = new Fuse2Page();
     });
 
     it('should display welcome message', () => {
