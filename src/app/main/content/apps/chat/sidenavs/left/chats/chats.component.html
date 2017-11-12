@@ -4,7 +4,7 @@
     <mat-toolbar>
 
         <!-- TOOLBAR TOP -->
-        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
 
             <!-- USER AVATAR WRAPPER -->
             <div class="avatar-wrapper">
@@ -16,7 +16,8 @@
                      alt="{{user.name}}"/>
                 <!-- / USER AVATAR -->
 
-                <mat-icon class="s-16 status" [ngClass]="user.status" [matMenuTriggerFor]="userStatusMenu"></mat-icon>
+                <mat-icon class="s-16 status" [ngClass]="user.status"
+                          [matMenuTriggerFor]="userStatusMenu"></mat-icon>
 
                 <!-- USER STATUS -->
                 <mat-menu id="user-status-menu" #userStatusMenu="matMenu">
@@ -69,7 +70,8 @@
                     </button>
                 </mat-menu>
             </div>
-        </div>
+
+        </mat-toolbar-row>
         <!-- / TOOLBAR TOP -->
 
         <!-- TOOLBAR BOTTOM -->

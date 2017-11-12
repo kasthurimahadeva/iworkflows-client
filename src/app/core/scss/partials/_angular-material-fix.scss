@@ -59,3 +59,8 @@ mat-sidenav-container {
     width: 14px;
     height: 7px;
 }
+
+// Fix: "Input underlines has wrong color opacity value"
+.mat-form-field-underline {
+    background-color: rgba(0, 0, 0, 0.12);
+}

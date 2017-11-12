@@ -48,12 +48,13 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
 
                         this.todoForm = this.createTodoForm();
 
-                        this.onFormChange = this.todoForm.valueChanges
-                                                .debounceTime(500)
-                                                .distinctUntilChanged()
-                                                .subscribe(data => {
-                                                    this.todoService.updateTodo(data);
-                                                });
+                        this.onFormChange =
+                            this.todoForm.valueChanges
+                                .debounceTime(500)
+                                .distinctUntilChanged()
+                                .subscribe(data => {
+                                    this.todoService.updateTodo(data);
+                                });
                     }
                 });
 
@@ -65,15 +66,16 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
                 });
 
         // Subscribe to update on tag change
-        this.onNewTodoClicked = this.todoService.onNewTodoClicked
-                                    .subscribe(() => {
-                                        this.todo = new Todo({});
-                                        this.todo.id = FuseUtils.generateGUID();
-                                        this.formType = 'new';
-                                        this.todoForm = this.createTodoForm();
-                                        this.focusTitleField();
-                                        this.todoService.onCurrentTodoChanged.next([this.todo, 'new']);
-                                    });
+        this.onNewTodoClicked =
+            this.todoService.onNewTodoClicked
+                .subscribe(() => {
+                    this.todo = new Todo({});
+                    this.todo.id = FuseUtils.generateGUID();
+                    this.formType = 'new';
+                    this.todoForm = this.createTodoForm();
+                    this.focusTitleField();
+                    this.todoService.onCurrentTodoChanged.next([this.todo, 'new']);
+                });
     }
 
     focusTitleField()

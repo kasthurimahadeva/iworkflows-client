@@ -5,20 +5,19 @@
     <mat-toolbar>
 
         <!-- TOOLBAR TOP -->
-        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
 
             <button mat-button class="mat-icon-button" (click)="changeLeftSidenavView('chats')" aria-label="back">
                 <mat-icon>arrow_back</mat-icon>
             </button>
 
-        </div>
+        </mat-toolbar-row>
         <!-- / TOOLBAR TOP -->
 
         <!-- TOOLBAR BOTTOM -->
         <mat-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
 
             <img [src]="user.avatar" class="avatar user-avatar huge" alt="{{user.name}}"/>
-
             <div class="user-name my-8">{{user.name}}</div>
 
         </mat-toolbar-row>

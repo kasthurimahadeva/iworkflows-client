@@ -90,7 +90,7 @@
                                                    formControlName="categories">
 
                                         <mat-chip *ngFor="let category of product.categories"
-                                                  removable="true" (remove)="product.removeCategory(category)">
+                                                  removable="true" (removed)="product.removeCategory(category)">
                                             {{category}}
                                             <mat-icon matChipRemove>cancel</mat-icon>
                                         </mat-chip>
@@ -109,7 +109,7 @@
                                                    formControlName="tags">
 
                                         <mat-chip *ngFor="let tag of product.tags"
-                                                  removable="true" (remove)="product.removeTag(tag)">
+                                                  removable="true" (removed)="product.removeTag(tag)">
                                             {{tag}}
                                             <mat-icon matChipRemove>cancel</mat-icon>
                                         </mat-chip>

@@ -2,7 +2,7 @@
         type="button"
         class="mat-elevation-z1"
         [matMenuTriggerFor]="colorMenu"
-        (onMenuOpen)="onMenuOpen()"
+        (menuOpened)="onMenuOpen()"
         [ngClass]="'mat-'+selectedPalette+'-'+selectedHue+'-bg'">
     <mat-icon>palette</mat-icon>
 </button>

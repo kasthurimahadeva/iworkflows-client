@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { Observable } from 'rxjs/Observable';
 import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
@@ -7,6 +7,7 @@ import { FuseConfirmDialogComponent } from '../../../../../core/components/confi
 import { FormGroup } from '@angular/forms';
 import { DataSource } from '@angular/cdk/collections';
 import { fuseAnimations } from '../../../../../core/animations';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector   : 'fuse-contacts-contact-list',
@@ -14,7 +15,7 @@ import { fuseAnimations } from '../../../../../core/animations';
     styleUrls  : ['./contact-list.component.scss'],
     animations : fuseAnimations
 })
-export class FuseContactsContactListComponent implements OnInit
+export class FuseContactsContactListComponent implements OnInit, OnDestroy
 {
     @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
 
@@ -25,6 +26,10 @@ export class FuseContactsContactListComponent implements OnInit
     selectedContacts: any[];
     checkboxes: {};
 
+    onContactsChangedSubscription: Subscription;
+    onSelectedContactsChangedSubscription: Subscription;
+    onUserDataChangedSubscription: Subscription;
+
     dialogRef: any;
 
     confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
@@ -34,33 +39,43 @@ export class FuseContactsContactListComponent implements OnInit
         public dialog: MatDialog
     )
     {
-        this.contactsService.onContactsChanged.subscribe(contacts => {
+        this.onContactsChangedSubscription =
+            this.contactsService.onContactsChanged.subscribe(contacts => {
 
-            this.contacts = contacts;
+                this.contacts = contacts;
 
-            this.checkboxes = {};
-            contacts.map(contact => {
-                this.checkboxes[contact.id] = false;
+                this.checkboxes = {};
+                contacts.map(contact => {
+                    this.checkboxes[contact.id] = false;
+                });
             });
-        });
 
-        this.contactsService.onSelectedContactsChanged.subscribe(selectedContacts => {
-            for ( const id in this.checkboxes )
-            {
-                this.checkboxes[id] = selectedContacts.includes(id);
-            }
-            this.selectedContacts = selectedContacts;
-        });
+        this.onSelectedContactsChangedSubscription =
+            this.contactsService.onSelectedContactsChanged.subscribe(selectedContacts => {
+                for ( const id in this.checkboxes )
+                {
+                    this.checkboxes[id] = selectedContacts.includes(id);
+                }
+                this.selectedContacts = selectedContacts;
+            });
 
-        this.contactsService.onUserDataChanged.subscribe(user => {
-            this.user = user;
-        });
+        this.onUserDataChangedSubscription =
+            this.contactsService.onUserDataChanged.subscribe(user => {
+                this.user = user;
+            });
 
     }
 
     ngOnInit()
     {
         this.dataSource = new FilesDataSource(this.contactsService);
+    }
+
+    ngOnDestroy()
+    {
+        this.onContactsChangedSubscription.unsubscribe();
+        this.onSelectedContactsChangedSubscription.unsubscribe();
+        this.onUserDataChangedSubscription.unsubscribe();
     }
 
     editContact(contact)

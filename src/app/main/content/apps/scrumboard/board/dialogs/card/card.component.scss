@@ -20,6 +20,10 @@
                         .mat-form-field-flex {
                             align-items: center;
 
+                            .mat-form-field-infix {
+                                display: none;
+                            }
+
                             .mat-input-element {
                                 display: none;
                             }

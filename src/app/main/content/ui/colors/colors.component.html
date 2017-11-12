@@ -25,7 +25,7 @@
     <!-- CONTENT -->
     <div class="content">
 
-        <mat-tab-group class="color-tabs" dynamicHeight="true" (selectChange)="selectColor($event)">
+        <mat-tab-group class="color-tabs" dynamicHeight="true" (selectedTabChange)="selectColor($event)">
 
             <mat-tab *ngFor="let color of ['primary', 'accent', 'warn']" label="{{color}}">
                 <ng-template mat-tab-label>

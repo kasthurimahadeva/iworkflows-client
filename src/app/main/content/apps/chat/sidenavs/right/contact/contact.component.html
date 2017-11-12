@@ -5,7 +5,7 @@
     <mat-toolbar>
 
         <!-- TOOLBAR TOP -->
-        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
 
             <div>Contact Info</div>
 
@@ -13,7 +13,7 @@
                 <mat-icon>close</mat-icon>
             </button>
 
-        </div>
+        </mat-toolbar-row>
         <!-- / TOOLBAR TOP -->
 
         <!-- TOOLBAR BOTTOM -->
@@ -37,9 +37,9 @@
     <mat-card>
 
         <mat-form-field fxFlex>
-                <textarea matInput placeholder="Mood" name="mood"
-                          [value]="contact.mood" rows="3" disabled>
-                </textarea>
+            <textarea matInput placeholder="Mood" name="mood"
+                      [value]="contact.mood" rows="3" disabled>
+            </textarea>
         </mat-form-field>
 
     </mat-card>

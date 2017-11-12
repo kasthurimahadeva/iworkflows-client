@@ -5,7 +5,7 @@
     </mat-icon>
 
     <mat-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
-                  class="mr-16" fxFlex="0 1 auto">
+                  class="mr-16" fxFlex="0 1 auto" (click)="$event.stopPropagation()">
     </mat-checkbox>
 
     <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
