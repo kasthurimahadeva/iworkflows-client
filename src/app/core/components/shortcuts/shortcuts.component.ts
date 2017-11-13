@@ -149,7 +149,9 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
 
     onMenuOpen()
     {
-        this.searchInputField.nativeElement.focus();
+        setTimeout(() => {
+            this.searchInputField.nativeElement.focus();
+        });
     }
 
     showMobileShortcutsPanel()
