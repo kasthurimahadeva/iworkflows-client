@@ -1,6 +1,6 @@
 @import "src/app/core/scss/fuse";
 
-:host {
+fuse-contacts-contact-list {
     flex: 1;
 
     .mat-table {
@@ -9,6 +9,10 @@
 
         .mat-column-checkbox {
             flex: 0 1 48px;
+
+            .mat-checkbox-ripple {
+                display: none !important; //fix for broken rendering
+            }
         }
 
         .mat-column-avatar {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ContactsService } from '../contacts.service';
 import { Observable } from 'rxjs/Observable';
 import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
@@ -10,10 +10,11 @@ import { fuseAnimations } from '../../../../../core/animations';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-    selector   : 'fuse-contacts-contact-list',
-    templateUrl: './contact-list.component.html',
-    styleUrls  : ['./contact-list.component.scss'],
-    animations : fuseAnimations
+    selector     : 'fuse-contacts-contact-list',
+    templateUrl  : './contact-list.component.html',
+    styleUrls    : ['./contact-list.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class FuseContactsContactListComponent implements OnInit, OnDestroy
 {
