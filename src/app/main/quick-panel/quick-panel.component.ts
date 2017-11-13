@@ -10,6 +10,8 @@ export class FuseQuickPanelComponent implements OnInit
 {
     date: Date;
     settings: any;
+    notes = [];
+    events = [];
 
     constructor()
     {
