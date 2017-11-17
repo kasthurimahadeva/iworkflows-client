@@ -650,6 +650,12 @@ export class NavigationModel
                                         'url'  : '/components/angular-material/tabs'
                                     },
                                     {
+                                        'id'   : 'elevation',
+                                        'title': 'Elevation',
+                                        'type' : 'item',
+                                        'url'  : '/components/angular-material/elevation'
+                                    },
+                                    {
                                         'id'   : 'expansion-panel',
                                         'title': 'Expansion Panel',
                                         'type' : 'item',

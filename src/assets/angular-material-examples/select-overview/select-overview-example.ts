@@ -5,18 +5,22 @@ import { Component } from '@angular/core';
  */
 @Component({
     selector   : 'select-overview-example',
-    templateUrl: 'select-overview-example.html'
+    templateUrl: 'select-overview-example.html',
+    styleUrls  : ['select-overview-example.css']
 })
 export class SelectOverviewExample
 {
     foods = [
-        {value       : 'steak-0',
+        {
+            value    : 'steak-0',
             viewValue: 'Steak'
         },
-        {value       : 'pizza-1',
+        {
+            value    : 'pizza-1',
             viewValue: 'Pizza'
         },
-        {value       : 'tacos-2',
+        {
+            value    : 'tacos-2',
             viewValue: 'Tacos'
         }
     ];

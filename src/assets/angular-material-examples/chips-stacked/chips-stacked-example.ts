@@ -13,16 +13,20 @@ export class ChipsStackedExample
     color: string;
 
     availableColors = [
-        {name    : 'none',
+        {
+            name : 'none',
             color: ''
         },
-        {name    : 'Primary',
+        {
+            name : 'Primary',
             color: 'primary'
         },
-        {name    : 'Accent',
+        {
+            name : 'Accent',
             color: 'accent'
         },
-        {name    : 'Warn',
+        {
+            name : 'Warn',
             color: 'warn'
         }
     ];

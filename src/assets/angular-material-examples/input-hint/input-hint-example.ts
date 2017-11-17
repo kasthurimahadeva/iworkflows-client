@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * @title Input hints
+ * @title Input with hints
  */
 @Component({
     selector   : 'input-hint-example',

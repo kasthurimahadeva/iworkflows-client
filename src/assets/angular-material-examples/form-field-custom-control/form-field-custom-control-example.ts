@@ -165,12 +165,12 @@ export class MyTelInput implements MatFormFieldControl<MyTel>, OnDestroy
 @Component({
     selector: 'form-field-custom-control-example',
     template: `
-    <mat-form-field>
-      <my-tel-input placeholder="Phone number" required></my-tel-input>
-      <mat-icon matSuffix>phone</mat-icon>
-      <mat-hint>Include area code</mat-hint>
-    </mat-form-field>
-  `
+        <mat-form-field>
+            <my-tel-input placeholder="Phone number" required></my-tel-input>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Include area code</mat-hint>
+        </mat-form-field>
+    `
 })
 export class FormFieldCustomControlExample
 {
