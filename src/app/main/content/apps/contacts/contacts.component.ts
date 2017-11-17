@@ -4,6 +4,7 @@ import { fuseAnimations } from '../../../../core/animations';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
 import { MatDialog } from '@angular/material';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     selector     : 'fuse-contacts',

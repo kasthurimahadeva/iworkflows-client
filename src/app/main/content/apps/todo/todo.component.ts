@@ -1,9 +1,10 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { TodoService } from './todo.service';
 import { FormControl } from '@angular/forms';
 import { Todo } from './todo.model';
 import { fuseAnimations } from '../../../../core/animations';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     selector   : 'fuse-todo',

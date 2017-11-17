@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChatService } from '../../../chat.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     selector   : 'fuse-chat-user-sidenav',
