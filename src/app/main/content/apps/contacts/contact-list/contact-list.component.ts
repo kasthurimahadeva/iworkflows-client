@@ -55,6 +55,11 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
             this.contactsService.onSelectedContactsChanged.subscribe(selectedContacts => {
                 for ( const id in this.checkboxes )
                 {
+                    if ( !this.checkboxes.hasOwnProperty(id) )
+                    {
+                        continue;
+                    }
+
                     this.checkboxes[id] = selectedContacts.includes(id);
                 }
                 this.selectedContacts = selectedContacts;
