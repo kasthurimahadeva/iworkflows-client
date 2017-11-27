@@ -13,7 +13,6 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
     matchMediaSubscription: Subscription;
 
     @HostBinding('class.mat-is-locked-open') isLockedOpen = true;
-    @HostBinding('class.mat-stop-transition') stopTransition = true;
 
     @Input('fuseMatSidenavHelper') id: string;
     @Input('mat-is-locked-open') matIsLockedOpenBreakpoint: string;
@@ -33,45 +32,31 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
 
         if ( this.observableMedia.isActive(this.matIsLockedOpenBreakpoint) )
         {
-            setTimeout(() => {
-                this.isLockedOpen = true;
-                this.matSidenav.mode = 'side';
-                this.matSidenav.open();
-            });
-            this.stopTransition = false;
+            this.isLockedOpen = true;
+            this.matSidenav.mode = 'side';
+            this.matSidenav.toggle(true);
         }
         else
         {
-            setTimeout(() => {
-                this.isLockedOpen = false;
-                this.matSidenav.mode = 'over';
-                this.matSidenav.close();
-            });
-
-            setTimeout(() => {
-                this.stopTransition = false;
-            }, 3000);
+            this.isLockedOpen = false;
+            this.matSidenav.mode = 'over';
+            this.matSidenav.toggle(false);
         }
 
         this.matchMediaSubscription = this.fuseMatchMedia.onMediaChange.subscribe(() => {
             if ( this.observableMedia.isActive(this.matIsLockedOpenBreakpoint) )
             {
-                setTimeout(() => {
-                    this.isLockedOpen = true;
-                    this.matSidenav.mode = 'side';
-                    this.matSidenav.open();
-                });
+                this.isLockedOpen = true;
+                this.matSidenav.mode = 'side';
+                this.matSidenav.toggle(true);
             }
             else
             {
-                setTimeout(() => {
-                    this.isLockedOpen = false;
-                    this.matSidenav.mode = 'over';
-                    this.matSidenav.close();
-                });
+                this.isLockedOpen = false;
+                this.matSidenav.mode = 'over';
+                this.matSidenav.toggle(false);
             }
         });
-
     }
 
     ngOnDestroy()
