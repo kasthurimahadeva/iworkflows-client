@@ -2,7 +2,7 @@
 
 fuse-main {
 
-    &.fuse-nav-bar-folded {
+    &.fuse-nav-bar-folded:not(.fuse-nav-bar-horizontal) {
 
         .content-wrapper {
 
