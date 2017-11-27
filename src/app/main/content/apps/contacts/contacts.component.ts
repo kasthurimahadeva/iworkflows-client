@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ContactsService } from './contacts.service';
 import { fuseAnimations } from '../../../../core/animations';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
 import { MatDialog } from '@angular/material';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector     : 'fuse-contacts',
@@ -13,11 +14,12 @@ import 'rxjs/add/operator/distinctUntilChanged';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseContactsComponent implements OnInit
+export class FuseContactsComponent implements OnInit, OnDestroy
 {
     hasSelectedContacts: boolean;
     searchInput: FormControl;
     dialogRef: any;
+    onSelectedContactsChangedSubscription: Subscription;
 
     constructor(
         private contactsService: ContactsService,
@@ -51,11 +53,11 @@ export class FuseContactsComponent implements OnInit
 
     ngOnInit()
     {
-
-        this.contactsService.onSelectedContactsChanged
-            .subscribe(selectedContacts => {
-                this.hasSelectedContacts = selectedContacts.length > 0;
-            });
+        this.onSelectedContactsChangedSubscription =
+            this.contactsService.onSelectedContactsChanged
+                .subscribe(selectedContacts => {
+                    this.hasSelectedContacts = selectedContacts.length > 0;
+                });
 
         this.searchInput.valueChanges
             .debounceTime(300)
@@ -65,4 +67,8 @@ export class FuseContactsComponent implements OnInit
             });
     }
 
+    ngOnDestroy()
+    {
+        this.onSelectedContactsChangedSubscription.unsubscribe();
+    }
 }

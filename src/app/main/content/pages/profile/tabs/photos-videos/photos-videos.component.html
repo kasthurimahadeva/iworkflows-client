@@ -1,4 +1,4 @@
-<div id="photos-videos" class="p-24" *fuseIfOnDom [@animateStagger]="{value:'50'}">
+<div id="photos-videos" class="p-24">
     <div class="period" *ngFor="let period of photosVideos">
 
         <div class="period-title">
@@ -7,8 +7,7 @@
         </div>
 
         <div class="period-media" fxLayout="row" fxLayoutWrap>
-            <div class="media" *ngFor="let media of period.media"
-                 [@animate]="{value:'*',params:{y:'100%'}}">
+            <div class="media" *ngFor="let media of period.media">
                 <img class="preview" [src]="media.preview" title="{{media.title}}">
                 <div class="title">{{media.title}}</div>
             </div>
