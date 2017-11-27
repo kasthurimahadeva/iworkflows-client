@@ -6,42 +6,6 @@
     }
 }
 
-// Fix: "Sidenav opening with animations for the first time"
-mat-sidenav-container {
-
-    mat-sidenav {
-
-        &[mat-is-locked-open].mat-stop-transition {
-            transition: none !important;
-            transform: translate3d(0, 0, 0) !important;
-            opacity: 0;
-
-            ~ .mat-sidenav-content,
-            ~ .mat-drawer-content {
-                transition: none !important;
-            }
-        }
-
-        &.mat-sidenav-opened {
-
-            &.mat-drawer-side {
-
-                ~ .mat-sidenav-content,
-                ~ .mat-drawer-content {
-                    transition: none !important;
-                    transform: translate3d(0, 0, 0) !important;
-                }
-            }
-        }
-
-        &.mat-drawer-end {
-        }
-    }
-
-    .mat-drawer-content {
-    }
-}
-
 // Fix: "Inconsistent font sizes across elements"
 .mat-input-wrapper {
     font-size: 16px;
