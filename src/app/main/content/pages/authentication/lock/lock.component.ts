@@ -55,7 +55,7 @@ export class FuseLockComponent implements OnInit
     {
         for ( const field in this.lockFormErrors )
         {
-            if ( this.lockFormErrors.hasOwnProperty(field) )
+            if ( !this.lockFormErrors.hasOwnProperty(field) )
             {
                 continue;
             }

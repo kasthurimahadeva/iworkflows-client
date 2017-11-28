@@ -48,16 +48,19 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput placeholder="Password" formControlName="password">
+                    <input matInput type="password" placeholder="Password" formControlName="password">
                     <mat-error *ngIf="registerFormErrors.password.required">
                         Password is required
                     </mat-error>
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput placeholder="Password (Confirm)" formControlName="passwordConfirm">
+                    <input matInput type="password" placeholder="Password (Confirm)" formControlName="passwordConfirm">
                     <mat-error *ngIf="registerFormErrors.passwordConfirm.required">
                         Password confirmation is required
+                    </mat-error>
+                    <mat-error *ngIf="registerFormErrors.passwordConfirm.passwordsNotMatch">
+                        Password confirmation must match with password
                     </mat-error>
                 </mat-form-field>
 

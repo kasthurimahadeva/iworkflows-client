@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseConfigService } from '../../../../../core/services/config.service';
 import { fuseAnimations } from '../../../../../core/animations';
 
@@ -38,12 +38,11 @@ export class FuseRegisterComponent implements OnInit
 
     ngOnInit()
     {
-
         this.registerForm = this.formBuilder.group({
             name           : ['', Validators.required],
             email          : ['', [Validators.required, Validators.email]],
             password       : ['', Validators.required],
-            passwordConfirm: ['', Validators.required]
+            passwordConfirm: ['', [Validators.required, confirmPassword]]
         });
 
         this.registerForm.valueChanges.subscribe(() => {
@@ -71,5 +70,33 @@ export class FuseRegisterComponent implements OnInit
                 this.registerFormErrors[field] = control.errors;
             }
         }
+    }
+}
+
+function confirmPassword(control: AbstractControl)
+{
+    if ( !control.parent || !control )
+    {
+        return;
+    }
+
+    const password = control.parent.get('password');
+    const passwordConfirm = control.parent.get('passwordConfirm');
+
+    if ( !password || !passwordConfirm )
+    {
+        return;
+    }
+
+    if ( passwordConfirm.value === '' )
+    {
+        return;
+    }
+
+    if ( password.value !== passwordConfirm.value )
+    {
+        return {
+            passwordsNotMatch: true
+        };
     }
 }

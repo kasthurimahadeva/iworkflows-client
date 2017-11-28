@@ -52,7 +52,7 @@ export class FuseResetPassword2Component implements OnInit
     {
         for ( const field in this.resetPasswordFormErrors )
         {
-            if ( this.resetPasswordFormErrors.hasOwnProperty(field) )
+            if ( !this.resetPasswordFormErrors.hasOwnProperty(field) )
             {
                 continue;
             }
