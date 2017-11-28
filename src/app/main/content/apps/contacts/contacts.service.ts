@@ -10,7 +10,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class ContactsService implements Resolve<any>
 {
-    onContactsChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onContactsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onSelectedContactsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onUserDataChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onSearchTextChanged: Subject<any> = new Subject();
