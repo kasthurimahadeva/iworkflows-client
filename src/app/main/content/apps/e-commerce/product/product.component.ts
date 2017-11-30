@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { EcommerceProductService } from './product.service';
 import { fuseAnimations } from '../../../../../core/animations';
 import 'rxjs/add/operator/startWith';

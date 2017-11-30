@@ -1,9 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { EcommerceDashboardService } from './dashboard.service';
-import * as shape from 'd3-shape';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { DataSource } from '@angular/cdk/collections';
 import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
@@ -23,14 +19,10 @@ export class FuseEcommerceDashboardComponent implements OnInit, OnDestroy
     widget6: any = {};
     widget7: any = {};
 
-    dateNow = Date.now();
-
     constructor(private projectsDashboardService: EcommerceDashboardService)
     {
         this.projects = this.projectsDashboardService.projects;
-
         this.selectedProject = this.projects[0];
-
         this.widgets = this.projectsDashboardService.widgets;
 
         /**

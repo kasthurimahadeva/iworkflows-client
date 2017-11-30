@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { EcommerceOrderService } from './order.service';
 import { fuseAnimations } from '../../../../../core/animations';
 import 'rxjs/add/operator/startWith';
@@ -10,9 +10,6 @@ import 'rxjs/add/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 import { Order } from './order.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FuseUtils } from '../../../../../core/fuseUtils';
-import { MatSnackBar } from '@angular/material';
-import { Location } from '@angular/common';
 import { orderStatuses } from './order-statuses';
 
 @Component({
@@ -32,8 +29,6 @@ export class FuseEcommerceOrderComponent implements OnInit, OnDestroy
     constructor(
         private orderService: EcommerceOrderService,
         private formBuilder: FormBuilder,
-        public snackBar: MatSnackBar,
-        private location: Location
     )
     {
 

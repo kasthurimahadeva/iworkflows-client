@@ -8,7 +8,7 @@
     </button>
 
     <form *ngIf="formActive" class="new-list-form" [formGroup]="form" (submit)="onFormSubmit()"
-          fxFlex="1 0 auto" fxFlex="row" fxLayoutAlign="start center">
+          fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
         <input formControlName="name" #nameInput fxFlex placeholder="Write a list Name">
 

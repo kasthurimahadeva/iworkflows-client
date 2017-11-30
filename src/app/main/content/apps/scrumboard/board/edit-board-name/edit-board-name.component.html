@@ -7,8 +7,7 @@
 
 
 <form [formGroup]="form" (ngSubmit)="onFormSubmit()"
-      class="board-name-form" fxFlex="1 0 auto"
-      *ngIf="formActive" fxFlex="row">
+      class="board-name-form" fxLayout="row" fxFlex="1 0 auto" *ngIf="formActive">
 
     <input formControlName="name" #nameInput fxFlex="1 0 auto" placeholder="Write a board name">
 

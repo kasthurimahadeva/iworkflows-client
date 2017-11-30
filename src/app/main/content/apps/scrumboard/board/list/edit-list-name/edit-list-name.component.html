@@ -3,8 +3,8 @@
 </div>
 
 <form [formGroup]="form" (ngSubmit)="onFormSubmit()"
-      class="list-header-name-form" fxFlex="1 0 auto"
-      *ngIf="formActive" fxFlex="row">
+      class="list-header-name-form" fxLayout="row" fxFlex="1 0 auto"
+      *ngIf="formActive">
 
     <input formControlName="name" #nameInput fxFlex placeholder="Write a list Name">
 

@@ -1,11 +1,10 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FuseUtils } from '../../../../../../core/fuseUtils';
-import { ScrumboardService } from 'app/main/content/apps/scrumboard/scrumboard.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseScrumboardCardDialogComponent } from '../dialogs/card/card.component';
 import { FuseConfirmDialogComponent } from '../../../../../../core/components/confirm-dialog/confirm-dialog.component';
+import { ScrumboardService } from '../../scrumboard.service';
 import { Card } from '../../card.model';
 import { FusePerfectScrollbarDirective } from '../../../../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 
@@ -24,7 +23,6 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
     @ViewChild(FusePerfectScrollbarDirective) listScroll: FusePerfectScrollbarDirective;
 
     onBoardChanged: Subscription;
-
     confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
     constructor(

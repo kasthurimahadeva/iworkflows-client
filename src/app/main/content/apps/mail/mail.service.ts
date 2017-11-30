@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Mail } from './mail.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { FuseUtils } from 'app/core/fuseUtils';
+import { FuseUtils } from '../../../../core/fuseUtils';
 
 @Injectable()
 export class MailService implements Resolve<any>
