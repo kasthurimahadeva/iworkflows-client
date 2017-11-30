@@ -69,6 +69,20 @@ export class FuseNavVerticalCollapseComponent implements OnInit
             );
     }
 
+    ngOnInit()
+    {
+        // Check if the url can be found in
+        // one of the children of this item
+        if ( this.isUrlInChildren(this.item, this.router.url) )
+        {
+            this.expand();
+        }
+        else
+        {
+            this.collapse();
+        }
+    }
+
     /**
      * Toggle collapse
      *
@@ -108,6 +122,7 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         {
             return;
         }
+
         this.isOpen = false;
         this.navigationService.onNavCollapseToggle.emit();
     }
@@ -173,10 +188,6 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         }
 
         return false;
-    }
-
-    ngOnInit()
-    {
     }
 
 }
