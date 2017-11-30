@@ -17,7 +17,8 @@
 
     </div>
 
-    <div id="register-form-wrapper" fusePerfectScrollbar *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
+    <div id="register-form-wrapper" fusePerfectScrollbar *fuseIfOnDom
+         [@animate]="{value:'*',params:{delay:'300ms',x:'100%'}}">
 
         <div id="register-form">
 
@@ -60,7 +61,7 @@
                         Password confirmation is required
                     </mat-error>
                     <mat-error *ngIf="registerFormErrors.passwordConfirm.passwordsNotMatch">
-                        Password confirmation must match with password
+                        Passwords must match
                     </mat-error>
                 </mat-form-field>
 

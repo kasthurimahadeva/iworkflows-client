@@ -1,5 +1,4 @@
-import { Component} from '@angular/core';
-
+import { Component } from '@angular/core';
 import { FuseConfigService } from '../../../../../core/services/config.service';
 import { fuseAnimations } from '../../../../../core/animations';
 

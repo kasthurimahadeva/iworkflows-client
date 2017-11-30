@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseConfigService } from '../../../../../core/services/config.service';
 import { fuseAnimations } from '../../../../../core/animations';
 
@@ -40,7 +39,7 @@ export class FuseResetPasswordComponent implements OnInit
         this.resetPasswordForm = this.formBuilder.group({
             email          : ['', [Validators.required, Validators.email]],
             password       : ['', Validators.required],
-            passwordConfirm: ['', Validators.required]
+            passwordConfirm: ['', [Validators.required, confirmPassword]]
         });
 
         this.resetPasswordForm.valueChanges.subscribe(() => {
@@ -68,5 +67,33 @@ export class FuseResetPasswordComponent implements OnInit
                 this.resetPasswordFormErrors[field] = control.errors;
             }
         }
+    }
+}
+
+function confirmPassword(control: AbstractControl)
+{
+    if ( !control.parent || !control )
+    {
+        return;
+    }
+
+    const password = control.parent.get('password');
+    const passwordConfirm = control.parent.get('passwordConfirm');
+
+    if ( !password || !passwordConfirm )
+    {
+        return;
+    }
+
+    if ( passwordConfirm.value === '' )
+    {
+        return;
+    }
+
+    if ( password.value !== passwordConfirm.value )
+    {
+        return {
+            passwordsNotMatch: true
+        };
     }
 }

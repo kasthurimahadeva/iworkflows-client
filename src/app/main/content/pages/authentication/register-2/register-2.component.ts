@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseConfigService } from '../../../../../core/services/config.service';
 import { fuseAnimations } from '../../../../../core/animations';
@@ -72,7 +71,6 @@ export class FuseRegister2Component implements OnInit
         }
     }
 }
-
 
 function confirmPassword(control: AbstractControl)
 {
