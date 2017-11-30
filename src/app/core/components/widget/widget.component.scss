@@ -62,4 +62,23 @@ fuse-widget {
             transform: rotateY(360deg);
         }
     }
+
+    .mat-form-field {
+
+        &.mat-form-field-type-mat-select {
+
+            .mat-input-wrapper {
+                padding: 16px 0;
+
+                .mat-input-infix {
+                    border: none;
+                    padding: 0;
+                }
+            }
+
+            .mat-input-underline {
+                display: none;
+            }
+        }
+    }
 }

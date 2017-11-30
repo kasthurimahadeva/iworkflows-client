@@ -27,7 +27,9 @@ export class FuseWidgetComponent implements OnInit, AfterContentInit
         setTimeout(() => {
 
             this.toggleButtons.forEach(flipButton => {
-                this.renderer.listen(flipButton.el.nativeElement, 'click', () => {
+                this.renderer.listen(flipButton.el.nativeElement, 'click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
                     this.toggle();
                 });
             });

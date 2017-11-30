@@ -14,5 +14,10 @@
                 background: none !important;
             }
         }
+
+        .horizontal-stepper-wrapper,
+        .vertical-stepper-wrapper {
+            max-width: 800px;
+        }
     }
 }
