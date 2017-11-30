@@ -54,7 +54,7 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
 
     ngOnDestroy()
     {
-        if ( !this.isInitialized )
+        if ( !this.isInitialized || !this.ps )
         {
             return;
         }
