@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { NavigationModel } from '../../../navigation.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { FuseNavigationModelInterface } from './navigation.model';
 
 @Injectable()
 export class FuseNavigationService
@@ -8,13 +8,11 @@ export class FuseNavigationService
     onNavCollapseToggle = new EventEmitter<any>();
     onNavCollapseToggled = new EventEmitter<any>();
     onNavigationModelChange: BehaviorSubject<any> = new BehaviorSubject({});
-    navigationModel: NavigationModel;
+    navigationModel: FuseNavigationModelInterface;
     flatNavigation: any[] = [];
 
     constructor()
     {
-        this.navigationModel = new NavigationModel();
-        this.onNavigationModelChange.next(this.navigationModel.model);
     }
 
     /**

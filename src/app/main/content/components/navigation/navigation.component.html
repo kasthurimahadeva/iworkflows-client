@@ -18,7 +18,7 @@
 
         <p>
             <code>fuse-navigation</code> is a custom built Fuse component allows you to create a multi-level collapsable
-            navigation.
+            navigation. It has built-in support for translations using <b>ngx-translate</b> module.
         </p>
 
         <div class="my-48">
@@ -40,6 +40,11 @@
                 <b>Collapsable</b> and <b>Item</b>. These items can be mixed and matched to create unique and complex
                 navigation layouts.
             </p>
+            <p class="py-8">
+                Navigation model can be found in <code>src/app/navigation</code> folder along with its translation
+                files. Navigation model and its translation files are set in <b>app.component.ts</b> file. Check that
+                file for more detailed usage example.
+            </p>
         </div>
 
         <div class="my-48">
@@ -48,9 +53,10 @@
                 <fuse-hljs lang="json" class="source-code">
                     <textarea #source hidden="hidden">
                         {
-                            'title': 'COMPONENTS',
-                            'type' : 'group',
-                            'children': [
+                            'title'    : 'COMPONENTS',
+                            'translate': 'NAV.COMPONENTS',
+                            'type'     : 'group',
+                            'children' : [
                                 {
                                     'title': 'ngx-datatable',
                                     'type' : 'item',
@@ -69,10 +75,11 @@
                 <fuse-hljs lang="json" class="source-code">
                     <textarea #source hidden="hidden">
                         {
-                            'title' : 'Datatables',
-                            'type' : 'collapse',
-                            'icon' : 'border_all',
-                            'children': [
+                            'title'    : 'Datatables',
+                            'translate': 'NAV.DATATABLES',
+                            'type'     : 'collapse',
+                            'icon'     : 'border_all',
+                            'children' : [
                                 {
                                     'title': 'ngx-datatable',
                                     'type' : 'nav-item',
@@ -91,10 +98,11 @@
                 <fuse-hljs lang="json" class="source-code">
                     <textarea #source hidden="hidden">
                         {
-                            'title': 'Countdown',
-                            'type' : 'item',
-                            'icon' : 'settings_input_component',
-                            'url' : '/components/countdown'
+                            'title'    : 'Countdown',
+                            'translate': 'NAV.COUNTDOWN',
+                            'type'     : 'item',
+                            'icon'     : 'settings_input_component',
+                            'url'      : '/components/countdown'
                         },
                     </textarea>
                 </fuse-hljs>

@@ -73,16 +73,12 @@ const appRoutes: Routes = [
         SharedModule,
         MarkdownModule.forRoot(),
         TranslateModule.forRoot(),
-
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {
             delay             : 0,
             passThruUnknownUrl: true
         }),
-
         FuseMainModule,
-
         ProjectModule,
-
         PagesModule,
         UIModule,
         ServicesModule,

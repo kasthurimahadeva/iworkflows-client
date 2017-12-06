@@ -1,4 +1,6 @@
-export class NavigationModel
+import { FuseNavigationModelInterface } from '../core/components/navigation/navigation.model';
+
+export class FuseNavigationModel implements FuseNavigationModelInterface
 {
     public model: any[];
 
@@ -6,17 +8,19 @@ export class NavigationModel
     {
         this.model = [
             {
-                'id'      : 'applications',
-                'title'   : 'Applications',
-                'type'    : 'group',
-                'icon'    : 'apps',
-                'children': [
+                'id'       : 'applications',
+                'title'    : 'Applications',
+                'translate': 'NAV.APPLICATIONS',
+                'type'     : 'group',
+                'icon'     : 'apps',
+                'children' : [
                     {
-                        'id'      : 'dashboards',
-                        'title'   : 'Dashboards',
-                        'type'    : 'collapse',
-                        'icon'    : 'dashboard',
-                        'children': [
+                        'id'       : 'dashboards',
+                        'title'    : 'Dashboards',
+                        'translate': 'NAV.DASHBOARDS',
+                        'type'     : 'collapse',
+                        'icon'     : 'dashboard',
+                        'children' : [
                             {
                                 'id'   : 'project',
                                 'title': 'Project',
@@ -26,18 +30,20 @@ export class NavigationModel
                         ]
                     },
                     {
-                        'id'   : 'calendar',
-                        'title': 'Calendar',
-                        'type' : 'item',
-                        'icon' : 'today',
-                        'url'  : '/apps/calendar'
+                        'id'       : 'calendar',
+                        'title'    : 'Calendar',
+                        'translate': 'NAV.CALENDAR',
+                        'type'     : 'item',
+                        'icon'     : 'today',
+                        'url'      : '/apps/calendar'
                     },
                     {
-                        'id'      : 'e-commerce',
-                        'title'   : 'E-Commerce',
-                        'type'    : 'collapse',
-                        'icon'    : 'shopping_cart',
-                        'children': [
+                        'id'       : 'e-commerce',
+                        'title'    : 'E-Commerce',
+                        'translate': 'NAV.ECOMMERCE',
+                        'type'     : 'collapse',
+                        'icon'     : 'shopping_cart',
+                        'children' : [
                             {
                                 'id'   : 'dashboard',
                                 'title': 'Dashboard',
@@ -75,61 +81,68 @@ export class NavigationModel
                         ]
                     },
                     {
-                        'id'   : 'mail',
-                        'title': 'Mail',
-                        'type' : 'item',
-                        'icon' : 'email',
-                        'url'  : '/apps/mail',
-                        'badge': {
-                            'title': 25,
-                            'bg'   : '#F44336',
-                            'fg'   : '#FFFFFF'
+                        'id'       : 'mail',
+                        'title'    : 'Mail',
+                        'translate': 'NAV.MAIL.TITLE',
+                        'type'     : 'item',
+                        'icon'     : 'email',
+                        'url'      : '/apps/mail',
+                        'badge'    : {
+                            'title'    : 25,
+                            'translate': 'NAV.MAIL.BADGE',
+                            'bg'       : '#F44336',
+                            'fg'       : '#FFFFFF'
                         }
                     },
                     {
-                        'id'   : 'chat',
-                        'title': 'Chat',
-                        'type' : 'item',
-                        'icon' : 'chat',
-                        'url'  : '/apps/chat',
-                        'badge': {
+                        'id'       : 'chat',
+                        'title'    : 'Chat',
+                        'translate': 'NAV.CHAT',
+                        'type'     : 'item',
+                        'icon'     : 'chat',
+                        'url'      : '/apps/chat',
+                        'badge'    : {
                             'title': 13,
                             'bg'   : '#09d261',
                             'fg'   : '#FFFFFF'
                         }
                     },
                     {
-                        'id'   : 'file-manager',
-                        'title': 'File Manager',
-                        'type' : 'item',
-                        'icon' : 'folder',
-                        'url'  : '/apps/file-manager'
+                        'id'       : 'file-manager',
+                        'title'    : 'File Manager',
+                        'translate': 'NAV.FILE_MANAGER',
+                        'type'     : 'item',
+                        'icon'     : 'folder',
+                        'url'      : '/apps/file-manager'
                     },
                     {
-                        'id'   : 'contacts',
-                        'title': 'Contacts',
-                        'type' : 'item',
-                        'icon' : 'account_box',
-                        'url'  : '/apps/contacts'
+                        'id'       : 'contacts',
+                        'title'    : 'Contacts',
+                        'translate': 'NAV.CONTACTS',
+                        'type'     : 'item',
+                        'icon'     : 'account_box',
+                        'url'      : '/apps/contacts'
                     },
                     {
-                        'id'   : 'to-do',
-                        'title': 'To-Do',
-                        'type' : 'item',
-                        'icon' : 'check_box',
-                        'url'  : '/apps/todo',
-                        'badge': {
+                        'id'       : 'to-do',
+                        'title'    : 'To-Do',
+                        'translate': 'NAV.TODO',
+                        'type'     : 'item',
+                        'icon'     : 'check_box',
+                        'url'      : '/apps/todo',
+                        'badge'    : {
                             'title': 3,
                             'bg'   : '#FF6F00',
                             'fg'   : '#FFFFFF'
                         }
                     },
                     {
-                        'id'   : 'scrumboard',
-                        'title': 'Scrumboard',
-                        'type' : 'item',
-                        'icon' : 'assessment',
-                        'url'  : '/apps/scrumboard'
+                        'id'       : 'scrumboard',
+                        'title'    : 'Scrumboard',
+                        'translate': 'NAV.SCRUMBOARD',
+                        'type'     : 'item',
+                        'icon'     : 'assessment',
+                        'url'      : '/apps/scrumboard'
                     }
                 ]
             },
@@ -144,6 +157,11 @@ export class NavigationModel
                         'title'   : 'Authentication',
                         'type'    : 'collapse',
                         'icon'    : 'lock',
+                        'badge'   : {
+                            'title': 10,
+                            'bg'   : '#525e8a',
+                            'fg'   : '#FFFFFF'
+                        },
                         'children': [
                             {
                                 'id'   : 'login',
@@ -359,6 +377,11 @@ export class NavigationModel
                                 'id'      : 'carded',
                                 'title'   : 'Carded',
                                 'type'    : 'collapse',
+                                'badge'   : {
+                                    'title': 10,
+                                    'bg'   : '#525e8a',
+                                    'fg'   : '#FFFFFF'
+                                },
                                 'children': [
                                     {
                                         'id'   : 'full-width',
@@ -426,6 +449,11 @@ export class NavigationModel
                                 'id'      : 'simple',
                                 'title'   : 'Simple',
                                 'type'    : 'collapse',
+                                'badge'   : {
+                                    'title': 8,
+                                    'bg'   : '#525e8a',
+                                    'fg'   : '#FFFFFF'
+                                },
                                 'children': [
                                     {
                                         'id'   : 'full-width',
