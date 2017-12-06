@@ -2,9 +2,16 @@
 
 .scrumboard-card-dialog {
 
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+
+    @include media-breakpoint-up('xs') {
+        width: 720px;
+    }
+
     .mat-dialog-container {
         padding: 0;
-        width: 720px;
 
         .mat-toolbar {
 
@@ -162,9 +169,16 @@
                                 background-size: contain;
                                 background-position: 50% 50%;
                                 background-repeat: no-repeat;
-                                margin-right: 24px;
                                 font-weight: 500;
                                 color: rgba(0, 0, 0, 0.6);
+
+                                @include media-breakpoint('xs') {
+                                    margin-bottom: 24px;
+                                }
+
+                                @include media-breakpoint-up('xs') {
+                                    margin-right: 24px;
+                                }
                             }
 
                             .attachment-content {

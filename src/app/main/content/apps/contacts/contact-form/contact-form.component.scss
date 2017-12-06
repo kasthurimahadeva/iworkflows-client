@@ -2,14 +2,17 @@
 
 .contact-form-dialog {
 
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+
+    @include media-breakpoint-up('xs') {
+        width: 400px;
+    }
+
     .mat-dialog-container {
         padding: 0;
-        width: 400px;
         overflow: hidden;
-
-        @include media-breakpoint('xs') {
-            width: auto;
-        }
 
         .mat-toolbar {
             min-height: initial;
