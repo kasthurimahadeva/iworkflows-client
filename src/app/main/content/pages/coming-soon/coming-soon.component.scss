@@ -5,7 +5,7 @@
     #coming-soon {
         width: 100%;
         overflow: auto;
-        background: url('/assets/images/backgrounds/march.jpg') no-repeat;
+        background: url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat;
         background-size: cover;
 
         #coming-soon-form-wrapper {
@@ -21,7 +21,7 @@
                 max-width: 384px;
                 background: #FFFFFF;
                 text-align: center;
-                @include mat-elevation(7);
+                @include mat-elevation(16);
 
                 @include media-breakpoint('xs') {
                     width: 100%;
