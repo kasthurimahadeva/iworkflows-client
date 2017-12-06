@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
@@ -68,7 +67,6 @@ const appRoutes: Routes = [
     ],
     imports     : [
         BrowserModule,
-        HttpModule,
         HttpClientModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
