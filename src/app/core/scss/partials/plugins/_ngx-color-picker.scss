@@ -3,20 +3,21 @@
 .color-picker {
     height: auto !important;
     border: none !important;
+
     @include mat-elevation(4);
 
     .preset-area {
-        //padding: 4px 15px;
-        padding: 0 0 12px 12px !important;
+        padding: 0 0 16px 16px !important;
         height: 140px;
         overflow-y: auto;
         overflow-x: hidden;
+
         > hr {
             display: none;
         }
+
         .preset-label {
             display: none;
-
         }
 
         .preset-color {
@@ -25,7 +26,8 @@
             margin: 0 !important;
             border: none !important;
             border-radius: 0 !important;
-            &:nth-child(14n+3) {
+
+            &:nth-child(14n+1) {
                 clear: both;
             }
         }
