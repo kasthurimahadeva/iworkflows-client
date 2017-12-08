@@ -31,6 +31,6 @@ const routes = [
         FuseKnowledgeBaseArticleComponent
     ]
 })
-export class FuseKnowledgeBaseModule
+export class KnowledgeBaseModule
 {
 }

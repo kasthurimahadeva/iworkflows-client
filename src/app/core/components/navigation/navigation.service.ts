@@ -179,7 +179,10 @@ export class FuseNavigationService
 
             if ( navItem.type === 'collapse' || navItem.type === 'group' )
             {
-                this.getFlatNavigation(navItem.children);
+                if ( navItem.children )
+                {
+                    this.getFlatNavigation(navItem.children);
+                }
             }
         }
 
