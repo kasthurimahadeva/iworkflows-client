@@ -153,8 +153,15 @@ export class FuseNavigationService
      */
     getFlatNavigation(navigationItems?)
     {
+        // If navigation items not provided,
+        // that means we are running the function
+        // for the first time...
         if ( !navigationItems )
         {
+            // Reset the flat navigation
+            this.flatNavigation = [];
+
+            // Get the entire navigation model
             navigationItems = this.navigationModel.model;
         }
 
