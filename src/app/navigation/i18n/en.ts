@@ -10,6 +10,10 @@ export const locale = {
                 'TITLE': 'Mail',
                 'BADGE': '25'
             },
+            'MAIL_NGRX'        : {
+                'TITLE': 'Mail Ngrx',
+                'BADGE': '13'
+            },
             'CHAT'        : 'Chat',
             'FILE_MANAGER': 'File Manager',
             'CONTACTS'    : 'Contacts',

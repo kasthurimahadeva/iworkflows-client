@@ -10,6 +10,10 @@ export const locale = {
                 'TITLE': 'Posta',
                 'BADGE': '15'
             },
+            'MAIL_NGRX'        : {
+                'TITLE': 'Posta Ngrx',
+                'BADGE': '13'
+            },
             'CHAT'        : 'Sohbet',
             'FILE_MANAGER': 'Dosya Yöneticisi',
             'CONTACTS'    : 'Kişiler',

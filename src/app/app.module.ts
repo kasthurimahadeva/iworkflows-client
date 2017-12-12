@@ -21,11 +21,16 @@ import { ServicesModule } from './main/content/services/services.module';
 import { FuseAngularMaterialModule } from './main/content/components/angular-material/angular-material.module';
 import { MarkdownModule } from 'angular2-markdown';
 import { TranslateModule } from '@ngx-translate/core';
+import { AppStoreModule } from './store/store.module';
 
 const appRoutes: Routes = [
     {
         path        : 'apps/mail',
         loadChildren: './main/content/apps/mail/mail.module#FuseMailModule'
+    },
+    {
+        path        : 'apps/mail-ngrx',
+        loadChildren: './main/content/apps/mail-ngrx/mail.module#FuseMailNgrxModule'
     },
     {
         path        : 'apps/chat',
@@ -77,6 +82,7 @@ const appRoutes: Routes = [
             delay             : 0,
             passThruUnknownUrl: true
         }),
+        AppStoreModule,
         FuseMainModule,
         ProjectModule,
         PagesModule,
