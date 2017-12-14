@@ -36,7 +36,7 @@
             <!-- / CONTENT HEADER -->
 
             <!-- CONTENT CARD -->
-            <div class="content-card mat-white-bg" [ngClass]="{'current-mail-selected':currentMail}">
+            <div class="content-card mat-white-bg" [ngClass]="{'current-mail-selected':currentMail$ | async}">
 
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar px-24 py-8">
@@ -87,7 +87,7 @@
                         </mat-menu>
                     </div>
 
-                    <div *ngIf="currentMail" fxHide.gt-lg>
+                    <div *ngIf="currentMail$ | async" fxHide.gt-lg>
                         <button mat-icon-button (click)="deSelectCurrentMail()">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
