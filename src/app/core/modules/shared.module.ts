@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { NgxDnDModule } from '@withinpixels/ngx-dnd';
+import { NgxDnDModule } from '@swimlane/ngx-dnd';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { FuseMatSidenavHelperDirective, FuseMatSidenavTogglerDirective } from '../directives/fuse-mat-sidenav-helper/fuse-mat-sidenav-helper.directive';

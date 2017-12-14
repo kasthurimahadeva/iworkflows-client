@@ -47,14 +47,20 @@
             }
 
             .nav-link-badge {
+                display: flex;
+                align-items: center;
                 min-width: 20px;
                 height: 20px;
-                line-height: 20px;
                 padding: 0 7px;
                 font-size: 11px;
                 font-weight: 500;
                 border-radius: 20px;
                 transition: opacity 0.2s ease-in-out 0.1s;
+                margin-left: 8px;
+
+                + .collapse-arrow {
+                    margin-left: 8px;
+                }
             }
 
             &:hover {
