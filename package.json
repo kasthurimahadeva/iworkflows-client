@@ -32,7 +32,7 @@
     "@ngx-translate/core": "9.0.1",
     "@swimlane/ngx-charts": "7.0.1",
     "@swimlane/ngx-datatable": "11.1.5",
-    "@withinpixels/ngx-dnd": "3.1.0",
+    "@swimlane/ngx-dnd": "3.1.0",
     "angular-calendar": "0.22.1",
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.3",

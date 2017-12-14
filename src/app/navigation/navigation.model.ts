@@ -16,13 +16,13 @@ export class FuseNavigationModel implements FuseNavigationModelInterface
                     {
                         'id'   : 'sample',
                         'title': 'Sample',
-                        'translate': 'NAV.MAIL.TITLE',
+                        'translate': 'NAV.SAMPLE.TITLE',
                         'type' : 'item',
                         'icon' : 'email',
                         'url'  : '/sample',
                         'badge': {
                             'title': 25,
-                            'translate': 'NAV.MAIL.BADGE',
+                            'translate': 'NAV.SAMPLE.BADGE',
                             'bg'   : '#F44336',
                             'fg'   : '#FFFFFF'
                         }
