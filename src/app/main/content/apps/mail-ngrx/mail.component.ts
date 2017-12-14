@@ -116,6 +116,11 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
         this.store.dispatch(new fromStore.SetFolderOnSelectedMails(folderId));
     }
 
+    deSelectCurrentMail()
+    {
+        this.store.dispatch(new fromStore.SetCurrentMail(''));
+    }
+
     refresh()
     {
         this.cd.markForCheck();

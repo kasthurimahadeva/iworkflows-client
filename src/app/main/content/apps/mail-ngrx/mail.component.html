@@ -87,7 +87,7 @@
                         </mat-menu>
                     </div>
 
-                    <div *ngIf="currentMail$ | async" fxHide.gt-lg>
+                    <div *ngIf="currentMail$ | async" fxHide.gt-xs>
                         <button mat-icon-button (click)="deSelectCurrentMail()">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
