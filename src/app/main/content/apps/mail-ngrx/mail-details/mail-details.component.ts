@@ -33,6 +33,17 @@ export class FuseMailNgrxDetailsComponent implements OnInit, OnDestroy, OnChange
     ngOnChanges()
     {
         this.updateModel(this.mailInput);
+        this.markAsRead();
+    }
+
+    markAsRead()
+    {
+        if ( this.mail && !this.mail.read )
+        {
+            this.mail.markRead();
+            this.updateMail();
+        }
+
     }
 
     toggleStar(event)

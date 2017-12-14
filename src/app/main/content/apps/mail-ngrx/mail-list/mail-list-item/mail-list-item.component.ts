@@ -15,6 +15,7 @@ export class FuseMailNgrxListItemComponent implements OnInit, OnDestroy
 {
     @Input() mail: Mail;
     @HostBinding('class.selected') selected: boolean;
+    @HostBinding('class.unread') unread: boolean;
     labels$: Observable<any>;
     selectedMailIds$: Observable<any>;
 
@@ -33,6 +34,7 @@ export class FuseMailNgrxListItemComponent implements OnInit, OnDestroy
     {
         // Set the initial values
         this.mail = new Mail(this.mail);
+        this.unread = !this.mail.read;
 
         this.selectedMailIds$.subscribe((selectedMailIds) => {
             this.selected = selectedMailIds.length > 0 && selectedMailIds.find(id => id === this.mail.id) !== undefined;

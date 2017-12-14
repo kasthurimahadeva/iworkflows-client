@@ -53,4 +53,14 @@ export class Mail
     {
         this.important = !this.important;
     }
+
+    markRead()
+    {
+        this.read = true;
+    }
+
+    markUnRead()
+    {
+        this.read = false;
+    }
 }

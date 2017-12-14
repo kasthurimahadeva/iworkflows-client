@@ -12,7 +12,7 @@ import { MailNgrxService } from '../mail.service';
 export class FuseMailNgrxListComponent implements OnInit, OnDestroy
 {
     @Input() mails: Mail[];
-    currentMail: Mail;
+    @Input() currentMail: Mail[];
 
     constructor(
         private route: ActivatedRoute,
