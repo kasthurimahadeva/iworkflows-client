@@ -8,6 +8,7 @@ import { locale as turkish } from './i18n/tr';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromStore from './store';
+import { FuseConfigService } from '../../../../core/services/config.service';
 
 @Component({
     selector       : 'fuse-mail',
@@ -30,6 +31,7 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
     selectedMailIds: string[];
 
     constructor(
+        private configService: FuseConfigService,
         private mailService: MailNgrxService,
         private translationLoader: FuseTranslationLoaderService,
         private store: Store<fromStore.MailAppState>,
@@ -46,6 +48,10 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
         this.searchText$ = this.store.select(fromStore.getSearchText);
         this.mails = [];
         this.selectedMailIds = [];
+
+        this.configService.setSettings({
+           routerAnimation: 'none'
+        });
     }
 
     ngOnInit()
