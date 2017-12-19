@@ -10,6 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class FuseMailComposeDialogComponent implements OnInit
 {
+    showExtraToFields = false;
     composeForm: FormGroup;
 
     constructor(
@@ -39,4 +40,8 @@ export class FuseMailComposeDialogComponent implements OnInit
         });
     }
 
+    toggleExtraToFields()
+    {
+        this.showExtraToFields = !this.showExtraToFields;
+    }
 }

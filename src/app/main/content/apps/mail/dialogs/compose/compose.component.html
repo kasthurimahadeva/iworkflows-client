@@ -28,7 +28,12 @@
                        type="email" required>
             </mat-form-field>
 
-            <mat-form-field>
+            <div class="show-hide-extra-fields" (click)="toggleExtraToFields()">
+                <span [fxShow]="!showExtraToFields">Show CC & BCC</span>
+                <span [fxShow]="showExtraToFields">Hide CC & BCC</span>
+            </div>
+
+            <mat-form-field [fxShow]="showExtraToFields">
                 <input matInput
                        name="cc"
                        placeholder="Cc"
@@ -36,7 +41,7 @@
                        type="email">
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field [fxShow]="showExtraToFields">
                 <input matInput
                        name="bcc"
                        placeholder="Bcc"
@@ -51,11 +56,11 @@
             </mat-form-field>
 
             <mat-form-field>
-            <textarea matInput name="message"
-                      placeholder="Message"
-                      formControlName="message"
-                      rows="6">
-            </textarea>
+                <textarea matInput name="message"
+                          placeholder="Message"
+                          formControlName="message"
+                          rows="6">
+                </textarea>
             </mat-form-field>
 
             <div class="attachment-list">
