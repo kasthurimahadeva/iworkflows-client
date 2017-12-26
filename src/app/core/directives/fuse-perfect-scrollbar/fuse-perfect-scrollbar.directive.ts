@@ -49,7 +49,9 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         }
 
         // Initialize the perfect-scrollbar
-        this.ps = new PerfectScrollbar(this.element.nativeElement);
+        this.ps = new PerfectScrollbar(this.element.nativeElement, {
+            wheelPropagation: true
+        });
     }
 
     ngOnDestroy()
