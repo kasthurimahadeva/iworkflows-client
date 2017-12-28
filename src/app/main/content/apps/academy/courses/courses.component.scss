@@ -65,10 +65,16 @@
 
         .filters {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1040px;
             margin: 24px auto;
+            padding: 0 20px;
+
+            @include media-breakpoint-down('xs') {
+                margin: 0 auto;
+            }
 
             .course-search {
+                width: 200px;
 
                 @include media-breakpoint-down('xs') {
                     margin-bottom: 16px;
