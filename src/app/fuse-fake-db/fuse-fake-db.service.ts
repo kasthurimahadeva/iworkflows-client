@@ -16,6 +16,7 @@ import { ScrumboardFakeDb } from './scrumboard';
 import { FaqFakeDb } from './faq';
 import { KnowledgeBaseFakeDb } from './knowledge-base';
 import { ECommerceFakeDb } from './e-commerce';
+import { AcademyFakeDb } from './academy';
 
 export class FuseFakeDbService implements InMemoryDbService
 {
@@ -52,7 +53,10 @@ export class FuseFakeDbService implements InMemoryDbService
             'knowledge-base'             : KnowledgeBaseFakeDb.data,
             'e-commerce-dashboard'       : ECommerceFakeDb.dashboard,
             'e-commerce-products'        : ECommerceFakeDb.products,
-            'e-commerce-orders'        : ECommerceFakeDb.orders
+            'e-commerce-orders'          : ECommerceFakeDb.orders,
+            'academy-categories'         : AcademyFakeDb.categories,
+            'academy-courses'            : AcademyFakeDb.courses,
+            'academy-course'             : AcademyFakeDb.course
         };
     }
 }

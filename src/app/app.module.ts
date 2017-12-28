@@ -45,6 +45,10 @@ const appRoutes: Routes = [
         loadChildren: './main/content/apps/e-commerce/e-commerce.module#FuseEcommerceModule'
     },
     {
+        path        : 'apps/academy',
+        loadChildren: './main/content/apps/academy/academy.module#FuseAcademyModule'
+    },
+    {
         path        : 'apps/todo',
         loadChildren: './main/content/apps/todo/todo.module#FuseTodoModule'
     },

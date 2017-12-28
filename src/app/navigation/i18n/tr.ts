@@ -6,6 +6,7 @@ export const locale = {
             'DASHBOARDS'  : 'Kontrol Paneli',
             'CALENDAR'    : 'Takvim',
             'ECOMMERCE'   : 'E-Ticaret',
+            'ACADEMY'     : 'Akademi',
             'MAIL'        : {
                 'TITLE': 'Posta',
                 'BADGE': '15'

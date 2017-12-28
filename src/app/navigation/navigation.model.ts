@@ -81,6 +81,14 @@ export class FuseNavigationModel implements FuseNavigationModelInterface
                         ]
                     },
                     {
+                        'id'       : 'academy',
+                        'title'    : 'Academy',
+                        'translate': 'NAV.ACADEMY',
+                        'type'     : 'item',
+                        'icon'     : 'school',
+                        'url'      : '/apps/academy'
+                    },
+                    {
                         'id'       : 'mail',
                         'title'    : 'Mail',
                         'translate': 'NAV.MAIL.TITLE',
