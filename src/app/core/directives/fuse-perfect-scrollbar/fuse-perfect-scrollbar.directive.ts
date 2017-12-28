@@ -7,7 +7,7 @@ import { Platform } from '@angular/cdk/platform';
 @Directive({
     selector: '[fusePerfectScrollbar]'
 })
-export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnDestroy
+export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 {
     onSettingsChanged: Subscription;
     isDisableCustomScrollbars = false;
@@ -16,7 +16,7 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
     ps;
 
     constructor(
-        private element: ElementRef,
+        public element: ElementRef,
         private fuseConfig: FuseConfigService,
         private platform: Platform
     )
@@ -33,11 +33,6 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         {
             this.isMobile = true;
         }
-    }
-
-    ngOnInit()
-    {
-
     }
 
     ngAfterViewInit()
