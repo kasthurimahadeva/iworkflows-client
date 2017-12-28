@@ -76,6 +76,53 @@ export const fuseAnimations = [
         transition('0 => 1', animate('300ms ease-in'))
     ]),
 
+    trigger('slideIn', [
+        transition('void => left', [
+                style({
+                    transform: 'translateX(100%)'
+                }),
+                animate('300ms ease-in',
+                    style({
+                        transform: 'translateX(0)'
+                    })
+                )
+            ]
+        ),
+        transition('left => void', [
+                style({
+                    transform: 'translateX(0)'
+                }),
+                animate('300ms ease-in',
+                    style({
+                        transform: 'translateX(-100%)'
+                    })
+                )
+            ]
+        ),
+        transition('void => right', [
+                style({
+                    transform: 'translateX(-100%)'
+                }),
+                animate('300ms ease-in',
+                    style({
+                        transform: 'translateX(0)'
+                    })
+                )
+            ]
+        ),
+        transition('right => void', [
+                style({
+                    transform: 'translateX(0)'
+                }),
+                animate('300ms ease-in',
+                    style({
+                        transform: 'translateX(100%)'
+                    })
+                )
+            ]
+        ),
+    ]),
+
     trigger('slideInLeft', [
         state('void', style({
             transform: 'translateX(-100%)',
