@@ -33,7 +33,7 @@
     "@swimlane/ngx-charts": "7.0.1",
     "@swimlane/ngx-datatable": "11.1.7",
     "@swimlane/ngx-dnd": "3.1.0",
-    "angular-calendar": "0.22.3",
+    "angular-calendar": "0.23.0",
     "angular-in-memory-web-api": "0.5.2",
     "angular2-markdown": "1.6.0",
     "classlist.js": "1.1.20150312",
