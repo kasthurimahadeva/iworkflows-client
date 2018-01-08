@@ -1,4 +1,6 @@
 import { Component, ContentChild, ElementRef, Input, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import * as Prism from 'prismjs/prism';
 import './prism-languages';
 
@@ -11,25 +13,46 @@ export class FuseHighlightComponent implements OnInit
 {
     @ContentChild('source') source: ElementRef;
     @Input('lang') lang: string;
+    @Input('path') path: string;
 
     constructor(
-        private elementRef: ElementRef
+        private elementRef: ElementRef,
+        private http: HttpClient
     )
     {
-
     }
 
     ngOnInit()
     {
-        const originalSource = this.source.nativeElement.value;
-
-        if ( !originalSource || !this.lang )
+        // If there is no language defined, return...
+        if ( !this.lang )
         {
             return;
         }
 
+        // If the path is defined...
+        if ( this.path )
+        {
+            // Get the source
+            this.http.get(this.path, {responseType: 'text'}).subscribe((response) => {
+
+                // Highlight it
+                this.highlight(response);
+            });
+        }
+
+        // If the path is not defined and the source element exists...
+        if ( !this.path && this.source )
+        {
+            // Highlight it
+            this.highlight(this.source.nativeElement.value);
+        }
+    }
+
+    highlight(sourceCode)
+    {
         // Split the source into lines
-        const sourceLines = originalSource.split('\n');
+        const sourceLines = sourceCode.split('\n');
 
         // Remove the first and the last line of the source
         // code if they are blank lines. This way, the html
@@ -73,6 +96,7 @@ export class FuseHighlightComponent implements OnInit
         // Replace the innerHTML of the component with the highlighted code
         this.elementRef.nativeElement.innerHTML =
             '<pre><code class="highlight language-' + this.lang + '">' + highlightedCode + '</code></pre>';
+
     }
 }
 

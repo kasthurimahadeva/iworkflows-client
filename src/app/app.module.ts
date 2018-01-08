@@ -12,7 +12,6 @@ import { FuseMainModule } from './main/main.module';
 import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { FuseConfigService } from './core/services/config.service';
 import { FuseNavigationService } from './core/components/navigation/navigation.service';
-import { MarkdownModule } from 'angular2-markdown';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppStoreModule } from './store/store.module';
 
@@ -57,7 +56,6 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         SharedModule,
-        MarkdownModule.forRoot(),
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {
             delay             : 0,
