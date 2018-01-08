@@ -36,7 +36,7 @@
                 </div>
             </button>
 
-            <mat-menu #userMenu="matMenu">
+            <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
 
                 <button mat-menu-item>
                     <mat-icon>account_circle</mat-icon>
@@ -70,7 +70,7 @@
                 </div>
             </button>
 
-            <mat-menu #languageMenu="matMenu">
+            <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
 
                 <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
                     <div fxLayout="row" fxLayoutAlign="start center">

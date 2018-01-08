@@ -1,9 +1,59 @@
 // ######################
+// POSITION HELPERS
+// ######################
+@each $breakpoint in map-keys($grid-breakpoints) {
+
+    @include media-breakpoint-up($breakpoint) {
+
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        .position#{$infix}-relative {
+            position: relative;
+        }
+
+        .position#{$infix}-absolute {
+            position: absolute;
+        }
+
+        .position#{$infix}-static {
+            position: static;
+        }
+    }
+}
+
+// ####################################
+// ABSOLUTE POSITION ALIGNMENT HELPERS
+// ####################################
+@each $breakpoint in map-keys($grid-breakpoints) {
+
+    @include media-breakpoint-up($breakpoint) {
+
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        .align#{$infix}-top {
+            top: 0;
+        }
+
+        .align#{$infix}-right {
+            right: 0;
+        }
+
+        .align#{$infix}-bottom {
+            bottom: 0;
+        }
+
+        .align#{$infix}-left {
+            left: 0;
+        }
+    }
+}
+
+// ######################
 // SIZE HELPERS
 // ######################
 @each $prop, $abbrev in (height: h, width: w) {
 
-    @for $index from 0 through 128 {
+    @for $index from 0 through 180 {
         $size: $index * 4;
         $length: #{$size}px;
 
@@ -28,7 +78,6 @@
 // ######################
 // SPACING HELPERS
 // ######################
-
 @each $breakpoint in map-keys($grid-breakpoints) {
 
     @include media-breakpoint-up($breakpoint) {
@@ -83,47 +132,45 @@
             }
 
             @if ($abbrev == m) {
-                @for $index from 0 through 64 {
-                    $size: $index * 4;
-                    $length: #{$size}px;
 
-                    // Some special margin utils for flex alignments
-                    .m#{$infix}-auto {
-                        margin: auto !important;
-                    }
+                // Some special margin utils for flex alignments
+                .m#{$infix}-auto {
+                    margin: auto !important;
+                }
 
-                    .mt#{$infix}-auto {
-                        margin-top: auto !important;
-                    }
+                .mt#{$infix}-auto {
+                    margin-top: auto !important;
+                }
 
-                    .mr#{$infix}-auto {
-                        margin-right: auto !important;
-                    }
+                .mr#{$infix}-auto {
+                    margin-right: auto !important;
+                }
 
-                    .mb#{$infix}-auto {
-                        margin-bottom: auto !important;
-                    }
+                .mb#{$infix}-auto {
+                    margin-bottom: auto !important;
+                }
 
-                    .ml#{$infix}-auto {
-                        margin-left: auto !important;
-                    }
+                .ml#{$infix}-auto {
+                    margin-left: auto !important;
+                }
 
-                    .mx#{$infix}-auto {
-                        margin-right: auto !important;
-                        margin-left: auto !important;
-                    }
+                .mx#{$infix}-auto {
+                    margin-right: auto !important;
+                    margin-left: auto !important;
+                }
 
-                    .my#{$infix}-auto {
-                        margin-top: auto !important;
-                        margin-bottom: auto !important;
-                    }
+                .my#{$infix}-auto {
+                    margin-top: auto !important;
+                    margin-bottom: auto !important;
                 }
             }
         }
     }
 }
 
-// Border helpers
+// ######################
+// BORDER HELPERS
+// ######################
 $border-style: 1px solid rgba(0, 0, 0, 0.12);
 
 .border,
@@ -161,4 +208,11 @@ $border-style: 1px solid rgba(0, 0, 0, 0.12);
 .by {
     border-top: $border-style;
     border-bottom: $border-style;
+}
+
+// ######################
+// BORDER RADIUS HELPERS
+// ######################
+.border-radius-100 {
+    border-radius: 100%;
 }

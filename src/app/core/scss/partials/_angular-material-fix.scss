@@ -20,8 +20,8 @@
 }
 
 .mat-pseudo-checkbox-checked:after {
-    width: 14px;
-    height: 7px;
+    width: 14px !important;
+    height: 7px !important;
 }
 
 // Fix: "Input underlines has wrong color opacity value"
