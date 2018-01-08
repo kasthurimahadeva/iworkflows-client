@@ -4,25 +4,48 @@
 
     .content {
 
-        .card-row {
+        .cards {
             display: flex;
-            width: 100%;
-            padding: 24px 24px 48px 24px;
-            margin-bottom: 24px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
 
-            .card-preview {
+            .card {
                 display: flex;
-                min-width: 320px;
+                padding: 24px 24px 48px 24px;
+                margin-bottom: 96px;
+
+                .card-preview {
+                    display: flex;
+                    min-width: 320px;
+                }
+
+                .card-source {
+                    display: none;
+                }
             }
+        }
 
-            .card-source {
-                display: flex;
-                flex: 1;
-                max-height: 400px;
-                overflow: auto;
-                min-width: 400px;
-                margin-left: 24px;
+        &.source {
+
+            .cards {
+                flex-direction: column;
+
+                .card {
+                    width: 100%;
+                    margin-bottom: 24px;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+                    .card-source {
+                        display: flex !important;
+                        flex: 1;
+                        max-height: 400px;
+                        overflow: auto;
+                        min-width: 400px;
+                        margin-left: 24px;
+                    }
+                }
             }
         }
     }
