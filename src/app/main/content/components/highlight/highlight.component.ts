@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-hljs-docs',
-    templateUrl: './hljs.component.html',
-    styleUrls  : ['./hljs.component.scss']
+    selector   : 'fuse-highlight-docs',
+    templateUrl: './highlight.component.html',
+    styleUrls  : ['./highlight.component.scss']
 })
-export class FuseHljsDocsComponent
+export class FuseHighlightDocsComponent
 {
     constructor()
     {

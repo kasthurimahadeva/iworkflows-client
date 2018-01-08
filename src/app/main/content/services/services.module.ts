@@ -25,6 +25,7 @@ const routes = [
         FuseSplashScreenServiceDocsComponent
     ]
 })
+
 export class FuseServicesModule
 {
 }

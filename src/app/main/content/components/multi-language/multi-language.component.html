@@ -41,9 +41,9 @@
                 translation data:
             </p>
 
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="ts" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="typescript">
+                    <textarea #source>
                         // i18n/en.ts
                         export const locale = {
                             lang: 'en',
@@ -64,7 +64,7 @@
                             }
                         };
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
         </div>
 
@@ -75,9 +75,9 @@
                 <code>mail.component.ts</code> file:
             </p>
 
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="ts" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="typescript">
+                    <textarea #source>
                         // Your imports
                         import { ... } from '..';
 
@@ -100,7 +100,7 @@
                             ...
                         }
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
         </div>
 
@@ -110,9 +110,9 @@
                 Changing the current language can happen instantly. Simply call the <code>use</code> method from the
                 translate service:
             </p>
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="ts" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="typescript">
+                    <textarea #source>
                         import { TranslateService } from '@ngx-translate/core';
 
                         constructor(private translate: TranslateService) {}
@@ -123,7 +123,7 @@
                             this.translate.use('tr');
                         }
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
             <p>
                 More detailed usage of the translation service can be found in the <code>toolbar.component.ts</code>

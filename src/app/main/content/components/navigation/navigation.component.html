@@ -23,12 +23,12 @@
 
         <div class="my-48">
             <h2>Usage</h2>
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="html" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="html">
+                    <textarea #source>
                         <fuse-navigation></fuse-navigation>
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
         </div>
 
@@ -49,9 +49,9 @@
 
         <div class="my-48">
             <h3>Grouping</h3>
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="json" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="json">
+                    <textarea #source>
                         {
                             'title'    : 'COMPONENTS',
                             'translate': 'NAV.COMPONENTS',
@@ -65,15 +65,15 @@
                             ]
                         },
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
         </div>
 
         <div class="my-48">
             <h3>Collapsable</h3>
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="json" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="json">
+                    <textarea #source>
                         {
                             'title'    : 'Datatables',
                             'translate': 'NAV.DATATABLES',
@@ -88,15 +88,15 @@
                             ]
                         },
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
         </div>
 
         <div class="my-48">
             <h3>Item</h3>
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="json" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="json">
+                    <textarea #source>
                         {
                             'title'    : 'Countdown',
                             'translate': 'NAV.COUNTDOWN',
@@ -105,7 +105,7 @@
                             'url'      : '/components/countdown'
                         },
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
         </div>
 
@@ -132,9 +132,9 @@
 
             <h4>Update navigation item on-the-fly</h4>
 
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="ts" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="typescript">
+                    <textarea #source>
                         updateMailBadge()
                         {
                             // Get the mail nav item
@@ -144,7 +144,7 @@
                             mailNavItem.badge.title = 35;
                         }
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
 
             <div class="mt-24 mb-64">
@@ -157,9 +157,9 @@
 
             <h4>Add a subitem to the Calendar nav item</h4>
 
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="ts" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="typescript">
+                    <textarea #source>
                         addSubitemToCalendar()
                         {
                             // Prepare the new nav item
@@ -174,7 +174,7 @@
                             this.navigationService.addNavigationItem('applications.calendar', newNavItem);
                         }
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
 
             <div class="mt-24 mb-64">
@@ -187,9 +187,9 @@
 
             <h4>Add a nav item with custom function</h4>
 
-            <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="ts" class="source-code">
-                    <textarea #source hidden="hidden">
+            <p class="py-8">
+                <fuse-highlight lang="typescript">
+                    <textarea #source>
                         addNavItemWithCustomFunction()
                         {
                             // Prepare the new nav item
@@ -209,7 +209,7 @@
                             applicationsNavItem.children.unshift(newNavItem);
                         }
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
 
             <div class="mt-24">

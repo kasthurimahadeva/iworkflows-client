@@ -1,4 +1,4 @@
-<div id="hljs" class="page-layout simple fullwidth" fusePerfectScrollbar>
+<div id="highlight" class="page-layout simple fullwidth" fusePerfectScrollbar>
 
     <!-- HEADER -->
     <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
@@ -8,7 +8,7 @@
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">Components</span>
             </div>
-            <div class="h2 mt-16">highlight.js</div>
+            <div class="h2 mt-16">Highlight</div>
         </div>
     </div>
     <!-- / HEADER -->
@@ -17,36 +17,42 @@
     <div class="content p-24">
 
         <p>
-            <code>fuse-hljs</code> is a custom built Fuse component allows to show syntax highlighted codes.
+            <code>fuse-highlight</code> is a custom built Fuse component allows to show syntax highlighted codes.
         </p>
 
         <div class="my-48">
             <h2>Sample</h2>
             <p fxLayout="row" fxLayoutAlign="start start">
-                <fuse-hljs lang="html" class="source-code">
-                    <textarea #source hidden="hidden">
+
+                <fuse-highlight lang="html">
+                    <textarea #source>
+
                         <div class="title">
                             <span>Example Title</span>
                         </div>
+
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
+
             </p>
         </div>
 
         <div class="my-48">
             <h2>Usage</h2>
             <p class="mat-grey-200-bg py-8">
-                <fuse-hljs lang="html" class="source-code">
-                    <textarea #source hidden="hidden">
-&lt;fuse-hljs lang="html" class="source-code"&gt;
-    &lt;textarea #source hidden="hidden"&gt;
+                <fuse-highlight lang="html">
+                    <textarea #source>
+
+&lt;fuse-highlight lang="html"&gt;
+    &lt;textarea #source&gt;
         &lt;div class="title"&gt;
             &lt;span&gt;Example Title&lt;/span&gt;
         &lt;/div&gt;
     &lt;/textarea&gt;
-&lt;/fuse-hljs&gt;
+&lt;/fuse-highlight&gt;
+
                     </textarea>
-                </fuse-hljs>
+                </fuse-highlight>
             </p>
         </div>
 

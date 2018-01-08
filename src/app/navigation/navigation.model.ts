@@ -823,11 +823,11 @@ export class FuseNavigationModel implements FuseNavigationModelInterface
                         'url'  : '/components/countdown'
                     },
                     {
-                        'id'   : 'highlightjs',
-                        'title': 'Highlight.js',
+                        'id'   : 'highlight',
+                        'title': 'Highlight',
                         'type' : 'item',
                         'icon' : 'settings_input_component',
-                        'url'  : '/components/highlightjs'
+                        'url'  : '/components/highlight'
                     },
                     {
                         'id'   : 'material-color-picker',
