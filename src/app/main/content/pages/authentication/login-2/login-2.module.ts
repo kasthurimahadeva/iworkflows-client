@@ -6,7 +6,7 @@ import { FuseLogin2Component } from './login-2.component';
 
 const routes = [
     {
-        path     : 'pages/auth/login-2',
+        path     : 'auth/login-2',
         component: FuseLogin2Component
     }
 ];

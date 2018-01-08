@@ -6,7 +6,7 @@ import { FuseResetPasswordComponent } from './reset-password.component';
 
 const routes = [
     {
-        path     : 'pages/auth/reset-password',
+        path     : 'auth/reset-password',
         component: FuseResetPasswordComponent
     }
 ];

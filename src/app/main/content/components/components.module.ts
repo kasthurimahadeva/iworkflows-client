@@ -11,43 +11,44 @@ import { FuseSearchBarDocsComponent } from './search-bar/search-bar.component';
 import { FuseShortcutsDocsComponent } from './shortcuts/shortcuts.component';
 import { FuseWidgetDocsComponent } from './widget/widget.component';
 import { FuseWidgetModule } from '../../../core/components/widget/widget.module';
+import { FuseAngularMaterialModule } from './angular-material/angular-material.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const routes = [
     {
-        path     : 'components/cards',
+        path     : 'cards',
         component: FuseCardsDocsComponent
     },
     {
-        path     : 'components/countdown',
+        path     : 'countdown',
         component: FuseCountdownDocsComponent
     },
     {
-        path     : 'components/highlightjs',
+        path     : 'highlightjs',
         component: FuseHljsDocsComponent
     },
     {
-        path     : 'components/material-color-picker',
+        path     : 'material-color-picker',
         component: FuseMaterialColorPickerDocsComponent
     },
     {
-        path     : 'components/multi-language',
+        path     : 'multi-language',
         component: FuseMultiLanguageDocsComponent
     },
     {
-        path     : 'components/navigation',
+        path     : 'navigation',
         component: FuseNavigationDocsComponent
     },
     {
-        path     : 'components/search-bar',
+        path     : 'search-bar',
         component: FuseSearchBarDocsComponent
     },
     {
-        path     : 'components/shortcuts',
+        path     : 'shortcuts',
         component: FuseShortcutsDocsComponent
     },
     {
-        path     : 'components/widget',
+        path     : 'widget',
         component: FuseWidgetDocsComponent
     }
 ];
@@ -57,6 +58,7 @@ const routes = [
         SharedModule,
         RouterModule.forChild(routes),
         FuseWidgetModule,
+        FuseAngularMaterialModule,
         NgxChartsModule
     ],
     declarations: [

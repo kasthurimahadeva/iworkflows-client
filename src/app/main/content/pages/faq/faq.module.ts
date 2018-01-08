@@ -6,7 +6,7 @@ import { FaqService } from './faq.service';
 
 const routes = [
     {
-        path     : 'pages/faq',
+        path     : 'faq',
         component: FuseFaqComponent,
         resolve  : {
             faq: FaqService

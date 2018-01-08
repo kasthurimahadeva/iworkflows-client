@@ -6,7 +6,7 @@ import { FuseError500Component } from './error-500.component';
 
 const routes = [
     {
-        path     : 'pages/errors/error-500',
+        path     : 'errors/error-500',
         component: FuseError500Component
     }
 ];

@@ -10,7 +10,7 @@ import { ProfileService } from './profile.service';
 
 const routes = [
     {
-        path     : 'pages/profile',
+        path     : 'profile',
         component: FuseProfileComponent,
         resolve  : {
             profile: ProfileService

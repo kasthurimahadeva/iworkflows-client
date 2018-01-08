@@ -6,7 +6,7 @@ import { FuseFormsComponent } from './forms.component';
 
 const routes: Routes = [
     {
-        path     : 'ui/forms',
+        path     : 'forms',
         component: FuseFormsComponent
     }
 ];

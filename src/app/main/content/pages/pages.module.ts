@@ -66,6 +66,7 @@ import { KnowledgeBaseModule } from './knowledge-base/knowledge-base.module';
         KnowledgeBaseModule
     ]
 })
-export class PagesModule
+export class FusePagesModule
 {
+
 }

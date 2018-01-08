@@ -8,10 +8,13 @@
     "start-hmr": "ng serve --hmr -e=hmr -sm=false",
     "start-hmr-sourcemaps": "ng serve --hmr -e=hmr",
     "build": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --dev",
+    "build-stats": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --dev --stats-json",
     "build-prod": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod",
+    "build-prod-stats": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "bundle-report": "webpack-bundle-analyzer dist/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -75,6 +78,7 @@
     "protractor": "5.1.2",
     "ts-node": "3.2.2",
     "tslint": "5.7.0",
-    "typescript": "2.4.2"
+    "typescript": "2.4.2",
+    "webpack-bundle-analyzer": "2.9.1"
   }
 }

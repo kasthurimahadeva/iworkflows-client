@@ -8,7 +8,7 @@ import { FuseHelperClassesWidthHeightComponent } from './tabs/width-height/width
 
 const routes: Routes = [
     {
-        path     : 'ui/helper-classes',
+        path     : 'helper-classes',
         component: FuseHelperClassesComponent
     }
 ];

@@ -6,7 +6,7 @@ import { FuseForgotPasswordComponent } from './forgot-password.component';
 
 const routes = [
     {
-        path     : 'pages/auth/forgot-password',
+        path     : 'auth/forgot-password',
         component: FuseForgotPasswordComponent
     }
 ];

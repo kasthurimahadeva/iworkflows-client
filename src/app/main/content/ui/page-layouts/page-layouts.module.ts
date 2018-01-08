@@ -24,79 +24,79 @@ import { FuseBlankComponent } from './blank/blank.component';
 
 const routes: Routes = [
     {
-        path     : 'ui/page-layouts/carded/full-width',
+        path     : 'page-layouts/carded/full-width',
         component: FuseCardedFullWidthComponent
     },
     {
-        path     : 'ui/page-layouts/carded/full-width-2',
+        path     : 'page-layouts/carded/full-width-2',
         component: FuseCardedFullWidth2Component
     },
     {
-        path     : 'ui/page-layouts/carded/left-sidenav',
+        path     : 'page-layouts/carded/left-sidenav',
         component: FuseCardedLeftSidenavComponent
     },
     {
-        path     : 'ui/page-layouts/carded/left-sidenav-tabbed',
+        path     : 'page-layouts/carded/left-sidenav-tabbed',
         component: FuseCardedLeftSidenavTabbedComponent
     },
     {
-        path     : 'ui/page-layouts/carded/left-sidenav-2',
+        path     : 'page-layouts/carded/left-sidenav-2',
         component: FuseCardedLeftSidenav2Component
     },
     {
-        path     : 'ui/page-layouts/carded/left-sidenav-2-tabbed',
+        path     : 'page-layouts/carded/left-sidenav-2-tabbed',
         component: FuseCardedLeftSidenav2TabbedComponent
     },
     {
-        path     : 'ui/page-layouts/carded/right-sidenav',
+        path     : 'page-layouts/carded/right-sidenav',
         component: FuseCardedRightSidenavComponent
     },
     {
-        path     : 'ui/page-layouts/carded/right-sidenav-tabbed',
+        path     : 'page-layouts/carded/right-sidenav-tabbed',
         component: FuseCardedRightSidenavTabbedComponent
     },
     {
-        path     : 'ui/page-layouts/carded/right-sidenav-2',
+        path     : 'page-layouts/carded/right-sidenav-2',
         component: FuseCardedRightSidenav2Component
     },
     {
-        path     : 'ui/page-layouts/carded/right-sidenav-2-tabbed',
+        path     : 'page-layouts/carded/right-sidenav-2-tabbed',
         component: FuseCardedRightSidenav2TabbedComponent
     },
     {
-        path     : 'ui/page-layouts/simple/full-width',
+        path     : 'page-layouts/simple/full-width',
         component: FuseSimpleFullWidthComponent
     },
     {
-        path     : 'ui/page-layouts/simple/left-sidenav',
+        path     : 'page-layouts/simple/left-sidenav',
         component: FuseSimpleLeftSidenavComponent
     },
     {
-        path     : 'ui/page-layouts/simple/left-sidenav-2',
+        path     : 'page-layouts/simple/left-sidenav-2',
         component: FuseSimpleLeftSidenav2Component
     },
     {
-        path     : 'ui/page-layouts/simple/left-sidenav-3',
+        path     : 'page-layouts/simple/left-sidenav-3',
         component: FuseSimpleLeftSidenav3Component
     },
     {
-        path     : 'ui/page-layouts/simple/right-sidenav',
+        path     : 'page-layouts/simple/right-sidenav',
         component: FuseSimpleRightSidenavComponent
     },
     {
-        path     : 'ui/page-layouts/simple/right-sidenav-2',
+        path     : 'page-layouts/simple/right-sidenav-2',
         component: FuseSimpleRightSidenav2Component
     },
     {
-        path     : 'ui/page-layouts/simple/right-sidenav-3',
+        path     : 'page-layouts/simple/right-sidenav-3',
         component: FuseSimpleRightSidenav3Component
     },
     {
-        path     : 'ui/page-layouts/simple/tabbed',
+        path     : 'page-layouts/simple/tabbed',
         component: FuseTabbedComponent
     },
     {
-        path     : 'ui/page-layouts/blank',
+        path     : 'page-layouts/blank',
         component: FuseBlankComponent
     }
 ];

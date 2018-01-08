@@ -7,7 +7,7 @@ import { FuseKnowledgeBaseArticleComponent } from './dialogs/article/article.com
 
 const routes = [
     {
-        path     : 'pages/knowledge-base',
+        path     : 'knowledge-base',
         component: FuseKnowledgeBaseComponent,
         resolve  : {
             knowledgeBase: KnowledgeBaseService

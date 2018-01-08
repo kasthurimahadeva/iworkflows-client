@@ -7,7 +7,7 @@ import { InvoiceService } from '../invoice.service';
 
 const routes = [
     {
-        path     : 'pages/invoices/compact',
+        path     : 'invoices/compact',
         component: FuseInvoiceCompactComponent,
         resolve  : {
             search: InvoiceService
