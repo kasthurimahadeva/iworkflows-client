@@ -6,7 +6,7 @@ import { FuseError404Component } from './error-404.component';
 
 const routes = [
     {
-        path     : 'pages/errors/error-404',
+        path     : 'errors/error-404',
         component: FuseError404Component
     }
 ];

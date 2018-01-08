@@ -8,15 +8,15 @@ import { FusePricingStyle3Component } from './style-3/style-3.component';
 
 const routes = [
     {
-        path     : 'pages/pricing/style-1',
+        path     : 'pricing/style-1',
         component: FusePricingStyle1Component
     },
     {
-        path     : 'pages/pricing/style-2',
+        path     : 'pricing/style-2',
         component: FusePricingStyle2Component
     },
     {
-        path     : 'pages/pricing/style-3',
+        path     : 'pricing/style-3',
         component: FusePricingStyle3Component
     }
 ];

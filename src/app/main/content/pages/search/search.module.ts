@@ -9,7 +9,7 @@ import { SearchService } from './search.service';
 
 const routes = [
     {
-        path     : 'pages/search',
+        path     : 'search',
         component: FuseSearchComponent,
         resolve  : {
             search: SearchService

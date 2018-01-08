@@ -6,7 +6,7 @@ import { FuseColorsComponent } from './colors.component';
 
 const routes: Routes = [
     {
-        path     : 'ui/colors',
+        path     : 'colors',
         component: FuseColorsComponent
     }
 ];

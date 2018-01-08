@@ -8,7 +8,7 @@ import { FuseAngularMaterialComponent } from './angular-material.component';
 
 const routes: Routes = [
     {
-        path    : 'components/angular-material',
+        path    : 'angular-material',
         children: [
             {
                 path     : ':id',

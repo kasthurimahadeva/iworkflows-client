@@ -10,7 +10,7 @@ import { FuseTypographyHelpersComponent } from './tabs/helpers/helpers.component
 
 const routes: Routes = [
     {
-        path     : 'ui/typography',
+        path     : 'typography',
         component: FuseTypographyComponent
     }
 ];

@@ -6,7 +6,7 @@ import { FuseLockComponent } from './lock.component';
 
 const routes = [
     {
-        path     : 'pages/auth/lock',
+        path     : 'auth/lock',
         component: FuseLockComponent
     }
 ];

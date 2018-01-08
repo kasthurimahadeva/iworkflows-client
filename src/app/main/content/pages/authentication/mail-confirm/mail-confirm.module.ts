@@ -6,7 +6,7 @@ import { FuseMailConfirmComponent } from './mail-confirm.component';
 
 const routes = [
     {
-        path     : 'pages/auth/mail-confirm',
+        path     : 'auth/mail-confirm',
         component: FuseMailConfirmComponent
     }
 ];

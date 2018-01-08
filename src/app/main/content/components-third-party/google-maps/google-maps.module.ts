@@ -6,7 +6,7 @@ import { AgmCoreModule } from '@agm/core';
 
 const routes = [
     {
-        path     : 'components-third-party/google-maps',
+        path     : 'google-maps',
         component: FuseGoogleMapsDocsComponent
     }
 ];

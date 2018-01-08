@@ -5,7 +5,7 @@ import { FuseIconsComponent } from './icons.component';
 
 const routes: Routes = [
     {
-        path     : 'ui/icons',
+        path     : 'icons',
         component: FuseIconsComponent
     }
 ];

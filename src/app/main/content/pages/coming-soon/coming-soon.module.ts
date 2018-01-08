@@ -6,7 +6,7 @@ import { FuseComingSoonComponent } from './coming-soon.component';
 
 const routes = [
     {
-        path     : 'pages/coming-soon',
+        path     : 'coming-soon',
         component: FuseComingSoonComponent
     }
 ];

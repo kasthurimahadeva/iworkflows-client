@@ -6,7 +6,7 @@ import { FuseRegisterComponent } from './register.component';
 
 const routes = [
     {
-        path     : 'pages/auth/register',
+        path     : 'auth/register',
         component: FuseRegisterComponent
     }
 ];

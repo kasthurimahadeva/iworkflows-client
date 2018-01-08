@@ -6,7 +6,7 @@ import { GoogleMapsModule } from './google-maps/google-maps.module';
 
 const routes = [
     {
-        path     : 'components-third-party/datatables/ngx-datatable',
+        path     : 'datatables/ngx-datatable',
         component: FuseNgxDatatableComponent
     }
 ];
@@ -21,6 +21,6 @@ const routes = [
         FuseNgxDatatableComponent
     ]
 })
-export class ComponentsThirdPartyModule
+export class FuseComponentsThirdPartyModule
 {
 }

@@ -6,7 +6,7 @@ import { FuseMaintenanceComponent } from './maintenance.component';
 
 const routes = [
     {
-        path     : 'pages/maintenance',
+        path     : 'maintenance',
         component: FuseMaintenanceComponent
     }
 ];

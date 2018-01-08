@@ -6,11 +6,11 @@ import { FuseSplashScreenServiceDocsComponent } from './splash-screen/splash-scr
 
 const routes = [
     {
-        path     : 'services/config',
+        path     : 'config',
         component: FuseConfigServiceDocsComponent
     },
     {
-        path     : 'services/splash-screen',
+        path     : 'splash-screen',
         component: FuseSplashScreenServiceDocsComponent
     }
 ];
@@ -25,6 +25,6 @@ const routes = [
         FuseSplashScreenServiceDocsComponent
     ]
 })
-export class ServicesModule
+export class FuseServicesModule
 {
 }
