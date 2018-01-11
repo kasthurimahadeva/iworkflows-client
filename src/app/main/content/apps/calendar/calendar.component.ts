@@ -25,21 +25,13 @@ import { fuseAnimations } from '../../../../core/animations';
 export class FuseCalendarComponent implements OnInit
 {
     view: string;
-
     viewDate: Date;
-
     events: CalendarEvent[];
-
     public actions: CalendarEventAction[];
-
     activeDayIsOpen: boolean;
-
     refresh: Subject<any> = new Subject();
-
     dialogRef: any;
-
     confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
-
     selectedDay: any;
 
     constructor(

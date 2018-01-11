@@ -10,13 +10,6 @@
     flex-shrink: 0;
     background: #FFFFFF;
 
-    &.todo-item-placeholder {
-        background: rgba(0, 0, 0, 0.12);
-        * {
-            opacity: 0;
-        }
-    }
-
     .handle {
         height: 48px;
         line-height: 48px;

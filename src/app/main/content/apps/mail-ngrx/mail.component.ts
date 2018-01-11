@@ -7,6 +7,8 @@ import { locale as english } from './i18n/en';
 import { locale as turkish } from './i18n/tr';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 import * as fromStore from './store';
 import { FuseConfigService } from '../../../../core/services/config.service';
 
