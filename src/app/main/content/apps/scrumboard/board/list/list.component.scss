@@ -4,7 +4,7 @@
     width: 344px;
     min-width: 344px;
     max-width: 344px;
-    padding-right: 24px;
+    padding-right: 24px !important;
     height: 100%;
 
     .list {
@@ -36,6 +36,7 @@
                 position: relative;
                 min-height: 32px;
                 padding: 0 16px;
+                background: mat-color($mat-grey, 200) !important;
             }
         }
 
