@@ -1,19 +1,20 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProjectsDashboardService } from './projects.service';
 import * as shape from 'd3-shape';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
+
+import { ProjectDashboardService } from './project.service';
 import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
-    selector     : 'fuse-project',
+    selector     : 'fuse-project-dashboard',
     templateUrl  : './project.component.html',
     styleUrls    : ['./project.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseProjectComponent implements OnInit, OnDestroy
+export class FuseProjectDashboardComponent implements OnInit, OnDestroy
 {
     projects: any[];
     selectedProject: any;
@@ -28,13 +29,11 @@ export class FuseProjectComponent implements OnInit, OnDestroy
 
     dateNow = Date.now();
 
-    constructor(private projectsDashboardService: ProjectsDashboardService)
+    constructor(private projectDashboardService: ProjectDashboardService)
     {
-        this.projects = this.projectsDashboardService.projects;
-
+        this.projects = this.projectDashboardService.projects;
         this.selectedProject = this.projects[0];
-
-        this.widgets = this.projectsDashboardService.widgets;
+        this.widgets = this.projectDashboardService.widgets;
 
         /**
          * Widget 5

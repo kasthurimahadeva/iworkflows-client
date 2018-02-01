@@ -56,5 +56,15 @@
             min-width: 250px !important;
             max-width: 250px !important;
         }
+
+        .widget {
+
+            &.widget5 {
+
+                .gridline-path.gridline-path-horizontal {
+                    display: none;
+                }
+            }
+        }
     }
 }

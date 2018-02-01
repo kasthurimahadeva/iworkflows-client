@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FuseProjectComponent } from './project.component';
 import { SharedModule } from '../../../../../core/modules/shared.module';
-import { ProjectsDashboardService } from './projects.service';
+
+import { FuseProjectDashboardComponent } from './project.component';
+import { ProjectDashboardService } from './project.service';
 import { FuseWidgetModule } from '../../../../../core/components/widget/widget.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: FuseProjectComponent,
+        component: FuseProjectDashboardComponent,
         resolve  : {
-            data: ProjectsDashboardService
+            data: ProjectDashboardService
         }
     }
 ];
@@ -24,10 +25,10 @@ const routes: Routes = [
         NgxChartsModule
     ],
     declarations: [
-        FuseProjectComponent
+        FuseProjectDashboardComponent
     ],
     providers   : [
-        ProjectsDashboardService
+        ProjectDashboardService
     ]
 })
 export class FuseProjectDashboardModule

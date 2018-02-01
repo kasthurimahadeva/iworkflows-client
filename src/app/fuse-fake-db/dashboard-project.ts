@@ -1,4 +1,4 @@
-export class ProjectsDashboardDb
+export class ProjectDashboardDb
 {
     public static projects = [
         {
