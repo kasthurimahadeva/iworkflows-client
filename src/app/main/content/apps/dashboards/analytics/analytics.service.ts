@@ -4,9 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class ProjectsDashboardService implements Resolve<any>
+export class AnalyticsDashboardService implements Resolve<any>
 {
-    projects: any[];
     widgets: any[];
 
     constructor(
@@ -23,11 +22,9 @@ export class ProjectsDashboardService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getProjects(),
                 this.getWidgets()
             ]).then(
                 () => {
@@ -38,21 +35,10 @@ export class ProjectsDashboardService implements Resolve<any>
         });
     }
 
-    getProjects(): Promise<any>
-    {
-        return new Promise((resolve, reject) => {
-            this.http.get('api/projects-dashboard-projects')
-                .subscribe((response: any) => {
-                    this.projects = response;
-                    resolve(response);
-                }, reject);
-        });
-    }
-
     getWidgets(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/projects-dashboard-widgets')
+            this.http.get('api/analytics-dashboard-widgets')
                 .subscribe((response: any) => {
                     this.widgets = response;
                     resolve(response);

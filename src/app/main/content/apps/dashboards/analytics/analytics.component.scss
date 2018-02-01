@@ -1,0 +1,64 @@
+#dashboard-analytics {
+
+    /*#widget1 {
+
+        .line-series {
+
+            .line {
+                stroke-width: 2px;
+            }
+        }
+
+        .gridline-path {
+
+            &.gridline-path-horizontal {
+                stroke: rgba(255, 255, 255, 0.12);
+            }
+
+            &.gridline-path-vertical {
+                stroke-width: 0;
+            }
+        }
+
+        .tick {
+
+            text {
+                fill: rgba(255, 255, 255, 0.37)
+            }
+        }
+
+        .tooltip-anchor {
+            fill: rgba(255, 255, 255, 0.54);
+        }
+    }*/
+
+    .main-widget {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        display: flex;
+        flex: 1 0 auto;
+        padding: 32px;
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            flex: 1 0 auto;
+
+            .widget {
+                flex: 1 0 auto;
+            }
+        }
+
+        .right {
+            display: flex;
+            flex: 0 0 auto;
+            width: 320px;
+            min-width: 320px;
+            max-width: 320px;
+        }
+    }
+
+}

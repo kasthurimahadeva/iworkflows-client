@@ -26,6 +26,12 @@ export class FuseNavigationModel implements FuseNavigationModelInterface
                                 'title': 'Project',
                                 'type' : 'item',
                                 'url'  : '/apps/dashboards/project'
+                            },
+                            {
+                                'id'   : 'analytics',
+                                'title': 'Analytics',
+                                'type' : 'item',
+                                'url'  : '/apps/dashboards/analytics'
                             }
                         ]
                     },

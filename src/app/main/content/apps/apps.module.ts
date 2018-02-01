@@ -9,6 +9,10 @@ const routes = [
         loadChildren: './dashboards/project/project.module#FuseProjectDashboardModule'
     },
     {
+        path        : 'dashboards/analytics',
+        loadChildren: './dashboards/analytics/analytics.module#FuseAnalyticsDashboardModule'
+    },
+    {
         path        : 'mail',
         loadChildren: './mail/mail.module#FuseMailModule'
     },
