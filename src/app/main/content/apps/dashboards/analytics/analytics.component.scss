@@ -1,36 +1,6 @@
+@import "src/app/core/scss/fuse";
+
 #dashboard-analytics {
-
-    /*#widget1 {
-
-        .line-series {
-
-            .line {
-                stroke-width: 2px;
-            }
-        }
-
-        .gridline-path {
-
-            &.gridline-path-horizontal {
-                stroke: rgba(255, 255, 255, 0.12);
-            }
-
-            &.gridline-path-vertical {
-                stroke-width: 0;
-            }
-        }
-
-        .tick {
-
-            text {
-                fill: rgba(255, 255, 255, 0.37)
-            }
-        }
-
-        .tooltip-anchor {
-            fill: rgba(255, 255, 255, 0.54);
-        }
-    }*/
 
     .main-widget {
         display: flex;
@@ -39,16 +9,23 @@
 
     .content {
         display: flex;
-        flex: 1 0 auto;
+        flex: 1 1 auto;
         padding: 32px;
+        min-width: 0;
+
+        @include media-breakpoint-down('md') {
+            flex-direction: column;
+        }
 
         .left {
             display: flex;
             flex-direction: column;
-            flex: 1 0 auto;
+            flex: 1 1 auto;
+            min-width: 0;
 
             .widget {
-                flex: 1 0 auto;
+                flex: 1 1 auto;
+                min-width: 0;
             }
         }
 
@@ -58,6 +35,14 @@
             width: 320px;
             min-width: 320px;
             max-width: 320px;
+
+            @include media-breakpoint-down('md') {
+                flex: 1 0 100%;
+                margin-top: 32px;
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+            }
         }
     }
 

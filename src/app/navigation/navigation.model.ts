@@ -22,17 +22,17 @@ export class FuseNavigationModel implements FuseNavigationModelInterface
                         'icon'     : 'dashboard',
                         'children' : [
                             {
+                                'id'   : 'analytics',
+                                'title': 'Analytics',
+                                'type' : 'item',
+                                'url'  : '/apps/dashboards/analytics'
+                            },
+                            {
                                 'id'   : 'project',
                                 'title': 'Project',
                                 'type' : 'item',
                                 'url'  : '/apps/dashboards/project'
                             },
-                            {
-                                'id'   : 'analytics',
-                                'title': 'Analytics',
-                                'type' : 'item',
-                                'url'  : '/apps/dashboards/analytics'
-                            }
                         ]
                     },
                     {

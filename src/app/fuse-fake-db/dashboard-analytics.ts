@@ -1,12 +1,6 @@
 export class AnalyticsDashboardDb
 {
     public static widgets = {
-        /*widget2: {
-            overallGrowthPercentage: 17,
-            overallGrowthTrend     : 'decrease',
-            averageDailyPercentage : 28,
-            averageDailyTrend      : 'increase'
-        },*/
         widget1: {
             chartType: 'line',
             datasets : {
@@ -108,156 +102,166 @@ export class AnalyticsDashboardDb
         widget2: {
             conversion: {
                 value   : 492,
-                ofTarget: 22
+                ofTarget: 13
             },
-            scheme    : {
-                domain: ['#5c84f1']
-            },
-            data      : [
+            chartType : 'bar',
+            datasets  : [
                 {
-                    name : 'Monday',
-                    value: 221
-                },
-                {
-                    name : 'Tuesday',
-                    value: 428
-                },
-                {
-                    name : 'Wednesday',
-                    value: 492
-                },
-                {
-                    name : 'Thursday',
-                    value: 471
-                },
-                {
-                    name : 'Friday',
-                    value: 413
-                },
-                {
-                    name : 'Saturday',
-                    value: 344
-                },
-                {
-                    name : 'Sunday',
-                    value: 294
+                    label: 'Conversion',
+                    data : [221, 428, 492, 471, 413, 344, 294]
                 }
-            ]
-        },
-        widget3: {
-            impressions: {
-                value   : '87.4M',
-                ofTarget: 12.3
-            },
-            scheme     : {
-                domain: ['#5c84f1']
-            },
-            data       : [
+            ],
+            labels    : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            colors    : [
                 {
-                    name  : 'Impressions',
-                    series: [
+                    borderColor    : '#42a5f5',
+                    backgroundColor: '#42a5f5'
+                }
+            ],
+            options   : {
+                spanGaps           : false,
+                legend             : {
+                    display: false
+                },
+                maintainAspectRatio: false,
+                layout             : {
+                    padding: {
+                        top   : 24,
+                        left  : 16,
+                        right : 16,
+                        bottom: 16
+                    }
+                },
+                scales             : {
+                    xAxes: [
                         {
-                            name : 'Jan 1',
-                            value: 670000
-                        },
+                            display: false
+                        }
+                    ],
+                    yAxes: [
                         {
-                            name : 'Jan 2',
-                            value: 540000
-                        },
-                        {
-                            name : 'Jan 3',
-                            value: 820000
-                        },
-                        {
-                            name : 'Jan 4',
-                            value: 570000
-                        },
-                        {
-                            name : 'Jan 5',
-                            value: 720000
-                        },
-                        {
-                            name : 'Jan 6',
-                            value: 570000
-                        },
-                        {
-                            name : 'Jan 7',
-                            value: 870000
-                        },
-                        {
-                            name : 'Jan 8',
-                            value: 720000
-                        },
-                        {
-                            name : 'Jan 9',
-                            value: 890000
-                        },
-                        {
-                            name : 'Jan 10',
-                            value: 987000
-                        },
-                        {
-                            name : 'Jan 11',
-                            value: 1120000
-                        },
-                        {
-                            name : 'Jan 12',
-                            value: 1360000
-                        },
-                        {
-                            name : 'Jan 13',
-                            value: 1100000
-                        },
-                        {
-                            name : 'Jan 14',
-                            value: 1490000
-                        },
-                        {
-                            name : 'Jan 15',
-                            value: 980000
+                            display: false,
+                            ticks  : {
+                                min: 100,
+                                max: 500
+                            }
                         }
                     ]
                 }
-            ]
+            }
+        },
+        widget3: {
+            impressions: {
+                value   : '87k',
+                ofTarget: 12
+            },
+            chartType  : 'line',
+            datasets   : [
+                {
+                    label: 'Impression',
+                    data : [67000, 54000, 82000, 57000, 72000, 57000, 87000, 72000, 89000, 98700, 112000, 136000, 110000, 149000, 98000],
+                    fill : false
+                }
+            ],
+            labels     : ['Jan 1', 'Jan 2', 'Jan 3', 'Jan 4', 'Jan 5', 'Jan 6', 'Jan 7', 'Jan 8', 'Jan 9', 'Jan 10', 'Jan 11', 'Jan 12', 'Jan 13', 'Jan 14', 'Jan 15'],
+            colors     : [
+                {
+                    borderColor: '#5c84f1'
+                }
+            ],
+            options    : {
+                spanGaps           : false,
+                legend             : {
+                    display: false
+                },
+                maintainAspectRatio: false,
+                elements           : {
+                    point: {
+                        radius          : 2,
+                        borderWidth     : 1,
+                        hoverRadius     : 2,
+                        hoverBorderWidth: 1
+                    },
+                    line : {
+                        tension: 0
+                    }
+                },
+                layout             : {
+                    padding: {
+                        top   : 24,
+                        left  : 16,
+                        right : 16,
+                        bottom: 16
+                    }
+                },
+                scales             : {
+                    xAxes: [
+                        {
+                            display: false
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            display: false,
+                            ticks  : {
+                                // min: 100,
+                                // max: 500
+                            }
+                        }
+                    ]
+                }
+            }
         },
         widget4: {
-            visits: {
+            visits   : {
                 value   : 882,
-                ofTarget: -12
+                ofTarget: -9
             },
-            scheme: {
-                domain: ['#f44336']
-            },
-            data  : [
+            chartType: 'bar',
+            datasets : [
                 {
-                    name : 'Monday',
-                    value: 432
-                },
-                {
-                    name : 'Tuesday',
-                    value: 428
-                },
-                {
-                    name : 'Wednesday',
-                    value: 477
-                },
-                {
-                    name : 'Thursday',
-                    value: 471
-                },
-                {
-                    name : 'Friday',
-                    value: 456
-                },
-                {
-                    name : 'Saturday',
-                    value: 267
-                },
-                {
-                    name : 'Sunday',
-                    value: 231
+                    label: 'Visits',
+                    data : [432, 428, 327, 363, 456, 267, 231]
                 }
-            ]
+            ],
+            labels   : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            colors   : [
+                {
+                    borderColor    : '#f44336',
+                    backgroundColor: '#f44336'
+                }
+            ],
+            options  : {
+                spanGaps           : false,
+                legend             : {
+                    display: false
+                },
+                maintainAspectRatio: false,
+                layout             : {
+                    padding: {
+                        top   : 24,
+                        left  : 16,
+                        right : 16,
+                        bottom: 16
+                    }
+                },
+                scales             : {
+                    xAxes: [
+                        {
+                            display: false
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            display: false,
+                            ticks  : {
+                                min: 150,
+                                max: 500
+                            }
+                        }
+                    ]
+                }
+            }
         },
         widget5: {
             chartType: 'line',
@@ -349,7 +353,7 @@ export class AnalyticsDashboardDb
                             gridLines: {
                                 tickMarkLength: 16
                             },
-                            ticks  : {
+                            ticks    : {
                                 stepSize: 1000
                             }
                         }
@@ -365,54 +369,134 @@ export class AnalyticsDashboardDb
         widget6: {
             markers: [
                 {
-                    lat: 52,
-                    lng: -73,
+                    lat  : 52,
+                    lng  : -73,
                     label: '120'
                 },
                 {
-                    lat: 37,
-                    lng: -104,
+                    lat  : 37,
+                    lng  : -104,
                     label: '498'
                 },
                 {
-                    lat: 21,
-                    lng: -7,
+                    lat  : 21,
+                    lng  : -7,
                     label: '443'
                 },
                 {
-                    lat: 55,
-                    lng: 75,
+                    lat  : 55,
+                    lng  : 75,
                     label: '332'
                 },
                 {
-                    lat: 51,
-                    lng: 7,
+                    lat  : 51,
+                    lng  : 7,
                     label: '50'
                 },
                 {
-                    lat: 31,
-                    lng: 12,
+                    lat  : 31,
+                    lng  : 12,
                     label: '221'
                 },
                 {
-                    lat: 45,
-                    lng: 44,
+                    lat  : 45,
+                    lng  : 44,
                     label: '455'
                 },
                 {
-                    lat: -26,
-                    lng: 134,
+                    lat  : -26,
+                    lng  : 134,
                     label: '231'
                 },
                 {
-                    lat: -9,
-                    lng: -60,
+                    lat  : -9,
+                    lng  : -60,
                     label: '67'
                 },
                 {
-                    lat: 33,
-                    lng: 104,
+                    lat  : 33,
+                    lng  : 104,
                     label: '665'
+                }
+            ],
+            styles : [
+                {
+                    'featureType': 'administrative',
+                    'elementType': 'labels.text.fill',
+                    'stylers'    : [
+                        {
+                            'color': '#444444'
+                        }
+                    ]
+                },
+                {
+                    'featureType': 'landscape',
+                    'elementType': 'all',
+                    'stylers'    : [
+                        {
+                            'color': '#f2f2f2'
+                        }
+                    ]
+                },
+                {
+                    'featureType': 'poi',
+                    'elementType': 'all',
+                    'stylers'    : [
+                        {
+                            'visibility': 'off'
+                        }
+                    ]
+                },
+                {
+                    'featureType': 'road',
+                    'elementType': 'all',
+                    'stylers'    : [
+                        {
+                            'saturation': -100
+                        },
+                        {
+                            'lightness': 45
+                        }
+                    ]
+                },
+                {
+                    'featureType': 'road.highway',
+                    'elementType': 'all',
+                    'stylers'    : [
+                        {
+                            'visibility': 'simplified'
+                        }
+                    ]
+                },
+                {
+                    'featureType': 'road.arterial',
+                    'elementType': 'labels.icon',
+                    'stylers'    : [
+                        {
+                            'visibility': 'off'
+                        }
+                    ]
+                },
+                {
+                    'featureType': 'transit',
+                    'elementType': 'all',
+                    'stylers'    : [
+                        {
+                            'visibility': 'off'
+                        }
+                    ]
+                },
+                {
+                    'featureType': 'water',
+                    'elementType': 'all',
+                    'stylers'    : [
+                        {
+                            'color': '#039be5'
+                        },
+                        {
+                            'visibility': 'on'
+                        }
+                    ]
                 }
             ]
         },
