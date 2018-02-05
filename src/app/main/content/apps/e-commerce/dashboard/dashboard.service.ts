@@ -41,7 +41,7 @@ export class EcommerceDashboardService implements Resolve<any>
     getProjects(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/projects-dashboard-projects')
+            this.http.get('api/project-dashboard-projects')
                 .subscribe((response: any) => {
                     this.projects = response;
                     resolve(response);
