@@ -4,6 +4,7 @@ import { TodoService } from './todo.service';
 import { FormControl } from '@angular/forms';
 import { Todo } from './todo.model';
 import { fuseAnimations } from '../../../../core/animations';
+import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({

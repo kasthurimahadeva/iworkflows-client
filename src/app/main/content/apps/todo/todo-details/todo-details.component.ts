@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FuseUtils } from '../../../../../core/fuseUtils';
 import { fuseAnimations } from '../../../../../core/animations';
+import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
