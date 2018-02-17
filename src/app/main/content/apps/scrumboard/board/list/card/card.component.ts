@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ScrumboardService } from '../../../scrumboard.service';
 import * as moment from 'moment';
 
 @Component({
@@ -17,7 +16,6 @@ export class FuseScrumboardBoardCardComponent implements OnInit
 
     constructor(
         private route: ActivatedRoute,
-        private scrumboardService: ScrumboardService
     )
     {
     }

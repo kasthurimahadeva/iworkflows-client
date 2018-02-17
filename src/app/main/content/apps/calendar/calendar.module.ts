@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { FuseCalendarComponent } from './calendar.component';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { CalendarService } from './calendar.service';
 import { CalendarModule } from 'angular-calendar';
+import { FuseCalendarComponent } from './calendar.component';
 import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
 
 const routes: Routes = [

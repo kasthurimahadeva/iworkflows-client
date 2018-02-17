@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { FuseTodoComponent } from './todo.component';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { TodoService } from './todo.service';
+import { FuseTodoComponent } from './todo.component';
 import { FuseTodoMainSidenavComponent } from './sidenavs/main/main-sidenav.component';
 import { FuseTodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
 import { FuseTodoListComponent } from './todo-list/todo-list.component';

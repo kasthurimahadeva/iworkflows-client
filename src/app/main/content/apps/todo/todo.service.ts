@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
-import { Todo } from './todo.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { FuseUtils } from '../../../../core/fuseUtils';
 import { Subject } from 'rxjs/Subject';
-import { Location } from '@angular/common';
+
+import { FuseUtils } from '@fuse/fuseUtils';
+
+import { Todo } from './todo.model';
 
 @Injectable()
 export class TodoService implements Resolve<any>
@@ -337,7 +339,6 @@ export class TodoService implements Resolve<any>
         {
             this.location.go('apps/todo/all/' + id);
         }
-
     }
 
     /**
@@ -353,7 +354,6 @@ export class TodoService implements Resolve<any>
 
     toggleTagOnTodo(tagId, todo)
     {
-
         const index = todo.tags.indexOf(tagId);
 
         if ( index !== -1 )
@@ -364,6 +364,7 @@ export class TodoService implements Resolve<any>
         {
             todo.tags.push(tagId);
         }
+        
         this.updateTodo(todo);
     }
 
@@ -386,28 +387,5 @@ export class TodoService implements Resolve<any>
                     }, reject);
                 });
         });
-    }
-
-    /**
-     * Update the todo
-     * @param todos
-     * @returns {Promise<any>}
-     */
-    updateTodos(todos)
-    {
-
-        /*  return new Promise((resolve, reject) => {
-
-              this.http.post('api/todo-todos/', {...todos})
-
-                  .subscribe(response => {
-
-                      this.getTodos().then(_todos => {
-                          console.log(response);
-                          resolve(_todos);
-                      }, reject);
-                  });
-          });*/
-
     }
 }

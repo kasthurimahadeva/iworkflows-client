@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { Mail } from '../../mail.model';
-import { MailNgrxService } from '../../mail.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+
+import { MailNgrxService } from '../../mail.service';
+import { Mail } from '../../mail.model';
 import * as fromStore from '../../store';
 
 @Component({
@@ -11,7 +12,7 @@ import * as fromStore from '../../store';
     styleUrls      : ['./mail-list-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxListItemComponent implements OnInit, OnDestroy
+export class FuseMailNgrxListItemComponent implements OnInit
 {
     @Input() mail: Mail;
     @HostBinding('class.selected') selected: boolean;
@@ -50,9 +51,5 @@ export class FuseMailNgrxListItemComponent implements OnInit, OnDestroy
     onSelectedChange()
     {
         this.store.dispatch(new fromStore.ToggleInSelectedMails(this.mail.id));
-    }
-
-    ngOnDestroy()
-    {
     }
 }

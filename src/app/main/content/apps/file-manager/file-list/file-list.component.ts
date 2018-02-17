@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FileManagerService } from '../file-manager.service';
-import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
-import { fuseAnimations } from '../../../../../core/animations';
+import { Observable } from 'rxjs/Observable';
+
+import { FileManagerService } from '../file-manager.service';
+import { fuseAnimations } from '@fuse/animations/index';
 
 @Component({
     selector   : 'fuse-file-list',

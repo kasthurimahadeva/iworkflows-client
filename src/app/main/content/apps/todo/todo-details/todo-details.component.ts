@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { TodoService } from '../todo.service';
-import { Todo } from '../todo.model';
-import { Subscription } from 'rxjs/Subscription';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FuseUtils } from '../../../../../core/fuseUtils';
-import { fuseAnimations } from '../../../../../core/animations';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+
+import { FuseUtils } from '@fuse/fuseUtils';
+import { fuseAnimations } from '@fuse/animations';
+
+import { Todo } from '../todo.model';
+import { TodoService } from '../todo.service';
 
 @Component({
     selector   : 'fuse-todo-details',
@@ -80,6 +82,17 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
                 });
     }
 
+    ngOnDestroy()
+    {
+        if ( this.onFormChange )
+        {
+            this.onFormChange.unsubscribe();
+        }
+
+        this.onCurrentTodoChanged.unsubscribe();
+        this.onNewTodoClicked.unsubscribe();
+    }
+    
     focusTitleField()
     {
         setTimeout(() => {
@@ -106,18 +119,14 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
     toggleStar(event)
     {
         event.stopPropagation();
-
         this.todo.toggleStar();
-
         this.todoService.updateTodo(this.todo);
     }
 
     toggleImportant(event)
     {
         event.stopPropagation();
-
         this.todo.toggleImportant();
-
         this.todoService.updateTodo(this.todo);
     }
 
@@ -128,9 +137,7 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
     toggleCompleted(event)
     {
         event.stopPropagation();
-
         this.todo.toggleCompleted();
-
         this.todoService.updateTodo(this.todo);
     }
 
@@ -141,9 +148,7 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
     toggleDeleted(event)
     {
         event.stopPropagation();
-
         this.todo.toggleDeleted();
-
         this.todoService.updateTodo(this.todo);
     }
 
@@ -155,17 +160,5 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
     addTodo()
     {
         this.todoService.updateTodo(this.todoForm.getRawValue());
-    }
-
-    ngOnDestroy()
-    {
-        if ( this.onFormChange )
-        {
-            this.onFormChange.unsubscribe();
-        }
-
-        this.onCurrentTodoChanged.unsubscribe();
-
-        this.onNewTodoClicked.unsubscribe();
     }
 }

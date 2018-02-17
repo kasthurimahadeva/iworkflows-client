@@ -1,11 +1,12 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import * as shape from 'd3-shape';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { DataSource } from '@angular/cdk/collections';
+import * as shape from 'd3-shape';
+
+import { fuseAnimations } from '@fuse/animations';
 
 import { ProjectDashboardService } from './project.service';
-import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector     : 'fuse-project-dashboard',
@@ -14,7 +15,7 @@ import { fuseAnimations } from '../../../../../core/animations';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseProjectDashboardComponent implements OnInit, OnDestroy
+export class FuseProjectDashboardComponent implements OnInit
 {
     projects: any[];
     selectedProject: any;
@@ -147,11 +148,6 @@ export class FuseProjectDashboardComponent implements OnInit, OnDestroy
         this.widget11.onContactsChanged.next(this.widgets.widget11.table.rows);
         this.widget11.dataSource = new FilesDataSource(this.widget11);
     }
-
-    ngOnDestroy()
-    {
-    }
-
 }
 
 export class FilesDataSource extends DataSource<any>

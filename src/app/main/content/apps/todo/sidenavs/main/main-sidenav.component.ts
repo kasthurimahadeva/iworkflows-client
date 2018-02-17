@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TodoService } from '../../todo.service';
-import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
-import { fuseAnimations } from '../../../../../../core/animations';
+import { Subscription } from 'rxjs/Subscription';
+
+import { fuseAnimations } from '@fuse/animations';
+
+import { TodoService } from '../../todo.service';
 
 @Component({
     selector   : 'fuse-todo-main-sidenav',

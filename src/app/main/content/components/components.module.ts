@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
+
+import { FuseAngularMaterialModule } from './angular-material/angular-material.module';
 import { FuseCardsDocsComponent } from './cards/cards.component';
 import { FuseCountdownDocsComponent } from './countdown/countdown.component';
 import { FuseHighlightDocsComponent } from './highlight/highlight.component';
@@ -10,9 +15,6 @@ import { FuseNavigationDocsComponent } from './navigation/navigation.component';
 import { FuseSearchBarDocsComponent } from './search-bar/search-bar.component';
 import { FuseShortcutsDocsComponent } from './shortcuts/shortcuts.component';
 import { FuseWidgetDocsComponent } from './widget/widget.component';
-import { FuseWidgetModule } from '../../../core/components/widget/widget.module';
-import { FuseAngularMaterialModule } from './angular-material/angular-material.module';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const routes = [
     {

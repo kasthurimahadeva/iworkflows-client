@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../../search.service';
 import { DataSource } from '@angular/cdk/collections';
+
+import { SearchService } from '../../search.service';
 
 @Component({
     selector   : 'fuse-search-table',

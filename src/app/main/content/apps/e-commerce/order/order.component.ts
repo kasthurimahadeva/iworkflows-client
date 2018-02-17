@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { EcommerceOrderService } from './order.service';
-import { fuseAnimations } from '../../../../../core/animations';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -8,8 +7,11 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { Order } from './order.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { EcommerceOrderService } from './order.service';
 import { orderStatuses } from './order-statuses';
 
 @Component({
@@ -48,6 +50,11 @@ export class FuseEcommerceOrderComponent implements OnInit, OnDestroy
         });
     }
 
+    ngOnDestroy()
+    {
+        this.onOrderChanged.unsubscribe();
+    }
+
     updateStatus()
     {
         const newStatusId = Number.parseInt(this.statusForm.get('newStatus').value);
@@ -64,10 +71,5 @@ export class FuseEcommerceOrderComponent implements OnInit, OnDestroy
         newStatus['date'] = new Date().toString();
 
         this.order.status.unshift(newStatus);
-    }
-
-    ngOnDestroy()
-    {
-        this.onOrderChanged.unsubscribe();
     }
 }

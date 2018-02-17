@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatColors } from '../../../../core/matColors';
+
+import { MatColors } from '@fuse/matColors';
 
 @Component({
     selector   : 'fuse-colors',
     templateUrl: './colors.component.html',
     styleUrls  : ['./colors.component.scss']
 })
-export class FuseColorsComponent implements OnInit
+export class FuseColorsComponent
 {
     colors: {};
     selectedColor: string;
@@ -16,11 +17,6 @@ export class FuseColorsComponent implements OnInit
     {
         this.colors = MatColors.all;
         this.updateSelectedColor('primary');
-    }
-
-    ngOnInit()
-    {
-
     }
 
     selectColor(selected)

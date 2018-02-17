@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+
 import { AcademyCoursesService } from '../courses.service';
 
 @Component({
@@ -24,7 +25,6 @@ export class FuseAcademyCoursesComponent implements OnInit, OnDestroy
         private coursesService: AcademyCoursesService
     )
     {
-
     }
 
     ngOnInit()

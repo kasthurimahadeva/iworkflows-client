@@ -1,11 +1,13 @@
 import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, Input, OnDestroy, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import 'rxjs/add/operator/first';
-import { CopierService } from '../../../../../core/components/copier/copier.service';
-import { EXAMPLE_COMPONENTS } from '../example-components';
 import 'prismjs/components/prism-scss';
 import 'prismjs/components/prism-typescript';
-import { fuseAnimations } from '../../../../../core/animations';
+
+import { EXAMPLE_COMPONENTS } from '../example-components';
+
+import { CopierService } from '@fuse/components/copier/copier.service';
+import { fuseAnimations } from '@fuse/animations';
 
 export interface LiveExample
 {
@@ -42,7 +44,6 @@ export class FuseExampleViewerComponent implements AfterViewInit, OnDestroy
 
     /** String key of the currently displayed example. */
     _example: string;
-
     exampleData: LiveExample;
 
     /** Whether the source for the example is being displayed. */
@@ -54,6 +55,22 @@ export class FuseExampleViewerComponent implements AfterViewInit, OnDestroy
         private _resolver: ComponentFactoryResolver
     )
     {
+    }
+
+    ngAfterViewInit()
+    {
+        setTimeout(() => {
+            const cmpFactory = this._resolver.resolveComponentFactory(this.exampleData.component);
+            this.previewRef = this._previewContainer.createComponent(cmpFactory);
+        }, 0);
+    }
+
+    ngOnDestroy()
+    {
+        if ( this.previewRef )
+        {
+            this.previewRef.destroy();
+        }
     }
 
     get example()
@@ -89,22 +106,6 @@ export class FuseExampleViewerComponent implements AfterViewInit, OnDestroy
         else
         {
             this.snackbar.open('Copy failed. Please try again!', '', {duration: 2500});
-        }
-    }
-
-    ngAfterViewInit()
-    {
-        setTimeout(() => {
-            const cmpFactory = this._resolver.resolveComponentFactory(this.exampleData.component);
-            this.previewRef = this._previewContainer.createComponent(cmpFactory);
-        }, 0);
-    }
-
-    ngOnDestroy()
-    {
-        if ( this.previewRef )
-        {
-            this.previewRef.destroy();
         }
     }
 }

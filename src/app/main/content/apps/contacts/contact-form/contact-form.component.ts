@@ -1,7 +1,9 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { CalendarEvent } from 'angular-calendar';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
+import { CalendarEvent } from 'angular-calendar';
+
 import { Contact } from '../contact.model';
 
 @Component({
@@ -11,7 +13,7 @@ import { Contact } from '../contact.model';
     encapsulation: ViewEncapsulation.None
 })
 
-export class FuseContactsContactFormDialogComponent implements OnInit
+export class FuseContactsContactFormDialogComponent
 {
     event: CalendarEvent;
     dialogTitle: string;
@@ -39,10 +41,6 @@ export class FuseContactsContactFormDialogComponent implements OnInit
         }
 
         this.contactForm = this.createContactForm();
-    }
-
-    ngOnInit()
-    {
     }
 
     createContactForm()

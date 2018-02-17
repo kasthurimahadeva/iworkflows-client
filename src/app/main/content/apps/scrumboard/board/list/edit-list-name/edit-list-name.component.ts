@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     templateUrl: './edit-list-name.component.html',
     styleUrls  : ['./edit-list-name.component.scss']
 })
-export class FuseScrumboardBoardEditListNameComponent implements OnInit
+export class FuseScrumboardBoardEditListNameComponent
 {
     formActive = false;
     form: FormGroup;
@@ -18,11 +18,6 @@ export class FuseScrumboardBoardEditListNameComponent implements OnInit
         private formBuilder: FormBuilder
     )
     {
-    }
-
-    ngOnInit()
-    {
-
     }
 
     openForm()

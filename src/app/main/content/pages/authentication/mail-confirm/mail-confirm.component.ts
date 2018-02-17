@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FuseConfigService } from '../../../../../core/services/config.service';
-import { fuseAnimations } from '../../../../../core/animations';
+
+import { FuseConfigService } from '@fuse/services/config.service';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
     selector   : 'fuse-mail-confirm',
@@ -15,7 +16,7 @@ export class FuseMailConfirmComponent
         private fuseConfig: FuseConfigService
     )
     {
-        this.fuseConfig.setSettings({
+        this.fuseConfig.setConfig({
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',

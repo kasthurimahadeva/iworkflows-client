@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ContactsService } from '../../contacts.service';
 import { Subscription } from 'rxjs/Subscription';
+
+import { ContactsService } from '../../contacts.service';
 
 @Component({
     selector   : 'fuse-contacts-main-sidenav',
@@ -11,6 +12,7 @@ export class FuseContactsMainSidenavComponent implements OnDestroy
 {
     user: any;
     filterBy: string;
+    
     onUserDataChangedSubscription: Subscription;
 
     constructor(private contactsService: ContactsService)

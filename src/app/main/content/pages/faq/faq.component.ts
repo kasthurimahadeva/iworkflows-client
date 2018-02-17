@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-import { FaqService } from './faq.service';
-import { FuseUtils } from '../../../../core/fuseUtils';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+
+import { FuseUtils } from '@fuse/fuseUtils';
+
+import { FaqService } from './faq.service';
 
 @Component({
     selector   : 'fuse-faq',
@@ -41,6 +43,11 @@ export class FuseFaqComponent implements OnInit, OnDestroy
             });
     }
 
+    ngOnDestroy()
+    {
+        this.onFaqsChanged.unsubscribe();
+    }
+
     setStep(index: number)
     {
         this.step = index;
@@ -54,10 +61,5 @@ export class FuseFaqComponent implements OnInit, OnDestroy
     prevStep()
     {
         this.step--;
-    }
-
-    ngOnDestroy()
-    {
-        this.onFaqsChanged.unsubscribe();
     }
 }

@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
     selector     : 'fuse-mail-compose',
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styleUrls    : ['./compose.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseMailNgrxComposeDialogComponent implements OnInit
+export class FuseMailNgrxComposeDialogComponent
 {
     composeForm: FormGroup;
 
@@ -20,11 +20,7 @@ export class FuseMailNgrxComposeDialogComponent implements OnInit
     {
         this.composeForm = this.createComposeForm();
     }
-
-    ngOnInit()
-    {
-    }
-
+    
     createComposeForm()
     {
         return this.formBuilder.group({

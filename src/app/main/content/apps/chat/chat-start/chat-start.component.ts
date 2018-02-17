@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { fuseAnimations } from '../../../../../core/animations';
+import { Component } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
     selector   : 'fuse-chat-start',
@@ -7,15 +8,9 @@ import { fuseAnimations } from '../../../../../core/animations';
     styleUrls  : ['./chat-start.component.scss'],
     animations : fuseAnimations
 })
-export class FuseChatStartComponent implements OnInit
+export class FuseChatStartComponent
 {
-
     constructor()
     {
     }
-
-    ngOnInit()
-    {
-    }
-
 }

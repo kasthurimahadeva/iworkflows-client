@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
+
 import { FuseAngularMaterialModule } from '../components/angular-material/angular-material.module';
+
+import { SharedModule } from '@fuse/modules/shared.module';
 
 const routes = [
     {

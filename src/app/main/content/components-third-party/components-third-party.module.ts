@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { FuseNgxDatatableComponent } from './datatable/ngx-datatable.component';
 import { GoogleMapsModule } from './google-maps/google-maps.module';
 

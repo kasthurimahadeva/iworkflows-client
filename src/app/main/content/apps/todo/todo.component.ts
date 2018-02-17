@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { TodoService } from './todo.service';
 import { FormControl } from '@angular/forms';
-import { Todo } from './todo.model';
-import { fuseAnimations } from '../../../../core/animations';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+
+import { fuseAnimations } from '@fuse/animations';
+
+import { Todo } from './todo.model';
+import { TodoService } from './todo.service';
 
 @Component({
     selector   : 'fuse-todo',
@@ -34,7 +36,6 @@ export class FuseTodoComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-
         this.onSelectedTodosChanged =
             this.todoService.onSelectedTodosChanged
                 .subscribe(selectedTodos => {
@@ -78,17 +79,17 @@ export class FuseTodoComponent implements OnInit, OnDestroy
                 });
     }
 
-    deSelectCurrentTodo()
-    {
-        this.todoService.onCurrentTodoChanged.next([null, null]);
-    }
-
     ngOnDestroy()
     {
         this.onSelectedTodosChanged.unsubscribe();
         this.onFiltersChanged.unsubscribe();
         this.onTagsChanged.unsubscribe();
         this.onCurrentTodoChanged.unsubscribe();
+    }
+    
+    deSelectCurrentTodo()
+    {
+        this.todoService.onCurrentTodoChanged.next([null, null]);
     }
 
     toggleSelectAll()
@@ -110,5 +111,4 @@ export class FuseTodoComponent implements OnInit, OnDestroy
     {
         this.todoService.toggleTagOnSelectedTodos(tagId);
     }
-
 }

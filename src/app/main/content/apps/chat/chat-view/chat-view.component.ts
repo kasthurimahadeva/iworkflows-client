@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
-import { ChatService } from '../chat.service';
 import { NgForm } from '@angular/forms';
-import { FusePerfectScrollbarDirective } from '../../../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
+
+import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
+
+import { ChatService } from '../chat.service';
 
 @Component({
     selector   : 'fuse-chat-view',

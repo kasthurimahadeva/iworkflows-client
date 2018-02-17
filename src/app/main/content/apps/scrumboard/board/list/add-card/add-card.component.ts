@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     templateUrl: './add-card.component.html',
     styleUrls  : ['./add-card.component.scss']
 })
-export class FuseScrumboardBoardAddCardComponent implements OnInit
+export class FuseScrumboardBoardAddCardComponent
 {
     formActive = false;
     form: FormGroup;
@@ -18,11 +18,7 @@ export class FuseScrumboardBoardAddCardComponent implements OnInit
     )
     {
     }
-
-    ngOnInit()
-    {
-    }
-
+    
     openForm()
     {
         this.form = this.formBuilder.group({

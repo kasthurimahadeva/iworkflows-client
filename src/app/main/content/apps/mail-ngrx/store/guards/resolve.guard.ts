@@ -9,7 +9,7 @@ import { MailAppState } from '../reducers';
 import * as fromStore from '../index';
 import { getFiltersLoaded, getFoldersLoaded, getLabelsLoaded, getMailsLoaded } from '../selectors';
 import { RouterStateSnapshot } from '@angular/router/src/router_state';
-import { getRouterState } from '../../../../../../store/reducers';
+import { getRouterState } from 'app/store/reducers';
 
 @Injectable()
 export class ResolveGuard implements CanActivate

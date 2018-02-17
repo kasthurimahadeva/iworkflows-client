@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Contact } from './contact.model';
-import { FuseUtils } from '../../../../core/fuseUtils';
 import { Subject } from 'rxjs/Subject';
+
+import { FuseUtils } from '@fuse/fuseUtils';
+
+import { Contact } from './contact.model';
 
 @Injectable()
 export class ContactsService implements Resolve<any>

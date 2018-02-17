@@ -1,29 +1,5 @@
-import {
-    CalendarEventAction
-} from 'angular-calendar';
-
-import {
-    startOfDay,
-    endOfDay,
-    subDays,
-    addDays,
-    endOfMonth,
-    isSameDay,
-    isSameMonth,
-    addHours
-} from 'date-fns';
-// import { CalendarEvent } from 'calendar-utils/dist/calendar-utils';
-
-/*
-export interface EventAction
-{
-    label: string;
-    cssClass?: string;
-
-    onClick({event}: {
-        event: CalendarEvent;
-    }): any;
-}*/
+import { CalendarEventAction } from 'angular-calendar';
+import { startOfDay, endOfDay } from 'date-fns';
 
 export class CalendarEventModel
 {
@@ -70,5 +46,4 @@ export class CalendarEventModel
             notes   : data.meta && data.meta.notes || ''
         };
     }
-
 }

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../../../../core/modules/shared.module';
-import { FuseDemoModule } from '../../../../core/components/demo/demo.module';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseDemoModule } from '@fuse/components/demo/demo.module';
+
 import { FuseCardedFullWidthComponent } from './carded/fullwidth/fullwidth.component';
 import { FuseCardedFullWidth2Component } from './carded/fullwidth-2/fullwidth-2.component';
 import { FuseCardedLeftSidenavComponent } from './carded/left-sidenav/left-sidenav.component';

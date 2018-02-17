@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { FuseConfigServiceDocsComponent } from './config/config.component';
 import { FuseSplashScreenServiceDocsComponent } from './splash-screen/splash-screen.component';
 

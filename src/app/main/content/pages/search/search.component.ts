@@ -1,20 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector   : 'fuse-search',
     templateUrl: './search.component.html',
     styleUrls  : ['./search.component.scss']
 })
-export class FuseSearchComponent implements OnInit
+export class FuseSearchComponent
 {
-
     constructor()
     {
-
-    }
-
-    ngOnInit()
-    {
-
     }
 }

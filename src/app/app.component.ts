@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { FuseSplashScreenService } from './core/services/splash-screen.service';
 import { TranslateService } from '@ngx-translate/core';
-import { FuseTranslationLoaderService } from './core/services/translation-loader.service';
 
-import { FuseNavigationService } from './core/components/navigation/navigation.service';
+import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
+
 import { FuseNavigationModel } from './navigation/navigation.model';
 import { locale as navigationEnglish } from './navigation/i18n/en';
 import { locale as navigationTurkish } from './navigation/i18n/tr';

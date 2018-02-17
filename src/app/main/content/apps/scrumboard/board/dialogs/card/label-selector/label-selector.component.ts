@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+
+import { FuseUtils } from '@fuse/fuseUtils';
+import { fuseAnimations } from '@fuse/animations';
+
 import { ScrumboardService } from '../../../../scrumboard.service';
-import { FuseUtils } from '../../../../../../../../core/fuseUtils';
-import { fuseAnimations } from '../../../../../../../../core/animations';
 
 @Component({
     selector     : 'fuse-scrumboard-label-selector',
@@ -44,6 +46,11 @@ export class FuseScrumboardLabelSelectorComponent implements OnInit, OnDestroy
                 });
     }
 
+    ngOnDestroy()
+    {
+        this.onBoardChanged.unsubscribe();
+    }
+
     cardLabelsChanged()
     {
         this.onCardLabelsChange.next();
@@ -61,10 +68,4 @@ export class FuseScrumboardLabelSelectorComponent implements OnInit, OnDestroy
         this.newLabel.name = '';
         this.labelsMenuView = 'labels';
     }
-
-    ngOnDestroy()
-    {
-        this.onBoardChanged.unsubscribe();
-    }
-
 }

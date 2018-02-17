@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { FuseFileManagerComponent } from './file-manager.component';
 import { FileManagerService } from './file-manager.service';
 import { FuseFileManagerFileListComponent } from './file-list/file-list.component';

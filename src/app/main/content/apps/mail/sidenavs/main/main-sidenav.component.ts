@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MailService } from '../../mail.service';
-import { Subscription } from 'rxjs/Subscription';
-import { FuseMailComposeDialogComponent } from '../../dialogs/compose/compose.component';
-import { MatDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
-import { fuseAnimations } from '../../../../../../core/animations';
+import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
+
+import { fuseAnimations } from '@fuse/animations';
+
+import { MailService } from '../../mail.service';
+import { FuseMailComposeDialogComponent } from '../../dialogs/compose/compose.component';
 
 @Component({
     selector   : 'fuse-mail-main-sidenav',
@@ -60,6 +62,13 @@ export class FuseMailMainSidenavComponent implements OnInit, OnDestroy
                 });
     }
 
+    ngOnDestroy()
+    {
+        this.onFoldersChanged.unsubscribe();
+        this.onFiltersChanged.unsubscribe();
+        this.onLabelsChanged.unsubscribe();
+    }
+    
     composeDialog()
     {
         this.dialogRef = this.dialog.open(FuseMailComposeDialogComponent, {
@@ -89,12 +98,5 @@ export class FuseMailMainSidenavComponent implements OnInit, OnDestroy
                         break;
                 }
             });
-    }
-
-    ngOnDestroy()
-    {
-        this.onFoldersChanged.unsubscribe();
-        this.onFiltersChanged.unsubscribe();
-        this.onLabelsChanged.unsubscribe();
     }
 }

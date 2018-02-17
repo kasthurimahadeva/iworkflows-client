@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
-import { FuseFaqComponent } from './faq.component';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { FaqService } from './faq.service';
+import { FuseFaqComponent } from './faq.component';
 
 const routes = [
     {

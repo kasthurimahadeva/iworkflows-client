@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { FuseMailNgrxComposeDialogComponent } from '../../dialogs/compose/compose.component';
 import { MatDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
+
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import * as fromStore from './../../store';
+
 import { MailNgrxService } from '../../mail.service';
+import * as fromStore from './../../store';
+import { FuseMailNgrxComposeDialogComponent } from '../../dialogs/compose/compose.component';
 
 @Component({
     selector       : 'fuse-mail-main-sidenav',
@@ -13,7 +15,7 @@ import { MailNgrxService } from '../../mail.service';
     styleUrls      : ['./main-sidenav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxMainSidenavComponent implements OnInit, OnDestroy
+export class FuseMailNgrxMainSidenavComponent
 {
     labels: any[];
     accounts: object;
@@ -41,10 +43,6 @@ export class FuseMailNgrxMainSidenavComponent implements OnInit, OnDestroy
         this.folders$ = this.store.select(fromStore.getFoldersArr);
         this.filters$ = this.store.select(fromStore.getFiltersArr);
         this.labels$ = this.store.select(fromStore.getLabelsArr);
-    }
-
-    ngOnInit()
-    {
     }
 
     composeDialog()
@@ -76,9 +74,5 @@ export class FuseMailNgrxMainSidenavComponent implements OnInit, OnDestroy
                         break;
                 }
             });
-    }
-
-    ngOnDestroy()
-    {
     }
 }

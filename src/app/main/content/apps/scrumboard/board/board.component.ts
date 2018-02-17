@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ScrumboardService } from '../scrumboard.service';
-import { Subscription } from 'rxjs/Subscription';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { List } from '../list.model';
-import { fuseAnimations } from '../../../../../core/animations';
+import { ScrumboardService } from '../scrumboard.service';
 
 @Component({
     selector   : 'fuse-scrumboard-board',
@@ -34,6 +36,11 @@ export class FuseScrumboardBoardComponent implements OnInit, OnDestroy
                 });
     }
 
+    ngOnDestroy()
+    {
+        this.onBoardChanged.unsubscribe();
+    }
+
     onListAdd(newListName)
     {
         if ( newListName === '' )
@@ -53,10 +60,5 @@ export class FuseScrumboardBoardComponent implements OnInit, OnDestroy
     onDrop(ev)
     {
         this.scrumboardService.updateBoard();
-    }
-
-    ngOnDestroy()
-    {
-        this.onBoardChanged.unsubscribe();
     }
 }

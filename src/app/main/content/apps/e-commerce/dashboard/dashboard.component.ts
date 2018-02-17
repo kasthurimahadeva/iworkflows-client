@@ -1,6 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { EcommerceDashboardService } from './dashboard.service';
-import { fuseAnimations } from '../../../../../core/animations';
 
 @Component({
     selector     : 'fuse-e-commerce-dashboard',
@@ -9,7 +11,7 @@ import { fuseAnimations } from '../../../../../core/animations';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseEcommerceDashboardComponent implements OnInit, OnDestroy
+export class FuseEcommerceDashboardComponent
 {
     projects: any[];
     selectedProject: any;
@@ -72,14 +74,4 @@ export class FuseEcommerceDashboardComponent implements OnInit, OnDestroy
         };
 
     }
-
-    ngOnInit()
-    {
-    }
-
-    ngOnDestroy()
-    {
-    }
-
 }
-

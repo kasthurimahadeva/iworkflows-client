@@ -1,19 +1,17 @@
-import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { startOfDay, isSameDay, isSameMonth } from 'date-fns';
+
+import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarMonthViewDay } from 'angular-calendar';
+
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+import { fuseAnimations } from '@fuse/animations';
+
 import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
-import { FormGroup } from '@angular/forms';
 import { CalendarEventModel } from './event.model';
 import { CalendarService } from './calendar.service';
-import {
-    CalendarEvent,
-    CalendarEventAction,
-    CalendarEventTimesChangedEvent,
-    CalendarMonthViewDay
-} from 'angular-calendar';
-import { FuseConfirmDialogComponent } from '../../../../core/components/confirm-dialog/confirm-dialog.component';
-import { fuseAnimations } from '../../../../core/animations';
 
 @Component({
     selector     : 'fuse-calendar',

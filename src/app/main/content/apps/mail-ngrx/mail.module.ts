@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { FuseMailNgrxComponent } from './mail.component';
 import { FuseMailNgrxMainSidenavComponent } from './sidenavs/main/main-sidenav.component';
 import { FuseMailNgrxListItemComponent } from './mail-list/mail-list-item/mail-list-item.component';
@@ -8,8 +10,8 @@ import { FuseMailNgrxListComponent } from './mail-list/mail-list.component';
 import { FuseMailNgrxDetailsComponent } from './mail-details/mail-details.component';
 import { MailNgrxService } from './mail.service';
 import { FuseMailNgrxComposeDialogComponent } from './dialogs/compose/compose.component';
-import { MailAppStoreModule } from './store/store.module';
 import * as fromGuards from './store/guards/index';
+import { MailAppStoreModule } from './store/store.module';
 
 const routes: Routes = [
     {

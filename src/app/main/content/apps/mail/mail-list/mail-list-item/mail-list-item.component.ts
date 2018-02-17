@@ -1,7 +1,8 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Mail } from '../../mail.model';
 import { MailService } from '../../mail.service';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector   : 'fuse-mail-list-item',

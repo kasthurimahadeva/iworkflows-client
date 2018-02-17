@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AgmCoreModule } from '@agm/core';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
+
 import { FuseEcommerceDashboardComponent } from './dashboard/dashboard.component';
 import { EcommerceDashboardService } from './dashboard/dashboard.service';
-import { SharedModule } from '../../../../core/modules/shared.module';
-import { FuseWidgetModule } from '../../../../core/components/widget/widget.module';
 import { FuseEcommerceProductsComponent } from './products/products.component';
 import { EcommerceProductsService } from './products/products.service';
 import { FuseEcommerceProductComponent } from './product/product.component';
@@ -13,7 +17,6 @@ import { FuseEcommerceOrdersComponent } from './orders/orders.component';
 import { EcommerceOrdersService } from './orders/orders.service';
 import { FuseEcommerceOrderComponent } from './order/order.component';
 import { EcommerceOrderService } from './order/order.service';
-import { AgmCoreModule } from '@agm/core';
 
 const routes: Routes = [
     {
@@ -58,7 +61,6 @@ const routes: Routes = [
             data: EcommerceOrderService
         }
     }
-
 ];
 
 @NgModule({

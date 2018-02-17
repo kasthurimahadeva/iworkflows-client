@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactsService } from '../contacts.service';
+import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
+
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+
+import { ContactsService } from '../contacts.service';
 
 @Component({
     selector   : 'fuse-selected-bar',
     templateUrl: './selected-bar.component.html',
     styleUrls  : ['./selected-bar.component.scss']
 })
-export class FuseContactsSelectedBarComponent implements OnInit
+export class FuseContactsSelectedBarComponent
 {
     selectedContacts: string[];
     hasSelectedContacts: boolean;
@@ -29,10 +31,6 @@ export class FuseContactsSelectedBarComponent implements OnInit
                 }, 0);
             });
 
-    }
-
-    ngOnInit()
-    {
     }
 
     selectAll()

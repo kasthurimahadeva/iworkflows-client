@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatColors } from '../../../../../../../../core/matColors';
-import { ScrumboardService } from '../../../../scrumboard.service';
 import { Subscription } from 'rxjs/Subscription';
+
+import { MatColors } from '@fuse/matColors';
+
+import { ScrumboardService } from '../../../../scrumboard.service';
 
 @Component({
     selector   : 'fuse-scrumboard-board-color-selector',
@@ -30,14 +32,14 @@ export class FuseScrumboardBoardColorSelectorComponent implements OnInit, OnDest
                 });
     }
 
+    ngOnDestroy()
+    {
+        this.onBoardChanged.unsubscribe();
+    }
+
     setColor(color)
     {
         this.board.settings.color = color;
         this.scrumboardService.updateBoard();
-    }
-
-    ngOnDestroy()
-    {
-        this.onBoardChanged.unsubscribe();
     }
 }

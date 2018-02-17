@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { FuseContactsMainSidenavComponent } from './sidenavs/main/main.component';
 import { FuseContactsComponent } from './contacts.component';
 import { ContactsService } from './contacts.service';

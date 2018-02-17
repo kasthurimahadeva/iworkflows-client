@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
-import { Mail } from '../mail.model';
-import { Observable } from 'rxjs/Observable';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+
+import { Mail } from '../mail.model';
 import * as fromStore from '../store';
 import { MailNgrxService } from '../mail.service';
 
@@ -11,7 +12,7 @@ import { MailNgrxService } from '../mail.service';
     styleUrls      : ['./mail-details.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxDetailsComponent implements OnInit, OnDestroy, OnChanges
+export class FuseMailNgrxDetailsComponent implements OnChanges
 {
     labels$: Observable<any>;
     @Input('mail') mailInput: Mail;
@@ -24,10 +25,6 @@ export class FuseMailNgrxDetailsComponent implements OnInit, OnDestroy, OnChange
     )
     {
         this.labels$ = this.store.select(fromStore.getLabelsArr);
-    }
-
-    ngOnInit()
-    {
     }
 
     ngOnChanges()
@@ -43,7 +40,6 @@ export class FuseMailNgrxDetailsComponent implements OnInit, OnDestroy, OnChange
             this.mail.markRead();
             this.updateMail();
         }
-
     }
 
     toggleStar(event)
@@ -69,9 +65,5 @@ export class FuseMailNgrxDetailsComponent implements OnInit, OnDestroy, OnChange
     {
         this.store.dispatch(new fromStore.UpdateMail(this.mail));
         this.updateModel(this.mail);
-    }
-
-    ngOnDestroy()
-    {
     }
 }

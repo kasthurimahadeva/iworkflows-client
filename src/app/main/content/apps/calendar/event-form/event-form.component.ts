@@ -1,9 +1,11 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { CalendarEvent } from 'angular-calendar';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
+import { MatColors } from '@fuse/matColors';
+
+import { CalendarEvent } from 'angular-calendar';
 import { CalendarEventModel } from '../event.model';
-import { MatColors } from '../../../../../core/matColors';
 
 @Component({
     selector     : 'fuse-calendar-event-form-dialog',
@@ -12,7 +14,7 @@ import { MatColors } from '../../../../../core/matColors';
     encapsulation: ViewEncapsulation.None
 })
 
-export class FuseCalendarEventFormDialogComponent implements OnInit
+export class FuseCalendarEventFormDialogComponent
 {
     event: CalendarEvent;
     dialogTitle: string;
@@ -43,10 +45,6 @@ export class FuseCalendarEventFormDialogComponent implements OnInit
         }
 
         this.eventForm = this.createEventForm();
-    }
-
-    ngOnInit()
-    {
     }
 
     createEventForm()

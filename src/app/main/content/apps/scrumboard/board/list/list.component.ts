@@ -1,12 +1,14 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { FuseScrumboardCardDialogComponent } from '../dialogs/card/card.component';
-import { FuseConfirmDialogComponent } from '../../../../../../core/components/confirm-dialog/confirm-dialog.component';
-import { ScrumboardService } from '../../scrumboard.service';
+import { Subscription } from 'rxjs/Subscription';
+
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
+
 import { Card } from '../../card.model';
-import { FusePerfectScrollbarDirective } from '../../../../../../core/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
+import { ScrumboardService } from '../../scrumboard.service';
+import { FuseScrumboardCardDialogComponent } from '../dialogs/card/card.component';
 
 @Component({
     selector     : 'fuse-scrumboard-board-list',
@@ -40,7 +42,11 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
                 .subscribe(board => {
                     this.board = board;
                 });
+    }
 
+    ngOnDestroy()
+    {
+        this.onBoardChanged.unsubscribe();
     }
 
     onListNameChanged(newListName)
@@ -97,10 +103,5 @@ export class FuseScrumboardBoardListComponent implements OnInit, OnDestroy
     onDrop(ev)
     {
         this.scrumboardService.updateBoard();
-    }
-
-    ngOnDestroy()
-    {
-        this.onBoardChanged.unsubscribe();
     }
 }

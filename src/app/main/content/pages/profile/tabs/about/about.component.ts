@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { ProfileService } from '../../profile.service';
-import { fuseAnimations } from '../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-profile-about',
@@ -8,7 +10,7 @@ import { fuseAnimations } from '../../../../../../core/animations';
     styleUrls  : ['./about.component.scss'],
     animations : fuseAnimations
 })
-export class FuseProfileAboutComponent implements OnInit
+export class FuseProfileAboutComponent
 {
     about: any;
 
@@ -17,10 +19,5 @@ export class FuseProfileAboutComponent implements OnInit
         this.profileService.aboutOnChanged.subscribe(about => {
             this.about = about;
         });
-    }
-
-    ngOnInit()
-    {
-
     }
 }

@@ -1,36 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../core/modules/shared.module';
+import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseNavigationModule } from '@fuse/components/navigation/navigation.module';
+import { FuseThemeOptionsComponent } from '@fuse/components/theme-options/theme-options.component';
+import { FuseShortcutsModule } from '@fuse/components/shortcuts/shortcuts.module';
+import { FuseSearchBarModule } from '@fuse/components/search-bar/search-bar.module';
 
 import { FuseMainComponent } from './main.component';
 import { FuseContentComponent } from './content/content.component';
 import { FuseFooterComponent } from './footer/footer.component';
-import { FuseNavbarVerticalComponent } from './navbar/vertical/navbar-vertical.component';
+import { FuseNavbarComponent } from './navbar/navbar.component';
 import { FuseToolbarComponent } from './toolbar/toolbar.component';
-import { FuseNavigationModule } from '../core/components/navigation/navigation.module';
-import { FuseNavbarVerticalToggleDirective } from './navbar/vertical/navbar-vertical-toggle.directive';
-import { FuseNavbarHorizontalComponent } from './navbar/horizontal/navbar-horizontal.component';
 import { FuseQuickPanelComponent } from './quick-panel/quick-panel.component';
-import { FuseThemeOptionsComponent } from '../core/components/theme-options/theme-options.component';
-import { FuseShortcutsModule } from '../core/components/shortcuts/shortcuts.module';
-import { FuseSearchBarModule } from '../core/components/search-bar/search-bar.module';
+
+import { FuseSidebarModule } from '@fuse/components/sidebar/sidebar.module';
 
 @NgModule({
     declarations: [
         FuseContentComponent,
         FuseFooterComponent,
         FuseMainComponent,
-        FuseNavbarVerticalComponent,
-        FuseNavbarHorizontalComponent,
+        FuseNavbarComponent,
         FuseToolbarComponent,
-        FuseNavbarVerticalToggleDirective,
         FuseThemeOptionsComponent,
         FuseQuickPanelComponent
     ],
     imports     : [
         SharedModule,
         RouterModule,
+        FuseSidebarModule,
         FuseNavigationModule,
         FuseShortcutsModule,
         FuseSearchBarModule

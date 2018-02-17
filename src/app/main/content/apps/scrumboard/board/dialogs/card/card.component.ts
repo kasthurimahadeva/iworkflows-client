@@ -1,10 +1,12 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { NgForm } from '@angular/forms/src/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatMenuTrigger } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
+
+import { FuseUtils } from '@fuse/fuseUtils';
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+
 import { ScrumboardService } from '../../../scrumboard.service';
-import { NgForm } from '@angular/forms/src/forms';
-import { FuseUtils } from '../../../../../../../core/fuseUtils';
-import { FuseConfirmDialogComponent } from '../../../../../../../core/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector     : 'fuse-scrumboard-board-card-dialog',

@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { ContactsService } from './contacts.service';
-import { fuseAnimations } from '../../../../core/animations';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
-import { MatDialog } from '@angular/material';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { Subscription } from 'rxjs/Subscription';
+import { MatDialog } from '@angular/material';
+
+import { fuseAnimations } from '@fuse/animations';
+
+import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
+import { ContactsService } from './contacts.service';
 
 @Component({
     selector     : 'fuse-contacts',

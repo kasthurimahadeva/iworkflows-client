@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { ProfileService } from '../../profile.service';
-import { fuseAnimations } from '../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-profile-timeline',
@@ -8,7 +10,7 @@ import { fuseAnimations } from '../../../../../../core/animations';
     styleUrls  : ['./timeline.component.scss'],
     animations : fuseAnimations
 })
-export class FuseProfileTimelineComponent implements OnInit
+export class FuseProfileTimelineComponent
 {
     timeline: any;
 
@@ -17,10 +19,5 @@ export class FuseProfileTimelineComponent implements OnInit
         this.profileService.timelineOnChanged.subscribe(timeline => {
             this.timeline = timeline;
         });
-    }
-
-    ngOnInit()
-    {
-
     }
 }

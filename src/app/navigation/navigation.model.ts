@@ -1,4 +1,4 @@
-import { FuseNavigationModelInterface } from '../core/components/navigation/navigation.model';
+import { FuseNavigationModelInterface } from '@fuse/components/navigation/navigation.model';
 
 export class FuseNavigationModel implements FuseNavigationModelInterface
 {
@@ -911,4 +911,3 @@ export class FuseNavigationModel implements FuseNavigationModelInterface
         ];
     }
 }
-

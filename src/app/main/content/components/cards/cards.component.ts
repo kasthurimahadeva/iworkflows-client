@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as shape from 'd3-shape';
-import { fuseAnimations } from '../../../../core/animations';
+
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
     selector   : 'fuse-cards-docs',

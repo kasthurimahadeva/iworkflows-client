@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { EcommerceProductService } from './product.service';
-import { fuseAnimations } from '../../../../../core/animations';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -8,10 +9,12 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
+
+import { fuseAnimations } from '@fuse/animations';
+import { FuseUtils } from '@fuse/fuseUtils';
+
 import { Product } from './product.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { FuseUtils } from '../../../../../core/fuseUtils';
-import { MatSnackBar } from '@angular/material';
+import { EcommerceProductService } from './product.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -35,7 +38,6 @@ export class FuseEcommerceProductComponent implements OnInit, OnDestroy
         private location: Location
     )
     {
-
     }
 
     ngOnInit()
@@ -58,7 +60,11 @@ export class FuseEcommerceProductComponent implements OnInit, OnDestroy
 
                     this.productForm = this.createProductForm();
                 });
+    }
 
+    ngOnDestroy()
+    {
+        this.onProductChanged.unsubscribe();
     }
 
     createProductForm()
@@ -123,10 +129,5 @@ export class FuseEcommerceProductComponent implements OnInit, OnDestroy
                 // Change the location with new one
                 this.location.go('apps/e-commerce/products/' + this.product.id + '/' + this.product.handle);
             });
-    }
-
-    ngOnDestroy()
-    {
-        this.onProductChanged.unsubscribe();
     }
 }

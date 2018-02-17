@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
 
 import { ProfileService } from '../../profile.service';
-import { fuseAnimations } from '../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-profile-photos-videos',
@@ -9,7 +10,7 @@ import { fuseAnimations } from '../../../../../../core/animations';
     styleUrls  : ['./photos-videos.component.scss'],
     animations : fuseAnimations
 })
-export class FuseProfilePhotosVideosComponent implements OnInit
+export class FuseProfilePhotosVideosComponent
 {
     photosVideos: any;
 
@@ -18,10 +19,5 @@ export class FuseProfilePhotosVideosComponent implements OnInit
         this.profileService.photosVideosOnChanged.subscribe(photosVideos => {
             this.photosVideos = photosVideos;
         });
-    }
-
-    ngOnInit()
-    {
-
     }
 }

@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Mail } from '../mail.model';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { Mail } from '../mail.model';
 import { MailNgrxService } from '../mail.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { MailNgrxService } from '../mail.service';
     styleUrls      : ['./mail-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxListComponent implements OnInit, OnDestroy
+export class FuseMailNgrxListComponent
 {
     @Input() mails: Mail[];
     @Input() currentMail: Mail[];
@@ -19,10 +20,6 @@ export class FuseMailNgrxListComponent implements OnInit, OnDestroy
         private mailService: MailNgrxService,
         private router: Router
     )
-    {
-    }
-
-    ngOnInit()
     {
     }
 
@@ -48,9 +45,5 @@ export class FuseMailNgrxListComponent implements OnInit, OnDestroy
         {
             this.router.navigate(['apps/mail-ngrx/' + folderHandle + '/' + mailId]);
         }
-    }
-
-    ngOnDestroy()
-    {
     }
 }

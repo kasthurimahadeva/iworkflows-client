@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MailService } from './mail.service';
-import { Subscription } from 'rxjs/Subscription';
 import { FormControl } from '@angular/forms';
-import { Mail } from './mail.model';
-import { FuseTranslationLoaderService } from '../../../../core/services/translation-loader.service';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+
+import { Mail } from './mail.model';
+import { MailService } from './mail.service';
 import { locale as english } from './i18n/en';
 import { locale as turkish } from './i18n/tr';
 

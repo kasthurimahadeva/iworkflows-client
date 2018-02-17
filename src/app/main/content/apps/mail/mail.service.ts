@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Mail } from './mail.model';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+
+import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { FuseUtils } from '../../../../core/fuseUtils';
+
+import { FuseUtils } from '@fuse/fuseUtils';
+
+import { Mail } from './mail.model';
 
 @Injectable()
 export class MailService implements Resolve<any>

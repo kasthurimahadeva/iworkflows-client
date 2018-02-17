@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
 
 import { FuseLoginComponent } from './login.component';
 
@@ -20,8 +21,6 @@ const routes = [
         RouterModule.forChild(routes)
     ]
 })
-
 export class LoginModule
 {
-
 }

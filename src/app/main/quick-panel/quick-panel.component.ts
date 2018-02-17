@@ -22,7 +22,6 @@ export class FuseQuickPanelComponent implements OnInit
             cloud : false,
             retro : true
         };
-
     }
 
     ngOnInit()

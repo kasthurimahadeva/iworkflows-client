@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
 
 import { FuseHelperClassesComponent } from './helper-classes.component';
 import { FuseHelperClassesPaddingMarginComponent } from './tabs/padding-margin/padding-margin.component';

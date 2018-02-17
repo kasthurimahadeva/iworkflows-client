@@ -1,8 +1,9 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Todo } from '../../todo.model';
 import { TodoService } from '../../todo.service';
-import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector     : 'fuse-todo-list-item',

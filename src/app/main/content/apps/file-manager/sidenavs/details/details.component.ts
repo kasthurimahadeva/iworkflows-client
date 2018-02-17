@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations/index';
+
 import { FileManagerService } from '../../file-manager.service';
-import { fuseAnimations } from '../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-file-manager-details-sidenav',

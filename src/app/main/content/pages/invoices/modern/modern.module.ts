@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { FuseInvoiceModernComponent } from './modern.component';
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { InvoiceService } from '../invoice.service';
+import { FuseInvoiceModernComponent } from './modern.component';
 
 const routes = [
     {
@@ -27,8 +28,6 @@ const routes = [
         InvoiceService
     ]
 })
-
 export class InvoiceModernModule
 {
-
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import { SearchService } from '../../search.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { SearchService } from '../../search.service';
     templateUrl: './classic.component.html',
     styleUrls  : ['./classic.component.scss']
 })
-export class FuseSearchClassicComponent implements OnInit
+export class FuseSearchClassicComponent
 {
     classic: any;
 
@@ -15,10 +16,5 @@ export class FuseSearchClassicComponent implements OnInit
         this.searchService.classicOnChanged.subscribe(classic => {
             this.classic = classic;
         });
-    }
-
-    ngOnInit()
-    {
-
     }
 }

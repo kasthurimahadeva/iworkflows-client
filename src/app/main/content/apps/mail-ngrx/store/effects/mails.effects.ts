@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map, mergeMap, exhaustMap, withLatestFrom } from 'rxjs/operators';
 import 'rxjs/add/operator/debounceTime';
-import { getRouterState, State } from '../../../../../../store/reducers';
+import { getRouterState, State } from 'app/store/reducers';
 import { getMailsState } from '../selectors';
 import * as MailsActions from '../actions/mails.actions';
 import * as fromRoot from '../../../../../../store';

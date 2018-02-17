@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Todo } from '../todo.model';
-import { ActivatedRoute } from '@angular/router';
-import { TodoService } from '../todo.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { fuseAnimations } from '../../../../../core/animations';
+
+import { fuseAnimations } from '@fuse/animations';
+
+import { Todo } from '../todo.model';
+import { TodoService } from '../todo.service';
 
 @Component({
     selector   : 'fuse-todo-list',
@@ -88,6 +90,6 @@ export class FuseTodoListComponent implements OnInit, OnDestroy
 
     onDrop(ev)
     {
-        this.todoService.updateTodos(this.todos);
+
     }
 }

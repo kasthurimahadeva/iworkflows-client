@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Mail } from '../mail.model';
-import { ActivatedRoute } from '@angular/router';
-import { MailService } from '../mail.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { fuseAnimations } from '../../../../../core/animations';
+
+import { fuseAnimations } from '@fuse/animations';
+
+import { Mail } from '../mail.model';
+import { MailService } from '../mail.service';
 
 @Component({
     selector   : 'fuse-mail-list',

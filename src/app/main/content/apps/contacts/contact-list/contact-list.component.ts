@@ -1,13 +1,15 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ContactsService } from '../contacts.service';
-import { Observable } from 'rxjs/Observable';
-import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { FuseConfirmDialogComponent } from '../../../../../core/components/confirm-dialog/confirm-dialog.component';
 import { FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
-import { fuseAnimations } from '../../../../../core/animations';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+
+import { fuseAnimations } from '@fuse/animations';
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+
+import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
+import { ContactsService } from '../contacts.service';
 
 @Component({
     selector     : 'fuse-contacts-contact-list',

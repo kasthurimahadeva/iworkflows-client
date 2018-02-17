@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { fuseAnimations } from '../../../../core/animations';
+import { Component, ViewEncapsulation } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
     selector     : 'fuse-profile',
@@ -8,15 +9,10 @@ import { fuseAnimations } from '../../../../core/animations';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseProfileComponent implements OnInit
+export class FuseProfileComponent
 {
 
     constructor()
-    {
-
-    }
-
-    ngOnInit()
     {
 
     }

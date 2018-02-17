@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FuseConfigService } from '../../../../../core/services/config.service';
-import { fuseAnimations } from '../../../../../core/animations';
+
+import { FuseConfigService } from '@fuse/services/config.service';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
     selector   : 'fuse-reset-password',
@@ -19,7 +20,7 @@ export class FuseResetPasswordComponent implements OnInit
         private formBuilder: FormBuilder
     )
     {
-        this.fuseConfig.setSettings({
+        this.fuseConfig.setConfig({
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',

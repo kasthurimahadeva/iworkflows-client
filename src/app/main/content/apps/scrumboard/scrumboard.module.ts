@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { FuseScrumboardComponent } from './scrumboard.component';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { BoardResolve, ScrumboardService } from './scrumboard.service';
+import { FuseScrumboardComponent } from './scrumboard.component';
 import { FuseScrumboardBoardComponent } from './board/board.component';
 import { FuseScrumboardBoardListComponent } from './board/list/list.component';
 import { FuseScrumboardBoardCardComponent } from './board/list/card/card.component';

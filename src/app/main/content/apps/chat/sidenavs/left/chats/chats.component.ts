@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatService } from '../../../chat.service';
 import { ObservableMedia } from '@angular/flex-layout';
-import { fuseAnimations } from '../../../../../../../core/animations';
-import { FuseMatSidenavHelperService } from '../../../../../../../core/directives/fuse-mat-sidenav-helper/fuse-mat-sidenav-helper.service';
+
+import { fuseAnimations } from '@fuse/animations';
+import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav-helper/fuse-mat-sidenav-helper.service';
+
+import { ChatService } from '../../../chat.service';
 
 @Component({
     selector   : 'fuse-chat-chats-sidenav',

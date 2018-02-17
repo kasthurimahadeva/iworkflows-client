@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { FileManagerService } from './file-manager.service';
-import { fuseAnimations } from '../../../../core/animations';
 
 @Component({
     selector     : 'fuse-file-manager',
@@ -11,7 +13,6 @@ import { fuseAnimations } from '../../../../core/animations';
 })
 export class FuseFileManagerComponent implements OnInit
 {
-
     selected: any;
     pathArr: string[];
 
@@ -26,5 +27,4 @@ export class FuseFileManagerComponent implements OnInit
             this.pathArr = selected.location.split('>');
         });
     }
-
 }

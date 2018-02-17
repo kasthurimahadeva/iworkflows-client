@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { ChatService } from './chat.service';
-import { fuseAnimations } from '../../../../core/animations';
 
 @Component({
     selector     : 'fuse-chat',

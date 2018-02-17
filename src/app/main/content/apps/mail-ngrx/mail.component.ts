@@ -1,16 +1,18 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { MailNgrxService } from './mail.service';
 import { FormControl } from '@angular/forms';
-import { Mail } from './mail.model';
-import { FuseTranslationLoaderService } from '../../../../core/services/translation-loader.service';
-import { locale as english } from './i18n/en';
-import { locale as turkish } from './i18n/tr';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import { FuseConfigService } from '@fuse/services/config.service';
+
+import { MailNgrxService } from './mail.service';
+import { Mail } from './mail.model';
 import * as fromStore from './store';
-import { FuseConfigService } from '../../../../core/services/config.service';
+import { locale as english } from './i18n/en';
+import { locale as turkish } from './i18n/tr';
 
 @Component({
     selector       : 'fuse-mail',
@@ -51,8 +53,8 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
         this.mails = [];
         this.selectedMailIds = [];
 
-        this.configService.setSettings({
-           routerAnimation: 'none'
+        this.configService.setConfig({
+            routerAnimation: 'none'
         });
     }
 
@@ -80,6 +82,11 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
             .subscribe(searchText => {
                 this.store.dispatch(new fromStore.SetSearchText(searchText));
             });
+    }
+
+    ngOnDestroy()
+    {
+        this.cd.detach();
     }
 
     toggleSelectAll(ev)
@@ -132,10 +139,5 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
     refresh()
     {
         this.cd.markForCheck();
-    }
-
-    ngOnDestroy()
-    {
-        this.cd.detach();
     }
 }

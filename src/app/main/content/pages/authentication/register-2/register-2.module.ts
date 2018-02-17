@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from 'app/core/modules/shared.module';
 import { RouterModule } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
 
 import { FuseRegister2Component } from './register-2.component';
 
@@ -20,8 +21,6 @@ const routes = [
         RouterModule.forChild(routes)
     ]
 })
-
 export class Register2Module
 {
-
 }

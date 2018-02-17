@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { ScrumboardService } from '../../../scrumboard.service';
-import { fuseAnimations } from '../../../../../../../core/animations';
 
 @Component({
     selector   : 'fuse-scrumboard-board-settings',
@@ -30,6 +32,11 @@ export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit, OnDe
                 });
     }
 
+    ngOnDestroy()
+    {
+        this.onBoardChanged.unsubscribe();
+    }
+    
     toggleCardCover()
     {
         this.board.settings.cardCoverImages = !this.board.settings.cardCoverImages;
@@ -40,10 +47,5 @@ export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit, OnDe
     {
         this.board.settings.subscribed = !this.board.settings.subscribed;
         this.scrumboardService.updateBoard();
-    }
-
-    ngOnDestroy()
-    {
-        this.onBoardChanged.unsubscribe();
     }
 }

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
+import { MailService } from './mail.service';
 import { FuseMailComponent } from './mail.component';
 import { FuseMailMainSidenavComponent } from './sidenavs/main/main-sidenav.component';
 import { FuseMailListItemComponent } from './mail-list/mail-list-item/mail-list-item.component';
 import { FuseMailListComponent } from './mail-list/mail-list.component';
 import { FuseMailDetailsComponent } from './mail-details/mail-details.component';
-import { MailService } from './mail.service';
 import { FuseMailComposeDialogComponent } from './dialogs/compose/compose.component';
 
 const routes: Routes = [

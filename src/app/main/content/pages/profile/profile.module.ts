@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule } from '@angular/router';
 
+import { SharedModule } from '@fuse/modules/shared.module';
+
+import { ProfileService } from './profile.service';
 import { FuseProfileComponent } from './profile.component';
 import { FuseProfileTimelineComponent } from './tabs/timeline/timeline.component';
 import { FuseProfileAboutComponent } from './tabs/about/about.component';
 import { FuseProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos.component';
-import { ProfileService } from './profile.service';
 
 const routes = [
     {

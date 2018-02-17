@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../../core/modules/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+
+import { SharedModule } from '@fuse/modules/shared.module';
+
 import { FuseChatComponent } from './chat.component';
 import { ChatService } from './chat.service';
 import { FuseChatViewComponent } from './chat-view/chat-view.component';

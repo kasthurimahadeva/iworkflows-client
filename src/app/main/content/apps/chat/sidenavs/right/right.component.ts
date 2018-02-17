@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { fuseAnimations } from '../../../../../../core/animations';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { ChatService } from '../../chat.service';
 
 @Component({

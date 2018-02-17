@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ScrumboardService } from './scrumboard.service';
-import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+
+import { fuseAnimations } from '@fuse/animations';
+
 import { Board } from './board.model';
-import { fuseAnimations } from '../../../../core/animations';
+import { ScrumboardService } from './scrumboard.service';
 
 @Component({
     selector   : 'fuse-scrumboard',
@@ -21,7 +23,6 @@ export class FuseScrumboardComponent implements OnInit, OnDestroy
         private scrumboardService: ScrumboardService
     )
     {
-
     }
 
     ngOnInit()
@@ -31,7 +32,11 @@ export class FuseScrumboardComponent implements OnInit, OnDestroy
                 .subscribe(boards => {
                     this.boards = boards;
                 });
+    }
 
+    ngOnDestroy()
+    {
+        this.onBoardsChanged.unsubscribe();
     }
 
     newBoard()
@@ -40,10 +45,5 @@ export class FuseScrumboardComponent implements OnInit, OnDestroy
         this.scrumboardService.createNewBoard(newBoard).then(() => {
             this.router.navigate(['/apps/scrumboard/boards/' + newBoard.id + '/' + newBoard.uri]);
         });
-    }
-
-    ngOnDestroy()
-    {
-        this.onBoardsChanged.unsubscribe();
     }
 }

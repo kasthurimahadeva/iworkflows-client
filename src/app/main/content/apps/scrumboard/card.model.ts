@@ -1,4 +1,4 @@
-import { FuseUtils } from '../../../../core/fuseUtils';
+import { FuseUtils } from '@fuse/fuseUtils';
 
 export class Card
 {
