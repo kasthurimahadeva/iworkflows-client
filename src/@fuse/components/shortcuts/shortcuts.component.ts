@@ -6,6 +6,8 @@ import { FuseMatchMedia } from '../../services/match-media.service';
 import { FuseConfigService } from '../../services/config.service';
 import { CookieService } from 'ngx-cookie-service';
 
+import { navigation } from 'app/navigation/navigation';
+
 @Component({
     selector   : 'fuse-shortcuts',
     templateUrl: './shortcuts.component.html',
@@ -34,7 +36,7 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
         private cookieService: CookieService
     )
     {
-        this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation();
+        this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation(navigation);
 
         this.onConfigChanged =
             this.fuseConfig.onConfigChanged

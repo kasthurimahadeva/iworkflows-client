@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { FuseConfigService } from '../../services/config.service';
 import { fuseAnimations } from '../../animations/index';
 import { FuseNavigationService } from '../navigation/navigation.service';
+import { navigation } from 'app/navigation/navigation';
 
 @Component({
     selector   : 'fuse-theme-options',
@@ -43,9 +44,9 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 
         // Get the nav model and add customize nav item
         // that opens the bar programmatically
-        const navModel = this.navigationService.getNavigationModel();
+        const nav: any = navigation;
 
-        navModel.push({
+        nav.push({
             'id'      : 'custom-function',
             'title'   : 'Custom Function',
             'type'    : 'group',

@@ -40,7 +40,7 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         );
 
         // Listen for collapsing of any navigation item
-        this.navigationService.onNavCollapseToggled
+        this.navigationService.onItemCollapsed
             .subscribe(
                 (clickedItem) => {
                     if ( clickedItem && clickedItem.children )
@@ -95,8 +95,8 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         this.isOpen = !this.isOpen;
 
         // Navigation collapse toggled...
-        this.navigationService.onNavCollapseToggled.emit(this.item);
-        this.navigationService.onNavCollapseToggle.emit();
+        this.navigationService.onItemCollapsed.next(this.item);
+        this.navigationService.onItemCollapseToggled.next();
     }
 
     /**
@@ -110,7 +110,7 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         }
 
         this.isOpen = true;
-        this.navigationService.onNavCollapseToggle.emit();
+        this.navigationService.onItemCollapseToggled.next();
     }
 
     /**
@@ -124,7 +124,7 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         }
 
         this.isOpen = false;
-        this.navigationService.onNavCollapseToggle.emit();
+        this.navigationService.onItemCollapseToggled.next();
     }
 
     /**

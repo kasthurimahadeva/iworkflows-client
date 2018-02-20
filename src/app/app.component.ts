@@ -5,7 +5,6 @@ import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
-import { FuseNavigationModel } from './navigation/navigation.model';
 import { locale as navigationEnglish } from './navigation/i18n/en';
 import { locale as navigationTurkish } from './navigation/i18n/tr';
 
@@ -31,9 +30,6 @@ export class AppComponent
 
         // Use a language
         this.translate.use('en');
-
-        // Set the navigation model
-        this.fuseNavigationService.setNavigationModel(new FuseNavigationModel());
 
         // Set the navigation translations
         this.translationLoader.loadTranslations(navigationEnglish, navigationTurkish);

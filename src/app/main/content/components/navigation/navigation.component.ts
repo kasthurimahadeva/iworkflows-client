@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
+import { navigation } from 'app/navigation/navigation';
 
 @Component({
     selector   : 'fuse-navigation-docs',
@@ -9,15 +9,28 @@ import { FuseNavigationService } from '@fuse/components/navigation/navigation.se
 })
 export class FuseNavigationDocsComponent
 {
-    constructor(private navigationService: FuseNavigationService)
-    {
+    navigation: any;
+    hidden = false;
 
+    constructor()
+    {
+        this.navigation = navigation;
+    }
+
+    showHideCalendarMenuItem()
+    {
+        // Get the calendar item from the navigation
+        const calendarNavItem = this.navigation[0].children[1];
+
+        // Toggle the visibility
+        this.hidden = !this.hidden;
+        calendarNavItem.hidden = this.hidden;
     }
 
     updateMailBadge()
     {
         // Get the mail nav item
-        const mailNavItem = this.navigationService.getNavigationItem('applications.mail');
+        const mailNavItem = this.navigation[0].children[4];
 
         // Update the badge title
         mailNavItem.badge.title = 35;
@@ -33,8 +46,17 @@ export class FuseNavigationDocsComponent
             url  : '/apps/calendar'
         };
 
-        // Add the new nav item
-        this.navigationService.addNavigationItem('applications.calendar', newNavItem);
+        // Get the calendar item from the navigation
+        const calendarNavItem = this.navigation[0].children[1];
+
+        // Make the calendar navigation item collapsable
+        calendarNavItem.type = 'collapse';
+
+        // Create an empty children array
+        calendarNavItem.children = [];
+
+        // Push the new children
+        calendarNavItem.children.push(newNavItem);
     }
 
     addNavItemWithCustomFunction()
@@ -50,7 +72,7 @@ export class FuseNavigationDocsComponent
         };
 
         // Get the applications nav item
-        const applicationsNavItem = this.navigationService.getNavigationItem('applications');
+        const applicationsNavItem = this.navigation[0];
 
         // Add the new nav item at the beginning of the applications
         applicationsNavItem.children.unshift(newNavItem);
