@@ -5,15 +5,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import 'hammerjs';
-import { SharedModule } from '@fuse/modules/shared.module';
+
+import { FuseModule } from '@fuse/fuse.module';
+import { FuseSharedModule } from '@fuse/shared.module';
+
+// import { SharedModule } from 'app/shared/shared.module';
+import { config } from './config';
+
 import { AppComponent } from './app.component';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppStoreModule } from './store/store.module';
-
-import { FuseModule } from '@fuse/fuse.module';
-import { config } from './config';
 
 const appRoutes: Routes = [
     {
@@ -61,10 +64,11 @@ const appRoutes: Routes = [
             passThruUnknownUrl: true
         }),
 
-        SharedModule,
+        // SharedModule,
 
-        // Fuse Module
+        // Fuse Main and Shared modules
         FuseModule.forRoot(config),
+        FuseSharedModule,
 
         AppStoreModule,
         FuseMainModule

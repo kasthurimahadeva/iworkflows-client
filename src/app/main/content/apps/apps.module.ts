@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { FuseAngularMaterialModule } from '../components/angular-material/angular-material.module';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 const routes = [
     {
@@ -58,7 +58,7 @@ const routes = [
 
 @NgModule({
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes),
         FuseAngularMaterialModule
     ],

@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { MatColors } from '../../matColors';
-import { fuseAnimations } from '../../animations/index';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
+
+import { fuseAnimations } from '@fuse/animations';
+import { MatColors } from '@fuse/mat-colors';
 
 @Component({
     selector     : 'fuse-material-color-picker',
@@ -9,7 +10,7 @@ import { fuseAnimations } from '../../animations/index';
     animations   : fuseAnimations,
     encapsulation: ViewEncapsulation.None
 })
-export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
+export class FuseMaterialColorPickerComponent implements OnChanges
 {
     colors: any;
     selectedColor: any;
@@ -91,11 +92,21 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
         this.hues = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', 'A100', 'A200', 'A400', 'A700'];
     }
 
-    ngOnInit()
+    ngOnChanges(changes: any)
     {
-
+        if ( changes.selectedBg && changes.selectedBg.currentValue === '' ||
+            changes.selectedClass && changes.selectedClass.currentValue === '' ||
+            changes.selectedPalette && changes.selectedPalette.currentValue === '' )
+        {
+            this.removeColor();
+            return;
+        }
+        if ( changes.selectedPalette || changes.selectedHue || changes.selectedClass || changes.selectedBg )
+        {
+            this.updateSelectedColor();
+        }
     }
-
+    
     selectPalette(palette)
     {
         this.selectedPalette = palette;
@@ -170,21 +181,6 @@ export class FuseMaterialColorPickerComponent implements OnInit, OnChanges
         else
         {
             this.view = 'hues';
-        }
-    }
-
-    ngOnChanges(changes: any)
-    {
-        if ( changes.selectedBg && changes.selectedBg.currentValue === '' ||
-            changes.selectedClass && changes.selectedClass.currentValue === '' ||
-            changes.selectedPalette && changes.selectedPalette.currentValue === '' )
-        {
-            this.removeColor();
-            return;
-        }
-        if ( changes.selectedPalette || changes.selectedHue || changes.selectedClass || changes.selectedBg )
-        {
-            this.updateSelectedColor();
         }
     }
 }

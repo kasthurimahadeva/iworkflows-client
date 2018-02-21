@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class FuseMatchMedia
+export class FuseMatchMediaService
 {
     activeMediaQuery: string;
     onMediaChange: BehaviorSubject<string> = new BehaviorSubject<string>('');

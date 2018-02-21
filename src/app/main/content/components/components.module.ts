@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
 import { FuseAngularMaterialModule } from './angular-material/angular-material.module';
@@ -57,7 +57,7 @@ const routes = [
 
 @NgModule({
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes),
         FuseWidgetModule,
         FuseAngularMaterialModule,

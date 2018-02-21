@@ -9,7 +9,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class CopierService
+export class FuseCopierService
 {
 
     private textarea: HTMLTextAreaElement;

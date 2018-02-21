@@ -6,8 +6,8 @@ import 'prismjs/components/prism-typescript';
 
 import { EXAMPLE_COMPONENTS } from '../example-components';
 
-import { CopierService } from '@fuse/components/copier/copier.service';
 import { fuseAnimations } from '@fuse/animations';
+import { FuseCopierService } from '@fuse/services/copier.service';
 
 export interface LiveExample
 {
@@ -21,7 +21,6 @@ export interface LiveExample
     selector     : 'fuse-example-viewer',
     templateUrl  : './example-viewer.html',
     styleUrls    : ['./example-viewer.scss'],
-    providers    : [CopierService],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
@@ -51,7 +50,7 @@ export class FuseExampleViewerComponent implements AfterViewInit, OnDestroy
 
     constructor(
         private snackbar: MatSnackBar,
-        private copier: CopierService,
+        private copier: FuseCopierService,
         private _resolver: ComponentFactoryResolver
     )
     {

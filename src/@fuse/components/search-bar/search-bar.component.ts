@@ -1,13 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FuseConfigService } from '../../services/config.service';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+
+import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
     selector   : 'fuse-search-bar',
     templateUrl: './search-bar.component.html',
     styleUrls  : ['./search-bar.component.scss']
 })
-export class FuseSearchBarComponent implements OnInit
+export class FuseSearchBarComponent
 {
     collapsed: boolean;
     toolbarColor: string;
@@ -26,11 +27,6 @@ export class FuseSearchBarComponent implements OnInit
                         this.toolbarColor = newSettings.colorClasses.toolbar;
                     }
                 );
-    }
-
-    ngOnInit()
-    {
-
     }
 
     collapse()

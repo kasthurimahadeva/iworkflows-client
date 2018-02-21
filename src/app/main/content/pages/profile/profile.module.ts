@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { ProfileService } from './profile.service';
 import { FuseProfileComponent } from './profile.component';
@@ -27,7 +27,7 @@ const routes = [
         FuseProfilePhotosVideosComponent
     ],
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     providers   : [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseNgxDatatableComponent } from './datatable/ngx-datatable.component';
 import { GoogleMapsModule } from './google-maps/google-maps.module';
@@ -15,7 +15,7 @@ const routes = [
 
 @NgModule({
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes),
         GoogleMapsModule
     ],

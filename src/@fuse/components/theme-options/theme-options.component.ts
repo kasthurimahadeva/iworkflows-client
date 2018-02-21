@@ -1,10 +1,13 @@
 import { Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-import { FuseConfigService } from '../../services/config.service';
-import { fuseAnimations } from '../../animations/index';
-import { FuseNavigationService } from '../navigation/navigation.service';
+
+import { fuseAnimations } from '@fuse/animations';
+import { FuseConfigService } from '@fuse/services/config.service';
+import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
+
 import { navigation } from 'app/navigation/navigation';
+
 
 @Component({
     selector   : 'fuse-theme-options',
@@ -71,6 +74,11 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         });
     }
 
+    ngOnDestroy()
+    {
+        this.onConfigChanged.unsubscribe();
+    }
+
     onSettingsChange()
     {
         this.fuseConfig.setConfig(this.config);
@@ -104,10 +112,5 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                 ]).create(this.panel.nativeElement);
 
         this.player.play();
-    }
-
-    ngOnDestroy()
-    {
-        this.onConfigChanged.unsubscribe();
     }
 }

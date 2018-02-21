@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { TodoService } from './todo.service';
 import { FuseTodoComponent } from './todo.component';
@@ -68,7 +68,7 @@ const routes: Routes = [
         FuseTodoDetailsComponent
     ],
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     providers   : [

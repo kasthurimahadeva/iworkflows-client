@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../../modules/shared.module';
+import { MatIconModule } from '@angular/material';
+
 import { FuseSearchBarComponent } from './search-bar.component';
 
 @NgModule({
@@ -9,8 +11,10 @@ import { FuseSearchBarComponent } from './search-bar.component';
         FuseSearchBarComponent
     ],
     imports     : [
-        SharedModule,
-        RouterModule
+        CommonModule,
+        RouterModule,
+
+        MatIconModule
     ],
     exports     : [
         FuseSearchBarComponent

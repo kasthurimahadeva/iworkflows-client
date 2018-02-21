@@ -2,8 +2,9 @@ import { Directive, Input, OnInit, HostListener, OnDestroy, HostBinding } from '
 import { MatSidenav } from '@angular/material';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
-import { FuseMatchMedia } from '../../services/match-media.service';
-import { FuseMatSidenavHelperService } from './fuse-mat-sidenav-helper.service';
+
+import { FuseMatchMediaService } from '@fuse/services/match-media.service';
+import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav/fuse-mat-sidenav.service';
 
 @Directive({
     selector: '[fuseMatSidenavHelper]'
@@ -19,7 +20,7 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
 
     constructor(
         private fuseMatSidenavService: FuseMatSidenavHelperService,
-        private fuseMatchMedia: FuseMatchMedia,
+        private fuseMatchMedia: FuseMatchMediaService,
         private observableMedia: ObservableMedia,
         private matSidenav: MatSidenav
     )

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { FuseUtils } from '@fuse/fuseUtils';
+import { FuseUtils } from '@fuse/utils';
 
 @Injectable()
 export class ChatService implements Resolve<any>

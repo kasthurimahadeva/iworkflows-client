@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { FuseUtils } from '@fuse/fuseUtils';
+import { FuseUtils } from '@fuse/utils';
 import { fuseAnimations } from '@fuse/animations';
 
 import { Todo } from '../todo.model';

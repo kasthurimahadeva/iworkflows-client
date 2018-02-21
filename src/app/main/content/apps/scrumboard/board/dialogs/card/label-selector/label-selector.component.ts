@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { FuseUtils } from '@fuse/fuseUtils';
 import { fuseAnimations } from '@fuse/animations';
+import { FuseUtils } from '@fuse/utils';
 
 import { ScrumboardService } from '../../../../scrumboard.service';
 

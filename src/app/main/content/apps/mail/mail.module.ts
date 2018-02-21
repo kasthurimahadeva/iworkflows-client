@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { MailService } from './mail.service';
 import { FuseMailComponent } from './mail.component';
@@ -70,7 +70,7 @@ const routes: Routes = [
         FuseMailComposeDialogComponent
     ],
     imports        : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     providers      : [

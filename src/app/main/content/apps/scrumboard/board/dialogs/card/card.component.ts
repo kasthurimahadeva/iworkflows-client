@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms/src/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatMenuTrigger } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
-import { FuseUtils } from '@fuse/fuseUtils';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+import { FuseUtils } from '@fuse/utils';
 
 import { ScrumboardService } from '../../../scrumboard.service';
 

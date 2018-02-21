@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { BoardResolve, ScrumboardService } from './scrumboard.service';
 import { FuseScrumboardComponent } from './scrumboard.component';
@@ -54,7 +54,7 @@ const routes: Routes = [
         FuseScrumboardBoardColorSelectorComponent
     ],
     imports        : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     providers      : [

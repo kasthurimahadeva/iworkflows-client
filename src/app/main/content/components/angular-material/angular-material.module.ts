@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
 import { EXAMPLE_LIST } from './example-components';
 import { FuseExampleViewerComponent } from './example-viewer/example-viewer';
 import { FuseAngularMaterialComponent } from './angular-material.component';
+import { MaterialModule } from 'app/main/content/components/angular-material/material.module';
+import { FuseHighlightModule } from '@fuse/components';
 
 const routes: Routes = [
     {
@@ -22,12 +24,11 @@ const routes: Routes = [
 
 @NgModule({
     imports        : [
-        SharedModule,
         RouterModule.forChild(routes),
-        FuseWidgetModule
-    ],
-    exports        : [
-        SharedModule
+        MaterialModule,
+        FuseSharedModule,
+        FuseWidgetModule,
+        FuseHighlightModule
     ],
     entryComponents: EXAMPLE_LIST,
     declarations   : [

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { FuseKnowledgeBaseComponent } from './knowledge-base.component';
@@ -23,7 +23,7 @@ const routes = [
         FuseKnowledgeBaseArticleComponent
     ],
     imports        : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     providers      : [

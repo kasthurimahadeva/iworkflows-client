@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseError404Component } from './error-404.component';
 
@@ -17,7 +17,7 @@ const routes = [
         FuseError404Component
     ],
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ]
 })

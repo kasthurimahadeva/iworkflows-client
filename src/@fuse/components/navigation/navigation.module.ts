@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../modules/shared.module';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatIconModule, MatRippleModule } from '@angular/material';
 
 import { FuseNavigationComponent } from './navigation.component';
 import { FuseNavVerticalItemComponent } from './vertical/nav-item/nav-vertical-item.component';
@@ -11,8 +12,11 @@ import { FuseNavHorizontalCollapseComponent } from './horizontal/nav-collapse/na
 
 @NgModule({
     imports     : [
-        SharedModule,
-        RouterModule
+        CommonModule,
+        RouterModule,
+
+        MatIconModule,
+        MatRippleModule,
     ],
     exports     : [
         FuseNavigationComponent

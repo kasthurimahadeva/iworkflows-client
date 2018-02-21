@@ -11,7 +11,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 
 import { fuseAnimations } from '@fuse/animations';
-import { FuseUtils } from '@fuse/fuseUtils';
+import { FuseUtils } from '@fuse/utils';
 
 import { EcommerceOrdersService } from './orders.service';
 

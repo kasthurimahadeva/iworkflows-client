@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { MatColors } from '@fuse/matColors';
+import { MatColors } from '@fuse/mat-colors';
 
 import { ScrumboardService } from '../../../../scrumboard.service';
 

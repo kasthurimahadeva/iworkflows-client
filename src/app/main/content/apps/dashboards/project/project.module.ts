@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
 import { FuseProjectDashboardComponent } from './project.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
 
 @NgModule({
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes),
         FuseWidgetModule,
         NgxChartsModule

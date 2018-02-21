@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
 
 import { fuseAnimations } from '@fuse/animations';
-import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav-helper/fuse-mat-sidenav-helper.service';
+import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav/fuse-mat-sidenav.service';
 
 import { ChatService } from '../../../chat.service';
 

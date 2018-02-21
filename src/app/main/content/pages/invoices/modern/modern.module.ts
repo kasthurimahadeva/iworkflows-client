@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { InvoiceService } from '../invoice.service';
 import { FuseInvoiceModernComponent } from './modern.component';
@@ -21,7 +21,7 @@ const routes = [
         FuseInvoiceModernComponent
     ],
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     providers   : [

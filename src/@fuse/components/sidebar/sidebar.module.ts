@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { FuseSidebarComponent } from './sidebar.component';
-import { FuseSidebarService } from './sidebar.service';
 
 @NgModule({
     declarations: [
@@ -9,9 +8,6 @@ import { FuseSidebarService } from './sidebar.service';
     ],
     exports     : [
         FuseSidebarComponent
-    ],
-    providers   : [
-        FuseSidebarService
     ]
 })
 export class FuseSidebarModule

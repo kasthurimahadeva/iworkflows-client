@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
+
+import * as moment from 'moment';
 
 @Component({
     selector   : 'fuse-countdown',

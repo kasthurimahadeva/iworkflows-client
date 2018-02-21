@@ -4,7 +4,7 @@ import { ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 
 import { FuseSidebarService } from './sidebar.service';
-import { FuseMatchMedia } from '@fuse/services/match-media.service';
+import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -66,7 +66,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         private elementRef: ElementRef,
         private animationBuilder: AnimationBuilder,
         private sidebarService: FuseSidebarService,
-        private matchMedia: FuseMatchMedia,
+        private matchMedia: FuseMatchMediaService,
         private media: ObservableMedia,
         @Inject(DOCUMENT) private document: any
     )

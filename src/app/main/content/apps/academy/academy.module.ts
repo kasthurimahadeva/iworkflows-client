@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseAcademyCoursesComponent } from './courses/courses.component';
 import { FuseAcademyCourseComponent } from './course/course.component';
@@ -31,7 +31,7 @@ const routes = [
 
 @NgModule({
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

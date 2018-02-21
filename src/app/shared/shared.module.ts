@@ -1,3 +1,4 @@
+/*
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -36,7 +37,6 @@ import { ChartsModule } from 'ng2-charts';
     ],
     imports        : [
         FlexLayoutModule,
-        MaterialModule,
         CommonModule,
         FormsModule,
         FusePipesModule,
@@ -48,7 +48,6 @@ import { ChartsModule } from 'ng2-charts';
     ],
     exports        : [
         FlexLayoutModule,
-        MaterialModule,
         CommonModule,
         FormsModule,
         FuseMatSidenavHelperDirective,
@@ -81,3 +80,4 @@ export class SharedModule
 {
 
 }
+*/

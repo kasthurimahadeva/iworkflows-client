@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseContactsMainSidenavComponent } from './sidenavs/main/main.component';
 import { FuseContactsComponent } from './contacts.component';
@@ -22,7 +22,7 @@ const routes: Routes = [
 
 @NgModule({
     imports        : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     declarations   : [

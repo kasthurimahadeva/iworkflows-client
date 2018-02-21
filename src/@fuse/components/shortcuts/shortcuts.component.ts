@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FuseNavigationService } from '../navigation/navigation.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ObservableMedia } from '@angular/flex-layout';
-import { FuseMatchMedia } from '../../services/match-media.service';
-import { FuseConfigService } from '../../services/config.service';
 import { CookieService } from 'ngx-cookie-service';
+
+import { FuseMatchMediaService } from '@fuse/services/match-media.service';
+import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
+import { FuseConfigService } from '@fuse/services/config.service';
 
 import { navigation } from 'app/navigation/navigation';
 
@@ -30,7 +31,7 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
     constructor(
         private renderer: Renderer2,
         private observableMedia: ObservableMedia,
-        private fuseMatchMedia: FuseMatchMedia,
+        private fuseMatchMedia: FuseMatchMediaService,
         private fuseNavigationService: FuseNavigationService,
         private fuseConfig: FuseConfigService,
         private cookieService: CookieService

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { SearchService } from './search.service';
 import { FuseSearchClassicComponent } from './tabs/classic/classic.component';
@@ -25,7 +25,7 @@ const routes = [
         FuseSearchTableComponent
     ],
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     providers   : [

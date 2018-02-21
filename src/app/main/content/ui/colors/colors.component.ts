@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MatColors } from '@fuse/matColors';
+import { MatColors } from '@fuse/mat-colors';
 
 @Component({
     selector   : 'fuse-colors',

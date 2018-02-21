@@ -2,7 +2,7 @@ import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
-import { MatColors } from '@fuse/matColors';
+import { MatColors } from '@fuse/mat-colors';
 
 import { CalendarEvent } from 'angular-calendar';
 import { CalendarEventModel } from '../event.model';

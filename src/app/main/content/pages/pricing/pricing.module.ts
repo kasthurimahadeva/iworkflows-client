@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FusePricingStyle1Component } from './style-1/style-1.component';
 import { FusePricingStyle2Component } from './style-2/style-2.component';
@@ -29,7 +29,7 @@ const routes = [
         FusePricingStyle3Component
     ],
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ]
 })

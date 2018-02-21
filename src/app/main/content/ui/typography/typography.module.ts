@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SharedModule } from '@fuse/modules/shared.module';
+import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseTypographyComponent } from './typography.component';
 import { FuseTypographyHeadingsComponent } from './tabs/headings/headings.component';
@@ -18,7 +18,7 @@ const routes: Routes = [
 
 @NgModule({
     imports     : [
-        SharedModule,
+        FuseSharedModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

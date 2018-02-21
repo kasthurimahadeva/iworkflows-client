@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { fuseAnimations } from '@fuse/animations';
-import { FuseUtils } from '@fuse/fuseUtils';
+import { FuseUtils } from '@fuse/utils';
 
 import { EcommerceProductsService } from './products.service';
 

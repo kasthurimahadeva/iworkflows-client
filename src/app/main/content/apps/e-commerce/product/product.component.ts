@@ -11,7 +11,7 @@ import 'rxjs/add/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
 import { fuseAnimations } from '@fuse/animations';
-import { FuseUtils } from '@fuse/fuseUtils';
+import { FuseUtils } from '@fuse/utils';
 
 import { Product } from './product.model';
 import { EcommerceProductService } from './product.service';

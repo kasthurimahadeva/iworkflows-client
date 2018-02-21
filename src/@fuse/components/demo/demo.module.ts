@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../modules/shared.module';
 import { RouterModule } from '@angular/router';
+
+import { MatDividerModule, MatListModule } from '@angular/material';
+
 import { FuseDemoContentComponent } from './demo-content/demo-content.component';
 import { FuseDemoSidenavComponent } from './demo-sidenav/demo-sidenav.component';
 
@@ -10,8 +12,10 @@ import { FuseDemoSidenavComponent } from './demo-sidenav/demo-sidenav.component'
         FuseDemoSidenavComponent
     ],
     imports     : [
-        SharedModule,
-        RouterModule
+        RouterModule,
+
+        MatDividerModule,
+        MatListModule
     ],
     exports     : [
         FuseDemoContentComponent,

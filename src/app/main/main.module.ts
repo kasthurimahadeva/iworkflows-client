@@ -1,44 +1,46 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatSidenavModule } from '@angular/material';
 
-import { SharedModule } from '@fuse/modules/shared.module';
-import { FuseNavigationModule } from '@fuse/components/navigation/navigation.module';
-import { FuseThemeOptionsComponent } from '@fuse/components/theme-options/theme-options.component';
-import { FuseShortcutsModule } from '@fuse/components/shortcuts/shortcuts.module';
-import { FuseSearchBarModule } from '@fuse/components/search-bar/search-bar.module';
+import { FuseSharedModule } from '@fuse/shared.module';
+import { FuseNavigationModule, FuseSearchBarModule, FuseShortcutsModule, FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
+
+import { FuseContentModule } from 'app/main/content/content.module';
+import { FuseFooterModule } from 'app/main/footer/footer.module';
+import { FuseNavbarModule } from 'app/main/navbar/navbar.module';
+import { FuseQuickPanelModule } from 'app/main/quick-panel/quick-panel.module';
+import { FuseToolbarModule } from 'app/main/toolbar/toolbar.module';
 
 import { FuseMainComponent } from './main.component';
-import { FuseContentComponent } from './content/content.component';
-import { FuseFooterComponent } from './footer/footer.component';
-import { FuseNavbarComponent } from './navbar/navbar.component';
-import { FuseToolbarComponent } from './toolbar/toolbar.component';
-import { FuseQuickPanelComponent } from './quick-panel/quick-panel.component';
 
-import { FuseSidebarModule } from '@fuse/components/sidebar/sidebar.module';
 
 @NgModule({
     declarations: [
-        FuseContentComponent,
-        FuseFooterComponent,
         FuseMainComponent,
-        FuseNavbarComponent,
-        FuseToolbarComponent,
-        FuseThemeOptionsComponent,
-        FuseQuickPanelComponent
     ],
     imports     : [
-        SharedModule,
         RouterModule,
-        FuseSidebarModule,
+
+        MatSidenavModule,
+
+        FuseSharedModule,
+
+        FuseThemeOptionsModule,
         FuseNavigationModule,
+        FuseSearchBarModule,
         FuseShortcutsModule,
-        FuseSearchBarModule
+        FuseSidebarModule,
+
+        FuseContentModule,
+        FuseFooterModule,
+        FuseNavbarModule,
+        FuseQuickPanelModule,
+        FuseToolbarModule,
     ],
     exports     : [
         FuseMainComponent
     ]
 })
-
 export class FuseMainModule
 {
 }
