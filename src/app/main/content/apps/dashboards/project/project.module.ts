@@ -8,6 +8,7 @@ import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
 import { FuseProjectDashboardComponent } from './project.component';
 import { ProjectDashboardService } from './project.service';
+import { MaterialModule } from '@fuse/modules/material.module';
 
 const routes: Routes = [
     {
@@ -21,8 +22,9 @@ const routes: Routes = [
 
 @NgModule({
     imports     : [
-        FuseSharedModule,
         RouterModule.forChild(routes),
+        FuseSharedModule,
+        MaterialModule,
         FuseWidgetModule,
         NgxChartsModule
     ],

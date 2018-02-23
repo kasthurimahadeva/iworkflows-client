@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatIconModule, MatMenuModule, MatProgressBarModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule, MatToolbarModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
@@ -14,6 +14,7 @@ import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
     imports     : [
         RouterModule,
 
+        MatButtonModule,
         MatIconModule,
         MatMenuModule,
         MatProgressBarModule,

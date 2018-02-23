@@ -1,5 +1,5 @@
 // Default Fuse config
-export const config = {
+export const fuseConfig = {
     layout          : {
         navigation      : 'left', // 'right', 'left', 'top', 'none'
         navigationFolded: false, // true, false

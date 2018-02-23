@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatTooltipModule } from '@angular/material';
 import { CookieService } from 'ngx-cookie-service';
 
 import { FuseShortcutsComponent } from './shortcuts.component';
@@ -17,6 +17,7 @@ import { FuseShortcutsComponent } from './shortcuts.component';
 
         FlexLayoutModule,
 
+        MatButtonModule,
         MatDividerModule,
         MatFormFieldModule,
         MatIconModule,

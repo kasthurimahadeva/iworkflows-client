@@ -10,13 +10,14 @@ import { FuseModule } from '@fuse/fuse.module';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 // import { SharedModule } from 'app/shared/shared.module';
-import { config } from './config';
+import { fuseConfig } from './fuse-config';
 
 import { AppComponent } from './app.component';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppStoreModule } from './store/store.module';
+import { MaterialModule } from '@fuse/modules/material.module';
 
 const appRoutes: Routes = [
     {
@@ -65,9 +66,10 @@ const appRoutes: Routes = [
         }),
 
         // SharedModule,
+        MaterialModule,
 
         // Fuse Main and Shared modules
-        FuseModule.forRoot(config),
+        FuseModule.forRoot(fuseConfig),
         FuseSharedModule,
 
         AppStoreModule,
