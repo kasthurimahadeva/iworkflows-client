@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -74,6 +74,7 @@ const routes: Routes = [
         MatIconModule,
         MatInputModule,
         MatMenuModule,
+        MatRippleModule,
         MatSelectModule,
         MatSidenavModule,
         MatToolbarModule,

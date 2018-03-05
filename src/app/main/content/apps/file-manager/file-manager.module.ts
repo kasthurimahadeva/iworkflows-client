@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CdkTableModule } from '@angular/cdk/table';
 
-import { MatButtonModule, MatIconModule, MatSidenavModule, MatSlideToggleModule, MatTableModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatRippleModule, MatSidenavModule, MatSlideToggleModule, MatTableModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
@@ -36,6 +36,7 @@ const routes: Routes = [
         CdkTableModule,
         MatButtonModule,
         MatIconModule,
+        MatRippleModule,
         MatSlideToggleModule,
         MatSidenavModule,
         MatTableModule,
