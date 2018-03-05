@@ -21,11 +21,5 @@
             "es2017",
             "dom"
         ]
-    },
-    "angularCompilerOptions": {
-        "genDir": "release/",
-        "strictMetadataEmit": true,
-        "skipTemplateCodegen": true,
-        "annotationsAs": "decorators"
     }
 }
