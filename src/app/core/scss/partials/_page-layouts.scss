@@ -231,9 +231,11 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     > .mat-sidenav-content,
                     > .mat-drawer-content {
                         width: calc(100% - 240px);
+                        min-width: 0;
 
                         .center {
                             width: calc(100% - 32px);
+                            min-width: 0;
 
                             @include media-breakpoint-down('md') {
                                 width: calc(100% - 64px);
