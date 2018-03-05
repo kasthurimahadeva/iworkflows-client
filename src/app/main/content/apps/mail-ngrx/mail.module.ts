@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+
+import { TranslateModule } from '@ngx-translate/core';
+
 import { FuseSharedModule } from '@fuse/shared.module';
+
+import { MailAppStoreModule } from './store/store.module';
+import * as fromGuards from './store/guards/index';
 
 import { FuseMailNgrxComponent } from './mail.component';
 import { FuseMailNgrxMainSidenavComponent } from './sidenavs/main/main-sidenav.component';
@@ -10,8 +17,6 @@ import { FuseMailNgrxListComponent } from './mail-list/mail-list.component';
 import { FuseMailNgrxDetailsComponent } from './mail-details/mail-details.component';
 import { MailNgrxService } from './mail.service';
 import { FuseMailNgrxComposeDialogComponent } from './dialogs/compose/compose.component';
-import * as fromGuards from './store/guards/index';
-import { MailAppStoreModule } from './store/store.module';
 
 const routes: Routes = [
     {
@@ -60,8 +65,23 @@ const routes: Routes = [
         FuseMailNgrxComposeDialogComponent
     ],
     imports        : [
-        FuseSharedModule,
         RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatToolbarModule,
+
+        TranslateModule,
+
+        FuseSharedModule,
+
         MailAppStoreModule
     ],
     providers      : [

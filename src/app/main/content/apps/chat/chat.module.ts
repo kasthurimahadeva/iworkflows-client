@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatRadioModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseChatComponent } from './chat.component';
 import { ChatService } from './chat.service';
+import { FuseChatComponent } from './chat.component';
 import { FuseChatViewComponent } from './chat-view/chat-view.component';
 import { FuseChatStartComponent } from './chat-start/chat-start.component';
 import { FuseChatChatsSidenavComponent } from './sidenavs/left/chats/chats.component';
@@ -25,10 +27,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
-    ],
     declarations: [
         FuseChatComponent,
         FuseChatViewComponent,
@@ -38,6 +36,22 @@ const routes: Routes = [
         FuseChatLeftSidenavComponent,
         FuseChatRightSidenavComponent,
         FuseChatContactSidenavComponent
+    ],
+    imports     : [
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatRadioModule,
+        MatSidenavModule,
+        MatToolbarModule,
+
+        FuseSharedModule
     ],
     providers   : [
         ChatService

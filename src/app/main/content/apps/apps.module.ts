@@ -7,12 +7,12 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 const routes = [
     {
-        path        : 'dashboards/project',
-        loadChildren: './dashboards/project/project.module#FuseProjectDashboardModule'
-    },
-    /*{
         path        : 'dashboards/analytics',
         loadChildren: './dashboards/analytics/analytics.module#FuseAnalyticsDashboardModule'
+    },
+    {
+        path        : 'dashboards/project',
+        loadChildren: './dashboards/project/project.module#FuseProjectDashboardModule'
     },
     {
         path        : 'mail',
@@ -53,7 +53,7 @@ const routes = [
     {
         path        : 'scrumboard',
         loadChildren: './scrumboard/scrumboard.module#FuseScrumboardModule'
-    }*/
+    }
 ];
 
 @NgModule({

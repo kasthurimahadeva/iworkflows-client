@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatButtonModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatProgressBarModule, MatSidenavModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { BoardResolve, ScrumboardService } from './scrumboard.service';
@@ -16,6 +18,8 @@ import { FuseScrumboardLabelSelectorComponent } from './board/dialogs/card/label
 import { FuseScrumboardEditBoardNameComponent } from './board/edit-board-name/edit-board-name.component';
 import { FuseScrumboardBoardSettingsSidenavComponent } from './board/sidenavs/settings/settings.component';
 import { FuseScrumboardBoardColorSelectorComponent } from './board/sidenavs/settings/board-color-selector/board-color-selector.component';
+import { NgxDnDModule } from '@swimlane/ngx-dnd';
+import { FuseMaterialColorPickerModule } from '@fuse/components';
 
 const routes: Routes = [
     {
@@ -54,8 +58,27 @@ const routes: Routes = [
         FuseScrumboardBoardColorSelectorComponent
     ],
     imports        : [
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatCheckboxModule,
+        MatChipsModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatProgressBarModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatTooltipModule,
+
+        NgxDnDModule,
+
         FuseSharedModule,
-        RouterModule.forChild(routes)
+        FuseMaterialColorPickerModule
     ],
     providers      : [
         ScrumboardService,

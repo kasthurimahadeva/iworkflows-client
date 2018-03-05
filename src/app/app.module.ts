@@ -66,7 +66,7 @@ const appRoutes: Routes = [
         }),
 
         // SharedModule,
-        MaterialModule,
+        // MaterialModule,
 
         // Fuse Main and Shared modules
         FuseModule.forRoot(fuseConfig),

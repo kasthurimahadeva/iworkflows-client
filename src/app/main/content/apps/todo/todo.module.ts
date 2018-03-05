@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule, MatSidenavModule } from '@angular/material';
+
+import { NgxDnDModule } from '@swimlane/ngx-dnd';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { TodoService } from './todo.service';
@@ -68,8 +72,21 @@ const routes: Routes = [
         FuseTodoDetailsComponent
     ],
     imports     : [
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatSidenavModule,
+
+        NgxDnDModule,
+
         FuseSharedModule,
-        RouterModule.forChild(routes)
     ],
     providers   : [
         TodoService

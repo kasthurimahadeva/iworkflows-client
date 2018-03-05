@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CdkTableModule } from '@angular/cdk/table';
+
+import { MatButtonModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSelectModule, MatSortModule, MatTableModule, MatTabsModule } from '@angular/material';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AgmCoreModule } from '@agm/core';
@@ -64,21 +67,35 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes),
-        FuseWidgetModule,
-        NgxChartsModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
-        })
-    ],
     declarations: [
         FuseEcommerceDashboardComponent,
         FuseEcommerceProductsComponent,
         FuseEcommerceProductComponent,
         FuseEcommerceOrdersComponent,
         FuseEcommerceOrderComponent
+    ],
+    imports     : [
+        RouterModule.forChild(routes),
+
+        CdkTableModule,
+        MatButtonModule,
+        MatChipsModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatSortModule,
+        MatTableModule,
+        MatTabsModule,
+
+        NgxChartsModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
+        }),
+
+        FuseSharedModule,
+        FuseWidgetModule,
     ],
     providers   : [
         EcommerceDashboardService,

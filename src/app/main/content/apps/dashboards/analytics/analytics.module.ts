@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatFormFieldModule, MatIconModule, MatMenuModule, MatSelectModule, MatTabsModule } from '@angular/material';
+
 import { AgmCoreModule } from '@agm/core';
+import { ChartsModule } from 'ng2-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
@@ -22,17 +25,26 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes),
-        FuseWidgetModule,
-        NgxChartsModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
-        })
-    ],
     declarations: [
         FuseAnalyticsDashboardComponent
+    ],
+    imports     : [
+        RouterModule.forChild(routes),
+
+        MatFormFieldModule,
+        MatIconModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatTabsModule,
+
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
+        }),
+        ChartsModule,
+        NgxChartsModule,
+
+        FuseSharedModule,
+        FuseWidgetModule
     ],
     providers   : [
         AnalyticsDashboardService

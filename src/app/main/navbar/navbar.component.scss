@@ -45,7 +45,10 @@ fuse-sidebar {
 }
 
 fuse-navbar {
-    height: 100%;
+
+    &:not(.top-navbar) {
+        height: 100%;
+    }
 
     .navbar-vertical {
         display: flex;

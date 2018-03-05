@@ -15,7 +15,20 @@ import { FuseNavigationService } from '@fuse/components/navigation/navigation.se
 })
 export class FuseNavbarComponent implements OnDestroy
 {
-    @ViewChild(FusePerfectScrollbarDirective) fusePerfectScrollbarDirective;
+    private fusePerfectScrollbar: FusePerfectScrollbarDirective;
+
+    @ViewChild(FusePerfectScrollbarDirective) set directive(theDirective: FusePerfectScrollbarDirective)
+    {
+        this.fusePerfectScrollbar = theDirective;
+
+        this.navigationServiceWatcher =
+            this.navigationService.onItemCollapseToggled.subscribe(() => {
+                this.fusePerfectScrollbarUpdateTimeout = setTimeout(() => {
+                    this.fusePerfectScrollbar.update();
+                }, 310);
+            });
+    }
+
     @Input() layout;
     navigation: any;
     navigationServiceWatcher: Subscription;
@@ -31,19 +44,19 @@ export class FuseNavbarComponent implements OnDestroy
 
         // Default layout
         this.layout = 'vertical';
-
-        this.navigationServiceWatcher =
-            this.navigationService.onItemCollapseToggled.subscribe(() => {
-                this.fusePerfectScrollbarUpdateTimeout = setTimeout(() => {
-                    this.fusePerfectScrollbarDirective.update();
-                }, 310);
-            });
     }
 
     ngOnDestroy()
     {
-        clearTimeout(this.fusePerfectScrollbarUpdateTimeout);
-        this.navigationServiceWatcher.unsubscribe();
+        if ( this.fusePerfectScrollbarUpdateTimeout )
+        {
+            clearTimeout(this.fusePerfectScrollbarUpdateTimeout);
+        }
+
+        if ( this.navigationServiceWatcher )
+        {
+            this.navigationServiceWatcher.unsubscribe();
+        }
     }
 
     toggleSidebarOpened(key)

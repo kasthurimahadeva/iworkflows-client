@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+
+import { TranslateModule } from '@ngx-translate/core';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { MailService } from './mail.service';
@@ -70,8 +74,22 @@ const routes: Routes = [
         FuseMailComposeDialogComponent
     ],
     imports        : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatToolbarModule,
+
+        TranslateModule,
+
+        FuseSharedModule
     ],
     providers      : [
         MailService

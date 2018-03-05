@@ -17,7 +17,7 @@
     <!-- CARD LABELS -->
     <div *ngIf="card.idLabels.length > 0"
          class="list-card-labels"
-         fxLayout="row" layout-wrap>
+         fxLayout="row" fxLayoutWrap>
 
         <span class="list-card-label"
               [ngClass]="board.labels | getById:labelId:'color'"

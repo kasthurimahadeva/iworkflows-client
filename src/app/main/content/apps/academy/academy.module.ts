@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatSidenavModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseAcademyCoursesComponent } from './courses/courses.component';
@@ -30,13 +32,21 @@ const routes = [
 ];
 
 @NgModule({
-    imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
-    ],
     declarations: [
         FuseAcademyCoursesComponent,
         FuseAcademyCourseComponent
+    ],
+    imports     : [
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatSelectModule,
+        MatSidenavModule,
+
+        FuseSharedModule
     ],
     providers   : [
         AcademyCoursesService,

@@ -8,7 +8,6 @@ import { FuseNavigationService } from '@fuse/components/navigation/navigation.se
 
 import { navigation } from 'app/navigation/navigation';
 
-
 @Component({
     selector   : 'fuse-theme-options',
     templateUrl: './theme-options.component.html',

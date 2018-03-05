@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CdkTableModule } from '@angular/cdk/table';
+
+import { MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatSidenavModule, MatTableModule, MatToolbarModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
+import { FuseConfirmDialogModule } from '@fuse/components';
 
 import { FuseContactsMainSidenavComponent } from './sidenavs/main/main.component';
 import { FuseContactsComponent } from './contacts.component';
@@ -21,16 +25,31 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports        : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
-    ],
     declarations   : [
         FuseContactsComponent,
         FuseContactsContactListComponent,
         FuseContactsSelectedBarComponent,
         FuseContactsMainSidenavComponent,
         FuseContactsContactFormDialogComponent
+    ],
+    imports        : [
+        RouterModule.forChild(routes),
+        CdkTableModule,
+
+        MatButtonModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatMenuModule,
+        MatRippleModule,
+        MatSidenavModule,
+        MatTableModule,
+        MatToolbarModule,
+
+        FuseSharedModule,
+        FuseConfirmDialogModule
     ],
     providers      : [
         ContactsService
