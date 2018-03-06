@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatIconModule, MatMenuModule } from '@angular/material';
+
+import { MatButtonModule, MatIconModule, MatMenuModule, MatRippleModule } from '@angular/material';
 
 import { FusePipesModule } from '@fuse/pipes/pipes.module';
 
@@ -19,6 +20,7 @@ import { FuseMaterialColorPickerComponent } from '@fuse/components/material-colo
         MatButtonModule,
         MatIconModule,
         MatMenuModule,
+        MatRippleModule,
 
         FusePipesModule
     ],

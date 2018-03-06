@@ -125,6 +125,7 @@ export class FuseMaterialColorPickerComponent implements OnChanges
         this.selectedPalette = '';
         this.selectedHue = '';
         this.updateSelectedColor();
+        this.view = 'palettes';
     }
 
     updateSelectedColor()
