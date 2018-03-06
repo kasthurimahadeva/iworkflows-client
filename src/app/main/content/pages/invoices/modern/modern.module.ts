@@ -21,8 +21,9 @@ const routes = [
         FuseInvoiceModernComponent
     ],
     imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        FuseSharedModule
     ],
     providers   : [
         InvoiceService

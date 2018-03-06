@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { MatButtonModule, MatDividerModule, MatIconModule, MatTabsModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { ProfileService } from './profile.service';
@@ -27,8 +29,14 @@ const routes = [
         FuseProfilePhotosVideosComponent
     ],
     imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatDividerModule,
+        MatIconModule,
+        MatTabsModule,
+
+        FuseSharedModule
     ],
     providers   : [
         ProfileService

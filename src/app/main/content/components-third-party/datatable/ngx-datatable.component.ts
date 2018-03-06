@@ -14,7 +14,6 @@ export class FuseNgxDatatableComponent implements OnInit
 
     constructor(private http: HttpClient)
     {
-
     }
 
     ngOnInit()

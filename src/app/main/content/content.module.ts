@@ -11,6 +11,7 @@ import { FuseContentComponent } from 'app/main/content/content.component';
     ],
     imports     : [
         RouterModule,
+
         FuseSharedModule,
     ],
     exports: [

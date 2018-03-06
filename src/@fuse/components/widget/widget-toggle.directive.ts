@@ -1,21 +1,11 @@
-import { AfterViewInit, Directive, ElementRef, OnInit } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
     selector: '[fuseWidgetToggle]'
 })
-export class FuseWidgetToggleDirective implements OnInit, AfterViewInit
+export class FuseWidgetToggleDirective
 {
-
     constructor(public el: ElementRef)
     {
     }
-
-    ngOnInit()
-    {
-    }
-
-    ngAfterViewInit()
-    {
-    }
-
 }

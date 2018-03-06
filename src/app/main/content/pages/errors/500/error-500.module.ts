@@ -17,8 +17,9 @@ const routes = [
         FuseError500Component
     ],
     imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        FuseSharedModule
     ]
 })
 export class Error500Module

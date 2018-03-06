@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostBinding, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -14,7 +14,7 @@ import { FuseConfigService } from '@fuse/services/config.service';
     styleUrls  : ['./content.component.scss'],
     animations : fuseAnimations
 })
-export class FuseContentComponent implements OnInit, OnDestroy
+export class FuseContentComponent implements OnDestroy
 {
     onConfigChanged: Subscription;
     fuseSettings: any;
@@ -62,11 +62,6 @@ export class FuseContentComponent implements OnInit, OnDestroy
                         this.fuseSettings = newSettings;
                     }
                 );
-    }
-
-    ngOnInit()
-    {
-
     }
 
     ngOnDestroy()

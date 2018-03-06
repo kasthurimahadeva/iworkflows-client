@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatListModule, MatMenuModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatTabsModule } from '@angular/material';
+
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
+import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components';
 
 import { FuseAngularMaterialModule } from './angular-material/angular-material.module';
 import { FuseCardsDocsComponent } from './cards/cards.component';
@@ -56,13 +59,6 @@ const routes = [
 ];
 
 @NgModule({
-    imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes),
-        FuseWidgetModule,
-        FuseAngularMaterialModule,
-        NgxChartsModule
-    ],
     declarations: [
         FuseCardsDocsComponent,
         FuseCountdownDocsComponent,
@@ -73,6 +69,28 @@ const routes = [
         FuseSearchBarDocsComponent,
         FuseShortcutsDocsComponent,
         FuseWidgetDocsComponent
+    ],
+    imports     : [
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatListModule,
+        MatMenuModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatTabsModule,
+
+        NgxChartsModule,
+
+        FuseSharedModule,
+        FuseCountdownModule,
+        FuseHighlightModule,
+        FuseMaterialColorPickerModule,
+        FuseWidgetModule,
+        FuseAngularMaterialModule
     ]
 })
 export class FuseComponentsModule

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { MatButtonModule, MatDialogModule, MatIconModule, MatListModule, MatToolbarModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { KnowledgeBaseService } from './knowledge-base.service';
@@ -23,8 +25,15 @@ const routes = [
         FuseKnowledgeBaseArticleComponent
     ],
     imports        : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatDialogModule,
+        MatIconModule,
+        MatListModule,
+        MatToolbarModule,
+
+        FuseSharedModule
     ],
     providers      : [
         KnowledgeBaseService

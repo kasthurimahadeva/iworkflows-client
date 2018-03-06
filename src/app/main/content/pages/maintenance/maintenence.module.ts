@@ -17,8 +17,9 @@ const routes = [
         FuseMaintenanceComponent
     ],
     imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        FuseSharedModule
     ]
 })
 export class MaintenanceModule

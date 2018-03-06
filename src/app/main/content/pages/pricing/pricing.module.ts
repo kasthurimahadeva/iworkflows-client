@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { MatButtonModule, MatDividerModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FusePricingStyle1Component } from './style-1/style-1.component';
@@ -29,8 +31,12 @@ const routes = [
         FusePricingStyle3Component
     ],
     imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatDividerModule,
+
+        FuseSharedModule
     ]
 })
 export class PricingModule

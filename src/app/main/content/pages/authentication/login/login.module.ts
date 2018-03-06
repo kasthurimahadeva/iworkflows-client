@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseLoginComponent } from './login.component';
@@ -17,8 +19,14 @@ const routes = [
         FuseLoginComponent
     ],
     imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        MatButtonModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+
+        FuseSharedModule
     ]
 })
 export class LoginModule

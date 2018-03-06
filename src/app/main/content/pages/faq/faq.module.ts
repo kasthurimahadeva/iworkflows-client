@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { MatExpansionModule, MatIconModule } from '@angular/material';
+
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FaqService } from './faq.service';
@@ -21,8 +23,12 @@ const routes = [
         FuseFaqComponent
     ],
     imports     : [
-        FuseSharedModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+
+        MatExpansionModule,
+        MatIconModule,
+
+        FuseSharedModule
     ],
     providers   : [
         FaqService
