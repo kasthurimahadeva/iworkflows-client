@@ -4,7 +4,7 @@
     <div class="content p-24 w-100-p">
 
         <!-- WIDGET GROUP -->
-        <div class="widget-group" fxLayout="row" fxFlex="100" fxLayoutWrap fxLayoutAlign="start start" *fuseIfOnDom [@animateStagger]="{value:'50'}">
+        <div class="widget-group" fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start start" *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
             <!-- WIDGET 1 -->
             <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
@@ -191,7 +191,7 @@
                 <!-- Front -->
                 <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
 
-                    <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
+                    <div class="px-16 border-bottom" fxLayout="row wrap" fxLayoutAlign="space-between center">
 
                         <div fxFlex class="py-8 h3">{{widgets.widget5.title}}</div>
 
@@ -259,7 +259,7 @@
                         </ngx-charts-pie-chart>
                     </div>
 
-                    <div class="py-8 mh-16 border-top" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
+                    <div class="py-8 mh-16 border-top" fxLayout="row wrap" fxLayoutAlign="start center">
                         <div class="py-8 border-right" fxLayout="column" fxLayoutAlign="center center" fxFlex="100" fxFlex.gt-sm="50">
                             <span class="mat-display-1 mb-0">{{widgets.widget6.footerLeft.count[widget6.currentRange]}}</span>
                             <span class="h4">{{widgets.widget6.footerLeft.title}}</span>

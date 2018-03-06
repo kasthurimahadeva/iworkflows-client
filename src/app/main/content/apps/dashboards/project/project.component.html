@@ -44,7 +44,7 @@
 
                     <mat-tab label="Home">
 
-                        <div class="widget-group grey-100-bg p-12" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom
+                        <div class="widget-group grey-100-bg p-12" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
                              [@animateStagger]="{value:'50'}">
 
                             <!-- WIDGET 1 -->
@@ -259,8 +259,8 @@
                                 <!-- Front -->
                                 <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
 
-                                    <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="space-between center"
-                                         fxLayoutWrap>
+                                    <div class="px-16 border-bottom" fxLayout="row wrap"
+                                         fxLayoutAlign="space-between center">
 
                                         <div fxFlex class="py-16 h3">{{widgets.widget5.title}}</div>
 
@@ -274,7 +274,7 @@
                                         </div>
                                     </div>
 
-                                    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap>
+                                    <div fxLayout="row wrap" fxLayoutAlign="start start">
 
                                         <div class="h-420 my-16" fxLayout="row" fxFlex="100" fxFlex.gt-sm="50">
                                             <ngx-charts-bar-vertical-stacked
@@ -293,8 +293,7 @@
                                             </ngx-charts-bar-vertical-stacked>
                                         </div>
 
-                                        <div class="my-16" fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="row"
-                                             fxLayoutWrap>
+                                        <div class="my-16" fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="row wrap">
 
                                             <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center"
                                                  *ngFor="let widget of widgets.widget5.supporting | keys"
@@ -367,8 +366,8 @@
                                         </ngx-charts-pie-chart>
                                     </div>
 
-                                    <div class="py-8 mh-16 border-top" fxLayout="row" fxLayoutAlign="start center"
-                                         fxLayoutWrap>
+                                    <div class="py-8 mh-16 border-top" fxLayout="row wrap" fxLayoutAlign="start center">
+
                                         <div class="py-8 border-right" fxLayout="column" fxLayoutAlign="center center"
                                              fxFlex="100" fxFlex.gt-sm="50">
                                             <span class="mat-display-1 mb-0">
@@ -442,7 +441,7 @@
                     <mat-tab label="Budget Summary">
 
                         <!-- WIDGET GROUP -->
-                        <div class="widget-group grey-100-bg" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom
+                        <div class="widget-group grey-100-bg" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
                              [@animateStagger]="{value:'50'}">
 
                             <!-- WIDGET 8 -->
@@ -496,7 +495,8 @@
                                         </mat-form-field>
                                     </div>
 
-                                    <div class="px-16 py-24" fxLayout="column" fxLayoutAlign="center" fxLayout.gt-xs="row"
+                                    <div class="px-16 py-24" fxLayout="column" fxLayoutAlign="center"
+                                         fxLayout.gt-xs="row"
                                          fxLayoutAlign.gt-xs="space-between end">
                                         <div fxFlex="0 1 auto">
                                             <div class="h4 secondary-text">{{widgets.widget9.weeklySpent.title}}</div>
@@ -523,7 +523,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-16 py-24" fxLayout="column" fxLayoutAlign="center" fxLayout.gt-xs="row"
+                                    <div class="px-16 py-24" fxLayout="column" fxLayoutAlign="center"
+                                         fxLayout.gt-xs="row"
                                          fxLayoutAlign.gt-xs="space-between end">
                                         <div fxFlex="0 1 auto">
                                             <div class="h4 secondary-text">{{widgets.widget9.totalSpent.title}}</div>
@@ -550,7 +551,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="px-16 py-24" fxLayout="column" fxLayoutAlign="center" fxLayout.gt-xs="row"
+                                    <div class="px-16 py-24" fxLayout="column" fxLayoutAlign="center"
+                                         fxLayout.gt-xs="row"
                                          fxLayoutAlign.gt-xs="space-between end">
                                         <div fxFlex="0 1 auto">
                                             <div class="h4 secondary-text">{{widgets.widget9.remaining.title}}</div>
@@ -641,7 +643,7 @@
                     <mat-tab label="Team Members">
 
                         <!-- WIDGET GROUP -->
-                        <div class="widget-group grey-100-bg" fxLayout="row" fxFlex="100" fxLayoutWrap *fuseIfOnDom
+                        <div class="widget-group grey-100-bg" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
                              [@animateStagger]="{value:'50'}">
 
                             <!-- WIDGET 11 -->

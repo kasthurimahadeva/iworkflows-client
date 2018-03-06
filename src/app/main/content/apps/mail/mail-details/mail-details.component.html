@@ -14,7 +14,7 @@
         <div>
             <div class="subject" flex>{{mail.subject}}</div>
 
-            <div class="labels" fxLayout="row" fxLayoutWrap>
+            <div class="labels" fxLayout="row wrap">
                 <div class="label" *ngFor="let labelId of mail.labels"
                      fxLayout="row" fxLayoutAlign="start center">
                     <div class="label-color" [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
@@ -122,7 +122,7 @@
             ({{mail.attachments.length}})
         </div>
 
-        <div class="attachment-list" fxLayout="row" fxLayoutWrap>
+        <div class="attachment-list" fxLayout="row wrap">
 
             <div class="attachment" fxLayout="column"
                  *ngFor="let attachment of mail.attachments">

@@ -33,7 +33,7 @@
                     {{mail.message | htmlToPlaintext | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
                 </div>
 
-                <div class="labels" fxLayout="row" fxLayoutWrap fxHide fxShow.gt-sm>
+                <div class="labels" fxLayout="row wrap" fxHide fxShow.gt-sm>
                     <div class="label" *ngFor="let labelId of mail.labels"
                          fxLayout="row" fxLayoutAlign="start center">
                         <div class="label-color"

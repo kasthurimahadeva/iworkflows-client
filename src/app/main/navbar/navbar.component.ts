@@ -19,6 +19,11 @@ export class FuseNavbarComponent implements OnDestroy
 
     @ViewChild(FusePerfectScrollbarDirective) set directive(theDirective: FusePerfectScrollbarDirective)
     {
+        if ( !theDirective )
+        {
+            return;
+        }
+
         this.fusePerfectScrollbar = theDirective;
 
         this.navigationServiceWatcher =

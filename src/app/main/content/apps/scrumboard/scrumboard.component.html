@@ -6,8 +6,8 @@
     </div>
 
     <!-- BOARD LIST -->
-    <div class="board-list" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap
-         *fuseIfOnDom [@animateStagger]="{value:'50'}">
+    <div class="board-list" fxFlex="0 0 auto" fxLayout="row wrap" fxLayoutAlign="center center" *fuseIfOnDom
+         [@animateStagger]="{value:'50'}">
 
         <!-- BOARD -->
         <div class="board-list-item" *ngFor="let board of boards"

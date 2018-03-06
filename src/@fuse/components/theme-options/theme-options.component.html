@@ -14,7 +14,7 @@
 
         <h3>Navigation:</h3>
         <mat-radio-group [(ngModel)]="config.layout.navigation" (ngModelChange)="onSettingsChange()"
-                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+                         fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start start">
             <mat-radio-button class="mr-8 mb-8" value="top">Top</mat-radio-button>
             <mat-radio-button class="mr-8 mb-8" value="left">Left</mat-radio-button>
             <mat-radio-button class="mr-8 mb-8" value="right">Right</mat-radio-button>
@@ -29,7 +29,7 @@
 
         <h3 class="mt-24">Toolbar:</h3>
         <mat-radio-group [(ngModel)]="config.layout.toolbar" (ngModelChange)="onSettingsChange()"
-                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+                         fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start start">
             <mat-radio-button class="mr-8 mb-8" value="below">Below</mat-radio-button>
             <mat-radio-button class="mr-8 mb-8" value="above">Above</mat-radio-button>
             <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
@@ -37,7 +37,7 @@
 
         <h3 class="mt-24">Footer:</h3>
         <mat-radio-group [(ngModel)]="config.layout.footer" (ngModelChange)="onSettingsChange()"
-                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+                         fxLayout="column" fxLayout.gt-xs="row  wrap" fxLayoutAlign="start start">
             <mat-radio-button class="mr-8 mb-8" value="below">Below</mat-radio-button>
             <mat-radio-button class="mr-8 mb-8" value="above">Above</mat-radio-button>
             <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
@@ -45,7 +45,7 @@
 
         <h3 class="mt-24">Layout Mode:</h3>
         <mat-radio-group [(ngModel)]="config.layout.mode" (ngModelChange)="onSettingsChange()"
-                         fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="start start" fxLayoutWrap>
+                         fxLayout="column" fxLayout.gt-xs="row  wrap" fxLayoutAlign="start start">
             <mat-radio-button class="mr-8 mb-8" value="boxed">Boxed</mat-radio-button>
             <mat-radio-button class="mr-8 mb-8" value="fullwidth">Fullwidth</mat-radio-button>
         </mat-radio-group>

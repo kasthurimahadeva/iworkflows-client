@@ -6,7 +6,7 @@
             <span class="info">{{period.info}}</span>
         </div>
 
-        <div class="period-media" fxLayout="row" fxLayoutWrap>
+        <div class="period-media" fxLayout="row wrap">
             <div class="media" *ngFor="let media of period.media">
                 <img class="preview" [src]="media.preview" title="{{media.title}}">
                 <div class="title">{{media.title}}</div>

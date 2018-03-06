@@ -63,7 +63,7 @@
                 </textarea>
             </mat-form-field>
 
-            <div class="tags mb-24" fxFlexFill fxLayout="row" fxLayoutWrap>
+            <div class="tags mb-24" fxFlexFill fxLayout="row wrap">
                 <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tagId of todo.tags">
 
                     <div class="tag-color" [ngStyle]="{'background-color': tags | getById:tagId:'color'}"></div>

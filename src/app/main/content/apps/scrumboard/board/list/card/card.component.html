@@ -15,9 +15,7 @@
     <!-- /CARD SORT HANDLE -->
 
     <!-- CARD LABELS -->
-    <div *ngIf="card.idLabels.length > 0"
-         class="list-card-labels"
-         fxLayout="row" fxLayoutWrap>
+    <div *ngIf="card.idLabels.length > 0" class="list-card-labels" fxLayout="row wrap">
 
         <span class="list-card-label"
               [ngClass]="board.labels | getById:labelId:'color'"

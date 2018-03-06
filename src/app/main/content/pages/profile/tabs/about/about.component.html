@@ -1,4 +1,4 @@
-<div id="about" class="p-24" fxLayout="row" fxLayoutWrap>
+<div id="about" class="p-24" fxLayout="row wrap">
 
     <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65">
 
@@ -111,7 +111,7 @@
                 </div>
             </header>
 
-            <div class="content" fxLayout="row" fxLayoutWrap>
+            <div class="content" fxLayout="row wrap">
                 <div class="friend" fxFlex="20" *ngFor="let friend of about.friends">
                     <img [src]="friend.avatar">
                 </div>

@@ -20,7 +20,7 @@
                 {{todo.notes}}
             </div>
 
-            <div class="tags" fxLayout="row" fxLayoutAlign="start center" fxLayoutWrap>
+            <div class="tags" fxLayout="row wrap" fxLayoutAlign="start center">
 
                 <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tagId of todo.tags">
                     <div class="tag-color" [ngStyle]="{'background-color': tags | getById:tagId:'color'}"></div>
