@@ -96,10 +96,9 @@
                 <!-- / CONTENT TOOLBAR -->
 
                 <!-- CONTENT -->
-                <div class="content" fxLayoutAlign="row">
+                <div class="content" fxLayout="row">
 
                     <fuse-mail-list fusePerfectScrollbar fxFlex [mails]="mails$ | async" [currentMail]="currentMail$ | async"></fuse-mail-list>
-
                     <fuse-mail-details [mail]="currentMail$ | async" fusePerfectScrollbar fxFlex></fuse-mail-details>
 
                 </div>
