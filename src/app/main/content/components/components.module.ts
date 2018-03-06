@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatListModule, MatMenuModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatTabsModule } from '@angular/material';
+import { MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatListModule, MatMenuModule, MatSelectModule, MatSlideToggleModule, MatTabsModule } from '@angular/material';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -16,6 +16,7 @@ import { FuseMaterialColorPickerDocsComponent } from './material-color-picker/ma
 import { FuseMultiLanguageDocsComponent } from './multi-language/multi-language.component';
 import { FuseNavigationDocsComponent } from './navigation/navigation.component';
 import { FuseSearchBarDocsComponent } from './search-bar/search-bar.component';
+import { FuseSidebarDocsComponent } from './sidebar/sidebar.component';
 import { FuseShortcutsDocsComponent } from './shortcuts/shortcuts.component';
 import { FuseWidgetDocsComponent } from './widget/widget.component';
 
@@ -49,6 +50,10 @@ const routes = [
         component: FuseSearchBarDocsComponent
     },
     {
+        path     : 'sidebar',
+        component: FuseSidebarDocsComponent
+    },
+    {
         path     : 'shortcuts',
         component: FuseShortcutsDocsComponent
     },
@@ -67,6 +72,7 @@ const routes = [
         FuseMultiLanguageDocsComponent,
         FuseNavigationDocsComponent,
         FuseSearchBarDocsComponent,
+        FuseSidebarDocsComponent,
         FuseShortcutsDocsComponent,
         FuseWidgetDocsComponent
     ],

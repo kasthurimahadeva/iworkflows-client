@@ -856,6 +856,13 @@ export const navigation = [
                 'url'  : '/components/search-bar'
             },
             {
+                'id'   : 'sidebar',
+                'title': 'Sidebar',
+                'type' : 'item',
+                'icon' : 'settings_input_component',
+                'url'  : '/components/sidebar'
+            },
+            {
                 'id'   : 'shortcuts',
                 'title': 'Shortcuts',
                 'type' : 'item',
