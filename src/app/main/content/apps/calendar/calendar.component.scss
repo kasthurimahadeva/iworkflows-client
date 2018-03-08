@@ -180,6 +180,14 @@
             }
         }
     }
+
+    .cal-hour-segment {
+
+        &:after,
+        &::after {
+            content: '' !important;
+        }
+    }
 }
 
 #calendar {

@@ -34,11 +34,11 @@ export class FuseMailComponent implements OnInit, OnDestroy
 
     constructor(
         private mailService: MailService,
-        private translationLoader: FuseTranslationLoaderService
+        private fuseTranslationLoader: FuseTranslationLoaderService
     )
     {
         this.searchInput = new FormControl('');
-        this.translationLoader.loadTranslations(english, turkish);
+        this.fuseTranslationLoader.loadTranslations(english, turkish);
     }
 
     ngOnInit()

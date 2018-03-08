@@ -16,10 +16,10 @@ import { locale as navigationTurkish } from './navigation/i18n/tr';
 export class AppComponent
 {
     constructor(
+        private translate: TranslateService,
         private fuseNavigationService: FuseNavigationService,
         private fuseSplashScreen: FuseSplashScreenService,
-        private translate: TranslateService,
-        private translationLoader: FuseTranslationLoaderService
+        private fuseTranslationLoader: FuseTranslationLoaderService
     )
     {
         // Add languages
@@ -28,10 +28,10 @@ export class AppComponent
         // Set the default language
         this.translate.setDefaultLang('en');
 
+        // Set the navigation translations
+        this.fuseTranslationLoader.loadTranslations(navigationEnglish, navigationTurkish);
+
         // Use a language
         this.translate.use('en');
-
-        // Set the navigation translations
-        this.translationLoader.loadTranslations(navigationEnglish, navigationTurkish);
     }
 }
