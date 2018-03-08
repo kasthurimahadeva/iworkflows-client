@@ -30,7 +30,7 @@ const appRoutes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes), SharedModule,
+        RouterModule.forRoot(appRoutes),
         TranslateModule.forRoot(),
 
         // Fuse Main and Shared modules
