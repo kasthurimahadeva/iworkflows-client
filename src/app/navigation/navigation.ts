@@ -686,6 +686,12 @@ export const navigation = [
                                 'url'  : '/components/angular-material/card'
                             },
                             {
+                                'id'   : 'divider',
+                                'title': 'Divider',
+                                'type' : 'item',
+                                'url'  : '/components/angular-material/divider'
+                            },
+                            {
                                 'id'   : 'stepper',
                                 'title': 'Stepper',
                                 'type' : 'item',

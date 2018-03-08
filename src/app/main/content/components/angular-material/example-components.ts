@@ -1,3 +1,4 @@
+import { AutocompleteAutoActiveFirstOptionExample } from 'assets/angular-material-examples/autocomplete-auto-active-first-option/autocomplete-auto-active-first-option-example';
 import { AutocompleteDisplayExample } from 'assets/angular-material-examples/autocomplete-display/autocomplete-display-example';
 import { AutocompleteFilterExample } from 'assets/angular-material-examples/autocomplete-filter/autocomplete-filter-example';
 import { AutocompleteOverviewExample } from 'assets/angular-material-examples/autocomplete-overview/autocomplete-overview-example';
@@ -37,13 +38,12 @@ import { MyTelInput, FormFieldCustomControlExample } from 'assets/angular-materi
 import { FormFieldErrorExample } from 'assets/angular-material-examples/form-field-error/form-field-error-example';
 import { FormFieldHintExample } from 'assets/angular-material-examples/form-field-hint/form-field-hint-example';
 import { FormFieldOverviewExample } from 'assets/angular-material-examples/form-field-overview/form-field-overview-example';
-import { FormFieldPlaceholderExample } from 'assets/angular-material-examples/form-field-placeholder/form-field-placeholder-example';
 import { FormFieldPrefixSuffixExample } from 'assets/angular-material-examples/form-field-prefix-suffix/form-field-prefix-suffix-example';
 import { FormFieldThemingExample } from 'assets/angular-material-examples/form-field-theming/form-field-theming-example';
 import { GridListDynamicExample } from 'assets/angular-material-examples/grid-list-dynamic/grid-list-dynamic-example';
 import { GridListOverviewExample } from 'assets/angular-material-examples/grid-list-overview/grid-list-overview-example';
 import { IconOverviewExample } from 'assets/angular-material-examples/icon-overview/icon-overview-example';
-import { IconSvgExample } from 'assets/angular-material-examples/icon-svg/icon-svg-example';
+import { IconSvgExample } from 'assets/angular-material-examples/icon-svg-example/icon-svg-example';
 import { InputAutosizeTextareaExample } from 'assets/angular-material-examples/input-autosize-textarea/input-autosize-textarea-example';
 import { InputClearableExample } from 'assets/angular-material-examples/input-clearable/input-clearable-example';
 import { InputErrorStateMatcherExample } from 'assets/angular-material-examples/input-error-state-matcher/input-error-state-matcher-example';
@@ -81,7 +81,6 @@ import { SelectOverviewExample } from 'assets/angular-material-examples/select-o
 import { SelectPanelClassExample } from 'assets/angular-material-examples/select-panel-class/select-panel-class-example';
 import { SelectResetExample } from 'assets/angular-material-examples/select-reset/select-reset-example';
 import { SelectValueBindingExample } from 'assets/angular-material-examples/select-value-binding/select-value-binding-example';
-import { SidenavFabExample } from 'assets/angular-material-examples/sidenav-fab/sidenav-fab-example';
 import { SidenavOverviewExample } from 'assets/angular-material-examples/sidenav-overview/sidenav-overview-example';
 import { SlideToggleConfigurableExample } from 'assets/angular-material-examples/slide-toggle-configurable/slide-toggle-configurable-example';
 import { SlideToggleFormsExample } from 'assets/angular-material-examples/slide-toggle-forms/slide-toggle-forms-example';
@@ -104,9 +103,19 @@ import { ToolbarMultirowExample } from 'assets/angular-material-examples/toolbar
 import { ToolbarOverviewExample } from 'assets/angular-material-examples/toolbar-overview/toolbar-overview-example';
 import { TooltipOverviewExample } from 'assets/angular-material-examples/tooltip-overview/tooltip-overview-example';
 import { TooltipPositionExample } from 'assets/angular-material-examples/tooltip-position/tooltip-position-example';
+import { DatepickerCustomIconExample } from 'assets/angular-material-examples/datepicker-custom-icon/datepicker-custom-icon-example';
+import { SidenavAutosizeExample } from 'assets/angular-material-examples/sidenav-autosize/sidenav-autosize-example';
+import { SnackBarPositionExample } from 'assets/angular-material-examples/snack-bar-position/snack-bar-position-example';
+import { TableSelectionExample } from 'assets/angular-material-examples/table-selection/table-selection-example';
+import { TooltipDelayExample } from 'assets/angular-material-examples/tooltip-delay/tooltip-delay-example';
+import { TooltipManualExample } from 'assets/angular-material-examples/tooltip-manual/tooltip-manual-example';
+import { TooltipModifiedDefaultsExample } from 'assets/angular-material-examples/tooltip-modified-defaults/tooltip-modified-defaults-example';
+import { DividerOverviewExample } from 'assets/angular-material-examples/divider-overview/divider-overview-example';
+import { FormFieldLabelExample } from 'assets/angular-material-examples/form-field-label/form-field-label-example';
 
 export const COMPONENT_MAP = {
     'autocomplete'    : [
+        'autocomplete-auto-active-first-option',
         'autocomplete-simple',
         'autocomplete-filter',
         'autocomplete-display',
@@ -118,6 +127,7 @@ export const COMPONENT_MAP = {
     ],
     'datepicker'      : [
         'datepicker-overview',
+        'datepicker-custom-icon',
         'datepicker-start-view',
         'datepicker-value',
         'datepicker-min-max',
@@ -130,9 +140,11 @@ export const COMPONENT_MAP = {
         'datepicker-moment',
         'datepicker-formats'
     ],
+    'divider'         : [
+        'divider-overview'
+    ],
     'form-field'      : [
-        'form-field-overview',
-        'form-field-placeholder',
+        'form-field-label',
         'form-field-hint',
         'form-field-error',
         'form-field-prefix-suffix',
@@ -183,7 +195,7 @@ export const COMPONENT_MAP = {
     ],
     'sidenav'         : [
         'sidenav-overview',
-        'sidenav-fab'
+        'sidenav-autosize'
     ],
     'toolbar'         : [
         'toolbar-overview',
@@ -252,14 +264,19 @@ export const COMPONENT_MAP = {
     ],
     'tooltip'         : [
         'tooltip-overview',
-        'tooltip-position'
+        'tooltip-position',
+        'tooltip-delay',
+        'tooltip-manual',
+        'tooltip-modified-defaults'
     ],
     'snackbar'        : [
-        'snack-bar-overview'
+        'snack-bar-overview',
+        'snack-bar-position'
     ],
     'data-table'      : [
         'table-overview',
         'table-basic',
+        'table-selection',
         'table-filtering',
         'table-http'
     ],
@@ -273,645 +290,694 @@ export const COMPONENT_MAP = {
 };
 
 export const EXAMPLE_COMPONENTS = {
-    'autocomplete-display'         : {
+    'autocomplete-auto-active-first-option': {
+        title          : 'Highlight the first autocomplete option',
+        component      : AutocompleteAutoActiveFirstOptionExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'autocomplete-display'                 : {
         title          : 'Display value autocomplete',
         component      : AutocompleteDisplayExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'autocomplete-filter'          : {
+    'autocomplete-filter'                  : {
         title          : 'Filter autocomplete',
         component      : AutocompleteFilterExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'autocomplete-overview'        : {
+    'autocomplete-overview'                : {
         title          : 'Autocomplete overview',
         component      : AutocompleteOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'autocomplete-simple'          : {
+    'autocomplete-simple'                  : {
         title          : 'Simple autocomplete',
         component      : AutocompleteSimpleExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'button-overview'              : {
+    'button-overview'                      : {
         title          : 'Basic buttons',
         component      : ButtonOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'button-toggle-exclusive'      : {
+    'button-toggle-exclusive'              : {
         title          : 'Exclusive selection',
         component      : ButtonToggleExclusiveExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'button-toggle-overview'       : {
+    'button-toggle-overview'               : {
         title          : 'Basic button-toggles',
         component      : ButtonToggleOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'button-types'                 : {
+    'button-types'                         : {
         title          : 'Button varieties',
         component      : ButtonTypesExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'card-fancy'                   : {
+    'card-fancy'                           : {
         title          : 'Card with multiple sections',
         component      : CardFancyExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'card-overview'                : {
+    'card-overview'                        : {
         title          : 'Basic cards',
         component      : CardOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'cdk-table-basic'              : {
+    'cdk-table-basic'                      : {
         title          : 'Basic CDK data-table',
         component      : CdkTableBasicExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'checkbox-configurable'        : {
+    'checkbox-configurable'                : {
         title          : 'Configurable checkbox',
         component      : CheckboxConfigurableExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'checkbox-overview'            : {
+    'checkbox-overview'                    : {
         title          : 'Basic checkboxes',
         component      : CheckboxOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'chips-input'                  : {
+    'chips-input'                          : {
         title          : 'Chips with input',
         component      : ChipsInputExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'chips-overview'               : {
+    'chips-overview'                       : {
         title          : 'Basic chips',
         component      : ChipsOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'chips-stacked'                : {
+    'chips-stacked'                        : {
         title          : 'Stacked chips',
         component      : ChipsStackedExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-api'               : {
-        title          : 'Datepicker open method ',
+    'datepicker-api'                       : {
+        title          : 'Datepicker open method',
         component      : DatepickerApiExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-disabled'          : {
-        title          : 'Disabled datepicker ',
+    'datepicker-custom-icon'               : {
+        title          : 'Datepicker custom icon',
+        component      : DatepickerCustomIconExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'datepicker-disabled'                  : {
+        title          : 'Disabled datepicker',
         component      : DatepickerDisabledExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-events'            : {
-        title          : 'Datepicker input and change events ',
+    'datepicker-events'                    : {
+        title          : 'Datepicker input and change events',
         component      : DatepickerEventsExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-filter'            : {
-        title          : 'Datepicker with filter validation ',
+    'datepicker-filter'                    : {
+        title          : 'Datepicker with filter validation',
         component      : DatepickerFilterExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-formats'           : {
-        title          : 'Datepicker with custom formats ',
+    'datepicker-formats'                   : {
+        title          : 'Datepicker with custom formats',
         component      : DatepickerFormatsExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-locale'            : {
-        title          : 'Datepicker with different locale ',
+    'datepicker-locale'                    : {
+        title          : 'Datepicker with different locale',
         component      : DatepickerLocaleExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-min-max'           : {
-        title          : 'Datepicker with min & max validation ',
+    'datepicker-min-max'                   : {
+        title          : 'Datepicker with min & max validation',
         component      : DatepickerMinMaxExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-moment'            : {
+    'datepicker-moment'                    : {
         title          : 'Datepicker that uses Moment.js dates ',
         component      : DatepickerMomentExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-overview'          : {
+    'datepicker-overview'                  : {
         title          : 'Basic datepicker ',
         component      : DatepickerOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-start-view'        : {
+    'datepicker-start-view'                : {
         title          : 'Datepicker start date ',
         component      : DatepickerStartViewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-touch'             : {
+    'datepicker-touch'                     : {
         title          : 'Datepicker touch UI ',
         component      : DatepickerTouchExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'datepicker-value'             : {
+    'datepicker-value'                     : {
         title          : 'Datepicker selected value ',
         component      : DatepickerValueExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'dialog-content'               : {
+    'dialog-content'                       : {
         title          : 'Dialog with header, scrollable content and actions',
         component      : DialogContentExample,
         additionalFiles: ['dialog-content-example-dialog.html'],
         selectorName   : 'DialogContentExample, DialogContentExampleDialog'
     },
-    'dialog-data'                  : {
+    'dialog-data'                          : {
         title          : 'Injecting data when opening a dialog',
         component      : DialogDataExample,
         additionalFiles: ['dialog-data-example-dialog.html'],
         selectorName   : 'DialogDataExample, DialogDataExampleDialog'
     },
-    'dialog-elements'              : {
+    'dialog-elements'                      : {
         title          : 'Dialog elements',
         component      : DialogElementsExample,
         additionalFiles: ['dialog-elements-example-dialog.html'],
         selectorName   : 'DialogElementsExample, DialogElementsExampleDialog'
     },
-    'dialog-overview'              : {
+    'dialog-overview'                      : {
         title          : 'Dialog Overview',
         component      : DialogOverviewExample,
         additionalFiles: ['dialog-overview-example-dialog.html'],
         selectorName   : 'DialogOverviewExample, DialogOverviewExampleDialog'
     },
-    'elevation-overview'           : {
+    'divider-overview'                     : {
+        title          : 'Basic divider',
+        component      : DividerOverviewExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'elevation-overview'                   : {
         title          : 'Elevation CSS classes',
         component      : ElevationOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'expansion-overview'           : {
+    'expansion-overview'                   : {
         title          : 'Basic expansion panel',
         component      : ExpansionOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'expansion-steps'              : {
+    'expansion-steps'                      : {
         title          : 'Expansion panel as accordion',
         component      : ExpansionStepsExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'form-field-custom-control'    : {
+    'form-field-custom-control'            : {
         title          : 'Form field with custom telephone number input control. ',
         component      : FormFieldCustomControlExample,
         additionalFiles: ['form-field-custom-control-example.html'],
         selectorName   : 'FormFieldCustomControlExample, MyTelInput'
     },
-    'form-field-error'             : {
+    'form-field-error'                     : {
         title          : 'Form field with error messages ',
         component      : FormFieldErrorExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'form-field-hint'              : {
+    'form-field-hint'                      : {
         title          : 'Form field with hints ',
         component      : FormFieldHintExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'form-field-overview'          : {
+    'form-field-overview'                  : {
         title          : 'Simple form field ',
         component      : FormFieldOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'form-field-placeholder'       : {
-        title          : 'Form field with placeholder ',
-        component      : FormFieldPlaceholderExample,
+    'form-field-label'                     : {
+        title          : 'Form field with label',
+        component      : FormFieldLabelExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'form-field-prefix-suffix'     : {
+    'form-field-prefix-suffix'             : {
         title          : 'Form field with prefix & suffix ',
         component      : FormFieldPrefixSuffixExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'form-field-theming'           : {
+    'form-field-theming'                   : {
         title          : 'Form field theming ',
         component      : FormFieldThemingExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'grid-list-dynamic'            : {
+    'grid-list-dynamic'                    : {
         title          : 'Dynamic grid-list',
         component      : GridListDynamicExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'grid-list-overview'           : {
+    'grid-list-overview'                   : {
         title          : 'Basic grid-list',
         component      : GridListOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'icon-overview'                : {
+    'icon-overview'                        : {
         title          : 'Basic icons',
         component      : IconOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'icon-svg'                     : {
+    'icon-svg'                             : {
         title          : 'SVG icons',
         component      : IconSvgExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-autosize-textarea'      : {
+    'input-autosize-textarea'              : {
         title          : 'Auto-resizing textarea ',
         component      : InputAutosizeTextareaExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-clearable'              : {
+    'input-clearable'                      : {
         title          : 'Input with a clear button',
         component      : InputClearableExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-error-state-matcher'    : {
+    'input-error-state-matcher'            : {
         title          : 'Input with a custom ErrorStateMatcher ',
         component      : InputErrorStateMatcherExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-errors'                 : {
+    'input-errors'                         : {
         title          : 'Input with error messages',
         component      : InputErrorsExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-form'                   : {
+    'input-form'                           : {
         title          : 'Inputs in a form',
         component      : InputFormExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-hint'                   : {
+    'input-hint'                           : {
         title          : 'Input with hints',
         component      : InputHintExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-overview'               : {
+    'input-overview'                       : {
         title          : 'Basic Inputs',
         component      : InputOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'input-prefix-suffix'          : {
+    'input-prefix-suffix'                  : {
         title          : 'Inputs with prefixes and suffixes',
         component      : InputPrefixSuffixExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'list-overview'                : {
+    'list-overview'                        : {
         title          : 'Basic list',
         component      : ListOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'list-sections'                : {
+    'list-sections'                        : {
         title          : 'List with sections',
         component      : ListSectionsExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'list-selection'               : {
+    'list-selection'                       : {
         title          : 'List with selection',
         component      : ListSelectionExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'menu-icons'                   : {
+    'menu-icons'                           : {
         title          : 'Menu with icons',
         component      : MenuIconsExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'menu-overview'                : {
+    'menu-overview'                        : {
         title          : 'Basic menu',
         component      : MenuOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'nested-menu'                  : {
+    'nested-menu'                          : {
         title          : 'Nested menu',
         component      : NestedMenuExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'paginator-configurable'       : {
+    'paginator-configurable'               : {
         title          : 'Configurable paginator',
         component      : PaginatorConfigurableExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'paginator-overview'           : {
+    'paginator-overview'                   : {
         title          : 'Paginator',
         component      : PaginatorOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'progress-bar-buffer'          : {
+    'progress-bar-buffer'                  : {
         title          : 'Buffer progress-bar',
         component      : ProgressBarBufferExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'progress-bar-configurable'    : {
+    'progress-bar-configurable'            : {
         title          : 'Configurable progress-bar',
         component      : ProgressBarConfigurableExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'progress-bar-determinate'     : {
+    'progress-bar-determinate'             : {
         title          : 'Determinate progress-bar',
         component      : ProgressBarDeterminateExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'progress-bar-indeterminate'   : {
+    'progress-bar-indeterminate'           : {
         title          : 'Indeterminate progress-bar',
         component      : ProgressBarIndeterminateExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'progress-bar-query'           : {
+    'progress-bar-query'                   : {
         title          : 'Query progress-bar',
         component      : ProgressBarQueryExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'progress-spinner-configurable': {
+    'progress-spinner-configurable'        : {
         title          : 'Configurable progress spinner',
         component      : ProgressSpinnerConfigurableExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'progress-spinner-overview'    : {
+    'progress-spinner-overview'            : {
         title          : 'Basic progress-spinner',
         component      : ProgressSpinnerOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'radio-ng-model'               : {
+    'radio-ng-model'                       : {
         title          : 'Radios with ngModel',
         component      : RadioNgModelExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'radio-overview'               : {
+    'radio-overview'                       : {
         title          : 'Basic radios',
         component      : RadioOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-custom-trigger'        : {
+    'select-custom-trigger'                : {
         title          : 'Select with custom trigger text ',
         component      : SelectCustomTriggerExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-disabled'              : {
+    'select-disabled'                      : {
         title          : 'Disabled select ',
         component      : SelectDisabledExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-error-state-matcher'   : {
+    'select-error-state-matcher'           : {
         title          : 'Select with a custom ErrorStateMatcher ',
         component      : SelectErrorStateMatcherExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-form'                  : {
+    'select-form'                          : {
         title          : 'Select in a form',
         component      : SelectFormExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-hint-error'            : {
+    'select-hint-error'                    : {
         title          : 'Select with form field features ',
         component      : SelectHintErrorExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-multiple'              : {
+    'select-multiple'                      : {
         title          : 'Select with multiple selection ',
         component      : SelectMultipleExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-no-ripple'             : {
+    'select-no-ripple'                     : {
         title          : 'Select with no option ripple ',
         component      : SelectNoRippleExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-optgroup'              : {
+    'select-optgroup'                      : {
         title          : 'Select with option groups ',
         component      : SelectOptgroupExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-overview'              : {
+    'select-overview'                      : {
         title          : 'Basic select',
         component      : SelectOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-panel-class'           : {
+    'select-panel-class'                   : {
         title          : 'Select with custom panel styling',
         component      : SelectPanelClassExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-reset'                 : {
+    'select-reset'                         : {
         title          : 'Select with reset option ',
         component      : SelectResetExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'select-value-binding'         : {
+    'select-value-binding'                 : {
         title          : 'Select with 2-way value binding ',
         component      : SelectValueBindingExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'sidenav-fab'                  : {
-        title          : 'Sidenav with a FAB',
-        component      : SidenavFabExample,
-        additionalFiles: null,
-        selectorName   : null
-    },
-    'sidenav-overview'             : {
+    'sidenav-overview'                     : {
         title          : 'Basic sidenav',
         component      : SidenavOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'slide-toggle-configurable'    : {
+    'sidenav-autosize'                     : {
+        title          : 'Autosize sidenav',
+        component      : SidenavAutosizeExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'slide-toggle-configurable'            : {
         title          : 'Configurable slide-toggle',
         component      : SlideToggleConfigurableExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'slide-toggle-forms'           : {
+    'slide-toggle-forms'                   : {
         title          : 'Slide-toggle with forms',
         component      : SlideToggleFormsExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'slide-toggle-overview'        : {
+    'slide-toggle-overview'                : {
         title          : 'Basic slide-toggles',
         component      : SlideToggleOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'slider-configurable'          : {
+    'slider-configurable'                  : {
         title          : 'Configurable slider',
         component      : SliderConfigurableExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'slider-overview'              : {
+    'slider-overview'                      : {
         title          : 'Basic slider',
         component      : SliderOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'snack-bar-component'          : {
+    'snack-bar-component'                  : {
         title          : 'Snack-bar with a custom component',
         component      : SnackBarComponentExample,
         additionalFiles: ['snack-bar-component-example-snack.html'],
         selectorName   : 'SnackBarComponentExample, PizzaPartyComponent'
     },
-    'snack-bar-overview'           : {
+    'snack-bar-overview'                   : {
         title          : 'Basic snack-bar',
         component      : SnackBarOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'sort-overview'                : {
+    'snack-bar-position'                   : {
+        title          : 'Snack-bar with different positions',
+        component      : SnackBarPositionExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'sort-overview'                        : {
         title          : 'Sorting overview',
         component      : SortOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'stepper-overview'             : {
+    'stepper-overview'                     : {
         title          : 'Stepper overview',
         component      : StepperOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'table-basic'                  : {
+    'table-basic'                          : {
         title          : 'Basic table',
         component      : TableBasicExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'table-filtering'              : {
+    'table-selection'                      : {
+        title          : 'Table with selection',
+        component      : TableSelectionExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'table-filtering'                      : {
         title          : 'Table with filtering',
         component      : TableFilteringExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'table-http'                   : {
+    'table-http'                           : {
         title          : 'Table retrieving data through HTTP',
         component      : TableHttpExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'table-overview'               : {
+    'table-overview'                       : {
         title          : 'Data table with sorting, pagination, and filtering.',
         component      : TableOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'table-pagination'             : {
+    'table-pagination'                     : {
         title          : 'Table with pagination',
         component      : TablePaginationExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'table-sorting'                : {
+    'table-sorting'                        : {
         title          : 'Table with sorting',
         component      : TableSortingExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'tabs-overview'                : {
+    'tabs-overview'                        : {
         title          : 'Basic tabs',
         component      : TabsOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'tabs-template-label'          : {
+    'tabs-template-label'                  : {
         title          : 'Complex Example',
         component      : TabsTemplateLabelExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'toolbar-multirow'             : {
+    'toolbar-multirow'                     : {
         title          : 'Multi-row toolbar',
         component      : ToolbarMultirowExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'toolbar-overview'             : {
+    'toolbar-overview'                     : {
         title          : 'Basic toolbar',
         component      : ToolbarOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'tooltip-overview'             : {
+    'tooltip-overview'                     : {
         title          : 'Basic tooltip',
         component      : TooltipOverviewExample,
         additionalFiles: null,
         selectorName   : null
     },
-    'tooltip-position'             : {
+    'tooltip-position'                     : {
         title          : 'Tooltip with custom position',
         component      : TooltipPositionExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'tooltip-delay'                        : {
+        title          : 'Tooltip with a show and hide delay',
+        component      : TooltipDelayExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'tooltip-manual'                       : {
+        title          : 'Tooltip that can be manually shown/hidden.',
+        component      : TooltipManualExample,
+        additionalFiles: null,
+        selectorName   : null
+    },
+    'tooltip-modified-defaults'            : {
+        title          : 'Tooltip with modified defaults',
+        component      : TooltipModifiedDefaultsExample,
         additionalFiles: null,
         selectorName   : null
     }
 };
 
 export const EXAMPLE_LIST = [
+    AutocompleteAutoActiveFirstOptionExample,
     AutocompleteDisplayExample,
     AutocompleteFilterExample,
     AutocompleteOverviewExample,
@@ -929,6 +995,7 @@ export const EXAMPLE_LIST = [
     ChipsOverviewExample,
     ChipsStackedExample,
     DatepickerApiExample,
+    DatepickerCustomIconExample,
     DatepickerDisabledExample,
     DatepickerEventsExample,
     DatepickerFilterExample,
@@ -944,6 +1011,7 @@ export const EXAMPLE_LIST = [
     DialogDataExampleDialog, DialogDataExample,
     DialogElementsExampleDialog, DialogElementsExample,
     DialogOverviewExampleDialog, DialogOverviewExample,
+    DividerOverviewExample,
     ElevationOverviewExample,
     ExpansionOverviewExample,
     ExpansionStepsExample,
@@ -951,7 +1019,7 @@ export const EXAMPLE_LIST = [
     FormFieldErrorExample,
     FormFieldHintExample,
     FormFieldOverviewExample,
-    FormFieldPlaceholderExample,
+    FormFieldLabelExample,
     FormFieldPrefixSuffixExample,
     FormFieldThemingExample,
     GridListDynamicExample,
@@ -995,8 +1063,9 @@ export const EXAMPLE_LIST = [
     SelectPanelClassExample,
     SelectResetExample,
     SelectValueBindingExample,
-    SidenavFabExample,
+    SidenavAutosizeExample,
     SidenavOverviewExample,
+    SnackBarPositionExample,
     SlideToggleConfigurableExample,
     SlideToggleFormsExample,
     SlideToggleOverviewExample,
@@ -1007,6 +1076,7 @@ export const EXAMPLE_LIST = [
     SortOverviewExample,
     StepperOverviewExample,
     TableBasicExample,
+    TableSelectionExample,
     TableFilteringExample,
     TableHttpExample,
     TableOverviewExample,
@@ -1017,5 +1087,8 @@ export const EXAMPLE_LIST = [
     ToolbarMultirowExample,
     ToolbarOverviewExample,
     TooltipOverviewExample,
+    TooltipDelayExample,
+    TooltipManualExample,
+    TooltipModifiedDefaultsExample,
     TooltipPositionExample
 ];
