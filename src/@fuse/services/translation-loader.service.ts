@@ -12,7 +12,6 @@ export class FuseTranslationLoaderService
 {
     constructor(private translate: TranslateService)
     {
-        console.log('...FuseTranslationLoaderService constructor...');
     }
 
     public loadTranslations(...args: Locale[]): void
