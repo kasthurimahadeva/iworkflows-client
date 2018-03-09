@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatProgressBarModule, MatRippleModule, MatSidenavModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
+import { FuseConfirmDialogModule, FuseMaterialColorPickerModule } from '@fuse/components';
 
 import { BoardResolve, ScrumboardService } from './scrumboard.service';
 import { FuseScrumboardComponent } from './scrumboard.component';
@@ -19,7 +20,6 @@ import { FuseScrumboardEditBoardNameComponent } from './board/edit-board-name/ed
 import { FuseScrumboardBoardSettingsSidenavComponent } from './board/sidenavs/settings/settings.component';
 import { FuseScrumboardBoardColorSelectorComponent } from './board/sidenavs/settings/board-color-selector/board-color-selector.component';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
-import { FuseMaterialColorPickerModule } from '@fuse/components';
 
 const routes: Routes = [
     {
@@ -79,6 +79,7 @@ const routes: Routes = [
         NgxDnDModule,
 
         FuseSharedModule,
+        FuseConfirmDialogModule,
         FuseMaterialColorPickerModule
     ],
     providers      : [
