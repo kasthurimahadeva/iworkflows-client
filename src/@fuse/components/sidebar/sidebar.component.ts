@@ -38,13 +38,31 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // Folded
     @HostBinding('class.folded')
     @Input()
-    folded: boolean;
+    set folded(value)
+    {
+        this._folded = value;
+
+        if ( value )
+        {
+            this.fold();
+        }
+        else
+        {
+            this.unfold();
+        }
+    }
+
+    get folded()
+    {
+        return this._folded;
+    }
 
     // Folded unfolded
     @HostBinding('class.unfolded')
     unfolded: boolean;
 
     // Private
+    private _folded = false;
     private _wasActive: boolean;
     private _backdrop: HTMLElement | null = null;
     private _player: AnimationPlayer;
@@ -270,8 +288,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     fold(): void
     {
-        this.folded = true;
-
         // Add a css class to the body
         this.renderer.addClass(this.document.body, 'fuse-sidebar-folded');
     }
@@ -281,8 +297,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     unfold(): void
     {
-        this.folded = false;
-
         // Remove the css class from the body
         this.renderer.removeClass(this.document.body, 'fuse-sidebar-folded');
     }
@@ -292,14 +306,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     toggleFold(): void
     {
-        if ( this.folded )
-        {
-            this.unfold();
-        }
-        else
-        {
-            this.fold();
-        }
+        this.folded = !this.folded;
     }
 
     /**
