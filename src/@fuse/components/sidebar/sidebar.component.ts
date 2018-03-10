@@ -1,11 +1,11 @@
-import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 
 import { FuseSidebarService } from './sidebar.service';
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
-import { DOCUMENT } from '@angular/common';
+import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
     selector     : 'fuse-sidebar',
@@ -21,7 +21,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
     // Align
     @Input()
-    align: string;
+    align: 'left' | 'right';
 
     // Open
     @HostBinding('class.open')
@@ -38,21 +38,57 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // Folded
     @HostBinding('class.folded')
     @Input()
-    set folded(value)
+    set folded(value: boolean)
     {
+        // Only work if the sidebar is not closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Set the folded
         this._folded = value;
 
-        if ( value )
+        // Programmatically add/remove margin to the element
+        // that comes after or before based on the alignment
+        let sibling,
+            styleRule;
+
+        const styleValue = '64px';
+
+        // Get the sibling and set the style rule
+        if ( this.align === 'left' )
         {
-            this.fold();
+            sibling = this.elementRef.nativeElement.nextElementSibling;
+            styleRule = 'marginLeft';
         }
         else
         {
-            this.unfold();
+            sibling = this.elementRef.nativeElement.previousElementSibling;
+            styleRule = 'marginRight';
+        }
+
+        // If there is no sibling, return...
+        if ( !sibling )
+        {
+            return;
+        }
+
+        // If folded...
+        if ( value )
+        {
+            // Set the style
+            this.renderer.setStyle(sibling, styleRule, styleValue);
+        }
+        // If unfolded...
+        else
+        {
+            // Remove the style
+            this.renderer.removeStyle(sibling, styleRule);
         }
     }
 
-    get folded()
+    get folded(): boolean
     {
         return this._folded;
     }
@@ -62,31 +98,31 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     unfolded: boolean;
 
     // Private
-    private _folded = false;
+    private _folded: boolean;
     private _wasActive: boolean;
     private _backdrop: HTMLElement | null = null;
     private _player: AnimationPlayer;
-    private _matchMediaWatcher: Subscription;
+    private _onMediaChangeSubscription: Subscription;
 
     /**
      * Constructor
      *
-     * @param renderer
-     * @param elementRef
-     * @param animationBuilder
-     * @param sidebarService
-     * @param matchMedia
-     * @param media
-     * @param document
+     * @param {Renderer2} renderer
+     * @param {ElementRef} elementRef
+     * @param {AnimationBuilder} animationBuilder
+     * @param {ObservableMedia} observableMedia
+     * @param {FuseConfigService} fuseConfigService
+     * @param {FuseSidebarService} fuseSidebarService
+     * @param {FuseMatchMediaService} fuseMatchMediaService
      */
     constructor(
         private renderer: Renderer2,
         private elementRef: ElementRef,
         private animationBuilder: AnimationBuilder,
-        private sidebarService: FuseSidebarService,
-        private matchMedia: FuseMatchMediaService,
-        private media: ObservableMedia,
-        @Inject(DOCUMENT) private document: any
+        private observableMedia: ObservableMedia,
+        private fuseConfigService: FuseConfigService,
+        private fuseSidebarService: FuseSidebarService,
+        private fuseMatchMediaService: FuseMatchMediaService
     )
     {
         // Set the defaults
@@ -101,7 +137,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Register the sidebar
-        this.sidebarService.register(this.name, this);
+        this.fuseSidebarService.register(this.name, this);
 
         // Setup alignment
         this._setupAlignment();
@@ -115,27 +151,35 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     ngOnDestroy(): void
     {
-        // Unregister the sidebar
-        this.sidebarService.unregister(this.name);
+        // If the sidebar is folded, unfold it to revert modifications
+        if ( this.folded )
+        {
+            this.unfold();
+        }
 
-        // Unregister the media watcher
-        this._matchMediaWatcher.unsubscribe();
+        // Unregister the sidebar
+        this.fuseSidebarService.unregister(this.name);
+
+        // Unsubscribe from the media watcher subscription
+        this._onMediaChangeSubscription.unsubscribe();
     }
 
     /**
-     * Setup the alignment
+     * Set the sidebar alignment
      *
      * @private
      */
     private _setupAlignment(): void
     {
-        if ( this.align === 'left' )
+        // Add the correct class name to the sidebar
+        // element depending on the align attribute
+        if ( this.align === 'right' )
         {
-            this.renderer.addClass(this.elementRef.nativeElement, 'left-aligned');
+            this.renderer.addClass(this.elementRef.nativeElement, 'right-aligned');
         }
         else
         {
-            this.renderer.addClass(this.elementRef.nativeElement, 'right-aligned');
+            this.renderer.addClass(this.elementRef.nativeElement, 'left-aligned');
         }
     }
 
@@ -156,12 +200,12 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         this._wasActive = false;
 
         // Act on every media change
-        this._matchMediaWatcher =
+        this._onMediaChangeSubscription =
 
-            this.matchMedia.onMediaChange.subscribe(() => {
+            this.fuseMatchMediaService.onMediaChange.subscribe(() => {
 
                 // Get the active status
-                const isActive = this.media.isActive(this.lockedOpen);
+                const isActive = this.observableMedia.isActive(this.lockedOpen);
 
                 // If the both status are the same, don't act
                 if ( this._wasActive === isActive )
@@ -169,14 +213,24 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                     return;
                 }
 
-                // Store the new active status
-                this._wasActive = isActive;
-
                 // Activate the lockedOpen
                 if ( isActive )
                 {
                     // Set the lockedOpen status
                     this.isLockedOpen = true;
+
+                    // Force the the opened status to true
+                    this.opened = true;
+
+                    // Read the folded setting from the config
+                    // and fold the sidebar if it's true
+                    if ( this.fuseConfigService.config.layout.navigationFolded )
+                    {
+                        this.fold();
+                    }
+
+                    // Hide the backdrop if any exists
+                    this.hideBackdrop();
                 }
                 // De-Activate the lockedOpen
                 else
@@ -186,7 +240,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
                     // Unfold the sidebar in case if it was folded
                     this.unfold();
+
+                    // Force the the opened status to close
+                    this.opened = false;
                 }
+
+                // Store the new active status
+                this._wasActive = isActive;
             });
     }
 
@@ -205,9 +265,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Set the opened status
         this.opened = true;
-
-        // Add a css class to the body
-        this.renderer.addClass(this.document.body, 'fuse-sidebar-opened');
     }
 
     /**
@@ -215,7 +272,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     close(): void
     {
-        if ( !this.opened )
+        if ( !this.opened || this.isLockedOpen )
         {
             return;
         }
@@ -225,9 +282,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Set the opened status
         this.opened = false;
-
-        // Remove the css class from the body
-        this.renderer.removeClass(this.document.body, 'fuse-sidebar-opened');
     }
 
     /**
@@ -259,9 +313,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Unfold the sidebar temporarily
         this.unfolded = true;
-
-        // Add a css class to the body
-        this.renderer.addClass(this.document.body, 'fuse-sidebar-folded-unfolded');
     }
 
     /**
@@ -278,9 +329,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Fold the sidebar back
         this.unfolded = false;
-
-        // Remove the css class from the body
-        this.renderer.removeClass(this.document.body, 'fuse-sidebar-folded-unfolded');
     }
 
     /**
@@ -288,8 +336,14 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     fold(): void
     {
-        // Add a css class to the body
-        this.renderer.addClass(this.document.body, 'fuse-sidebar-folded');
+        // Only work if the sidebar is not folded
+        if ( this.folded )
+        {
+            return;
+        }
+
+        // Fold
+        this.folded = true;
     }
 
     /**
@@ -297,8 +351,14 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     unfold(): void
     {
-        // Remove the css class from the body
-        this.renderer.removeClass(this.document.body, 'fuse-sidebar-folded');
+        // Only work if the sidebar is folded
+        if ( !this.folded )
+        {
+            return;
+        }
+
+        // Unfold
+        this.folded = false;
     }
 
     /**
@@ -306,7 +366,14 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     toggleFold(): void
     {
-        this.folded = !this.folded;
+        if ( this.folded )
+        {
+            this.unfold();
+        }
+        else
+        {
+            this.fold();
+        }
     }
 
     /**
