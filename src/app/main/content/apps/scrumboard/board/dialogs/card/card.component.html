@@ -1,5 +1,6 @@
 <div class="dialog-content-wrapper">
-    <mat-toolbar *ngIf="card" matDialogTitle class="mat-accent-bg m-0">
+
+    <mat-toolbar *ngIf="card" matDialogTitle class="mat-accent-bg m-0" fxFlex="1 0 auto" fxLayout="row">
 
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
 
@@ -8,7 +9,7 @@
                 <!-- DUE DATE -->
                 <div class="due-date" fxFlex="0 1 auto">
 
-                    <button *ngIf="card.due" mat-icon-button class="" [matMenuTriggerFor]="dueDateMenu">
+                    <button *ngIf="card.due" mat-icon-button [matMenuTriggerFor]="dueDateMenu">
                         <mat-icon>today</mat-icon>
                     </button>
 
@@ -459,4 +460,5 @@
         </div>
         <!-- / SECTIONS -->
     </div>
+
 </div>

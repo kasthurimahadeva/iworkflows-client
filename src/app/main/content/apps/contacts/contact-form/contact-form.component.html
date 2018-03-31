@@ -9,10 +9,10 @@
             </button>
         </mat-toolbar-row>
 
-        <mat-toolbar-row class="toolbar-bottom py-8 py-sm-16" fxLayout="column" fxLayoutAlign="center center">
-            <img [src]="contact.avatar" class=" avatar contact-avatar huge"
+        <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
+            <img [src]="contact.avatar" class="avatar contact-avatar huge m-0"
                  [alt]="contact.name"/>
-            <div class="contact-name">{{contact.name}}</div>
+            <div class="contact-name mt-8">{{contact.name}} {{contact.lastName}}</div>
         </mat-toolbar-row>
     </mat-toolbar>
 

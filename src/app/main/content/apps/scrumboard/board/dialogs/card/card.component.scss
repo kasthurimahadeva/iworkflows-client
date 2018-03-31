@@ -37,6 +37,11 @@
                         }
                     }
                 }
+
+                .mat-form-field-prefix .mat-datepicker-toggle-default-icon,
+                .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+                    width: 24px;
+                }
             }
         }
 

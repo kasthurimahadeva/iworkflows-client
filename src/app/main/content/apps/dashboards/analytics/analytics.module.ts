@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MatFormFieldModule, MatIconModule, MatMenuModule, MatSelectModule, MatTabsModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatMenuModule, MatSelectModule, MatTabsModule } from '@angular/material';
 
 import { AgmCoreModule } from '@agm/core';
 import { ChartsModule } from 'ng2-charts';
@@ -31,6 +31,7 @@ const routes: Routes = [
     imports     : [
         RouterModule.forChild(routes),
 
+        MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
         MatMenuModule,
