@@ -7,6 +7,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
+import { FuseSidebarComponent } from '@fuse/components/sidebar/sidebar.component';
 
 @Component({
     selector     : 'fuse-navbar',
@@ -59,7 +60,10 @@ export class FuseNavbarComponent implements OnInit, OnDestroy
             (event) => {
                 if ( event instanceof NavigationEnd )
                 {
-                    this.sidebarService.getSidebar('navbar').close();
+                    if ( this.sidebarService.getSidebar('navbar') )
+                    {
+                        this.sidebarService.getSidebar('navbar').close();
+                    }
                 }
             }
         );
