@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 
+import { navigation } from 'app/navigation/navigation';
+
 @Component({
     selector     : 'fuse-main',
     templateUrl  : './main.component.html',
@@ -15,6 +17,8 @@ export class FuseMainComponent implements OnDestroy
 {
     onConfigChanged: Subscription;
     fuseSettings: any;
+    navigation: any;
+
     @HostBinding('attr.fuse-layout-mode') layoutMode;
 
     constructor(
@@ -38,6 +42,8 @@ export class FuseMainComponent implements OnDestroy
         {
             this.document.body.className += ' is-mobile';
         }
+
+        this.navigation = navigation;
     }
 
     ngOnDestroy()
