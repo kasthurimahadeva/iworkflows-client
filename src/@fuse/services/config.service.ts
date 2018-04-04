@@ -1,5 +1,5 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Platform } from '@angular/cdk/platform';
 
@@ -29,6 +29,7 @@ export class FuseConfigService
 {
     config: any;
     defaultConfig: any;
+    isSetConfigRan = false;
 
     onConfigChanged: BehaviorSubject<any>;
 
@@ -70,8 +71,19 @@ export class FuseConfigService
         // layout on every navigation start
         router.events.subscribe(
             (event) => {
+
                 if ( event instanceof NavigationStart )
                 {
+                    this.isSetConfigRan = false;
+                }
+
+                if ( event instanceof NavigationEnd )
+                {
+                    if ( this.isSetConfigRan )
+                    {
+                        return;
+                    }
+
                     this.setConfig({
                             layout: this.defaultConfig.layout
                         }
@@ -91,14 +103,17 @@ export class FuseConfigService
      */
     setConfig(config): void
     {
+        // Set the SetConfigRan true
+        this.isSetConfigRan = true;
+
         // Set the config from the given object
         // Ugly, but works for now...
         this.config = {
             ...this.config,
             ...config,
-            layout     : {
+            layout      : {
                 ...this.config.layout,
-                ...config.layout,
+                ...config.layout
             },
             colorClasses: {
                 ...this.config.colorClasses,
