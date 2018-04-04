@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ObservableMedia } from '@angular/flex-layout';
 import { CookieService } from 'ngx-cookie-service';
@@ -6,8 +6,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 import { FuseConfigService } from '@fuse/services/config.service';
-
-import { navigation } from 'app/navigation/navigation';
 
 @Component({
     selector   : 'fuse-shortcuts',
@@ -25,6 +23,8 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
     matchMediaSubscription: Subscription;
     onConfigChanged: Subscription;
 
+    @Input() navigation: any;
+
     @ViewChild('searchInput') searchInputField;
     @ViewChild('shortcuts') shortcutsEl: ElementRef;
 
@@ -37,8 +37,6 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
         private cookieService: CookieService
     )
     {
-        this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation(navigation);
-
         this.onConfigChanged =
             this.fuseConfig.onConfigChanged
                 .subscribe(
@@ -50,6 +48,9 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
+        // Get the navigation items and flatten them
+        this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation(this.navigation);
+
         const cookieExists = this.cookieService.check('FUSE2.shortcuts');
 
         if ( cookieExists )
