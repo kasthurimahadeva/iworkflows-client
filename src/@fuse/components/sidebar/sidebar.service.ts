@@ -58,7 +58,7 @@ export class FuseSidebarService
      *
      * @param key
      */
-    getSidebar(key): any
+    getSidebar(key): FuseSidebarComponent
     {
         // Check if the sidebar exists
         if ( !this._registry[key] )
