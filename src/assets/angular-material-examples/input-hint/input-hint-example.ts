@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 /**
  * @title Input with hints
  */
 @Component({
-    selector   : 'input-hint-example',
-    templateUrl: 'input-hint-example.html',
-    styleUrls  : ['input-hint-example.css']
+  selector: 'input-hint-example',
+  templateUrl: 'input-hint-example.html',
+  styleUrls: ['input-hint-example.css'],
 })
-export class InputHintExample
-{
-}
+export class InputHintExample {}

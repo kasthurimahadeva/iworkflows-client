@@ -1,14 +1,11 @@
 .example-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-}
-
-.mat-table {
-    overflow: auto;
-    max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  overflow: auto;
+  max-height: 500px;
 }
 
 .mat-header-cell.mat-sort-header-sorted {
-    color: black;
+  color: black;
 }

@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 /**
  * @title Basic slide-toggles
  */
 @Component({
-    selector   : 'slide-toggle-overview-example',
-    templateUrl: 'slide-toggle-overview-example.html'
+  selector: 'slide-toggle-overview-example',
+  templateUrl: 'slide-toggle-overview-example.html',
+  styleUrls: ['slide-toggle-overview-example.css'],
 })
-export class SlideToggleOverviewExample
-{
-}
+export class SlideToggleOverviewExample {}

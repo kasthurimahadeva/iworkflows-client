@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 /**
  * @title Elevation CSS classes
  */
 @Component({
-    selector   : 'elevation-overview-example',
-    styleUrls  : ['elevation-overview-example.css'],
-    templateUrl: 'elevation-overview-example.html'
+  selector: 'elevation-overview-example',
+  styleUrls: ['elevation-overview-example.css'],
+  templateUrl: 'elevation-overview-example.html',
 })
-export class ElevationOverviewExample
-{
-    isActive = false;
+export class ElevationOverviewExample {
+  isActive = false;
 }

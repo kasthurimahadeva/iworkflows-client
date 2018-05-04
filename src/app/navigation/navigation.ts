@@ -668,16 +668,16 @@ export const navigation = [
                         'type'    : 'group',
                         'children': [
                             {
-                                'id'   : 'list',
-                                'title': 'List',
+                                'id'   : 'badge',
+                                'title': 'Badge',
                                 'type' : 'item',
-                                'url'  : '/components/angular-material/list'
+                                'url'  : '/components/angular-material/badge'
                             },
                             {
-                                'id'   : 'grid-list',
-                                'title': 'Grid list',
+                                'id'   : 'bottom-sheet',
+                                'title': 'Bottom Sheet',
                                 'type' : 'item',
-                                'url'  : '/components/angular-material/grid-list'
+                                'url'  : '/components/angular-material/bottom-sheet'
                             },
                             {
                                 'id'   : 'card',
@@ -692,18 +692,6 @@ export const navigation = [
                                 'url'  : '/components/angular-material/divider'
                             },
                             {
-                                'id'   : 'stepper',
-                                'title': 'Stepper',
-                                'type' : 'item',
-                                'url'  : '/components/angular-material/stepper'
-                            },
-                            {
-                                'id'   : 'tabs',
-                                'title': 'Tabs',
-                                'type' : 'item',
-                                'url'  : '/components/angular-material/tabs'
-                            },
-                            {
                                 'id'   : 'elevation',
                                 'title': 'Elevation',
                                 'type' : 'item',
@@ -714,6 +702,30 @@ export const navigation = [
                                 'title': 'Expansion Panel',
                                 'type' : 'item',
                                 'url'  : '/components/angular-material/expansion-panel'
+                            },
+                            {
+                                'id'   : 'grid-list',
+                                'title': 'Grid list',
+                                'type' : 'item',
+                                'url'  : '/components/angular-material/grid-list'
+                            },
+                            {
+                                'id'   : 'list',
+                                'title': 'List',
+                                'type' : 'item',
+                                'url'  : '/components/angular-material/list'
+                            },
+                            {
+                                'id'   : 'stepper',
+                                'title': 'Stepper',
+                                'type' : 'item',
+                                'url'  : '/components/angular-material/stepper'
+                            },
+                            {
+                                'id'   : 'tabs',
+                                'title': 'Tabs',
+                                'type' : 'item',
+                                'url'  : '/components/angular-material/tabs'
                             }
                         ]
                     },
@@ -772,16 +784,16 @@ export const navigation = [
                                 'url'  : '/components/angular-material/dialog'
                             },
                             {
-                                'id'   : 'tooltip',
-                                'title': 'Tooltip',
-                                'type' : 'item',
-                                'url'  : '/components/angular-material/tooltip'
-                            },
-                            {
                                 'id'   : 'snackbar',
                                 'title': 'Snackbar',
                                 'type' : 'item',
                                 'url'  : '/components/angular-material/snackbar'
+                            },
+                            {
+                                'id'   : 'tooltip',
+                                'title': 'Tooltip',
+                                'type' : 'item',
+                                'url'  : '/components/angular-material/tooltip'
                             }
                         ]
                     },
@@ -791,10 +803,10 @@ export const navigation = [
                         'type'    : 'group',
                         'children': [
                             {
-                                'id'   : 'table',
-                                'title': 'Table',
+                                'id'   : 'paginator',
+                                'title': 'Paginator',
                                 'type' : 'item',
-                                'url'  : '/components/angular-material/data-table'
+                                'url'  : '/components/angular-material/paginator'
                             },
                             {
                                 'id'   : 'sort-header',
@@ -803,12 +815,18 @@ export const navigation = [
                                 'url'  : '/components/angular-material/sort-header'
                             },
                             {
-                                'id'   : 'paginator',
-                                'title': 'Paginator',
+                                'id'   : 'table',
+                                'title': 'Table',
                                 'type' : 'item',
-                                'url'  : '/components/angular-material/paginator'
+                                'url'  : '/components/angular-material/table'
                             }
                         ]
+                    },
+                    {
+                        'id'   : 'tree',
+                        'title': 'Tree',
+                        'type' : 'item',
+                        'url'  : '/components/angular-material/tree'
                     }
                 ]
             },

@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 /**
  * @title Basic expansion panel
  */
 @Component({
-    selector   : 'expansion-overview-example',
-    templateUrl: 'expansion-overview-example.html'
+  selector: 'expansion-overview-example',
+  templateUrl: 'expansion-overview-example.html',
+  styleUrls: ['expansion-overview-example.css'],
 })
-export class ExpansionOverviewExample
-{
+export class ExpansionOverviewExample {
+  panelOpenState: boolean = false;
 }
