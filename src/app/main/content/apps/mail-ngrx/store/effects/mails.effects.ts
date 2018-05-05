@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { map, mergeMap, exhaustMap, withLatestFrom } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, mergeMap, exhaustMap, withLatestFrom } from 'rxjs/operators';
 import 'rxjs/add/operator/debounceTime';
+
 import { getRouterState, State } from 'app/store/reducers';
 import { getMailsState } from '../selectors';
 import * as MailsActions from '../actions/mails.actions';
@@ -48,7 +48,7 @@ export class MailsEffect
                         value: ''
                     };
 
-                    const routeParams = Observable.of('labelHandle', 'filterHandle', 'folderHandle');
+                    const routeParams = of('labelHandle', 'filterHandle', 'folderHandle');
                     routeParams.subscribe(param => {
                         if ( this.routerState.params[param] )
                         {
@@ -60,14 +60,16 @@ export class MailsEffect
                     });
 
                     return this.mailService.getMails(handle)
-                               .map((mails: Mail[]) => {
+                               .pipe(
+                                   map((mails: Mail[]) => {
 
-                                   return new MailsActions.GetMailsSuccess({
-                                       loaded: handle,
-                                       mails : mails
-                                   });
-                               })
-                               .catch(err => of(new MailsActions.GetMailsFailed(err)));
+                                       return new MailsActions.GetMailsSuccess({
+                                           loaded: handle,
+                                           mails : mails
+                                       });
+                                   }),
+                                   catchError(err => of(new MailsActions.GetMailsFailed(err)))
+                               );
                 })
             );
 
