@@ -6,7 +6,7 @@
 
         <div fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-button class="toggle-button-navbar mat-icon-button"
+            <button mat-icon-button class="toggle-button-navbar"
                     *ngIf="!noNav"
                     (click)="toggleSidebarOpened('navbar')" fxHide.gt-md>
                 <mat-icon>menu</mat-icon>
@@ -91,7 +91,7 @@
             <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
 
             <button mat-icon-button
-                    class="mat-icon-button quick-panel-toggle-button"
+                    class="quick-panel-toggle-button"
                     fuseMatSidenavToggler="quick-panel"
                     aria-label="Toggle quick panel">
                 <mat-icon class="icon">format_list_bulleted</mat-icon>

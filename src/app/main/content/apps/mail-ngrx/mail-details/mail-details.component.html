@@ -1,5 +1,5 @@
 <div *ngIf="!mail" fxLayout="column" fxLayoutAlign="center center" fxFlex>
-    <mat-icon class="s-128 mb-16 select-message-icon">
+    <mat-icon class="s-128 mb-16 select-message-icon hint-text">
         email
     </mat-icon>
     <span class="select-message-text hint-text">
@@ -24,12 +24,12 @@
         </div>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
-            <button mat-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
+            <button mat-icon-button (click)="toggleStar($event)" aria-label="Toggle star">
                 <mat-icon *ngIf="mail.starred">star</mat-icon>
                 <mat-icon *ngIf="!mail.starred">star_outline</mat-icon>
             </button>
 
-            <button mat-button class="mat-icon-button" (click)="toggleImportant($event)" aria-label="Toggle important">
+            <button mat-icon-button (click)="toggleImportant($event)" aria-label="Toggle important">
                 <mat-icon *ngIf="mail.important">label</mat-icon>
                 <mat-icon *ngIf="!mail.important">label_outline</mat-icon>
             </button>
@@ -87,8 +87,7 @@
                 </div>
             </div>
 
-            <button mat-button [matMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
-                    (click)="$event.stopPropagation()">
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation()">
                 <mat-icon>more_vert</mat-icon>
             </button>
 

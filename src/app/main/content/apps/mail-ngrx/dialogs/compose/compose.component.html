@@ -1,10 +1,8 @@
 <div class="dialog-content-wrapper">
-    <mat-toolbar matDialogTitle class="mat-accent m-0">
+    <mat-toolbar class="mat-accent m-0">
         <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
             <span class="title dialog-title">New Message</span>
-            <button mat-button class="mat-icon-button"
-                    (click)="dialogRef.close()"
-                    aria-label="Close dialog">
+            <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
                 <mat-icon>close</mat-icon>
             </button>
         </div>
@@ -100,10 +98,7 @@
             </button>
         </div>
 
-        <button mat-button
-                class="mat-icon-button"
-                (click)="dialogRef.close(['delete',composeForm])"
-                aria-label="Delete"
+        <button mat-icon-button (click)="dialogRef.close(['delete',composeForm])" aria-label="Delete"
                 matTooltip="Delete">
             <mat-icon>delete</mat-icon>
         </button>

@@ -8,11 +8,8 @@ fuse-contacts-contact-list {
         box-shadow: none;
 
         .mat-column-checkbox {
-            flex: 0 1 48px;
-
-            .mat-checkbox-ripple {
-                display: none !important; //fix for broken rendering
-            }
+            flex: 0 1 64px;
+            padding-left: 18px;
         }
 
         .mat-column-avatar {
@@ -26,7 +23,7 @@ fuse-contacts-contact-list {
         .mat-row {
             position: relative;
             cursor: pointer;
-            padding: 8px 8px 8px 24px;
+            padding: 8px;
 
             .mat-cell {
                 min-width: 0;
@@ -34,6 +31,7 @@ fuse-contacts-contact-list {
                 &.mat-column-detail-button {
                     flex: 0 1 auto;
                     padding: 0 24px 0 0;
+
                     @include media-breakpoint('gt-md') {
                         display: none;
                     }

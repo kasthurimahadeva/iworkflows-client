@@ -33,7 +33,7 @@
                 <mat-form-field class="category-selector">
 
                     <mat-select placeholder="Select Category" [(ngModel)]="currentCategory"
-                                (change)="filterCoursesByCategory()">
+                                (selectionChange)="filterCoursesByCategory()">
                         <mat-option [value]="'all'">
                             All
                         </mat-option>
@@ -46,10 +46,11 @@
 
             </div>
 
-            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center">
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}"
+                 *fuseIfOnDom>
 
                 <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50"
-                     fxFlex.gt-sm="33" [ngClass]="course.category">
+                     fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}">
 
                     <div class="course-content" fxLayout="column">
 

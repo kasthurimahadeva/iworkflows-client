@@ -9,7 +9,7 @@
 
     <div class="account" fxLayout="column">
         <div class="title">John Doe</div>
-        <mat-form-field floatPlaceholder="never">
+        <mat-form-field floatLabel="never">
             <mat-select class="account-selection" placeholder="Mail Selection"
                         [ngModel]="selectedAccount">
                 <mat-option *ngFor="let account of (accounts | keys)" [value]="account.key">
@@ -48,7 +48,8 @@
         <div class="nav-subheader">{{ 'MAIL.FILTERS' | translate }}</div>
 
         <div class="nav-item" *ngFor="let filter of (filters$ | async)">
-            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/filter/' + filter.handle" routerLinkActive="active">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/filter/' + filter.handle"
+               routerLinkActive="active">
                 <mat-icon class="nav-link-icon" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
                 <span>{{filter.title}}</span>
             </a>
@@ -57,7 +58,8 @@
         <div class="nav-subheader">{{ 'MAIL.LABELS' | translate }}</div>
 
         <div class="nav-item" *ngFor="let label of (labels$ | async)">
-            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/label/' + label.handle" routerLinkActive="active">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/label/' + label.handle"
+               routerLinkActive="active">
                 <mat-icon class="nav-link-icon" [ngStyle]="{'color':label.color}">label</mat-icon>
                 <span>{{label.title}}</span>
             </a>

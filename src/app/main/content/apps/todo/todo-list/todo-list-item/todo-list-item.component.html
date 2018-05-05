@@ -33,20 +33,20 @@
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-button class="mat-icon-button" (click)="toggleImportant($event)"
+            <button mat-icon-button (click)="toggleImportant($event)"
                     aria-label="Toggle important" fxHide.xs>
                 <mat-icon *ngIf="todo.important">error</mat-icon>
                 <mat-icon *ngIf="!todo.important">error_outline</mat-icon>
             </button>
 
-            <button mat-button class="mat-icon-button" (click)="toggleStar($event)"
+            <button mat-icon-button (click)="toggleStar($event)"
                     aria-label="Toggle star" fxHide.xs>
                 <mat-icon *ngIf="todo.starred">star</mat-icon>
                 <mat-icon *ngIf="!todo.starred">star_outline</mat-icon>
             </button>
 
-            <button mat-button [matMenuTriggerFor]="moreMenu" aria-label="More" class="mat-icon-button"
-                    (click)="$event.stopPropagation();" fxHide.xs>
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation()"
+                    fxHide.xs>
                 <mat-icon>more_vert</mat-icon>
             </button>
 

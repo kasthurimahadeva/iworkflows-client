@@ -11,26 +11,26 @@
 
     <div class="todo-header" fxLayout="row" fxLayoutAlign="space-between center">
 
-        <button mat-button class="toggle-complete-button p-0" (click)="toggleCompleted($event)"
+        <button mat-button class="toggle-complete-button" (click)="toggleCompleted($event)"
                 aria-label="Toggle completed" fxFlex="0 1 auto">
             <mat-icon *ngIf="todo.completed">check_box</mat-icon>
             <mat-icon *ngIf="!todo.completed">check_box_outline_blank</mat-icon>
-            <span>Mark as Done</span>
+            <span class="ml-8">Mark as Done</span>
         </button>
 
         <div class="actions" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-button class="mat-icon-button" (click)="toggleDeleted($event)" aria-label="Toggle delete">
+            <button mat-icon-button (click)="toggleDeleted($event)" aria-label="Toggle delete">
                 <mat-icon *ngIf="todo.deleted">delete_forever</mat-icon>
                 <mat-icon *ngIf="!todo.deleted">delete</mat-icon>
             </button>
 
-            <button mat-button class="mat-icon-button" (click)="toggleImportant($event)" aria-label="Toggle important">
+            <button mat-icon-button (click)="toggleImportant($event)" aria-label="Toggle important">
                 <mat-icon *ngIf="todo.important">error</mat-icon>
                 <mat-icon *ngIf="!todo.important">error_outline</mat-icon>
             </button>
 
-            <button mat-button class="mat-icon-button" (click)="toggleStar($event)" aria-label="Toggle star">
+            <button mat-icon-button (click)="toggleStar($event)" aria-label="Toggle star">
                 <mat-icon *ngIf="todo.starred">star</mat-icon>
                 <mat-icon *ngIf="!todo.starred">star_outline</mat-icon>
             </button>
@@ -53,7 +53,7 @@
 
         <form [formGroup]="todoForm" (submit)="addTodo()">
 
-            <mat-form-field class="title mt-8" floatPlaceholder="never" fxFill>
+            <mat-form-field class="title mt-8" floatLabel="never" fxFill>
                 <textarea matInput
                           #titleInput
                           name="title"

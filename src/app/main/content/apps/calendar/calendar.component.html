@@ -15,31 +15,27 @@
                 <!-- TOOLBAR -->
                 <div class="toolbar" fxLayout="row" fxLayoutAlign="start center">
 
-                    <button mat-button class="mat-icon-button" aria-label="Search" matTooltip="Search">
+                    <button mat-icon-button aria-label="Search" matTooltip="Search">
                         <mat-icon>search</mat-icon>
                     </button>
 
-                    <button mat-button class="mat-icon-button"
+                    <button mat-icon-button
                             mwlCalendarToday
                             [(viewDate)]="viewDate"
                             (viewDateChange)="selectedDay = {date:$event}"
                             aria-label="Today" matTooltip="Today">
-                        <!--(click)="selectedDay = viewDate"-->
                         <mat-icon>today</mat-icon>
                     </button>
 
-                    <button mat-button class="mat-icon-button" (click)="view='day'"
-                            aria-label="Day" matTooltip="Day">
+                    <button mat-icon-button (click)="view='day'" aria-label="Day" matTooltip="Day">
                         <mat-icon>view_day</mat-icon>
                     </button>
 
-                    <button mat-button class="mat-icon-button" (click)="view='week'"
-                            aria-label="Week" matTooltip="Week">
+                    <button mat-icon-button (click)="view='week'" aria-label="Week" matTooltip="Week">
                         <mat-icon>view_week</mat-icon>
                     </button>
 
-                    <button mat-button class="mat-icon-button" (click)="view='month'"
-                            aria-label="Month" matTooltip="Month">
+                    <button mat-icon-button (click)="view='month'" aria-label="Month" matTooltip="Month">
                         <mat-icon>view_module</mat-icon>
                     </button>
                 </div>
@@ -50,7 +46,7 @@
             <div class="header-bottom" fxLayout="row" fxLayoutAlign="center center"
                  *fuseIfOnDom [@animate]="{value:'*',params:{delay:'150ms'}}">
 
-                <button mat-button class="mat-icon-button arrow"
+                <button mat-icon-button class="arrow"
                         mwlCalendarPreviousView
                         [view]="view"
                         [(viewDate)]="viewDate"
@@ -63,7 +59,7 @@
                     {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
                 </div>
 
-                <button mat-button class="mat-icon-button arrow"
+                <button mat-icon-button class="arrow"
                         mwlCalendarNextView
                         [view]="view"
                         [(viewDate)]="viewDate"

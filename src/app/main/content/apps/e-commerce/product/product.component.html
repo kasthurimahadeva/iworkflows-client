@@ -13,11 +13,12 @@
             <!-- APP TITLE -->
             <div fxLayout="row" fxLayoutAlign="start center">
 
-                <button class="mr-0 mr-sm-16" mat-icon-button [routerLink]="'/apps/e-commerce/products'">
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/apps/e-commerce/products'">
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
-                <div class="product-image mr-8 mr-sm-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                <div class="product-image mr-8 mr-sm-16" *fuseIfOnDom
+                     [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
                     <img *ngIf="product.images[0]" [src]="product.images[0].url">
                     <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
                 </div>
@@ -64,6 +65,7 @@
                     <mat-tab-group>
 
                         <mat-tab label="Basic Info">
+
                             <div class="tab-content p-24" fusePerfectScrollbar>
 
                                 <mat-form-field class="w-100-p">
@@ -83,44 +85,46 @@
                                     </textarea>
                                 </mat-form-field>
 
-                                <h3 class="mb-0">Categories</h3>
-                                <mat-form-field class="w-100-p" floatPlaceholder="never">
-                                    <mat-chip-list matPrefix #categoryList
-                                                   name="categories"
-                                                   formControlName="categories">
+                                <mat-form-field class="w-100-p">
+
+                                    <mat-chip-list #categoryList name="categories" formControlName="categories">
 
                                         <mat-chip *ngFor="let category of product.categories"
-                                                  removable="true" (removed)="product.removeCategory(category)">
+                                                  [removable]="true" (removed)="product.removeCategory(category)">
                                             {{category}}
                                             <mat-icon matChipRemove>cancel</mat-icon>
                                         </mat-chip>
+
+                                        <input placeholder="Categories"
+                                               [matChipInputFor]="categoryList"
+                                               [matChipInputAddOnBlur]="true"
+                                               (matChipInputTokenEnd)="product.addCategory($event)"/>
+
                                     </mat-chip-list>
-                                    <input matInput
-                                           matChipInputAddOnBlur="true"
-                                           (matChipInputTokenEnd)="product.addCategory($event)"
-                                           placeholder="Add category..."
-                                           [matChipInputFor]="categoryList"/>
+
                                 </mat-form-field>
 
-                                <h3 class="mb-0">Tags</h3>
-                                <mat-form-field class="w-100-p" floatPlaceholder="never">
-                                    <mat-chip-list matPrefix #tagList
-                                                   name="tags"
-                                                   formControlName="tags">
+                                <mat-form-field class="w-100-p">
+
+                                    <mat-chip-list #tagList name="tags" formControlName="tags">
 
                                         <mat-chip *ngFor="let tag of product.tags"
-                                                  removable="true" (removed)="product.removeTag(tag)">
+                                                  [removable]="true" (removed)="product.removeTag(tag)">
                                             {{tag}}
                                             <mat-icon matChipRemove>cancel</mat-icon>
                                         </mat-chip>
+
+                                        <input placeholder="Tags"
+                                               [matChipInputFor]="tagList"
+                                               [matChipInputAddOnBlur]="true"
+                                               (matChipInputTokenEnd)="product.addTag($event)"/>
+
                                     </mat-chip-list>
-                                    <input matInput
-                                           matChipInputAddOnBlur="true"
-                                           (matChipInputTokenEnd)="product.addTag($event)"
-                                           placeholder="Add tag..."
-                                           [matChipInputFor]="tagList"/>
+
                                 </mat-form-field>
+
                             </div>
+
                         </mat-tab>
 
                         <mat-tab label="Product Images">
@@ -129,7 +133,8 @@
 
                                     <div *ngIf="product.images.length === 0"
                                          class="product-image" fxlayout="row" fxLayoutAlign="center center">
-                                        <img class="media" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                                        <img class="media"
+                                             [src]="'assets/images/ecommerce/product-image-placeholder.png'">
                                     </div>
 
                                     <div *ngFor="let image of product.images">
@@ -175,7 +180,8 @@
                                            formControlName="comparedPrice"
                                            placeholder="Compared Price" type="number">
                                     <span matPrefix>$&nbsp;</span>
-                                    <mat-hint align="start">Add a compare price to show next to the real price</mat-hint>
+                                    <mat-hint align="start">Add a compare price to show next to the real price
+                                    </mat-hint>
                                 </mat-form-field>
 
                             </div>

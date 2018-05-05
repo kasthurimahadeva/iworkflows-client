@@ -2,9 +2,7 @@
     <mat-toolbar matDialogTitle class="mat-accent m-0">
         <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
             <span class="title dialog-title">{{dialogTitle}}</span>
-            <button mat-button class="mat-icon-button"
-                    (click)="dialogRef.close()"
-                    aria-label="Close dialog">
+            <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-toolbar-row>
@@ -116,8 +114,7 @@
         </button>
 
         <button *ngIf="action ==='edit'"
-                mat-button
-                class="mat-icon-button"
+                mat-icon-button
                 (click)="dialogRef.close(['delete',contactForm])"
                 aria-label="Delete"
                 matTooltip="Delete">

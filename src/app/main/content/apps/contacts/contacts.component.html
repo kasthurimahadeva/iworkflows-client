@@ -7,7 +7,7 @@
         <!-- APP TITLE -->
         <div fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-button class="mat-icon-button sidenav-toggle mr-12"
+            <button mat-icon-button class="sidenav-toggle mr-12"
                     fuseMatSidenavToggler="contacts-main-sidenav"
                     fxHide.gt-md>
                 <mat-icon>menu</mat-icon>
@@ -26,7 +26,7 @@
             <label for="search" class="mr-8">
                 <mat-icon>search</mat-icon>
             </label>
-            <mat-form-field mat-no-float class="m-0" floatPlaceholder="never">
+            <mat-form-field mat-no-float class="m-0" floatLabel="never">
                 <input matInput [formControl]="searchInput" id="search" placeholder="Search for anything">
             </mat-form-field>
         </div>

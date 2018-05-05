@@ -1,12 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
+import { fuseAnimations } from '@fuse/animations';
+
 import { AcademyCoursesService } from '../courses.service';
 
 @Component({
     selector   : 'fuse-academy-courses',
     templateUrl: './courses.component.html',
-    styleUrls  : ['./courses.component.scss']
+    styleUrls  : ['./courses.component.scss'],
+    animations   : fuseAnimations
 })
 export class FuseAcademyCoursesComponent implements OnInit, OnDestroy
 {

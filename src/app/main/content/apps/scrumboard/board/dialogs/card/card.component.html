@@ -35,7 +35,8 @@
 
                     <mat-menu #labelsMenu="matMenu" [overlapTrigger]="false" class="scrumboard-labels-menu">
 
-                        <fuse-scrumboard-label-selector [card]="card" (onCardLabelsChange)="updateCard()"></fuse-scrumboard-label-selector>
+                        <fuse-scrumboard-label-selector [card]="card"
+                                                        (onCardLabelsChange)="updateCard()"></fuse-scrumboard-label-selector>
 
                     </mat-menu>
                 </div>
@@ -49,7 +50,8 @@
                     </button>
 
                     <mat-menu #membersMenu="matMenu" [overlapTrigger]="false">
-                        <div fxFlex fxLayout="column" class="scrumboard-members-menu" (click)="$event.stopPropagation()">
+                        <div fxFlex fxLayout="column" class="scrumboard-members-menu"
+                             (click)="$event.stopPropagation()">
                             <mat-checkbox class="member px-12" [checked]="card.idMembers.indexOf(member.id) > -1"
                                           *ngFor="let member of board.members"
                                           (change)="toggleInArray(member.id, card.idMembers);updateCard()">
@@ -72,20 +74,25 @@
                 <!-- CHECKLIST -->
                 <div class="due-date " fxFlex="0 1 auto">
 
-                    <button mat-icon-button class="" [matMenuTriggerFor]="checklistMenu" #checklistMenuTrigger="matMenuTrigger" (menuOpened)="onChecklistMenuOpen()">
+                    <button mat-icon-button class="" [matMenuTriggerFor]="checklistMenu"
+                            #checklistMenuTrigger="matMenuTrigger" (menuOpened)="onChecklistMenuOpen()">
                         <mat-icon>check_box</mat-icon>
                     </button>
 
                     <mat-menu #checklistMenu="matMenu" [overlapTrigger]="false">
 
-                        <form class="px-16 py-8" #newChecklistForm="ngForm" (submit)="addChecklist(newChecklistForm)" (click)="$event.stopPropagation()"
+                        <form class="px-16 py-8" #newChecklistForm="ngForm" (submit)="addChecklist(newChecklistForm)"
+                              (click)="$event.stopPropagation()"
                               fxLayout="column" fxLayoutAlign="start end">
 
-                            <mat-form-field floatPlaceholder="never" (click)="$event.stopPropagation()" fxFlex>
-                                <input #newCheckListTitleField matInput ngModel #checklistTitle="ngModel" name="checklistTitle" placeholder="Checklist title" required>
+                            <mat-form-field floatLabel="never" (click)="$event.stopPropagation()" fxFlex>
+                                <input #newCheckListTitleField matInput ngModel #checklistTitle="ngModel"
+                                       name="checklistTitle" placeholder="Checklist title" required>
                             </mat-form-field>
 
-                            <button mat-raised-button class="mat-accent" aria-label="Add Checklist" [disabled]="!newChecklistForm.valid">Add Checklist</button>
+                            <button mat-raised-button class="mat-accent" aria-label="Add Checklist"
+                                    [disabled]="!newChecklistForm.valid">Add Checklist
+                            </button>
                         </form>
 
                     </mat-menu>
@@ -127,7 +134,9 @@
                 <mat-icon>close</mat-icon>
             </button>
             <!-- / CLOSE DIALOG BUTTON -->
+
         </div>
+
     </mat-toolbar>
 
     <div *ngIf="card" mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
@@ -146,7 +155,7 @@
             <!-- DUE DATE -->
             <div *ngIf="card.due" class="due-date" fxLayout="row" fxLayoutAlign="start center">
 
-                <mat-form-field floatPlaceholder="never">
+                <mat-form-field floatLabel="never">
                     <input matInput [matDatepicker]="picker" [(ngModel)]="card.due" placeholder="Choose a due date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -164,7 +173,7 @@
         <div fxLayout="row" fxLayoutAlign="start center">
             <mat-icon *ngIf="card.subscribed" class="card-subscribe s-20 mr-12">remove_red_eye</mat-icon>
             <div class="card-name">
-                <mat-form-field floatPlaceholder="never" fxFlex>
+                <mat-form-field floatLabel="never" class="w-100-p">
                     <input matInput [(ngModel)]="card.name" placeholder="Title" required (change)="updateCard()">
                 </mat-form-field>
             </div>
@@ -173,8 +182,9 @@
 
         <!-- DESCRIPTION -->
         <div class="description">
-            <mat-form-field fxFlex>
-                <textarea matInput [(ngModel)]="card.description" placeholder="Description" columns="1" mat-maxlength="150" max-rows="4" (change)="updateCard()"></textarea>
+            <mat-form-field class="w-100-p">
+                <textarea matInput [(ngModel)]="card.description" placeholder="Description" columns="1"
+                          mat-maxlength="150" max-rows="4" (change)="updateCard()"></textarea>
             </mat-form-field>
         </div>
         <!-- / DESCRIPTION -->
@@ -198,7 +208,9 @@
                                       [ngClass]="board.labels | getById:labelId:'color'"
                                       fxLayout="row" fxLayoutAlign="start center">
                                 <span>{{board.labels|getById:labelId:'name'}}</span>
-                                <mat-icon class="ml-8 s-16 chip-remove" (click)="toggleInArray(labelId, card.idLabels);updateCard()">close</mat-icon>
+                                <mat-icon class="ml-8 s-16 chip-remove"
+                                          (click)="toggleInArray(labelId, card.idLabels);updateCard()">close
+                                </mat-icon>
                             </mat-chip>
                         </mat-chip-list>
                     </div>
@@ -215,7 +227,9 @@
                                       fxLayout="row" fxLayoutAlign="start center">
                                 <img class="member-chip-avatar" [src]="board.members | getById:memberId:'avatar'"
                                      [matTooltip]="board.members | getById:memberId:'name'">
-                                <mat-icon class="ml-8 s-16 chip-remove" (click)="toggleInArray(memberId, card.idMembers);updateCard()">close</mat-icon>
+                                <mat-icon class="ml-8 s-16 chip-remove"
+                                          (click)="toggleInArray(memberId, card.idMembers);updateCard()">close
+                                </mat-icon>
                             </mat-chip>
                         </mat-chip-list>
                     </div>
@@ -257,7 +271,8 @@
                                     <span class="attachment-time">{{item.time}}</span>
 
                                     <div>
-                                        <button mat-raised-button class="attachment-actions-button" [matMenuTriggerFor]="attachmentActionsMenu">
+                                        <button mat-raised-button class="attachment-actions-button"
+                                                [matMenuTriggerFor]="attachmentActionsMenu">
                                             <span fxLayout="row" fxLayoutAlign="center center">
                                                 <span>Actions</span>
                                                 <mat-icon class="s-20">arrow_drop_down</mat-icon>
@@ -313,7 +328,8 @@
 
 
                         <div>
-                            <button mat-icon-button class="checklist-actions-button" [matMenuTriggerFor]="checklistActionsMenu">
+                            <button mat-icon-button class="checklist-actions-button"
+                                    [matMenuTriggerFor]="checklistActionsMenu">
                                 <mat-icon class="s-20">more_vert</mat-icon>
                             </button>
                             <mat-menu #checklistActionsMenu="matMenu">
@@ -341,7 +357,8 @@
 
                         <div class="check-items">
 
-                            <div class="check-item" *ngFor="let checkItem of checklist.checkItems" fxLayout="row" fxLayoutAlign="space-between center">
+                            <div class="check-item" *ngFor="let checkItem of checklist.checkItems" fxLayout="row"
+                                 fxLayoutAlign="space-between center">
 
                                 <div fxFlex fxLayout="row" fxLayoutAlign="start center">
                                     <mat-checkbox [(ngModel)]="checkItem.checked"
@@ -353,21 +370,24 @@
                                     </mat-form-field>
                                 </div>
 
-                                <button mat-icon-button class="checklist-actions-button" (click)="removeChecklistItem(checkItem, checklist)">
+                                <button mat-icon-button class="checklist-actions-button"
+                                        (click)="removeChecklistItem(checkItem, checklist)">
                                     <mat-icon class="s-20">delete</mat-icon>
                                 </button>
 
                             </div>
                         </div>
 
-                        <form #newCheckItemForm="ngForm" (submit)="addCheckItem(newCheckItemForm,checklist)" name="newCheckItemForm" class="new-check-item-form"
+                        <form #newCheckItemForm="ngForm" (submit)="addCheckItem(newCheckItemForm,checklist)"
+                              name="newCheckItemForm" class="new-check-item-form"
                               fxLayout="row" fxLayoutAlign="start center">
 
                             <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
                                 <mat-icon class="s-20">add</mat-icon>
 
                                 <mat-form-field class="no-errors-spacer mx-12" fxFlex>
-                                    <input matInput ngModel #checkItem="ngModel" name="checkItem" placeholder="Add an item" autocomplete="off">
+                                    <input matInput ngModel #checkItem="ngModel" name="checkItem"
+                                           placeholder="Add an item" autocomplete="off">
                                 </mat-form-field>
                             </div>
 
@@ -444,7 +464,8 @@
                     </div>
 
                     <div class="section-content">
-                        <div class="activity" fxLayout="row" fxLayoutAlign="start center" *ngFor="let activity of card.activities">
+                        <div class="activity" fxLayout="row" fxLayoutAlign="start center"
+                             *ngFor="let activity of card.activities">
                             <img class="activity-member-avatar"
                                  [src]="board.members| getById:activity.idMember:'avatar'">
                             <div class="activity-member-name">{{board.members| getById:activity.idMember:'name'}}</div>
