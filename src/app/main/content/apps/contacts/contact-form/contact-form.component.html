@@ -19,56 +19,57 @@
         <form [formGroup]="contactForm">
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">account_circle</mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">account_circle</mat-icon>
                     <input name="name" formControlName="name" placeholder="Name" matInput required>
                 </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12"></mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">account_circle</mat-icon>
                     <input name="lastName" formControlName="lastName" placeholder="Lastname" matInput>
                 </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">star</mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">star</mat-icon>
                     <input name="nickname" formControlName="nickname" matInput placeholder="Nickname">
                 </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">phone</mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">phone</mat-icon>
                     <input formControlName="phone" matInput placeholder="Phone number">
                 </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">email</mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">email</mat-icon>
                     <input name="email" formControlName="email" matInput type="email" placeholder="Email">
                 </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">domain</mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">domain</mat-icon>
                     <input name="company" formControlName="company" matInput placeholder="Company">
                 </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">work</mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">work</mat-icon>
                     <input name="jobTitle" formControlName="jobTitle" matInput placeholder="Job title">
                 </mat-form-field>
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
                 <mat-form-field class="mr-24" fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">cake</mat-icon>
                     <input matInput [matDatepicker]="birthdayDatePicker" placeholder="Birthday">
                     <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
                     <mat-datepicker #birthdayDatePicker></mat-datepicker>
@@ -76,16 +77,16 @@
             </div>
 
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">home</mat-icon>
                 <mat-form-field fxFlex>
+                    <mat-icon matPrefix class="mr-12 s-20 secondary-text">home</mat-icon>
                     <input name="address" formControlName="address" matInput placeholder="Address">
                 </mat-form-field>
             </div>
 
             <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
-                <mat-icon class="mr-12 mt-12">note</mat-icon>
                 <mat-form-field fxFlex>
-                    <textarea name="notes" formControlName="notes" placeholder="Notes" matInput type="text" max-rows="4"></textarea>
+                    <textarea name="notes" formControlName="notes" placeholder="Notes" matInput type="text"
+                              max-rows="4"></textarea>
                 </mat-form-field>
             </div>
 

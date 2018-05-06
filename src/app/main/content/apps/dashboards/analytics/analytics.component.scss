@@ -43,6 +43,15 @@
                 min-width: 0;
                 max-width: none;
             }
+
+            .fuse-card {
+
+                @include media-breakpoint-down('md') {
+                    width: 100%;
+                    min-width: 0;
+                    max-width: none;
+                }
+            }
         }
     }
 

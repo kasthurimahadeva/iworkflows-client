@@ -52,37 +52,60 @@
 
                 <mat-list-item *ngFor="let shortcutItem of shortcutItems"
                                (click)="toggleShortcut($event, shortcutItem)">
+
                     <div class="w-100-p" fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon mat-list-icon class="mr-8" *ngIf="shortcutItem.icon">{{shortcutItem.icon}}</mat-icon>
+
+                        <mat-icon mat-list-icon class="mr-8 secondary-text" *ngIf="shortcutItem.icon">
+                            {{shortcutItem.icon}}
+                        </mat-icon>
+
                         <span class="h2 w-32 h-32 p-4 mr-8 secondary-text text-bold" fxLayout="row"
                               fxLayoutAlign="center center" *ngIf="!shortcutItem.icon">
                             {{shortcutItem.title.substr(0, 1).toUpperCase()}}
                         </span>
+
                         <p matLine fxFlex>{{shortcutItem.title}}</p>
-                        <mat-icon class="ml-8">star</mat-icon>
+
+                        <mat-icon class="ml-8 amber-fg">star</mat-icon>
+
                     </div>
+
                 </mat-list-item>
+
                 <mat-list-item *ngIf="shortcutItems.length === 0">
                     <p>
                         <small>No shortcuts yet!</small>
                     </p>
                 </mat-list-item>
+
             </mat-nav-list>
 
             <mat-nav-list *ngIf="searching" style="max-height: 312px; overflow: auto" fusePerfectScrollbar>
+
                 <mat-list-item *ngFor="let navigationItem of filteredNavigationItems"
                                (click)="toggleShortcut($event, navigationItem)">
+
                     <div class="w-100-p" fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon mat-list-icon class="mr-8" *ngIf="navigationItem.icon">{{navigationItem.icon}}</mat-icon>
+
+                        <mat-icon mat-list-icon class="mr-8 secondary-text" *ngIf="navigationItem.icon">
+                            {{navigationItem.icon}}
+                        </mat-icon>
+
                         <span class="h2 w-32 h-32 p-4 mr-8 secondary-text text-bold" fxLayout="row"
                               fxLayoutAlign="center center" *ngIf="!navigationItem.icon">
                             {{navigationItem.title.substr(0, 1).toUpperCase()}}
                         </span>
+
                         <p matLine fxFlex>{{navigationItem.title}}</p>
-                        <mat-icon class="ml-8" *ngIf="isInShortcuts(navigationItem)">star</mat-icon>
+
+                        <mat-icon class="ml-8 amber-fg" *ngIf="isInShortcuts(navigationItem)">star</mat-icon>
+
                     </div>
+
                 </mat-list-item>
+
             </mat-nav-list>
+
         </mat-menu>
 
     </div>

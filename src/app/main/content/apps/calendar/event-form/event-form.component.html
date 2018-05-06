@@ -1,11 +1,11 @@
 <div class="dialog-content-wrapper">
     <mat-toolbar class="mat-accent m-0">
-        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
             <span class="title dialog-title">{{dialogTitle}}</span>
             <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
                 <mat-icon>close</mat-icon>
             </button>
-        </div>
+        </mat-toolbar-row>
     </mat-toolbar>
 
     <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
