@@ -442,13 +442,15 @@ export class MailFakeDb
             'id'    : 0,
             'handle': 'starred',
             'title' : 'Starred',
-            'icon'  : 'star'
+            'icon'  : 'star',
+            'color' : 'amber-fg'
         },
         {
             'id'    : 1,
             'handle': 'important',
             'title' : 'Important',
-            'icon'  : 'label'
+            'icon'  : 'label',
+            'color' : 'red-fg'
         }
     ];
 

@@ -120,7 +120,7 @@ export class ContactsService implements Resolve<any>
      */
     toggleSelectedContact(id)
     {
-        // First, check if we already have that todo as selected...
+        // First, check if we already have that contact as selected...
         if ( this.selectedContacts.length > 0 )
         {
             const index = this.selectedContacts.indexOf(id);

@@ -39,14 +39,14 @@
             <!-- / APP TITLE -->
 
             <button mat-raised-button
-                    class="save-product-button mat-white-bg mt-16 mt-sm-0"
+                    class="save-product-button mat-white-bg"
                     [disabled]="productForm.invalid"
                     *ngIf="pageType ==='new'" (click)="addProduct()">
                 <span>ADD</span>
             </button>
 
             <button mat-raised-button
-                    class="save-product-button mat-white-bg mt-16 mt-sm-0"
+                    class="save-product-button mat-white-bg"
                     [disabled]="productForm.invalid || productForm.pristine"
                     *ngIf="pageType ==='edit'" (click)="saveProduct()">
                 <span>SAVE</span>

@@ -92,7 +92,7 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
         this.onCurrentTodoChanged.unsubscribe();
         this.onNewTodoClicked.unsubscribe();
     }
-    
+
     focusTitleField()
     {
         setTimeout(() => {
@@ -155,6 +155,11 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
     toggleTagOnTodo(tagId)
     {
         this.todoService.toggleTagOnTodo(tagId, this.todo);
+    }
+
+    hasTag(tagId)
+    {
+        return this.todoService.hasTag(tagId, this.todo);
     }
 
     addTodo()

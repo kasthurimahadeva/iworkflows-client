@@ -9,9 +9,10 @@
         }
 
         @include media-breakpoint-down(xs) {
-            height: 176px !important;
-            min-height: 176px !important;
-            max-height: 176px !important;
+            margin: 8px 0;
+            height: 192px !important;
+            min-height: 192px !important;
+            max-height: 192px !important;
         }
     }
 

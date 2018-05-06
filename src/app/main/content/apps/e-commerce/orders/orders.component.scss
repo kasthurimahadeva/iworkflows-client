@@ -1,9 +1,18 @@
+@import "src/@fuse/scss/fuse";
+
 :host {
 
     .header {
 
         .search-input-wrapper {
             max-width: 480px;
+        }
+
+        @include media-breakpoint-down(xs) {
+            margin: 24px 0;
+            height: 128px !important;
+            min-height: 128px !important;
+            max-height: 128px !important;
         }
     }
 

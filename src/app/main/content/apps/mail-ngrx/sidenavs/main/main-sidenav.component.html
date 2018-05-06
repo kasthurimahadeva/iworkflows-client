@@ -50,7 +50,7 @@
         <div class="nav-item" *ngFor="let filter of (filters$ | async)">
             <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/filter/' + filter.handle"
                routerLinkActive="active">
-                <mat-icon class="nav-link-icon" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
+                <mat-icon class="nav-link-icon" [ngClass]="filter.color" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
                 <span>{{filter.title}}</span>
             </a>
         </div>

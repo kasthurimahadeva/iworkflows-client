@@ -30,6 +30,7 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
     checkboxes: {};
 
     onContactsChangedSubscription: Subscription;
+    onFilterChangedSubscription: Subscription;
     onSelectedContactsChangedSubscription: Subscription;
     onUserDataChangedSubscription: Subscription;
 
@@ -72,6 +73,10 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
                 this.user = user;
             });
 
+        this.onFilterChangedSubscription =
+            this.contactsService.onFilterChanged.subscribe(() => {
+                this.contactsService.deselectContacts();
+            });
     }
 
     ngOnInit()
@@ -82,6 +87,7 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
     ngOnDestroy()
     {
         this.onContactsChangedSubscription.unsubscribe();
+        this.onFilterChangedSubscription.unsubscribe();
         this.onSelectedContactsChangedSubscription.unsubscribe();
         this.onUserDataChangedSubscription.unsubscribe();
     }

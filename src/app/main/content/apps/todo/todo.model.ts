@@ -30,7 +30,7 @@ export class Todo
             this.starred = todo.starred;
             this.important = todo.important;
             this.deleted = todo.deleted;
-            this.tags = todo.tags;
+            this.tags = todo.tags || [];
         }
     }
 

@@ -326,18 +326,20 @@
 
                         <span fxFlex class="section-title">{{checklist.name}}</span>
 
-
                         <div>
+
                             <button mat-icon-button class="checklist-actions-button"
                                     [matMenuTriggerFor]="checklistActionsMenu">
                                 <mat-icon class="s-20">more_vert</mat-icon>
                             </button>
+
                             <mat-menu #checklistActionsMenu="matMenu">
                                 <button mat-menu-item (click)="removeChecklist(checklist)">
                                     <mat-icon>delete</mat-icon>
                                     <span>Remove Checklist</span>
                                 </button>
                             </mat-menu>
+
                         </div>
 
                     </div>
@@ -372,7 +374,7 @@
 
                                 <button mat-icon-button class="checklist-actions-button"
                                         (click)="removeChecklistItem(checkItem, checklist)">
-                                    <mat-icon class="s-20">delete</mat-icon>
+                                    <mat-icon class="secondary-text s-20">delete</mat-icon>
                                 </button>
 
                             </div>

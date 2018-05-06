@@ -364,8 +364,18 @@ export class TodoService implements Resolve<any>
         {
             todo.tags.push(tagId);
         }
-        
+
         this.updateTodo(todo);
+    }
+
+    hasTag(tagId, todo)
+    {
+        if ( !todo.tags )
+        {
+            return false;
+        }
+
+        return todo.tags.indexOf(tagId) !== -1;
     }
 
     /**

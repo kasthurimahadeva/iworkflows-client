@@ -1,7 +1,8 @@
 <div id="helper-classes" class="page-layout simple tabbed" fxLayout="column" fusePerfectScrollbar>
 
     <!-- HEADER -->
-    <div class="header mat-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
 
         <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
@@ -12,8 +13,9 @@
             <div class="h1 mt-16">Icons</div>
         </div>
 
-        <a mat-raised-button class="reference-button mat-white-bg mt-16 mt-sm-0" href="https://material.angular.io" target="_blank">
-            <mat-icon>link</mat-icon>
+        <a mat-raised-button class="reference-button mat-white-bg mt-16 mt-sm-0" href="https://material.angular.io"
+           target="_blank">
+            <mat-icon class="mr-8">link</mat-icon>
             <span>Reference</span>
         </a>
 
@@ -41,7 +43,7 @@
 
                     <div class="icon-holder m-16" fxLayout="column" fxLayoutAlign="center center"
                          *ngFor="let icon of filteredIcons">
-                        <mat-icon class="s-48">{{icon}}</mat-icon>
+                        <mat-icon class="secondary-text s-48">{{icon}}</mat-icon>
                         <div class="icon-name secondary-text mt-8">{{icon}}</div>
                     </div>
 

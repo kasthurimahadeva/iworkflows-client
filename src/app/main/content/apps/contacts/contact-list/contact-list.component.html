@@ -73,13 +73,13 @@
         <mat-cell *cdkCellDef="let contact">
             <div fxFlex="row" fxLayoutAlign="end center">
                 <button mat-icon-button (click)="$event.stopPropagation();toggleStar(contact.id)" aria-label="Toggle star">
-                    <mat-icon *ngIf="user.starred.includes(contact.id)">star</mat-icon>
-                    <mat-icon *ngIf="!user.starred.includes(contact.id)">star_outline</mat-icon>
+                    <mat-icon class="amber-fg" *ngIf="user.starred.includes(contact.id)">star</mat-icon>
+                    <mat-icon class="secondary-text" *ngIf="!user.starred.includes(contact.id)">star_outline</mat-icon>
                 </button>
 
                 <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
                         (click)="$event.stopPropagation();">
-                    <mat-icon>more_vert</mat-icon>
+                    <mat-icon class="secondary-text">more_vert</mat-icon>
                 </button>
 
                 <mat-menu #moreMenu="matMenu">
