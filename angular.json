@@ -24,8 +24,7 @@
                         "tsConfig": "src/tsconfig.app.json",
                         "assets": [
                             "src/favicon.ico",
-                            "src/assets",
-                            "src/app/main/content/components/angular-material"
+                            "src/assets"
                         ],
                         "styles": [
                             "src/styles.scss"
@@ -103,9 +102,7 @@
                             "src/tsconfig.spec.json"
                         ],
                         "exclude": [
-                            "**/node_modules/**",
-                            "**/src/app/fuse-fake-db/**/*",
-                            "**/src/assets/angular-material-examples/**/*"
+                            "**/node_modules/**"
                         ]
                     }
                 }
@@ -127,9 +124,7 @@
                     "options": {
                         "tsConfig": "e2e/tsconfig.e2e.json",
                         "exclude": [
-                            "**/node_modules/**",
-                            "**/src/app/fuse-fake-db/**/*",
-                            "**/src/assets/angular-material-examples/**/*"
+                            "**/node_modules/**"
                         ]
                     }
                 }
