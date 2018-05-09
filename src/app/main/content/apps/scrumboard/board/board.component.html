@@ -70,6 +70,7 @@
 
                 <!-- NEW LIST BUTTON-->
                 <fuse-scrumboard-board-add-list class="new-list-wrapper" (onlistAdd)="onListAdd($event)"
+                                                ngxDraggable [moves]="false"
                                                 [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}">
                 </fuse-scrumboard-board-add-list>
                 <!-- / NEW LIST BUTTON-->
