@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
 

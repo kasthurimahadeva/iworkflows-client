@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+
+import { Subscription } from 'rxjs';
 
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';

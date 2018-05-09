@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/map';
-import { of } from 'rxjs/observable/of';
+
+import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
+
 import * as LabelsActions from '../actions/labels.actions';
 import { MailNgrxService } from '../../mail.service';
 

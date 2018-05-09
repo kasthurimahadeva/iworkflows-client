@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { Mail } from '../mail.model';
 import * as fromStore from '../store';

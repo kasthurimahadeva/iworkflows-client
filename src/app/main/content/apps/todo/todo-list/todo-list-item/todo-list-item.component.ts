@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { Todo } from '../../todo.model';
 import { TodoService } from '../../todo.service';

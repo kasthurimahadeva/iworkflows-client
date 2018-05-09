@@ -2,14 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { merge, Observable, BehaviorSubject, fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseUtils } from '@fuse/utils';
@@ -40,16 +34,18 @@ export class FuseEcommerceProductsComponent implements OnInit
     ngOnInit()
     {
         this.dataSource = new FilesDataSource(this.productsService, this.paginator, this.sort);
-        Observable.fromEvent(this.filter.nativeElement, 'keyup')
-                  .debounceTime(150)
-                  .distinctUntilChanged()
-                  .subscribe(() => {
-                      if ( !this.dataSource )
-                      {
-                          return;
-                      }
-                      this.dataSource.filter = this.filter.nativeElement.value;
-                  });
+
+        fromEvent(this.filter.nativeElement, 'keyup').pipe(
+            debounceTime(150),
+            distinctUntilChanged()
+        ).subscribe(() => {
+            if ( !this.dataSource )
+            {
+                return;
+            }
+
+            this.dataSource.filter = this.filter.nativeElement.value;
+        });
     }
 }
 
@@ -98,19 +94,21 @@ export class FilesDataSource extends DataSource<any>
             this._sort.sortChange
         ];
 
-        return Observable.merge(...displayDataChanges).map(() => {
-            let data = this.productsService.products.slice();
+        return merge(...displayDataChanges).pipe(map(() => {
 
-            data = this.filterData(data);
+                let data = this.productsService.products.slice();
 
-            this.filteredData = [...data];
+                data = this.filterData(data);
 
-            data = this.sortData(data);
+                this.filteredData = [...data];
 
-            // Grab the page's slice of data.
-            const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-            return data.splice(startIndex, this._paginator.pageSize);
-        });
+                data = this.sortData(data);
+
+                // Grab the page's slice of data.
+                const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+                return data.splice(startIndex, this._paginator.pageSize);
+            }
+        ));
     }
 
     filterData(data)
@@ -122,7 +120,9 @@ export class FilesDataSource extends DataSource<any>
         return FuseUtils.filterArrayByString(data, this.filter);
     }
 
-    sortData(data): any[]
+    sortData(data)
+        :
+        any[]
     {
         if ( !this._sort.active || this._sort.direction === '' )
         {

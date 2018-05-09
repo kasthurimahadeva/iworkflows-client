@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfigService } from '@fuse/services/config.service';

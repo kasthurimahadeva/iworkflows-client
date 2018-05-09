@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { Mail } from '../../mail.model';
 import { MailService } from '../../mail.service';

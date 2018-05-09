@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Mail } from './mail.model';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { Mail } from './mail.model';
 import { MailAppState } from './store/reducers';
 import { getFiltersArr, getFoldersArr, getLabelsArr, getMailsArr } from './store/selectors';
 

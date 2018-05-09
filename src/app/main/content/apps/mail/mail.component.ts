@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
@@ -84,9 +84,10 @@ export class FuseMailComponent implements OnInit, OnDestroy
                     }
                 });
 
-        this.searchInput.valueChanges
-            .debounceTime(300)
-            .distinctUntilChanged()
+        this.searchInput.valueChanges.pipe(
+            debounceTime(300),
+            distinctUntilChanged()
+        )
             .subscribe(searchText => {
                 this.mailService.onSearchTextChanged.next(searchText);
             });

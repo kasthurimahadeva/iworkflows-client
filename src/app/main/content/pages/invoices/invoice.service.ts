@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class InvoiceService implements Resolve<any>

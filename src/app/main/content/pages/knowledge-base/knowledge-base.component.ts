@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { FuseKnowledgeBaseArticleComponent } from './dialogs/article/article.component';

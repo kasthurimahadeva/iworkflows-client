@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
-
-import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { MailNgrxService } from '../../mail.service';
 import * as fromStore from './../../store';

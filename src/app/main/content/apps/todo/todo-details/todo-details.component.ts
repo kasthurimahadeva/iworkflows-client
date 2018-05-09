@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { FuseUtils } from '@fuse/utils';
 import { fuseAnimations } from '@fuse/animations';
@@ -53,12 +53,12 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
                         this.todoForm = this.createTodoForm();
 
                         this.onFormChange =
-                            this.todoForm.valueChanges
-                                .debounceTime(500)
-                                .distinctUntilChanged()
-                                .subscribe(data => {
-                                    this.todoService.updateTodo(data);
-                                });
+                            this.todoForm.valueChanges.pipe(
+                                debounceTime(500),
+                                distinctUntilChanged()
+                            ).subscribe(data => {
+                                this.todoService.updateTodo(data);
+                            });
                     }
                 });
 

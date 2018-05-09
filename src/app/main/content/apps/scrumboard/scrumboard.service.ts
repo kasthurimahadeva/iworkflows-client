@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ScrumboardService implements Resolve<any>

@@ -1,14 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
+
+import { merge, Observable, BehaviorSubject, fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseUtils } from '@fuse/utils';
@@ -40,16 +35,16 @@ export class FuseEcommerceOrdersComponent implements OnInit
     {
         this.dataSource = new FilesDataSource(this.ordersService, this.paginator, this.sort);
 
-        Observable.fromEvent(this.filter.nativeElement, 'keyup')
-                  .debounceTime(150)
-                  .distinctUntilChanged()
-                  .subscribe(() => {
-                      if ( !this.dataSource )
-                      {
-                          return;
-                      }
-                      this.dataSource.filter = this.filter.nativeElement.value;
-                  });
+        fromEvent(this.filter.nativeElement, 'keyup').pipe(
+            debounceTime(150),
+            distinctUntilChanged()
+        ).subscribe(() => {
+            if ( !this.dataSource )
+            {
+                return;
+            }
+            this.dataSource.filter = this.filter.nativeElement.value;
+        });
     }
 }
 
@@ -97,19 +92,22 @@ export class FilesDataSource extends DataSource<any>
             this._filterChange,
             this._sort.sortChange
         ];
-        return Observable.merge(...displayDataChanges).map(() => {
-            let data = this.ordersService.orders.slice();
 
-            data = this.filterData(data);
+        return merge(...displayDataChanges).pipe(map(() => {
 
-            this.filteredData = [...data];
+                let data = this.ordersService.orders.slice();
 
-            data = this.sortData(data);
+                data = this.filterData(data);
 
-            // Grab the page's slice of data.
-            const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-            return data.splice(startIndex, this._paginator.pageSize);
-        });
+                this.filteredData = [...data];
+
+                data = this.sortData(data);
+
+                // Grab the page's slice of data.
+                const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+                return data.splice(startIndex, this._paginator.pageSize);
+            })
+        );
 
     }
 

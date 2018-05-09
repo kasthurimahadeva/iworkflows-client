@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { FuseConfigService } from '@fuse/services/config.service';
@@ -76,12 +77,12 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
             this.searchInput.setValue(searchText);
         });
 
-        this.searchInput.valueChanges
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .subscribe(searchText => {
-                this.store.dispatch(new fromStore.SetSearchText(searchText));
-            });
+        this.searchInput.valueChanges.pipe(
+            debounceTime(300),
+            distinctUntilChanged()
+        ).subscribe(searchText => {
+            this.store.dispatch(new fromStore.SetSearchText(searchText));
+        });
     }
 
     ngOnDestroy()

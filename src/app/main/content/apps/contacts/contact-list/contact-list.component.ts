@@ -2,8 +2,7 @@ import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subscription } from 'rxjs';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';

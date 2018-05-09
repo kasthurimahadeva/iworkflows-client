@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { fuseAnimations } from '@fuse/animations';
 

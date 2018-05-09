@@ -1,7 +1,8 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms/src/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatMenuTrigger } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+
+import { Subscription } from 'rxjs';
 
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { FuseUtils } from '@fuse/utils';

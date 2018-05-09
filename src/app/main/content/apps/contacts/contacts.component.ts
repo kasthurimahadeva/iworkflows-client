@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import { Subscription } from 'rxjs/Subscription';
 import { MatDialog } from '@angular/material';
+
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
@@ -63,8 +63,10 @@ export class FuseContactsComponent implements OnInit, OnDestroy
                 });
 
         this.searchInput.valueChanges
-            .debounceTime(300)
-            .distinctUntilChanged()
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            )
             .subscribe(searchText => {
                 this.contactsService.onSearchTextChanged.next(searchText);
             });

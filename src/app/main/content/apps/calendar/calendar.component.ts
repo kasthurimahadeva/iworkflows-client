@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { Subject } from 'rxjs';
 import { startOfDay, isSameDay, isSameMonth } from 'date-fns';
-
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarMonthViewDay } from 'angular-calendar';
 
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';

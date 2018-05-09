@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { ChatService } from '../../../chat.service';
 
@@ -27,14 +26,14 @@ export class FuseChatUserSidenavComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-        this.onFormChange = this.userForm.valueChanges
-                                .debounceTime(500)
-                                .distinctUntilChanged()
-                                .subscribe(data => {
-                                    this.user.mood = data.mood;
-                                    this.user.status = data.status;
-                                    this.chatService.updateUserData(this.user);
-                                });
+        this.onFormChange = this.userForm.valueChanges.pipe(
+            debounceTime(500),
+            distinctUntilChanged()
+        ).subscribe(data => {
+            this.user.mood = data.mood;
+            this.user.status = data.status;
+            this.chatService.updateUserData(this.user);
+        });
     }
 
     changeLeftSidenavView(view)

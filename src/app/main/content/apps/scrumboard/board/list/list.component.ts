@@ -1,7 +1,8 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+
+import { Subscription } from 'rxjs';
 
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';

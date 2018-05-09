@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+
+import { Observable, forkJoin, of } from 'rxjs';
 import { map, switchMap, catchError, tap, take, filter } from 'rxjs/operators';
-import 'rxjs/add/observable/forkJoin';
+
 import { MailAppState } from '../reducers';
 import * as fromStore from '../index';
 import { getFiltersLoaded, getFoldersLoaded, getLabelsLoaded, getMailsLoaded } from '../selectors';
@@ -38,8 +38,7 @@ export class ResolveGuard implements CanActivate
 
     checkStore(): Observable<any>
     {
-        return Observable
-            .forkJoin(
+        return forkJoin(
                 this.getFolders(),
                 this.getFilters(),
                 this.getLabels()

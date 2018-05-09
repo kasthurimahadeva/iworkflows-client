@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
@@ -58,12 +58,12 @@ export class FuseTodoComponent implements OnInit, OnDestroy
                     this.tags = this.todoService.tags;
                 });
 
-        this.searchInput.valueChanges
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .subscribe(searchText => {
-                this.todoService.onSearchTextChanged.next(searchText);
-            });
+        this.searchInput.valueChanges.pipe(
+            debounceTime(300),
+            distinctUntilChanged()
+        ).subscribe(searchText => {
+            this.todoService.onSearchTextChanged.next(searchText);
+        });
 
         this.onCurrentTodoChanged =
             this.todoService.onCurrentTodoChanged
@@ -86,7 +86,7 @@ export class FuseTodoComponent implements OnInit, OnDestroy
         this.onTagsChanged.unsubscribe();
         this.onCurrentTodoChanged.unsubscribe();
     }
-    
+
     deSelectCurrentTodo()
     {
         this.todoService.onCurrentTodoChanged.next([null, null]);

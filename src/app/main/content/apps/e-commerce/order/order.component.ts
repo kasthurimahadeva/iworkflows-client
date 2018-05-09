@@ -1,12 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/observable/fromEvent';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { fuseAnimations } from '@fuse/animations';
 

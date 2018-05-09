@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class EcommerceProductsService implements Resolve<any>

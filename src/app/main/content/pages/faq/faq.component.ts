@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { FuseUtils } from '@fuse/utils';
 
@@ -35,12 +35,12 @@ export class FuseFaqComponent implements OnInit, OnDestroy
                     this.faqsFiltered = response;
                 });
 
-        this.searchInput.valueChanges
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .subscribe(searchText => {
-                this.faqsFiltered = FuseUtils.filterArrayByString(this.faqs, searchText);
-            });
+        this.searchInput.valueChanges.pipe(
+            debounceTime(300),
+            distinctUntilChanged()
+        ).subscribe(searchText => {
+            this.faqsFiltered = FuseUtils.filterArrayByString(this.faqs, searchText);
+        });
     }
 
     ngOnDestroy()

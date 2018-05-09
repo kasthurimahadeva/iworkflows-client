@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
-import { Observable, of } from 'rxjs';
-import { catchError, map, mergeMap, exhaustMap, withLatestFrom } from 'rxjs/operators';
-import 'rxjs/add/operator/debounceTime';
+
+import { Observable, of, forkJoin } from 'rxjs';
+import { catchError, debounceTime, map, mergeMap, exhaustMap, withLatestFrom } from 'rxjs/operators';
 
 import { getRouterState, State } from 'app/store/reducers';
 import { getMailsState } from '../selectors';
@@ -83,10 +83,11 @@ export class MailsEffect
             .ofType<MailsActions.UpdateMail>(MailsActions.UPDATE_MAIL)
             .pipe(
                 exhaustMap((action) => {
-                    return this.mailService.updateMail(action.payload)
-                               .map(() => {
-                                   return new MailsActions.UpdateMailSuccess(action.payload);
-                               });
+                    return this.mailService.updateMail(action.payload).pipe(
+                        map(() => {
+                            return new MailsActions.UpdateMailSuccess(action.payload);
+                        })
+                    );
                 })
             );
 
@@ -100,7 +101,7 @@ export class MailsEffect
             .ofType<MailsActions.UpdateMails>(MailsActions.UPDATE_MAILS)
             .pipe(
                 exhaustMap((action) => {
-                    return Observable.forkJoin(
+                    return forkJoin(
                         action.payload.map(mail => this.mailService.updateMail(mail)),
                         () => {
                             return new MailsActions.UpdateMailsSuccess();
@@ -182,8 +183,8 @@ export class MailsEffect
     updateMailSuccess: Observable<MailsActions.MailsActionsAll> =
         this.actions
             .ofType<MailsActions.UpdateMailSuccess>(MailsActions.UPDATE_MAIL_SUCCESS)
-            .debounceTime(500)
             .pipe(
+                debounceTime(500),
                 map(() => {
                     return new MailsActions.GetMails();
                 })
