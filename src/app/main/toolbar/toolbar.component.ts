@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import * as _ from 'lodash';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
@@ -13,7 +14,7 @@ import { navigation } from 'app/navigation/navigation';
     styleUrls  : ['./toolbar.component.scss']
 })
 
-export class FuseToolbarComponent
+export class FuseToolbarComponent implements OnInit
 {
     userStatusOptions: any[];
     languages: any;
@@ -60,18 +61,16 @@ export class FuseToolbarComponent
 
         this.languages = [
             {
-                'id'   : 'en',
-                'title': 'English',
-                'flag' : 'us'
+                id   : 'en',
+                title: 'English',
+                flag : 'us'
             },
             {
-                'id'   : 'tr',
-                'title': 'Turkish',
-                'flag' : 'tr'
+                id   : 'tr',
+                title: 'Turkish',
+                flag : 'tr'
             }
         ];
-
-        this.selectedLanguage = this.languages[0];
 
         router.events.subscribe(
             (event) => {
@@ -93,6 +92,11 @@ export class FuseToolbarComponent
         this.navigation = navigation;
     }
 
+    ngOnInit()
+    {
+        this.selectedLanguage = _.find(this.languages, {'id': this.translate.currentLang});
+    }
+
     toggleSidebarOpened(key)
     {
         this.sidebarService.getSidebar(key).toggleOpen();
@@ -104,12 +108,12 @@ export class FuseToolbarComponent
         console.log(value);
     }
 
-    setLanguage(lang)
+    setLanguage(langId)
     {
         // Set the selected language for toolbar
-        this.selectedLanguage = lang;
+        this.selectedLanguage = _.find(this.languages, {'id': langId});
 
         // Use the selected language for translations
-        this.translate.use(lang.id);
+        this.translate.use(langId);
     }
 }

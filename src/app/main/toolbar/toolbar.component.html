@@ -73,11 +73,11 @@
 
             <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
 
-                <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
-                    <div fxLayout="row" fxLayoutAlign="start center">
+                <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang.id)">
+                    <span fxLayout="row" fxLayoutAlign="start center">
                         <img class="flag mr-16" [src]="'assets/images/flags/'+lang.flag+'.png'">
                         <span class="iso">{{lang.title}}</span>
-                    </div>
+                    </span>
                 </button>
 
                 <button mat-menu-item [routerLink]="'/components/multi-language'">
