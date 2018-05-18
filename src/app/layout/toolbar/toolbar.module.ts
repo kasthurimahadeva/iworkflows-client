@@ -4,7 +4,7 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule, Ma
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseToolbarComponent } from 'app/main/toolbar/toolbar.component';
+import { FuseToolbarComponent } from 'app/layout/toolbar/toolbar.component';
 import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
 
 @NgModule({

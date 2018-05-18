@@ -8,39 +8,39 @@ import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
 
 import { FuseModule } from '@fuse/fuse.module';
+import { FuseLayoutsModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { fuseConfig } from './fuse-config';
 
 import { AppComponent } from './app.component';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
-import { FuseMainModule } from './main/main.module';
 import { AppStoreModule } from './store/store.module';
 
 const appRoutes: Routes = [
     {
         path        : 'apps',
-        loadChildren: './main/content/apps/apps.module#FuseAppsModule'
+        loadChildren: './main/apps/apps.module#FuseAppsModule'
     },
     {
         path        : 'pages',
-        loadChildren: './main/content/pages/pages.module#FusePagesModule'
+        loadChildren: './main/pages/pages.module#FusePagesModule'
     },
     {
         path        : 'ui',
-        loadChildren: './main/content/ui/ui.module#FuseUIModule'
+        loadChildren: './main/ui/ui.module#FuseUIModule'
     },
     {
         path        : 'services',
-        loadChildren: './main/content/services/services.module#FuseServicesModule'
+        loadChildren: './main/services/services.module#FuseServicesModule'
     },
     {
         path        : 'components',
-        loadChildren: './main/content/components/components.module#FuseComponentsModule'
+        loadChildren: './main/components/components.module#FuseComponentsModule'
     },
     {
         path        : 'components-third-party',
-        loadChildren: './main/content/components-third-party/components-third-party.module#FuseComponentsThirdPartyModule'
+        loadChildren: './main/components-third-party/components-third-party.module#FuseComponentsThirdPartyModule'
     },
     {
         path      : '**',
@@ -66,10 +66,10 @@ const appRoutes: Routes = [
 
         // Fuse Main and Shared modules
         FuseModule.forRoot(fuseConfig),
+        FuseLayoutsModule,
         FuseSharedModule,
 
-        AppStoreModule,
-        FuseMainModule
+        AppStoreModule
     ],
     bootstrap   : [
         AppComponent

@@ -4,7 +4,7 @@ import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/mater
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseFooterComponent } from 'app/main/footer/footer.component';
+import { FuseFooterComponent } from 'app/layout/footer/footer.component';
 
 @NgModule({
     declarations: [

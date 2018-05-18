@@ -12,6 +12,14 @@
 
     <div class="theme-options-panel-inner" fxLayout="column" fxLayoutAlign="start start">
 
+        <h3>Layout:</h3>
+        <mat-radio-group [(ngModel)]="config.layout.style" (ngModelChange)="onSettingsChange()"
+                         fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start start">
+            <mat-radio-button class="mr-8 mb-8" value="vertical">Vertical</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="horizontal">Horizontal</mat-radio-button>
+            <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
+        </mat-radio-group>
+
         <h3>Navigation:</h3>
         <mat-radio-group [(ngModel)]="config.layout.navigation" (ngModelChange)="onSettingsChange()"
                          fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start start">

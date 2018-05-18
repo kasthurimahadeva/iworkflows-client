@@ -4,7 +4,7 @@ import { MatDividerModule, MatListModule, MatSlideToggleModule } from '@angular/
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseQuickPanelComponent } from 'app/main/quick-panel/quick-panel.component';
+import { FuseQuickPanelComponent } from 'app/layout/quick-panel/quick-panel.component';
 
 @NgModule({
     declarations: [

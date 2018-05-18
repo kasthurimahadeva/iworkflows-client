@@ -7,8 +7,13 @@
  */
 export const fuseConfig = {
     layout          : {
-        navigation      : 'left', // 'right', 'left', 'top', 'none'
-        navigationFolded: false, // true, false
+        style     : 'vertical',
+        navigation: {
+            position: 'left',
+            folded  : false
+        },
+        // navigation      : 'left', // 'right', 'left', 'top', 'none'
+        // navigationFolded: false, // true, false
         toolbar         : 'below', // 'above', 'below', 'none'
         footer          : 'below', // 'above', 'below', 'none'
         mode            : 'fullwidth' // 'boxed', 'fullwidth'
