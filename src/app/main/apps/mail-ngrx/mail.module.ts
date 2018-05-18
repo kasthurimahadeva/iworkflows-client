@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
-
 import { TranslateModule } from '@ngx-translate/core';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { MailAppStoreModule } from './store/store.module';
-import * as fromGuards from './store/guards/index';
-
-import { FuseMailNgrxComponent } from './mail.component';
-import { FuseMailNgrxMainSidenavComponent } from './sidenavs/main/main-sidenav.component';
-import { FuseMailNgrxListItemComponent } from './mail-list/mail-list-item/mail-list-item.component';
-import { FuseMailNgrxListComponent } from './mail-list/mail-list.component';
-import { FuseMailNgrxDetailsComponent } from './mail-details/mail-details.component';
-import { MailNgrxService } from './mail.service';
-import { FuseMailNgrxComposeDialogComponent } from './dialogs/compose/compose.component';
+import { MailAppStoreModule } from 'app/main/apps/mail-ngrx/store/store.module';
+import * as fromGuards from 'app/main/apps/mail-ngrx/store/guards/index';
+import { FuseMailNgrxComponent } from 'app/main/apps/mail-ngrx/mail.component';
+import { FuseMailNgrxListComponent } from 'app/main/apps/mail-ngrx/mail-list/mail-list.component';
+import { FuseMailNgrxListItemComponent } from 'app/main/apps/mail-ngrx/mail-list/mail-list-item/mail-list-item.component';
+import { FuseMailNgrxDetailsComponent } from 'app/main/apps/mail-ngrx/mail-details/mail-details.component';
+import { FuseMailNgrxMainSidenavComponent } from 'app/main/apps/mail-ngrx/sidenavs/main/main-sidenav.component';
+import { FuseMailNgrxComposeDialogComponent } from 'app/main/apps/mail-ngrx/dialogs/compose/compose.component';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 const routes: Routes = [
     {

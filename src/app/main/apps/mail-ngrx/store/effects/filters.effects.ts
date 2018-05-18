@@ -4,8 +4,8 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
-import * as FiltersActions from '../actions/filters.actions';
-import { MailNgrxService } from '../../mail.service';
+import * as FiltersActions from 'app/main/apps/mail-ngrx/store/actions/filters.actions';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 @Injectable()
 export class FiltersEffect

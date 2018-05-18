@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Mail } from '../../mail.model';
+import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
 
 export const GET_MAILS = '[MAILS] GET MAILS';
 export const GET_MAILS_SUCCESS = '[MAILS] GET MAILS SUCCESS';

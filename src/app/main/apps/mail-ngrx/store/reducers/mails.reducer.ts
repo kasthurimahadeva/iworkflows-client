@@ -1,5 +1,5 @@
-import * as MailsActions from '../actions/mails.actions';
-import { Mail } from '../../mail.model';
+import * as MailsActions from 'app/main/apps/mail-ngrx/store/actions/mails.actions';
+import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
 
 export interface MailsState
 {

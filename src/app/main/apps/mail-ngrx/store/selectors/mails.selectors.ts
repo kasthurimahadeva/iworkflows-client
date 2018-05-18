@@ -1,7 +1,7 @@
 import { FuseUtils } from '@fuse/utils';
 
 import { createSelector } from '@ngrx/store';
-import { getMailAppState, MailAppState, MailsState } from '../reducers';
+import { getMailAppState, MailAppState, MailsState } from 'app/main/apps/mail-ngrx/store/reducers';
 
 export const getMailsState = createSelector(
     getMailAppState,

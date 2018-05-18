@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as LabelsActions from '../actions/labels.actions';
-import { MailNgrxService } from '../../mail.service';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 @Injectable()
 export class LabelsEffect

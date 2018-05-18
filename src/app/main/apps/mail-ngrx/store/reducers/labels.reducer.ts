@@ -1,4 +1,4 @@
-import * as LabelsActions from '../actions/labels.actions';
+import * as LabelsActions from 'app/main/apps/mail-ngrx/store/actions/labels.actions';
 
 export interface LabelsState
 {

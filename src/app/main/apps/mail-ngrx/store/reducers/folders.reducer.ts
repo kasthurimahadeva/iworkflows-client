@@ -1,4 +1,4 @@
-import * as FoldersActions from '../actions/folders.actions';
+import * as FoldersActions from 'app/main/apps/mail-ngrx/store/actions/folders.actions';
 
 export interface FoldersState
 {

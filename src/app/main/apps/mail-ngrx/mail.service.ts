@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Mail } from './mail.model';
-import { MailAppState } from './store/reducers';
-import { getFiltersArr, getFoldersArr, getLabelsArr, getMailsArr } from './store/selectors';
+import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
+import { MailAppState } from 'app/main/apps/mail-ngrx/store/reducers';
+import { getFiltersArr, getFoldersArr, getLabelsArr, getMailsArr } from 'app/main/apps/mail-ngrx/store/selectors';
 
 @Injectable()
 export class MailNgrxService

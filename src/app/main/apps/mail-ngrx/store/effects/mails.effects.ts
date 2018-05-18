@@ -6,12 +6,12 @@ import { Observable, of, forkJoin } from 'rxjs';
 import { catchError, debounceTime, map, mergeMap, exhaustMap, withLatestFrom } from 'rxjs/operators';
 
 import { getRouterState, State } from 'app/store/reducers';
-import { getMailsState } from '../selectors';
-import * as MailsActions from '../actions/mails.actions';
-import * as fromRoot from '../../../../../../store';
+import { getMailsState } from 'app/main/apps/mail-ngrx/store/selectors';
+import * as MailsActions from 'app/main/apps/mail-ngrx/store/actions/mails.actions';
+import * as fromRoot from 'app/store';
 
-import { MailNgrxService } from '../../mail.service';
-import { Mail } from '../../mail.model';
+import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 @Injectable()
 export class MailsEffect

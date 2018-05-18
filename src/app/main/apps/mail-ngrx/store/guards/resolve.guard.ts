@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
+import { RouterStateSnapshot } from '@angular/router/src/router_state';
 import { Store } from '@ngrx/store';
 
 import { Observable, forkJoin, of } from 'rxjs';
 import { map, switchMap, catchError, tap, take, filter } from 'rxjs/operators';
 
-import { MailAppState } from '../reducers';
-import * as fromStore from '../index';
-import { getFiltersLoaded, getFoldersLoaded, getLabelsLoaded, getMailsLoaded } from '../selectors';
-import { RouterStateSnapshot } from '@angular/router/src/router_state';
+import { MailAppState } from 'app/main/apps/mail-ngrx/store/reducers';
+import * as fromStore from 'app/main/apps/mail-ngrx/store';
+import { getFiltersLoaded, getFoldersLoaded, getLabelsLoaded, getMailsLoaded } from 'app/main/apps/mail-ngrx/store/selectors';
 import { getRouterState } from 'app/store/reducers';
 
 @Injectable()

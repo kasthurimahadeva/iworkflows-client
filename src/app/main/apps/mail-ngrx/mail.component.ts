@@ -1,19 +1,17 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
 import { Store } from '@ngrx/store';
-
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { FuseConfigService } from '@fuse/services/config.service';
 
-import { MailNgrxService } from './mail.service';
-import { Mail } from './mail.model';
-import * as fromStore from './store';
-import { locale as english } from './i18n/en';
-import { locale as turkish } from './i18n/tr';
+import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
+import * as fromStore from 'app/main/apps/mail-ngrx/store';
+import { locale as english } from 'app/main/apps/mail-ngrx/i18n/en';
+import { locale as turkish } from 'app/main/apps/mail-ngrx/i18n/tr';
 
 @Component({
     selector       : 'fuse-mail',

@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { LabelsState, getMailAppState, MailAppState } from '../reducers';
+import { LabelsState, getMailAppState, MailAppState } from 'app/main/apps/mail-ngrx/store/reducers';
 
 export const getLabelsState = createSelector(
     getMailAppState,

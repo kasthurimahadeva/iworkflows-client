@@ -1,4 +1,4 @@
-import * as FiltersActions from '../actions/filters.actions';
+import * as FiltersActions from 'app/main/apps/mail-ngrx/store/actions/filters.actions';
 
 export interface FiltersState
 {

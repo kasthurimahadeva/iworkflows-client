@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { FoldersState, getMailAppState, MailAppState } from '../reducers';
+import { FoldersState, getMailAppState, MailAppState } from 'app/main/apps/mail-ngrx/store/reducers';
 
 export const getFoldersState = createSelector(
     getMailAppState,
