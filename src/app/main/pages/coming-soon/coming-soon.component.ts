@@ -20,13 +20,13 @@ export class FuseComingSoonComponent implements OnInit
         private formBuilder: FormBuilder
     )
     {
-        this.fuseConfig.setConfig({
+        this.fuseConfig.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',
                 footer    : 'none'
             }
-        });
+        };
 
         this.comingSoonFormErrors = {
             email: {}

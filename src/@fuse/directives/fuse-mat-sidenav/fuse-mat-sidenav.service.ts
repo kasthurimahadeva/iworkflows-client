@@ -6,17 +6,36 @@ export class FuseMatSidenavHelperService
 {
     sidenavInstances: MatSidenav[];
 
+    /**
+     * Constructor
+     */
     constructor()
     {
         this.sidenavInstances = [];
     }
 
-    setSidenav(id, instance)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set sidenav
+     *
+     * @param id
+     * @param instance
+     */
+    setSidenav(id, instance): void
     {
         this.sidenavInstances[id] = instance;
     }
 
-    getSidenav(id)
+    /**
+     * Get sidenav
+     *
+     * @param id
+     * @returns {any}
+     */
+    getSidenav(id): any
     {
         return this.sidenavInstances[id];
     }

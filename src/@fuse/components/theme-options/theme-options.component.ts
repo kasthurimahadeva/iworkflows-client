@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfigService } from '@fuse/services/config.service';
@@ -14,39 +15,59 @@ import { FuseNavigationService } from '@fuse/components/navigation/navigation.se
 })
 export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 {
-    @Input() navigation;
-    @ViewChild('openButton') openButton;
-    @ViewChild('panel') panel;
-    @ViewChild('overlay') overlay: ElementRef;
+    @Input()
+    navigation;
 
-    public player: AnimationPlayer;
-    config: any;
+    @ViewChild('openButton')
+    openButton;
 
-    onConfigChanged: Subscription;
+    @ViewChild('panel')
+    panel;
+
+    @ViewChild('overlay')
+    overlay: ElementRef;
+
+    player: AnimationPlayer;
+    fuseConfig: any;
 
     @HostBinding('class.bar-closed') barClosed: boolean;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
     constructor(
-        private animationBuilder: AnimationBuilder,
-        private fuseConfig: FuseConfigService,
-        private navigationService: FuseNavigationService,
-        private renderer: Renderer2
+        private _animationBuilder: AnimationBuilder,
+        private _fuseConfigService: FuseConfigService,
+        private _fuseNavigationService: FuseNavigationService,
+        private _renderer: Renderer2
     )
     {
+        // Set the defaults
         this.barClosed = true;
 
-        this.onConfigChanged =
-            this.fuseConfig.onConfigChanged
-                .subscribe(
-                    (newConfig) => {
-                        this.config = newConfig;
-                    }
-                );
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.renderer.listen(this.overlay.nativeElement, 'click', () => {
+        // Subscribe to the config changes
+        this._fuseConfigService.config
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((config) => {
+                    this.fuseConfig = config;
+                }
+            );
+
+        // Listen for the overlay's click event
+        this._renderer.listen(this.overlay.nativeElement, 'click', () => {
             this.closeBar();
         });
 
@@ -72,20 +93,52 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onConfigChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    onSettingsChange()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On config change
+     */
+    onConfigChange(): void
     {
-        this.fuseConfig.setConfig(this.config);
+        this._fuseConfigService.config = this.fuseConfig;
     }
 
-    closeBar()
+    /**
+     * Open the bar
+     */
+    openBar(): void
+    {
+        this.barClosed = false;
+
+        this.player =
+            this._animationBuilder
+                .build([
+                    style({transform: 'translate3d(100%,0,0)'}),
+                    animate('400ms ease', style({transform: 'translate3d(0,0,0)'}))
+                ]).create(this.panel.nativeElement);
+
+        this.player.play();
+    }
+
+    /**
+     * Close the bar
+     */
+    closeBar(): void
     {
         this.player =
-            this.animationBuilder
+            this._animationBuilder
                 .build([
                     style({transform: 'translate3d(0,0,0)'}),
                     animate('400ms ease', style({transform: 'translate3d(100%,0,0)'}))
@@ -96,19 +149,5 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         this.player.onDone(() => {
             this.barClosed = true;
         });
-    }
-
-    openBar()
-    {
-        this.barClosed = false;
-
-        this.player =
-            this.animationBuilder
-                .build([
-                    style({transform: 'translate3d(100%,0,0)'}),
-                    animate('400ms ease', style({transform: 'translate3d(0,0,0)'}))
-                ]).create(this.panel.nativeElement);
-
-        this.player.play();
     }
 }

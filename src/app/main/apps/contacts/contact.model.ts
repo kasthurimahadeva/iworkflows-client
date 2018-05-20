@@ -15,6 +15,11 @@ export class Contact
     birthday: string;
     notes: string;
 
+    /**
+     * Constructor
+     *
+     * @param contact
+     */
     constructor(contact)
     {
         {

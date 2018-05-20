@@ -1,30 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { fuseAnimations } from '@fuse/animations/index';
+import { fuseAnimations } from '@fuse/animations';
 
-import { FileManagerService } from '../../file-manager.service';
+import { FileManagerService } from 'app/main/apps/file-manager/file-manager.service';
 
 @Component({
-    selector   : 'fuse-file-manager-details-sidenav',
+    selector   : 'file-manager-details-sidenav',
     templateUrl: './details.component.html',
     styleUrls  : ['./details.component.scss'],
     animations : fuseAnimations
 })
-export class FuseFileManagerDetailsSidenavComponent implements OnInit
+export class FileManagerDetailsSidenavComponent implements OnInit, OnDestroy
 {
-
     selected: any;
 
-    constructor(private fileManagerService: FileManagerService)
-    {
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {FileManagerService} _fileManagerService
+     */
+    constructor(
+        private _fileManagerService: FileManagerService
+    )
+    {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.fileManagerService.onFileSelected.subscribe(selected => {
-            this.selected = selected;
-        });
+        this._fileManagerService.onFileSelected
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(selected => {
+                this.selected = selected;
+            });
     }
 
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
 }

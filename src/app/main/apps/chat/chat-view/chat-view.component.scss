@@ -99,7 +99,7 @@
         }
 
         .chat-footer {
-            min-height: 64px;
+            min-height: 72px;
             max-height: 96px;
             background-color: #F3F4F5;
             color: rgba(0, 0, 0, 0.87);
@@ -116,6 +116,7 @@
                         overflow: auto;
                         max-height: 80px;
                         transition: height 200ms ease;
+
                         &.grow {
                             height: 80px;
                         }

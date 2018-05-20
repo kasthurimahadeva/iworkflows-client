@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatMenuModule, MatSelectModule, MatTabsModule } from '@angular/material';
-
 import { AgmCoreModule } from '@agm/core';
 import { ChartsModule } from 'ng2-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -10,14 +8,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
-import { FuseAnalyticsDashboardComponent } from './analytics.component';
-import { AnalyticsDashboardService } from './analytics.service';
-
+import { AnalyticsDashboardComponent } from 'app/main/apps/dashboards/analytics/analytics.component';
+import { AnalyticsDashboardService } from 'app/main/apps/dashboards/analytics/analytics.service';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: FuseAnalyticsDashboardComponent,
+        component: AnalyticsDashboardComponent,
         resolve  : {
             data: AnalyticsDashboardService
         }
@@ -26,7 +23,7 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        FuseAnalyticsDashboardComponent
+        AnalyticsDashboardComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -51,7 +48,7 @@ const routes: Routes = [
         AnalyticsDashboardService
     ]
 })
-export class FuseAnalyticsDashboardModule
+export class AnalyticsDashboardModule
 {
 }
 

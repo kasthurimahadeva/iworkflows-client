@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseLockComponent } from './lock.component';
+import { LockComponent } from 'app/main/pages/authentication/lock/lock.component';
 
 const routes = [
     {
         path     : 'auth/lock',
-        component: FuseLockComponent
+        component: LockComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseLockComponent
+        LockComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

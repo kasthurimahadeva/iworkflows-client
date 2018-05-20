@@ -15,12 +15,12 @@ export class FuseMaintenanceComponent
         private fuseConfig: FuseConfigService
     )
     {
-        this.fuseConfig.setConfig({
+        this.fuseConfig.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',
                 footer    : 'none'
             }
-        });
+        };
     }
 }

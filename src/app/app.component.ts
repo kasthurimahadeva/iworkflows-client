@@ -5,8 +5,9 @@ import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
-import { locale as navigationEnglish } from './navigation/i18n/en';
-import { locale as navigationTurkish } from './navigation/i18n/tr';
+import { navigation } from 'app/navigation/navigation';
+import { locale as navigationEnglish } from 'app/navigation/i18n/en';
+import { locale as navigationTurkish } from 'app/navigation/i18n/tr';
 
 @Component({
     selector   : 'fuse-root',
@@ -15,23 +16,36 @@ import { locale as navigationTurkish } from './navigation/i18n/tr';
 })
 export class AppComponent
 {
+    navigation: any;
+
+    /**
+     * Constructor
+     *
+     * @param {FuseNavigationService} _fuseNavigationService
+     * @param {FuseSplashScreenService} _fuseSplashScreenService
+     * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
+     * @param {TranslateService} _translateService
+     */
     constructor(
-        private translate: TranslateService,
-        private fuseNavigationService: FuseNavigationService,
-        private fuseSplashScreen: FuseSplashScreenService,
-        private fuseTranslationLoader: FuseTranslationLoaderService
+        private _fuseNavigationService: FuseNavigationService,
+        private _fuseSplashScreenService: FuseSplashScreenService,
+        private _fuseTranslationLoaderService: FuseTranslationLoaderService,
+        private _translateService: TranslateService
     )
     {
+        // Navigation
+        this.navigation = navigation;
+
         // Add languages
-        this.translate.addLangs(['en', 'tr']);
+        this._translateService.addLangs(['en', 'tr']);
 
         // Set the default language
-        this.translate.setDefaultLang('en');
+        this._translateService.setDefaultLang('en');
 
         // Set the navigation translations
-        this.fuseTranslationLoader.loadTranslations(navigationEnglish, navigationTurkish);
+        this._fuseTranslationLoaderService.loadTranslations(navigationEnglish, navigationTurkish);
 
         // Use a language
-        this.translate.use('en');
+        this._translateService.use('en');
     }
 }

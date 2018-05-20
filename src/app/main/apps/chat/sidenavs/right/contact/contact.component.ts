@@ -1,26 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { ChatService } from '../../../chat.service';
+import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'fuse-chat-contact-sidenav',
+    selector   : 'chat-contact-sidenav',
     templateUrl: './contact.component.html',
     styleUrls  : ['./contact.component.scss']
 })
-export class FuseChatContactSidenavComponent implements OnInit
+export class ChatContactSidenavComponent implements OnInit, OnDestroy
 {
     contact: any;
 
-    constructor(private chatService: ChatService)
-    {
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {ChatService} _chatService
+     */
+    constructor(
+        private _chatService: ChatService
+    )
+    {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.chatService.onContactSelected.subscribe(contact => {
+        this._chatService.onContactSelected
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(contact => {
             this.contact = contact;
         });
     }
 
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
 }

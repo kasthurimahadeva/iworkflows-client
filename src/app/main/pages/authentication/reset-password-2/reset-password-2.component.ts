@@ -1,54 +1,90 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/internal/operators';
 
 @Component({
-    selector   : 'fuse-reset-password-2',
+    selector   : 'reset-password-2',
     templateUrl: './reset-password-2.component.html',
     styleUrls  : ['./reset-password-2.component.scss'],
     animations : fuseAnimations
 })
-export class FuseResetPassword2Component implements OnInit
+export class ResetPassword2Component implements OnInit, OnDestroy
 {
     resetPasswordForm: FormGroup;
     resetPasswordFormErrors: any;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
     constructor(
-        private fuseConfig: FuseConfigService,
-        private formBuilder: FormBuilder
+        private _fuseConfigService: FuseConfigService,
+        private _formBuilder: FormBuilder
     )
     {
-        this.fuseConfig.setConfig({
+        // Configure the layout
+        this._fuseConfigService.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',
                 footer    : 'none'
             }
-        });
+        };
 
+        // Set the defaults
         this.resetPasswordFormErrors = {
             email          : {},
             password       : {},
             passwordConfirm: {}
         };
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.resetPasswordForm = this.formBuilder.group({
+        this.resetPasswordForm = this._formBuilder.group({
             email          : ['', [Validators.required, Validators.email]],
             password       : ['', Validators.required],
             passwordConfirm: ['', [Validators.required, confirmPassword]]
         });
 
-        this.resetPasswordForm.valueChanges.subscribe(() => {
-            this.onResetPasswordFormValuesChanged();
-        });
+        this.resetPasswordForm.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onResetPasswordFormValuesChanged();
+            });
     }
 
-    onResetPasswordFormValuesChanged()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On form values changed
+     */
+    onResetPasswordFormValuesChanged(): void
     {
         for ( const field in this.resetPasswordFormErrors )
         {
@@ -71,7 +107,13 @@ export class FuseResetPassword2Component implements OnInit
     }
 }
 
-function confirmPassword(control: AbstractControl)
+/**
+ * Confirm password
+ *
+ * @param {AbstractControl} control
+ * @returns {{passwordsNotMatch: boolean}}
+ */
+function confirmPassword(control: AbstractControl): any
 {
     if ( !control.parent || !control )
     {

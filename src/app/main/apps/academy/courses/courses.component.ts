@@ -1,59 +1,88 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { AcademyCoursesService } from '../courses.service';
+import { AcademyCoursesService } from 'app/main/apps/academy/courses.service';
 
 @Component({
-    selector   : 'fuse-academy-courses',
+    selector   : 'academy-courses',
     templateUrl: './courses.component.html',
     styleUrls  : ['./courses.component.scss'],
-    animations   : fuseAnimations
+    animations : fuseAnimations
 })
-export class FuseAcademyCoursesComponent implements OnInit, OnDestroy
+export class AcademyCoursesComponent implements OnInit, OnDestroy
 {
     categories: any[];
     courses: any[];
     coursesFilteredByCategory: any[];
     filteredCourses: any[];
+    currentCategory: string;
+    searchTerm: string;
 
-    categoriesSubscription: Subscription;
-    coursesSubscription: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
-    currentCategory = 'all';
-    searchTerm = '';
-
+    /**
+     * Constructor
+     *
+     * @param {AcademyCoursesService} _academyCoursesService
+     */
     constructor(
-        private coursesService: AcademyCoursesService
+        private _academyCoursesService: AcademyCoursesService
     )
     {
+        // Set the defaults
+        this.currentCategory = 'all';
+        this.searchTerm = '';
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Subscribe to categories
-        this.categoriesSubscription =
-            this.coursesService.onCategoriesChanged
-                .subscribe(categories => {
-                    this.categories = categories;
-                });
+        this._academyCoursesService.onCategoriesChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(categories => {
+                this.categories = categories;
+            });
 
         // Subscribe to courses
-        this.coursesSubscription =
-            this.coursesService.onCoursesChanged
-                .subscribe(courses => {
-                    this.filteredCourses = this.coursesFilteredByCategory = this.courses = courses;
-                });
+        this._academyCoursesService.onCoursesChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(courses => {
+                this.filteredCourses = this.coursesFilteredByCategory = this.courses = courses;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.categoriesSubscription.unsubscribe();
-        this.coursesSubscription.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    filterCoursesByCategory()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Filter courses by category
+     */
+    filterCoursesByCategory(): void
     {
         // Filter
         if ( this.currentCategory === 'all' )
@@ -75,7 +104,10 @@ export class FuseAcademyCoursesComponent implements OnInit, OnDestroy
         this.filterCoursesByTerm();
     }
 
-    filterCoursesByTerm()
+    /**
+     * Filter courses by term
+     */
+    filterCoursesByTerm(): void
     {
         const searchTerm = this.searchTerm.toLowerCase();
 

@@ -3,21 +3,20 @@ import { RouterModule } from '@angular/router';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseContentComponent } from 'app/layout/content/content.component';
+import { ContentComponent } from 'app/layout/blocks/content/content.component';
 
 @NgModule({
     declarations: [
-        FuseContentComponent
+        ContentComponent
     ],
     imports     : [
         RouterModule,
-
         FuseSharedModule,
     ],
     exports: [
-        FuseContentComponent
+        ContentComponent
     ]
 })
-export class FuseContentModule
+export class ContentModule
 {
 }

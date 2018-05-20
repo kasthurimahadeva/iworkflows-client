@@ -8,34 +8,35 @@ import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, Cal
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { fuseAnimations } from '@fuse/animations';
 
-import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
-import { CalendarEventModel } from './event.model';
-import { CalendarService } from './calendar.service';
+import { CalendarService } from 'app/main/apps/calendar/calendar.service';
+import { CalendarEventModel } from 'app/main/apps/calendar/event.model';
+import { CalendarEventFormDialogComponent } from 'app/main/apps/calendar/event-form/event-form.component';
 
 @Component({
-    selector     : 'fuse-calendar',
+    selector     : 'calendar',
     templateUrl  : './calendar.component.html',
     styleUrls    : ['./calendar.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseCalendarComponent implements OnInit
+export class CalendarComponent implements OnInit
 {
+    actions: CalendarEventAction[];
+    activeDayIsOpen: boolean;
+    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
+    dialogRef: any;
+    events: CalendarEvent[];
+    refresh: Subject<any> = new Subject();
+    selectedDay: any;
     view: string;
     viewDate: Date;
-    events: CalendarEvent[];
-    public actions: CalendarEventAction[];
-    activeDayIsOpen: boolean;
-    refresh: Subject<any> = new Subject();
-    dialogRef: any;
-    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
-    selectedDay: any;
 
     constructor(
-        public dialog: MatDialog,
-        public calendarService: CalendarService
+        private _matDialog: MatDialog,
+        private _calendarService: CalendarService
     )
     {
+        // Set the defaults
         this.view = 'month';
         this.viewDate = new Date();
         this.activeDayIsOpen = true;
@@ -62,29 +63,41 @@ export class FuseCalendarComponent implements OnInit
         this.setEvents();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         /**
          * Watch re-render-refresh for updating db
          */
         this.refresh.subscribe(updateDB => {
-            // console.warn('REFRESH');
             if ( updateDB )
             {
-                // console.warn('UPDATE DB');
-                this.calendarService.updateEvents(this.events);
+                this._calendarService.updateEvents(this.events);
             }
         });
 
-        this.calendarService.onEventsUpdated.subscribe(events => {
+        this._calendarService.onEventsUpdated.subscribe(events => {
             this.setEvents();
             this.refresh.next();
         });
     }
 
-    setEvents()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set events
+     */
+    setEvents(): void
     {
-        this.events = this.calendarService.events.map(item => {
+        this.events = this._calendarService.events.map(item => {
             item.actions = this.actions;
             return new CalendarEventModel(item);
         });
@@ -92,10 +105,11 @@ export class FuseCalendarComponent implements OnInit
 
     /**
      * Before View Renderer
+     *
      * @param {any} header
      * @param {any} body
      */
-    beforeMonthViewRender({header, body})
+    beforeMonthViewRender({header, body}): void
     {
         // console.info('beforeMonthViewRender');
         /**
@@ -118,6 +132,7 @@ export class FuseCalendarComponent implements OnInit
 
     /**
      * Day clicked
+     *
      * @param {MonthViewDay} day
      */
     dayClicked(day: CalendarMonthViewDay): void
@@ -144,6 +159,7 @@ export class FuseCalendarComponent implements OnInit
     /**
      * Event times changed
      * Event dropped or resized
+     *
      * @param {CalendarEvent} event
      * @param {Date} newStart
      * @param {Date} newEnd
@@ -158,11 +174,12 @@ export class FuseCalendarComponent implements OnInit
 
     /**
      * Delete Event
+     *
      * @param event
      */
-    deleteEvent(event)
+    deleteEvent(event): void
     {
-        this.confirmDialogRef = this.dialog.open(FuseConfirmDialogComponent, {
+        this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
             disableClose: false
         });
 
@@ -182,14 +199,15 @@ export class FuseCalendarComponent implements OnInit
 
     /**
      * Edit Event
+     *
      * @param {string} action
      * @param {CalendarEvent} event
      */
-    editEvent(action: string, event: CalendarEvent)
+    editEvent(action: string, event: CalendarEvent): void
     {
         const eventIndex = this.events.indexOf(event);
 
-        this.dialogRef = this.dialog.open(FuseCalendarEventFormDialogComponent, {
+        this.dialogRef = this._matDialog.open(CalendarEventFormDialogComponent, {
             panelClass: 'event-form-dialog',
             data      : {
                 event : event,
@@ -233,7 +251,7 @@ export class FuseCalendarComponent implements OnInit
      */
     addEvent(): void
     {
-        this.dialogRef = this.dialog.open(FuseCalendarEventFormDialogComponent, {
+        this.dialogRef = this._matDialog.open(CalendarEventFormDialogComponent, {
             panelClass: 'event-form-dialog',
             data      : {
                 action: 'new',

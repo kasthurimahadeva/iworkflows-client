@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseLoginComponent } from './login.component';
+import { LoginComponent } from 'app/main/pages/authentication/login/login.component';
 
 const routes = [
     {
         path     : 'auth/login',
-        component: FuseLoginComponent
+        component: LoginComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseLoginComponent
+        LoginComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

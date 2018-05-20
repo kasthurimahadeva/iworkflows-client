@@ -52,9 +52,9 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
         this.mails = [];
         this.selectedMailIds = [];
 
-        this.configService.setConfig({
+        this.configService.config = {
             routerAnimation: 'none'
-        });
+        };
     }
 
     ngOnInit()

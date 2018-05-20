@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseUtils } from '@fuse/utils';
 
-import { Contact } from './contact.model';
+import { Contact } from 'app/main/apps/contacts/contact.model';
 
 @Injectable()
 export class ContactsService implements Resolve<any>
@@ -23,12 +23,24 @@ export class ContactsService implements Resolve<any>
     searchText: string;
     filterBy: string;
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
     /**
-     * The Contacts App Main Resolver
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -61,10 +73,15 @@ export class ContactsService implements Resolve<any>
         });
     }
 
+    /**
+     * Get contacts
+     *
+     * @returns {Promise<any>}
+     */
     getContacts(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-                this.http.get('api/contacts-contacts')
+                this._httpClient.get('api/contacts-contacts')
                     .subscribe((response: any) => {
 
                         this.contacts = response;
@@ -99,10 +116,15 @@ export class ContactsService implements Resolve<any>
         );
     }
 
+    /**
+     * Get user data
+     *
+     * @returns {Promise<any>}
+     */
     getUserData(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-                this.http.get('api/contacts-user/5725a6802d10e277a0f35724')
+                this._httpClient.get('api/contacts-user/5725a6802d10e277a0f35724')
                     .subscribe((response: any) => {
                         this.user = response;
                         this.onUserDataChanged.next(this.user);
@@ -114,9 +136,10 @@ export class ContactsService implements Resolve<any>
 
     /**
      * Toggle selected contact by id
+     *
      * @param id
      */
-    toggleSelectedContact(id)
+    toggleSelectedContact(id): void
     {
         // First, check if we already have that contact as selected...
         if ( this.selectedContacts.length > 0 )
@@ -145,7 +168,7 @@ export class ContactsService implements Resolve<any>
     /**
      * Toggle select all
      */
-    toggleSelectAll()
+    toggleSelectAll(): void
     {
         if ( this.selectedContacts.length > 0 )
         {
@@ -157,11 +180,17 @@ export class ContactsService implements Resolve<any>
         }
     }
 
-    selectContacts(filterParameter?, filterValue?)
+    /**
+     * Select contacts
+     *
+     * @param filterParameter
+     * @param filterValue
+     */
+    selectContacts(filterParameter?, filterValue?): void
     {
         this.selectedContacts = [];
 
-        // If there is no filter, select all todos
+        // If there is no filter, select all contacts
         if ( filterParameter === undefined || filterValue === undefined )
         {
             this.selectedContacts = [];
@@ -169,24 +198,22 @@ export class ContactsService implements Resolve<any>
                 this.selectedContacts.push(contact.id);
             });
         }
-        else
-        {
-            /* this.selectedContacts.push(...
-                 this.contacts.filter(todo => {
-                     return todo[filterParameter] === filterValue;
-                 })
-             );*/
-        }
 
         // Trigger the next event
         this.onSelectedContactsChanged.next(this.selectedContacts);
     }
 
-    updateContact(contact)
+    /**
+     * Update contact
+     *
+     * @param contact
+     * @returns {Promise<any>}
+     */
+    updateContact(contact): Promise<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.post('api/contacts-contacts/' + contact.id, {...contact})
+            this._httpClient.post('api/contacts-contacts/' + contact.id, {...contact})
                 .subscribe(response => {
                     this.getContacts();
                     resolve(response);
@@ -194,10 +221,16 @@ export class ContactsService implements Resolve<any>
         });
     }
 
-    updateUserData(userData)
+    /**
+     * Update user data
+     *
+     * @param userData
+     * @returns {Promise<any>}
+     */
+    updateUserData(userData): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/contacts-user/' + this.user.id, {...userData})
+            this._httpClient.post('api/contacts-user/' + this.user.id, {...userData})
                 .subscribe(response => {
                     this.getUserData();
                     this.getContacts();
@@ -206,7 +239,10 @@ export class ContactsService implements Resolve<any>
         });
     }
 
-    deselectContacts()
+    /**
+     * Deselect contacts
+     */
+    deselectContacts(): void
     {
         this.selectedContacts = [];
 
@@ -214,14 +250,22 @@ export class ContactsService implements Resolve<any>
         this.onSelectedContactsChanged.next(this.selectedContacts);
     }
 
-    deleteContact(contact)
+    /**
+     * Delete contact
+     *
+     * @param contact
+     */
+    deleteContact(contact): void
     {
         const contactIndex = this.contacts.indexOf(contact);
         this.contacts.splice(contactIndex, 1);
         this.onContactsChanged.next(this.contacts);
     }
 
-    deleteSelectedContacts()
+    /**
+     * Delete selected contacts
+     */
+    deleteSelectedContacts(): void
     {
         for ( const contactId of this.selectedContacts )
         {

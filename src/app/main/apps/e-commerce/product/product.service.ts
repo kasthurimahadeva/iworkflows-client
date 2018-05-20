@@ -10,21 +10,26 @@ export class EcommerceProductService implements Resolve<any>
     product: any;
     onProductChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
     constructor(
-        private http: HttpClient
+        private _httpClient: HttpClient
     )
     {
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-
         this.routeParams = route.params;
 
         return new Promise((resolve, reject) => {
@@ -40,6 +45,11 @@ export class EcommerceProductService implements Resolve<any>
         });
     }
 
+    /**
+     * Get product
+     *
+     * @returns {Promise<any>}
+     */
     getProduct(): Promise<any>
     {
         return new Promise((resolve, reject) => {
@@ -50,7 +60,7 @@ export class EcommerceProductService implements Resolve<any>
             }
             else
             {
-                this.http.get('api/e-commerce-products/' + this.routeParams.id)
+                this._httpClient.get('api/e-commerce-products/' + this.routeParams.id)
                     .subscribe((response: any) => {
                         this.product = response;
                         this.onProductChanged.next(this.product);
@@ -60,20 +70,32 @@ export class EcommerceProductService implements Resolve<any>
         });
     }
 
-    saveProduct(product)
+    /**
+     * Save product
+     *
+     * @param product
+     * @returns {Promise<any>}
+     */
+    saveProduct(product): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/e-commerce-products/' + product.id, product)
+            this._httpClient.post('api/e-commerce-products/' + product.id, product)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
         });
     }
 
-    addProduct(product)
+    /**
+     * Add product
+     *
+     * @param product
+     * @returns {Promise<any>}
+     */
+    addProduct(product): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/e-commerce-products/', product)
+            this._httpClient.post('api/e-commerce-products/', product)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

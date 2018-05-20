@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
-
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
@@ -21,42 +21,67 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
     searching = false;
     mobileShortcutsPanelActive = false;
     toolbarColor: string;
-    matchMediaSubscription: Subscription;
-    onConfigChanged: Subscription;
 
-    @Input() navigation: any;
+    @Input()
+    navigation: any;
 
-    @ViewChild('searchInput') searchInputField;
-    @ViewChild('shortcuts') shortcutsEl: ElementRef;
+    @ViewChild('searchInput')
+    searchInputField;
 
+    @ViewChild('shortcuts')
+    shortcutsEl: ElementRef;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {Renderer2} _renderer
+     * @param {CookieService} _cookieService
+     * @param {FuseMatchMediaService} _fuseMatchMediaService
+     * @param {FuseNavigationService} _fuseNavigationService
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {ObservableMedia} _observableMedia
+     */
     constructor(
-        private renderer: Renderer2,
-        private observableMedia: ObservableMedia,
-        private fuseMatchMedia: FuseMatchMediaService,
-        private fuseNavigationService: FuseNavigationService,
-        private fuseConfig: FuseConfigService,
-        private cookieService: CookieService
+        private _renderer: Renderer2,
+        private _cookieService: CookieService,
+        private _fuseMatchMediaService: FuseMatchMediaService,
+        private _fuseNavigationService: FuseNavigationService,
+        private _fuseConfigService: FuseConfigService,
+        private _observableMedia: ObservableMedia
     )
     {
-        this.onConfigChanged =
-            this.fuseConfig.onConfigChanged
-                .subscribe(
-                    (newSettings) => {
-                        this.toolbarColor = newSettings.colorClasses.toolbar;
-                    }
-                );
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
-    {
-        // Get the navigation items and flatten them
-        this.filteredNavigationItems = this.navigationItems = this.fuseNavigationService.getFlatNavigation(this.navigation);
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
 
-        const cookieExists = this.cookieService.check('FUSE2.shortcuts');
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Subscribe to config changes
+        this._fuseConfigService.config
+            .subscribe(
+                (config) => {
+                    this.toolbarColor = config.colorClasses.toolbar;
+                }
+            );
+
+        // Get the navigation items and flatten them
+        this.filteredNavigationItems = this.navigationItems = this._fuseNavigationService.getFlatNavigation(this.navigation);
+
+        const cookieExists = this._cookieService.check('FUSE2.shortcuts');
 
         if ( cookieExists )
         {
-            this.shortcutItems = JSON.parse(this.cookieService.get('FUSE2.shortcuts'));
+            this.shortcutItems = JSON.parse(this._cookieService.get('FUSE2.shortcuts'));
         }
         else
         {
@@ -89,21 +114,36 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
             ];
         }
 
-        this.matchMediaSubscription =
-            this.fuseMatchMedia.onMediaChange.subscribe(() => {
-                if ( this.observableMedia.isActive('gt-sm') )
+        this._fuseMatchMediaService.onMediaChange
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                if ( this._observableMedia.isActive('gt-sm') )
                 {
                     this.hideMobileShortcutsPanel();
                 }
             });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.matchMediaSubscription.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    search(event)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Search
+     *
+     * @param event
+     */
+    search(event): void
     {
         const value = event.target.value.toLowerCase();
 
@@ -122,7 +162,13 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
         });
     }
 
-    toggleShortcut(event, itemToToggle)
+    /**
+     * Toggle shortcut
+     *
+     * @param event
+     * @param itemToToggle
+     */
+    toggleShortcut(event, itemToToggle): void
     {
         event.stopPropagation();
 
@@ -133,7 +179,7 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
                 this.shortcutItems.splice(i, 1);
 
                 // Save to the cookies
-                this.cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
+                this._cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
 
                 return;
             }
@@ -142,32 +188,47 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
         this.shortcutItems.push(itemToToggle);
 
         // Save to the cookies
-        this.cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
+        this._cookieService.set('FUSE2.shortcuts', JSON.stringify(this.shortcutItems));
     }
 
-    isInShortcuts(navigationItem)
+    /**
+     * Is in shortcuts?
+     *
+     * @param navigationItem
+     * @returns {any}
+     */
+    isInShortcuts(navigationItem): any
     {
         return this.shortcutItems.find(item => {
             return item.url === navigationItem.url;
         });
     }
 
-    onMenuOpen()
+    /**
+     * On menu open
+     */
+    onMenuOpen(): void
     {
         setTimeout(() => {
             this.searchInputField.nativeElement.focus();
         });
     }
 
-    showMobileShortcutsPanel()
+    /**
+     * Show mobile shortcuts
+     */
+    showMobileShortcutsPanel(): void
     {
         this.mobileShortcutsPanelActive = true;
-        this.renderer.addClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
+        this._renderer.addClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
     }
 
-    hideMobileShortcutsPanel()
+    /**
+     * Hide mobile shortcuts
+     */
+    hideMobileShortcutsPanel(): void
     {
         this.mobileShortcutsPanelActive = false;
-        this.renderer.removeClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
+        this._renderer.removeClass(this.shortcutsEl.nativeElement, 'show-mobile-panel');
     }
 }

@@ -2,18 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule, MatToolbarModule } from '@angular/material';
 
+import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseToolbarComponent } from 'app/layout/toolbar/toolbar.component';
-import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
+import { ToolbarComponent } from 'app/layout/blocks/toolbar/toolbar.component';
 
 @NgModule({
     declarations: [
-        FuseToolbarComponent
+        ToolbarComponent
     ],
     imports     : [
         RouterModule,
-
         MatButtonModule,
         MatIconModule,
         MatMenuModule,
@@ -25,9 +24,9 @@ import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
         FuseShortcutsModule
     ],
     exports     : [
-        FuseToolbarComponent
+        ToolbarComponent
     ]
 })
-export class FuseToolbarModule
+export class ToolbarModule
 {
 }

@@ -1,21 +1,20 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
-
 import * as shape from 'd3-shape';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { ProjectDashboardService } from './project.service';
+import { ProjectDashboardService } from 'app/main/apps/dashboards/project/project.service';
 
 @Component({
-    selector     : 'fuse-project-dashboard',
+    selector     : 'project-dashboard',
     templateUrl  : './project.component.html',
     styleUrls    : ['./project.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseProjectDashboardComponent implements OnInit
+export class ProjectDashboardComponent implements OnInit
 {
     projects: any[];
     selectedProject: any;
@@ -30,12 +29,15 @@ export class FuseProjectDashboardComponent implements OnInit
 
     dateNow = Date.now();
 
-    constructor(private projectDashboardService: ProjectDashboardService)
+    /**
+     * Constructor
+     *
+     * @param {ProjectDashboardService} _projectDashboardService
+     */
+    constructor(
+        private _projectDashboardService: ProjectDashboardService
+    )
     {
-        this.projects = this.projectDashboardService.projects;
-        this.selectedProject = this.projects[0];
-        this.widgets = this.projectDashboardService.widgets;
-
         /**
          * Widget 5
          */
@@ -139,8 +141,19 @@ export class FuseProjectDashboardComponent implements OnInit
 
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
+        this.projects = this._projectDashboardService.projects;
+        this.selectedProject = this.projects[0];
+        this.widgets = this._projectDashboardService.widgets;
+
         /**
          * Widget 11
          */
@@ -152,18 +165,30 @@ export class FuseProjectDashboardComponent implements OnInit
 
 export class FilesDataSource extends DataSource<any>
 {
-    constructor(private widget11)
+    /**
+     * Constructor
+     *
+     * @param _widget11
+     */
+    constructor(private _widget11)
     {
         super();
     }
 
-    /** Connect function called by the table to retrieve one stream containing the data to render. */
+    /**
+     * Connect function called by the table to retrieve one stream containing the data to render.
+     *
+     * @returns {Observable<any[]>}
+     */
     connect(): Observable<any[]>
     {
-        return this.widget11.onContactsChanged;
+        return this._widget11.onContactsChanged;
     }
 
-    disconnect()
+    /**
+     * Disconnect
+     */
+    disconnect(): void
     {
     }
 }

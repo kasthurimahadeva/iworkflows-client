@@ -1,11 +1,11 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { CalendarEvent } from 'angular-calendar';
 
 import { MatColors } from '@fuse/mat-colors';
 
-import { CalendarEvent } from 'angular-calendar';
-import { CalendarEventModel } from '../event.model';
+import { CalendarEventModel } from 'app/main/apps/calendar/event.model';
 
 @Component({
     selector     : 'fuse-calendar-event-form-dialog',
@@ -14,22 +14,29 @@ import { CalendarEventModel } from '../event.model';
     encapsulation: ViewEncapsulation.None
 })
 
-export class FuseCalendarEventFormDialogComponent
+export class CalendarEventFormDialogComponent
 {
-    event: CalendarEvent;
-    dialogTitle: string;
-    eventForm: FormGroup;
     action: string;
+    event: CalendarEvent;
+    eventForm: FormGroup;
+    dialogTitle: string;
     presetColors = MatColors.presets;
 
+    /**
+     * Constructor
+     *
+     * @param {MatDialogRef<CalendarEventFormDialogComponent>} dialogRef
+     * @param _data
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        public dialogRef: MatDialogRef<FuseCalendarEventFormDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) private data: any,
-        private formBuilder: FormBuilder
+        public dialogRef: MatDialogRef<CalendarEventFormDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private _data: any,
+        private _formBuilder: FormBuilder
     )
     {
-        this.event = data.event;
-        this.action = data.action;
+        this.event = _data.event;
+        this.action = _data.action;
 
         if ( this.action === 'edit' )
         {
@@ -39,27 +46,36 @@ export class FuseCalendarEventFormDialogComponent
         {
             this.dialogTitle = 'New Event';
             this.event = new CalendarEventModel({
-                start: data.date,
-                end  : data.date
+                start: _data.date,
+                end  : _data.date
             });
         }
 
         this.eventForm = this.createEventForm();
     }
 
-    createEventForm()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create the event form
+     *
+     * @returns {FormGroup}
+     */
+    createEventForm(): FormGroup
     {
         return new FormGroup({
             title : new FormControl(this.event.title),
             start : new FormControl(this.event.start),
             end   : new FormControl(this.event.end),
             allDay: new FormControl(this.event.allDay),
-            color : this.formBuilder.group({
+            color : this._formBuilder.group({
                 primary  : new FormControl(this.event.color.primary),
                 secondary: new FormControl(this.event.color.secondary)
             }),
             meta  :
-                this.formBuilder.group({
+                this._formBuilder.group({
                     location: new FormControl(this.event.meta.location),
                     notes   : new FormControl(this.event.meta.notes)
                 })

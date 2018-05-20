@@ -1,11 +1,12 @@
 import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 import { FuseSidebarService } from './sidebar.service';
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { FuseConfigService } from '@fuse/services/config.service';
+import { takeUntil } from 'rxjs/internal/operators';
 
 @Component({
     selector     : 'fuse-sidebar',
@@ -35,6 +36,52 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @HostBinding('class.locked-open')
     isLockedOpen: boolean;
 
+    // Folded unfolded
+    @HostBinding('class.unfolded')
+    unfolded: boolean;
+
+    // Private
+    private _folded: boolean;
+    private _fuseConfig: any;
+    private _wasActive: boolean;
+    private _backdrop: HTMLElement | null = null;
+    private _player: AnimationPlayer;
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {AnimationBuilder} _animationBuilder
+     * @param {ElementRef} _elementRef
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {FuseMatchMediaService} _fuseMatchMediaService
+     * @param {FuseSidebarService} _fuseSidebarService
+     * @param {ObservableMedia} _observableMedia
+     * @param {Renderer2} _renderer
+     */
+    constructor(
+        private _animationBuilder: AnimationBuilder,
+        private _elementRef: ElementRef,
+        private _fuseConfigService: FuseConfigService,
+        private _fuseMatchMediaService: FuseMatchMediaService,
+        private _fuseSidebarService: FuseSidebarService,
+        private _observableMedia: ObservableMedia,
+        private _renderer: Renderer2
+    )
+    {
+        // Set the defaults
+        this.opened = false;
+        this.folded = false;
+        this.align = 'left';
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
     // Folded
     @HostBinding('class.folded')
     @Input()
@@ -59,12 +106,12 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // Get the sibling and set the style rule
         if ( this.align === 'left' )
         {
-            sibling = this.elementRef.nativeElement.nextElementSibling;
+            sibling = this._elementRef.nativeElement.nextElementSibling;
             styleRule = 'marginLeft';
         }
         else
         {
-            sibling = this.elementRef.nativeElement.previousElementSibling;
+            sibling = this._elementRef.nativeElement.previousElementSibling;
             styleRule = 'marginRight';
         }
 
@@ -78,13 +125,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         if ( value )
         {
             // Set the style
-            this.renderer.setStyle(sibling, styleRule, styleValue);
+            this._renderer.setStyle(sibling, styleRule, styleValue);
         }
         // If unfolded...
         else
         {
             // Remove the style
-            this.renderer.removeStyle(sibling, styleRule);
+            this._renderer.removeStyle(sibling, styleRule);
         }
     }
 
@@ -93,51 +140,24 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         return this._folded;
     }
 
-    // Folded unfolded
-    @HostBinding('class.unfolded')
-    unfolded: boolean;
-
-    // Private
-    private _folded: boolean;
-    private _wasActive: boolean;
-    private _backdrop: HTMLElement | null = null;
-    private _player: AnimationPlayer;
-    private _onMediaChangeSubscription: Subscription;
-
-    /**
-     * Constructor
-     *
-     * @param {Renderer2} renderer
-     * @param {ElementRef} elementRef
-     * @param {AnimationBuilder} animationBuilder
-     * @param {ObservableMedia} observableMedia
-     * @param {FuseConfigService} fuseConfigService
-     * @param {FuseSidebarService} fuseSidebarService
-     * @param {FuseMatchMediaService} fuseMatchMediaService
-     */
-    constructor(
-        private renderer: Renderer2,
-        private elementRef: ElementRef,
-        private animationBuilder: AnimationBuilder,
-        private observableMedia: ObservableMedia,
-        private fuseConfigService: FuseConfigService,
-        private fuseSidebarService: FuseSidebarService,
-        private fuseMatchMediaService: FuseMatchMediaService
-    )
-    {
-        // Set the defaults
-        this.opened = false;
-        this.folded = false;
-        this.align = 'left';
-    }
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
 
     /**
      * On init
      */
     ngOnInit(): void
     {
+        // Subscribe to config changes
+        this._fuseConfigService.config
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((config) => {
+                this._fuseConfig = config;
+            });
+
         // Register the sidebar
-        this.fuseSidebarService.register(this.name, this);
+        this._fuseSidebarService.register(this.name, this);
 
         // Setup alignment
         this._setupAlignment();
@@ -158,11 +178,16 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         }
 
         // Unregister the sidebar
-        this.fuseSidebarService.unregister(this.name);
+        this._fuseSidebarService.unregister(this.name);
 
-        // Unsubscribe from the media watcher subscription
-        this._onMediaChangeSubscription.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
 
     /**
      * Set the sidebar alignment
@@ -175,11 +200,11 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // element depending on the align attribute
         if ( this.align === 'right' )
         {
-            this.renderer.addClass(this.elementRef.nativeElement, 'right-aligned');
+            this._renderer.addClass(this._elementRef.nativeElement, 'right-aligned');
         }
         else
         {
-            this.renderer.addClass(this.elementRef.nativeElement, 'left-aligned');
+            this._renderer.addClass(this._elementRef.nativeElement, 'left-aligned');
         }
     }
 
@@ -200,12 +225,12 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         this._wasActive = false;
 
         // Act on every media change
-        this._onMediaChangeSubscription =
-
-            this.fuseMatchMediaService.onMediaChange.subscribe(() => {
+        this._fuseMatchMediaService.onMediaChange
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
 
                 // Get the active status
-                const isActive = this.observableMedia.isActive(this.lockedOpen);
+                const isActive = this._observableMedia.isActive(this.lockedOpen);
 
                 // If the both status are the same, don't act
                 if ( this._wasActive === isActive )
@@ -224,7 +249,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
                     // Read the folded setting from the config
                     // and fold the sidebar if it's true
-                    if ( this.fuseConfigService.config.layout.navigationFolded )
+                    if ( this._fuseConfig.layout.navigation.folded )
                     {
                         this.fold();
                     }
@@ -249,6 +274,10 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                 this._wasActive = isActive;
             });
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
 
     /**
      * Open the sidebar
@@ -382,17 +411,17 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     showBackdrop(): void
     {
         // Create the backdrop element
-        this._backdrop = this.renderer.createElement('div');
+        this._backdrop = this._renderer.createElement('div');
 
         // Add a class to the backdrop element
         this._backdrop.classList.add('fuse-sidebar-overlay');
 
         // Append the backdrop to the parent of the sidebar
-        this.renderer.appendChild(this.elementRef.nativeElement.parentElement, this._backdrop);
+        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);
 
         // Create the enter animation and attach it to the player
         this._player =
-            this.animationBuilder
+            this._animationBuilder
                 .build([
                     animate('300ms ease', style({opacity: 1}))
                 ]).create(this._backdrop);
@@ -419,7 +448,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Create the leave animation and attach it to the player
         this._player =
-            this.animationBuilder
+            this._animationBuilder
                 .build([
                     animate('300ms ease', style({opacity: 0}))
                 ]).create(this._backdrop);

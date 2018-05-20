@@ -9,16 +9,24 @@ export class FuseNavigationService
     onItemCollapsed: Subject<any> = new Subject;
     onItemCollapseToggled: Subject<any> = new Subject;
 
+    /**
+     * Constructor
+     */
     constructor()
     {
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
     /**
      * Get flattened navigation array
+     *
      * @param navigation
      * @returns {any[]}
      */
-    getFlatNavigation(navigation)
+    getFlatNavigation(navigation): any
     {
         for ( const navItem of navigation )
         {

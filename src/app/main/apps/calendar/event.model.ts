@@ -23,6 +23,11 @@ export class CalendarEventModel
         notes: string
     };
 
+    /**
+     * Constructor
+     *
+     * @param data
+     */
     constructor(data?)
     {
         data = data || {};

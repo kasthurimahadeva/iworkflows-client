@@ -9,21 +9,26 @@ export class EcommerceProductsService implements Resolve<any>
     products: any[];
     onProductsChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
     constructor(
-        private http: HttpClient
+        private _httpClient: HttpClient
     )
     {
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-
         return new Promise((resolve, reject) => {
 
             Promise.all([
@@ -37,10 +42,15 @@ export class EcommerceProductsService implements Resolve<any>
         });
     }
 
+    /**
+     * Get products
+     *
+     * @returns {Promise<any>}
+     */
     getProducts(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/e-commerce-products')
+            this._httpClient.get('api/e-commerce-products')
                 .subscribe((response: any) => {
                     this.products = response;
                     this.onProductsChanged.next(this.products);

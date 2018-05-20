@@ -1,36 +1,56 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { AnalyticsDashboardService } from './analytics.service';
 import { fuseAnimations } from '@fuse/animations';
 
+import { AnalyticsDashboardService } from 'app/main/apps/dashboards/analytics/analytics.service';
+
 @Component({
-    selector     : 'fuse-analytics-dashboard',
+    selector     : 'analytics-dashboard',
     templateUrl  : './analytics.component.html',
     styleUrls    : ['./analytics.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseAnalyticsDashboardComponent
+export class AnalyticsDashboardComponent implements OnInit
 {
     widgets: any;
     widget1SelectedYear = '2016';
     widget5SelectedDay = 'today';
 
+    /**
+     * Constructor
+     *
+     * @param {AnalyticsDashboardService} _analyticsDashboardService
+     */
     constructor(
-        private analyticsDashboardService: AnalyticsDashboardService
+        private _analyticsDashboardService: AnalyticsDashboardService
     )
     {
-        // Get the widgets from the service
-        this.widgets = this.analyticsDashboardService.widgets;
-
         // Register the custom chart.js plugin
-        this.registerCustomChartJSPlugin();
+        this._registerCustomChartJSPlugin();
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Get the widgets from the service
+        this.widgets = this._analyticsDashboardService.widgets;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
 
     /**
      * Register a custom plugin
      */
-    registerCustomChartJSPlugin()
+    private _registerCustomChartJSPlugin(): void
     {
         (<any>window).Chart.plugins.register({
             afterDatasetsDraw: function (chart, easing) {

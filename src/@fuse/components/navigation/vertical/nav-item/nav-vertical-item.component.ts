@@ -7,9 +7,15 @@ import { Component, HostBinding, Input } from '@angular/core';
 })
 export class FuseNavVerticalItemComponent
 {
-    @HostBinding('class') classes = 'nav-item';
-    @Input() item: any;
+    @HostBinding('class')
+    classes = 'nav-item';
 
+    @Input()
+    item: any;
+
+    /**
+     * Constructor
+     */
     constructor()
     {
     }

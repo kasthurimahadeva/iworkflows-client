@@ -9,12 +9,19 @@ export class FileManagerService implements Resolve<any>
     onFilesChanged: BehaviorSubject<any> = new BehaviorSubject({});
     onFileSelected: BehaviorSubject<any> = new BehaviorSubject({});
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
     }
 
     /**
-     * The File Manager App Main Resolver
+     * Resolver
      * 
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
@@ -22,7 +29,6 @@ export class FileManagerService implements Resolve<any>
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-
         return new Promise((resolve, reject) => {
 
             Promise.all([
@@ -36,10 +42,15 @@ export class FileManagerService implements Resolve<any>
         });
     }
 
+    /**
+     * Get files
+     *
+     * @returns {Promise<any>}
+     */
     getFiles(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/file-manager')
+            this._httpClient.get('api/file-manager')
                 .subscribe((response: any) => {
                     this.onFilesChanged.next(response);
                     this.onFileSelected.next(response[0]);

@@ -1,40 +1,94 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { FuseContactsContactFormDialogComponent } from './contact-form/contact-form.component';
-import { ContactsService } from './contacts.service';
+import { ContactsService } from 'app/main/apps/contacts/contacts.service';
+import { ContactsContactFormDialogComponent } from 'app/main/apps/contacts/contact-form/contact-form.component';
 
 @Component({
-    selector     : 'fuse-contacts',
+    selector     : 'contacts',
     templateUrl  : './contacts.component.html',
     styleUrls    : ['./contacts.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseContactsComponent implements OnInit, OnDestroy
+export class ContactsComponent implements OnInit, OnDestroy
 {
+    dialogRef: any;
     hasSelectedContacts: boolean;
     searchInput: FormControl;
-    dialogRef: any;
-    onSelectedContactsChangedSubscription: Subscription;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ContactsService} _contactsService
+     * @param {MatDialog} _matDialog
+     */
     constructor(
-        private contactsService: ContactsService,
-        public dialog: MatDialog
+        private _contactsService: ContactsService,
+        public _matDialog: MatDialog
     )
     {
+        // Set the defaults
         this.searchInput = new FormControl('');
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    newContact()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.dialogRef = this.dialog.open(FuseContactsContactFormDialogComponent, {
+        this._contactsService.onSelectedContactsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(selectedContacts => {
+                this.hasSelectedContacts = selectedContacts.length > 0;
+            });
+
+        this.searchInput.valueChanges
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                debounceTime(300),
+                distinctUntilChanged()
+            )
+            .subscribe(searchText => {
+                this._contactsService.onSearchTextChanged.next(searchText);
+            });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * New contact
+     */
+    newContact(): void
+    {
+        this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 action: 'new'
@@ -48,32 +102,7 @@ export class FuseContactsComponent implements OnInit, OnDestroy
                     return;
                 }
 
-                this.contactsService.updateContact(response.getRawValue());
-
+                this._contactsService.updateContact(response.getRawValue());
             });
-
-    }
-
-    ngOnInit()
-    {
-        this.onSelectedContactsChangedSubscription =
-            this.contactsService.onSelectedContactsChanged
-                .subscribe(selectedContacts => {
-                    this.hasSelectedContacts = selectedContacts.length > 0;
-                });
-
-        this.searchInput.valueChanges
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            )
-            .subscribe(searchText => {
-                this.contactsService.onSearchTextChanged.next(searchText);
-            });
-    }
-
-    ngOnDestroy()
-    {
-        this.onSelectedContactsChangedSubscription.unsubscribe();
     }
 }

@@ -1,17 +1,17 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { EcommerceDashboardService } from './dashboard.service';
+import { EcommerceDashboardService } from 'app/main/apps/e-commerce/dashboard/dashboard.service';
 
 @Component({
-    selector     : 'fuse-e-commerce-dashboard',
+    selector     : 'e-commerce-dashboard',
     templateUrl  : './dashboard.component.html',
     styleUrls    : ['./dashboard.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseEcommerceDashboardComponent
+export class EcommerceDashboardComponent implements OnInit
 {
     projects: any[];
     selectedProject: any;
@@ -21,12 +21,10 @@ export class FuseEcommerceDashboardComponent
     widget6: any = {};
     widget7: any = {};
 
-    constructor(private projectsDashboardService: EcommerceDashboardService)
+    constructor(
+        private _eCommerceDashboardService: EcommerceDashboardService
+    )
     {
-        this.projects = this.projectsDashboardService.projects;
-        this.selectedProject = this.projects[0];
-        this.widgets = this.projectsDashboardService.widgets;
-
         /**
          * Widget 5
          */
@@ -73,5 +71,19 @@ export class FuseEcommerceDashboardComponent
             currentRange: 'T'
         };
 
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        this.projects = this._eCommerceDashboardService.projects;
+        this.selectedProject = this.projects[0];
+        this.widgets = this._eCommerceDashboardService.widgets;
     }
 }

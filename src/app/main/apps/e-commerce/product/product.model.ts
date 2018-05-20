@@ -29,6 +29,11 @@ export class Product
     extraShippingFee: number;
     active: boolean;
 
+    /**
+     * Constructor
+     *
+     * @param product
+     */
     constructor(product?)
     {
         product = product || {};
@@ -53,6 +58,11 @@ export class Product
         this.active = product.active || true;
     }
 
+    /**
+     * Add category
+     *
+     * @param {MatChipInputEvent} event
+     */
     addCategory(event: MatChipInputEvent): void
     {
         const input = event.input;
@@ -71,7 +81,12 @@ export class Product
         }
     }
 
-    removeCategory(category)
+    /**
+     * Remove category
+     *
+     * @param category
+     */
+    removeCategory(category): void
     {
         const index = this.categories.indexOf(category);
 
@@ -81,6 +96,11 @@ export class Product
         }
     }
 
+    /**
+     * Add tag
+     *
+     * @param {MatChipInputEvent} event
+     */
     addTag(event: MatChipInputEvent): void
     {
         const input = event.input;
@@ -99,7 +119,12 @@ export class Product
         }
     }
 
-    removeTag(tag)
+    /**
+     * Remove tag
+     *
+     * @param tag
+     */
+    removeTag(tag): void
     {
         const index = this.tags.indexOf(tag);
 

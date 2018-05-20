@@ -1,30 +1,30 @@
 import { NgModule } from '@angular/core';
 
-import { LoginModule } from './authentication/login/login.module';
-import { Login2Module } from './authentication/login-2/login-2.module';
-import { RegisterModule } from './authentication/register/register.module';
-import { Register2Module } from './authentication/register-2/register-2.module';
-import { ForgotPasswordModule } from './authentication/forgot-password/forgot-password.module';
-import { ForgotPassword2Module } from './authentication/forgot-password-2/forgot-password-2.module';
-import { ResetPasswordModule } from './authentication/reset-password/reset-password.module';
-import { ResetPassword2Module } from './authentication/reset-password-2/reset-password-2.module';
-import { LockModule } from './authentication/lock/lock.module';
-import { MailConfirmModule } from './authentication/mail-confirm/mail-confirm.module';
-import { ComingSoonModule } from './coming-soon/coming-soon.module';
-import { Error404Module } from './errors/404/error-404.module';
-import { Error500Module } from './errors/500/error-500.module';
-import { InvoiceCompactModule } from './invoices/compact/compact.module';
-import { InvoiceModernModule } from './invoices/modern/modern.module';
-import { MaintenanceModule } from './maintenance/maintenence.module';
-import { PricingModule } from './pricing/pricing.module';
-import { ProfileModule } from './profile/profile.module';
-import { SearchModule } from './search/search.module';
-import { FaqModule } from './faq/faq.module';
-import { KnowledgeBaseModule } from './knowledge-base/knowledge-base.module';
+import { LoginModule } from 'app/main/pages/authentication/login/login.module';
+import { Login2Module } from 'app/main/pages/authentication/login-2/login-2.module';
+import { RegisterModule } from 'app/main/pages/authentication/register/register.module';
+import { Register2Module } from 'app/main/pages/authentication/register-2/register-2.module';
+import { ForgotPasswordModule } from 'app/main/pages/authentication/forgot-password/forgot-password.module';
+import { ForgotPassword2Module } from 'app/main/pages/authentication/forgot-password-2/forgot-password-2.module';
+import { ResetPasswordModule } from 'app/main/pages/authentication/reset-password/reset-password.module';
+import { ResetPassword2Module } from 'app/main/pages/authentication/reset-password-2/reset-password-2.module';
+import { LockModule } from 'app/main/pages/authentication/lock/lock.module';
+import { MailConfirmModule } from 'app/main/pages/authentication/mail-confirm/mail-confirm.module';
+import { ComingSoonModule } from 'app/main/pages/coming-soon/coming-soon.module';
+import { Error404Module } from 'app/main/pages/errors/404/error-404.module';
+import { Error500Module } from 'app/main/pages/errors/500/error-500.module';
+import { InvoiceModernModule } from 'app/main/pages/invoices/modern/modern.module';
+import { InvoiceCompactModule } from 'app/main/pages/invoices/compact/compact.module';
+import { MaintenanceModule } from 'app/main/pages/maintenance/maintenence.module';
+import { PricingModule } from 'app/main/pages/pricing/pricing.module';
+import { ProfileModule } from 'app/main/pages/profile/profile.module';
+import { SearchModule } from 'app/main/pages/search/search.module';
+import { FaqModule } from 'app/main/pages/faq/faq.module';
+import { KnowledgeBaseModule } from 'app/main/pages/knowledge-base/knowledge-base.module';
 
 @NgModule({
     imports: [
-        // Auth
+        // Authentication
         LoginModule,
         Login2Module,
         RegisterModule,
@@ -66,7 +66,7 @@ import { KnowledgeBaseModule } from './knowledge-base/knowledge-base.module';
         KnowledgeBaseModule
     ]
 })
-export class FusePagesModule
+export class PagesModule
 {
 
 }

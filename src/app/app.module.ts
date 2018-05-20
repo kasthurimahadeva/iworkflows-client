@@ -8,23 +8,23 @@ import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
 
 import { FuseModule } from '@fuse/fuse.module';
-import { FuseLayoutsModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { fuseConfig } from './fuse-config';
+import { fuseConfig } from 'app/fuse-config';
 
-import { AppComponent } from './app.component';
-import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
-import { AppStoreModule } from './store/store.module';
+import { FuseFakeDbService } from 'app/fuse-fake-db/fuse-fake-db.service';
+import { AppComponent } from 'app/app.component';
+import { AppStoreModule } from 'app/store/store.module';
+import { LayoutModule } from 'app/layout/layout.module';
 
 const appRoutes: Routes = [
     {
         path        : 'apps',
-        loadChildren: './main/apps/apps.module#FuseAppsModule'
+        loadChildren: './main/apps/apps.module#AppsModule'
     },
     {
         path        : 'pages',
-        loadChildren: './main/pages/pages.module#FusePagesModule'
+        loadChildren: './main/pages/pages.module#PagesModule'
     },
     {
         path        : 'ui',
@@ -32,15 +32,15 @@ const appRoutes: Routes = [
     },
     {
         path        : 'services',
-        loadChildren: './main/services/services.module#FuseServicesModule'
+        loadChildren: './main/services/services.module#ServicesModule'
     },
     {
         path        : 'components',
-        loadChildren: './main/components/components.module#FuseComponentsModule'
+        loadChildren: './main/components/components.module#ComponentsModule'
     },
     {
         path        : 'components-third-party',
-        loadChildren: './main/components-third-party/components-third-party.module#FuseComponentsThirdPartyModule'
+        loadChildren: './main/components-third-party/components-third-party.module#ComponentsThirdPartyModule'
     },
     {
         path      : '**',
@@ -64,11 +64,12 @@ const appRoutes: Routes = [
             passThruUnknownUrl: true
         }),
 
-        // Fuse Main and Shared modules
+        // Fuse modules
         FuseModule.forRoot(fuseConfig),
-        FuseLayoutsModule,
         FuseSharedModule,
 
+        // App modules
+        LayoutModule,
         AppStoreModule
     ],
     bootstrap   : [

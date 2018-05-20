@@ -1,56 +1,98 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'fuse-register-2',
+    selector   : 'register-2',
     templateUrl: './register-2.component.html',
     styleUrls  : ['./register-2.component.scss'],
     animations : fuseAnimations
 })
-export class FuseRegister2Component implements OnInit
+export class Register2Component implements OnInit, OnDestroy
 {
     registerForm: FormGroup;
     registerFormErrors: any;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private fuseConfig: FuseConfigService,
-        private formBuilder: FormBuilder
+        private _fuseConfigService: FuseConfigService,
+        private _formBuilder: FormBuilder
     )
     {
-        this.fuseConfig.setConfig({
+        // Configure the layout
+        this._fuseConfigService.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',
                 footer    : 'none'
             }
-        });
+        };
 
+        // Set the defaults
         this.registerFormErrors = {
             name           : {},
             email          : {},
             password       : {},
             passwordConfirm: {}
         };
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.registerForm = this.formBuilder.group({
+        this.registerForm = this._formBuilder.group({
             name           : ['', Validators.required],
             email          : ['', [Validators.required, Validators.email]],
             password       : ['', Validators.required],
             passwordConfirm: ['', [Validators.required, confirmPassword]]
         });
 
-        this.registerForm.valueChanges.subscribe(() => {
+        this.registerForm.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
             this.onRegisterFormValuesChanged();
         });
     }
 
-    onRegisterFormValuesChanged()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On form values changed
+     */
+    onRegisterFormValuesChanged(): void
     {
         for ( const field in this.registerFormErrors )
         {
@@ -73,7 +115,13 @@ export class FuseRegister2Component implements OnInit
     }
 }
 
-function confirmPassword(control: AbstractControl)
+/**
+ * Confirm password
+ *
+ * @param {AbstractControl} control
+ * @returns {{passwordsNotMatch: boolean}}
+ */
+function confirmPassword(control: AbstractControl): any
 {
     if ( !control.parent || !control )
     {

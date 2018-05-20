@@ -87,7 +87,7 @@
     <!-- / CHAT CONTENT -->
 
     <!-- CHAT FOOTER -->
-    <div class="chat-footer" fxLayout="row" fxLayoutAlign="center center">
+    <div class="chat-footer" fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="center center">
 
         <!-- REPLY FORM -->
         <form #replyForm="ngForm"
@@ -97,18 +97,20 @@
               fxLayout="row"
               fxLayoutAlign="start center">
 
-            <mat-form-field class="" fxFlex floatLabel="never">
+            <mat-form-field fxFlex floatLabel="never">
                 <textarea matInput #replyInput placeholder="Type and hit enter to send message"
                           ngModel name="message"></textarea>
             </mat-form-field>
 
-            <button mat-fab class="" type="submit" aria-label="Send message">
+            <button mat-fab type="submit" aria-label="Send message">
                 <mat-icon>send</mat-icon>
             </button>
 
         </form>
         <!-- / REPLY FORM -->
+
     </div>
     <!-- / CHAT FOOTER-->
+
 </div>
 <!-- / CHAT -->

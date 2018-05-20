@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subject} from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { Order } from './order.model';
-import { EcommerceOrderService } from './order.service';
-import { orderStatuses } from './order-statuses';
+import { orderStatuses } from 'app/main/apps/e-commerce/order/order-statuses';
+import { Order } from 'app/main/apps/e-commerce/order/order.model';
+import { EcommerceOrderService } from 'app/main/apps/e-commerce/order/order.service';
 
 @Component({
     selector     : 'fuse-e-commerce-order',
@@ -15,41 +16,73 @@ import { orderStatuses } from './order-statuses';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseEcommerceOrderComponent implements OnInit, OnDestroy
+export class EcommerceOrderComponent implements OnInit, OnDestroy
 {
-    order = new Order();
-    onOrderChanged: Subscription;
+    order: Order;
+    orderStatuses: any;
     statusForm: FormGroup;
-    orderStatuses = orderStatuses;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {EcommerceOrderService} _ecommerceOrderService
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private orderService: EcommerceOrderService,
-        private formBuilder: FormBuilder,
+        private _ecommerceOrderService: EcommerceOrderService,
+        private _formBuilder: FormBuilder
     )
     {
+        // Set the defaults
+        this.order = new Order();
+        this.orderStatuses = orderStatuses;
 
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Subscribe to update order on changes
-        this.onOrderChanged =
-            this.orderService.onOrderChanged
-                .subscribe(order => {
-                    this.order = new Order(order);
-                });
+        this._ecommerceOrderService.onOrderChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(order => {
+                this.order = new Order(order);
+            });
 
-        this.statusForm = this.formBuilder.group({
+        this.statusForm = this._formBuilder.group({
             newStatus: ['']
         });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onOrderChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    updateStatus()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Update status
+     */
+    updateStatus(): void
     {
         const newStatusId = Number.parseInt(this.statusForm.get('newStatus').value);
 

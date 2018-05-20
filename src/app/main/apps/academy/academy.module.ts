@@ -5,22 +5,23 @@ import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, Mat
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseAcademyCoursesComponent } from './courses/courses.component';
-import { FuseAcademyCourseComponent } from './course/course.component';
-import { AcademyCoursesService } from './courses.service';
-import { AcademyCourseService } from './course.service';
+import { AcademyCoursesComponent } from 'app/main/apps/academy/courses/courses.component';
+import { AcademyCourseComponent } from 'app/main/apps/academy/course/course.component';
+import { AcademyCoursesService } from 'app/main/apps/academy/courses.service';
+import { AcademyCourseService } from 'app/main/apps/academy/course.service';
+
 
 const routes = [
     {
         path     : 'courses',
-        component: FuseAcademyCoursesComponent,
+        component: AcademyCoursesComponent,
         resolve  : {
             academy: AcademyCoursesService
         }
     },
     {
         path     : 'courses/:courseId/:courseSlug',
-        component: FuseAcademyCourseComponent,
+        component: AcademyCourseComponent,
         resolve  : {
             academy: AcademyCourseService
         }
@@ -33,8 +34,8 @@ const routes = [
 
 @NgModule({
     declarations: [
-        FuseAcademyCoursesComponent,
-        FuseAcademyCourseComponent
+        AcademyCoursesComponent,
+        AcademyCourseComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -53,6 +54,6 @@ const routes = [
         AcademyCourseService
     ]
 })
-export class FuseAcademyModule
+export class AcademyModule
 {
 }

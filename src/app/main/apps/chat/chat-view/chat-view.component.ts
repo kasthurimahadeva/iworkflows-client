@@ -1,16 +1,18 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 
-import { ChatService } from '../chat.service';
+import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'fuse-chat-view',
+    selector   : 'chat-view',
     templateUrl: './chat-view.component.html',
     styleUrls  : ['./chat-view.component.scss']
 })
-export class FuseChatViewComponent implements OnInit, AfterViewInit
+export class ChatViewComponent implements OnInit, OnDestroy, AfterViewInit
 {
     user: any;
     chat: any;
@@ -18,18 +20,44 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
     contact: any;
     replyInput: any;
     selectedChat: any;
-    @ViewChild(FusePerfectScrollbarDirective) directiveScroll: FusePerfectScrollbarDirective;
-    @ViewChildren('replyInput') replyInputField;
-    @ViewChild('replyForm') replyForm: NgForm;
 
-    constructor(private chatService: ChatService)
+    @ViewChild(FusePerfectScrollbarDirective)
+    directiveScroll: FusePerfectScrollbarDirective;
+
+    @ViewChildren('replyInput')
+    replyInputField;
+
+    @ViewChild('replyForm')
+    replyForm: NgForm;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ChatService} _chatService
+     */
+    constructor(
+        private _chatService: ChatService
+    )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.user = this.chatService.user;
-        this.chatService.onChatSelected
+        this.user = this._chatService.user;
+        this._chatService.onChatSelected
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(chatData => {
                 if ( chatData )
                 {
@@ -41,18 +69,41 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
             });
     }
 
-    ngAfterViewInit()
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
     {
         this.replyInput = this.replyInputField.first.nativeElement;
         this.readyToReply();
     }
 
-    selectContact()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.chatService.selectContact(this.contact);
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    readyToReply()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Select contact
+     */
+    selectContact(): void
+    {
+        this._chatService.selectContact(this.contact);
+    }
+
+    /**
+     * Ready to reply
+     */
+    readyToReply(): void
     {
         setTimeout(() => {
             this.replyForm.reset();
@@ -62,14 +113,22 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
 
     }
 
-    focusReplyInput()
+    /**
+     * Focus to the reply input
+     */
+    focusReplyInput(): void
     {
         setTimeout(() => {
             this.replyInput.focus();
         });
     }
 
-    scrollToBottom(speed?: number)
+    /**
+     * Scroll to the bottom
+     *
+     * @param {number} speed
+     */
+    scrollToBottom(speed?: number): void
     {
         speed = speed || 400;
         if ( this.directiveScroll )
@@ -82,7 +141,10 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
         }
     }
 
-    reply(event)
+    /**
+     * Reply
+     */
+    reply(): void
     {
         // Message
         const message = {
@@ -95,9 +157,8 @@ export class FuseChatViewComponent implements OnInit, AfterViewInit
         this.dialog.push(message);
 
         // Update the server
-        this.chatService.updateDialog(this.selectedChat.chatId, this.dialog).then(response => {
+        this._chatService.updateDialog(this.selectedChat.chatId, this.dialog).then(response => {
             this.readyToReply();
         });
-
     }
 }

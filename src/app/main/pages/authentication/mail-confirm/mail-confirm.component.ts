@@ -9,19 +9,24 @@ import { fuseAnimations } from '@fuse/animations';
     styleUrls  : ['./mail-confirm.component.scss'],
     animations : fuseAnimations
 })
-export class FuseMailConfirmComponent
+export class MailConfirmComponent
 {
-
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     */
     constructor(
-        private fuseConfig: FuseConfigService
+        private _fuseConfigService: FuseConfigService
     )
     {
-        this.fuseConfig.setConfig({
+        // Configure the layout
+        this._fuseConfigService.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',
                 footer    : 'none'
             }
-        });
+        };
     }
 }

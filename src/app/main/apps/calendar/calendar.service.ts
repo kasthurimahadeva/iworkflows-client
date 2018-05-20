@@ -9,11 +9,29 @@ export class CalendarService implements Resolve<any>
     events: any;
     onEventsUpdated = new Subject<any>();
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
 
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Resolver
+     *
+     * @param {ActivatedRouteSnapshot} route
+     * @param {RouterStateSnapshot} state
+     * @returns {Observable<any> | Promise<any> | any}
+     */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
         return new Promise((resolve, reject) => {
@@ -28,11 +46,16 @@ export class CalendarService implements Resolve<any>
         });
     }
 
-    getEvents()
+    /**
+     * Get events
+     *
+     * @returns {Promise<any>}
+     */
+    getEvents(): Promise<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/calendar/events')
+            this._httpClient.get('api/calendar/events')
                 .subscribe((response: any) => {
                     this.events = response.data;
                     this.onEventsUpdated.next(this.events);
@@ -41,10 +64,16 @@ export class CalendarService implements Resolve<any>
         });
     }
 
-    updateEvents(events)
+    /**
+     * Update events
+     *
+     * @param events
+     * @returns {Promise<any>}
+     */
+    updateEvents(events): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/calendar/events', {
+            this._httpClient.post('api/calendar/events', {
                 id  : 'events',
                 data: [...events]
             })

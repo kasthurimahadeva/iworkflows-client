@@ -1,7 +1,10 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { FuseNavigationService } from '../../navigation.service';
+import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { fuseAnimations } from '../../../../animations/index';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
+
+import { FuseNavigationService } from '../../navigation.service';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
     selector   : 'fuse-nav-vertical-collapse',
@@ -9,38 +12,67 @@ import { fuseAnimations } from '../../../../animations/index';
     styleUrls  : ['./nav-vertical-collapse.component.scss'],
     animations : fuseAnimations
 })
-export class FuseNavVerticalCollapseComponent implements OnInit
+export class FuseNavVerticalCollapseComponent implements OnInit, OnDestroy
 {
-    @Input() item: any;
-    @HostBinding('class') classes = 'nav-collapse nav-item';
-    @HostBinding('class.open') public isOpen = false;
+    @Input()
+    item: any;
 
+    @HostBinding('class')
+    classes = 'nav-collapse nav-item';
+
+    @HostBinding('class.open')
+    public isOpen = false;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {FuseNavigationService} _fuseNavigationService
+     * @param {Router} _router
+     */
     constructor(
-        private navigationService: FuseNavigationService,
-        private router: Router
+        private _fuseNavigationService: FuseNavigationService,
+        private _router: Router
     )
     {
-        // Listen for route changes
-        router.events.subscribe(
-            (event) => {
-                if ( event instanceof NavigationEnd )
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Listen for router events
+        this._router.events
+            .pipe(
+                filter(event => event instanceof NavigationEnd),
+                takeUntil(this._unsubscribeAll)
+            )
+            .subscribe((event: NavigationEnd) => {
+
+                // Check if the url can be found in
+                // one of the children of this item
+                if ( this.isUrlInChildren(this.item, event.urlAfterRedirects) )
                 {
-                    // Check if the url can be found in
-                    // one of the children of this item
-                    if ( this.isUrlInChildren(this.item, event.urlAfterRedirects) )
-                    {
-                        this.expand();
-                    }
-                    else
-                    {
-                        this.collapse();
-                    }
+                    this.expand();
                 }
-            }
-        );
+                else
+                {
+                    this.collapse();
+                }
+            });
 
         // Listen for collapsing of any navigation item
-        this.navigationService.onItemCollapsed
+        this._fuseNavigationService.onItemCollapsed
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(
                 (clickedItem) => {
                     if ( clickedItem && clickedItem.children )
@@ -54,7 +86,7 @@ export class FuseNavVerticalCollapseComponent implements OnInit
 
                         // Check if the url can be found in
                         // one of the children of this item
-                        if ( this.isUrlInChildren(this.item, this.router.url) )
+                        if ( this.isUrlInChildren(this.item, this._router.url) )
                         {
                             return;
                         }
@@ -67,13 +99,10 @@ export class FuseNavVerticalCollapseComponent implements OnInit
                     }
                 }
             );
-    }
 
-    ngOnInit()
-    {
         // Check if the url can be found in
         // one of the children of this item
-        if ( this.isUrlInChildren(this.item, this.router.url) )
+        if ( this.isUrlInChildren(this.item, this._router.url) )
         {
             this.expand();
         }
@@ -84,25 +113,39 @@ export class FuseNavVerticalCollapseComponent implements OnInit
     }
 
     /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
      * Toggle collapse
      *
      * @param ev
      */
-    toggleOpen(ev)
+    toggleOpen(ev): void
     {
         ev.preventDefault();
 
         this.isOpen = !this.isOpen;
 
         // Navigation collapse toggled...
-        this.navigationService.onItemCollapsed.next(this.item);
-        this.navigationService.onItemCollapseToggled.next();
+        this._fuseNavigationService.onItemCollapsed.next(this.item);
+        this._fuseNavigationService.onItemCollapseToggled.next();
     }
 
     /**
      * Expand the collapsable navigation
      */
-    expand()
+    expand(): void
     {
         if ( this.isOpen )
         {
@@ -110,13 +153,13 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         }
 
         this.isOpen = true;
-        this.navigationService.onItemCollapseToggled.next();
+        this._fuseNavigationService.onItemCollapseToggled.next();
     }
 
     /**
      * Collapse the collapsable navigation
      */
-    collapse()
+    collapse(): void
     {
         if ( !this.isOpen )
         {
@@ -124,7 +167,7 @@ export class FuseNavVerticalCollapseComponent implements OnInit
         }
 
         this.isOpen = false;
-        this.navigationService.onItemCollapseToggled.next();
+        this._fuseNavigationService.onItemCollapseToggled.next();
     }
 
     /**
@@ -133,9 +176,9 @@ export class FuseNavVerticalCollapseComponent implements OnInit
      *
      * @param parent
      * @param item
-     * @return {any}
+     * @returns {boolean}
      */
-    isChildrenOf(parent, item)
+    isChildrenOf(parent, item): boolean
     {
         if ( !parent.children )
         {
@@ -162,9 +205,9 @@ export class FuseNavVerticalCollapseComponent implements OnInit
      *
      * @param parent
      * @param url
-     * @returns {any}
+     * @returns {boolean}
      */
-    isUrlInChildren(parent, url)
+    isUrlInChildren(parent, url): boolean
     {
         if ( !parent.children )
         {

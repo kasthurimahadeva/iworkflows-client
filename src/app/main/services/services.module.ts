@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatIconModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseHighlightModule } from '@fuse/components';
 
-import { FuseConfigServiceDocsComponent } from './config/config.component';
-import { FuseSplashScreenServiceDocsComponent } from './splash-screen/splash-screen.component';
+import { FuseConfigServiceDocsComponent } from 'app/main/services/config/config.component';
+import { FuseSplashScreenServiceDocsComponent } from 'app/main/services/splash-screen/splash-screen.component';
 
 const routes = [
     {
@@ -35,6 +34,6 @@ const routes = [
     ],
 })
 
-export class FuseServicesModule
+export class ServicesModule
 {
 }

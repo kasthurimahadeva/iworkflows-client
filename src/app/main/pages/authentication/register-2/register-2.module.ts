@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseRegister2Component } from './register-2.component';
+import { Register2Component } from 'app/main/pages/authentication/register-2/register-2.component';
 
 const routes = [
     {
         path     : 'auth/register-2',
-        component: FuseRegister2Component
+        component: Register2Component
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseRegister2Component
+        Register2Component
     ],
     imports     : [
         RouterModule.forChild(routes),

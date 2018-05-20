@@ -1,37 +1,75 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { ContactsService } from '../../contacts.service';
+import { ContactsService } from 'app/main/apps/contacts/contacts.service';
 
 @Component({
-    selector   : 'fuse-contacts-main-sidenav',
+    selector   : 'contacts-main-sidenav',
     templateUrl: './main.component.html',
     styleUrls  : ['./main.component.scss']
 })
-export class FuseContactsMainSidenavComponent implements OnDestroy
+export class ContactsMainSidenavComponent implements OnInit, OnDestroy
 {
     user: any;
     filterBy: string;
-    
-    onUserDataChangedSubscription: Subscription;
 
-    constructor(private contactsService: ContactsService)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ContactsService} _contactsService
+     */
+    constructor(
+        private _contactsService: ContactsService
+    )
     {
-        this.filterBy = this.contactsService.filterBy || 'all';
-        this.onUserDataChangedSubscription =
-            this.contactsService.onUserDataChanged.subscribe(user => {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        this.filterBy = this._contactsService.filterBy || 'all';
+
+        this._contactsService.onUserDataChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(user => {
                 this.user = user;
             });
     }
 
-    changeFilter(filter)
-    {
-        this.filterBy = filter;
-        this.contactsService.onFilterChanged.next(this.filterBy);
-    }
-
+    /**
+     * On destroy
+     */
     ngOnDestroy()
     {
-        this.onUserDataChangedSubscription.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Change the filter
+     *
+     * @param filter
+     */
+    changeFilter(filter): void
+    {
+        this.filterBy = filter;
+        this._contactsService.onFilterChanged.next(this.filterBy);
     }
 }

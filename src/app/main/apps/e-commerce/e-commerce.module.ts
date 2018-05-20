@@ -1,65 +1,63 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CdkTableModule } from '@angular/cdk/table';
-
-import { MatButtonModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule, MatRippleModule, MatSelectModule, MatSortModule, MatTableModule, MatTabsModule } from '@angular/material';
-
+import { MatButtonModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule, MatRippleModule, MatSelectModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AgmCoreModule } from '@agm/core';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
-import { FuseEcommerceDashboardComponent } from './dashboard/dashboard.component';
-import { EcommerceDashboardService } from './dashboard/dashboard.service';
-import { FuseEcommerceProductsComponent } from './products/products.component';
-import { EcommerceProductsService } from './products/products.service';
-import { FuseEcommerceProductComponent } from './product/product.component';
-import { EcommerceProductService } from './product/product.service';
-import { FuseEcommerceOrdersComponent } from './orders/orders.component';
-import { EcommerceOrdersService } from './orders/orders.service';
-import { FuseEcommerceOrderComponent } from './order/order.component';
-import { EcommerceOrderService } from './order/order.service';
+import { EcommerceDashboardComponent } from 'app/main/apps/e-commerce/dashboard/dashboard.component';
+import { EcommerceDashboardService } from 'app/main/apps/e-commerce/dashboard/dashboard.service';
+import { EcommerceProductsComponent } from 'app/main/apps/e-commerce/products/products.component';
+import { EcommerceProductsService } from 'app/main/apps/e-commerce/products/products.service';
+import { EcommerceProductComponent } from 'app/main/apps/e-commerce/product/product.component';
+import { EcommerceProductService } from 'app/main/apps/e-commerce/product/product.service';
+import { EcommerceOrdersComponent } from 'app/main/apps/e-commerce/orders/orders.component';
+import { EcommerceOrdersService } from 'app/main/apps/e-commerce/orders/orders.service';
+import { EcommerceOrderComponent } from 'app/main/apps/e-commerce/order/order.component';
+import { EcommerceOrderService } from 'app/main/apps/e-commerce/order/order.service';
 
 const routes: Routes = [
     {
         path     : 'dashboard',
-        component: FuseEcommerceDashboardComponent,
+        component: EcommerceDashboardComponent,
         resolve  : {
             data: EcommerceDashboardService
         }
     },
     {
         path     : 'products',
-        component: FuseEcommerceProductsComponent,
+        component: EcommerceProductsComponent,
         resolve  : {
             data: EcommerceProductsService
         }
     },
     {
         path     : 'products/:id',
-        component: FuseEcommerceProductComponent,
+        component: EcommerceProductComponent,
         resolve  : {
             data: EcommerceProductService
         }
     },
     {
         path     : 'products/:id/:handle',
-        component: FuseEcommerceProductComponent,
+        component: EcommerceProductComponent,
         resolve  : {
             data: EcommerceProductService
         }
     },
     {
         path     : 'orders',
-        component: FuseEcommerceOrdersComponent,
+        component: EcommerceOrdersComponent,
         resolve  : {
             data: EcommerceOrdersService
         }
     },
     {
         path     : 'orders/:id',
-        component: FuseEcommerceOrderComponent,
+        component: EcommerceOrderComponent,
         resolve  : {
             data: EcommerceOrderService
         }
@@ -68,11 +66,11 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        FuseEcommerceDashboardComponent,
-        FuseEcommerceProductsComponent,
-        FuseEcommerceProductComponent,
-        FuseEcommerceOrdersComponent,
-        FuseEcommerceOrderComponent
+        EcommerceDashboardComponent,
+        EcommerceProductsComponent,
+        EcommerceProductComponent,
+        EcommerceOrdersComponent,
+        EcommerceOrderComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -87,6 +85,7 @@ const routes: Routes = [
         MatRippleModule,
         MatSelectModule,
         MatSortModule,
+        MatSnackBarModule,
         MatTableModule,
         MatTabsModule,
 
@@ -106,6 +105,6 @@ const routes: Routes = [
         EcommerceOrderService
     ]
 })
-export class FuseEcommerceModule
+export class EcommerceModule
 {
 }

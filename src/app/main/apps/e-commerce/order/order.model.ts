@@ -15,6 +15,11 @@ export class Order
     payment: any;
     shippingDetails: any[];
 
+    /**
+     * Constructor
+     *
+     * @param order
+     */
     constructor(order?)
     {
         order = order || {};

@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CdkTableModule } from '@angular/cdk/table';
-
 import { MatButtonModule, MatIconModule, MatRippleModule, MatSidenavModule, MatSlideToggleModule, MatTableModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseFileManagerComponent } from './file-manager.component';
-import { FileManagerService } from './file-manager.service';
-import { FuseFileManagerFileListComponent } from './file-list/file-list.component';
-import { FuseFileManagerMainSidenavComponent } from './sidenavs/main/main.component';
-import { FuseFileManagerDetailsSidenavComponent } from './sidenavs/details/details.component';
+import { FileManagerService } from 'app/main/apps/file-manager/file-manager.service';
+import { FileManagerComponent } from 'app/main/apps/file-manager/file-manager.component';
+import { FileManagerDetailsSidenavComponent } from 'app/main/apps/file-manager/sidenavs/details/details.component';
+import { FileManagerFileListComponent } from 'app/main/apps/file-manager/file-list/file-list.component';
+import { FileManagerMainSidenavComponent } from 'app/main/apps/file-manager/sidenavs/main/main.component';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: FuseFileManagerComponent,
+        component: FileManagerComponent,
         children : [],
         resolve  : {
             files: FileManagerService
@@ -25,10 +24,10 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        FuseFileManagerComponent,
-        FuseFileManagerFileListComponent,
-        FuseFileManagerMainSidenavComponent,
-        FuseFileManagerDetailsSidenavComponent
+        FileManagerComponent,
+        FileManagerFileListComponent,
+        FileManagerMainSidenavComponent,
+        FileManagerDetailsSidenavComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -47,6 +46,6 @@ const routes: Routes = [
         FileManagerService
     ]
 })
-export class FuseFileManagerModule
+export class FileManagerModule
 {
 }

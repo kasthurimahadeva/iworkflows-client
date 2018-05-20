@@ -9,21 +9,26 @@ export class EcommerceDashboardService implements Resolve<any>
     projects: any[];
     widgets: any[];
 
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
     constructor(
-        private http: HttpClient
+        private _httpClient: HttpClient
     )
     {
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-
         return new Promise((resolve, reject) => {
 
             Promise.all([
@@ -38,10 +43,15 @@ export class EcommerceDashboardService implements Resolve<any>
         });
     }
 
+    /**
+     * Get projects
+     *
+     * @returns {Promise<any>}
+     */
     getProjects(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/project-dashboard-projects')
+            this._httpClient.get('api/project-dashboard-projects')
                 .subscribe((response: any) => {
                     this.projects = response;
                     resolve(response);
@@ -49,10 +59,15 @@ export class EcommerceDashboardService implements Resolve<any>
         });
     }
 
+    /**
+     * Get widgets
+     *
+     * @returns {Promise<any>}
+     */
     getWidgets(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/e-commerce-dashboard')
+            this._httpClient.get('api/e-commerce-dashboard')
                 .subscribe((response: any) => {
                     this.widgets = response;
                     resolve(response);

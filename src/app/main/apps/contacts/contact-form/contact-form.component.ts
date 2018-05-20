@@ -2,37 +2,41 @@ import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
-import { CalendarEvent } from 'angular-calendar';
-
-import { Contact } from '../contact.model';
+import { Contact } from 'app/main/apps/contacts/contact.model';
 
 @Component({
-    selector     : 'fuse-contacts-contact-form-dialog',
+    selector     : 'contacts-contact-form-dialog',
     templateUrl  : './contact-form.component.html',
     styleUrls    : ['./contact-form.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 
-export class FuseContactsContactFormDialogComponent
+export class ContactsContactFormDialogComponent
 {
-    event: CalendarEvent;
-    dialogTitle: string;
-    contactForm: FormGroup;
     action: string;
     contact: Contact;
+    contactForm: FormGroup;
+    dialogTitle: string;
 
+    /**
+     * Constructor
+     *
+     * @param {MatDialogRef<ContactsContactFormDialogComponent>} _dialogRef
+     * @param _data
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        public dialogRef: MatDialogRef<FuseContactsContactFormDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) private data: any,
-        private formBuilder: FormBuilder
+        private _dialogRef: MatDialogRef<ContactsContactFormDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private _data: any,
+        private _formBuilder: FormBuilder
     )
     {
-        this.action = data.action;
+        this.action = _data.action;
 
         if ( this.action === 'edit' )
         {
             this.dialogTitle = 'Edit Contact';
-            this.contact = data.contact;
+            this.contact = _data.contact;
         }
         else
         {
@@ -43,9 +47,18 @@ export class FuseContactsContactFormDialogComponent
         this.contactForm = this.createContactForm();
     }
 
-    createContactForm()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create contact form
+     *
+     * @returns {FormGroup}
+     */
+    createContactForm(): FormGroup
     {
-        return this.formBuilder.group({
+        return this._formBuilder.group({
             id      : [this.contact.id],
             name    : [this.contact.name],
             lastName: [this.contact.lastName],

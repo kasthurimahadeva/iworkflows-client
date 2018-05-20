@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
+import { FuseNavigationModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseNavbarComponent } from 'app/layout/navbar/navbar.component';
-import { FuseNavigationModule } from '@fuse/components';
+import { NavbarComponent } from 'app/layout/blocks/navbar/navbar.component';
 
 @NgModule({
     declarations: [
-        FuseNavbarComponent
+        NavbarComponent
     ],
     imports     : [
-        RouterModule,
-
         MatButtonModule,
         MatIconModule,
 
@@ -22,9 +18,9 @@ import { FuseNavigationModule } from '@fuse/components';
         FuseNavigationModule
     ],
     exports     : [
-        FuseNavbarComponent
+        NavbarComponent
     ]
 })
-export class FuseNavbarModule
+export class NavbarModule
 {
 }

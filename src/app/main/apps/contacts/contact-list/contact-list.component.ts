@@ -2,24 +2,26 @@ import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 
-import { FuseContactsContactFormDialogComponent } from '../contact-form/contact-form.component';
-import { ContactsService } from '../contacts.service';
+import { ContactsService } from 'app/main/apps/contacts/contacts.service';
+import { ContactsContactFormDialogComponent } from 'app/main/apps/contacts/contact-form/contact-form.component';
 
 @Component({
-    selector     : 'fuse-contacts-contact-list',
+    selector     : 'contacts-contact-list',
     templateUrl  : './contact-list.component.html',
     styleUrls    : ['./contact-list.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseContactsContactListComponent implements OnInit, OnDestroy
+export class ContactsContactListComponent implements OnInit, OnDestroy
 {
-    @ViewChild('dialogContent') dialogContent: TemplateRef<any>;
+    @ViewChild('dialogContent')
+    dialogContent: TemplateRef<any>;
 
     contacts: any;
     user: any;
@@ -27,24 +29,41 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
     displayedColumns = ['checkbox', 'avatar', 'name', 'email', 'phone', 'jobTitle', 'buttons'];
     selectedContacts: any[];
     checkboxes: {};
-
-    onContactsChangedSubscription: Subscription;
-    onFilterChangedSubscription: Subscription;
-    onSelectedContactsChangedSubscription: Subscription;
-    onUserDataChangedSubscription: Subscription;
-
     dialogRef: any;
-
     confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ContactsService} _contactsService
+     * @param {MatDialog} _matDialog
+     */
     constructor(
-        private contactsService: ContactsService,
-        public dialog: MatDialog
+        private _contactsService: ContactsService,
+        public _matDialog: MatDialog
     )
     {
-        this.onContactsChangedSubscription =
-            this.contactsService.onContactsChanged.subscribe(contacts => {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        this.dataSource = new FilesDataSource(this._contactsService);
+
+        this._contactsService.onContactsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(contacts => {
                 this.contacts = contacts;
 
                 this.checkboxes = {};
@@ -53,8 +72,9 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
                 });
             });
 
-        this.onSelectedContactsChangedSubscription =
-            this.contactsService.onSelectedContactsChanged.subscribe(selectedContacts => {
+        this._contactsService.onSelectedContactsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(selectedContacts => {
                 for ( const id in this.checkboxes )
                 {
                     if ( !this.checkboxes.hasOwnProperty(id) )
@@ -67,33 +87,41 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
                 this.selectedContacts = selectedContacts;
             });
 
-        this.onUserDataChangedSubscription =
-            this.contactsService.onUserDataChanged.subscribe(user => {
+        this._contactsService.onUserDataChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(user => {
                 this.user = user;
             });
 
-        this.onFilterChangedSubscription =
-            this.contactsService.onFilterChanged.subscribe(() => {
-                this.contactsService.deselectContacts();
+        this._contactsService.onFilterChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this._contactsService.deselectContacts();
             });
     }
 
-    ngOnInit()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.dataSource = new FilesDataSource(this.contactsService);
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    ngOnDestroy()
-    {
-        this.onContactsChangedSubscription.unsubscribe();
-        this.onFilterChangedSubscription.unsubscribe();
-        this.onSelectedContactsChangedSubscription.unsubscribe();
-        this.onUserDataChangedSubscription.unsubscribe();
-    }
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
 
-    editContact(contact)
+    /**
+     * Edit contact
+     *
+     * @param contact
+     */
+    editContact(contact): void
     {
-        this.dialogRef = this.dialog.open(FuseContactsContactFormDialogComponent, {
+        this.dialogRef = this._matDialog.open(ContactsContactFormDialogComponent, {
             panelClass: 'contact-form-dialog',
             data      : {
                 contact: contact,
@@ -116,7 +144,7 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
                      */
                     case 'save':
 
-                        this.contactsService.updateContact(formData.getRawValue());
+                        this._contactsService.updateContact(formData.getRawValue());
 
                         break;
                     /**
@@ -134,9 +162,9 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
     /**
      * Delete Contact
      */
-    deleteContact(contact)
+    deleteContact(contact): void
     {
-        this.confirmDialogRef = this.dialog.open(FuseConfirmDialogComponent, {
+        this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
             disableClose: false
         });
 
@@ -145,19 +173,29 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
         this.confirmDialogRef.afterClosed().subscribe(result => {
             if ( result )
             {
-                this.contactsService.deleteContact(contact);
+                this._contactsService.deleteContact(contact);
             }
             this.confirmDialogRef = null;
         });
 
     }
 
-    onSelectedChange(contactId)
+    /**
+     * On selected change
+     *
+     * @param contactId
+     */
+    onSelectedChange(contactId): void
     {
-        this.contactsService.toggleSelectedContact(contactId);
+        this._contactsService.toggleSelectedContact(contactId);
     }
 
-    toggleStar(contactId)
+    /**
+     * Toggle star
+     *
+     * @param contactId
+     */
+    toggleStar(contactId): void
     {
         if ( this.user.starred.includes(contactId) )
         {
@@ -168,24 +206,37 @@ export class FuseContactsContactListComponent implements OnInit, OnDestroy
             this.user.starred.push(contactId);
         }
 
-        this.contactsService.updateUserData(this.user);
+        this._contactsService.updateUserData(this.user);
     }
 }
 
 export class FilesDataSource extends DataSource<any>
 {
-    constructor(private contactsService: ContactsService)
+    /**
+     * Constructor
+     *
+     * @param {ContactsService} _contactsService
+     */
+    constructor(
+        private _contactsService: ContactsService
+    )
     {
         super();
     }
 
-    /** Connect function called by the table to retrieve one stream containing the data to render. */
+    /**
+     * Connect function called by the table to retrieve one stream containing the data to render.
+     * @returns {Observable<any[]>}
+     */
     connect(): Observable<any[]>
     {
-        return this.contactsService.onContactsChanged;
+        return this._contactsService.onContactsChanged;
     }
 
-    disconnect()
+    /**
+     * Disconnect
+     */
+    disconnect(): void
     {
     }
 }

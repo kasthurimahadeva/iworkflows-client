@@ -1,24 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatListModule, MatMenuModule, MatSelectModule, MatSlideToggleModule, MatTabsModule } from '@angular/material';
-
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components';
-
-import { FuseAngularMaterialModule } from './angular-material/angular-material.module';
-import { FuseCardsDocsComponent } from './cards/cards.component';
-import { FuseCountdownDocsComponent } from './countdown/countdown.component';
-import { FuseHighlightDocsComponent } from './highlight/highlight.component';
-import { FuseMaterialColorPickerDocsComponent } from './material-color-picker/material-color-picker.component';
-import { FuseMultiLanguageDocsComponent } from './multi-language/multi-language.component';
-import { FuseNavigationDocsComponent } from './navigation/navigation.component';
-import { FuseSearchBarDocsComponent } from './search-bar/search-bar.component';
-import { FuseSidebarDocsComponent } from './sidebar/sidebar.component';
-import { FuseShortcutsDocsComponent } from './shortcuts/shortcuts.component';
-import { FuseWidgetDocsComponent } from './widget/widget.component';
+import { FuseCardsDocsComponent } from 'app/main/components/cards/cards.component';
+import { FuseCountdownDocsComponent } from 'app/main/components/countdown/countdown.component';
+import { FuseHighlightDocsComponent } from 'app/main/components/highlight/highlight.component';
+import { FuseMaterialColorPickerDocsComponent } from 'app/main/components/material-color-picker/material-color-picker.component';
+import { FuseMultiLanguageDocsComponent } from 'app/main/components/multi-language/multi-language.component';
+import { FuseNavigationDocsComponent } from 'app/main/components/navigation/navigation.component';
+import { FuseSearchBarDocsComponent } from 'app/main/components/search-bar/search-bar.component';
+import { FuseSidebarDocsComponent } from 'app/main/components/sidebar/sidebar.component';
+import { FuseShortcutsDocsComponent } from 'app/main/components/shortcuts/shortcuts.component';
+import { FuseWidgetDocsComponent } from 'app/main/components/widget/widget.component';
 
 const routes = [
     {
@@ -99,6 +95,6 @@ const routes = [
         FuseAngularMaterialModule
     ]
 })
-export class FuseComponentsModule
+export class ComponentsModule
 {
 }

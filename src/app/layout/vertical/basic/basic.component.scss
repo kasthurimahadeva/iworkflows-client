@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-fuse-vertical-nav-basic-layout {
+vertical-nav-basic-layout {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -21,7 +21,7 @@ fuse-vertical-nav-basic-layout {
                 height: auto !important;
             }
 
-            #fuse-main-content {
+            #main-content {
                 display: flex;
                 flex: 1;
                 flex-direction: column;
@@ -39,7 +39,7 @@ fuse-vertical-nav-basic-layout {
                         flex: 1;
                         overflow: hidden;
 
-                        fuse-content {
+                        content {
                             position: relative;
                             display: flex;
                             flex: 1;

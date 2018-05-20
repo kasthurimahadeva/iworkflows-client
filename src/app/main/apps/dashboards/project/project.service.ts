@@ -9,14 +9,20 @@ export class ProjectDashboardService implements Resolve<any>
     projects: any[];
     widgets: any[];
 
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
     constructor(
-        private http: HttpClient
+        private _httpClient: HttpClient
     )
     {
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -38,10 +44,15 @@ export class ProjectDashboardService implements Resolve<any>
         });
     }
 
+    /**
+     * Get projects
+     *
+     * @returns {Promise<any>}
+     */
     getProjects(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/project-dashboard-projects')
+            this._httpClient.get('api/project-dashboard-projects')
                 .subscribe((response: any) => {
                     this.projects = response;
                     resolve(response);
@@ -49,10 +60,15 @@ export class ProjectDashboardService implements Resolve<any>
         });
     }
 
+    /**
+     * Get widgets
+     *
+     * @returns {Promise<any>}
+     */
     getWidgets(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/project-dashboard-widgets')
+            this._httpClient.get('api/project-dashboard-widgets')
                 .subscribe((response: any) => {
                     this.widgets = response;
                     resolve(response);

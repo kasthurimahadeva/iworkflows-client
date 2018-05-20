@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { MatButtonModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSlideToggleModule, MatToolbarModule } from '@angular/material';
-
-import { CalendarModule } from 'angular-calendar';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { CalendarModule as AngularCalendarModule } from 'angular-calendar';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseConfirmDialogModule } from '@fuse/components';
 
-import { CalendarService } from './calendar.service';
-import { FuseCalendarComponent } from './calendar.component';
-import { FuseCalendarEventFormDialogComponent } from './event-form/event-form.component';
+import { CalendarComponent } from 'app/main/apps/calendar/calendar.component';
+import { CalendarService } from 'app/main/apps/calendar/calendar.service';
+import { CalendarEventFormDialogComponent } from 'app/main/apps/calendar/event-form/event-form.component';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: FuseCalendarComponent,
+        component: CalendarComponent,
         children : [],
         resolve  : {
             chat: CalendarService
@@ -26,8 +24,8 @@ const routes: Routes = [
 
 @NgModule({
     declarations   : [
-        FuseCalendarComponent,
-        FuseCalendarEventFormDialogComponent
+        CalendarComponent,
+        CalendarEventFormDialogComponent
     ],
     imports        : [
         RouterModule.forChild(routes),
@@ -40,7 +38,7 @@ const routes: Routes = [
         MatSlideToggleModule,
         MatToolbarModule,
 
-        CalendarModule.forRoot(),
+        AngularCalendarModule.forRoot(),
         ColorPickerModule,
 
         FuseSharedModule,
@@ -49,8 +47,10 @@ const routes: Routes = [
     providers      : [
         CalendarService
     ],
-    entryComponents: [FuseCalendarEventFormDialogComponent]
+    entryComponents: [
+        CalendarEventFormDialogComponent
+    ]
 })
-export class FuseCalendarModule
+export class CalendarModule
 {
 }

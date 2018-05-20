@@ -8,14 +8,20 @@ export class AnalyticsDashboardService implements Resolve<any>
 {
     widgets: any[];
 
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
     constructor(
-        private http: HttpClient
+        private _httpClient: HttpClient
     )
     {
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -35,10 +41,15 @@ export class AnalyticsDashboardService implements Resolve<any>
         });
     }
 
+    /**
+     * Get widgets
+     *
+     * @returns {Promise<any>}
+     */
     getWidgets(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/analytics-dashboard-widgets')
+            this._httpClient.get('api/analytics-dashboard-widgets')
                 .subscribe((response: any) => {
                     this.widgets = response;
                     resolve(response);

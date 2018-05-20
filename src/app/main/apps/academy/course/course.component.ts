@@ -1,71 +1,114 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { fuseAnimations } from '@fuse/animations';
 
-import { AcademyCourseService } from '../course.service';
+import { AcademyCourseService } from 'app/main/apps/academy/course.service';
 
 @Component({
-    selector     : 'fuse-academy-course',
+    selector     : 'academy-course',
     templateUrl  : './course.component.html',
     styleUrls    : ['./course.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseAcademyCourseComponent implements OnInit, OnDestroy, AfterViewInit
+export class AcademyCourseComponent implements OnInit, OnDestroy, AfterViewInit
 {
+    animationDirection: 'left' | 'right' | 'none';
     course: any;
-    courseSubscription: Subscription;
-    currentStep = 0;
-    courseStepContent;
-    animationDirection: 'left' | 'right' | 'none' = 'none';
-    @ViewChildren(FusePerfectScrollbarDirective) fuseScrollbarDirectives: QueryList<FusePerfectScrollbarDirective>;
+    courseStepContent: any;
+    currentStep: number;
 
+    @ViewChildren(FusePerfectScrollbarDirective)
+    fuseScrollbarDirectives: QueryList<FusePerfectScrollbarDirective>;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {AcademyCourseService} _academyCourseService
+     * @param {ChangeDetectorRef} _changeDetectorRef
+     */
     constructor(
-        private courseService: AcademyCourseService,
-        private changeDetectorRef: ChangeDetectorRef
+        private _academyCourseService: AcademyCourseService,
+        private _changeDetectorRef: ChangeDetectorRef
     )
     {
+        // Set the defaults
+        this.animationDirection = 'none';
+        this.currentStep = 0;
 
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Subscribe to courses
-        this.courseSubscription =
-            this.courseService.onCourseChanged
-                .subscribe(course => {
-                    this.course = course;
-                });
+        this._academyCourseService.onCourseChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(course => {
+                this.course = course;
+            });
     }
 
-    ngAfterViewInit()
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
     {
         this.courseStepContent = this.fuseScrollbarDirectives.find((fuseScrollbarDirective) => {
-            return fuseScrollbarDirective.element.nativeElement.id === 'course-step-content';
+            return fuseScrollbarDirective.elementRef.nativeElement.id === 'course-step-content';
         });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.courseSubscription.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    gotoStep(step)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Go to step
+     *
+     * @param step
+     */
+    gotoStep(step): void
     {
         // Decide the animation direction
         this.animationDirection = this.currentStep < step ? 'left' : 'right';
 
         // Run change detection so the change
         // in the animation direction registered
-        this.changeDetectorRef.detectChanges();
+        this._changeDetectorRef.detectChanges();
 
         // Set the current step
         this.currentStep = step;
     }
 
-    gotoNextStep()
+    /**
+     * Go to next step
+     */
+    gotoNextStep(): void
     {
         if ( this.currentStep === this.course.totalSteps - 1 )
         {
@@ -77,13 +120,16 @@ export class FuseAcademyCourseComponent implements OnInit, OnDestroy, AfterViewI
 
         // Run change detection so the change
         // in the animation direction registered
-        this.changeDetectorRef.detectChanges();
+        this._changeDetectorRef.detectChanges();
 
         // Increase the current step
         this.currentStep++;
     }
 
-    gotoPreviousStep()
+    /**
+     * Go to previous step
+     */
+    gotoPreviousStep(): void
     {
         if ( this.currentStep === 0 )
         {
@@ -95,7 +141,7 @@ export class FuseAcademyCourseComponent implements OnInit, OnDestroy, AfterViewI
 
         // Run change detection so the change
         // in the animation direction registered
-        this.changeDetectorRef.detectChanges();
+        this._changeDetectorRef.detectChanges();
 
         // Decrease the current step
         this.currentStep--;

@@ -1,29 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { ChatService } from '../../chat.service';
+import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'fuse-chat-left-sidenav',
+    selector   : 'chat-left-sidenav',
     templateUrl: './left.component.html',
     styleUrls  : ['./left.component.scss'],
     animations : fuseAnimations
 })
-export class FuseChatLeftSidenavComponent implements OnInit
+export class ChatLeftSidenavComponent implements OnInit, OnDestroy
 {
     view: string;
 
-    constructor(private chatService: ChatService)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ChatService} _chatService
+     */
+    constructor(
+        private _chatService: ChatService
+    )
     {
+        // Set the defaults
         this.view = 'chats';
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.chatService.onLeftSidenavViewChanged.subscribe(view => {
-            this.view = view;
-        });
+        this._chatService.onLeftSidenavViewChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(view => {
+                this.view = view;
+            });
     }
 
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
 }

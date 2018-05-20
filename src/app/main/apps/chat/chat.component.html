@@ -15,20 +15,20 @@
                 <!-- LEFT SIDENAV -->
                 <mat-sidenav class="sidenav" position="start" opened="true" mode="side"
                              fuseMatSidenavHelper="chat-left-sidenav" mat-is-locked-open="gt-md">
-                    <fuse-chat-left-sidenav></fuse-chat-left-sidenav>
+                    <chat-left-sidenav></chat-left-sidenav>
                 </mat-sidenav>
                 <!-- / LEFT SIDENAV -->
 
                 <!-- CONTENT -->
-                <fuse-chat-start *ngIf="!selectedChat"></fuse-chat-start>
+                <chat-start *ngIf="!selectedChat"></chat-start>
 
-                <fuse-chat-view *ngIf="selectedChat"></fuse-chat-view>
+                <chat-view *ngIf="selectedChat"></chat-view>
                 <!-- / CONTENT -->
 
                 <!-- RIGHT SIDENAV -->
                 <mat-sidenav class="sidenav" position="end" opened="false" mode="over"
                              fuseMatSidenavHelper="chat-right-sidenav">
-                    <fuse-chat-right-sidenav></fuse-chat-right-sidenav>
+                    <chat-right-sidenav></chat-right-sidenav>
                 </mat-sidenav>
                 <!-- / RIGHT SIDENAV -->
 

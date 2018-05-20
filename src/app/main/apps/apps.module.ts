@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { FuseAngularMaterialModule } from '../components/angular-material/angular-material.module';
-
 import { FuseSharedModule } from '@fuse/shared.module';
 
 const routes = [
     {
         path        : 'dashboards/analytics',
-        loadChildren: './dashboards/analytics/analytics.module#FuseAnalyticsDashboardModule'
+        loadChildren: './dashboards/analytics/analytics.module#AnalyticsDashboardModule'
     },
     {
         path        : 'dashboards/project',
-        loadChildren: './dashboards/project/project.module#FuseProjectDashboardModule'
+        loadChildren: './dashboards/project/project.module#ProjectDashboardModule'
     },
     {
         path        : 'mail',
@@ -24,19 +22,19 @@ const routes = [
     },
     {
         path        : 'chat',
-        loadChildren: './chat/chat.module#FuseChatModule'
+        loadChildren: './chat/chat.module#ChatModule'
     },
     {
         path        : 'calendar',
-        loadChildren: './calendar/calendar.module#FuseCalendarModule'
+        loadChildren: './calendar/calendar.module#CalendarModule'
     },
     {
         path        : 'e-commerce',
-        loadChildren: './e-commerce/e-commerce.module#FuseEcommerceModule'
+        loadChildren: './e-commerce/e-commerce.module#EcommerceModule'
     },
     {
         path        : 'academy',
-        loadChildren: './academy/academy.module#FuseAcademyModule'
+        loadChildren: './academy/academy.module#AcademyModule'
     },
     {
         path        : 'todo',
@@ -44,11 +42,11 @@ const routes = [
     },
     {
         path        : 'file-manager',
-        loadChildren: './file-manager/file-manager.module#FuseFileManagerModule'
+        loadChildren: './file-manager/file-manager.module#FileManagerModule'
     },
     {
         path        : 'contacts',
-        loadChildren: './contacts/contacts.module#FuseContactsModule'
+        loadChildren: './contacts/contacts.module#ContactsModule'
     },
     {
         path        : 'scrumboard',
@@ -58,12 +56,10 @@ const routes = [
 
 @NgModule({
     imports     : [
-        FuseSharedModule,
         RouterModule.forChild(routes),
-        FuseAngularMaterialModule
-    ],
-    declarations: []
+        FuseSharedModule
+    ]
 })
-export class FuseAppsModule
+export class AppsModule
 {
 }

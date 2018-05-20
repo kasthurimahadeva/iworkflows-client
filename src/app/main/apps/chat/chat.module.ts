@@ -5,20 +5,20 @@ import { MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatI
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { ChatService } from './chat.service';
-import { FuseChatComponent } from './chat.component';
-import { FuseChatViewComponent } from './chat-view/chat-view.component';
-import { FuseChatStartComponent } from './chat-start/chat-start.component';
-import { FuseChatChatsSidenavComponent } from './sidenavs/left/chats/chats.component';
-import { FuseChatUserSidenavComponent } from './sidenavs/left/user/user.component';
-import { FuseChatLeftSidenavComponent } from './sidenavs/left/left.component';
-import { FuseChatRightSidenavComponent } from './sidenavs/right/right.component';
-import { FuseChatContactSidenavComponent } from './sidenavs/right/contact/contact.component';
+import { ChatService } from 'app/main/apps/chat/chat.service';
+import { ChatComponent } from 'app/main/apps/chat/chat.component';
+import { ChatStartComponent } from 'app/main/apps/chat/chat-start/chat-start.component';
+import { ChatViewComponent } from 'app/main/apps/chat/chat-view/chat-view.component';
+import { ChatChatsSidenavComponent } from 'app/main/apps/chat/sidenavs/left/chats/chats.component';
+import { ChatUserSidenavComponent } from 'app/main/apps/chat/sidenavs/left/user/user.component';
+import { ChatLeftSidenavComponent } from 'app/main/apps/chat/sidenavs/left/left.component';
+import { ChatRightSidenavComponent } from 'app/main/apps/chat/sidenavs/right/right.component';
+import { ChatContactSidenavComponent } from 'app/main/apps/chat/sidenavs/right/contact/contact.component';
 
 const routes: Routes = [
     {
         path     : '**',
-        component: FuseChatComponent,
+        component: ChatComponent,
         children : [],
         resolve  : {
             chat: ChatService
@@ -28,14 +28,14 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        FuseChatComponent,
-        FuseChatViewComponent,
-        FuseChatStartComponent,
-        FuseChatChatsSidenavComponent,
-        FuseChatUserSidenavComponent,
-        FuseChatLeftSidenavComponent,
-        FuseChatRightSidenavComponent,
-        FuseChatContactSidenavComponent
+        ChatComponent,
+        ChatViewComponent,
+        ChatStartComponent,
+        ChatChatsSidenavComponent,
+        ChatUserSidenavComponent,
+        ChatLeftSidenavComponent,
+        ChatRightSidenavComponent,
+        ChatContactSidenavComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -57,6 +57,6 @@ const routes: Routes = [
         ChatService
     ]
 })
-export class FuseChatModule
+export class ChatModule
 {
 }

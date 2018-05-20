@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseFooterComponent } from 'app/layout/footer/footer.component';
+import { FooterComponent } from 'app/layout/blocks/footer/footer.component';
 
 @NgModule({
     declarations: [
-        FuseFooterComponent
+        FooterComponent
     ],
     imports     : [
-        RouterModule,
-
         MatButtonModule,
         MatIconModule,
         MatToolbarModule,
@@ -20,9 +17,9 @@ import { FuseFooterComponent } from 'app/layout/footer/footer.component';
         FuseSharedModule
     ],
     exports     : [
-        FuseFooterComponent
+        FooterComponent
     ]
 })
-export class FuseFooterModule
+export class FooterModule
 {
 }

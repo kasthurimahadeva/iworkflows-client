@@ -1,72 +1,132 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav/fuse-mat-sidenav.service';
 
-import { ChatService } from '../../../chat.service';
+import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'fuse-chat-chats-sidenav',
+    selector   : 'chat-chats-sidenav',
     templateUrl: './chats.component.html',
     styleUrls  : ['./chats.component.scss'],
     animations : fuseAnimations
 })
-export class FuseChatChatsSidenavComponent implements OnInit
+export class ChatChatsSidenavComponent implements OnInit, OnDestroy
 {
-    user: any;
     chats: any[];
-    contacts: any[];
     chatSearch: any;
-    searchText = '';
+    contacts: any[];
+    searchText: string;
+    user: any;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ChatService} _chatService
+     * @param {FuseMatSidenavHelperService} _fuseMatSidenavHelperService
+     * @param {ObservableMedia} _observableMedia
+     */
     constructor(
-        private chatService: ChatService,
-        private fuseMatSidenavService: FuseMatSidenavHelperService,
-        public media: ObservableMedia
+        private _chatService: ChatService,
+        private _fuseMatSidenavHelperService: FuseMatSidenavHelperService,
+        public _observableMedia: ObservableMedia
     )
     {
+        // Set the defaults
         this.chatSearch = {
             name: ''
         };
+        this.searchText = '';
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.user = this.chatService.user;
-        this.chats = this.chatService.chats;
-        this.contacts = this.chatService.contacts;
+        this.user = this._chatService.user;
+        this.chats = this._chatService.chats;
+        this.contacts = this._chatService.contacts;
 
-        this.chatService.onChatsUpdated.subscribe(updatedChats => {
-            this.chats = updatedChats;
-        });
+        this._chatService.onChatsUpdated
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(updatedChats => {
+                this.chats = updatedChats;
+            });
 
-        this.chatService.onUserUpdated.subscribe(updatedUser => {
-            this.user = updatedUser;
-        });
+        this._chatService.onUserUpdated
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(updatedUser => {
+                this.user = updatedUser;
+            });
     }
 
-    getChat(contact)
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.chatService.getChat(contact);
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
 
-        if ( !this.media.isActive('gt-md') )
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Get chat
+     *
+     * @param contact
+     */
+    getChat(contact): void
+    {
+        this._chatService.getChat(contact);
+
+        if ( !this._observableMedia.isActive('gt-md') )
         {
-            this.fuseMatSidenavService.getSidenav('chat-left-sidenav').toggle();
+            this._fuseMatSidenavHelperService.getSidenav('chat-left-sidenav').toggle();
         }
     }
 
-    setUserStatus(status)
+    /**
+     * Set user status
+     *
+     * @param status
+     */
+    setUserStatus(status): void
     {
-        this.chatService.setUserStatus(status);
+        this._chatService.setUserStatus(status);
     }
 
-    changeLeftSidenavView(view)
+    /**
+     * Change left sidenav view
+     *
+     * @param view
+     */
+    changeLeftSidenavView(view): void
     {
-        this.chatService.onLeftSidenavViewChanged.next(view);
+        this._chatService.onLeftSidenavViewChanged.next(view);
     }
 
-    logout()
+    /**
+     * Logout
+     */
+    logout(): void
     {
         console.log('logout triggered');
     }

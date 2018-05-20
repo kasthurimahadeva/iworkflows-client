@@ -8,9 +8,15 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class FuseNavigationComponent
 {
-    @Input() layout = 'vertical';
-    @Input() navigation: any;
+    @Input()
+    layout = 'vertical';
 
+    @Input()
+    navigation: any;
+
+    /**
+     * Constructor
+     */
     constructor()
     {
 

@@ -8,12 +8,23 @@ export class AcademyCourseService implements Resolve<any>
 {
     onCourseChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
     /**
-     * The Academy App Main Resolver
+     * Resolver
      *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
@@ -34,10 +45,17 @@ export class AcademyCourseService implements Resolve<any>
         });
     }
 
+    /**
+     * Get course
+     *
+     * @param courseId
+     * @param courseSlug
+     * @returns {Promise<any>}
+     */
     getCourse(courseId, courseSlug): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/academy-course/' + courseId + '/' + courseSlug)
+            this._httpClient.get('api/academy-course/' + courseId + '/' + courseSlug)
                 .subscribe((response: any) => {
                     this.onCourseChanged.next(response);
                     resolve(response);

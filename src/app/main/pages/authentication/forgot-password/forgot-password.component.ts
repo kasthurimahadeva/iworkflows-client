@@ -1,50 +1,92 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'fuse-forgot-password',
+    selector   : 'forgot-password',
     templateUrl: './forgot-password.component.html',
     styleUrls  : ['./forgot-password.component.scss'],
     animations : fuseAnimations
 })
-export class FuseForgotPasswordComponent implements OnInit
+export class ForgotPasswordComponent implements OnInit, OnDestroy
 {
     forgotPasswordForm: FormGroup;
     forgotPasswordFormErrors: any;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private fuseConfig: FuseConfigService,
-        private formBuilder: FormBuilder
+        private _fuseConfigService: FuseConfigService,
+        private _formBuilder: FormBuilder
     )
     {
-        this.fuseConfig.setConfig({
+        // Configure the layout
+        this._fuseConfigService.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',
                 footer    : 'none'
             }
-        });
+        };
 
+        // Set the defaults
         this.forgotPasswordFormErrors = {
             email: {}
         };
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.forgotPasswordForm = this.formBuilder.group({
+        this.forgotPasswordForm = this._formBuilder.group({
             email: ['', [Validators.required, Validators.email]]
         });
 
-        this.forgotPasswordForm.valueChanges.subscribe(() => {
-            this.onForgotPasswordFormValuesChanged();
-        });
+        this.forgotPasswordForm.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onForgotPasswordFormValuesChanged();
+            });
     }
 
-    onForgotPasswordFormValuesChanged()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On form values changed
+     */
+    onForgotPasswordFormValuesChanged(): void
     {
         for ( const field in this.forgotPasswordFormErrors )
         {

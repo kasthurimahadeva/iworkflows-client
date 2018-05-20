@@ -10,21 +10,26 @@ export class EcommerceOrderService implements Resolve<any>
     order: any;
     onOrderChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
     constructor(
-        private http: HttpClient
+        private _httpClient: HttpClient
     )
     {
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
-
         this.routeParams = route.params;
 
         return new Promise((resolve, reject) => {
@@ -40,10 +45,15 @@ export class EcommerceOrderService implements Resolve<any>
         });
     }
 
+    /**
+     * Get order
+     *
+     * @returns {Promise<any>}
+     */
     getOrder(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/e-commerce-orders/' + this.routeParams.id)
+            this._httpClient.get('api/e-commerce-orders/' + this.routeParams.id)
                 .subscribe((response: any) => {
                     this.order = response;
                     this.onOrderChanged.next(this.order);
@@ -52,20 +62,32 @@ export class EcommerceOrderService implements Resolve<any>
         });
     }
 
-    saveOrder(order)
+    /**
+     * Save order
+     *
+     * @param order
+     * @returns {Promise<any>}
+     */
+    saveOrder(order): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/e-commerce-orders/' + order.id, order)
+            this._httpClient.post('api/e-commerce-orders/' + order.id, order)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
         });
     }
 
-    addOrder(order)
+    /**
+     * Add order
+     *
+     * @param order
+     * @returns {Promise<any>}
+     */
+    addOrder(order): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.post('api/e-commerce-orders/', order)
+            this._httpClient.post('api/e-commerce-orders/', order)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
