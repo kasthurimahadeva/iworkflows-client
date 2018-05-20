@@ -28,10 +28,15 @@ export class AppComponent
         // Set the default language
         this.translate.setDefaultLang('en');
 
-        // Set the navigation translations
-        this.fuseTranslationLoader.loadTranslations(navigationEnglish, navigationTurkish);
+        // Give Angular some time to finish loading navigation before
+        // loading navigation translations
+        setTimeout(() => {
 
-        // Use a language
-        this.translate.use('en');
+            // Set the navigation translations
+            this.fuseTranslationLoader.loadTranslations(navigationEnglish, navigationTurkish);
+
+            // Use a language
+            this.translate.use('en');
+        });
     }
 }

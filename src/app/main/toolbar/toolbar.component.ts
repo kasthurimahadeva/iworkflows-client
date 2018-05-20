@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
+import { Subscription } from 'rxjs';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
@@ -14,7 +15,7 @@ import { navigation } from 'app/navigation/navigation';
     styleUrls  : ['./toolbar.component.scss']
 })
 
-export class FuseToolbarComponent implements OnInit
+export class FuseToolbarComponent implements OnInit, OnDestroy
 {
     userStatusOptions: any[];
     languages: any;
@@ -23,6 +24,7 @@ export class FuseToolbarComponent implements OnInit
     horizontalNav: boolean;
     noNav: boolean;
     navigation: any;
+    languageChangeSubscription: Subscription;
 
     constructor(
         private router: Router,
@@ -94,7 +96,22 @@ export class FuseToolbarComponent implements OnInit
 
     ngOnInit()
     {
-        this.selectedLanguage = _.find(this.languages, {'id': this.translate.currentLang});
+        // Set the default language by hand to prevent
+        // errors while the translation service being
+        // initialized
+        this.selectedLanguage = this.languages[0];
+
+        // Subscribe to the language changes
+        this.languageChangeSubscription =
+            this.translate.onLangChange.subscribe((event) => {
+                this.selectedLanguage = _.find(this.languages, {'id': event.lang});
+            });
+
+    }
+
+    ngOnDestroy()
+    {
+        this.languageChangeSubscription.unsubscribe();
     }
 
     toggleSidebarOpened(key)
