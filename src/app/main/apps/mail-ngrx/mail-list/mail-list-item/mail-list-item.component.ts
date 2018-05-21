@@ -7,12 +7,12 @@ import { Mail } from '../../mail.model';
 import * as fromStore from '../../store';
 
 @Component({
-    selector       : 'fuse-mail-list-item',
+    selector       : 'mail-list-item',
     templateUrl    : './mail-list-item.component.html',
     styleUrls      : ['./mail-list-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxListItemComponent implements OnInit
+export class MailNgrxListItemComponent implements OnInit
 {
     @Input() mail: Mail;
     @HostBinding('class.selected') selected: boolean;

@@ -6,6 +6,11 @@ export class List
     name: string;
     idCards: string[];
 
+    /**
+     * Constructor
+     *
+     * @param list
+     */
     constructor(list)
     {
         this.id = list.id || FuseUtils.generateGUID();

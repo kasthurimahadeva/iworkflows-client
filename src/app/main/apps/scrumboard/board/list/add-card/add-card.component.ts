@@ -2,45 +2,73 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-scrumboard-board-add-card',
+    selector   : 'scrumboard-board-add-card',
     templateUrl: './add-card.component.html',
     styleUrls  : ['./add-card.component.scss']
 })
-export class FuseScrumboardBoardAddCardComponent
+export class ScrumboardBoardAddCardComponent
 {
-    formActive = false;
+    formActive: boolean;
     form: FormGroup;
-    @Output() onCardAdd = new EventEmitter();
-    @ViewChild('nameInput') nameInputField;
 
+    @Output()
+    onCardAdd: EventEmitter<any>;
+
+    @ViewChild('nameInput')
+    nameInputField;
+
+    /**
+     * Constructor
+     *
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private formBuilder: FormBuilder
+        private _formBuilder: FormBuilder
     )
     {
+        // Set the defaults
+        this.formActive = false;
+        this.onCardAdd = new EventEmitter();
     }
-    
-    openForm()
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the form
+     */
+    openForm(): void
     {
-        this.form = this.formBuilder.group({
+        this.form = this._formBuilder.group({
             name: ''
         });
         this.formActive = true;
         this.focusNameField();
     }
 
-    closeForm()
+    /**
+     * Close the form
+     */
+    closeForm(): void
     {
         this.formActive = false;
     }
 
-    focusNameField()
+    /**
+     * Focus to the name field
+     */
+    focusNameField(): void
     {
         setTimeout(() => {
             this.nameInputField.nativeElement.focus();
         });
     }
 
-    onFormSubmit()
+    /**
+     * On form submit
+     */
+    onFormSubmit(): void
     {
         if ( this.form.valid )
         {

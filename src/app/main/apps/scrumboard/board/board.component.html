@@ -26,10 +26,10 @@
                      fxFlex="1 0 100%" fxFlex.gt-xs="1 0 auto"
                      fxFlexOrder="1" fxFlexOrder.gt-xs="2">
                     <mat-icon *ngIf="board.settings.subscribed" class="board-subscribe s-16">remove_red_eye</mat-icon>
-                    <fuse-scrumboard-edit-board-name
+                    <scrumboard-edit-board-name
                         [board]="board"
                         (onNameChanged)="onBoardNameChanged($event)">
-                    </fuse-scrumboard-edit-board-name>
+                    </scrumboard-edit-board-name>
                 </div>
                 <!-- / BOARD NAME -->
 
@@ -58,21 +58,21 @@
                  *fuseIfOnDom [@animateStagger]="{value:'50'}">
 
                 <!-- LIST -->
-                <fuse-scrumboard-board-list
+                <scrumboard-board-list
                     class="scrumboard-board-list list-wrapper ngx-dnd-item"
                     ngxDraggable
                     *ngFor="let list of board.lists"
                     [model]="list"
                     [list]="list"
                     [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}">
-                </fuse-scrumboard-board-list>
+                </scrumboard-board-list>
                 <!-- / LIST -->
 
                 <!-- NEW LIST BUTTON-->
-                <fuse-scrumboard-board-add-list class="new-list-wrapper" (onlistAdd)="onListAdd($event)"
-                                                ngxDraggable [moves]="false"
-                                                [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}">
-                </fuse-scrumboard-board-add-list>
+                <scrumboard-board-add-list class="new-list-wrapper" (onListAdd)="onListAdd($event)"
+                                           ngxDraggable [moves]="false"
+                                           [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}">
+                </scrumboard-board-add-list>
                 <!-- / NEW LIST BUTTON-->
 
             </div>
@@ -82,7 +82,7 @@
     </div>
 
     <mat-sidenav #settingsSidenav position="end">
-        <fuse-scrumboard-board-settings></fuse-scrumboard-board-settings>
+        <scrumboard-board-settings></scrumboard-board-settings>
     </mat-sidenav>
 
 </mat-sidenav-container>

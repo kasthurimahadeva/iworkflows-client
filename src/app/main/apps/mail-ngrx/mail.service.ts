@@ -16,72 +16,108 @@ export class MailNgrxService
     selectedMails: Mail[];
     mails: Mail[];
 
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     * @param {Store<MailAppState>} _store
+     */
     constructor(
-        private http: HttpClient,
-        private store: Store<MailAppState>
+        private _httpClient: HttpClient,
+        private _store: Store<MailAppState>
     )
     {
-        this.store.select(getFoldersArr).subscribe(folders => {
+        this._store.select(getFoldersArr).subscribe(folders => {
             this.foldersArr = folders;
         });
-        this.store.select(getFiltersArr).subscribe(filters => {
+
+        this._store.select(getFiltersArr).subscribe(filters => {
             this.filtersArr = filters;
         });
-        this.store.select(getLabelsArr).subscribe(labels => {
+
+        this._store.select(getLabelsArr).subscribe(labels => {
             this.labelsArr = labels;
         });
-        this.store.select(getMailsArr).subscribe(mails => {
+
+        this._store.select(getMailsArr).subscribe(mails => {
             this.mails = mails;
         });
 
         this.selectedMails = [];
     }
 
+    /**
+     * Get all mails
+     *
+     * @returns {Observable<Mail[]>}
+     */
     getAllMails(): Observable<Mail[]>
     {
-        return this.http.get<Mail[]>('api/mail-mails');
+        return this._httpClient.get<Mail[]>('api/mail-mails');
     }
 
+    /**
+     * Get folders
+     *
+     * @returns {Observable<any>}
+     */
     getFolders(): Observable<any>
     {
-        return this.http.get('api/mail-folders');
+        return this._httpClient.get('api/mail-folders');
     }
 
+    /**
+     * Get filters
+     *
+     * @returns {Observable<any>}
+     */
     getFilters(): Observable<any>
     {
-        return this.http.get('api/mail-filters');
+        return this._httpClient.get('api/mail-filters');
     }
 
+    /**
+     * Get labels
+     *
+     * @returns {Observable<any>}
+     */
     getLabels(): Observable<any>
     {
-        return this.http.get('api/mail-labels');
+        return this._httpClient.get('api/mail-labels');
     }
 
+    /**
+     * Get mails
+     *
+     * @param handle
+     * @returns {Observable<Mail[]>}
+     */
     getMails(handle): Observable<Mail[]>
     {
         if ( handle.id === 'labelHandle' )
         {
             const labelId = this.labelsArr.find(label => label.handle === handle.value).id;
-            return this.http.get<Mail[]>('api/mail-mails?labels=' + labelId);
+            return this._httpClient.get<Mail[]>('api/mail-mails?labels=' + labelId);
         }
         else if ( handle.id === 'filterHandle' )
         {
-            return this.http.get<Mail[]>('api/mail-mails?' + handle.value + '=true');
+            return this._httpClient.get<Mail[]>('api/mail-mails?' + handle.value + '=true');
         }
         else // folderHandle
         {
             const folderId = this.foldersArr.find(folder => folder.handle === handle.value).id;
-            return this.http.get<any>('api/mail-mails?folder=' + folderId);
+            return this._httpClient.get<any>('api/mail-mails?folder=' + folderId);
         }
     }
 
     /**
      * Update the mail
+     *
      * @param mail
      * @returns {Promise<any>}
      */
-    updateMail(mail)
+    updateMail(mail): any
     {
-        return this.http.post('api/mail-mails/' + mail.id, {...mail});
+        return this._httpClient.post('api/mail-mails/' + mail.id, {...mail});
     }
 }

@@ -2,7 +2,7 @@ import * as LabelsActions from 'app/main/apps/mail-ngrx/store/actions/labels.act
 
 export interface LabelsState
 {
-    entities: { [id: number]: any };
+    entities?: { [id: number]: any };
     loading: boolean;
     loaded: boolean;
 }

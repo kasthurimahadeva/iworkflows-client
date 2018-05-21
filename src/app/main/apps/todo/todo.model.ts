@@ -18,6 +18,11 @@ export class Todo
         }
         ];
 
+    /**
+     * Constructor
+     *
+     * @param todo
+     */
     constructor(todo)
     {
         {
@@ -34,22 +39,34 @@ export class Todo
         }
     }
 
-    toggleStar()
+    /**
+     * Toggle star
+     */
+    toggleStar(): void
     {
         this.starred = !this.starred;
     }
 
-    toggleImportant()
+    /**
+     * Toggle important
+     */
+    toggleImportant(): void
     {
         this.important = !this.important;
     }
 
-    toggleCompleted()
+    /**
+     * Toggle completed
+     */
+    toggleCompleted(): void
     {
         this.completed = !this.completed;
     }
 
-    toggleDeleted()
+    /**
+     * Toggle deleted
+     */
+    toggleDeleted(): void
     {
         this.deleted = !this.deleted;
     }

@@ -21,16 +21,17 @@ export class ContactsContactFormDialogComponent
     /**
      * Constructor
      *
-     * @param {MatDialogRef<ContactsContactFormDialogComponent>} _dialogRef
+     * @param {MatDialogRef<ContactsContactFormDialogComponent>} _matDialogRef
      * @param _data
      * @param {FormBuilder} _formBuilder
      */
     constructor(
-        private _dialogRef: MatDialogRef<ContactsContactFormDialogComponent>,
+        private _matDialogRef: MatDialogRef<ContactsContactFormDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder
     )
     {
+        // Set the defaults
         this.action = _data.action;
 
         if ( this.action === 'edit' )

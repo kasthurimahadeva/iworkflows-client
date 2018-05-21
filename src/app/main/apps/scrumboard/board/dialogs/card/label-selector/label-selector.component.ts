@@ -1,68 +1,110 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
-
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 import { FuseUtils } from '@fuse/utils';
 
-import { ScrumboardService } from '../../../../scrumboard.service';
+import { ScrumboardService } from 'app/main/apps/scrumboard/scrumboard.service';
 
 @Component({
-    selector     : 'fuse-scrumboard-label-selector',
+    selector     : 'scrumboard-label-selector',
     templateUrl  : './label-selector.component.html',
     styleUrls    : ['./label-selector.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
 
-export class FuseScrumboardLabelSelectorComponent implements OnInit, OnDestroy
+export class ScrumboardLabelSelectorComponent implements OnInit, OnDestroy
 {
+    @Input('card')
+    card: any;
+
+    @Output()
+    onCardLabelsChange: EventEmitter<any>;
+
     board: any;
-    @Input('card') card: any;
-    @Output() onCardLabelsChange = new EventEmitter();
-
-    labelsMenuView = 'labels';
+    labelsMenuView: string;
     selectedLabel: any;
-    newLabel = {
-        'id'   : '',
-        'name' : '',
-        'color': 'mat-blue-400-bg'
-    };
-    toggleInArray = FuseUtils.toggleInArray;
+    newLabel: any;
+    toggleInArray: any;
 
-    onBoardChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {ScrumboardService} _scrumboardService
+     */
     constructor(
-        private scrumboardService: ScrumboardService
+        private _scrumboardService: ScrumboardService
     )
     {
+        // Set the defaults
+        this.onCardLabelsChange = new EventEmitter();
+        this.labelsMenuView = 'labels';
+        this.newLabel = {
+            'id'   : '',
+            'name' : '',
+            'color': 'mat-blue-400-bg'
+        };
+        this.toggleInArray = FuseUtils.toggleInArray;
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onBoardChanged =
-            this.scrumboardService.onBoardChanged
-                .subscribe(board => {
-                    this.board = board;
-                });
+        this._scrumboardService.onBoardChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(board => {
+                this.board = board;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onBoardChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    cardLabelsChanged()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Card labels changed
+     */
+    cardLabelsChanged(): void
     {
         this.onCardLabelsChange.next();
     }
 
-    onLabelChange()
+    /**
+     * On label change
+     */
+    onLabelChange(): void
     {
-        this.scrumboardService.updateBoard();
+        this._scrumboardService.updateBoard();
     }
 
-    addNewLabel()
+    /**
+     * Add new label
+     */
+    addNewLabel(): void
     {
         this.newLabel.id = FuseUtils.generateGUID();
         this.board.labels.push(Object.assign({}, this.newLabel));

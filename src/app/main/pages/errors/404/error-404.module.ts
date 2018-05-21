@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatIconModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseError404Component } from './error-404.component';
+import { Error404Component } from 'app/main/pages/errors/404/error-404.component';
 
 const routes = [
     {
         path     : 'errors/error-404',
-        component: FuseError404Component
+        component: Error404Component
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseError404Component
+        Error404Component
     ],
     imports     : [
         RouterModule.forChild(routes),

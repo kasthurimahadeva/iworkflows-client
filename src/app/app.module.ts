@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
@@ -63,6 +64,9 @@ const appRoutes: Routes = [
             delay             : 0,
             passThruUnknownUrl: true
         }),
+
+        // Material moment date module
+        MatMomentDateModule,
 
         // Fuse modules
         FuseModule.forRoot(fuseConfig),

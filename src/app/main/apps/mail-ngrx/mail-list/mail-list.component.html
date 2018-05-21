@@ -3,7 +3,7 @@
 </div>
 
 <div class="mail-list">
-    <fuse-mail-list-item matRipple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"
-                         [ngClass]="{'current-mail':mail?.id == currentMail?.id}">
-    </fuse-mail-list-item>
+    <mail-list-item matRipple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"
+                    [ngClass]="{'current-mail':mail?.id == currentMail?.id}">
+    </mail-list-item>
 </div>

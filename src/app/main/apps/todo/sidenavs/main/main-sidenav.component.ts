@@ -1,18 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { TodoService } from '../../todo.service';
+import { TodoService } from 'app/main/apps/todo/todo.service';
 
 @Component({
-    selector   : 'fuse-todo-main-sidenav',
+    selector   : 'todo-main-sidenav',
     templateUrl: './main-sidenav.component.html',
     styleUrls  : ['./main-sidenav.component.scss'],
     animations : fuseAnimations
 })
-export class FuseTodoMainSidenavComponent implements OnInit, OnDestroy
+export class TodoMainSidenavComponent implements OnInit, OnDestroy
 {
     folders: any[];
     filters: any[];
@@ -20,46 +21,75 @@ export class FuseTodoMainSidenavComponent implements OnInit, OnDestroy
     accounts: object;
     selectedAccount: string;
 
-    onFiltersChanged: Subscription;
-    onTagsChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
-    constructor(private todoService: TodoService, private router: Router)
+    /**
+     * Constructor
+     *
+     * @param {TodoService} _todoService
+     * @param {Router} _router
+     */
+    constructor(
+        private _todoService: TodoService,
+        private _router: Router
+    )
     {
-        // Data
+        // Set the defaults
         this.accounts = {
             'creapond'    : 'johndoe@creapond.com',
             'withinpixels': 'johndoe@withinpixels.com'
         };
-
         this.selectedAccount = 'creapond';
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
-    {
-        this.onFiltersChanged =
-            this.todoService.onFiltersChanged
-                .subscribe(filters => {
-                    this.filters = filters;
-                });
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
 
-        this.onTagsChanged =
-            this.todoService.onTagsChanged
-                .subscribe(tags => {
-                    this.tags = tags;
-                });
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        this._todoService.onFiltersChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(filters => {
+                this.filters = filters;
+            });
+
+        this._todoService.onTagsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(tags => {
+                this.tags = tags;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onFiltersChanged.unsubscribe();
-        this.onTagsChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    newTodo()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * New todo
+     */
+    newTodo(): void
     {
-        this.router.navigate(['/apps/todo/all']).then(() => {
+        this._router.navigate(['/apps/todo/all']).then(() => {
             setTimeout(() => {
-                this.todoService.onNewTodoClicked.next('');
+                this._todoService.onNewTodoClicked.next('');
             });
         });
     }

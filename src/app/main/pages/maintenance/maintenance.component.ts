@@ -4,18 +4,24 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'fuse-maintenance',
+    selector   : 'maintenance',
     templateUrl: './maintenance.component.html',
     styleUrls  : ['./maintenance.component.scss'],
     animations : fuseAnimations
 })
-export class FuseMaintenanceComponent
+export class MaintenanceComponent
 {
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     */
     constructor(
-        private fuseConfig: FuseConfigService
+        private _fuseConfigService: FuseConfigService
     )
     {
-        this.fuseConfig.config = {
+        // Configure the layout
+        this._fuseConfigService.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',

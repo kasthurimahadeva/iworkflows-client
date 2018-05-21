@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class CalendarService implements Resolve<any>
 {
     events: any;
-    onEventsUpdated = new Subject<any>();
+    onEventsUpdated: Subject<any>;
 
     /**
      * Constructor
@@ -18,7 +18,8 @@ export class CalendarService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
-
+        // Set the defaults
+        this.onEventsUpdated = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

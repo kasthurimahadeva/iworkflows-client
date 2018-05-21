@@ -14,7 +14,7 @@ const routes = [
     },
     {
         path        : 'mail',
-        loadChildren: './mail/mail.module#FuseMailModule'
+        loadChildren: './mail/mail.module#MailModule'
     },
     {
         path        : 'mail-ngrx',

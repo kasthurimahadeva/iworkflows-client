@@ -1,94 +1,125 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { Mail } from '../../mail.model';
-import { MailService } from '../../mail.service';
+import { Mail } from 'app/main/apps/mail/mail.model';
+import { MailService } from 'app/main/apps/mail/mail.service';
 
 @Component({
-    selector   : 'fuse-mail-list-item',
+    selector   : 'mail-list-item',
     templateUrl: './mail-list-item.component.html',
     styleUrls  : ['./mail-list-item.component.scss']
 })
-export class FuseMailListItemComponent implements OnInit, OnDestroy
+export class MailListItemComponent implements OnInit, OnDestroy
 {
     @Input() mail: Mail;
     labels: any[];
-    @HostBinding('class.selected') selected: boolean;
 
-    onSelectedMailsChanged: Subscription;
-    onLabelsChanged: Subscription;
+    @HostBinding('class.selected')
+    selected: boolean;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {MailService} _mailService
+     */
     constructor(
-        private mailService: MailService
+        private _mailService: MailService
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Set the initial values
         this.mail = new Mail(this.mail);
 
         // Subscribe to update on selected mail change
-        this.onSelectedMailsChanged =
-            this.mailService.onSelectedMailsChanged
-                .subscribe(selectedMails => {
-                    this.selected = false;
+        this._mailService.onSelectedMailsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(selectedMails => {
+                this.selected = false;
 
-                    if ( selectedMails.length > 0 )
+                if ( selectedMails.length > 0 )
+                {
+                    for ( const mail of selectedMails )
                     {
-                        for ( const mail of selectedMails )
+                        if ( mail.id === this.mail.id )
                         {
-                            if ( mail.id === this.mail.id )
-                            {
-                                this.selected = true;
-                                break;
-                            }
+                            this.selected = true;
+                            break;
                         }
                     }
-                });
+                }
+            });
 
         // Subscribe to update on label change
-        this.onLabelsChanged =
-            this.mailService.onLabelsChanged
-                .subscribe(labels => {
-                    this.labels = labels;
-                });
+        this._mailService.onLabelsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(labels => {
+                this.labels = labels;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onSelectedMailsChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    onSelectedChange()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On selected change
+     */
+    onSelectedChange(): void
     {
-        this.mailService.toggleSelectedMail(this.mail.id);
+        this._mailService.toggleSelectedMail(this.mail.id);
     }
 
     /**
      * Toggle star
+     *
      * @param event
      */
-    toggleStar(event)
+    toggleStar(event): void
     {
         event.stopPropagation();
 
         this.mail.toggleStar();
 
-        this.mailService.updateMail(this.mail);
+        this._mailService.updateMail(this.mail);
     }
 
     /**
      * Toggle Important
+     *
      * @param event
      */
-    toggleImportant(event)
+    toggleImportant(event): void
     {
         event.stopPropagation();
 
         this.mail.toggleImportant();
 
-        this.mailService.updateMail(this.mail);
+        this._mailService.updateMail(this.mail);
     }
 }

@@ -3,13 +3,13 @@ import { RouterModule } from '@angular/router';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { InvoiceService } from '../invoice.service';
-import { FuseInvoiceCompactComponent } from './compact.component';
+import { InvoiceService } from 'app/main/pages/invoices/invoice.service';
+import { InvoiceCompactComponent } from 'app/main/pages/invoices/compact/compact.component';
 
 const routes = [
     {
         path     : 'invoices/compact',
-        component: FuseInvoiceCompactComponent,
+        component: InvoiceCompactComponent,
         resolve  : {
             search: InvoiceService
         }
@@ -18,7 +18,7 @@ const routes = [
 
 @NgModule({
     declarations: [
-        FuseInvoiceCompactComponent
+        InvoiceCompactComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

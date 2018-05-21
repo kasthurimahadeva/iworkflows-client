@@ -1,48 +1,79 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { KnowledgeBaseService } from './knowledge-base.service';
-import { FuseKnowledgeBaseArticleComponent } from './dialogs/article/article.component';
+import { KnowledgeBaseService } from 'app/main/pages/knowledge-base/knowledge-base.service';
+import { KnowledgeBaseArticleComponent } from 'app/main/pages/knowledge-base/dialogs/article/article.component';
 
 @Component({
-    selector     : 'fuse-knowledge-base',
+    selector     : 'knowledge-base',
     templateUrl  : './knowledge-base.component.html',
     styleUrls    : ['./knowledge-base.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseKnowledgeBaseComponent implements OnInit, OnDestroy
+export class KnowledgeBaseComponent implements OnInit, OnDestroy
 {
     knowledgeBase: any;
-    onKnowledgeBaseChanged: Subscription;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {KnowledgeBaseService} _knowledgeBaseService
+     * @param {MatDialog} _matDialog
+     */
     constructor(
-        private knowledgeBaseService: KnowledgeBaseService,
-        private matDialog: MatDialog
+        private _knowledgeBaseService: KnowledgeBaseService,
+        private _matDialog: MatDialog
     )
     {
-
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onKnowledgeBaseChanged =
-            this.knowledgeBaseService.onKnowledgeBaseChanged
-                .subscribe(response => {
-                    this.knowledgeBase = response;
-                });
+        this._knowledgeBaseService.onKnowledgeBaseChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(response => {
+                this.knowledgeBase = response;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onKnowledgeBaseChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    readArticle(article)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Read article
+     *
+     * @param article
+     */
+    readArticle(article): void
     {
-        this.matDialog.open(FuseKnowledgeBaseArticleComponent, {
+        this._matDialog.open(KnowledgeBaseArticleComponent, {
             panelClass: 'knowledgebase-article-dialog',
-            data : {article: article}
+            data      : {article: article}
         });
     }
 }

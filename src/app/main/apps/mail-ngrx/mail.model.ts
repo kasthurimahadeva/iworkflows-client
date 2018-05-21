@@ -27,6 +27,11 @@ export class Mail
     labels: string[];
     folder: string;
 
+    /**
+     * Constructor
+     *
+     * @param mail
+     */
     constructor(mail)
     {
         this.id = mail.id;
@@ -44,22 +49,34 @@ export class Mail
         this.folder = mail.folder;
     }
 
-    toggleStar()
+    /**
+     * Toggle star
+     */
+    toggleStar(): void
     {
         this.starred = !this.starred;
     }
 
-    toggleImportant()
+    /**
+     * Toggle important
+     */
+    toggleImportant(): void
     {
         this.important = !this.important;
     }
 
-    markRead()
+    /**
+     * Mark as read
+     */
+    markRead(): void
     {
         this.read = true;
     }
 
-    markUnRead()
+    /**
+     * Mark as unread
+     */
+    markUnread(): void
     {
         this.read = false;
     }

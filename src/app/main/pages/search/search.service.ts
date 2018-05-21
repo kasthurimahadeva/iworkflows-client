@@ -9,15 +9,26 @@ export class SearchService implements Resolve<any>
     classic: any;
     table: any;
 
-    classicOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
-    tableOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    classicOnChanged: BehaviorSubject<any>;
+    tableOnChanged: BehaviorSubject<any>;
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
+        // Set the defaults
+        this.classicOnChanged = new BehaviorSubject({});
+        this.tableOnChanged = new BehaviorSubject({});
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -44,7 +55,7 @@ export class SearchService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/search-classic')
+            this._httpClient.get('api/search-classic')
                 .subscribe((classic: any) => {
                     this.classic = classic;
                     this.classicOnChanged.next(this.classic);
@@ -60,7 +71,7 @@ export class SearchService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/search-table')
+            this._httpClient.get('api/search-table')
                 .subscribe((table: any) => {
                     this.table = table;
                     this.tableOnChanged.next(this.table);

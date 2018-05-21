@@ -1,50 +1,78 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Subscription } from 'rxjs';
-
 import { fuseAnimations } from '@fuse/animations';
-
-import { ScrumboardService } from '../../../scrumboard.service';
+import { ScrumboardService } from 'app/main/apps/scrumboard/scrumboard.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'fuse-scrumboard-board-settings',
+    selector   : 'scrumboard-board-settings',
     templateUrl: './settings.component.html',
     styleUrls  : ['./settings.component.scss'],
     animations : fuseAnimations
 })
-export class FuseScrumboardBoardSettingsSidenavComponent implements OnInit, OnDestroy
+export class ScrumboardBoardSettingsSidenavComponent implements OnInit, OnDestroy
 {
     board: any;
-    view = 'main';
-    onBoardChanged: Subscription;
+    view: string;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
     constructor(
         private scrumboardService: ScrumboardService
     )
     {
+        // Set the defaults
+        this.view = 'main';
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onBoardChanged =
-            this.scrumboardService.onBoardChanged
-                .subscribe(board => {
-                    this.board = board;
-                });
+        this.scrumboardService.onBoardChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(board => {
+                this.board = board;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onBoardChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
-    
-    toggleCardCover()
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle card cover
+     */
+    toggleCardCover(): void
     {
         this.board.settings.cardCoverImages = !this.board.settings.cardCoverImages;
         this.scrumboardService.updateBoard();
     }
 
-    toggleSubcription()
+    /**
+     * Toggle subscription
+     */
+    toggleSubscription(): void
     {
         this.board.settings.subscribed = !this.board.settings.subscribed;
         this.scrumboardService.updateBoard();

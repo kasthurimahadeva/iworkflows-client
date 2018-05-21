@@ -7,14 +7,24 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class KnowledgeBaseService implements Resolve<any>
 {
     knowledgeBase: any;
-    onKnowledgeBaseChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onKnowledgeBaseChanged: BehaviorSubject<any>;
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
+        // Set the defaults
+        this.onKnowledgeBaseChanged = new BehaviorSubject({});
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -40,7 +50,7 @@ export class KnowledgeBaseService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/knowledge-base')
+            this._httpClient.get('api/knowledge-base')
                 .subscribe((response: any) => {
                     this.knowledgeBase = response;
                     this.onKnowledgeBaseChanged.next(this.knowledgeBase);

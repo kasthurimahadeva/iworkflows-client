@@ -7,15 +7,24 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class FaqService implements Resolve<any>
 {
     faqs: any;
+    onFaqsChanged: BehaviorSubject<any>;
 
-    onFaqsChanged: BehaviorSubject<any> = new BehaviorSubject({});
-
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
+        // Set the defaults
+        this.onFaqsChanged = new BehaviorSubject({});
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -41,7 +50,7 @@ export class FaqService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/faq')
+            this._httpClient.get('api/faq')
                 .subscribe((response: any) => {
                     this.faqs = response;
                     this.onFaqsChanged.next(this.faqs);

@@ -17,6 +17,11 @@ export class Card
     activities: any[];
     due: string;
 
+    /**
+     * Constructor
+     *
+     * @param card
+     */
     constructor(card)
     {
         this.id = card.id || FuseUtils.generateGUID();

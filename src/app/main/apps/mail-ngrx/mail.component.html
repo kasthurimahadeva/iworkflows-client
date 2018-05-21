@@ -9,7 +9,7 @@
         <!-- SIDENAV -->
         <mat-sidenav class="sidenav mat-sidenav-opened" position="start" mode="side" opened="true"
                      fuseMatSidenavHelper="carded-left-sidenav" mat-is-locked-open="gt-md">
-            <fuse-mail-main-sidenav></fuse-mail-main-sidenav>
+            <mail-main-sidenav></mail-main-sidenav>
         </mat-sidenav>
         <!-- / SIDENAV -->
 
@@ -88,7 +88,7 @@
                     </div>
 
                     <div *ngIf="currentMail$ | async" fxHide.gt-xs>
-                        <button mat-icon-button (click)="deSelectCurrentMail()">
+                        <button mat-icon-button (click)="deselectCurrentMail()">
                             <mat-icon>arrow_back</mat-icon>
                         </button>
                     </div>
@@ -98,8 +98,8 @@
                 <!-- CONTENT -->
                 <div class="content" fxLayout="row">
 
-                    <fuse-mail-list fusePerfectScrollbar fxFlex [mails]="mails$ | async" [currentMail]="currentMail$ | async"></fuse-mail-list>
-                    <fuse-mail-details [mail]="currentMail$ | async" fusePerfectScrollbar fxFlex></fuse-mail-details>
+                    <mail-list fusePerfectScrollbar fxFlex [mails]="mails$ | async" [currentMail]="currentMail$ | async"></mail-list>
+                    <mail-details [mail]="currentMail$ | async" fusePerfectScrollbar fxFlex></mail-details>
 
                 </div>
                 <!-- / CONTENT -->

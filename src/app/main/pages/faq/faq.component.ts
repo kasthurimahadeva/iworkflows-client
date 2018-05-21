@@ -1,64 +1,107 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { FuseUtils } from '@fuse/utils';
 
-import { FaqService } from './faq.service';
+import { FaqService } from 'app/main/pages/faq/faq.service';
 
 @Component({
-    selector   : 'fuse-faq',
+    selector   : 'faq',
     templateUrl: './faq.component.html',
     styleUrls  : ['./faq.component.scss']
 })
-export class FuseFaqComponent implements OnInit, OnDestroy
+export class FaqComponent implements OnInit, OnDestroy
 {
     faqs: any;
     faqsFiltered: any;
-    step = 0;
-    searchInput;
-    onFaqsChanged: Subscription;
+    step: number;
+    searchInput: any;
 
-    constructor(private faqService: FaqService)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {FaqService} _faqService
+     */
+    constructor(
+        private _faqService: FaqService
+    )
     {
+        // Set the defaults
         this.searchInput = new FormControl('');
+        this.step = 0;
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onFaqsChanged =
-            this.faqService.onFaqsChanged
-                .subscribe(response => {
-                    this.faqs = response;
-                    this.faqsFiltered = response;
-                });
+        this._faqService.onFaqsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(response => {
+                this.faqs = response;
+                this.faqsFiltered = response;
+            });
 
-        this.searchInput.valueChanges.pipe(
-            debounceTime(300),
-            distinctUntilChanged()
-        ).subscribe(searchText => {
-            this.faqsFiltered = FuseUtils.filterArrayByString(this.faqs, searchText);
-        });
+        this.searchInput.valueChanges
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                debounceTime(300),
+                distinctUntilChanged()
+            )
+            .subscribe(searchText => {
+                this.faqsFiltered = FuseUtils.filterArrayByString(this.faqs, searchText);
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onFaqsChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    setStep(index: number)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set step
+     *
+     * @param {number} index
+     */
+    setStep(index: number): void
     {
         this.step = index;
     }
 
-    nextStep()
+    /**
+     * Next step
+     */
+    nextStep(): void
     {
         this.step++;
     }
 
-    prevStep()
+    /**
+     * Previous step
+     */
+    prevStep(): void
     {
         this.step--;
     }

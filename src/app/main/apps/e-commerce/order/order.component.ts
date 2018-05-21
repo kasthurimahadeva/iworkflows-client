@@ -10,7 +10,7 @@ import { Order } from 'app/main/apps/e-commerce/order/order.model';
 import { EcommerceOrderService } from 'app/main/apps/e-commerce/order/order.service';
 
 @Component({
-    selector     : 'fuse-e-commerce-order',
+    selector     : 'e-commerce-order',
     templateUrl  : './order.component.html',
     styleUrls    : ['./order.component.scss'],
     encapsulation: ViewEncapsulation.None,

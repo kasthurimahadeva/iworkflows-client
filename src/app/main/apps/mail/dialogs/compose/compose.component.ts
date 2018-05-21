@@ -3,25 +3,42 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-    selector     : 'fuse-mail-compose',
+    selector     : 'mail-compose',
     templateUrl  : './compose.component.html',
     styleUrls    : ['./compose.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseMailComposeDialogComponent
+export class MailComposeDialogComponent
 {
-    showExtraToFields = false;
+    showExtraToFields: boolean;
     composeForm: FormGroup;
 
+    /**
+     * Constructor
+     *
+     * @param {MatDialogRef<MailComposeDialogComponent>} _matDialogRef
+     * @param _data
+     */
     constructor(
-        public dialogRef: MatDialogRef<FuseMailComposeDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) private data: any
+        private _matDialogRef: MatDialogRef<MailComposeDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private _data: any
     )
     {
+        // Set the defaults
         this.composeForm = this.createComposeForm();
+        this.showExtraToFields = false;
     }
 
-    createComposeForm()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Create compose form
+     *
+     * @returns {FormGroup}
+     */
+    createComposeForm(): FormGroup
     {
         return new FormGroup({
             from   : new FormControl({
@@ -36,7 +53,10 @@ export class FuseMailComposeDialogComponent
         });
     }
 
-    toggleExtraToFields()
+    /**
+     * Toggle extra to fields
+     */
+    toggleExtraToFields(): void
     {
         this.showExtraToFields = !this.showExtraToFields;
     }

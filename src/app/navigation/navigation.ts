@@ -340,12 +340,14 @@ export const navigation = [
                 'url'  : '/pages/search'
             },
             {
+                'id'   : 'faq',
                 'title': 'Faq',
                 'type' : 'item',
                 'icon' : 'help',
                 'url'  : '/pages/faq'
             },
             {
+                'id'   : 'knowledge-base',
                 'title': 'Knowledge Base',
                 'type' : 'item',
                 'icon' : 'import_contacts',

@@ -8,7 +8,7 @@ export class EcommerceOrderService implements Resolve<any>
 {
     routeParams: any;
     order: any;
-    onOrderChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onOrderChanged: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -19,6 +19,8 @@ export class EcommerceOrderService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
+        // Set the defaults
+        this.onOrderChanged = new BehaviorSubject({});
     }
 
     /**

@@ -7,13 +7,19 @@ import { FuseConfigService } from '@fuse/services/config.service';
     templateUrl: './error-404.component.html',
     styleUrls  : ['./error-404.component.scss']
 })
-export class FuseError404Component
+export class Error404Component
 {
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     */
     constructor(
-        private fuseConfig: FuseConfigService
+        private _fuseConfigService: FuseConfigService
     )
     {
-        this.fuseConfig.config = {
+        // Configure the layout
+        this._fuseConfigService.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',

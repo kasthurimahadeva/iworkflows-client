@@ -1,20 +1,21 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { MailService } from '../../mail.service';
-import { FuseMailComposeDialogComponent } from '../../dialogs/compose/compose.component';
+import { MailService } from 'app/main/apps/mail/mail.service';
+import { MailComposeDialogComponent } from 'app/main/apps/mail/dialogs/compose/compose.component';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'fuse-mail-main-sidenav',
+    selector   : 'mail-main-sidenav',
     templateUrl: './main-sidenav.component.html',
     styleUrls  : ['./main-sidenav.component.scss'],
     animations : fuseAnimations
 })
-export class FuseMailMainSidenavComponent implements OnInit, OnDestroy
+export class MailMainSidenavComponent implements OnInit, OnDestroy
 {
     folders: any[];
     filters: any[];
@@ -23,55 +24,79 @@ export class FuseMailMainSidenavComponent implements OnInit, OnDestroy
     selectedAccount: string;
     dialogRef: any;
 
-    onFoldersChanged: Subscription;
-    onFiltersChanged: Subscription;
-    onLabelsChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {MailService} _mailService
+     * @param {MatDialog} _matDialog
+     */
     constructor(
-        private mailService: MailService,
-        public dialog: MatDialog
+        private _mailService: MailService,
+        public _matDialog: MatDialog
     )
     {
-        // Data
+        // Set the defaults
         this.accounts = {
             'creapond'    : 'johndoe@creapond.com',
             'withinpixels': 'johndoe@withinpixels.com'
         };
-
         this.selectedAccount = 'creapond';
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onFoldersChanged =
-            this.mailService.onFoldersChanged
-                .subscribe(folders => {
-                    this.folders = folders;
-                });
+        this._mailService.onFoldersChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(folders => {
+                this.folders = folders;
+            });
 
-        this.onFiltersChanged =
-            this.mailService.onFiltersChanged
-                .subscribe(filters => {
-                    this.filters = filters;
-                });
+        this._mailService.onFiltersChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(filters => {
+                this.filters = filters;
+            });
 
-        this.onLabelsChanged =
-            this.mailService.onLabelsChanged
-                .subscribe(labels => {
-                    this.labels = labels;
-                });
+        this._mailService.onLabelsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(labels => {
+                this.labels = labels;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onFoldersChanged.unsubscribe();
-        this.onFiltersChanged.unsubscribe();
-        this.onLabelsChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
-    
-    composeDialog()
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Compose dialog
+     */
+    composeDialog(): void
     {
-        this.dialogRef = this.dialog.open(FuseMailComposeDialogComponent, {
+        this.dialogRef = this._matDialog.open(MailComposeDialogComponent, {
             panelClass: 'mail-compose-dialog'
         });
         this.dialogRef.afterClosed()

@@ -12,6 +12,6 @@ import { effects } from 'app/main/apps/mail-ngrx/store/effects';
     ],
     providers: []
 })
-export class MailAppStoreModule
+export class MailNgrxStoreModule
 {
 }

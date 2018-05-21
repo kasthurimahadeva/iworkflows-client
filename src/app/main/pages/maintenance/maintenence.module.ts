@@ -3,18 +3,18 @@ import { RouterModule } from '@angular/router';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseMaintenanceComponent } from './maintenance.component';
+import { MaintenanceComponent } from 'app/main/pages/maintenance/maintenance.component';
 
 const routes = [
     {
         path     : 'maintenance',
-        component: FuseMaintenanceComponent
+        component: MaintenanceComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseMaintenanceComponent
+        MaintenanceComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

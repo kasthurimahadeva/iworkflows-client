@@ -4,17 +4,17 @@ import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { MailNgrxService } from '../../mail.service';
-import * as fromStore from './../../store';
-import { FuseMailNgrxComposeDialogComponent } from '../../dialogs/compose/compose.component';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
+import * as fromStore from 'app/main/apps/mail-ngrx/store';
+import { MailNgrxComposeDialogComponent } from 'app/main/apps/mail-ngrx/dialogs/compose/compose.component';
 
 @Component({
-    selector       : 'fuse-mail-main-sidenav',
+    selector       : 'mail-main-sidenav',
     templateUrl    : './main-sidenav.component.html',
     styleUrls      : ['./main-sidenav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxMainSidenavComponent
+export class MailNgrxMainSidenavComponent
 {
     labels: any[];
     accounts: object;
@@ -25,30 +25,43 @@ export class FuseMailNgrxMainSidenavComponent
     filters$: Observable<any>;
     labels$: Observable<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {MailNgrxService} _mailNgrxService
+     * @param {MatDialog} _matDialog
+     * @param {Store<MailAppState>} _store
+     */
     constructor(
-        private mailService: MailNgrxService,
-        public dialog: MatDialog,
-        private store: Store<fromStore.MailAppState>
+        private _mailNgrxService: MailNgrxService,
+        private _matDialog: MatDialog,
+        private _store: Store<fromStore.MailAppState>
     )
     {
-        // Data
+        // Set the defaults
         this.accounts = {
             'creapond'    : 'johndoe@creapond.com',
             'withinpixels': 'johndoe@withinpixels.com'
         };
-
         this.selectedAccount = 'creapond';
-
-        this.folders$ = this.store.select(fromStore.getFoldersArr);
-        this.filters$ = this.store.select(fromStore.getFiltersArr);
-        this.labels$ = this.store.select(fromStore.getLabelsArr);
+        this.folders$ = this._store.select(fromStore.getFoldersArr);
+        this.filters$ = this._store.select(fromStore.getFiltersArr);
+        this.labels$ = this._store.select(fromStore.getLabelsArr);
     }
 
-    composeDialog()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Compose dialog
+     */
+    composeDialog(): void
     {
-        this.dialogRef = this.dialog.open(FuseMailNgrxComposeDialogComponent, {
+        this.dialogRef = this._matDialog.open(MailNgrxComposeDialogComponent, {
             panelClass: 'mail-compose-dialog'
         });
+
         this.dialogRef.afterClosed()
             .subscribe(response => {
                 if ( !response )

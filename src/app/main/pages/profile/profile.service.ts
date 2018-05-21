@@ -10,16 +10,28 @@ export class ProfileService implements Resolve<any>
     about: any;
     photosVideos: any;
 
-    timelineOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
-    aboutOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
-    photosVideosOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    timelineOnChanged: BehaviorSubject<any>;
+    aboutOnChanged: BehaviorSubject<any>;
+    photosVideosOnChanged: BehaviorSubject<any>;
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
+        // Set the defaults
+        this.timelineOnChanged = new BehaviorSubject({});
+        this.aboutOnChanged = new BehaviorSubject({});
+        this.photosVideosOnChanged = new BehaviorSubject({});
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -47,7 +59,7 @@ export class ProfileService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/profile-timeline')
+            this._httpClient.get('api/profile-timeline')
                 .subscribe((timeline: any) => {
                     this.timeline = timeline;
                     this.timelineOnChanged.next(this.timeline);
@@ -63,7 +75,7 @@ export class ProfileService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/profile-about')
+            this._httpClient.get('api/profile-about')
                 .subscribe((about: any) => {
                     this.about = about;
                     this.aboutOnChanged.next(this.about);
@@ -79,7 +91,7 @@ export class ProfileService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/profile-photos-videos')
+            this._httpClient.get('api/profile-photos-videos')
                 .subscribe((photosVideos: any) => {
                     this.photosVideos = photosVideos;
                     this.photosVideosOnChanged.next(this.photosVideos);

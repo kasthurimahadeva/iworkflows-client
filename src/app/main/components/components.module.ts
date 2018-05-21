@@ -91,8 +91,7 @@ const routes = [
         FuseCountdownModule,
         FuseHighlightModule,
         FuseMaterialColorPickerModule,
-        FuseWidgetModule,
-        FuseAngularMaterialModule
+        FuseWidgetModule
     ]
 })
 export class ComponentsModule

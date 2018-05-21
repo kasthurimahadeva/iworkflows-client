@@ -1,46 +1,97 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
+import { takeUntil } from 'rxjs/operators';
+import { BehaviorSubject, Subject } from 'rxjs';
 
-import { SearchService } from '../../search.service';
+import { SearchService } from 'app/main/pages/search/search.service';
 
 @Component({
-    selector   : 'fuse-search-table',
+    selector   : 'search-table',
     templateUrl: './table.component.html',
     styleUrls  : ['./table.component.scss']
 })
-export class FuseSearchTableComponent implements OnInit
+export class SearchTableComponent implements OnInit, OnDestroy
 {
     table: any;
     dataSource: SearchTableDataSource;
-    displayedColumns = ['name', 'position', 'office', 'salary'];
+    displayedColumns: string[];
 
-    constructor(private searchService: SearchService)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {SearchService} _searchService
+     */
+    constructor(
+        private _searchService: SearchService
+    )
     {
-        this.searchService.tableOnChanged
+        // Set the defaults
+        this.displayedColumns = ['name', 'position', 'office', 'salary'];
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        this.dataSource = new SearchTableDataSource(this._searchService);
+
+        this._searchService.tableOnChanged
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(table => {
                 this.table = table;
             });
     }
 
-    ngOnInit()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.dataSource = new SearchTableDataSource(this.searchService);
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }
 
 export class SearchTableDataSource extends DataSource<any>
 {
-    constructor(private searchService: SearchService)
+    /**
+     * Constructor
+     *
+     * @param {SearchService} _searchService
+     */
+    constructor(
+        private _searchService: SearchService
+    )
     {
         super();
     }
 
-    connect()
+    /**
+     * Connect
+     *
+     * @returns {BehaviorSubject<any>}
+     */
+    connect(): BehaviorSubject<any>
     {
-        return this.searchService.tableOnChanged;
+        return this._searchService.tableOnChanged;
     }
 
-    disconnect()
+    /**
+     * Disconnect
+     */
+    disconnect(): void
     {
 
     }

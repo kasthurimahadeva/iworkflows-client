@@ -8,7 +8,7 @@ export class EcommerceProductService implements Resolve<any>
 {
     routeParams: any;
     product: any;
-    onProductChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onProductChanged: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -19,6 +19,8 @@ export class EcommerceProductService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
+        // Set the defaults
+        this.onProductChanged = new BehaviorSubject({});
     }
 
     /**

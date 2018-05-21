@@ -1,34 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatButtonModule, MatDividerModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FusePricingStyle1Component } from './style-1/style-1.component';
-import { FusePricingStyle2Component } from './style-2/style-2.component';
-import { FusePricingStyle3Component } from './style-3/style-3.component';
+import { PricingStyle1Component } from 'app/main/pages/pricing/style-1/style-1.component';
+import { PricingStyle2Component } from 'app/main/pages/pricing/style-2/style-2.component';
+import { PricingStyle3Component } from 'app/main/pages/pricing/style-3/style-3.component';
 
 const routes = [
     {
         path     : 'pricing/style-1',
-        component: FusePricingStyle1Component
+        component: PricingStyle1Component
     },
     {
         path     : 'pricing/style-2',
-        component: FusePricingStyle2Component
+        component: PricingStyle2Component
     },
     {
         path     : 'pricing/style-3',
-        component: FusePricingStyle3Component
+        component: PricingStyle3Component
     }
 ];
 
 @NgModule({
     declarations: [
-        FusePricingStyle1Component,
-        FusePricingStyle2Component,
-        FusePricingStyle3Component
+        PricingStyle1Component,
+        PricingStyle2Component,
+        PricingStyle3Component
     ],
     imports     : [
         RouterModule.forChild(routes),

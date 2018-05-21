@@ -1,109 +1,134 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { Mail } from '../mail.model';
-import { MailService } from '../mail.service';
+import { Mail } from 'app/main/apps/mail/mail.model';
+import { MailService } from 'app/main/apps/mail/mail.service';
 
 @Component({
-    selector   : 'fuse-mail-list',
+    selector   : 'mail-list',
     templateUrl: './mail-list.component.html',
     styleUrls  : ['./mail-list.component.scss'],
     animations : fuseAnimations
 })
-export class FuseMailListComponent implements OnInit, OnDestroy
+export class MailListComponent implements OnInit, OnDestroy
 {
     mails: Mail[];
     currentMail: Mail;
 
-    onMailsChanged: Subscription;
-    onCurrentMailChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {ActivatedRoute} _activatedRoute
+     * @param {MailService} _mailService
+     * @param {Location} _location
+     */
     constructor(
-        private route: ActivatedRoute,
-        private mailService: MailService,
-        private location: Location
+        private _activatedRoute: ActivatedRoute,
+        private _mailService: MailService,
+        private _location: Location
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Subscribe to update mails on changes
-        this.onMailsChanged =
-            this.mailService.onMailsChanged
-                .subscribe(mails => {
-                    this.mails = mails;
-                });
+        this._mailService.onMailsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(mails => {
+                this.mails = mails;
+            });
 
         // Subscribe to update current mail on changes
-        this.onCurrentMailChanged =
-            this.mailService.onCurrentMailChanged
-                .subscribe(currentMail => {
-                    if ( !currentMail )
+        this._mailService.onCurrentMailChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(currentMail => {
+                if ( !currentMail )
+                {
+                    // Set the current mail id to null to deselect the current mail
+                    this.currentMail = null;
+
+                    // Handle the location changes
+                    const labelHandle  = this._activatedRoute.snapshot.params.labelHandle,
+                          filterHandle = this._activatedRoute.snapshot.params.filterHandle,
+                          folderHandle = this._activatedRoute.snapshot.params.folderHandle;
+
+                    if ( labelHandle )
                     {
-                        // Set the current mail id to null to deselect the current mail
-                        this.currentMail = null;
-
-                        // Handle the location changes
-                        const labelHandle  = this.route.snapshot.params.labelHandle,
-                              filterHandle = this.route.snapshot.params.filterHandle,
-                              folderHandle = this.route.snapshot.params.folderHandle;
-
-                        if ( labelHandle )
-                        {
-                            this.location.go('apps/mail/label/' + labelHandle);
-                        }
-                        else if ( filterHandle )
-                        {
-                            this.location.go('apps/mail/filter/' + filterHandle);
-                        }
-                        else
-                        {
-                            this.location.go('apps/mail/' + folderHandle);
-                        }
+                        this._location.go('apps/mail/label/' + labelHandle);
+                    }
+                    else if ( filterHandle )
+                    {
+                        this._location.go('apps/mail/filter/' + filterHandle);
                     }
                     else
                     {
-                        this.currentMail = currentMail;
+                        this._location.go('apps/mail/' + folderHandle);
                     }
-                });
-    }
-
-    ngOnDestroy()
-    {
-        this.onMailsChanged.unsubscribe();
-        this.onCurrentMailChanged.unsubscribe();
+                }
+                else
+                {
+                    this.currentMail = currentMail;
+                }
+            });
     }
 
     /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
      * Read mail
+     *
      * @param mailId
      */
-    readMail(mailId)
+    readMail(mailId): void
     {
-        const labelHandle  = this.route.snapshot.params.labelHandle,
-              filterHandle = this.route.snapshot.params.filterHandle,
-              folderHandle = this.route.snapshot.params.folderHandle;
+        const labelHandle  = this._activatedRoute.snapshot.params.labelHandle,
+              filterHandle = this._activatedRoute.snapshot.params.filterHandle,
+              folderHandle = this._activatedRoute.snapshot.params.folderHandle;
 
         if ( labelHandle )
         {
-            this.location.go('apps/mail/label/' + labelHandle + '/' + mailId);
+            this._location.go('apps/mail/label/' + labelHandle + '/' + mailId);
         }
         else if ( filterHandle )
         {
-            this.location.go('apps/mail/filter/' + filterHandle + '/' + mailId);
+            this._location.go('apps/mail/filter/' + filterHandle + '/' + mailId);
         }
         else
         {
-            this.location.go('apps/mail/' + folderHandle + '/' + mailId);
+            this._location.go('apps/mail/' + folderHandle + '/' + mailId);
         }
 
         // Set current mail
-        this.mailService.setCurrentMail(mailId);
+        this._mailService.setCurrentMail(mailId);
     }
-
 }

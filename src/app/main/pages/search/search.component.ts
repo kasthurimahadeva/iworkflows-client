@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-search',
+    selector   : 'search',
     templateUrl: './search.component.html',
     styleUrls  : ['./search.component.scss']
 })
-export class FuseSearchComponent
+export class SearchComponent
 {
+    /**
+     * Constructor
+     */
     constructor()
     {
     }

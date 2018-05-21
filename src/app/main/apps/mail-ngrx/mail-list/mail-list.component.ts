@@ -1,49 +1,64 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Mail } from '../mail.model';
-import { MailNgrxService } from '../mail.service';
+import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 @Component({
-    selector       : 'fuse-mail-list',
+    selector       : 'mail-list',
     templateUrl    : './mail-list.component.html',
     styleUrls      : ['./mail-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxListComponent
+export class MailNgrxListComponent
 {
-    @Input() mails: Mail[];
-    @Input() currentMail: Mail[];
+    @Input()
+    mails: Mail[];
 
+    @Input()
+    currentMail: Mail[];
+
+    /**
+     * Constructor
+     *
+     * @param {ActivatedRoute} _activatedRoute
+     * @param {MailNgrxService} _mailNgrxService
+     * @param {Router} _router
+     */
     constructor(
-        private route: ActivatedRoute,
-        private mailService: MailNgrxService,
-        private router: Router
+        private _activatedRoute: ActivatedRoute,
+        private _mailNgrxService: MailNgrxService,
+        private _router: Router
     )
     {
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
     /**
      * Read mail
+     *
      * @param mailId
      */
-    readMail(mailId)
+    readMail(mailId): void
     {
-        const labelHandle  = this.route.snapshot.params.labelHandle,
-              filterHandle = this.route.snapshot.params.filterHandle,
-              folderHandle = this.route.snapshot.params.folderHandle;
+        const labelHandle  = this._activatedRoute.snapshot.params.labelHandle,
+              filterHandle = this._activatedRoute.snapshot.params.filterHandle,
+              folderHandle = this._activatedRoute.snapshot.params.folderHandle;
 
         if ( labelHandle )
         {
-            this.router.navigate(['apps/mail-ngrx/label/' + labelHandle + '/' + mailId]);
+            this._router.navigate(['apps/mail-ngrx/label/' + labelHandle + '/' + mailId]);
         }
         else if ( filterHandle )
         {
-            this.router.navigate(['apps/mail-ngrx/filter/' + filterHandle + '/' + mailId]);
+            this._router.navigate(['apps/mail-ngrx/filter/' + filterHandle + '/' + mailId]);
         }
         else
         {
-            this.router.navigate(['apps/mail-ngrx/' + folderHandle + '/' + mailId]);
+            this._router.navigate(['apps/mail-ngrx/' + folderHandle + '/' + mailId]);
         }
     }
 }

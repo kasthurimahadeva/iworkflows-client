@@ -35,8 +35,8 @@
 
                     <mat-menu #labelsMenu="matMenu" [overlapTrigger]="false" class="scrumboard-labels-menu">
 
-                        <fuse-scrumboard-label-selector [card]="card"
-                                                        (onCardLabelsChange)="updateCard()"></fuse-scrumboard-label-selector>
+                        <scrumboard-label-selector [card]="card"
+                                                   (onCardLabelsChange)="updateCard()"></scrumboard-label-selector>
 
                     </mat-menu>
                 </div>
@@ -130,7 +130,7 @@
             </div>
 
             <!-- CLOSE DIALOG BUTTON -->
-            <button mat-icon-button (click)="dialogRef.close()" aria-label="Close Dialog">
+            <button mat-icon-button (click)="_matDialogRef.close()" aria-label="Close Dialog">
                 <mat-icon>close</mat-icon>
             </button>
             <!-- / CLOSE DIALOG BUTTON -->

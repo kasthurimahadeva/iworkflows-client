@@ -2,7 +2,7 @@ import * as FoldersActions from 'app/main/apps/mail-ngrx/store/actions/folders.a
 
 export interface FoldersState
 {
-    entities: { [id: number]: any };
+    entities?: { [id: number]: any };
     loading: boolean;
     loaded: boolean;
 }

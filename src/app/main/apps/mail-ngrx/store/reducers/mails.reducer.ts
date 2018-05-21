@@ -3,7 +3,7 @@ import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
 
 export interface MailsState
 {
-    entities: { [id: number]: Mail };
+    entities?: { [id: number]: Mail };
     currentMail: any;
     selectedMailIds: string[];
     searchText: string;

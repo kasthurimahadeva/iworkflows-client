@@ -2,49 +2,77 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-scrumboard-board-add-list',
+    selector   : 'scrumboard-board-add-list',
     templateUrl: './add-list.component.html',
     styleUrls  : ['./add-list.component.scss']
 })
-export class FuseScrumboardBoardAddListComponent
+export class ScrumboardBoardAddListComponent
 {
-    formActive = false;
+    formActive: boolean;
     form: FormGroup;
-    @Output() onlistAdd = new EventEmitter();
-    @ViewChild('nameInput') nameInputField;
 
+    @Output()
+    onListAdd: EventEmitter<any>;
+
+    @ViewChild('nameInput')
+    nameInputField;
+
+    /**
+     * Constructor
+     *
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private formBuilder: FormBuilder
+        private _formBuilder: FormBuilder
     )
     {
+        // Set the defaults
+        this.formActive = false;
+        this.onListAdd = new EventEmitter();
     }
-    
-    openForm()
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open form
+     */
+    openForm(): void
     {
-        this.form = this.formBuilder.group({
+        this.form = this._formBuilder.group({
             name: ['']
         });
         this.formActive = true;
         this.focusNameField();
     }
 
-    closeForm()
+    /**
+     * Close form
+     */
+    closeForm(): void
     {
         this.formActive = false;
     }
 
-    focusNameField()
+    /**
+     * Focus to the name field
+     */
+    focusNameField(): void
     {
         setTimeout(() => {
             this.nameInputField.nativeElement.focus();
         });
     }
 
-    onFormSubmit()
+    /**
+     * On form submit
+     */
+    onFormSubmit(): void
     {
         if ( this.form.valid )
         {
-            this.onlistAdd.next(this.form.getRawValue().name);
+            this.onListAdd.next(this.form.getRawValue().name);
             this.formActive = false;
         }
     }

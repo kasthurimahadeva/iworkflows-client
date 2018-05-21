@@ -1,23 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
-
-import { ProfileService } from '../../profile.service';
+import { ProfileService } from 'app/main/pages/profile/profile.service';
 
 @Component({
-    selector   : 'fuse-profile-about',
+    selector   : 'profile-about',
     templateUrl: './about.component.html',
     styleUrls  : ['./about.component.scss'],
     animations : fuseAnimations
 })
-export class FuseProfileAboutComponent
+export class ProfileAboutComponent implements OnInit, OnDestroy
 {
     about: any;
 
-    constructor(private profileService: ProfileService)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ProfileService} _profileService
+     */
+    constructor(
+        private _profileService: ProfileService
+    )
     {
-        this.profileService.aboutOnChanged.subscribe(about => {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        this._profileService.aboutOnChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(about => {
             this.about = about;
         });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }

@@ -1,65 +1,100 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { List } from '../list.model';
-import { ScrumboardService } from '../scrumboard.service';
+import { ScrumboardService } from 'app/main/apps/scrumboard/scrumboard.service';
+import { List } from 'app/main/apps/scrumboard/list.model';
 
 @Component({
-    selector   : 'fuse-scrumboard-board',
+    selector   : 'scrumboard-board',
     templateUrl: './board.component.html',
     styleUrls  : ['./board.component.scss'],
     animations : fuseAnimations
 })
-export class FuseScrumboardBoardComponent implements OnInit, OnDestroy
+export class ScrumboardBoardComponent implements OnInit, OnDestroy
 {
     board: any;
-    onBoardChanged: Subscription;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
     constructor(
-        private route: ActivatedRoute,
-        private location: Location,
-        private scrumboardService: ScrumboardService
+        private _activatedRoute: ActivatedRoute,
+        private _location: Location,
+        private _scrumboardService: ScrumboardService
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onBoardChanged =
-            this.scrumboardService.onBoardChanged
-                .subscribe(board => {
-                    this.board = board;
-                });
+        this._scrumboardService.onBoardChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(board => {
+                this.board = board;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onBoardChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    onListAdd(newListName)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On list add
+     *
+     * @param newListName
+     */
+    onListAdd(newListName): void
     {
         if ( newListName === '' )
         {
             return;
         }
 
-        this.scrumboardService.addList(new List({name: newListName}));
+        this._scrumboardService.addList(new List({name: newListName}));
     }
 
-    onBoardNameChanged(newName)
+    /**
+     * On board name changed
+     *
+     * @param newName
+     */
+    onBoardNameChanged(newName): void
     {
-        this.scrumboardService.updateBoard();
-        this.location.go('/apps/scrumboard/boards/' + this.board.id + '/' + this.board.uri);
+        this._scrumboardService.updateBoard();
+        this._location.go('/apps/scrumboard/boards/' + this.board.id + '/' + this.board.uri);
     }
 
-    onDrop(ev)
+    /**
+     * On drop
+     *
+     * @param ev
+     */
+    onDrop(ev): void
     {
-        this.scrumboardService.updateBoard();
+        this._scrumboardService.updateBoard();
     }
 }

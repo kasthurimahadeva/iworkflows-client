@@ -67,6 +67,11 @@ export class Board
         color: string
     }[];
 
+    /**
+     * Constructor
+     *
+     * @param board
+     */
     constructor(board)
     {
         this.name = board.name || 'Untitled Board';

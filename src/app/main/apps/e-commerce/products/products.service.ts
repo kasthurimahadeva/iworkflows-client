@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class EcommerceProductsService implements Resolve<any>
 {
     products: any[];
-    onProductsChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onProductsChanged: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -18,6 +18,8 @@ export class EcommerceProductsService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
+        // Set the defaults
+        this.onProductsChanged = new BehaviorSubject({});
     }
 
     /**

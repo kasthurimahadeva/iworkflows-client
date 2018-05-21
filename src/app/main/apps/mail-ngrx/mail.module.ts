@@ -5,45 +5,45 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { MailAppStoreModule } from 'app/main/apps/mail-ngrx/store/store.module';
 import * as fromGuards from 'app/main/apps/mail-ngrx/store/guards/index';
-import { FuseMailNgrxComponent } from 'app/main/apps/mail-ngrx/mail.component';
-import { FuseMailNgrxListComponent } from 'app/main/apps/mail-ngrx/mail-list/mail-list.component';
-import { FuseMailNgrxListItemComponent } from 'app/main/apps/mail-ngrx/mail-list/mail-list-item/mail-list-item.component';
-import { FuseMailNgrxDetailsComponent } from 'app/main/apps/mail-ngrx/mail-details/mail-details.component';
-import { FuseMailNgrxMainSidenavComponent } from 'app/main/apps/mail-ngrx/sidenavs/main/main-sidenav.component';
-import { FuseMailNgrxComposeDialogComponent } from 'app/main/apps/mail-ngrx/dialogs/compose/compose.component';
+import { MailNgrxStoreModule } from 'app/main/apps/mail-ngrx/store/store.module';
+import { MailNgrxComponent } from 'app/main/apps/mail-ngrx/mail.component';
+import { MailNgrxListComponent } from 'app/main/apps/mail-ngrx/mail-list/mail-list.component';
+import { MailNgrxListItemComponent } from 'app/main/apps/mail-ngrx/mail-list/mail-list-item/mail-list-item.component';
+import { MailNgrxDetailsComponent } from 'app/main/apps/mail-ngrx/mail-details/mail-details.component';
+import { MailNgrxMainSidenavComponent } from 'app/main/apps/mail-ngrx/sidenavs/main/main-sidenav.component';
+import { MailNgrxComposeDialogComponent } from 'app/main/apps/mail-ngrx/dialogs/compose/compose.component';
 import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 const routes: Routes = [
     {
         path       : 'label/:labelHandle',
-        component  : FuseMailNgrxComponent,
+        component  : MailNgrxComponent,
         canActivate: [fromGuards.ResolveGuard]
     },
     {
         path       : 'label/:labelHandle/:mailId',
-        component  : FuseMailNgrxComponent,
+        component  : MailNgrxComponent,
         canActivate: [fromGuards.ResolveGuard]
     },
     {
-        path     : 'filter/:filterHandle',
-        component: FuseMailNgrxComponent,
+        path       : 'filter/:filterHandle',
+        component  : MailNgrxComponent,
         canActivate: [fromGuards.ResolveGuard]
     },
     {
-        path     : 'filter/:filterHandle/:mailId',
-        component: FuseMailNgrxComponent,
+        path       : 'filter/:filterHandle/:mailId',
+        component  : MailNgrxComponent,
         canActivate: [fromGuards.ResolveGuard]
     },
     {
-        path     : ':folderHandle',
-        component: FuseMailNgrxComponent,
+        path       : ':folderHandle',
+        component  : MailNgrxComponent,
         canActivate: [fromGuards.ResolveGuard]
     },
     {
-        path     : ':folderHandle/:mailId',
-        component: FuseMailNgrxComponent,
+        path       : ':folderHandle/:mailId',
+        component  : MailNgrxComponent,
         canActivate: [fromGuards.ResolveGuard]
     },
     {
@@ -54,12 +54,12 @@ const routes: Routes = [
 
 @NgModule({
     declarations   : [
-        FuseMailNgrxComponent,
-        FuseMailNgrxListComponent,
-        FuseMailNgrxListItemComponent,
-        FuseMailNgrxDetailsComponent,
-        FuseMailNgrxMainSidenavComponent,
-        FuseMailNgrxComposeDialogComponent
+        MailNgrxComponent,
+        MailNgrxListComponent,
+        MailNgrxListItemComponent,
+        MailNgrxDetailsComponent,
+        MailNgrxMainSidenavComponent,
+        MailNgrxComposeDialogComponent
     ],
     imports        : [
         RouterModule.forChild(routes),
@@ -80,13 +80,13 @@ const routes: Routes = [
 
         FuseSharedModule,
 
-        MailAppStoreModule
+        MailNgrxStoreModule
     ],
     providers      : [
         MailNgrxService,
         fromGuards.ResolveGuard
     ],
-    entryComponents: [FuseMailNgrxComposeDialogComponent]
+    entryComponents: [MailNgrxComposeDialogComponent]
 })
 export class FuseMailNgrxModule
 {

@@ -5,13 +5,13 @@ import { MatExpansionModule, MatIconModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FaqService } from './faq.service';
-import { FuseFaqComponent } from './faq.component';
+import { FaqService } from 'app/main/pages/faq/faq.service';
+import { FaqComponent } from 'app/main/pages/faq/faq.component';
 
 const routes = [
     {
         path     : 'faq',
-        component: FuseFaqComponent,
+        component: FaqComponent,
         resolve  : {
             faq: FaqService
         }
@@ -20,7 +20,7 @@ const routes = [
 
 @NgModule({
     declarations: [
-        FuseFaqComponent
+        FaqComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

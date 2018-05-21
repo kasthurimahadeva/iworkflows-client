@@ -1,46 +1,78 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { MatColors } from '@fuse/mat-colors';
 
-import { ScrumboardService } from '../../../../scrumboard.service';
+import { ScrumboardService } from 'app/main/apps/scrumboard/scrumboard.service';
 
 @Component({
-    selector   : 'fuse-scrumboard-board-color-selector',
+    selector   : 'scrumboard-board-color-selector',
     templateUrl: './board-color-selector.component.html',
     styleUrls  : ['./board-color-selector.component.scss']
 })
-export class FuseScrumboardBoardColorSelectorComponent implements OnInit, OnDestroy
+export class ScrumboardBoardColorSelectorComponent implements OnInit, OnDestroy
 {
     colors: any;
     board: any;
-    onBoardChanged: Subscription;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {ScrumboardService} _scrumboardService
+     */
     constructor(
-        private scrumboardService: ScrumboardService
+        private _scrumboardService: ScrumboardService
     )
     {
+        // Set the defaults
         this.colors = MatColors.all;
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onBoardChanged =
-            this.scrumboardService.onBoardChanged
-                .subscribe(board => {
-                    this.board = board;
-                });
+        this._scrumboardService.onBoardChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(board => {
+                this.board = board;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onBoardChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    setColor(color)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the color
+     *
+     * @param color
+     */
+    setColor(color): void
     {
         this.board.settings.color = color;
-        this.scrumboardService.updateBoard();
+        this._scrumboardService.updateBoard();
     }
 }

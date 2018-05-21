@@ -6,18 +6,18 @@ import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/ma
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseCountdownModule } from '@fuse/components';
 
-import { FuseComingSoonComponent } from './coming-soon.component';
+import { ComingSoonComponent } from 'app/main/pages/coming-soon/coming-soon.component';
 
 const routes = [
     {
         path     : 'coming-soon',
-        component: FuseComingSoonComponent
+        component: ComingSoonComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseComingSoonComponent
+        ComingSoonComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

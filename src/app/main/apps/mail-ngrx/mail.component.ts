@@ -10,16 +10,17 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
 import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 import * as fromStore from 'app/main/apps/mail-ngrx/store';
+
 import { locale as english } from 'app/main/apps/mail-ngrx/i18n/en';
 import { locale as turkish } from 'app/main/apps/mail-ngrx/i18n/tr';
 
 @Component({
-    selector       : 'fuse-mail',
+    selector       : 'mail-ngrx',
     templateUrl    : './mail.component.html',
     styleUrls      : ['./mail.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxComponent implements OnInit, OnDestroy
+export class MailNgrxComponent implements OnInit, OnDestroy
 {
     hasSelectedMails: boolean;
     isIndeterminate: boolean;
@@ -33,31 +34,49 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
     mails: Mail[];
     selectedMailIds: string[];
 
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {MailNgrxService} _mailNgrxService
+     * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
+     * @param {Store<MailAppState>} _store
+     * @param {ChangeDetectorRef} _changeDetectorRef
+     */
     constructor(
-        private configService: FuseConfigService,
-        private mailService: MailNgrxService,
-        private translationLoader: FuseTranslationLoaderService,
-        private store: Store<fromStore.MailAppState>,
-        private cd: ChangeDetectorRef
+        private _fuseConfigService: FuseConfigService,
+        private _mailNgrxService: MailNgrxService,
+        private _fuseTranslationLoaderService: FuseTranslationLoaderService,
+        private _store: Store<fromStore.MailAppState>,
+        private _changeDetectorRef: ChangeDetectorRef
     )
     {
-        this.searchInput = new FormControl('');
-        this.translationLoader.loadTranslations(english, turkish);
-        this.currentMail$ = this.store.select(fromStore.getCurrentMail);
-        this.mails$ = this.store.select(fromStore.getMailsArr);
-        this.folders$ = this.store.select(fromStore.getFoldersArr);
-        this.labels$ = this.store.select(fromStore.getLabelsArr);
-        this.selectedMailIds$ = this.store.select(fromStore.getSelectedMailIds);
-        this.searchText$ = this.store.select(fromStore.getSearchText);
-        this.mails = [];
-        this.selectedMailIds = [];
-
-        this.configService.config = {
+        // Configure the layout
+        this._fuseConfigService.config = {
             routerAnimation: 'none'
         };
+
+        // Set the defaults
+        this.searchInput = new FormControl('');
+        this._fuseTranslationLoaderService.loadTranslations(english, turkish);
+        this.currentMail$ = this._store.select(fromStore.getCurrentMail);
+        this.mails$ = this._store.select(fromStore.getMailsArr);
+        this.folders$ = this._store.select(fromStore.getFoldersArr);
+        this.labels$ = this._store.select(fromStore.getLabelsArr);
+        this.selectedMailIds$ = this._store.select(fromStore.getSelectedMailIds);
+        this.searchText$ = this._store.select(fromStore.getSearchText);
+        this.mails = [];
+        this.selectedMailIds = [];
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         this.mails$.subscribe(mails => {
             this.mails = mails;
@@ -79,16 +98,28 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
             debounceTime(300),
             distinctUntilChanged()
         ).subscribe(searchText => {
-            this.store.dispatch(new fromStore.SetSearchText(searchText));
+            this._store.dispatch(new fromStore.SetSearchText(searchText));
         });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.cd.detach();
+        this._changeDetectorRef.detach();
     }
 
-    toggleSelectAll(ev)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle select all
+     *
+     * @param ev
+     */
+    toggleSelectAll(ev): void
     {
         ev.preventDefault();
 
@@ -102,41 +133,69 @@ export class FuseMailNgrxComponent implements OnInit, OnDestroy
         }
     }
 
-    selectAllMails()
+    /**
+     * Select all mails
+     */
+    selectAllMails(): void
     {
-        this.store.dispatch(new fromStore.SelectAllMails());
+        this._store.dispatch(new fromStore.SelectAllMails());
     }
 
-    deselectAllMails()
+    /**
+     * Deselect all mails
+     */
+    deselectAllMails(): void
     {
-        this.store.dispatch(new fromStore.DeselectAllMails());
+        this._store.dispatch(new fromStore.DeselectAllMails());
     }
 
-    selectMailsByParameter(parameter, value)
+    /**
+     * Select mails by parameter
+     *
+     * @param parameter
+     * @param value
+     */
+    selectMailsByParameter(parameter, value): void
     {
-        this.store.dispatch(new fromStore.SelectMailsByParameter({
+        this._store.dispatch(new fromStore.SelectMailsByParameter({
             parameter,
             value
         }));
     }
 
-    toggleLabelOnSelectedMails(labelId)
+    /**
+     * Toggle label on selected mails
+     *
+     * @param labelId
+     */
+    toggleLabelOnSelectedMails(labelId): void
     {
-        this.store.dispatch(new fromStore.AddLabelOnSelectedMails(labelId));
+        this._store.dispatch(new fromStore.AddLabelOnSelectedMails(labelId));
     }
 
-    setFolderOnSelectedMails(folderId)
+    /**
+     * Set folder on selected mails
+     *
+     * @param folderId
+     */
+    setFolderOnSelectedMails(folderId): void
     {
-        this.store.dispatch(new fromStore.SetFolderOnSelectedMails(folderId));
+        this._store.dispatch(new fromStore.SetFolderOnSelectedMails(folderId));
     }
 
-    deSelectCurrentMail()
+    /**
+     * Deselect current mail
+     */
+    deselectCurrentMail(): void
     {
-        this.store.dispatch(new fromStore.SetCurrentMail(''));
+        this._store.dispatch(new fromStore.SetCurrentMail(''));
     }
 
-    refresh()
+    /**
+     * Refresh
+     */
+    refresh(): void
     {
-        this.cd.markForCheck();
+        this._changeDetectorRef.markForCheck();
     }
 }

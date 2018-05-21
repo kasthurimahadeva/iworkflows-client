@@ -33,7 +33,7 @@ export class ContactsComponent implements OnInit, OnDestroy
      */
     constructor(
         private _contactsService: ContactsService,
-        public _matDialog: MatDialog
+        private _matDialog: MatDialog
     )
     {
         // Set the defaults

@@ -1,22 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
-import { Mail } from './mail.model';
-import { MailService } from './mail.service';
-import { locale as english } from './i18n/en';
-import { locale as turkish } from './i18n/tr';
+import { Mail } from 'app/main/apps/mail/mail.model';
+import { MailService } from 'app/main/apps/mail/mail.service';
+
+import { locale as english } from 'app/main/apps/mail//i18n/en';
+import { locale as turkish } from 'app/main/apps/mail//i18n/tr';
+import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
-    selector   : 'fuse-mail',
+    selector   : 'mail',
     templateUrl: './mail.component.html',
     styleUrls  : ['./mail.component.scss']
 })
-export class FuseMailComponent implements OnInit, OnDestroy
+export class MailComponent implements OnInit, OnDestroy
 {
     hasSelectedMails: boolean;
     isIndeterminate: boolean;
@@ -26,110 +27,162 @@ export class FuseMailComponent implements OnInit, OnDestroy
     searchInput: FormControl;
     currentMail: Mail;
 
-    onSelectedMailsChanged: Subscription;
-    onFoldersChanged: Subscription;
-    onFiltersChanged: Subscription;
-    onLabelsChanged: Subscription;
-    onCurrentMailChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {MailService} _mailService
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
+     */
     constructor(
-        private mailService: MailService,
-        private fuseTranslationLoader: FuseTranslationLoaderService
+        private _mailService: MailService,
+        private _fuseConfigService: FuseConfigService,
+        private _fuseTranslationLoaderService: FuseTranslationLoaderService
     )
     {
+        // Configure the layout
+        this._fuseConfigService.config = {
+            routerAnimation: 'none'
+        };
+
+        // Load the translations
+        this._fuseTranslationLoaderService.loadTranslations(english, turkish);
+
+        // Set the defaults
         this.searchInput = new FormControl('');
-        this.fuseTranslationLoader.loadTranslations(english, turkish);
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onSelectedMailsChanged =
-            this.mailService.onSelectedMailsChanged
-                .subscribe(selectedMails => {
+        this._mailService.onSelectedMailsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(selectedMails => {
+                setTimeout(() => {
+                    this.hasSelectedMails = selectedMails.length > 0;
+                    this.isIndeterminate = (selectedMails.length !== this._mailService.mails.length && selectedMails.length > 0);
+                }, 0);
+            });
 
-                    setTimeout(() => {
-                        this.hasSelectedMails = selectedMails.length > 0;
-                        this.isIndeterminate = (selectedMails.length !== this.mailService.mails.length && selectedMails.length > 0);
-                    }, 0);
-                });
+        this._mailService.onFoldersChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(folders => {
+                this.folders = this._mailService.folders;
+            });
 
-        this.onFoldersChanged =
-            this.mailService.onFoldersChanged
-                .subscribe(folders => {
-                    this.folders = this.mailService.folders;
-                });
+        this._mailService.onFiltersChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(folders => {
+                this.filters = this._mailService.filters;
+            });
 
-        this.onFiltersChanged =
-            this.mailService.onFiltersChanged
-                .subscribe(folders => {
-                    this.filters = this.mailService.filters;
-                });
+        this._mailService.onLabelsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(labels => {
+                this.labels = this._mailService.labels;
+            });
 
-        this.onLabelsChanged =
-            this.mailService.onLabelsChanged
-                .subscribe(labels => {
-                    this.labels = this.mailService.labels;
-                });
-
-        this.onCurrentMailChanged =
-            this.mailService.onCurrentMailChanged
-                .subscribe(currentMail => {
-                    if ( !currentMail )
-                    {
-                        this.currentMail = null;
-                    }
-                    else
-                    {
-                        this.currentMail = currentMail;
-                    }
-                });
+        this._mailService.onCurrentMailChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(currentMail => {
+                if ( !currentMail )
+                {
+                    this.currentMail = null;
+                }
+                else
+                {
+                    this.currentMail = currentMail;
+                }
+            });
 
         this.searchInput.valueChanges.pipe(
+            takeUntil(this._unsubscribeAll),
             debounceTime(300),
             distinctUntilChanged()
         )
             .subscribe(searchText => {
-                this.mailService.onSearchTextChanged.next(searchText);
+                this._mailService.onSearchTextChanged.next(searchText);
             });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onSelectedMailsChanged.unsubscribe();
-        this.onFoldersChanged.unsubscribe();
-        this.onFiltersChanged.unsubscribe();
-        this.onLabelsChanged.unsubscribe();
-        this.onCurrentMailChanged.unsubscribe();
-
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    toggleSelectAll()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle select all
+     */
+    toggleSelectAll(): void
     {
-        this.mailService.toggleSelectAll();
+        this._mailService.toggleSelectAll();
     }
 
-    selectMails(filterParameter?, filterValue?)
+    /**
+     * Select mails
+     *
+     * @param filterParameter
+     * @param filterValue
+     */
+    selectMails(filterParameter?, filterValue?): void
     {
-        this.mailService.selectMails(filterParameter, filterValue);
+        this._mailService.selectMails(filterParameter, filterValue);
     }
 
-    deselectMails()
+    /**
+     * Deselect mails
+     */
+    deselectMails(): void
     {
-        this.mailService.deselectMails();
+        this._mailService.deselectMails();
     }
 
-    deSelectCurrentMail()
+    /**
+     * Deselect current mail
+     */
+    deselectCurrentMail(): void
     {
-        this.mailService.onCurrentMailChanged.next(null);
+        this._mailService.onCurrentMailChanged.next(null);
     }
 
-    toggleLabelOnSelectedMails(labelId)
+    /**
+     * Toggle label on selected mails
+     *
+     * @param labelId
+     */
+    toggleLabelOnSelectedMails(labelId): void
     {
-        this.mailService.toggleLabelOnSelectedMails(labelId);
+        this._mailService.toggleLabelOnSelectedMails(labelId);
     }
 
-    setFolderOnSelectedMails(folderId)
+    /**
+     * Set folder on selected mails
+     *
+     * @param folderId
+     */
+    setFolderOnSelectedMails(folderId): void
     {
-        this.mailService.setFolderOnSelectedMails(folderId);
+        this._mailService.setFolderOnSelectedMails(folderId);
     }
 }

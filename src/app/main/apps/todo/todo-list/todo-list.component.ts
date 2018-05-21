@@ -1,94 +1,125 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { Todo } from '../todo.model';
-import { TodoService } from '../todo.service';
+import { Todo } from 'app/main/apps/todo/todo.model';
+import { TodoService } from 'app/main/apps/todo/todo.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'fuse-todo-list',
+    selector   : 'todo-list',
     templateUrl: './todo-list.component.html',
     styleUrls  : ['./todo-list.component.scss'],
     animations : fuseAnimations
 })
-export class FuseTodoListComponent implements OnInit, OnDestroy
+export class TodoListComponent implements OnInit, OnDestroy
 {
     todos: Todo[];
     currentTodo: Todo;
 
-    onTodosChanged: Subscription;
-    onCurrentTodoChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {ActivatedRoute} _activatedRoute
+     * @param {TodoService} _todoService
+     * @param {Location} _location
+     */
     constructor(
-        private route: ActivatedRoute,
-        private todoService: TodoService,
-        private location: Location
+        private _activatedRoute: ActivatedRoute,
+        private _todoService: TodoService,
+        private _location: Location
     )
     {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Subscribe to update todos on changes
-        this.onTodosChanged =
-            this.todoService.onTodosChanged
-                .subscribe(todos => {
-                    this.todos = todos;
-                });
+        this._todoService.onTodosChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(todos => {
+                this.todos = todos;
+            });
 
         // Subscribe to update current todo on changes
-        this.onCurrentTodoChanged =
-            this.todoService.onCurrentTodoChanged
-                .subscribe(currentTodo => {
-                    if ( !currentTodo )
+        this._todoService.onCurrentTodoChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(currentTodo => {
+                if ( !currentTodo )
+                {
+                    // Set the current todo id to null to deselect the current todo
+                    this.currentTodo = null;
+
+                    // Handle the location changes
+                    const tagHandle    = this._activatedRoute.snapshot.params.tagHandle,
+                          filterHandle = this._activatedRoute.snapshot.params.filterHandle;
+
+                    if ( tagHandle )
                     {
-                        // Set the current todo id to null to deselect the current todo
-                        this.currentTodo = null;
-
-                        // Handle the location changes
-                        const tagHandle    = this.route.snapshot.params.tagHandle,
-                              filterHandle = this.route.snapshot.params.filterHandle;
-
-                        if ( tagHandle )
-                        {
-                            this.location.go('apps/todo/tag/' + tagHandle);
-                        }
-                        else if ( filterHandle )
-                        {
-                            this.location.go('apps/todo/filter/' + filterHandle);
-                        }
-                        else
-                        {
-                            this.location.go('apps/todo/all');
-                        }
+                        this._location.go('apps/todo/tag/' + tagHandle);
+                    }
+                    else if ( filterHandle )
+                    {
+                        this._location.go('apps/todo/filter/' + filterHandle);
                     }
                     else
                     {
-                        this.currentTodo = currentTodo;
+                        this._location.go('apps/todo/all');
                     }
-                });
-    }
-
-    ngOnDestroy()
-    {
-        this.onTodosChanged.unsubscribe();
-        this.onCurrentTodoChanged.unsubscribe();
+                }
+                else
+                {
+                    this.currentTodo = currentTodo;
+                }
+            });
     }
 
     /**
-     * Read todo
-     * @param todoId
+     * On destroy
      */
-    readTodo(todoId)
+    ngOnDestroy(): void
     {
-        // Set current todo
-        this.todoService.setCurrentTodo(todoId);
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    onDrop(ev)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Read todo
+     *
+     * @param todoId
+     */
+    readTodo(todoId): void
+    {
+        // Set current todo
+        this._todoService.setCurrentTodo(todoId);
+    }
+
+    /**
+     * On drop
+     *
+     * @param ev
+     */
+    onDrop(ev): void
     {
 
     }

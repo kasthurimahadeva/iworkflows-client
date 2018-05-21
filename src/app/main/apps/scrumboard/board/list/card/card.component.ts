@@ -3,30 +3,48 @@ import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
-    selector     : 'fuse-scrumboard-board-card',
+    selector     : 'scrumboard-board-card',
     templateUrl  : './card.component.html',
     styleUrls    : ['./card.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseScrumboardBoardCardComponent implements OnInit
+export class ScrumboardBoardCardComponent implements OnInit
 {
-    @Input() cardId;
+    @Input()
+    cardId;
+
     card: any;
     board: any;
 
+    /**
+     * Constructor
+     *
+     * @param {ActivatedRoute} _activatedRoute
+     */
     constructor(
-        private route: ActivatedRoute,
+        private _activatedRoute: ActivatedRoute
     )
     {
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.board = this.route.snapshot.data.board;
+        this.board = this._activatedRoute.snapshot.data.board;
         this.card = this.board.cards.filter((card) => {
             return this.cardId === card.id;
         })[0];
     }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
 
     /**
      * Is the card overdue?
@@ -34,9 +52,8 @@ export class FuseScrumboardBoardCardComponent implements OnInit
      * @param cardDate
      * @returns {boolean}
      */
-    isOverdue(cardDate)
+    isOverdue(cardDate): boolean
     {
         return moment() > moment(new Date(cardDate));
     }
-
 }

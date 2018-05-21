@@ -1,21 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { Todo } from './todo.model';
-import { TodoService } from './todo.service';
+import { Todo } from 'app/main/apps/todo/todo.model';
+import { TodoService } from 'app/main/apps/todo/todo.service';
 
 @Component({
-    selector   : 'fuse-todo',
+    selector   : 'todo',
     templateUrl: './todo.component.html',
     styleUrls  : ['./todo.component.scss'],
     animations : fuseAnimations
 })
-export class FuseTodoComponent implements OnInit, OnDestroy
+export class TodoComponent implements OnInit, OnDestroy
 {
     hasSelectedTodos: boolean;
     isIndeterminate: boolean;
@@ -24,91 +23,136 @@ export class FuseTodoComponent implements OnInit, OnDestroy
     searchInput: FormControl;
     currentTodo: Todo;
 
-    onSelectedTodosChanged: Subscription;
-    onFiltersChanged: Subscription;
-    onTagsChanged: Subscription;
-    onCurrentTodoChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
-    constructor(private todoService: TodoService)
+    /**
+     * Constructor
+     *
+     * @param {TodoService} _todoService
+     */
+    constructor(
+        private _todoService: TodoService
+    )
     {
+        // Set the defaults
         this.searchInput = new FormControl('');
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.onSelectedTodosChanged =
-            this.todoService.onSelectedTodosChanged
-                .subscribe(selectedTodos => {
+        this._todoService.onSelectedTodosChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(selectedTodos => {
 
-                    setTimeout(() => {
-                        this.hasSelectedTodos = selectedTodos.length > 0;
-                        this.isIndeterminate = (selectedTodos.length !== this.todoService.todos.length && selectedTodos.length > 0);
-                    }, 0);
-                });
+                setTimeout(() => {
+                    this.hasSelectedTodos = selectedTodos.length > 0;
+                    this.isIndeterminate = (selectedTodos.length !== this._todoService.todos.length && selectedTodos.length > 0);
+                }, 0);
+            });
 
-        this.onFiltersChanged =
-            this.todoService.onFiltersChanged
-                .subscribe(folders => {
-                    this.filters = this.todoService.filters;
-                });
+        this._todoService.onFiltersChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(folders => {
+                this.filters = this._todoService.filters;
+            });
 
-        this.onTagsChanged =
-            this.todoService.onTagsChanged
-                .subscribe(tags => {
-                    this.tags = this.todoService.tags;
-                });
+        this._todoService.onTagsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(tags => {
+                this.tags = this._todoService.tags;
+            });
 
-        this.searchInput.valueChanges.pipe(
-            debounceTime(300),
-            distinctUntilChanged()
-        ).subscribe(searchText => {
-            this.todoService.onSearchTextChanged.next(searchText);
-        });
+        this.searchInput.valueChanges
+            .pipe(
+                takeUntil(this._unsubscribeAll),
+                debounceTime(300),
+                distinctUntilChanged()
+            )
+            .subscribe(searchText => {
+                this._todoService.onSearchTextChanged.next(searchText);
+            });
 
-        this.onCurrentTodoChanged =
-            this.todoService.onCurrentTodoChanged
-                .subscribe(([currentTodo, formType]) => {
-                    if ( !currentTodo )
-                    {
-                        this.currentTodo = null;
-                    }
-                    else
-                    {
-                        this.currentTodo = currentTodo;
-                    }
-                });
+        this._todoService.onCurrentTodoChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(([currentTodo, formType]) => {
+                if ( !currentTodo )
+                {
+                    this.currentTodo = null;
+                }
+                else
+                {
+                    this.currentTodo = currentTodo;
+                }
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onSelectedTodosChanged.unsubscribe();
-        this.onFiltersChanged.unsubscribe();
-        this.onTagsChanged.unsubscribe();
-        this.onCurrentTodoChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    deSelectCurrentTodo()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Deselect current todo
+     */
+    deselectCurrentTodo(): void
     {
-        this.todoService.onCurrentTodoChanged.next([null, null]);
+        this._todoService.onCurrentTodoChanged.next([null, null]);
     }
 
-    toggleSelectAll()
+    /**
+     * Toggle select all
+     */
+    toggleSelectAll(): void
     {
-        this.todoService.toggleSelectAll();
+        this._todoService.toggleSelectAll();
     }
 
-    selectTodos(filterParameter?, filterValue?)
+    /**
+     * Select todos
+     *
+     * @param filterParameter
+     * @param filterValue
+     */
+    selectTodos(filterParameter?, filterValue?): void
     {
-        this.todoService.selectTodos(filterParameter, filterValue);
+        this._todoService.selectTodos(filterParameter, filterValue);
     }
 
-    deselectTodos()
+    /**
+     * Deselect todos
+     */
+    deselectTodos(): void
     {
-        this.todoService.deselectTodos();
+        this._todoService.deselectTodos();
     }
 
-    toggleTagOnSelectedTodos(tagId)
+    /**
+     * Toggle tag on selected todos
+     *
+     * @param tagId
+     */
+    toggleTagOnSelectedTodos(tagId): void
     {
-        this.todoService.toggleTagOnSelectedTodos(tagId);
+        this._todoService.toggleTagOnSelectedTodos(tagId);
     }
 }

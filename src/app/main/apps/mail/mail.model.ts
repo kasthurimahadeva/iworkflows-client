@@ -27,6 +27,11 @@ export class Mail
     labels: string[];
     folder: string;
 
+    /**
+     * Constructor
+     *
+     * @param mail
+     */
     constructor(mail)
     {
         this.id = mail.id;

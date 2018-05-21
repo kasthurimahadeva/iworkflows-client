@@ -8,7 +8,7 @@ import { MatColors } from '@fuse/mat-colors';
 import { CalendarEventModel } from 'app/main/apps/calendar/event.model';
 
 @Component({
-    selector     : 'fuse-calendar-event-form-dialog',
+    selector     : 'calendar-event-form-dialog',
     templateUrl  : './event-form.component.html',
     styleUrls    : ['./event-form.component.scss'],
     encapsulation: ViewEncapsulation.None
@@ -25,12 +25,12 @@ export class CalendarEventFormDialogComponent
     /**
      * Constructor
      *
-     * @param {MatDialogRef<CalendarEventFormDialogComponent>} dialogRef
+     * @param {MatDialogRef<CalendarEventFormDialogComponent>} _matDialogRef
      * @param _data
      * @param {FormBuilder} _formBuilder
      */
     constructor(
-        public dialogRef: MatDialogRef<CalendarEventFormDialogComponent>,
+        private _matDialogRef: MatDialogRef<CalendarEventFormDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder
     )

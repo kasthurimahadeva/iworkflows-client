@@ -6,8 +6,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable()
 export class FileManagerService implements Resolve<any>
 {
-    onFilesChanged: BehaviorSubject<any> = new BehaviorSubject({});
-    onFileSelected: BehaviorSubject<any> = new BehaviorSubject({});
+    onFilesChanged: BehaviorSubject<any>;
+    onFileSelected: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -18,11 +18,14 @@ export class FileManagerService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
+        // Set the defaults
+        this.onFilesChanged = new BehaviorSubject({});
+        this.onFileSelected = new BehaviorSubject({});
     }
 
     /**
      * Resolver
-     * 
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}

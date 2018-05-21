@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class AcademyCourseService implements Resolve<any>
 {
-    onCourseChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    onCourseChanged: BehaviorSubject<any>;
 
     /**
      * Constructor
@@ -17,6 +17,8 @@ export class AcademyCourseService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
+        // Set the defaults
+        this.onCourseChanged = new BehaviorSubject({});
     }
 
     // -----------------------------------------------------------------------------------------------------

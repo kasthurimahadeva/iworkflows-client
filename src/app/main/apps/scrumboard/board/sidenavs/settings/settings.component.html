@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="nav-item">
-                    <div class="nav-link" matRipple (click)="toggleSubcription()">
+                    <div class="nav-link" matRipple (click)="toggleSubscription()">
                         <mat-icon class="nav-link-icon">remove_red_eye</mat-icon>
                         <p fxFlex class="title">Subscribe</p>
                         <mat-icon *ngIf="board.settings.subscribed" class="s-18">check</mat-icon>
@@ -68,7 +68,7 @@
 
         <!-- SIDENAV CONTENT -->
         <div class="content p-8" fusePerfectScrollbar>
-            <fuse-scrumboard-board-color-selector></fuse-scrumboard-board-color-selector>
+            <scrumboard-board-color-selector></scrumboard-board-color-selector>
         </div>
         <!-- / SIDENAV CONTENT -->
 

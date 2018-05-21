@@ -3,19 +3,28 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-
 @Injectable()
 export class InvoiceService implements Resolve<any>
 {
     invoice: any;
-    invoiceOnChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    invoiceOnChanged: BehaviorSubject<any>;
 
-    constructor(private http: HttpClient)
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
+        // Set the defaults
+        this.invoiceOnChanged = new BehaviorSubject({});
     }
 
     /**
-     * Resolve
+     * Resolver
+     *
      * @param {ActivatedRouteSnapshot} route
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
@@ -41,7 +50,7 @@ export class InvoiceService implements Resolve<any>
     {
         return new Promise((resolve, reject) => {
 
-            this.http.get('api/invoice')
+            this._httpClient.get('api/invoice')
                 .subscribe((timeline: any) => {
                     this.invoice = timeline;
                     this.invoiceOnChanged.next(this.invoice);

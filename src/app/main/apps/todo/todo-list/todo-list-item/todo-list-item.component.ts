@@ -1,112 +1,148 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-
-import { Todo } from '../../todo.model';
-import { TodoService } from '../../todo.service';
+import { Subject, Subscription } from 'rxjs';
+import { Todo } from 'app/main/apps/todo/todo.model';
+import { TodoService } from 'app/main/apps/todo/todo.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector     : 'fuse-todo-list-item',
+    selector     : 'todo-list-item',
     templateUrl  : './todo-list-item.component.html',
     styleUrls    : ['./todo-list-item.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FuseTodoListItemComponent implements OnInit, OnDestroy
+export class TodoListItemComponent implements OnInit, OnDestroy
 {
-    @Input() todo: Todo;
     tags: any[];
-    @HostBinding('class.selected') selected: boolean;
-    @HostBinding('class.completed') completed: boolean;
-    @HostBinding('class.move-disabled') moveDisabled: boolean;
 
-    onSelectedTodosChanged: Subscription;
-    onTagsChanged: Subscription;
+    @Input()
+    todo: Todo;
 
+    @HostBinding('class.selected')
+    selected: boolean;
+
+    @HostBinding('class.completed')
+    completed: boolean;
+
+    @HostBinding('class.move-disabled')
+    moveDisabled: boolean;
+
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {TodoService} _todoService
+     * @param {ActivatedRoute} _activatedRoute
+     */
     constructor(
-        private todoService: TodoService,
-        private route: ActivatedRoute
+        private _todoService: TodoService,
+        private _activatedRoute: ActivatedRoute
     )
     {
         // Disable move if path is not /all
-        if ( route.snapshot.url[0].path !== 'all' )
+        if ( _activatedRoute.snapshot.url[0].path !== 'all' )
         {
             this.moveDisabled = true;
         }
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Set the initial values
         this.todo = new Todo(this.todo);
         this.completed = this.todo.completed;
 
         // Subscribe to update on selected todo change
-        this.onSelectedTodosChanged =
-            this.todoService.onSelectedTodosChanged
-                .subscribe(selectedTodos => {
-                    this.selected = false;
+        this._todoService.onSelectedTodosChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(selectedTodos => {
+                this.selected = false;
 
-                    if ( selectedTodos.length > 0 )
+                if ( selectedTodos.length > 0 )
+                {
+                    for ( const todo of selectedTodos )
                     {
-                        for ( const todo of selectedTodos )
+                        if ( todo.id === this.todo.id )
                         {
-                            if ( todo.id === this.todo.id )
-                            {
-                                this.selected = true;
-                                break;
-                            }
+                            this.selected = true;
+                            break;
                         }
                     }
-                });
+                }
+            });
 
         // Subscribe to update on tag change
-        this.onTagsChanged =
-            this.todoService.onTagsChanged
-                .subscribe(tags => {
-                    this.tags = tags;
-                });
+        this._todoService.onTagsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(tags => {
+                this.tags = tags;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onSelectedTodosChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    onSelectedChange()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On selected change
+     */
+    onSelectedChange(): void
     {
-        this.todoService.toggleSelectedTodo(this.todo.id);
+        this._todoService.toggleSelectedTodo(this.todo.id);
     }
 
     /**
      * Toggle star
      */
-    toggleStar(event)
+    toggleStar(event): void
     {
         event.stopPropagation();
 
         this.todo.toggleStar();
-        this.todoService.updateTodo(this.todo);
+        this._todoService.updateTodo(this.todo);
     }
 
     /**
      * Toggle Important
      */
-    toggleImportant(event)
+    toggleImportant(event): void
     {
         event.stopPropagation();
 
         this.todo.toggleImportant();
-        this.todoService.updateTodo(this.todo);
+        this._todoService.updateTodo(this.todo);
     }
 
     /**
      * Toggle Completed
      */
-    toggleCompleted(event)
+    toggleCompleted(event): void
     {
         event.stopPropagation();
 
         this.todo.toggleCompleted();
-        this.todoService.updateTodo(this.todo);
+        this._todoService.updateTodo(this.todo);
     }
 }

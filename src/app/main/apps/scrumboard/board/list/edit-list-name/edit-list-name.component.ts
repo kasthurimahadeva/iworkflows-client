@@ -2,46 +2,76 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-scrumboard-board-edit-list-name',
+    selector   : 'scrumboard-board-edit-list-name',
     templateUrl: './edit-list-name.component.html',
     styleUrls  : ['./edit-list-name.component.scss']
 })
-export class FuseScrumboardBoardEditListNameComponent
+export class ScrumboardBoardEditListNameComponent
 {
-    formActive = false;
+    formActive: boolean;
     form: FormGroup;
-    @Input() list;
-    @Output() onNameChanged = new EventEmitter();
-    @ViewChild('nameInput') nameInputField;
 
+    @Input()
+    list;
+
+    @Output()
+    onNameChanged: EventEmitter<any>;
+
+    @ViewChild('nameInput')
+    nameInputField;
+
+    /**
+     * Constructor
+     *
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private formBuilder: FormBuilder
+        private _formBuilder: FormBuilder
     )
     {
+        // Set the defaults
+        this.formActive = false;
+        this.onNameChanged = new EventEmitter();
     }
 
-    openForm()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open the form
+     */
+    openForm(): void
     {
-        this.form = this.formBuilder.group({
+        this.form = this._formBuilder.group({
             name: [this.list.name]
         });
         this.formActive = true;
         this.focusNameField();
     }
 
-    closeForm()
+    /**
+     * Close the form
+     */
+    closeForm(): void
     {
         this.formActive = false;
     }
 
-    focusNameField()
+    /**
+     * Focus to the name field
+     */
+    focusNameField(): void
     {
         setTimeout(() => {
             this.nameInputField.nativeElement.focus();
         });
     }
 
-    onFormSubmit()
+    /**
+     * On form submit
+     */
+    onFormSubmit(): void
     {
         if ( this.form.valid )
         {
@@ -50,5 +80,4 @@ export class FuseScrumboardBoardEditListNameComponent
             this.formActive = false;
         }
     }
-
 }

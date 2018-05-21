@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { MatButtonModule, MatDividerModule, MatIconModule, MatTabsModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { ProfileService } from './profile.service';
-import { FuseProfileComponent } from './profile.component';
-import { FuseProfileTimelineComponent } from './tabs/timeline/timeline.component';
-import { FuseProfileAboutComponent } from './tabs/about/about.component';
-import { FuseProfilePhotosVideosComponent } from './tabs/photos-videos/photos-videos.component';
+import { ProfileService } from 'app/main/pages/profile/profile.service';
+import { ProfileComponent } from 'app/main/pages/profile/profile.component';
+import { FuseProfileTimelineComponent } from 'app/main/pages/profile/tabs/timeline/timeline.component';
+import { ProfileAboutComponent } from 'app/main/pages/profile/tabs/about/about.component';
+import { ProfilePhotosVideosComponent } from 'app/main/pages/profile/tabs/photos-videos/photos-videos.component';
+
 
 const routes = [
     {
         path     : 'profile',
-        component: FuseProfileComponent,
+        component: ProfileComponent,
         resolve  : {
             profile: ProfileService
         }
@@ -23,10 +23,10 @@ const routes = [
 
 @NgModule({
     declarations: [
-        FuseProfileComponent,
+        ProfileComponent,
         FuseProfileTimelineComponent,
-        FuseProfileAboutComponent,
-        FuseProfilePhotosVideosComponent
+        ProfileAboutComponent,
+        ProfilePhotosVideosComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

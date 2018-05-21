@@ -1,26 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'fuse-coming-soon',
+    selector   : 'coming-soon',
     templateUrl: './coming-soon.component.html',
     styleUrls  : ['./coming-soon.component.scss'],
     animations : fuseAnimations
 })
-export class FuseComingSoonComponent implements OnInit
+export class ComingSoonComponent implements OnInit, OnDestroy
 {
     comingSoonForm: FormGroup;
     comingSoonFormErrors: any;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private fuseConfig: FuseConfigService,
-        private formBuilder: FormBuilder
+        private _fuseConfigService: FuseConfigService,
+        private _formBuilder: FormBuilder
     )
     {
-        this.fuseConfig.config = {
+        // Configure the layout
+        this._fuseConfigService.config = {
             layout: {
                 navigation: 'none',
                 toolbar   : 'none',
@@ -28,23 +40,53 @@ export class FuseComingSoonComponent implements OnInit
             }
         };
 
+        // Set the defaults
         this.comingSoonFormErrors = {
             email: {}
         };
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.comingSoonForm = this.formBuilder.group({
+        this.comingSoonForm = this._formBuilder.group({
             email: ['', [Validators.required, Validators.email]]
         });
 
-        this.comingSoonForm.valueChanges.subscribe(() => {
-            this.onRegisterFormValuesChanged();
-        });
+        this.comingSoonForm.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onRegisterFormValuesChanged();
+            });
     }
 
-    onRegisterFormValuesChanged()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On form values changed
+     */
+    onRegisterFormValuesChanged(): void
     {
         for ( const field in this.comingSoonFormErrors )
         {

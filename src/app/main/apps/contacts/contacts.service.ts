@@ -10,11 +10,11 @@ import { Contact } from 'app/main/apps/contacts/contact.model';
 @Injectable()
 export class ContactsService implements Resolve<any>
 {
-    onContactsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
-    onSelectedContactsChanged: BehaviorSubject<any> = new BehaviorSubject([]);
-    onUserDataChanged: BehaviorSubject<any> = new BehaviorSubject([]);
-    onSearchTextChanged: Subject<any> = new Subject();
-    onFilterChanged: Subject<any> = new Subject();
+    onContactsChanged: BehaviorSubject<any>;
+    onSelectedContactsChanged: BehaviorSubject<any>;
+    onUserDataChanged: BehaviorSubject<any>;
+    onSearchTextChanged: Subject<any>;
+    onFilterChanged: Subject<any>;
 
     contacts: Contact[];
     user: any;
@@ -32,6 +32,12 @@ export class ContactsService implements Resolve<any>
         private _httpClient: HttpClient
     )
     {
+        // Set the defaults
+        this.onContactsChanged = new BehaviorSubject([]);
+        this.onSelectedContactsChanged = new BehaviorSubject([]);
+        this.onUserDataChanged = new BehaviorSubject([]);
+        this.onSearchTextChanged = new Subject();
+        this.onFilterChanged = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------

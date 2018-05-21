@@ -2,38 +2,62 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/c
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Mail } from '../mail.model';
-import * as fromStore from '../store';
-import { MailNgrxService } from '../mail.service';
+import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
+import * as fromStore from 'app/main/apps/mail-ngrx/store';
+import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 @Component({
-    selector       : 'fuse-mail-details',
+    selector       : 'mail-details',
     templateUrl    : './mail-details.component.html',
     styleUrls      : ['./mail-details.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FuseMailNgrxDetailsComponent implements OnChanges
+export class MailNgrxDetailsComponent implements OnChanges
 {
-    labels$: Observable<any>;
-    @Input('mail') mailInput: Mail;
-    mail: Mail;
-    showDetails = false;
+    @Input('mail')
+    mailInput: Mail;
 
+    labels$: Observable<any>;
+    mail: Mail;
+    showDetails: boolean;
+
+    /**
+     * Constructor
+     *
+     * @param {MailNgrxService} _mailNgrxService
+     * @param {Store<MailAppState>} _store
+     */
     constructor(
-        private mailService: MailNgrxService,
-        private store: Store<fromStore.MailAppState>
+        private _mailNgrxService: MailNgrxService,
+        private _store: Store<fromStore.MailAppState>
     )
     {
-        this.labels$ = this.store.select(fromStore.getLabelsArr);
+        // Set the defaults
+        this.labels$ = this._store.select(fromStore.getLabelsArr);
+        this.showDetails = false;
     }
 
-    ngOnChanges()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On changes
+     */
+    ngOnChanges(): void
     {
         this.updateModel(this.mailInput);
         this.markAsRead();
     }
 
-    markAsRead()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Mark as read
+     */
+    markAsRead(): void
     {
         if ( this.mail && !this.mail.read )
         {
@@ -42,28 +66,46 @@ export class FuseMailNgrxDetailsComponent implements OnChanges
         }
     }
 
-    toggleStar(event)
+    /**
+     * Toggle star
+     *
+     * @param event
+     */
+    toggleStar(event): void
     {
         event.stopPropagation();
         this.mail.toggleStar();
         this.updateMail();
     }
 
-    toggleImportant(event)
+    /**
+     * Toggle important
+     *
+     * @param event
+     */
+    toggleImportant(event): void
     {
         event.stopPropagation();
         this.mail.toggleImportant();
         this.updateMail();
     }
 
-    updateModel(data)
+    /**
+     * Update model
+     *
+     * @param data
+     */
+    updateModel(data): void
     {
         this.mail = !data ? null : new Mail({...data});
     }
 
-    updateMail()
+    /**
+     * Update the mail
+     */
+    updateMail(): void
     {
-        this.store.dispatch(new fromStore.UpdateMail(this.mail));
+        this._store.dispatch(new fromStore.UpdateMail(this.mail));
         this.updateModel(this.mail);
     }
 }

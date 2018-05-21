@@ -1,70 +1,106 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { Mail } from '../mail.model';
-import { MailService } from '../mail.service';
+import { Mail } from 'app/main/apps/mail/mail.model';
+import { MailService } from 'app/main/apps/mail/mail.service';
 
 @Component({
-    selector   : 'fuse-mail-details',
+    selector   : 'mail-details',
     templateUrl: './mail-details.component.html',
     styleUrls  : ['./mail-details.component.scss'],
     animations : fuseAnimations
 })
-export class FuseMailDetailsComponent implements OnInit, OnDestroy
+export class MailDetailsComponent implements OnInit, OnDestroy
 {
     mail: Mail;
     labels: any[];
-    showDetails = false;
+    showDetails: boolean;
 
-    onCurrentMailChanged: Subscription;
-    onLabelsChanged: Subscription;
+    // Private
+    private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {MailService} _mailService
+     */
     constructor(
-        private mailService: MailService
+        private _mailService: MailService
     )
     {
+        // Set the defaults
+        this.showDetails = false;
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Subscribe to update the current mail
-        this.onCurrentMailChanged =
-            this.mailService.onCurrentMailChanged
-                .subscribe(currentMail => {
-                    this.mail = currentMail;
-                });
+        this._mailService.onCurrentMailChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(currentMail => {
+                this.mail = currentMail;
+            });
 
         // Subscribe to update on label change
-        this.onLabelsChanged =
-            this.mailService.onLabelsChanged
-                .subscribe(labels => {
-                    this.labels = labels;
-                });
+        this._mailService.onLabelsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(labels => {
+                this.labels = labels;
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        this.onCurrentMailChanged.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    toggleStar(event)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle star
+     *
+     * @param event
+     */
+    toggleStar(event): void
     {
         event.stopPropagation();
 
         this.mail.toggleStar();
 
-        this.mailService.updateMail(this.mail);
+        this._mailService.updateMail(this.mail);
     }
 
-    toggleImportant(event)
+    /**
+     * Toggle important
+     *
+     * @param event
+     */
+    toggleImportant(event): void
     {
         event.stopPropagation();
 
         this.mail.toggleImportant();
 
-        this.mailService.updateMail(this.mail);
+        this._mailService.updateMail(this.mail);
     }
-
 }

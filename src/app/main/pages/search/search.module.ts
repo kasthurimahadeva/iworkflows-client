@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CdkTableModule } from '@angular/cdk/table';
-
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTableModule, MatTabsModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { SearchService } from './search.service';
-import { FuseSearchClassicComponent } from './tabs/classic/classic.component';
-import { FuseSearchTableComponent } from './tabs/table/table.component';
-import { FuseSearchComponent } from './search.component';
+import { SearchService } from 'app/main/pages/search/search.service';
+import { SearchComponent } from 'app/main/pages/search/search.component';
+import { SearchClassicComponent } from 'app/main/pages/search/tabs/classic/classic.component';
+import { SearchTableComponent } from 'app/main/pages/search/tabs/table/table.component';
+
 
 const routes = [
     {
         path     : 'search',
-        component: FuseSearchComponent,
+        component: SearchComponent,
         resolve  : {
             search: SearchService
         }
@@ -23,9 +23,9 @@ const routes = [
 
 @NgModule({
     declarations: [
-        FuseSearchComponent,
-        FuseSearchClassicComponent,
-        FuseSearchTableComponent
+        SearchComponent,
+        SearchClassicComponent,
+        SearchTableComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

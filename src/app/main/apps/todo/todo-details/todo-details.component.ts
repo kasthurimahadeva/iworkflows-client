@@ -1,108 +1,132 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { FuseUtils } from '@fuse/utils';
 import { fuseAnimations } from '@fuse/animations';
 
-import { Todo } from '../todo.model';
-import { TodoService } from '../todo.service';
+import { Todo } from 'app/main/apps/todo/todo.model';
+import { TodoService } from 'app/main/apps/todo/todo.service';
 
 @Component({
-    selector   : 'fuse-todo-details',
+    selector   : 'todo-details',
     templateUrl: './todo-details.component.html',
     styleUrls  : ['./todo-details.component.scss'],
     animations : fuseAnimations
 })
-export class FuseTodoDetailsComponent implements OnInit, OnDestroy
+export class TodoDetailsComponent implements OnInit, OnDestroy
 {
     todo: Todo;
     tags: any[];
     formType: string;
     todoForm: FormGroup;
-    @ViewChild('titleInput') titleInputField;
 
-    onFormChange: any;
-    onCurrentTodoChanged: Subscription;
-    onTagsChanged: Subscription;
-    onNewTodoClicked: Subscription;
+    @ViewChild('titleInput')
+    titleInputField;
 
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {TodoService} _todoService
+     * @param {FormBuilder} _formBuilder
+     */
     constructor(
-        private todoService: TodoService,
-        private formBuilder: FormBuilder
+        private _todoService: TodoService,
+        private _formBuilder: FormBuilder
     )
     {
-
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Subscribe to update the current todo
-        this.onCurrentTodoChanged =
-            this.todoService.onCurrentTodoChanged
-                .subscribe(([todo, formType]) => {
+        this._todoService.onCurrentTodoChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(([todo, formType]) => {
 
-                    if ( todo && formType === 'edit' )
-                    {
-                        this.formType = 'edit';
-
-                        this.todo = todo;
-
-                        this.todoForm = this.createTodoForm();
-
-                        this.onFormChange =
-                            this.todoForm.valueChanges.pipe(
-                                debounceTime(500),
-                                distinctUntilChanged()
-                            ).subscribe(data => {
-                                this.todoService.updateTodo(data);
-                            });
-                    }
-                });
-
-        // Subscribe to update on tag change
-        this.onTagsChanged =
-            this.todoService.onTagsChanged
-                .subscribe(labels => {
-                    this.tags = labels;
-                });
-
-        // Subscribe to update on tag change
-        this.onNewTodoClicked =
-            this.todoService.onNewTodoClicked
-                .subscribe(() => {
-                    this.todo = new Todo({});
-                    this.todo.id = FuseUtils.generateGUID();
-                    this.formType = 'new';
+                if ( todo && formType === 'edit' )
+                {
+                    this.formType = 'edit';
+                    this.todo = todo;
                     this.todoForm = this.createTodoForm();
-                    this.focusTitleField();
-                    this.todoService.onCurrentTodoChanged.next([this.todo, 'new']);
-                });
+
+                    this.todoForm.valueChanges
+                        .pipe(
+                            takeUntil(this._unsubscribeAll),
+                            debounceTime(500),
+                            distinctUntilChanged()
+                        )
+                        .subscribe(data => {
+                            this._todoService.updateTodo(data);
+                        });
+                }
+            });
+
+        // Subscribe to update on tag change
+        this._todoService.onTagsChanged
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(labels => {
+                this.tags = labels;
+            });
+
+        // Subscribe to update on tag change
+        this._todoService.onNewTodoClicked
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.todo = new Todo({});
+                this.todo.id = FuseUtils.generateGUID();
+                this.formType = 'new';
+                this.todoForm = this.createTodoForm();
+                this.focusTitleField();
+                this._todoService.onCurrentTodoChanged.next([this.todo, 'new']);
+            });
     }
 
-    ngOnDestroy()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
     {
-        if ( this.onFormChange )
-        {
-            this.onFormChange.unsubscribe();
-        }
-
-        this.onCurrentTodoChanged.unsubscribe();
-        this.onNewTodoClicked.unsubscribe();
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
-    focusTitleField()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Focus title field
+     */
+    focusTitleField(): void
     {
         setTimeout(() => {
             this.titleInputField.nativeElement.focus();
         });
     }
 
-    createTodoForm()
+    /**
+     * Create todo form
+     *
+     * @returns {FormGroup}
+     */
+    createTodoForm(): FormGroup
     {
-        return this.formBuilder.group({
+        return this._formBuilder.group({
             'id'       : [this.todo.id],
             'title'    : [this.todo.title],
             'notes'    : [this.todo.notes],
@@ -116,54 +140,80 @@ export class FuseTodoDetailsComponent implements OnInit, OnDestroy
         });
     }
 
-    toggleStar(event)
+    /**
+     * Toggle star
+     *
+     * @param event
+     */
+    toggleStar(event): void
     {
         event.stopPropagation();
         this.todo.toggleStar();
-        this.todoService.updateTodo(this.todo);
+        this._todoService.updateTodo(this.todo);
     }
 
-    toggleImportant(event)
+    /**
+     * Toggle important
+     *
+     * @param event
+     */
+    toggleImportant(event): void
     {
         event.stopPropagation();
         this.todo.toggleImportant();
-        this.todoService.updateTodo(this.todo);
+        this._todoService.updateTodo(this.todo);
     }
 
     /**
      * Toggle Completed
+     *
      * @param event
      */
-    toggleCompleted(event)
+    toggleCompleted(event): void
     {
         event.stopPropagation();
         this.todo.toggleCompleted();
-        this.todoService.updateTodo(this.todo);
+        this._todoService.updateTodo(this.todo);
     }
 
     /**
      * Toggle Deleted
+     *
      * @param event
      */
-    toggleDeleted(event)
+    toggleDeleted(event): void
     {
         event.stopPropagation();
         this.todo.toggleDeleted();
-        this.todoService.updateTodo(this.todo);
+        this._todoService.updateTodo(this.todo);
     }
 
-    toggleTagOnTodo(tagId)
+    /**
+     * Toggle tag on todo
+     *
+     * @param tagId
+     */
+    toggleTagOnTodo(tagId): void
     {
-        this.todoService.toggleTagOnTodo(tagId, this.todo);
+        this._todoService.toggleTagOnTodo(tagId, this.todo);
     }
 
-    hasTag(tagId)
+    /**
+     * Has tag?
+     *
+     * @param tagId
+     * @returns {any}
+     */
+    hasTag(tagId): any
     {
-        return this.todoService.hasTag(tagId, this.todo);
+        return this._todoService.hasTag(tagId, this.todo);
     }
 
-    addTodo()
+    /**
+     * Add todo
+     */
+    addTodo(): void
     {
-        this.todoService.updateTodo(this.todoForm.getRawValue());
+        this._todoService.updateTodo(this.todoForm.getRawValue());
     }
 }

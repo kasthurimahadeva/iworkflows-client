@@ -39,16 +39,16 @@
 
             @include media-breakpoint-down(lg) {
 
-                fuse-todo-list {
+                todo-list {
                     border-right: 0;
                 }
 
-                fuse-todo-list,
-                fuse-todo-details {
+                todo-list,
+                todo-details {
                     flex: 1 0 100%;
                 }
 
-                fuse-todo-details {
+                todo-details {
                     display: none !important;
                 }
 
@@ -64,11 +64,11 @@
 
                     .content {
 
-                        fuse-todo-list {
+                        todo-list {
                             display: none !important;
                         }
 
-                        fuse-todo-details {
+                        todo-details {
                             display: flex !important;
                         }
                     }

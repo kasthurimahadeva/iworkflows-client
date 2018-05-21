@@ -2,25 +2,41 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-    selector   : 'fuse-scrumboard-edit-board-name',
+    selector   : 'scrumboard-edit-board-name',
     templateUrl: './edit-board-name.component.html',
     styleUrls  : ['./edit-board-name.component.scss']
 })
-export class FuseScrumboardEditBoardNameComponent
+export class ScrumboardEditBoardNameComponent
 {
-    formActive = false;
+    formActive: boolean;
     form: FormGroup;
-    @Input() board;
-    @Output() onNameChanged = new EventEmitter();
-    @ViewChild('nameInput') nameInputField;
+
+    @Input()
+    board;
+
+    @Output()
+    onNameChanged: EventEmitter<any>;
+
+    @ViewChild('nameInput')
+    nameInputField;
 
     constructor(
         private formBuilder: FormBuilder
     )
     {
+        // Set the defaults
+        this.formActive = false;
+        this.onNameChanged = new EventEmitter();
     }
 
-    openForm()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Open form
+     */
+    openForm(): void
     {
         this.form = this.formBuilder.group({
             name: [this.board.name]
@@ -29,19 +45,28 @@ export class FuseScrumboardEditBoardNameComponent
         this.focusNameField();
     }
 
-    closeForm()
+    /**
+     * Close form
+     */
+    closeForm(): void
     {
         this.formActive = false;
     }
 
-    focusNameField()
+    /**
+     * Focus to the name field
+     */
+    focusNameField(): void
     {
         setTimeout(() => {
             this.nameInputField.nativeElement.focus();
         });
     }
 
-    onFormSubmit()
+    /**
+     * On form submit
+     */
+    onFormSubmit(): void
     {
         if ( this.form.valid )
         {
@@ -52,5 +77,4 @@ export class FuseScrumboardEditBoardNameComponent
             this.formActive = false;
         }
     }
-
 }

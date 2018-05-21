@@ -2,7 +2,7 @@ import * as FiltersActions from 'app/main/apps/mail-ngrx/store/actions/filters.a
 
 export interface FiltersState
 {
-    entities: { [id: number]: any };
+    entities?: { [id: number]: any };
     loading: boolean;
     loaded: boolean;
 }
