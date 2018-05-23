@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-simple-fullwidth',
+    selector   : 'simple-fullwidth',
     templateUrl: './fullwidth.component.html',
     styleUrls  : ['./fullwidth.component.scss']
 })
-export class FuseSimpleFullWidthComponent
+export class SimpleFullWidthComponent
 {
+    /**
+     * Constructor
+     */
     constructor()
     {
     }

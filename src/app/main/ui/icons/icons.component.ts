@@ -1,24 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
-    selector   : 'fuse-icons',
+    selector   : 'icons',
     templateUrl: './icons.component.html',
     styleUrls  : ['./icons.component.scss']
 })
-export class FuseIconsComponent implements OnInit
+export class IconsComponent implements OnInit, OnDestroy
 {
     icons: string[];
     filteredIcons: string[];
-    loading = true;
+    loading: boolean;
 
-    constructor(private http: HttpClient)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
+        // Set the defaults
+        this.loading = true;
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.http.get('api/icons')
+        this._httpClient.get('api/icons')
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((icons: any) => {
                 this.icons = icons;
                 this.filteredIcons = this.icons;
@@ -26,7 +51,26 @@ export class FuseIconsComponent implements OnInit
             });
     }
 
-    filterIcons(event)
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Filter icons
+     *
+     * @param event
+     */
+    filterIcons(event): void
     {
         const value = event.target.value;
 

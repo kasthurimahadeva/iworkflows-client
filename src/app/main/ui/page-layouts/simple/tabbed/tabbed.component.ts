@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-tabbed',
+    selector   : 'tabbed',
     templateUrl: './tabbed.component.html',
     styleUrls  : ['./tabbed.component.scss']
 })
-export class FuseTabbedComponent
+export class TabbedComponent
 {
+    /**
+     * Constructor
+     */
     constructor()
     {
     }

@@ -5,24 +5,24 @@ import { MatIconModule } from '@angular/material';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseHighlightModule } from '@fuse/components';
 
-import { FuseConfigServiceDocsComponent } from 'app/main/services/config/config.component';
-import { FuseSplashScreenServiceDocsComponent } from 'app/main/services/splash-screen/splash-screen.component';
+import { ConfigServiceDocsComponent } from 'app/main/services/config/config.component';
+import { SplashScreenServiceDocsComponent } from 'app/main/services/splash-screen/splash-screen.component';
 
 const routes = [
     {
         path     : 'config',
-        component: FuseConfigServiceDocsComponent
+        component: ConfigServiceDocsComponent
     },
     {
         path     : 'splash-screen',
-        component: FuseSplashScreenServiceDocsComponent
+        component: SplashScreenServiceDocsComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseConfigServiceDocsComponent,
-        FuseSplashScreenServiceDocsComponent
+        ConfigServiceDocsComponent,
+        SplashScreenServiceDocsComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

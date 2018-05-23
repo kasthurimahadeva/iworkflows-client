@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-typography-headings',
+    selector   : 'typography-headings',
     templateUrl: './headings.component.html',
     styleUrls  : ['./headings.component.scss']
 })
-export class FuseTypographyHeadingsComponent
+export class TypographyHeadingsComponent
 {
-
+    /**
+     * Constructor
+     */
     constructor()
     {
 

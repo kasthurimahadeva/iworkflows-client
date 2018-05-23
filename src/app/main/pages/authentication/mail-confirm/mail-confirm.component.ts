@@ -4,7 +4,7 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'fuse-mail-confirm',
+    selector   : 'mail-confirm',
     templateUrl: './mail-confirm.component.html',
     styleUrls  : ['./mail-confirm.component.scss'],
     animations : fuseAnimations

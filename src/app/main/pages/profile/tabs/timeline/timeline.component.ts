@@ -7,12 +7,12 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'fuse-profile-timeline',
+    selector   : 'profile-timeline',
     templateUrl: './timeline.component.html',
     styleUrls  : ['./timeline.component.scss'],
     animations : fuseAnimations
 })
-export class FuseProfileTimelineComponent implements OnInit, OnDestroy
+export class ProfileTimelineComponent implements OnInit, OnDestroy
 {
     timeline: any;
 

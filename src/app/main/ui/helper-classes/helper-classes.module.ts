@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { MatIconModule, MatTabsModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseHighlightModule } from '@fuse/components';
 
-import { FuseHelperClassesComponent } from './helper-classes.component';
-import { FuseHelperClassesPaddingMarginComponent } from './tabs/padding-margin/padding-margin.component';
-import { FuseHelperClassesWidthHeightComponent } from './tabs/width-height/width-height.component';
+import { HelperClassesComponent } from 'app/main/ui/helper-classes/helper-classes.component';
+import { HelperClassesPaddingMarginComponent } from 'app/main/ui/helper-classes/tabs/padding-margin/padding-margin.component';
+import { HelperClassesWidthHeightComponent } from 'app/main/ui/helper-classes/tabs/width-height/width-height.component';
 
 const routes: Routes = [
     {
         path     : 'helper-classes',
-        component: FuseHelperClassesComponent
+        component: HelperClassesComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseHelperClassesComponent,
-        FuseHelperClassesPaddingMarginComponent,
-        FuseHelperClassesWidthHeightComponent
+        HelperClassesComponent,
+        HelperClassesPaddingMarginComponent,
+        HelperClassesWidthHeightComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

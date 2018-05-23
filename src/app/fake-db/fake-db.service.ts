@@ -1,27 +1,27 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-import { ProjectDashboardDb } from './dashboard-project';
-import { AnalyticsDashboardDb } from './dashboard-analytics';
-import { CalendarFakeDb } from './calendar';
-import { ECommerceFakeDb } from './e-commerce';
-import { AcademyFakeDb } from './academy';
-import { MailFakeDb } from './mail';
-import { ChatFakeDb } from './chat';
-import { FileManagerFakeDb } from './file-manager';
-import { ContactsFakeDb } from './contacts';
-import { TodoFakeDb } from './todo';
-import { ScrumboardFakeDb } from './scrumboard';
-import { InvoiceFakeDb } from './invoice';
-import { ProfileFakeDb } from './profile';
-import { SearchFakeDb } from './search';
-import { FaqFakeDb } from './faq';
-import { KnowledgeBaseFakeDb } from './knowledge-base';
-import { IconsFakeDb } from './icons';
-import { QuickPanelFakeDb } from './quick-panel';
+import { ProjectDashboardDb } from 'app/fake-db/dashboard-project';
+import { AnalyticsDashboardDb } from 'app/fake-db/dashboard-analytics';
+import { CalendarFakeDb } from 'app/fake-db/calendar';
+import { ECommerceFakeDb } from 'app/fake-db/e-commerce';
+import { AcademyFakeDb } from 'app/fake-db/academy';
+import { MailFakeDb } from 'app/fake-db/mail';
+import { ChatFakeDb } from 'app/fake-db/chat';
+import { FileManagerFakeDb } from 'app/fake-db/file-manager';
+import { ContactsFakeDb } from 'app/fake-db/contacts';
+import { TodoFakeDb } from 'app/fake-db/todo';
+import { ScrumboardFakeDb } from 'app/fake-db/scrumboard';
+import { InvoiceFakeDb } from 'app/fake-db/invoice';
+import { ProfileFakeDb } from 'app/fake-db/profile';
+import { SearchFakeDb } from 'app/fake-db/search';
+import { FaqFakeDb } from 'app/fake-db/faq';
+import { KnowledgeBaseFakeDb } from 'app/fake-db/knowledge-base';
+import { IconsFakeDb } from 'app/fake-db/icons';
+import { QuickPanelFakeDb } from 'app/fake-db/quick-panel';
 
-export class FuseFakeDbService implements InMemoryDbService
+export class FakeDbService implements InMemoryDbService
 {
-    createDb()
+    createDb(): any
     {
         return {
             // Dashboards

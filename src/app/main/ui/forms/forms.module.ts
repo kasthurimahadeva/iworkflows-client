@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseFormsComponent } from './forms.component';
+import { FormsComponent } from 'app/main/ui/forms/forms.component';
 
 const routes: Routes = [
     {
         path     : 'forms',
-        component: FuseFormsComponent
+        component: FormsComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseFormsComponent
+        FormsComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

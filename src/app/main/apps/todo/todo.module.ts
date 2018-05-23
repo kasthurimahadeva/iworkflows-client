@@ -91,6 +91,6 @@ const routes: Routes = [
         TodoService
     ]
 })
-export class FuseTodoModule
+export class TodoModule
 {
 }

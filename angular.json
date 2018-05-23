@@ -104,7 +104,7 @@
                         ],
                         "exclude": [
                             "**/node_modules/**",
-                            "**/src/app/fuse-fake-db/**/*",
+                            "**/src/app/fake-db/**/*",
                             "**/src/assets/angular-material-examples/**/*"
                         ]
                     }
@@ -128,7 +128,7 @@
                         "tsConfig": "e2e/tsconfig.e2e.json",
                         "exclude": [
                             "**/node_modules/**",
-                            "**/src/app/fuse-fake-db/**/*",
+                            "**/src/app/fake-db/**/*",
                             "**/src/assets/angular-material-examples/**/*"
                         ]
                     }

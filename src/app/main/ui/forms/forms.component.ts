@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'fuse-forms',
+    selector   : 'forms',
     templateUrl: './forms.component.html',
     styleUrls  : ['./forms.component.scss']
 })
-export class FuseFormsComponent implements OnInit
+export class FormsComponent implements OnInit, OnDestroy
 {
     form: FormGroup;
     formErrors: any;
@@ -27,7 +29,17 @@ export class FuseFormsComponent implements OnInit
     verticalStepperStep2Errors: any;
     verticalStepperStep3Errors: any;
 
-    constructor(private formBuilder: FormBuilder)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {FormBuilder} _formBuilder
+     */
+    constructor(
+        private _formBuilder: FormBuilder
+    )
     {
         // Reactive form errors
         this.formErrors = {
@@ -73,12 +85,22 @@ export class FuseFormsComponent implements OnInit
             state     : {},
             postalCode: {}
         };
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
         // Reactive Form
-        this.form = this.formBuilder.group({
+        this.form = this._formBuilder.group({
             company   : [
                 {
                     value   : 'Google',
@@ -95,68 +117,99 @@ export class FuseFormsComponent implements OnInit
             country   : ['', Validators.required]
         });
 
-        this.form.valueChanges.subscribe(() => {
-            this.onFormValuesChanged();
-        });
+        this.form.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onFormValuesChanged();
+            });
 
         // Horizontal Stepper form steps
-        this.horizontalStepperStep1 = this.formBuilder.group({
+        this.horizontalStepperStep1 = this._formBuilder.group({
             firstName: ['', Validators.required],
             lastName : ['', Validators.required]
         });
 
-        this.horizontalStepperStep2 = this.formBuilder.group({
+        this.horizontalStepperStep2 = this._formBuilder.group({
             address: ['', Validators.required]
         });
 
-        this.horizontalStepperStep3 = this.formBuilder.group({
+        this.horizontalStepperStep3 = this._formBuilder.group({
             city      : ['', Validators.required],
             state     : ['', Validators.required],
             postalCode: ['', [Validators.required, Validators.maxLength(5)]]
         });
 
-        this.horizontalStepperStep1.valueChanges.subscribe(() => {
-            this.onFormValuesChanged();
-        });
+        this.horizontalStepperStep1.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onFormValuesChanged();
+            });
 
-        this.horizontalStepperStep2.valueChanges.subscribe(() => {
-            this.onFormValuesChanged();
-        });
+        this.horizontalStepperStep2.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onFormValuesChanged();
+            });
 
-        this.horizontalStepperStep3.valueChanges.subscribe(() => {
-            this.onFormValuesChanged();
-        });
+        this.horizontalStepperStep3.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onFormValuesChanged();
+            });
 
         // Vertical Stepper form stepper
-        this.verticalStepperStep1 = this.formBuilder.group({
+        this.verticalStepperStep1 = this._formBuilder.group({
             firstName: ['', Validators.required],
             lastName : ['', Validators.required]
         });
 
-        this.verticalStepperStep2 = this.formBuilder.group({
+        this.verticalStepperStep2 = this._formBuilder.group({
             address: ['', Validators.required]
         });
 
-        this.verticalStepperStep3 = this.formBuilder.group({
+        this.verticalStepperStep3 = this._formBuilder.group({
             city      : ['', Validators.required],
             state     : ['', Validators.required],
             postalCode: ['', [Validators.required, Validators.maxLength(5)]]
         });
 
-        this.verticalStepperStep1.valueChanges.subscribe(() => {
-            this.onFormValuesChanged();
-        });
+        this.verticalStepperStep1.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onFormValuesChanged();
+            });
 
-        this.verticalStepperStep2.valueChanges.subscribe(() => {
-            this.onFormValuesChanged();
-        });
+        this.verticalStepperStep2.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onFormValuesChanged();
+            });
 
-        this.verticalStepperStep3.valueChanges.subscribe(() => {
-            this.onFormValuesChanged();
-        });
+        this.verticalStepperStep3.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+                this.onFormValuesChanged();
+            });
     }
 
-    onFormValuesChanged()
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On form values changed
+     */
+    onFormValuesChanged(): void
     {
         for ( const field in this.formErrors )
         {
@@ -178,12 +231,18 @@ export class FuseFormsComponent implements OnInit
         }
     }
 
-    finishHorizontalStepper()
+    /**
+     * Finish the horizontal stepper
+     */
+    finishHorizontalStepper(): void
     {
         alert('You have finished the horizontal stepper!');
     }
 
-    finishVerticalStepper()
+    /**
+     * Finish the vertical stepper
+     */
+    finishVerticalStepper(): void
     {
         alert('You have finished the vertical stepper!');
     }

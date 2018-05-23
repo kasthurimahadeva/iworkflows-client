@@ -3,28 +3,47 @@ import { Component, OnInit } from '@angular/core';
 import { MatColors } from '@fuse/mat-colors';
 
 @Component({
-    selector   : 'fuse-colors',
+    selector   : 'colors',
     templateUrl: './colors.component.html',
     styleUrls  : ['./colors.component.scss']
 })
-export class FuseColorsComponent
+export class ColorsComponent
 {
     colors: {};
     selectedColor: string;
     selectedColorDefaultValue: string;
 
+    /**
+     * Constructor
+     */
     constructor()
     {
+        // Set the defaults
         this.colors = MatColors.all;
-        this.updateSelectedColor('primary');
+        this._updateSelectedColor('primary');
     }
 
-    selectColor(selected)
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Select color
+     *
+     * @param selected
+     */
+    selectColor(selected): void
     {
-        this.updateSelectedColor(selected.tab.textLabel);
+        this._updateSelectedColor(selected.tab.textLabel);
     }
 
-    private updateSelectedColor(colorName)
+    /**
+     * Update selected color
+     *
+     * @param colorName
+     * @private
+     */
+    private _updateSelectedColor(colorName): void
     {
         this.selectedColor = colorName;
         this.selectedColorDefaultValue = MatColors.getColor(this.selectedColor)[500];

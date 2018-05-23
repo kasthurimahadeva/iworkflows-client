@@ -17,6 +17,6 @@ import { UIColorsModule } from 'app/main/ui/colors/colors.module';
         UIColorsModule
     ]
 })
-export class FuseUIModule
+export class UIModule
 {
 }

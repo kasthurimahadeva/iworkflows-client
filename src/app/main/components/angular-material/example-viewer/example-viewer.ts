@@ -1,13 +1,12 @@
 import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, Input, OnDestroy, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-
 import 'prismjs/components/prism-scss';
 import 'prismjs/components/prism-typescript';
 
-import { EXAMPLE_COMPONENTS } from '../example-components';
-
 import { fuseAnimations } from '@fuse/animations';
 import { FuseCopierService } from '@fuse/services/copier.service';
+
+import { EXAMPLE_COMPONENTS } from 'app/main/components/angular-material/example-components';
 
 export interface LiveExample
 {
@@ -18,65 +17,65 @@ export interface LiveExample
 }
 
 @Component({
-    selector     : 'fuse-example-viewer',
+    selector     : 'example-viewer',
     templateUrl  : './example-viewer.html',
     styleUrls    : ['./example-viewer.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseExampleViewerComponent implements AfterViewInit, OnDestroy
+export class ExampleViewerComponent implements AfterViewInit, OnDestroy
 {
+    _example: string;
+    exampleData: LiveExample;
+    showSource: boolean;
     previewRef: ComponentRef<any>;
-    selectedIndex = 0;
+    selectedIndex: number;
+
+    @ViewChild('previewContainer', {read: ViewContainerRef})
+    private _previewContainer: ViewContainerRef;
+
+    /**
+     * Constructor
+     *
+     * @param {MatSnackBar} _matSnackBar
+     * @param {FuseCopierService} _fuseCopierService
+     * @param {ComponentFactoryResolver} _componentFactoryResolver
+     */
+    constructor(
+        private _matSnackBar: MatSnackBar,
+        private _fuseCopierService: FuseCopierService,
+        private _componentFactoryResolver: ComponentFactoryResolver
+    )
+    {
+        // Set the defaults
+        this.selectedIndex = 0;
+        this.showSource = false;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Container
+     *
+     * @param {ViewContainerRef} value
+     */
+    set container(value: ViewContainerRef)
+    {
+        this._previewContainer = value;
+    }
 
     get container(): ViewContainerRef
     {
         return this._previewContainer;
     }
 
-    set container(value: ViewContainerRef)
-    {
-        this._previewContainer = value;
-    }
-
-    @ViewChild('previewContainer', {read: ViewContainerRef}) private _previewContainer: ViewContainerRef;
-
-    /** String key of the currently displayed example. */
-    _example: string;
-    exampleData: LiveExample;
-
-    /** Whether the source for the example is being displayed. */
-    showSource = false;
-
-    constructor(
-        private snackbar: MatSnackBar,
-        private copier: FuseCopierService,
-        private _resolver: ComponentFactoryResolver
-    )
-    {
-    }
-
-    ngAfterViewInit()
-    {
-        setTimeout(() => {
-            const cmpFactory = this._resolver.resolveComponentFactory(this.exampleData.component);
-            this.previewRef = this._previewContainer.createComponent(cmpFactory);
-        }, 0);
-    }
-
-    ngOnDestroy()
-    {
-        if ( this.previewRef )
-        {
-            this.previewRef.destroy();
-        }
-    }
-
-    get example()
-    {
-        return this._example;
-    }
-
+    /**
+     * Example
+     *
+     * @param {string} example
+     */
     @Input()
     set example(example: string)
     {
@@ -91,20 +90,63 @@ export class FuseExampleViewerComponent implements AfterViewInit, OnDestroy
         }
     }
 
+    get example(): string
+    {
+        return this._example;
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * After view init
+     */
+    ngAfterViewInit(): void
+    {
+        setTimeout(() => {
+            const cmpFactory = this._componentFactoryResolver.resolveComponentFactory(this.exampleData.component);
+            this.previewRef = this._previewContainer.createComponent(cmpFactory);
+        }, 0);
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        if ( this.previewRef )
+        {
+            this.previewRef.destroy();
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle source view
+     */
     toggleSourceView(): void
     {
         this.showSource = !this.showSource;
     }
 
-    copySource(text: string)
+    /**
+     * Copy the source
+     *
+     * @param {string} text
+     */
+    copySource(text: string): void
     {
-        if ( this.copier.copyText(text) )
+        if ( this._fuseCopierService.copyText(text) )
         {
-            this.snackbar.open('Code copied', '', {duration: 2500});
+            this._matSnackBar.open('Code copied', '', {duration: 2500});
         }
         else
         {
-            this.snackbar.open('Copy failed. Please try again!', '', {duration: 2500});
+            this._matSnackBar.open('Copy failed. Please try again!', '', {duration: 2500});
         }
     }
 }

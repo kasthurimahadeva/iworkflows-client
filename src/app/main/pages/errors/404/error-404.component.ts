@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
-    selector   : 'fuse-error-404',
+    selector   : 'error-404',
     templateUrl: './error-404.component.html',
     styleUrls  : ['./error-404.component.scss']
 })

@@ -18,7 +18,7 @@ const routes = [
     },
     {
         path        : 'mail-ngrx',
-        loadChildren: './mail-ngrx/mail.module#FuseMailNgrxModule'
+        loadChildren: './mail-ngrx/mail.module#MailNgrxModule'
     },
     {
         path        : 'chat',
@@ -38,7 +38,7 @@ const routes = [
     },
     {
         path        : 'todo',
-        loadChildren: './todo/todo.module#FuseTodoModule'
+        loadChildren: './todo/todo.module#TodoModule'
     },
     {
         path        : 'file-manager',
@@ -50,7 +50,7 @@ const routes = [
     },
     {
         path        : 'scrumboard',
-        loadChildren: './scrumboard/scrumboard.module#FuseScrumboardModule'
+        loadChildren: './scrumboard/scrumboard.module#ScrumboardModule'
     }
 ];
 

@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-carded-right-sidenav-tabbed',
+    selector   : 'carded-right-sidenav-tabbed',
     templateUrl: './right-sidenav-tabbed.component.html',
     styleUrls  : ['./right-sidenav-tabbed.component.scss']
 })
-export class FuseCardedRightSidenavTabbedComponent
+export class CardedRightSidenavTabbedComponent
 {
+    /**
+     * Constructor
+     */
     constructor()
     {
     }

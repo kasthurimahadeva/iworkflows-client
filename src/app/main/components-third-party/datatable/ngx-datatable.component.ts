@@ -1,27 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'fuse-ngx-datatable',
+    selector   : 'ngx-datatable-docs',
     templateUrl: './ngx-datatable.component.html',
     styleUrls  : ['./ngx-datatable.component.scss']
 })
-export class FuseNgxDatatableComponent implements OnInit
+export class NgxDatatableDocsComponent implements OnInit, OnDestroy
 {
     rows: any[];
-    loadingIndicator = true;
-    reorderable = true;
+    loadingIndicator: boolean;
+    reorderable: boolean;
 
-    constructor(private http: HttpClient)
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    /**
+     * Constructor
+     *
+     * @param {HttpClient} _httpClient
+     */
+    constructor(
+        private _httpClient: HttpClient
+    )
     {
+        // Set the defaults
+        this.loadingIndicator = true;
+        this.reorderable = true;
+
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
     {
-        this.http.get('api/contacts-contacts')
+        this._httpClient.get('api/contacts-contacts')
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((contacts: any) => {
                 this.rows = contacts;
                 this.loadingIndicator = false;
             });
+    }
+
+    /**
+     * On destroy
+     */
+    ngOnDestroy(): void
+    {
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 }

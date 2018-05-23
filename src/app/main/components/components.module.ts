@@ -4,73 +4,74 @@ import { MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModu
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { FuseSharedModule } from '@fuse/shared.module';
+
 import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components';
-import { FuseCardsDocsComponent } from 'app/main/components/cards/cards.component';
-import { FuseCountdownDocsComponent } from 'app/main/components/countdown/countdown.component';
-import { FuseHighlightDocsComponent } from 'app/main/components/highlight/highlight.component';
-import { FuseMaterialColorPickerDocsComponent } from 'app/main/components/material-color-picker/material-color-picker.component';
-import { FuseMultiLanguageDocsComponent } from 'app/main/components/multi-language/multi-language.component';
-import { FuseNavigationDocsComponent } from 'app/main/components/navigation/navigation.component';
-import { FuseSearchBarDocsComponent } from 'app/main/components/search-bar/search-bar.component';
-import { FuseSidebarDocsComponent } from 'app/main/components/sidebar/sidebar.component';
-import { FuseShortcutsDocsComponent } from 'app/main/components/shortcuts/shortcuts.component';
-import { FuseWidgetDocsComponent } from 'app/main/components/widget/widget.component';
+import { CardsDocsComponent } from 'app/main/components/cards/cards.component';
+import { CountdownDocsComponent } from 'app/main/components/countdown/countdown.component';
+import { HighlightDocsComponent } from 'app/main/components/highlight/highlight.component';
+import { MaterialColorPickerDocsComponent } from 'app/main/components/material-color-picker/material-color-picker.component';
+import { MultiLanguageDocsComponent } from 'app/main/components/multi-language/multi-language.component';
+import { NavigationDocsComponent } from 'app/main/components/navigation/navigation.component';
+import { SearchBarDocsComponent } from 'app/main/components/search-bar/search-bar.component';
+import { SidebarDocsComponent } from 'app/main/components/sidebar/sidebar.component';
+import { ShortcutsDocsComponent } from 'app/main/components/shortcuts/shortcuts.component';
+import { WidgetDocsComponent } from 'app/main/components/widget/widget.component';
 
 const routes = [
     {
         path     : 'cards',
-        component: FuseCardsDocsComponent
+        component: CardsDocsComponent
     },
     {
         path     : 'countdown',
-        component: FuseCountdownDocsComponent
+        component: CountdownDocsComponent
     },
     {
         path     : 'highlight',
-        component: FuseHighlightDocsComponent
+        component: HighlightDocsComponent
     },
     {
         path     : 'material-color-picker',
-        component: FuseMaterialColorPickerDocsComponent
+        component: MaterialColorPickerDocsComponent
     },
     {
         path     : 'multi-language',
-        component: FuseMultiLanguageDocsComponent
+        component: MultiLanguageDocsComponent
     },
     {
         path     : 'navigation',
-        component: FuseNavigationDocsComponent
+        component: NavigationDocsComponent
     },
     {
         path     : 'search-bar',
-        component: FuseSearchBarDocsComponent
+        component: SearchBarDocsComponent
     },
     {
         path     : 'sidebar',
-        component: FuseSidebarDocsComponent
+        component: SidebarDocsComponent
     },
     {
         path     : 'shortcuts',
-        component: FuseShortcutsDocsComponent
+        component: ShortcutsDocsComponent
     },
     {
         path     : 'widget',
-        component: FuseWidgetDocsComponent
+        component: WidgetDocsComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseCardsDocsComponent,
-        FuseCountdownDocsComponent,
-        FuseHighlightDocsComponent,
-        FuseMaterialColorPickerDocsComponent,
-        FuseMultiLanguageDocsComponent,
-        FuseNavigationDocsComponent,
-        FuseSearchBarDocsComponent,
-        FuseSidebarDocsComponent,
-        FuseShortcutsDocsComponent,
-        FuseWidgetDocsComponent
+        CardsDocsComponent,
+        CountdownDocsComponent,
+        HighlightDocsComponent,
+        MaterialColorPickerDocsComponent,
+        MultiLanguageDocsComponent,
+        NavigationDocsComponent,
+        SearchBarDocsComponent,
+        SidebarDocsComponent,
+        ShortcutsDocsComponent,
+        WidgetDocsComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
@@ -88,6 +89,7 @@ const routes = [
         NgxChartsModule,
 
         FuseSharedModule,
+
         FuseCountdownModule,
         FuseHighlightModule,
         FuseMaterialColorPickerModule,

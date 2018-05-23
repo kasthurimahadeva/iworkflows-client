@@ -1,31 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { MatIconModule, MatTabsModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseHighlightModule } from '@fuse/components';
 
-import { FuseTypographyComponent } from './typography.component';
-import { FuseTypographyHeadingsComponent } from './tabs/headings/headings.component';
-import { FuseTypographyInlineTextElementsComponent } from './tabs/inline-text-elements/inline-text-elements.component';
-import { FuseTypographyBlockquotesListsComponent } from './tabs/blockquotes-lists/blockquotes-lists.component';
-import { FuseTypographyHelpersComponent } from './tabs/helpers/helpers.component';
+import { TypographyComponent } from 'app/main/ui/typography/typography.component';
+import { TypographyHeadingsComponent } from 'app/main/ui/typography/tabs/headings/headings.component';
+import { TypographyInlineTextElementsComponent } from 'app/main/ui/typography/tabs/inline-text-elements/inline-text-elements.component';
+import { TypographyBlockquotesListsComponent } from 'app/main/ui/typography/tabs/blockquotes-lists/blockquotes-lists.component';
+import { TypographyHelpersComponent } from 'app/main/ui/typography/tabs/helpers/helpers.component';
 
 const routes: Routes = [
     {
         path     : 'typography',
-        component: FuseTypographyComponent
+        component: TypographyComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        FuseTypographyComponent,
-        FuseTypographyHeadingsComponent,
-        FuseTypographyInlineTextElementsComponent,
-        FuseTypographyBlockquotesListsComponent,
-        FuseTypographyHelpersComponent
+        TypographyComponent,
+        TypographyHeadingsComponent,
+        TypographyInlineTextElementsComponent,
+        TypographyBlockquotesListsComponent,
+        TypographyHelpersComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

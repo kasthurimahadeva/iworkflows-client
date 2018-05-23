@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-config-service-docs',
+    selector   : 'config-service-docs',
     templateUrl: './config.component.html',
     styleUrls  : ['./config.component.scss']
 })
-export class FuseConfigServiceDocsComponent
+export class ConfigServiceDocsComponent
 {
+    /**
+     * Constructor
+     */
     constructor()
     {
 

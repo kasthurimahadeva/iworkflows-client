@@ -3,21 +3,33 @@ import { Component } from '@angular/core';
 import { navigation } from 'app/navigation/navigation';
 
 @Component({
-    selector   : 'fuse-navigation-docs',
+    selector   : 'navigation-docs',
     templateUrl: './navigation.component.html',
     styleUrls  : ['./navigation.component.scss']
 })
-export class FuseNavigationDocsComponent
+export class NavigationDocsComponent
 {
     navigation: any;
-    hidden = false;
+    hidden: boolean;
 
+    /**
+     * Constructor
+     */
     constructor()
     {
+        // Set the defaults
         this.navigation = navigation;
+        this.hidden = false;
     }
 
-    showHideCalendarMenuItem()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Show/hide calendar menu item
+     */
+    showHideCalendarMenuItem(): void
     {
         // Get the calendar item from the navigation
         const calendarNavItem = this.navigation[0].children[1];
@@ -27,7 +39,10 @@ export class FuseNavigationDocsComponent
         calendarNavItem.hidden = this.hidden;
     }
 
-    updateMailBadge()
+    /**
+     * Update mail badge
+     */
+    updateMailBadge(): void
     {
         // Get the mail nav item
         const mailNavItem = this.navigation[0].children[4];
@@ -36,7 +51,10 @@ export class FuseNavigationDocsComponent
         mailNavItem.badge.title = 35;
     }
 
-    addSubitemToCalendar()
+    /**
+     * Add subitem to the calendar
+     */
+    addSubitemToCalendar(): void
     {
         // Prepare the new nav item
         const newNavItem = {
@@ -59,7 +77,10 @@ export class FuseNavigationDocsComponent
         calendarNavItem.children.push(newNavItem);
     }
 
-    addNavItemWithCustomFunction()
+    /**
+     * Add a nav item with custom function
+     */
+    addNavItemWithCustomFunction(): void
     {
         // Prepare the new nav item
         const newNavItem = {

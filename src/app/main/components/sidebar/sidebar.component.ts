@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-sidebar-docs',
+    selector   : 'sidebar-docs',
     templateUrl: './sidebar.component.html',
     styleUrls  : ['./sidebar.component.scss']
 })
-export class FuseSidebarDocsComponent
+export class SidebarDocsComponent
 {
+    /**
+     * Constructor
+     */
     constructor()
     {
     }

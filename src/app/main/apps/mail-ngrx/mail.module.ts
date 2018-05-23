@@ -88,6 +88,6 @@ const routes: Routes = [
     ],
     entryComponents: [MailNgrxComposeDialogComponent]
 })
-export class FuseMailNgrxModule
+export class MailNgrxModule
 {
 }

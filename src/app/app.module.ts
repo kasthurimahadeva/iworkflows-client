@@ -13,7 +13,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 import { fuseConfig } from 'app/fuse-config';
 
-import { FuseFakeDbService } from 'app/fuse-fake-db/fuse-fake-db.service';
+import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { AppComponent } from 'app/app.component';
 import { AppStoreModule } from 'app/store/store.module';
 import { LayoutModule } from 'app/layout/layout.module';
@@ -29,7 +29,7 @@ const appRoutes: Routes = [
     },
     {
         path        : 'ui',
-        loadChildren: './main/ui/ui.module#FuseUIModule'
+        loadChildren: './main/ui/ui.module#UIModule'
     },
     {
         path        : 'services',
@@ -60,7 +60,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
 
         TranslateModule.forRoot(),
-        InMemoryWebApiModule.forRoot(FuseFakeDbService, {
+        InMemoryWebApiModule.forRoot(FakeDbService, {
             delay             : 0,
             passThruUnknownUrl: true
         }),

@@ -6,7 +6,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 import { ProfileService } from 'app/main/pages/profile/profile.service';
 import { ProfileComponent } from 'app/main/pages/profile/profile.component';
-import { FuseProfileTimelineComponent } from 'app/main/pages/profile/tabs/timeline/timeline.component';
+import { ProfileTimelineComponent } from 'app/main/pages/profile/tabs/timeline/timeline.component';
 import { ProfileAboutComponent } from 'app/main/pages/profile/tabs/about/about.component';
 import { ProfilePhotosVideosComponent } from 'app/main/pages/profile/tabs/photos-videos/photos-videos.component';
 
@@ -24,7 +24,7 @@ const routes = [
 @NgModule({
     declarations: [
         ProfileComponent,
-        FuseProfileTimelineComponent,
+        ProfileTimelineComponent,
         ProfileAboutComponent,
         ProfilePhotosVideosComponent
     ],

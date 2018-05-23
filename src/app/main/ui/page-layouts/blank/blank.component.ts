@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'fuse-blank',
+    selector   : 'blank',
     templateUrl: './blank.component.html',
     styleUrls  : ['./blank.component.scss']
 })
-export class FuseBlankComponent
+export class BlankComponent
 {
+    /**
+     * Constructor
+     */
     constructor()
     {
     }

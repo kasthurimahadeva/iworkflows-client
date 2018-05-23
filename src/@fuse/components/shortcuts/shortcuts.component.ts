@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
-import { Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
@@ -68,6 +68,7 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
     {
         // Subscribe to config changes
         this._fuseConfigService.config
+            .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(
                 (config) => {
                     this.toolbarColor = config.colorClasses.toolbar;

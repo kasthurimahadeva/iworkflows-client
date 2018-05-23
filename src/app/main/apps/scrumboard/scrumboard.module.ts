@@ -87,6 +87,6 @@ const routes: Routes = [
     ],
     entryComponents: [ScrumboardCardDialogComponent]
 })
-export class FuseScrumboardModule
+export class ScrumboardModule
 {
 }
