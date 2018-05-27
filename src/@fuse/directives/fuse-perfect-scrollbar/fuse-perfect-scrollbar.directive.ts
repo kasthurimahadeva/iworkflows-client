@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,14 +10,14 @@ import { FuseConfigService } from '@fuse/services/config.service';
 @Directive({
     selector: '[fusePerfectScrollbar]'
 })
-export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnDestroy
+export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 {
-    isDisableCustomScrollbars = false;
-    isMobile = false;
-    isInitialized = true;
+    isInitialized: boolean;
+    isMobile: boolean;
     ps: PerfectScrollbar;
 
     // Private
+    private _enabled: boolean | '';
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -33,8 +33,59 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
         private _platform: Platform
     )
     {
+        // Set the defaults
+        this.isInitialized = false;
+        this.isMobile = false;
+
         // Set the private defaults
+        this._enabled = false;
         this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Is enabled
+     *
+     * @param {boolean | ""} value
+     */
+    @Input('fusePerfectScrollbar')
+    set enabled(value: boolean | '')
+    {
+        // If nothing is provided with the directive (empty string),
+        // we will take that as a true
+        if ( value === '' )
+        {
+            value = true;
+        }
+
+        // Return, if both values are the same
+        if ( this.enabled === value )
+        {
+            return;
+        }
+
+        // Store the value
+        this._enabled = value;
+
+        // If enabled...
+        if ( this.enabled )
+        {
+            // Init the directive
+            this._init();
+        }
+        else
+        {
+            // Otherwise destroy it
+            this._destroy();
+        }
+    }
+
+    get enabled(): boolean | ''
+    {
+        return this._enabled;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -42,39 +93,20 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * On init
-     */
-    ngOnInit(): void
-    {
-        this._fuseConfigService.config
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(
-                (settings) => {
-                    this.isDisableCustomScrollbars = !settings.customScrollbars;
-                }
-            );
-
-        if ( this._platform.ANDROID || this._platform.IOS )
-        {
-            this.isMobile = true;
-        }
-    }
-
-    /**
      * After view init
      */
     ngAfterViewInit(): void
     {
-        if ( this.isMobile || this.isDisableCustomScrollbars )
-        {
-            this.isInitialized = false;
-            return;
-        }
+        // Check if scrollbars enabled or not from the main config
+        this._fuseConfigService.config
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(
+                (settings) => {
+                    this.enabled = settings.customScrollbars;
+                }
+            );
 
-        // Initialize the perfect-scrollbar
-        this.ps = new PerfectScrollbar(this.elementRef.nativeElement, {
-            wheelPropagation: true
-        });
+        // this._init();
     }
 
     /**
@@ -82,17 +114,69 @@ export class FusePerfectScrollbarDirective implements OnInit, AfterViewInit, OnD
      */
     ngOnDestroy(): void
     {
+        this._destroy();
+
+        // Unsubscribe from all subscriptions
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Initialize
+     *
+     * @private
+     */
+    _init(): void
+    {
+        // Return, if already initialized
+        if ( this.isInitialized )
+        {
+            return;
+        }
+
+        // Check if is mobile
+        if ( this._platform.ANDROID || this._platform.IOS )
+        {
+            this.isMobile = true;
+        }
+
+        // Return if it's mobile
+        if ( this.isMobile )
+        {
+            // Return...
+            return;
+        }
+
+        // Initialize the perfect-scrollbar
+        this.isInitialized = true;
+
+        this.ps = new PerfectScrollbar(this.elementRef.nativeElement, {
+            wheelPropagation: true
+        });
+    }
+
+    /**
+     * Destroy
+     *
+     * @private
+     */
+    _destroy(): void
+    {
         if ( !this.isInitialized || !this.ps )
         {
             return;
         }
 
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-
         // Destroy the perfect-scrollbar
         this.ps.destroy();
+
+        // Clean up
+        this.ps = null;
+        this.isInitialized = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
