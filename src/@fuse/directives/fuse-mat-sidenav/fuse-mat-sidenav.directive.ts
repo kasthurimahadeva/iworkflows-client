@@ -13,7 +13,7 @@ import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav/f
 export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
 {
     @HostBinding('class.mat-is-locked-open')
-    isLockedOpen = true;
+    isLockedOpen: boolean;
 
     @Input('fuseMatSidenavHelper')
     id: string;
@@ -39,6 +39,9 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
         private _observableMedia: ObservableMedia
     )
     {
+        // Set the defaults
+        this.isLockedOpen = true;
+
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }

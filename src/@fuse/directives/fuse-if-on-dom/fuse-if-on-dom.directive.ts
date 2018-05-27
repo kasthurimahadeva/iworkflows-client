@@ -5,7 +5,7 @@ import { AfterContentChecked, Directive, ElementRef, TemplateRef, ViewContainerR
 })
 export class FuseIfOnDomDirective implements AfterContentChecked
 {
-    isCreated = false;
+    isCreated: boolean;
 
     /**
      * Constructor
@@ -20,6 +20,8 @@ export class FuseIfOnDomDirective implements AfterContentChecked
         private _viewContainerRef: ViewContainerRef
     )
     {
+        // Set the defaults
+        this.isCreated = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
