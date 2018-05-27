@@ -15,6 +15,7 @@ fuse-sidebar {
     transition-duration: 150ms;
     transition-timing-function: ease-in-out;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
+    background: white;
 
     &.left-aligned {
         left: 0;
