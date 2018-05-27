@@ -59,6 +59,16 @@ export class FuseConfigService
         return this._configSubject.asObservable();
     }
 
+    /**
+     * Get default config
+     *
+     * @returns {any}
+     */
+    get defaultConfig(): any
+    {
+        return this._defaultConfig;
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
@@ -78,11 +88,11 @@ export class FuseConfigService
             this._defaultConfig.customScrollbars = false;
         }
 
-        // Set the settings from the default settings
+        // Set the config from the default config
         this._configSubject = new BehaviorSubject(_.cloneDeep(this._defaultConfig));
 
-        // Reload the default settings on every navigation start if
-        // the current settings are different from defaults
+        // Reload the default config on every navigation start if
+        // the current config is different from the default one
         this._router.events
             .pipe(filter(event => event instanceof NavigationStart))
             .subscribe(() => {
@@ -91,6 +101,19 @@ export class FuseConfigService
                     this._configSubject.next(_.cloneDeep(this._defaultConfig));
                 }
             });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Reset to the default config
+     */
+    resetToDefaults(): void
+    {
+        // Set the config from the default config
+        this._configSubject.next(_.cloneDeep(this._defaultConfig));
     }
 }
 
