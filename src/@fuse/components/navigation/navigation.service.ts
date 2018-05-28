@@ -237,7 +237,49 @@ export class FuseNavigationService
 
             if ( item.children )
             {
-                this.getNavigationItem(id, item.children);
+                const childItem = this.getNavigationItem(id, item.children);
+
+                if ( childItem )
+                {
+                    return childItem;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the parent of the navigation item
+     * with the id
+     *
+     * @param id
+     * @param {any} navigation
+     * @param parent
+     */
+    getNavigationItemParent(id, navigation = null, parent = null): any
+    {
+        if ( !navigation )
+        {
+            navigation = this.getCurrentNavigation();
+            parent = navigation;
+        }
+
+        for ( const item of navigation )
+        {
+            if ( item.id === id )
+            {
+                return parent;
+            }
+
+            if ( item.children )
+            {
+                const childItem = this.getNavigationItemParent(id, item.children, item);
+
+                if ( childItem )
+                {
+                    return childItem;
+                }
             }
         }
 
@@ -284,5 +326,32 @@ export class FuseNavigationService
             // Add the item
             parent.children.push(item);
         }
+    }
+
+    /**
+     * Remove navigation item with the given id
+     *
+     * @param id
+     */
+    removeNavigationItem(id): void
+    {
+        const item = this.getNavigationItem(id);
+
+        // Return, if there is not such an item
+        if ( !item )
+        {
+            return;
+        }
+
+        // Get the parent of the item
+        let parent = this.getNavigationItemParent(id);
+
+        // This check is required because of the first level
+        // of the navigation, since the first level is not
+        // inside the 'children' array
+        parent = parent.children || parent;
+
+        // Remove the item
+        parent.splice(parent.indexOf(item), 1);
     }
 }
