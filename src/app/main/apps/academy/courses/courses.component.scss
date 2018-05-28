@@ -112,7 +112,7 @@
                     min-height: 240px;
                     transition: box-shadow 150ms ease-in-out;
 
-                    @include mat-elevation(1);
+                    @include mat-elevation(3);
 
                     .header {
                         color: white;
