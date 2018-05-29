@@ -1,0 +1,91 @@
+<div id="main">
+
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="fuseConfig.layout.toolbar === 'above'">
+        <toolbar class="above" [ngClass]="fuseConfig.colorClasses.toolbar"></toolbar>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <!-- NAVBAR: Top -->
+    <!--<navbar layout="horizontal"
+            class="top-navbar" fxHide fxShow.gt-md
+            [ngClass]="fuseConfig.colorClasses.navbar"
+            *ngIf="fuseConfig.layout.navigation.position === 'top'">
+    </navbar>-->
+    <!-- / NAVBAR: Top -->
+
+    <div id="container-1" class="container">
+
+        <!-- NAVBAR: Left -->
+        <fuse-sidebar [name]="'navbar'"
+                      [folded]="fuseConfig.layout.navigation.folded"
+                      [lockedOpen]="'gt-md'"
+                      class="left-navbar" [ngClass]="fuseConfig.colorClasses.navbar"
+                      *ngIf="fuseConfig.layout.navigation.position === 'left' || fuseConfig.layout.navigation.position === 'top'">
+            <navbar layout="vertical"></navbar>
+        </fuse-sidebar>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="container">
+
+            <!-- TOOLBAR: Below sticky -->
+            <ng-container *ngIf="fuseConfig.layout.toolbar === 'below-sticky'">
+                <toolbar class="below-sticky" [ngClass]="fuseConfig.colorClasses.toolbar"></toolbar>
+            </ng-container>
+            <!-- / TOOLBAR: Below sticky -->
+
+            <div id="container-3" class="container" fusePerfectScrollbar>
+
+                <!-- TOOLBAR: Below -->
+                <ng-container *ngIf="fuseConfig.layout.toolbar === 'below'">
+                    <toolbar class="below" [ngClass]="fuseConfig.colorClasses.toolbar"></toolbar>
+                </ng-container>
+                <!-- / TOOLBAR: Below -->
+
+                <!-- CONTENT -->
+                <content></content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below -->
+                <ng-container *ngIf="fuseConfig.layout.footer === 'below'">
+                    <footer class="below" [ngClass]="fuseConfig.colorClasses.footer"></footer>
+                </ng-container>
+                <!-- / FOOTER: Below -->
+
+            </div>
+
+            <!-- FOOTER: Below sticky -->
+            <ng-container *ngIf="fuseConfig.layout.footer === 'below-sticky'">
+                <footer class="below-sticky" [ngClass]="fuseConfig.colorClasses.footer"></footer>
+            </ng-container>
+            <!-- / FOOTER: Below sticky -->
+
+        </div>
+
+        <!-- NAVBAR: Right -->
+        <fuse-sidebar [name]="'navbar'" [align]="'right'"
+                      [folded]="fuseConfig.layout.navigation.folded"
+                      [lockedOpen]="'gt-md'"
+                      class="right-navbar" [ngClass]="fuseConfig.colorClasses.navbar"
+                      *ngIf="fuseConfig.layout.navigation.position === 'right'">
+            <navbar layout="vertical"></navbar>
+        </fuse-sidebar>
+        <!-- / NAVBAR: Right -->
+
+    </div>
+
+    <!-- FOOTER: Above -->
+    <ng-container *ngIf="fuseConfig.layout.footer === 'above'">
+        <footer class="above" [ngClass]="fuseConfig.colorClasses.footer"></footer>
+    </ng-container>
+    <!-- FOOTER: Above -->
+
+</div>
+
+<!-- QUICK PANEL -->
+<fuse-sidebar [name]="'quickPanel'" [align]="'right'" class="quick-panel">
+    <quick-panel></quick-panel>
+</fuse-sidebar>
+<!-- / QUICK PANEL -->
+
+<fuse-theme-options [navigation]="navigation"></fuse-theme-options>

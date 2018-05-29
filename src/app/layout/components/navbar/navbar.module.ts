@@ -4,7 +4,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { FuseNavigationModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { NavbarComponent } from 'app/layout/blocks/navbar/navbar.component';
+import { NavbarComponent } from 'app/layout/components/navbar/navbar.component';
 
 @NgModule({
     declarations: [

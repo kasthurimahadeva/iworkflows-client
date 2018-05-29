@@ -146,11 +146,11 @@ export class ToolbarComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Toggle sidebar opened
+     * Toggle sidebar open
      *
      * @param key
      */
-    toggleSidebarOpened(key): void
+    toggleSidebarOpen(key): void
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }

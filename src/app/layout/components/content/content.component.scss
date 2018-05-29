@@ -1,0 +1,11 @@
+content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    z-index: 1;
+
+    > *:not(router-outlet) {
+        display: flex;
+        flex: 1 1 auto;
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -8,10 +8,11 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
-    selector   : 'content',
-    templateUrl: './content.component.html',
-    styleUrls  : ['./content.component.scss'],
-    animations : fuseAnimations
+    selector     : 'content',
+    templateUrl  : './content.component.html',
+    styleUrls    : ['./content.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ContentComponent implements OnInit, OnDestroy
 {

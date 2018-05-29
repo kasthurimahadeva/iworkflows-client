@@ -1,3 +1,5 @@
+import { FuseConfig } from '@fuse/types';
+
 /**
  * Default Fuse Configuration
  *
@@ -5,23 +7,24 @@
  * basis. See `app/main/pages/authentication/login/login.component.ts` constructor method to learn more
  * about changing these options per component basis.
  */
-export const fuseConfig = {
+
+export const fuseConfig: FuseConfig = {
     layout          : {
-        style     : 'vertical-basic',
+        style     : 'vertical-layout-1',
         navigation: {
-            position: 'left',
-            folded  : false
+            position  : 'left',
+            folded    : false,
+            background: 'mat-fuse-dark-700-bg'
         },
-        // navigation      : 'left', // 'right', 'left', 'top', 'none'
-        // navigationFolded: false, // true, false
-        toolbar         : 'below', // 'above', 'below', 'none'
-        footer          : 'below', // 'above', 'below', 'none'
-        mode            : 'fullwidth' // 'boxed', 'fullwidth'
-    },
-    colorClasses    : {
-        toolbar: 'mat-white-500-bg',
-        navbar : 'mat-fuse-dark-700-bg',
-        footer : 'mat-fuse-dark-900-bg'
+        toolbar   : {
+            position  : 'below',
+            background: 'mat-white-500-bg'
+        },
+        footer    : {
+            position  : 'below',
+            background: 'mat-fuse-dark-900-bg'
+        },
+        mode      : 'fullwidth'
     },
     customScrollbars: true,
     routerAnimation : 'fadeIn' // fadeIn, slideUp, slideDown, slideRight, slideLeft, none

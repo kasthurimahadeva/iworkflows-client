@@ -3,11 +3,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
+import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
-
-import { navigation } from 'app/navigation/navigation';
-import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
 @Component({
     selector     : 'navbar',
@@ -43,7 +41,6 @@ export class NavbarComponent implements OnInit, OnDestroy
     {
         // Set the defaults
         this.layout = 'vertical';
-        this.navigation = navigation;
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -94,6 +91,13 @@ export class NavbarComponent implements OnInit, OnDestroy
                     }
                 }
             );
+
+        // Get current navigation
+        this._fuseNavigationService.onNavigationChanged
+            .pipe(filter(value => value !== null))
+            .subscribe(() => {
+                this.navigation = this._fuseNavigationService.getCurrentNavigation();
+            });
     }
 
     /**

@@ -8,7 +8,7 @@
 
             <button mat-icon-button class="toggle-button-navbar"
                     *ngIf="!noNav"
-                    (click)="toggleSidebarOpened('navbar')" fxHide.gt-md>
+                    (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
                 <mat-icon>menu</mat-icon>
             </button>
 
@@ -92,7 +92,7 @@
 
             <button mat-icon-button
                     class="quick-panel-toggle-button"
-                    fuseMatSidenavToggler="quick-panel"
+                    (click)="toggleSidebarOpen('quickPanel')"
                     aria-label="Toggle quick panel">
                 <mat-icon class="icon">format_list_bulleted</mat-icon>
             </button>

@@ -71,7 +71,7 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(
                 (config) => {
-                    this.toolbarColor = config.colorClasses.toolbar;
+                    this.toolbarColor = config.layout.toolbar.background;
                 }
             );
 

@@ -6,12 +6,12 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { navigation } from 'app/navigation/navigation';
 
 @Component({
-    selector     : 'vertical-nav-basic-layout',
-    templateUrl  : './basic.component.html',
-    styleUrls    : ['./basic.component.scss'],
+    selector     : 'vertical-layout-1',
+    templateUrl  : './layout-1.component.html',
+    styleUrls    : ['./layout-1.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class VerticalNavBasicLayoutComponent implements OnInit, OnDestroy
+export class VerticalLayout1Component implements OnInit, OnDestroy
 {
     fuseConfig: any;
     navigation: any;

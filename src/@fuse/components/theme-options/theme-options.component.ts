@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -15,8 +16,9 @@ import { FuseNavigationService } from '@fuse/components/navigation/navigation.se
 })
 export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 {
-    @Input()
-    navigation;
+    fuseConfig: any;
+    fuseConfigForm: FormGroup;
+    player: AnimationPlayer;
 
     @ViewChild('openButton')
     openButton;
@@ -27,16 +29,15 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     @ViewChild('overlay')
     overlay: ElementRef;
 
-    player: AnimationPlayer;
-    fuseConfig: any;
-
-    @HostBinding('class.bar-closed') barClosed: boolean;
+    @HostBinding('class.bar-closed')
+    barClosed: boolean;
 
     // Private
     private _unsubscribeAll: Subject<any>;
 
     constructor(
         private _animationBuilder: AnimationBuilder,
+        private _formBuilder: FormBuilder,
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
         private _renderer: Renderer2
@@ -66,16 +67,44 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                 }
             );
 
+        // Build the config form
+        // noinspection TypeScriptValidateTypes
+        this.fuseConfigForm = this._formBuilder.group({
+            layout          : this._formBuilder.group({
+                style     : this.fuseConfig.layout.style,
+                navigation: this._formBuilder.group({
+                    position  : this.fuseConfig.layout.navigation.position,
+                    folded    : this.fuseConfig.layout.navigation.folded,
+                    background: this.fuseConfig.layout.navigation.background
+                }),
+                toolbar   : this._formBuilder.group({
+                    position  : this.fuseConfig.layout.toolbar.position,
+                    background: this.fuseConfig.layout.toolbar.background
+                }),
+                footer    : this._formBuilder.group({
+                    position  : this.fuseConfig.layout.footer.position,
+                    background: this.fuseConfig.layout.footer.background
+                }),
+                mode      : this.fuseConfig.layout.mode
+            }),
+            customScrollbars: this.fuseConfig.customScrollbars,
+            routerAnimation : this.fuseConfig.routerAnimation
+        });
+
+        // Subscribe to the form value changes
+        this.fuseConfigForm.valueChanges.subscribe((config) => {
+
+            // Update the config
+            this._fuseConfigService.config = config;
+        });
+
         // Listen for the overlay's click event
         this._renderer.listen(this.overlay.nativeElement, 'click', () => {
             this.closeBar();
         });
 
-        // Get the nav model and add customize nav item
-        // that opens the bar programmatically
-        const nav: any = this.navigation;
-
-        nav.push({
+        // Add customize nav item that opens the bar programmatically
+        const customFunctionNavItem = {
             'id'      : 'custom-function',
             'title'   : 'Custom Function',
             'type'    : 'group',
@@ -90,7 +119,9 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     }
                 }
             ]
-        });
+        };
+
+        this._fuseNavigationService.addNavigationItem(customFunctionNavItem, 'end');
     }
 
     /**
@@ -101,6 +132,9 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+
+        // Remove the custom function menu
+        this._fuseNavigationService.removeNavigationItem('custom-function');
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -110,9 +144,50 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     /**
      * On config change
      */
-    onConfigChange(): void
+    onConfigChange(layoutChanged = false): void
     {
         this._fuseConfigService.config = this.fuseConfig;
+
+        // If the layout changed, reset the settings
+        if ( layoutChanged )
+        {
+            this.resetConfig();
+        }
+    }
+
+    /**
+     * Reset the config correctly
+     */
+    resetConfig(): void
+    {
+        // Check the layout style and reset the
+        // configuration properly so we don't end
+        // up with options that don't work with
+        // selected layout style
+        switch ( this.fuseConfig.layout.style )
+        {
+            // Vertical
+
+            // Layout 1
+            case 'vertical-layout-1':
+            {
+                this._fuseConfigService.config = {
+                    layout: {
+                        style     : 'vertical-layout-1',
+                        navigation: {
+                            position: 'left'
+                        }
+                    }
+                };
+
+                break;
+            }
+
+            default :
+            {
+                break;
+            }
+        }
     }
 
     /**
