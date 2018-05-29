@@ -15,11 +15,11 @@ import { FuseConfigService } from '@fuse/services/config.service';
 })
 export class FuseShortcutsComponent implements OnInit, OnDestroy
 {
-    shortcutItems: any[] = [];
+    shortcutItems: any[];
     navigationItems: any[];
     filteredNavigationItems: any[];
-    searching = false;
-    mobileShortcutsPanelActive = false;
+    searching: boolean;
+    mobileShortcutsPanelActive: boolean;
     toolbarColor: string;
 
     @Input()
@@ -45,14 +45,19 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
      * @param {ObservableMedia} _observableMedia
      */
     constructor(
-        private _renderer: Renderer2,
         private _cookieService: CookieService,
+        private _fuseConfigService: FuseConfigService,
         private _fuseMatchMediaService: FuseMatchMediaService,
         private _fuseNavigationService: FuseNavigationService,
-        private _fuseConfigService: FuseConfigService,
-        private _observableMedia: ObservableMedia
+        private _observableMedia: ObservableMedia,
+        private _renderer: Renderer2
     )
     {
+        // Set the defaults
+        this.shortcutItems = [];
+        this.searching = false;
+        this.mobileShortcutsPanelActive = false;
+
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
