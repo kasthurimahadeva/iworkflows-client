@@ -3,8 +3,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { FuseNavigationService } from '../../navigation.service';
+import { FuseNavigationItem } from '@fuse/types';
 import { fuseAnimations } from '@fuse/animations';
+import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
 @Component({
     selector   : 'fuse-nav-vertical-collapse',
@@ -15,7 +16,7 @@ import { fuseAnimations } from '@fuse/animations';
 export class FuseNavVerticalCollapseComponent implements OnInit, OnDestroy
 {
     @Input()
-    item: any;
+    item: FuseNavigationItem;
 
     @HostBinding('class')
     classes = 'nav-collapse nav-item';

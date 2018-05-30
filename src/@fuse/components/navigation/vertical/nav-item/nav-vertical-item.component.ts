@@ -1,5 +1,7 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
+import { FuseNavigationItem } from '@fuse/types';
+
 @Component({
     selector   : 'fuse-nav-vertical-item',
     templateUrl: './nav-vertical-item.component.html',
@@ -11,7 +13,7 @@ export class FuseNavVerticalItemComponent
     classes = 'nav-item';
 
     @Input()
-    item: any;
+    item: FuseNavigationItem;
 
     /**
      * Constructor
