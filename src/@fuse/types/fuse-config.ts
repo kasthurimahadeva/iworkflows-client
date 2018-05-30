@@ -18,5 +18,5 @@ export interface FuseConfig
         mode: 'fullwidth' | 'boxed'
     };
     customScrollbars: boolean;
-    routerAnimation: string;
+    routerAnimation: 'fadeIn' | 'slideUp' | 'slideDown' | 'slideRight' | 'slideLeft' | 'none';
 }

@@ -27,5 +27,5 @@ export const fuseConfig: FuseConfig = {
         mode      : 'fullwidth'
     },
     customScrollbars: true,
-    routerAnimation : 'fadeIn' // fadeIn, slideUp, slideDown, slideRight, slideLeft, none
+    routerAnimation : 'fadeIn'
 };
