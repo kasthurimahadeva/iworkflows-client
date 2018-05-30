@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { FuseSidebarService } from './sidebar.service';
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
@@ -159,6 +159,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // Register the sidebar
         this._fuseSidebarService.register(this.name, this);
 
+        // Setup visibility
+        this._setupVisibility();
+
         // Setup alignment
         this._setupAlignment();
 
@@ -224,6 +227,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // Set the wasActive for the first time
         this._wasActive = false;
 
+        // Show the sidebar
+        this._showSidebar();
+
         // Act on every media change
         this._fuseMatchMediaService.onMediaChange
             .pipe(takeUntil(this._unsubscribeAll))
@@ -244,6 +250,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                     // Set the lockedOpen status
                     this.isLockedOpen = true;
 
+                    // Show the sidebar
+                    this._showSidebar();
+
                     // Force the the opened status to true
                     this.opened = true;
 
@@ -255,7 +264,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                     }
 
                     // Hide the backdrop if any exists
-                    this.hideBackdrop();
+                    this._hideBackdrop();
                 }
                 // De-Activate the lockedOpen
                 else
@@ -268,11 +277,132 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
                     // Force the the opened status to close
                     this.opened = false;
+
+                    // Hide the sidebar
+                    this._hideSidebar();
                 }
 
                 // Store the new active status
                 this._wasActive = isActive;
             });
+    }
+
+    /**
+     * Setup the visibility of the sidebar
+     *
+     * @private
+     */
+    private _setupVisibility(): void
+    {
+        // Remove the existing box-shadow
+        this._renderer.setStyle(this._elementRef.nativeElement, 'box-shadow', 'none');
+
+        // Make the sidebar invisible
+        this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
+    }
+
+    /**
+     * Show the backdrop
+     *
+     * @private
+     */
+    private _showBackdrop(): void
+    {
+        // Create the backdrop element
+        this._backdrop = this._renderer.createElement('div');
+
+        // Add a class to the backdrop element
+        this._backdrop.classList.add('fuse-sidebar-overlay');
+
+        // Append the backdrop to the parent of the sidebar
+        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);
+
+        // Create the enter animation and attach it to the player
+        this._player =
+            this._animationBuilder
+                .build([
+                    animate('300ms ease', style({opacity: 1}))
+                ]).create(this._backdrop);
+
+        // Play the animation
+        this._player.play();
+
+        // Add an event listener to the overlay
+        this._backdrop.addEventListener('click', () => {
+                this.close();
+            }
+        );
+    }
+
+    /**
+     * Hide the backdrop
+     *
+     * @private
+     */
+    private _hideBackdrop(): void
+    {
+        if ( !this._backdrop )
+        {
+            return;
+        }
+
+        // Create the leave animation and attach it to the player
+        this._player =
+            this._animationBuilder
+                .build([
+                    animate('300ms ease', style({opacity: 0}))
+                ]).create(this._backdrop);
+
+        // Play the animation
+        this._player.play();
+
+        // Once the animation is done...
+        this._player.onDone(() => {
+
+            // If the backdrop still exists...
+            if ( this._backdrop )
+            {
+                // Remove the backdrop
+                this._backdrop.parentNode.removeChild(this._backdrop);
+                this._backdrop = null;
+            }
+        });
+    }
+
+    /**
+     * Change some properties of the sidebar
+     * and make it visible
+     *
+     * @private
+     */
+    private _showSidebar(): void
+    {
+        // Remove the box-shadow style
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'box-shadow');
+
+        // Make the sidebar invisible
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'visibility');
+    }
+
+    /**
+     * Change some properties of the sidebar
+     * and make it invisible
+     *
+     * @private
+     */
+    private _hideSidebar(delay = true): void
+    {
+        const delayAmount = delay ? 300 : 0;
+
+        // Add a delay so close animation can play
+        setTimeout(() => {
+
+            // Remove the box-shadow
+            this._renderer.setStyle(this._elementRef.nativeElement, 'box-shadow', 'none');
+
+            // Make the sidebar invisible
+            this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
+        }, delayAmount);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -289,8 +419,11 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             return;
         }
 
+        // Show the sidebar
+        this._showSidebar();
+
         // Show the backdrop
-        this.showBackdrop();
+        this._showBackdrop();
 
         // Set the opened status
         this.opened = true;
@@ -307,10 +440,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         }
 
         // Hide the backdrop
-        this.hideBackdrop();
+        this._hideBackdrop();
 
         // Set the opened status
         this.opened = false;
+
+        // Hide the sidebar
+        this._hideSidebar();
     }
 
     /**
@@ -403,69 +539,5 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         {
             this.fold();
         }
-    }
-
-    /**
-     * Show the backdrop
-     */
-    showBackdrop(): void
-    {
-        // Create the backdrop element
-        this._backdrop = this._renderer.createElement('div');
-
-        // Add a class to the backdrop element
-        this._backdrop.classList.add('fuse-sidebar-overlay');
-
-        // Append the backdrop to the parent of the sidebar
-        this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);
-
-        // Create the enter animation and attach it to the player
-        this._player =
-            this._animationBuilder
-                .build([
-                    animate('300ms ease', style({opacity: 1}))
-                ]).create(this._backdrop);
-
-        // Play the animation
-        this._player.play();
-
-        // Add an event listener to the overlay
-        this._backdrop.addEventListener('click', () => {
-                this.close();
-            }
-        );
-    }
-
-    /**
-     * Hide the backdrop
-     */
-    hideBackdrop(): void
-    {
-        if ( !this._backdrop )
-        {
-            return;
-        }
-
-        // Create the leave animation and attach it to the player
-        this._player =
-            this._animationBuilder
-                .build([
-                    animate('300ms ease', style({opacity: 0}))
-                ]).create(this._backdrop);
-
-        // Play the animation
-        this._player.play();
-
-        // Once the animation is done...
-        this._player.onDone(() => {
-
-            // If the backdrop still exists...
-            if ( this._backdrop )
-            {
-                // Remove the backdrop
-                this._backdrop.parentNode.removeChild(this._backdrop);
-                this._backdrop = null;
-            }
-        });
     }
 }
