@@ -20,9 +20,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @Input()
     name: string;
 
-    // Align
+    // Position
     @Input()
-    align: 'left' | 'right';
+    position: 'left' | 'right';
 
     // Open
     @HostBinding('class.open')
@@ -39,6 +39,10 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // Folded unfolded
     @HostBinding('class.unfolded')
     unfolded: boolean;
+
+    // Invisible overlay
+    @Input()
+    invisibleOverlay: boolean;
 
     // Private
     private _folded: boolean;
@@ -70,9 +74,10 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
-        this.opened = false;
         this.folded = false;
-        this.align = 'left';
+        this.opened = false;
+        this.position = 'left';
+        this.invisibleOverlay = false;
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -97,14 +102,14 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         this._folded = value;
 
         // Programmatically add/remove margin to the element
-        // that comes after or before based on the alignment
+        // that comes after or before based on the position
         let sibling,
             styleRule;
 
         const styleValue = '64px';
 
         // Get the sibling and set the style rule
-        if ( this.align === 'left' )
+        if ( this.position === 'left' )
         {
             sibling = this._elementRef.nativeElement.nextElementSibling;
             styleRule = 'marginLeft';
@@ -162,8 +167,8 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // Setup visibility
         this._setupVisibility();
 
-        // Setup alignment
-        this._setupAlignment();
+        // Setup position
+        this._setupPosition();
 
         // Setup lockedOpen
         this._setupLockedOpen();
@@ -193,21 +198,21 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Set the sidebar alignment
+     * Setup the sidebar position
      *
      * @private
      */
-    private _setupAlignment(): void
+    private _setupPosition(): void
     {
         // Add the correct class name to the sidebar
-        // element depending on the align attribute
-        if ( this.align === 'right' )
+        // element depending on the position attribute
+        if ( this.position === 'right' )
         {
-            this._renderer.addClass(this._elementRef.nativeElement, 'right-aligned');
+            this._renderer.addClass(this._elementRef.nativeElement, 'right-positioned');
         }
         else
         {
-            this._renderer.addClass(this._elementRef.nativeElement, 'left-aligned');
+            this._renderer.addClass(this._elementRef.nativeElement, 'left-positioned');
         }
     }
 
@@ -313,6 +318,12 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Add a class to the backdrop element
         this._backdrop.classList.add('fuse-sidebar-overlay');
+
+        // Add a class depending on the invisibleOverlay option
+        if ( this.invisibleOverlay )
+        {
+            this._backdrop.classList.add('fuse-sidebar-overlay-invisible');
+        }
 
         // Append the backdrop to the parent of the sidebar
         this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);

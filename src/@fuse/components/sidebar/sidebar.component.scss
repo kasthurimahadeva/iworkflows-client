@@ -17,12 +17,12 @@ fuse-sidebar {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
     background: white;
 
-    &.left-aligned {
+    &.left-positioned {
         left: 0;
         transform: translateX(-100%);
     }
 
-    &.right-aligned {
+    &.right-positioned {
         right: 0;
         transform: translateX(100%);
     }
@@ -58,4 +58,8 @@ fuse-sidebar {
     z-index: 3;
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 0;
+
+    &.fuse-sidebar-overlay-invisible {
+        background-color: transparent;
+    }
 }
