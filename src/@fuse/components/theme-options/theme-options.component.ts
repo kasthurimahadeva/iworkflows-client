@@ -1,5 +1,4 @@
-import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { style, animate, AnimationBuilder, AnimationPlayer } from '@angular/animations';
+import { Component, HostBinding, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -7,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 @Component({
     selector   : 'fuse-theme-options',
@@ -18,16 +18,6 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 {
     fuseConfig: any;
     fuseConfigForm: FormGroup;
-    player: AnimationPlayer;
-
-    @ViewChild('openButton')
-    openButton;
-
-    @ViewChild('panel')
-    panel;
-
-    @ViewChild('overlay')
-    overlay: ElementRef;
 
     @HostBinding('class.bar-closed')
     barClosed: boolean;
@@ -35,11 +25,20 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     // Private
     private _unsubscribeAll: Subject<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {FormBuilder} _formBuilder
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {FuseNavigationService} _fuseNavigationService
+     * @param {FuseSidebarService} _fuseSidebarService
+     * @param {Renderer2} _renderer
+     */
     constructor(
-        private _animationBuilder: AnimationBuilder,
         private _formBuilder: FormBuilder,
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
+        private _fuseSidebarService: FuseSidebarService,
         private _renderer: Renderer2
     )
     {
@@ -92,16 +91,23 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         });
 
         // Subscribe to the form value changes
-        this.fuseConfigForm.valueChanges.subscribe((config) => {
+        this.fuseConfigForm.valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((config) => {
 
-            // Update the config
-            this._fuseConfigService.config = config;
-        });
+                // Update the config
+                this._fuseConfigService.config = config;
+            });
 
-        // Listen for the overlay's click event
-        this._renderer.listen(this.overlay.nativeElement, 'click', () => {
-            this.closeBar();
-        });
+        // Subscribe to the layout style value changes
+        const layoutControls: any = this.fuseConfigForm.controls.layout;
+        layoutControls.controls.style.valueChanges
+                      .pipe(takeUntil(this._unsubscribeAll))
+                      .subscribe((layout) => {
+
+                          // Reset the config
+                          this.resetConfig(layout);
+                      });
 
         // Add customize nav item that opens the bar programmatically
         const customFunctionNavItem = {
@@ -115,7 +121,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     'type'    : 'item',
                     'icon'    : 'settings',
                     'function': () => {
-                        this.openBar();
+                        this._toggleSidebarOpen('themeOptionsPanel');
                     }
                 }
             ]
@@ -138,47 +144,92 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle sidebar open
+     *
+     * @param key
+     * @private
+     */
+    private _toggleSidebarOpen(key): void
+    {
+        this._fuseSidebarService.getSidebar(key).toggleOpen();
+    }
+
+
+    // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * On config change
-     */
-    onConfigChange(layoutChanged = false): void
-    {
-        this._fuseConfigService.config = this.fuseConfig;
-
-        // If the layout changed, reset the settings
-        if ( layoutChanged )
-        {
-            this.resetConfig();
-        }
-    }
-
-    /**
      * Reset the config correctly
      */
-    resetConfig(): void
+    resetConfig(layout): void
     {
+        console.log(layout);
+
         // Check the layout style and reset the
         // configuration properly so we don't end
         // up with options that don't work with
         // selected layout style
-        switch ( this.fuseConfig.layout.style )
+        switch ( layout )
         {
             // Vertical
 
             // Layout 1
             case 'vertical-layout-1':
             {
-                this._fuseConfigService.config = {
+                // Reset the config form
+                this.fuseConfigForm.patchValue({
                     layout: {
-                        style     : 'vertical-layout-1',
                         navigation: {
-                            position: 'left'
+                            folder: false
+                        },
+                        toolbar   : {
+                            position: 'below'
                         }
                     }
-                };
+                });
+
+                break;
+            }
+
+            // Layout 2
+            case 'vertical-layout-2':
+            {
+                console.log('resetting the options for vertical-layout-2...');
+
+                // Reset the config form
+                this.fuseConfigForm.patchValue({
+                    layout: {
+                        navigation: {
+                            folder: false
+                        },
+                        toolbar   : {
+                            position: 'below'
+                        }
+                    }
+                });
+
+                break;
+            }
+
+            // Layout 3
+            case 'vertical-layout-3':
+            {
+                // Reset the config form
+                this.fuseConfigForm.patchValue({
+                    layout: {
+                        navigation: {
+                            folder: false
+                        },
+                        toolbar   : {
+                            position: 'below'
+                        }
+                    }
+                });
 
                 break;
             }
@@ -188,41 +239,5 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                 break;
             }
         }
-    }
-
-    /**
-     * Open the bar
-     */
-    openBar(): void
-    {
-        this.barClosed = false;
-
-        this.player =
-            this._animationBuilder
-                .build([
-                    style({transform: 'translate3d(100%,0,0)'}),
-                    animate('400ms ease', style({transform: 'translate3d(0,0,0)'}))
-                ]).create(this.panel.nativeElement);
-
-        this.player.play();
-    }
-
-    /**
-     * Close the bar
-     */
-    closeBar(): void
-    {
-        this.player =
-            this._animationBuilder
-                .build([
-                    style({transform: 'translate3d(0,0,0)'}),
-                    animate('400ms ease', style({transform: 'translate3d(100%,0,0)'}))
-                ]).create(this.panel.nativeElement);
-
-        this.player.play();
-
-        this.player.onDone(() => {
-            this.barClosed = true;
-        });
     }
 }

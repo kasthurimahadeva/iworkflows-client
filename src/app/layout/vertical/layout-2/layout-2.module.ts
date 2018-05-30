@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
+import { FuseSidebarModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { ContentModule } from 'app/layout/components/content/content.module';
@@ -18,7 +18,6 @@ import { VerticalLayout2Component } from 'app/layout/vertical/layout-2/layout-2.
     imports     : [
         FuseSharedModule,
         FuseSidebarModule,
-        FuseThemeOptionsModule,
 
         ContentModule,
         FooterModule,

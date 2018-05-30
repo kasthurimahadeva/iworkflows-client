@@ -4,12 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
 
 import { FuseModule } from '@fuse/fuse.module';
 import { FuseSharedModule } from '@fuse/shared.module';
+import { FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
 
 import { fuseConfig } from 'app/fuse-config';
 
@@ -68,9 +70,15 @@ const appRoutes: Routes = [
         // Material moment date module
         MatMomentDateModule,
 
+        // Material
+        MatButtonModule,
+        MatIconModule,
+
         // Fuse modules
         FuseModule.forRoot(fuseConfig),
         FuseSharedModule,
+        FuseSidebarModule,
+        FuseThemeOptionsModule,
 
         // App modules
         LayoutModule,

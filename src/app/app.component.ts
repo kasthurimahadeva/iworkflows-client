@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit, OnDestroy
      *
      * @param {FuseConfigService} _fuseConfigService
      * @param {FuseNavigationService} _fuseNavigationService
+     * @param {FuseSidebarService} _fuseSidebarService
      * @param {FuseSplashScreenService} _fuseSplashScreenService
      * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
      * @param {TranslateService} _translateService
@@ -37,6 +39,7 @@ export class AppComponent implements OnInit, OnDestroy
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
+        private _fuseSidebarService: FuseSidebarService,
         private _fuseSplashScreenService: FuseSplashScreenService,
         private _fuseTranslationLoaderService: FuseTranslationLoaderService,
         private _translateService: TranslateService
@@ -92,5 +95,20 @@ export class AppComponent implements OnInit, OnDestroy
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Private methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle sidebar open
+     *
+     * @param key
+     * @private
+     */
+    private _toggleSidebarOpen(key): void
+    {
+        this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
 }

@@ -1,12 +1,6 @@
-<button #openButton mat-icon-button class="open-button mat-primary-bg mat-elevation-z2" (click)="openBar()">
-    <mat-icon>settings</mat-icon>
-</button>
+<div class="theme-options-panel mat-white-bg mat-elevation-z8" fusePerfectScrollbar>
 
-<div class="theme-options-panel-overlay" #overlay [fxHide]="barClosed" [@fadeInOut]="!barClosed"></div>
-
-<div #panel class="theme-options-panel mat-white-bg mat-elevation-z8">
-
-    <button mat-icon-button class="close-button" (click)="closeBar()">
+    <button mat-icon-button class="close-button" (click)="_toggleSidebarOpen('themeOptionsPanel')">
         <mat-icon>close</mat-icon>
     </button>
 
@@ -26,11 +20,11 @@
             <div formGroupName="layout">
 
                 <!-- VERTICAL LAYOUT STYLES -->
-                <h3>Vertical Layout Styles:</h3>
+                <h3>Scrollable Area:</h3>
                 <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="style">
-                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-1">Layout 1</mat-radio-button>
-                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-2">Layout 2</mat-radio-button>
-                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-3">Layout 3</mat-radio-button>
+                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-1">Content</mat-radio-button>
+                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-2">Wrapper</mat-radio-button>
+                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-3">Body</mat-radio-button>
                 </mat-radio-group>
 
                 <!-- HORIZONTAL LAYOUT STYLES -->
@@ -79,8 +73,15 @@
                     <h3 class="mt-24">Toolbar:</h3>
                     <mat-radio-group formControlName="position" fxLayout="column" fxLayoutAlign="start start">
                         <mat-radio-button class="mr-8 mb-8" value="above">Above</mat-radio-button>
+                        <mat-radio-button class="mr-8 mb-8" value="above-sticky"
+                                          [disabled]="fuseConfig.layout.style === 'vertical-layout-1' || fuseConfig.layout.style === 'vertical-layout-2'">
+                            Above Sticky
+                        </mat-radio-button>
                         <mat-radio-button class="mr-8 mb-8" value="below">Below</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="below-sticky">Below Sticky</mat-radio-button>
+                        <mat-radio-button class="mr-8 mb-8" value="below-sticky"
+                                          [disabled]="fuseConfig.layout.style === 'vertical-layout-3'">
+                            Below Sticky
+                        </mat-radio-button>
                         <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
                     </mat-radio-group>
 

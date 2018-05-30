@@ -47,7 +47,7 @@
             </div>
 
             <!-- NAVBAR: Right -->
-            <fuse-sidebar [name]="'navbar'" [align]="'right'"
+            <fuse-sidebar [name]="'navbar'" position="right"
                           [folded]="fuseConfig.layout.navigation.folded"
                           [lockedOpen]="'gt-md'"
                           class="right-navbar" [ngClass]="fuseConfig.layout.navigation.background"
@@ -75,9 +75,7 @@
 </div>
 
 <!-- QUICK PANEL -->
-<fuse-sidebar [name]="'quickPanel'" [align]="'right'" class="quick-panel">
+<fuse-sidebar [name]="'quickPanel'" position="right" class="quick-panel">
     <quick-panel></quick-panel>
 </fuse-sidebar>
 <!-- / QUICK PANEL -->
-
-<fuse-theme-options></fuse-theme-options>

@@ -4,7 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatOptionModule, MatRadioModule, MatSelectModule, MatSlideToggleModule } from '@angular/material';
 
+import { FuseDirectivesModule } from '@fuse/directives/directives';
+import { FuseSidebarModule } from '@fuse/components/sidebar/sidebar.module';
 import { FuseMaterialColorPickerModule } from '@fuse/components/material-color-picker/material-color-picker.module';
+
 import { FuseThemeOptionsComponent } from '@fuse/components/theme-options/theme-options.component';
 
 @NgModule({
@@ -27,7 +30,9 @@ import { FuseThemeOptionsComponent } from '@fuse/components/theme-options/theme-
         MatSelectModule,
         MatSlideToggleModule,
 
-        FuseMaterialColorPickerModule
+        FuseDirectivesModule,
+        FuseMaterialColorPickerModule,
+        FuseSidebarModule
     ],
     exports     : [
         FuseThemeOptionsComponent
