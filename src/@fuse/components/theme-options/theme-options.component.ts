@@ -1,5 +1,5 @@
 import { Component, HostBinding, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -17,7 +17,7 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 {
     fuseConfig: any;
-    fuseConfigForm: FormGroup;
+    form: FormGroup;
 
     @HostBinding('class.bar-closed')
     barClosed: boolean;
@@ -58,56 +58,65 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        // Build the config form
+        // noinspection TypeScriptValidateTypes
+        this.form = this._formBuilder.group({
+            layout          : this._formBuilder.group({
+                style  : new FormControl(),
+                width  : new FormControl(),
+                navbar : this._formBuilder.group({
+                    hidden    : new FormControl(),
+                    position  : new FormControl(),
+                    folded    : new FormControl(),
+                    background: new FormControl()
+                }),
+                toolbar: this._formBuilder.group({
+                    hidden    : new FormControl(),
+                    position  : new FormControl(),
+                    background: new FormControl()
+                }),
+                footer : this._formBuilder.group({
+                    hidden    : new FormControl(),
+                    position  : new FormControl(),
+                    background: new FormControl()
+                })
+            }),
+            customScrollbars: new FormControl(),
+            routerAnimation : new FormControl()
+        });
+
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
-                    this.fuseConfig = config;
-                }
-            );
 
-        // Build the config form
-        // noinspection TypeScriptValidateTypes
-        this.fuseConfigForm = this._formBuilder.group({
-            layout          : this._formBuilder.group({
-                style     : this.fuseConfig.layout.style,
-                navigation: this._formBuilder.group({
-                    position  : this.fuseConfig.layout.navigation.position,
-                    folded    : this.fuseConfig.layout.navigation.folded,
-                    background: this.fuseConfig.layout.navigation.background
-                }),
-                toolbar   : this._formBuilder.group({
-                    position  : this.fuseConfig.layout.toolbar.position,
-                    background: this.fuseConfig.layout.toolbar.background
-                }),
-                footer    : this._formBuilder.group({
-                    position  : this.fuseConfig.layout.footer.position,
-                    background: this.fuseConfig.layout.footer.background
-                }),
-                mode      : this.fuseConfig.layout.mode
-            }),
-            customScrollbars: this.fuseConfig.customScrollbars,
-            routerAnimation : this.fuseConfig.routerAnimation
-        });
+                // Update the stored config
+                this.fuseConfig = config;
+
+                // Set the config form values without emitting an event
+                // so that we don't end up with an infinite loop
+                this.form.setValue(config, {emitEvent: false});
+            });
+
+        // Subscribe to the specific form value changes (layout.style)
+        this.form.get('layout.style').valueChanges
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((value) => {
+
+                // Reset the form values based on the
+                // selected layout style
+                this._resetFormValues(value);
+
+            });
 
         // Subscribe to the form value changes
-        this.fuseConfigForm.valueChanges
+        this.form.valueChanges
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
 
                 // Update the config
                 this._fuseConfigService.config = config;
             });
-
-        // Subscribe to the layout style value changes
-        const layoutControls: any = this.fuseConfigForm.controls.layout;
-        layoutControls.controls.style.valueChanges
-                      .pipe(takeUntil(this._unsubscribeAll))
-                      .subscribe((layout) => {
-
-                          // Reset the config
-                          this.resetConfig(layout);
-                      });
 
         // Add customize nav item that opens the bar programmatically
         const customFunctionNavItem = {
@@ -148,6 +157,103 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Reset the form values based on the
+     * selected layout style
+     *
+     * @param value
+     * @private
+     */
+    private _resetFormValues(value): void
+    {
+        switch ( value )
+        {
+            // Vertical Layout #1 - Content scroll
+            case 'vertical-layout-1-content-scroll':
+            {
+                this.form.patchValue({
+                    layout: {
+                        width  : 'fullwidth',
+                        navbar : {
+                            hidden    : false,
+                            position  : 'left',
+                            folded    : false,
+                            background: 'mat-fuse-dark-700-bg'
+                        },
+                        toolbar: {
+                            hidden    : false,
+                            position  : 'below-static',
+                            background: 'mat-white-500-bg'
+                        },
+                        footer : {
+                            hidden    : false,
+                            position  : 'below-static',
+                            background: 'mat-fuse-dark-900-bg'
+                        }
+                    }
+                });
+
+                break;
+            }
+
+            // Vertical Layout #1 - Body scroll
+            case 'vertical-layout-1-body-scroll':
+            {
+                this.form.patchValue({
+                    layout: {
+                        width  : 'fullwidth',
+                        navbar : {
+                            hidden    : false,
+                            position  : 'left',
+                            folded    : false,
+                            background: 'mat-fuse-dark-700-bg'
+                        },
+                        toolbar: {
+                            hidden    : false,
+                            position  : 'below',
+                            background: 'mat-white-500-bg'
+                        },
+                        footer : {
+                            hidden    : false,
+                            position  : 'below',
+                            background: 'mat-fuse-dark-900-bg'
+                        }
+                    }
+                });
+
+                break;
+            }
+
+            // Vertical Layout #2
+            case 'vertical-layout-2':
+            {
+                this.form.patchValue({
+                    layout: {
+                        width  : 'fullwidth',
+                        navbar : {
+                            hidden    : false,
+                            position  : 'left',
+                            folded    : false,
+                            background: 'mat-fuse-dark-700-bg'
+                        },
+                        toolbar: {
+                            hidden    : false,
+                            position  : 'above-static',
+                            background: 'mat-white-500-bg'
+                        },
+                        footer : {
+                            hidden    : false,
+                            position  : 'above-static',
+                            background: 'mat-fuse-dark-900-bg'
+                        }
+                    }
+                });
+
+                break;
+            }
+        }
+    }
+
+    /**
      * Toggle sidebar open
      *
      * @param key
@@ -158,86 +264,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
 
-
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Reset the config correctly
-     */
-    resetConfig(layout): void
-    {
-        console.log(layout);
-
-        // Check the layout style and reset the
-        // configuration properly so we don't end
-        // up with options that don't work with
-        // selected layout style
-        switch ( layout )
-        {
-            // Vertical
-
-            // Layout 1
-            case 'vertical-layout-1':
-            {
-                // Reset the config form
-                this.fuseConfigForm.patchValue({
-                    layout: {
-                        navigation: {
-                            folder: false
-                        },
-                        toolbar   : {
-                            position: 'below'
-                        }
-                    }
-                });
-
-                break;
-            }
-
-            // Layout 2
-            case 'vertical-layout-2':
-            {
-                console.log('resetting the options for vertical-layout-2...');
-
-                // Reset the config form
-                this.fuseConfigForm.patchValue({
-                    layout: {
-                        navigation: {
-                            folder: false
-                        },
-                        toolbar   : {
-                            position: 'below'
-                        }
-                    }
-                });
-
-                break;
-            }
-
-            // Layout 3
-            case 'vertical-layout-3':
-            {
-                // Reset the config form
-                this.fuseConfigForm.patchValue({
-                    layout: {
-                        navigation: {
-                            folder: false
-                        },
-                        toolbar   : {
-                            position: 'below'
-                        }
-                    }
-                });
-
-                break;
-            }
-
-            default :
-            {
-                break;
-            }
-        }
-    }
 }

@@ -108,6 +108,38 @@ export class FuseConfigService
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Set config
+     *
+     * @param value
+     * @param {{emitEvent: boolean}} opts
+     */
+    setConfig(value, opts = {emitEvent: true}): void
+    {
+        // Get the value from the behavior subject
+        let config = this._configSubject.getValue();
+
+        // Merge the new config
+        config = _.merge({}, config, value);
+
+        // If emitEvent option is true...
+        if ( opts.emitEvent === true )
+        {
+            // Notify the observers
+            this._configSubject.next(config);
+        }
+    }
+
+    /**
+     * Get config
+     *
+     * @returns {Observable<any>}
+     */
+    getConfig(): Observable<any>
+    {
+        return this._configSubject.asObservable();
+    }
+
+    /**
      * Reset to the default config
      */
     resetToDefaults(): void

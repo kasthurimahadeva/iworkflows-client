@@ -263,7 +263,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
                     // Read the folded setting from the config
                     // and fold the sidebar if it's true
-                    if ( this._fuseConfig.layout.navigation.folded )
+                    if ( this._fuseConfig.layout.navbar.folded )
                     {
                         this.fold();
                     }

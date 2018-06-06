@@ -123,8 +123,8 @@ export class ToolbarComponent implements OnInit, OnDestroy
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((settings) => {
-                this.horizontalNav = settings.layout.navigation.position === 'top';
-                this.noNav = settings.layout.navigation.position === 'none';
+                this.horizontalNav = settings.layout.navbar.position === 'top';
+                this.noNav = settings.layout.navbar.position === 'none';
             });
 
         // Set the selected language from default languages

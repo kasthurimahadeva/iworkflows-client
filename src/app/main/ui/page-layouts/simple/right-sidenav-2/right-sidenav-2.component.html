@@ -1,4 +1,4 @@
-<div class="page-layout simple right-sidenav single-scroll" fusePerfectScrollbar>
+<div class="page-layout simple right-sidenav inner-scroll">
 
     <mat-sidenav-container>
 
@@ -15,7 +15,7 @@
                 </button>
 
                 <div>
-                    <h2>Right sidenav with container scroll</h2>
+                    <h2>Right sidenav with inner scroll</h2>
                 </div>
 
             </div>
@@ -33,10 +33,14 @@
         <!-- / CENTER -->
 
         <!-- SIDENAV -->
-        <mat-sidenav class="sidenav  p-24" position="end" opened="true" mode="side"
+        <mat-sidenav class="sidenav" position="end" opened="true" mode="side"
                      fuseMatSidenavHelper="simple-right-sidenav-2" mat-is-locked-open="gt-md">
 
-            <fuse-demo-sidenav></fuse-demo-sidenav>
+            <div class="sidenav-content p-24" fusePerfectScrollbar>
+
+                <fuse-demo-sidenav></fuse-demo-sidenav>
+
+            </div>
 
         </mat-sidenav>
         <!-- / SIDENAV -->

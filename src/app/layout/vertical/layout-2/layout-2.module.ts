@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { FuseSidebarModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -16,6 +17,8 @@ import { VerticalLayout2Component } from 'app/layout/vertical/layout-2/layout-2.
         VerticalLayout2Component
     ],
     imports     : [
+        RouterModule,
+
         FuseSharedModule,
         FuseSidebarModule,
 

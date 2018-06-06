@@ -2,20 +2,23 @@ export interface FuseConfig
 {
     layout: {
         style: string,
-        navigation: {
-            position: 'left' | 'right' | 'top' | 'none',
+        width: 'fullwidth' | 'boxed',
+        navbar: {
+            hidden: boolean,
             folded: boolean,
+            position: 'left' | 'right' | 'top',
             background: string
         },
         toolbar: {
-            position: 'above' | 'above-sticky' | 'below' | 'below-sticky' | 'none',
+            hidden: boolean,
+            position: 'above' | 'above-static' | 'above-sticky' | 'above-fixed' | 'below' | 'below-static' | 'below-sticky' | 'below-fixed',
             background: string
         }
         footer: {
-            position: 'above' | 'below' | 'below-sticky' | 'none',
+            hidden: boolean,
+            position: 'above' | 'above-static' | 'above-sticky' | 'above-fixed' | 'below' | 'below-static' | 'below-sticky' | 'below-fixed',
             background: string
-        },
-        mode: 'fullwidth' | 'boxed'
+        }
     };
     customScrollbars: boolean;
     routerAnimation: 'fadeIn' | 'slideUp' | 'slideDown' | 'slideRight' | 'slideLeft' | 'none';

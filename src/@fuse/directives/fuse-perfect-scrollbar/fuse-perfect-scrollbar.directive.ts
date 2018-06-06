@@ -1,8 +1,8 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-
+import { filter, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
 
 import { FuseConfigService } from '@fuse/services/config.service';
@@ -18,6 +18,7 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 
     // Private
     private _enabled: boolean | '';
+    private _updateOnNavigationEnd: boolean | '';
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -26,11 +27,13 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
      * @param {ElementRef} elementRef
      * @param {FuseConfigService} _fuseConfigService
      * @param {Platform} _platform
+     * @param {Router} _router
      */
     constructor(
         public elementRef: ElementRef,
         private _fuseConfigService: FuseConfigService,
-        private _platform: Platform
+        private _platform: Platform,
+        private _router: Router
     )
     {
         // Set the defaults
@@ -39,6 +42,7 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 
         // Set the private defaults
         this._enabled = false;
+        this._updateOnNavigationEnd = false;
         this._unsubscribeAll = new Subject();
     }
 
@@ -88,6 +92,27 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
         return this._enabled;
     }
 
+    /**
+     * Update on navigation end
+     *
+     * @param value
+     */
+    @Input()
+    set updateOnNavigationEnd(value)
+    {
+        if ( value === '' )
+        {
+            value = true;
+        }
+
+        this._updateOnNavigationEnd = value;
+    }
+
+    get updateOnNavigationEnd(): boolean | ''
+    {
+        return this._updateOnNavigationEnd;
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
@@ -106,7 +131,19 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
                 }
             );
 
-        // this._init();
+        // If updateOnNavigationEnd attribute is provided,
+        // scroll to the top on every NavigationEnd
+        if ( this.updateOnNavigationEnd )
+        {
+            this._router.events
+                .pipe(
+                    takeUntil(this._unsubscribeAll),
+                    filter(event => event instanceof NavigationEnd)
+                )
+                .subscribe(() => {
+                    this.scrollToTop();
+                });
+        }
     }
 
     /**

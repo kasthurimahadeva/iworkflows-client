@@ -10,21 +10,24 @@ import { FuseConfig } from '@fuse/types';
 
 export const fuseConfig: FuseConfig = {
     layout          : {
-        style     : 'vertical-layout-1',
-        navigation: {
+        style         : 'vertical-layout-1-content-scroll',
+        width         : 'fullwidth',
+        navbar        : {
+            hidden    : false,
             position  : 'left',
             folded    : false,
             background: 'mat-fuse-dark-700-bg'
         },
-        toolbar   : {
-            position  : 'below',
+        toolbar       : {
+            hidden    : false,
+            position  : 'below-static',
             background: 'mat-white-500-bg'
         },
-        footer    : {
-            position  : 'below',
+        footer        : {
+            hidden    : false,
+            position  : 'below-static',
             background: 'mat-fuse-dark-900-bg'
-        },
-        mode      : 'fullwidth'
+        }
     },
     customScrollbars: true,
     routerAnimation : 'fadeIn'

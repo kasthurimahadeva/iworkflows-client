@@ -10,9 +10,6 @@ $header-height-sm: 100px !default;
 $carded-header-height-without-toolbar: $carded-header-height - $carded-toolbar-height;
 $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-toolbar-height;
 
-// Top bg image
-$top-bg-image: url('assets/images/backgrounds/header-bg.png');
-
 .page-layout {
     position: relative;
     overflow-x: hidden;
@@ -34,8 +31,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             right: 0;
             left: 0;
             height: $carded-header-height;
-            background-image: $top-bg-image;
-            background-size: cover;
 
             @include media-breakpoint-down('sm') {
                 height: $carded-header-height-sm;
@@ -45,12 +40,20 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         // Fullwidth
         &.fullwidth {
 
-            // Single scroll
-            &.single-scroll {
+            // Inner scroll
+            &.inner-scroll {
+                flex: 1 1 auto;
 
                 > .center {
-                    flex: 1 0 auto;
-                    max-height: none;
+                    flex: 1 1 auto;
+
+                    .content-card {
+                        flex: 1 1 auto;
+
+                        > .content {
+                            flex: 1 1 auto;
+                        }
+                    }
                 }
             }
 
@@ -58,7 +61,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             > .center {
                 display: flex;
                 flex-direction: column;
-                flex: 1;
+                flex: 1 0 auto;
                 position: relative;
                 z-index: 2;
                 padding: 0 32px;
@@ -82,7 +85,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                 .content-card {
                     display: flex;
                     flex-direction: column;
-                    flex: 1;
+                    flex: 1 0 auto;
                     overflow: hidden;
                     @include mat-elevation(7);
 
@@ -98,8 +101,53 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
 
                     > .content {
                         display: flex;
-                        flex: 1;
+                        flex: 1 0 auto;
                         overflow: auto;
+                    }
+                }
+            }
+
+            // Tabbed
+            &.tabbed {
+
+                .center {
+                    width: 100%;
+                    min-width: 0;
+
+                    .header {
+                        flex: 1 1 auto;
+                    }
+
+                    .content-card {
+
+                        .content {
+
+                            .mat-tab-group {
+                                overflow: hidden;
+
+                                .mat-tab-header {
+
+                                    .mat-tab-label {
+                                        height: 64px;
+                                    }
+                                }
+
+                                .mat-tab-body {
+                                    overflow: hidden;
+
+                                    .mat-tab-body-content {
+                                        overflow: hidden;
+
+                                        .tab-content {
+                                            position: relative;
+                                            width: 100%;
+                                            height: 100%;
+                                            overflow: auto;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -109,17 +157,9 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         &.left-sidenav,
         &.right-sidenav {
 
-            // Single scroll
-            &.single-scroll {
-
-                > mat-sidenav-container {
-                    flex: 1 0 auto;
-                }
-            }
-
             > mat-sidenav-container {
                 display: flex;
-                flex: 1;
+                flex: 1 1 auto;
                 background: none;
                 z-index: 2;
                 width: 100%;
@@ -127,7 +167,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                 .sidenav {
                     display: flex;
                     flex-direction: column;
-                    flex: 1;
+                    flex: 1 1 auto;
                     width: 240px;
                     min-width: 240px;
                     max-width: 240px;
@@ -162,7 +202,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                 > .mat-sidenav-content,
                 > .mat-drawer-content {
                     display: flex;
-                    flex: 1;
+                    flex: 1 1 auto;
                     height: auto;
                     overflow: visible;
 
@@ -170,7 +210,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                     .center {
                         display: flex;
                         flex-direction: column;
-                        flex: 1;
+                        flex: 1 1 auto;
                         position: relative;
                         z-index: 3;
                         margin-left: 32px;
@@ -192,7 +232,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         .content-card {
                             display: flex;
                             flex-direction: column;
-                            flex: 1;
+                            flex: 1 1 auto;
                             overflow: hidden;
                             @include mat-elevation(7);
 
@@ -200,7 +240,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                                 display: flex;
                                 justify-content: flex-start;
                                 align-items: center;
-                                flex: 1;
+                                flex: 1 1 auto;
                                 border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                                 height: $carded-toolbar-height;
                                 min-height: $carded-toolbar-height;
@@ -215,8 +255,32 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
 
                             .content {
                                 display: flex;
-                                flex: 1;
+                                flex: 1 1 auto;
                                 overflow: auto;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Inner scroll
+            &.inner-scroll {
+                flex: 1 1 auto;
+
+                > mat-sidenav-container {
+
+                    > .mat-sidenav-content,
+                    > .mat-drawer-content {
+
+                        > .center {
+                            flex: 1 1 auto;
+
+                            .content-card {
+                                flex: 1 1 auto;
+
+                                > .content {
+                                    flex: 1 1 auto;
+                                }
                             }
                         }
                     }
@@ -242,7 +306,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                             }
 
                             .header {
-                                flex: 1;
+                                flex: 1 1 auto;
                             }
 
                             .content-card {
@@ -336,12 +400,6 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         width: 100%;
         min-width: 100%;
 
-        // Top bg
-        > .header {
-            background-image: $top-bg-image;
-            background-size: cover;
-        }
-
         // Fullwidth
         &.fullwidth {
             overflow: auto;
@@ -363,7 +421,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
         &.right-sidenav {
 
             // Single scroll
-            &.single-scroll {
+            /*&.single-scroll {
 
                 > mat-sidenav-container {
                     flex: 1 0 auto;
@@ -374,13 +432,13 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         max-height: none;
                     }
                 }
-            }
+            }*/
 
             // Inner Sidenav
             &.inner-sidenav {
 
                 > mat-sidenav-container {
-                    flex: 1;
+                    flex: 1 1 auto;
 
                     .sidenav {
 
@@ -395,7 +453,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         height: auto;
 
                         .center {
-                            flex: 1;
+                            flex: 1 1 auto;
                             min-height: 100%;
                             @include mat-elevation(0);
 
@@ -411,7 +469,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
             > mat-sidenav-container {
                 display: flex;
                 flex-direction: column;
-                flex: 1;
+                flex: 1 1 auto;
                 background: none;
                 z-index: 2;
                 width: 100%;
@@ -439,7 +497,7 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                 > .mat-sidenav-content,
                 > .mat-drawer-content {
                     display: flex;
-                    flex: 1;
+                    flex: 1 1 auto;
                     height: auto;
                     overflow: visible;
                     max-height: 100%;
@@ -448,13 +506,12 @@ $top-bg-image: url('assets/images/backgrounds/header-bg.png');
                         height: $header-height;
                         min-height: $header-height;
                         max-height: $header-height;
-                        background-image: $top-bg-image;
                     }
 
                     .center {
                         display: flex;
                         flex-direction: column;
-                        flex: 1;
+                        flex: 1 1 auto;
                         overflow: auto;
                         @include mat-elevation(7);
 

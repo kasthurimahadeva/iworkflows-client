@@ -1,124 +1,282 @@
-<div class="theme-options-panel mat-white-bg mat-elevation-z8" fusePerfectScrollbar>
+<div class="theme-options-panel" fusePerfectScrollbar>
 
-    <button mat-icon-button class="close-button" (click)="_toggleSidebarOpen('themeOptionsPanel')">
-        <mat-icon>close</mat-icon>
-    </button>
+    <div class="header">
 
-    <div class="theme-options-panel-inner" fxLayout="column" fxLayoutAlign="start start">
+        <span class="title">Theme Options</span>
 
-        <form [formGroup]="fuseConfigForm">
+        <button mat-icon-button class="close-button" (click)="_toggleSidebarOpen('themeOptionsPanel')">
+            <mat-icon>close</mat-icon>
+        </button>
 
-            <!-- NAVIGATION STYLES -->
-            <!--<h3>Navigation Style:</h3>
-            <mat-radio-group [(ngModel)]="fuseConfig.layout.navigation.style"
-                             (ngModelChange)="onConfigChange(true)"
-                             fxLayout="column" fxLayoutAlign="start start">
-                <mat-radio-button class="mr-8 mb-8" value="vertical">Vertical</mat-radio-button>
-                <mat-radio-button class="mr-8 mb-8" value="horizontal">Horizontal</mat-radio-button>
+    </div>
+
+    <form [formGroup]="form">
+
+        <!-- LAYOUT STYLES -->
+        <div class="group" formGroupName="layout">
+
+            <h2>Layout Styles</h2>
+
+            <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="style">
+                <mat-radio-button class="mb-12" value="vertical-layout-1-content-scroll">
+                    Vertical Layout #1 - Content Scroll
+                </mat-radio-button>
+                <mat-radio-button class="mb-12" value="vertical-layout-1-body-scroll">
+                    Vertical Layout #1 - Body Scroll
+                </mat-radio-button>
+                <mat-radio-button class="mb-12" value="vertical-layout-2">
+                    Vertical Layout #2
+                </mat-radio-button>
+                <mat-radio-button class="mb-12" value="horizontal-layout-1">Horizontal Layout #1</mat-radio-button>
+                <mat-radio-button value="horizontal-layout-2">Horizontal Layout #2</mat-radio-button>
             </mat-radio-group>
-    -->
-            <div formGroupName="layout">
 
-                <!-- VERTICAL LAYOUT STYLES -->
-                <h3>Scrollable Area:</h3>
-                <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="style">
-                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-1">Content</mat-radio-button>
-                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-2">Wrapper</mat-radio-button>
-                    <mat-radio-button class="mr-8 mb-8" value="vertical-layout-3">Body</mat-radio-button>
-                </mat-radio-group>
+            <!-- DIFFERENT FORMS BASED ON LAYOUT STYLES -->
+            <ng-container [ngSwitch]="fuseConfig.layout.style">
 
-                <!-- HORIZONTAL LAYOUT STYLES -->
-                <h3 class="mt-24">Horizontal Layout Styles:</h3>
-                <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="style">
-                    <mat-radio-button class="mr-8 mb-8" value="horizontal-layout-1">Layout 1</mat-radio-button>
-                    <mat-radio-button class="mr-8 mb-8" value="horizontal-layout-2">Layout 2</mat-radio-button>
-                </mat-radio-group>
+                <!-- VERTICAL LAYOUT #1 - CONTENT SCROLL -->
+                <ng-container *ngSwitchCase="'vertical-layout-1-content-scroll'">
 
+                    <!-- LAYOUT WIDTH -->
+                    <div class="group mt-48">
 
-                <div formGroupName="navigation">
+                        <h2>Layout Width</h2>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
+                            <mat-radio-button class="mb-12" value="fullwidth">Fullwidth</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="boxed">Boxed</mat-radio-button>
+                        </mat-radio-group>
 
-                    <!-- NAVIGATION POSITIONS -->
-                    <h3 class="mt-32">Navigation Position:</h3>
+                    </div>
 
-                    <!-- VERTICAL NAVIGATION POSITIONS -->
-                    <mat-radio-group formControlName="position"
-                                     fxLayout="column" fxLayoutAlign="start start"
-                                     *ngIf="fuseConfig.layout.style.startsWith('vertical')">
-                        <mat-radio-button class="mr-8 mb-8" value="left">Left</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="right">Right</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
-                    </mat-radio-group>
+                    <!-- NAVBAR -->
+                    <div class="group" formGroupName="navbar">
 
-                    <!-- HORIZONTAL NAVIGATION POSITIONS -->
-                    <mat-radio-group formControlName="position"
-                                     fxLayout="column" fxLayoutAlign="start start"
-                                     *ngIf="fuseConfig.layout.style.startsWith('horizontal')">
-                        <mat-radio-button class="mr-8 mb-8" value="left">Top</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
-                    </mat-radio-group>
+                        <h2>Navbar</h2>
 
-                    <!-- VERTICAL NAVIGATION FOLD -->
-                    <ng-container *ngIf="fuseConfig.layout.style.startsWith('vertical')">
-                        <h3 class="mt-24">Navigation Fold:</h3>
-                        <mat-slide-toggle formControlName="folded">
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <mat-slide-toggle class="mt-24" formControlName="folded">
                             Folded
                         </mat-slide-toggle>
-                    </ng-container>
 
-                </div>
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-16" value="left">Left</mat-radio-button>
+                            <mat-radio-button class="mb-16" value="right">Right</mat-radio-button>
+                        </mat-radio-group>
 
-                <div formGroupName="toolbar">
+                    </div>
 
                     <!-- TOOLBAR -->
-                    <h3 class="mt-24">Toolbar:</h3>
-                    <mat-radio-group formControlName="position" fxLayout="column" fxLayoutAlign="start start">
-                        <mat-radio-button class="mr-8 mb-8" value="above">Above</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="above-sticky"
-                                          [disabled]="fuseConfig.layout.style === 'vertical-layout-1' || fuseConfig.layout.style === 'vertical-layout-2'">
-                            Above Sticky
-                        </mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="below">Below</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="below-sticky"
-                                          [disabled]="fuseConfig.layout.style === 'vertical-layout-3'">
-                            Below Sticky
-                        </mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
-                    </mat-radio-group>
+                    <div class="group" formGroupName="toolbar">
 
-                </div>
+                        <h2>Toolbar</h2>
 
-                <div formGroupName="footer">
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above">Above</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below-static">Below Static</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below-sticky">Below Sticky</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
 
                     <!-- FOOTER -->
-                    <h3 class="mt-24">Footer:</h3>
-                    <mat-radio-group formControlName="position" fxLayout="column" fxLayoutAlign="start start">
-                        <mat-radio-button class="mr-8 mb-8" value="above">Above</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="below">Below</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="below-sticky">Below Sticky</mat-radio-button>
-                        <mat-radio-button class="mr-8 mb-8" value="none">None</mat-radio-button>
-                    </mat-radio-group>
+                    <div class="group" formGroupName="footer">
 
-                </div>
+                        <h2>Footer</h2>
 
-                <!-- LAYOUT MODE -->
-                <h3 class="mt-24">Layout Mode:</h3>
-                <mat-radio-group formControlName="mode" fxLayout="column" fxLayoutAlign="start start">
-                    <mat-radio-button class="mr-8 mb-8" value="boxed">Boxed</mat-radio-button>
-                    <mat-radio-button class="mr-8 mb-8" value="fullwidth">Fullwidth</mat-radio-button>
-                </mat-radio-group>
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
 
-            </div>
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above">Above</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below-static">Below Static</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below-sticky">Below Sticky</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>
+                        </mat-radio-group>
 
-            <mat-divider></mat-divider>
+                    </div>
 
-            <h3>Custom scrollbars:</h3>
-            <mat-slide-toggle formControlName="customScrollbars">
+                </ng-container>
+
+                <!-- VERTICAL LAYOUT #1 - BODY SCROLL -->
+                <ng-container *ngSwitchCase="'vertical-layout-1-body-scroll'">
+
+                    <!-- LAYOUT WIDTH -->
+                    <div class="group mt-48">
+
+                        <h2>Layout Width</h2>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
+                            <mat-radio-button class="mb-12" value="fullwidth">Fullwidth</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="boxed">Boxed</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- NAVBAR -->
+                    <div class="group" formGroupName="navbar">
+
+                        <h2>Navbar</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <mat-slide-toggle class="mt-24" formControlName="folded">
+                            Folded
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-16" value="left">Left</mat-radio-button>
+                            <mat-radio-button class="mb-16" value="right">Right</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- TOOLBAR -->
+                    <div class="group" formGroupName="toolbar">
+
+                        <h2>Toolbar</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="group" formGroupName="footer">
+
+                        <h2>Footer</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                </ng-container>
+
+                <!-- VERTICAL LAYOUT #2 -->
+                <ng-container *ngSwitchCase="'vertical-layout-2'">
+
+                    <!-- LAYOUT WIDTH -->
+                    <div class="group mt-48">
+
+                        <h2>Layout Width</h2>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
+                            <mat-radio-button class="mb-12" value="fullwidth">Fullwidth</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="boxed">Boxed</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- NAVBAR -->
+                    <div class="group" formGroupName="navbar">
+
+                        <h2>Navbar</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <mat-slide-toggle class="mt-24" formControlName="folded">
+                            Folded
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-16" value="left">Left</mat-radio-button>
+                            <mat-radio-button class="mb-16" value="right">Right</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- TOOLBAR -->
+                    <div class="group" formGroupName="toolbar">
+
+                        <h2>Toolbar</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="group" formGroupName="footer">
+
+                        <h2>Footer</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                </ng-container>
+
+            </ng-container>
+
+        </div>
+
+        <!-- CUSTOM SCROLLBARS -->
+        <div class="group">
+
+            <h2>Custom scrollbars</h2>
+
+            <mat-slide-toggle class="mb-12" formControlName="customScrollbars">
                 Enable custom scrollbars
             </mat-slide-toggle>
 
-            <mat-divider></mat-divider>
+        </div>
 
-            <h3>Colors:</h3>
+        <!-- COLORS -->
+        <div class="group">
+
+            <h2>Colors</h2>
+
             <div class="colors">
 
                 <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
@@ -128,9 +286,9 @@
                 </div>
 
                 <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                    <h4 class="mr-8">Navigation Bar Color</h4>
+                    <h4 class="mr-8">Navbar Color</h4>
                     <fuse-material-color-picker
-                        [(selectedClass)]="fuseConfig.layout.navigation.background"></fuse-material-color-picker>
+                        [(selectedClass)]="fuseConfig.layout.navbar.background"></fuse-material-color-picker>
                 </div>
 
                 <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
@@ -141,9 +299,13 @@
 
             </div>
 
-            <mat-divider></mat-divider>
+        </div>
 
-            <h3>Router Animation:</h3>
+        <!-- ROUTER ANIMATION -->
+        <div class="group">
+
+            <h2>Router Animation</h2>
+
             <mat-form-field class="w-100-p">
                 <mat-select class="p-0" formControlName="routerAnimation">
                     <mat-option value="none">
@@ -167,8 +329,8 @@
                 </mat-select>
             </mat-form-field>
 
-        </form>
+        </div>
 
-    </div>
+    </form>
 
 </div>
