@@ -1,91 +1,100 @@
-<div id="main">
+<div id="main" [ngClass]="{'boxed':fuseConfig.layout.width === 'boxed'}">
 
     <!-- TOOLBAR: Above -->
-    <ng-container *ngIf="fuseConfig.layout.toolbar === 'above'">
-        <toolbar class="above" [ngClass]="fuseConfig.colorClasses.toolbar"></toolbar>
+    <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'above'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
     </ng-container>
     <!-- / TOOLBAR: Above -->
 
     <!-- NAVBAR: Top -->
-    <!--<navbar layout="horizontal"
-            class="top-navbar" fxHide fxShow.gt-md
-            [ngClass]="fuseConfig.colorClasses.navbar"
-            *ngIf="fuseConfig.layout.navigation.position === 'top'">
-    </navbar>-->
+    <ng-container>
+        <ng-container *ngTemplateOutlet="topNavbar"></ng-container>
+    </ng-container>
     <!-- / NAVBAR: Top -->
+
+    <!-- TOOLBAR: Below -->
+    <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'below'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Below -->
 
     <div id="container-1" class="container">
 
         <!-- NAVBAR: Left -->
-        <fuse-sidebar [name]="'navbar'"
-                      [folded]="fuseConfig.layout.navigation.folded"
-                      [lockedOpen]="'gt-md'"
-                      class="left-navbar" [ngClass]="fuseConfig.colorClasses.navbar"
-                      *ngIf="fuseConfig.layout.navigation.position === 'left' || fuseConfig.layout.navigation.position === 'top'">
-            <navbar layout="vertical"></navbar>
-        </fuse-sidebar>
+        <ng-container>
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
         <!-- / NAVBAR: Left -->
 
         <div id="container-2" class="container">
 
-            <!-- TOOLBAR: Below sticky -->
-            <ng-container *ngIf="fuseConfig.layout.toolbar === 'below-sticky'">
-                <toolbar class="below-sticky" [ngClass]="fuseConfig.colorClasses.toolbar"></toolbar>
-            </ng-container>
-            <!-- / TOOLBAR: Below sticky -->
-
-            <div id="container-3" class="container" fusePerfectScrollbar>
-
-                <!-- TOOLBAR: Below -->
-                <ng-container *ngIf="fuseConfig.layout.toolbar === 'below'">
-                    <toolbar class="below" [ngClass]="fuseConfig.colorClasses.toolbar"></toolbar>
-                </ng-container>
-                <!-- / TOOLBAR: Below -->
+            <div id="container-3" class="container" fusePerfectScrollbar updateOnNavigationEnd>
 
                 <!-- CONTENT -->
                 <content></content>
                 <!-- / CONTENT -->
 
                 <!-- FOOTER: Below -->
-                <ng-container *ngIf="fuseConfig.layout.footer === 'below'">
-                    <footer class="below" [ngClass]="fuseConfig.colorClasses.footer"></footer>
+                <ng-container *ngIf="fuseConfig.layout.footer.position === 'above-static'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
                 </ng-container>
                 <!-- / FOOTER: Below -->
 
             </div>
 
-            <!-- FOOTER: Below sticky -->
-            <ng-container *ngIf="fuseConfig.layout.footer === 'below-sticky'">
-                <footer class="below-sticky" [ngClass]="fuseConfig.colorClasses.footer"></footer>
-            </ng-container>
-            <!-- / FOOTER: Below sticky -->
-
         </div>
-
-        <!-- NAVBAR: Right -->
-        <fuse-sidebar [name]="'navbar'" [align]="'right'"
-                      [folded]="fuseConfig.layout.navigation.folded"
-                      [lockedOpen]="'gt-md'"
-                      class="right-navbar" [ngClass]="fuseConfig.colorClasses.navbar"
-                      *ngIf="fuseConfig.layout.navigation.position === 'right'">
-            <navbar layout="vertical"></navbar>
-        </fuse-sidebar>
-        <!-- / NAVBAR: Right -->
 
     </div>
 
     <!-- FOOTER: Above -->
-    <ng-container *ngIf="fuseConfig.layout.footer === 'above'">
-        <footer class="above" [ngClass]="fuseConfig.colorClasses.footer"></footer>
+    <ng-container *ngIf="fuseConfig.layout.footer.position === 'above-fixed'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
     </ng-container>
     <!-- FOOTER: Above -->
 
 </div>
 
 <!-- QUICK PANEL -->
-<fuse-sidebar [name]="'quickPanel'" [align]="'right'" class="quick-panel">
+<fuse-sidebar [name]="'quickPanel'" position="right" class="quick-panel">
     <quick-panel></quick-panel>
 </fuse-sidebar>
 <!-- / QUICK PANEL -->
 
-<fuse-theme-options [navigation]="navigation"></fuse-theme-options>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!fuseConfig.layout.toolbar.hidden"
+             [ngClass]="[fuseConfig.layout.toolbar.position, fuseConfig.layout.toolbar.background]"></toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer *ngIf="!fuseConfig.layout.footer.hidden"
+            [ngClass]="[fuseConfig.layout.footer.position, fuseConfig.layout.footer.background]"></footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- TOP NAVBAR -->
+<ng-template #topNavbar>
+    <navbar layout="horizontal"
+            class="top-navbar" fxHide fxShow.gt-md
+            [ngClass]="fuseConfig.layout.navbar.background"
+            *ngIf="!fuseConfig.layout.navbar.hidden">
+    </navbar>
+</ng-template>
+<!-- / TOP NAVBAR -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <fuse-sidebar [name]="'navbar'"
+                  [folded]="fuseConfig.layout.navbar.folded"
+                  class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background"
+                  *ngIf="!fuseConfig.layout.navbar.hidden">
+        <navbar layout="vertical"></navbar>
+    </fuse-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->

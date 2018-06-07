@@ -27,8 +27,9 @@
                 <mat-radio-button class="mb-12" value="vertical-layout-2">
                     Vertical Layout #2
                 </mat-radio-button>
-                <mat-radio-button class="mb-12" value="horizontal-layout-1">Horizontal Layout #1</mat-radio-button>
-                <mat-radio-button value="horizontal-layout-2">Horizontal Layout #2</mat-radio-button>
+                <mat-radio-button class="mb-12" value="horizontal-layout-1">
+                    Horizontal Layout #1
+                </mat-radio-button>
             </mat-radio-group>
 
             <!-- DIFFERENT FORMS BASED ON LAYOUT STYLES -->
@@ -38,7 +39,7 @@
                 <ng-container *ngSwitchCase="'vertical-layout-1-content-scroll'">
 
                     <!-- LAYOUT WIDTH -->
-                    <div class="group mt-48">
+                    <div class="group mt-32">
 
                         <h2>Layout Width</h2>
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
@@ -82,7 +83,6 @@
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
                             <mat-radio-button class="mb-12" value="above">Above</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below-static">Below Static</mat-radio-button>
-                            <mat-radio-button class="mb-12" value="below-sticky">Below Sticky</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>
                         </mat-radio-group>
 
@@ -101,7 +101,6 @@
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
                             <mat-radio-button class="mb-12" value="above">Above</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below-static">Below Static</mat-radio-button>
-                            <mat-radio-button class="mb-12" value="below-sticky">Below Sticky</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>
                         </mat-radio-group>
 
@@ -113,7 +112,7 @@
                 <ng-container *ngSwitchCase="'vertical-layout-1-body-scroll'">
 
                     <!-- LAYOUT WIDTH -->
-                    <div class="group mt-48">
+                    <div class="group mt-32">
 
                         <h2>Layout Width</h2>
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
@@ -156,7 +155,6 @@
                         <h3 class="mt-24">Position:</h3>
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
                             <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
-                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
                             <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
                         </mat-radio-group>
@@ -175,7 +173,6 @@
                         <h3 class="mt-24">Position:</h3>
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
                             <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
-                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
                             <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
                         </mat-radio-group>
@@ -188,7 +185,7 @@
                 <ng-container *ngSwitchCase="'vertical-layout-2'">
 
                     <!-- LAYOUT WIDTH -->
-                    <div class="group mt-48">
+                    <div class="group mt-32">
 
                         <h2>Layout Width</h2>
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
@@ -231,7 +228,6 @@
                         <h3 class="mt-24">Position:</h3>
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
                             <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
-                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
                             <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
                         </mat-radio-group>
 
@@ -249,8 +245,73 @@
                         <h3 class="mt-24">Position:</h3>
                         <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
                             <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
-                            <mat-radio-button class="mb-12" value="above-sticky">Above Sticky</mat-radio-button>
                             <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                </ng-container>
+
+                <!-- HORIZONTAL LAYOUT #1 -->
+                <ng-container *ngSwitchCase="'horizontal-layout-1'">
+
+                    <!-- LAYOUT WIDTH -->
+                    <div class="group mt-32">
+
+                        <h2>Layout Width</h2>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="width">
+                            <mat-radio-button class="mb-12" value="fullwidth">Fullwidth</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="boxed">Boxed</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- NAVBAR -->
+                    <div class="group" formGroupName="navbar">
+
+                        <h2>Navbar</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-16" value="top">Top</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- TOOLBAR -->
+                    <div class="group" formGroupName="toolbar">
+
+                        <h2>Toolbar</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above">Above</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="group" formGroupName="footer">
+
+                        <h2>Footer</h2>
+
+                        <mat-slide-toggle formControlName="hidden">
+                            Hide
+                        </mat-slide-toggle>
+
+                        <h3 class="mt-24">Position:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="position">
+                            <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
+                            <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
                         </mat-radio-group>
 
                     </div>

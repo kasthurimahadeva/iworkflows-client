@@ -250,6 +250,34 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 
                 break;
             }
+
+            // Horizontal Layout #1
+            case 'horizontal-layout-1':
+            {
+                this.form.patchValue({
+                    layout: {
+                        width  : 'fullwidth',
+                        navbar : {
+                            hidden    : false,
+                            position  : 'top',
+                            folded    : false,
+                            background: 'mat-fuse-dark-700-bg'
+                        },
+                        toolbar: {
+                            hidden    : false,
+                            position  : 'above',
+                            background: 'mat-white-500-bg'
+                        },
+                        footer : {
+                            hidden    : false,
+                            position  : 'above-fixed',
+                            background: 'mat-fuse-dark-900-bg'
+                        }
+                    }
+                });
+
+                break;
+            }
         }
     }
 

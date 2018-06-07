@@ -1,4 +1,4 @@
-<div id="main">
+<div id="main" [ngClass]="{'boxed':fuseConfig.layout.width === 'boxed'}">
 
     <!-- TOOLBAR: Above -->
     <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'above'">

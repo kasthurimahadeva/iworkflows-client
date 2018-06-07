@@ -11,12 +11,12 @@ export interface FuseConfig
         },
         toolbar: {
             hidden: boolean,
-            position: 'above' | 'above-static' | 'above-sticky' | 'above-fixed' | 'below' | 'below-static' | 'below-sticky' | 'below-fixed',
+            position: 'above' | 'above-static' | 'above-fixed' | 'below' | 'below-static' | 'below-fixed',
             background: string
         }
         footer: {
             hidden: boolean,
-            position: 'above' | 'above-static' | 'above-sticky' | 'above-fixed' | 'below' | 'below-static' | 'below-sticky' | 'below-fixed',
+            position: 'above' | 'above-static' | 'above-fixed' | 'below' | 'below-static' | 'below-fixed',
             background: string
         }
     };

@@ -15,6 +15,13 @@ vertical-layout-2 {
         height: 100%;
         z-index: 1;
 
+        // Boxed
+        &.boxed {
+            max-width: 1200px;
+            margin: 0 auto;
+            @include mat-elevation(8);
+        }
+
         // Container 1 (Scrollable)
         > .container {
             position: relative;
