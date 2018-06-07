@@ -7,10 +7,10 @@ import { COMPONENT_MAP } from 'app/main/components/angular-material/example-comp
 
 @Component({
     selector   : 'angular-material',
-    templateUrl: './angular-material.component.html',
-    styleUrls  : ['./angular-material.component.scss']
+    templateUrl: './angular-material-examples.component.html',
+    styleUrls  : ['./angular-material-examples.component.scss']
 })
-export class AngularMaterialComponent implements OnInit, OnDestroy
+export class AngularMaterialExamplesComponent implements OnInit, OnDestroy
 {
     id: string;
     title: string;

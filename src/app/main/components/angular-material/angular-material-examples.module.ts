@@ -7,7 +7,7 @@ import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
 import { MaterialModule } from 'app/main/components/angular-material/material.module';
 import { EXAMPLE_LIST } from 'app/main/components/angular-material/example-components';
-import { AngularMaterialComponent } from 'app/main/components/angular-material/angular-material.component';
+import { AngularMaterialExamplesComponent } from 'app/main/components/angular-material/angular-material-examples.component';
 import { ExampleViewerComponent } from 'app/main/components/angular-material/example-viewer/example-viewer';
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
         children: [
             {
                 path     : ':id',
-                component: AngularMaterialComponent
+                component: AngularMaterialExamplesComponent
             }
         ]
     }
@@ -25,7 +25,7 @@ const routes: Routes = [
 @NgModule({
     declarations   : [
         [...EXAMPLE_LIST],
-        AngularMaterialComponent,
+        AngularMaterialExamplesComponent,
         ExampleViewerComponent
     ],
     imports        : [
@@ -39,7 +39,7 @@ const routes: Routes = [
     ],
     entryComponents: EXAMPLE_LIST,
 })
-export class AngularMaterialModule
+export class AngularMaterialExamplesModule
 {
 }
 

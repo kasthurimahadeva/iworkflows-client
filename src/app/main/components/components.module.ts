@@ -5,6 +5,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
+import { AngularMaterialExamplesModule } from 'app/main/components/angular-material/angular-material-examples.module';
+
 import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components';
 import { CardsDocsComponent } from 'app/main/components/cards/cards.component';
 import { CountdownDocsComponent } from 'app/main/components/countdown/countdown.component';
@@ -93,7 +95,9 @@ const routes = [
         FuseCountdownModule,
         FuseHighlightModule,
         FuseMaterialColorPickerModule,
-        FuseWidgetModule
+        FuseWidgetModule,
+
+        AngularMaterialExamplesModule
     ]
 })
 export class ComponentsModule

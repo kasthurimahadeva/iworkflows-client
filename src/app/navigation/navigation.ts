@@ -685,7 +685,7 @@ export const navigation: FuseNavigation[] = [
                         children: [
                             {
                                 id   : 'badge',
-                                title: 'badge',
+                                title: 'Badge',
                                 type : 'item',
                                 url  : '/components/angular-material/badge'
                             },
