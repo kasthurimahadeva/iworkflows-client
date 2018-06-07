@@ -12,7 +12,7 @@ export const navigation: FuseNavigation[] = [
                 id       : 'dashboards',
                 title    : 'Dashboards',
                 translate: 'NAV.DASHBOARDS',
-                type     : 'collapse',
+                type     : 'collapsable',
                 icon     : 'dashboard',
                 children : [
                     {
@@ -41,7 +41,7 @@ export const navigation: FuseNavigation[] = [
                 id       : 'e-commerce',
                 title    : 'E-Commerce',
                 translate: 'NAV.ECOMMERCE',
-                type     : 'collapse',
+                type     : 'collapsable',
                 icon     : 'shopping_cart',
                 children : [
                     {
@@ -177,7 +177,7 @@ export const navigation: FuseNavigation[] = [
             {
                 id      : 'authentication',
                 title   : 'Authentication',
-                type    : 'collapse',
+                type    : 'collapsable',
                 icon    : 'lock',
                 badge   : {
                     title: '10',
@@ -257,7 +257,7 @@ export const navigation: FuseNavigation[] = [
             {
                 id      : 'errors',
                 title   : 'Errors',
-                type    : 'collapse',
+                type    : 'collapsable',
                 icon    : 'error',
                 children: [
                     {
@@ -277,7 +277,7 @@ export const navigation: FuseNavigation[] = [
             {
                 id      : 'invoice',
                 title   : 'Invoice',
-                type    : 'collapse',
+                type    : 'collapsable',
                 icon    : 'receipt',
                 children: [
                     {
@@ -304,7 +304,7 @@ export const navigation: FuseNavigation[] = [
             {
                 id      : 'pricing',
                 title   : 'Pricing',
-                type    : 'collapse',
+                type    : 'collapsable',
                 icon    : 'attach_money',
                 children: [
                     {
@@ -394,13 +394,13 @@ export const navigation: FuseNavigation[] = [
             {
                 id      : 'page-layouts',
                 title   : 'Page Layouts',
-                type    : 'collapse',
+                type    : 'collapsable',
                 icon    : 'view_quilt',
                 children: [
                     {
                         id      : 'carded',
                         title   : 'Carded',
-                        type    : 'collapse',
+                        type    : 'collapsable',
                         badge   : {
                             title: '12',
                             bg   : '#525e8a',
@@ -484,7 +484,7 @@ export const navigation: FuseNavigation[] = [
                     {
                         id      : 'simple',
                         title   : 'Simple',
-                        type    : 'collapse',
+                        type    : 'collapsable',
                         badge   : {
                             title: '8',
                             bg   : '#525e8a',
@@ -589,7 +589,7 @@ export const navigation: FuseNavigation[] = [
             {
                 id      : 'angular-material-elements',
                 title   : 'Angular Material Elements',
-                type    : 'collapse',
+                type    : 'collapsable',
                 icon    : 'layers',
                 children: [
                     {
@@ -927,7 +927,7 @@ export const navigation: FuseNavigation[] = [
             {
                 id      : 'datatables',
                 title   : 'Datatables',
-                type    : 'collapse',
+                type    : 'collapsable',
                 icon    : 'border_all',
                 children: [
                     {

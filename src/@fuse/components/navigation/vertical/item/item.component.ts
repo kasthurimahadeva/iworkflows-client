@@ -3,14 +3,14 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { FuseNavigationItem } from '@fuse/types';
 
 @Component({
-    selector   : 'fuse-nav-vertical-group',
-    templateUrl: './nav-vertical-group.component.html',
-    styleUrls  : ['./nav-vertical-group.component.scss']
+    selector   : 'fuse-nav-vertical-item',
+    templateUrl: './item.component.html',
+    styleUrls  : ['./item.component.scss']
 })
-export class FuseNavVerticalGroupComponent
+export class FuseNavVerticalItemComponent
 {
     @HostBinding('class')
-    classes = 'nav-group nav-item';
+    classes = 'nav-item';
 
     @Input()
     item: FuseNavigationItem;
@@ -21,5 +21,4 @@ export class FuseNavVerticalGroupComponent
     constructor()
     {
     }
-
 }

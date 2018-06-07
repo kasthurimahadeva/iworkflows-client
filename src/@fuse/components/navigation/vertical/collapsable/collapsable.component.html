@@ -47,13 +47,14 @@
               [ngStyle]="{'background-color': item.badge.bg,'color': item.badge.fg}">
             {{item.badge.title}}
         </span>
-        <mat-icon class="collapse-arrow">keyboard_arrow_right</mat-icon>
+        <mat-icon class="collapsable-arrow">keyboard_arrow_right</mat-icon>
     </ng-template>
 
     <div class="children" [@slideInOut]="isOpen">
         <ng-container *ngFor="let item of item.children">
             <fuse-nav-vertical-item *ngIf="item.type=='item'" [item]="item"></fuse-nav-vertical-item>
-            <fuse-nav-vertical-collapse *ngIf="item.type=='collapse'" [item]="item"></fuse-nav-vertical-collapse>
+            <fuse-nav-vertical-collapsable *ngIf="item.type=='collapsable'"
+                                           [item]="item"></fuse-nav-vertical-collapsable>
             <fuse-nav-vertical-group *ngIf="item.type=='group'" [item]="item"></fuse-nav-vertical-group>
         </ng-container>
     </div>

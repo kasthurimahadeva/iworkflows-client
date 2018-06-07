@@ -31,18 +31,19 @@
               [ngStyle]="{'background-color': item.badge.bg,'color': item.badge.fg}">
             {{item.badge.title}}
         </span>
-        <mat-icon class="collapse-arrow">keyboard_arrow_right</mat-icon>
+        <mat-icon class="collapsable-arrow">keyboard_arrow_right</mat-icon>
     </ng-template>
 
     <div class="children" [ngClass]="{'open': isOpen}">
 
-        <div class="{{fuseSettings.colorClasses.navbar}}">
+        <div class="{{fuseConfig.layout.navbar.background}}">
 
             <ng-container *ngFor="let item of item.children">
                 <fuse-nav-horizontal-item *ngIf="item.type=='item'" [item]="item"></fuse-nav-horizontal-item>
-                <fuse-nav-horizontal-collapse *ngIf="item.type=='collapse'"
-                                              [item]="item"></fuse-nav-horizontal-collapse>
-                <fuse-nav-horizontal-collapse *ngIf="item.type=='group'" [item]="item"></fuse-nav-horizontal-collapse>
+                <fuse-nav-horizontal-collapsable *ngIf="item.type=='collapsable'"
+                                                 [item]="item"></fuse-nav-horizontal-collapsable>
+                <fuse-nav-horizontal-collapsable *ngIf="item.type=='group'"
+                                                 [item]="item"></fuse-nav-horizontal-collapsable>
             </ng-container>
 
         </div>

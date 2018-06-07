@@ -8,18 +8,18 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
 @Component({
-    selector   : 'fuse-nav-vertical-collapse',
-    templateUrl: './nav-vertical-collapse.component.html',
-    styleUrls  : ['./nav-vertical-collapse.component.scss'],
+    selector   : 'fuse-nav-vertical-collapsable',
+    templateUrl: './collapsable.component.html',
+    styleUrls  : ['./collapsable.component.scss'],
     animations : fuseAnimations
 })
-export class FuseNavVerticalCollapseComponent implements OnInit, OnDestroy
+export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
 {
     @Input()
     item: FuseNavigationItem;
 
     @HostBinding('class')
-    classes = 'nav-collapse nav-item';
+    classes = 'nav-collapsable nav-item';
 
     @HostBinding('class.open')
     public isOpen = false;
