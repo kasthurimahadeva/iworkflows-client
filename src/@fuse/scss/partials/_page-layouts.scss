@@ -552,50 +552,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
     @include media-breakpoint-down('xs') {
 
-        // Activate single-scroll
-        &.carded {
-
-            &.fullwidth {
-
-                > .center {
-                    flex: 1 0 auto;
-                    max-height: none;
-                }
-            }
-
-            &.left-sidenav,
-            &.right-sidenav {
-
-                > mat-sidenav-container {
-                    flex: 1 0 auto;
-                }
-            }
-        }
-
-        &.simple {
-
-            &.fullwidth {
-
-                > .content {
-                    flex: 1 0 auto;
-                }
-            }
-
-            &.left-sidenav,
-            &.right-sidenav {
-
-                > mat-sidenav-container {
-                    flex: 1 0 auto !important;
-
-                    > .mat-sidenav-content,
-                    > .mat-drawer-content {
-                        flex: 1 0 auto;
-                    }
-                }
-            }
-        }
-        // End - Activate single-scroll
-
         // Smaller margins
         &.carded {
 
