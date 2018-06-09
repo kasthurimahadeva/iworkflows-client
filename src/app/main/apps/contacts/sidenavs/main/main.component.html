@@ -18,19 +18,20 @@
             <div class="nav">
 
                 <div class="nav-item" aria-label="inbox">
-                    <a class="nav-link" matRipple (click)="changeFilter('all')" [ngClass]="{'active':filterBy ==='all'}">
+                    <a class="nav-link" matRipple (click)="changeFilter('all')"
+                       [ngClass]="{'active mat-accent-bg':filterBy ==='all'}">
                         <span class="title">All Contacts</span>
                     </a>
                 </div>
 
                 <div class="nav-item" aria-label="frequently contacted" (click)="changeFilter('frequent')">
-                    <a class="nav-link" matRipple [ngClass]="{'active':filterBy ==='frequent'}">
+                    <a class="nav-link" matRipple [ngClass]="{'active mat-accent-bg':filterBy ==='frequent'}">
                         <div class="title">Freequently contacted</div>
                     </a>
                 </div>
 
                 <div class="nav-item" aria-label="starred" (click)="changeFilter('starred')">
-                    <a class="nav-link" matRipple [ngClass]="{'active':filterBy ==='starred'}">
+                    <a class="nav-link" matRipple [ngClass]="{'active mat-accent-bg':filterBy ==='starred'}">
                         <div class="title">Starred Contacts</div>
                     </a>
                 </div>

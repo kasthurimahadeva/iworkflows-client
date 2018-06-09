@@ -63,11 +63,11 @@
                         <div class="toolbar-separator" *ngIf="hasSelectedMails"></div>
 
                         <button mat-icon-button (click)="setFolderOnSelectedMails(4)" *ngIf="hasSelectedMails">
-                            <mat-icon>delete</mat-icon>
+                            <mat-icon class="secondary-text">delete</mat-icon>
                         </button>
 
                         <button mat-icon-button [matMenuTriggerFor]="folderMenu" *ngIf="hasSelectedMails">
-                            <mat-icon>folder</mat-icon>
+                            <mat-icon class="secondary-text">folder</mat-icon>
                         </button>
                         <mat-menu #folderMenu="matMenu">
                             <button mat-menu-item *ngFor="let folder of folders"
@@ -76,7 +76,7 @@
                         </mat-menu>
 
                         <button mat-icon-button [matMenuTriggerFor]="labelMenu" *ngIf="hasSelectedMails">
-                            <mat-icon>label</mat-icon>
+                            <mat-icon class="secondary-text">label</mat-icon>
                         </button>
                         <mat-menu #labelMenu="matMenu">
                             <button mat-menu-item *ngFor="let label of labels"
@@ -87,7 +87,7 @@
 
                     <div *ngIf="currentMail" fxHide.gt-xs>
                         <button mat-icon-button (click)="deselectCurrentMail()">
-                            <mat-icon>arrow_back</mat-icon>
+                            <mat-icon class="secondary-text">arrow_back</mat-icon>
                         </button>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
     <!-- item.url -->
     <a class="nav-link" *ngIf="item.url && !item.externalUrl && !item.function"
-       [routerLink]="[item.url]" routerLinkActive="active"
+       [routerLink]="[item.url]" [routerLinkActive]="['active', 'mat-accent-bg']"
        [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
        [target]="item.openInNewTab ? '_blank' : '_self'" matRipple>
         <ng-container *ngTemplateOutlet="itemContent"></ng-container>
@@ -22,7 +22,7 @@
 
     <!-- item.url && item.function -->
     <a class="nav-link" *ngIf="item.url && !item.externalUrl && item.function" (click)="item.function()"
-       [routerLink]="[item.url]" routerLinkActive="active"
+       [routerLink]="[item.url]" [routerLinkActive]="['active', 'mat-accent-bg']"
        [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
        [target]="item.openInNewTab ? '_blank' : '_self'" matRipple>
         <ng-container *ngTemplateOutlet="itemContent"></ng-container>

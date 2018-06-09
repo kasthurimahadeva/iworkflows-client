@@ -63,7 +63,7 @@
                         <div class="toolbar-separator" *ngIf="hasSelectedTodos"></div>
 
                         <button mat-icon-button [matMenuTriggerFor]="labelMenu" *ngIf="hasSelectedTodos">
-                            <mat-icon>label</mat-icon>
+                            <mat-icon class="secondary-text">label</mat-icon>
                         </button>
                         <mat-menu #labelMenu="matMenu">
                             <button mat-menu-item *ngFor="let tag of tags" (click)="toggleTagOnSelectedTodos(tag.id)">
@@ -74,7 +74,7 @@
 
                     <div *ngIf="currentTodo" fxHide.gt-lg>
                         <button mat-icon-button (click)="deselectCurrentTodo()">
-                            <mat-icon>arrow_back</mat-icon>
+                            <mat-icon class="secondary-text">arrow_back</mat-icon>
                         </button>
                     </div>
 

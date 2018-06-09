@@ -44,20 +44,6 @@
         }
     }
 
-    &.current-mail {
-        background: #E3F2FD;
-
-        .info {
-
-            .row-2 {
-
-                .labels {
-                    background: #E3F2FD;
-                }
-            }
-        }
-    }
-
     .info {
         overflow: hidden;
         width: 0;
@@ -76,7 +62,6 @@
                     width: 32px;
                     height: 32px;
                     line-height: 32px;
-                    background-color: mat-color($accent);
                 }
             }
 
@@ -104,11 +89,7 @@
             }
 
             .labels {
-                position: absolute;
-                background: #FFFFFF;
-                bottom: 0;
-                right: 0;
-                padding-left: 6px;
+                margin-top: 8px;
 
                 .label {
                     font-size: 11px;

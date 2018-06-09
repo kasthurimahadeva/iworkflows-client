@@ -52,9 +52,8 @@
     <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *cdkRowDef="let row; columns: displayedColumns;"
              (click)="onSelect(row)"
-             [ngClass]="{'mat-light-blue-50-bg':row == selected}"
-             matRipple
-             [@animate]="{value:'*',params:{y:'100%'}}"
+             [ngClass]="{'mat-accent-50-bg':row == selected}"
+             matRipple [@animate]="{value:'*',params:{y:'100%'}}"
     >
     </mat-row>
 </mat-table>
