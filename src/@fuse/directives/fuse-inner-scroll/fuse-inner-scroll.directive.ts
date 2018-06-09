@@ -56,7 +56,6 @@ export class FuseInnerScrollDirective implements OnInit, OnDestroy
         this._fuseMediaMatchService.onMediaChange
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((alias) => {
-                console.log(alias);
 
                 if ( alias === 'xs' )
                 {
