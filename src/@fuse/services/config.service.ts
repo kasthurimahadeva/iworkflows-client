@@ -98,7 +98,14 @@ export class FuseConfigService
             .subscribe(() => {
                 if ( !_.isEqual(this._configSubject.getValue(), this._defaultConfig) )
                 {
-                    this._configSubject.next(_.cloneDeep(this._defaultConfig));
+                    // Clone the default config
+                    const config = _.cloneDeep(this._defaultConfig);
+
+                    // Don't reset the router animation
+                    config.routerAnimation = this._configSubject.getValue().routerAnimation;
+
+                    // Set the config
+                    this._configSubject.next(config);
                 }
             });
     }
