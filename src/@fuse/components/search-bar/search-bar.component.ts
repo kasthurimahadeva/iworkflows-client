@@ -13,10 +13,9 @@ export class FuseSearchBarComponent implements OnInit, OnDestroy
 {
     collapsed: boolean;
     fuseConfig: any;
-    toolbarColor: string;
 
     @Output()
-    onInput: EventEmitter<any>;
+    input: EventEmitter<any>;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -31,7 +30,7 @@ export class FuseSearchBarComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
-        this.onInput = new EventEmitter();
+        this.input = new EventEmitter();
         this.collapsed = true;
 
         // Set the private defaults
@@ -52,7 +51,7 @@ export class FuseSearchBarComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(
                 (config) => {
-                    this.toolbarColor = config.layout.toolbar.background;
+                    this.fuseConfig = config;
                 }
             );
     }
@@ -94,9 +93,7 @@ export class FuseSearchBarComponent implements OnInit, OnDestroy
      */
     search(event): void
     {
-        const value = event.target.value;
-
-        this.onInput.emit(value);
+        this.input.emit(event.target.value);
     }
 
 }

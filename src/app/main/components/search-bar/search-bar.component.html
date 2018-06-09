@@ -26,7 +26,7 @@
             <p class="py-8">
                 <fuse-highlight lang="html">
                     <textarea #source>
-                        <fuse-search-bar (onInput)="search($event)"></fuse-search-bar>
+                        <fuse-search-bar (input)="search($event)"></fuse-search-bar>
                     </textarea>
                 </fuse-highlight>
             </p>
@@ -35,7 +35,7 @@
         <div class="my-48">
             <h2>Outputs</h2>
             <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
-                <code class="mr-8">onInput</code>
+                <code class="mr-8">input</code>
                 <span>Triggers every time an input occurs within the search bar. Can be used to trigger the actual
                     search mechanism. The $event is the value from the search input.
                 </span>

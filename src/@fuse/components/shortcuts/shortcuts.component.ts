@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators';
 
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
-import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
     selector   : 'fuse-shortcuts',
@@ -20,7 +19,6 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
     filteredNavigationItems: any[];
     searching: boolean;
     mobileShortcutsPanelActive: boolean;
-    toolbarColor: string;
 
     @Input()
     navigation: any;
@@ -41,12 +39,10 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
      * @param {CookieService} _cookieService
      * @param {FuseMatchMediaService} _fuseMatchMediaService
      * @param {FuseNavigationService} _fuseNavigationService
-     * @param {FuseConfigService} _fuseConfigService
      * @param {ObservableMedia} _observableMedia
      */
     constructor(
         private _cookieService: CookieService,
-        private _fuseConfigService: FuseConfigService,
         private _fuseMatchMediaService: FuseMatchMediaService,
         private _fuseNavigationService: FuseNavigationService,
         private _observableMedia: ObservableMedia,
@@ -71,15 +67,6 @@ export class FuseShortcutsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to config changes
-        this._fuseConfigService.config
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(
-                (config) => {
-                    this.toolbarColor = config.layout.toolbar.background;
-                }
-            );
-
         // Get the navigation items and flatten them
         this.filteredNavigationItems = this.navigationItems = this._fuseNavigationService.getFlatNavigation(this.navigation);
 
