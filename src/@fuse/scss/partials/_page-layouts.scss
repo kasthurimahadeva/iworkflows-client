@@ -100,7 +100,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
 
                     > .content {
-                        display: flex;
                         flex: 1 0 auto;
                         overflow: auto;
                     }
@@ -121,6 +120,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     .content-card {
 
                         .content {
+                            display: flex;
 
                             .mat-tab-group {
                                 overflow: hidden;
@@ -260,7 +260,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
 
                     .content {
-                        display: flex;
                         flex: 1 1 auto;
                         overflow: auto;
                     }
@@ -302,6 +301,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     .content-card {
 
                         .content {
+                            display: flex;
 
                             .mat-tab-group {
                                 overflow: hidden;
@@ -430,7 +430,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 }
 
                 .content {
-                    display: flex;
                     flex: 1 0 auto;
                 }
             }
