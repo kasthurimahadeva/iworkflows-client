@@ -52,6 +52,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     private _player: AnimationPlayer;
     private _unsubscribeAll: Subject<any>;
 
+    @HostBinding('class.animations-enabled')
+    private _animationsEnabled: boolean;
+
     /**
      * Constructor
      *
@@ -80,6 +83,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         this.invisibleOverlay = false;
 
         // Set the private defaults
+        this._animationsEnabled = false;
         this._unsubscribeAll = new Subject();
     }
 
@@ -198,6 +202,20 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Setup the visibility of the sidebar
+     *
+     * @private
+     */
+    private _setupVisibility(): void
+    {
+        // Remove the existing box-shadow
+        this._renderer.setStyle(this._elementRef.nativeElement, 'box-shadow', 'none');
+
+        // Make the sidebar invisible
+        this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
+    }
+
+    /**
      * Setup the sidebar position
      *
      * @private
@@ -226,6 +244,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // Return if the lockedOpen wasn't set
         if ( !this.lockedOpen )
         {
+            // Return
             return;
         }
 
@@ -290,20 +309,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                 // Store the new active status
                 this._wasActive = isActive;
             });
-    }
-
-    /**
-     * Setup the visibility of the sidebar
-     *
-     * @private
-     */
-    private _setupVisibility(): void
-    {
-        // Remove the existing box-shadow
-        this._renderer.setStyle(this._elementRef.nativeElement, 'box-shadow', 'none');
-
-        // Make the sidebar invisible
-        this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
     }
 
     /**
@@ -416,6 +421,23 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         }, delayAmount);
     }
 
+    /**
+     * Enable the animations
+     *
+     * @private
+     */
+    private _enableAnimations(): void
+    {
+        // Return if animations already enabled
+        if ( this._animationsEnabled )
+        {
+            return;
+        }
+
+        // Enable the animations
+        this._animationsEnabled = true;
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
@@ -429,6 +451,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         {
             return;
         }
+
+        // Enable the animations
+        this._enableAnimations();
 
         // Show the sidebar
         this._showSidebar();
@@ -449,6 +474,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         {
             return;
         }
+
+        // Enable the animations
+        this._enableAnimations();
 
         // Hide the backdrop
         this._hideBackdrop();
@@ -487,6 +515,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             return;
         }
 
+        // Enable the animations
+        this._enableAnimations();
+
         // Unfold the sidebar temporarily
         this.unfolded = true;
     }
@@ -503,6 +534,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             return;
         }
 
+        // Enable the animations
+        this._enableAnimations();
+
         // Fold the sidebar back
         this.unfolded = false;
     }
@@ -518,6 +552,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             return;
         }
 
+        // Enable the animations
+        this._enableAnimations();
+
         // Fold
         this.folded = true;
     }
@@ -532,6 +569,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         {
             return;
         }
+
+        // Enable the animations
+        this._enableAnimations();
 
         // Unfold
         this.folded = false;

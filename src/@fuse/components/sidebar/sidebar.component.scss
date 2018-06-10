@@ -11,9 +11,6 @@ fuse-sidebar {
     min-width: 280px;
     max-width: 280px;
     z-index: 1000;
-    transition-property: transform, width, min-width, max-width;
-    transition-duration: 150ms;
-    transition-timing-function: ease-in-out;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
     background: white;
 
@@ -46,6 +43,12 @@ fuse-sidebar {
             min-width: 64px;
             max-width: 64px;
         }
+    }
+
+    &.animations-enabled {
+        transition-property: transform, width, min-width, max-width;
+        transition-duration: 150ms;
+        transition-timing-function: ease-in-out;
     }
 }
 
