@@ -1,9 +1,10 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import PerfectScrollbar from 'perfect-scrollbar';
+import * as _ from 'lodash';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 
@@ -18,7 +19,7 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 
     // Private
     private _enabled: boolean | '';
-    private _updateOnNavigationEnd: boolean | '';
+    private _options: any;
     private _unsubscribeAll: Subject<any>;
 
     /**
@@ -42,13 +43,33 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 
         // Set the private defaults
         this._enabled = false;
-        this._updateOnNavigationEnd = false;
+        this._options = {
+            updateOnRouteChange: false
+        };
         this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Perfect Scrollbar options
+     *
+     * @param value
+     */
+    @Input()
+    set fusePerfectScrollbarOptions(value)
+    {
+        // Merge the options
+        this._options = _.merge({}, this._options, value);
+    }
+
+    get fusePerfectScrollbarOptions(): any
+    {
+        // Return the options
+        return this._options;
+    }
 
     /**
      * Is enabled
@@ -89,28 +110,8 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 
     get enabled(): boolean | ''
     {
+        // Return the enabled status
         return this._enabled;
-    }
-
-    /**
-     * Update on navigation end
-     *
-     * @param value
-     */
-    @Input()
-    set updateOnNavigationEnd(value)
-    {
-        if ( value === '' )
-        {
-            value = true;
-        }
-
-        this._updateOnNavigationEnd = value;
-    }
-
-    get updateOnNavigationEnd(): boolean | ''
-    {
-        return this._updateOnNavigationEnd;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -131,14 +132,13 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
                 }
             );
 
-        // If updateOnNavigationEnd attribute is provided,
-        // scroll to the top on every NavigationEnd
-        if ( this.updateOnNavigationEnd )
+        // Scroll to the top on every route change
+        if ( this.fusePerfectScrollbarOptions.updateOnRouteChange )
         {
             this._router.events
                 .pipe(
                     takeUntil(this._unsubscribeAll),
-                    filter(event => event instanceof NavigationEnd)
+                    filter(event => event instanceof NavigationStart)
                 )
                 .subscribe(() => {
                     this.scrollToTop();
@@ -188,11 +188,12 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
             return;
         }
 
-        // Initialize the perfect-scrollbar
+        // Set as initialized
         this.isInitialized = true;
 
+        // Initialize the perfect-scrollbar
         this.ps = new PerfectScrollbar(this.elementRef.nativeElement, {
-            wheelPropagation: true
+            ...this.fusePerfectScrollbarOptions
         });
     }
 

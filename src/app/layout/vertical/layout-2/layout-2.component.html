@@ -6,7 +6,8 @@
     </ng-container>
     <!-- / TOOLBAR: Above fixed -->
 
-    <div id="container-1" class="container" fusePerfectScrollbar>
+    <div id="container-1" class="container" fusePerfectScrollbar
+         [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
 
         <!-- TOOLBAR: Above static -->
         <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'above-static'">
@@ -24,8 +25,8 @@
 
             <!-- CONTENT -->
             <content
-                [ngClass]="{'ml-32':fuseConfig.layout.navbar.position === 'left', 'mr-32':fuseConfig.layout.navbar.position === 'right'}"
-            ></content>
+                [ngClass]="{'ml-32':fuseConfig.layout.navbar.position === 'left', 'mr-32':fuseConfig.layout.navbar.position === 'right'}">
+            </content>
             <!-- / CONTENT -->
 
             <!-- NAVBAR: Right -->

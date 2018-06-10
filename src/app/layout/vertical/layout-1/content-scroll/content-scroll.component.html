@@ -22,7 +22,8 @@
             </ng-container>
             <!-- / TOOLBAR: Below fixed -->
 
-            <div id="container-3" class="container" fusePerfectScrollbar updateOnNavigationEnd>
+            <div id="container-3" class="container" fusePerfectScrollbar
+                 [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
 
                 <!-- TOOLBAR: Below static -->
                 <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'below-static'">
