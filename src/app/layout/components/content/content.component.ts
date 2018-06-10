@@ -19,19 +19,19 @@ export class ContentComponent implements OnInit, OnDestroy
     fuseConfig: any;
 
     @HostBinding('@routerTransitionUp')
-    routeAnimationUp = false;
+    routeAnimationUp: boolean;
 
     @HostBinding('@routerTransitionDown')
-    routeAnimationDown = false;
+    routeAnimationDown: boolean;
 
     @HostBinding('@routerTransitionRight')
-    routeAnimationRight = false;
+    routeAnimationRight: boolean;
 
     @HostBinding('@routerTransitionLeft')
-    routeAnimationLeft = false;
+    routeAnimationLeft: boolean;
 
     @HostBinding('@routerTransitionFade')
-    routeAnimationFade = false;
+    routeAnimationFade: boolean;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -49,6 +49,13 @@ export class ContentComponent implements OnInit, OnDestroy
         private _router: Router
     )
     {
+        // Set the defaults
+        this.routeAnimationUp = false;
+        this.routeAnimationDown = false;
+        this.routeAnimationRight = false;
+        this.routeAnimationLeft = false;
+        this.routeAnimationFade = false;
+
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
