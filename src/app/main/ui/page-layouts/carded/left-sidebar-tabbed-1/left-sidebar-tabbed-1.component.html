@@ -1,15 +1,44 @@
-<div class="page-layout carded fullwidth tabbed inner-scroll">
+<div class="page-layout carded left-sidebar tabbed">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg mat-accent-bg"></div>
     <!-- / TOP BACKGROUND -->
 
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="carded-left-sidebar-tabbed-1" position="left" lockedOpen="gt-md">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-24 mat-accent-bg">
+            <h2 class="m-0">Sidebar header</h2>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content p-24">
+            <fuse-demo-sidebar></fuse-demo-sidebar>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
     <!-- CENTER -->
     <div class="center">
 
         <!-- CONTENT HEADER -->
-        <div class="header mat-accent-bg p-24" fxLayout="row" fxLayoutAlign="start center">
-            <h2 class="m-0">Full width with tabs and inner scroll</h2>
+        <div class="header mat-accent-bg p-24">
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+
+                <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+                        (click)="toggleSidebar('carded-left-sidebar-tabbed-1')">
+                    <mat-icon>menu</mat-icon>
+                </button>
+
+                <h2 class="m-0">Left sidenav with tabs and content scroll</h2>
+
+            </div>
+
         </div>
         <!-- / CONTENT HEADER -->
 
@@ -22,7 +51,7 @@
                 <mat-tab-group>
 
                     <mat-tab label="Tab 1">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -30,7 +59,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 2">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -38,7 +67,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 3">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -46,7 +75,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 4">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -54,7 +83,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 5">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -62,7 +91,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 6">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -70,7 +99,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 7">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -78,7 +107,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 8">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -86,7 +115,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 9">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->
@@ -94,7 +123,7 @@
                     </mat-tab>
 
                     <mat-tab label="Tab 10">
-                        <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div class="tab-content p-24">
                             <!-- PUT YOUR TAB CONTENT HERE -->
                             <fuse-demo-content></fuse-demo-content>
                             <!-- / PUT YOUR TAB CONTENT HERE -->

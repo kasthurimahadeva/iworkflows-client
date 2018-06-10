@@ -1,15 +1,44 @@
-<div class="page-layout carded fullwidth tabbed inner-scroll">
+<div class="page-layout carded left-sidebar tabbed inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg mat-accent-bg"></div>
     <!-- / TOP BACKGROUND -->
 
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="carded-left-sidebar-tabbed-2" position="left" lockedOpen="gt-md">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-24 mat-accent-bg">
+            <h2 class="m-0">Sidebar header</h2>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content p-24" fusePerfectScrollbar>
+            <fuse-demo-sidebar></fuse-demo-sidebar>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
     <!-- CENTER -->
     <div class="center">
 
         <!-- CONTENT HEADER -->
-        <div class="header mat-accent-bg p-24" fxLayout="row" fxLayoutAlign="start center">
-            <h2 class="m-0">Full width with tabs and inner scroll</h2>
+        <div class="header mat-accent-bg p-24">
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+
+                <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+                        (click)="toggleSidebar('carded-left-sidebar-tabbed-2')">
+                    <mat-icon>menu</mat-icon>
+                </button>
+
+                <h2 class="m-0">Left sidenav with tabs and inner scroll</h2>
+
+            </div>
+
         </div>
         <!-- / CONTENT HEADER -->
 

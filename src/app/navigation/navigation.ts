@@ -432,52 +432,52 @@ export const navigation: FuseNavigation[] = [
                                 url  : '/ui/page-layouts/carded/full-width-tabbed-2'
                             },
                             {
-                                id   : 'left-sidenav-1',
-                                title: 'Left Sidenav #1',
+                                id   : 'left-sidebar-1',
+                                title: 'Left Sidebar #1',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/left-sidenav-1'
+                                url  : '/ui/page-layouts/carded/left-sidebar-1'
                             },
                             {
-                                id   : 'left-sidenav-2',
-                                title: 'Left Sidenav #2',
+                                id   : 'left-sidebar-2',
+                                title: 'Left Sidebar #2',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/left-sidenav-2'
+                                url  : '/ui/page-layouts/carded/left-sidebar-2'
                             },
                             {
-                                id   : 'left-sidenav-tabbed-1',
-                                title: 'Left Sidenav Tabbed #1',
+                                id   : 'left-sidebar-tabbed-1',
+                                title: 'Left Sidebar Tabbed #1',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/left-sidenav-tabbed-1'
+                                url  : '/ui/page-layouts/carded/left-sidebar-tabbed-1'
                             },
                             {
-                                id   : 'left-sidenav-tabbed-2',
-                                title: 'Left Sidenav Tabbed #2',
+                                id   : 'left-sidebar-tabbed-2',
+                                title: 'Left Sidebar Tabbed #2',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/left-sidenav-tabbed-2'
+                                url  : '/ui/page-layouts/carded/left-sidebar-tabbed-2'
                             },
                             {
-                                id   : 'right-sidenav-1',
-                                title: 'Right Sidenav #1',
+                                id   : 'right-sidebar-1',
+                                title: 'Right Sidebar #1',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/right-sidenav-1'
+                                url  : '/ui/page-layouts/carded/right-sidebar-1'
                             },
                             {
-                                id   : 'right-sidenav-2',
-                                title: 'Right Sidenav #2',
+                                id   : 'right-sidebar-2',
+                                title: 'Right Sidebar #2',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/right-sidenav-2'
+                                url  : '/ui/page-layouts/carded/right-sidebar-2'
                             },
                             {
-                                id   : 'right-sidenav-tabbed-1',
-                                title: 'Right Sidenav Tabbed #1',
+                                id   : 'right-sidebar-tabbed-1',
+                                title: 'Right Sidebar Tabbed #1',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/right-sidenav-tabbed-1'
+                                url  : '/ui/page-layouts/carded/right-sidebar-tabbed-1'
                             },
                             {
-                                id   : 'right-sidenav-tabbed-2',
-                                title: 'Right Sidenav Tabbed #2',
+                                id   : 'right-sidebar-tabbed-2',
+                                title: 'Right Sidebar Tabbed #2',
                                 type : 'item',
-                                url  : '/ui/page-layouts/carded/right-sidenav-tabbed-2'
+                                url  : '/ui/page-layouts/carded/right-sidebar-tabbed-2'
                             }
                         ]
                     },
@@ -486,7 +486,7 @@ export const navigation: FuseNavigation[] = [
                         title   : 'Simple',
                         type    : 'collapsable',
                         badge   : {
-                            title: '8',
+                            title: '10',
                             bg   : '#525e8a',
                             fg   : '#FFFFFF'
                         },
@@ -498,40 +498,52 @@ export const navigation: FuseNavigation[] = [
                                 url  : '/ui/page-layouts/simple/full-width-1'
                             },
                             {
-                                id   : 'left-sidenav-1',
-                                title: 'Left Sidenav #1',
+                                id   : 'left-sidebar-1',
+                                title: 'Left Sidebar #1',
                                 type : 'item',
-                                url  : '/ui/page-layouts/simple/left-sidenav-1'
+                                url  : '/ui/page-layouts/simple/left-sidebar-1'
                             },
                             {
-                                id   : 'left-sidenav-2',
-                                title: 'Left Sidenav #2',
+                                id   : 'left-sidebar-2',
+                                title: 'Left Sidebar #2',
                                 type : 'item',
-                                url  : '/ui/page-layouts/simple/left-sidenav-2'
+                                url  : '/ui/page-layouts/simple/left-sidebar-2'
                             },
                             {
-                                id   : 'left-sidenav-3',
-                                title: 'Left Sidenav #3',
+                                id   : 'left-sidebar-3',
+                                title: 'Left Sidebar #3',
                                 type : 'item',
-                                url  : '/ui/page-layouts/simple/left-sidenav-3'
+                                url  : '/ui/page-layouts/simple/left-sidebar-3'
                             },
                             {
-                                id   : 'right-sidenav-1',
-                                title: 'Right Sidenav #1',
+                                id   : 'left-sidebar-4',
+                                title: 'Left Sidebar #4',
                                 type : 'item',
-                                url  : '/ui/page-layouts/simple/right-sidenav-1'
+                                url  : '/ui/page-layouts/simple/left-sidebar-4'
                             },
                             {
-                                id   : 'right-sidenav-2',
-                                title: 'Right Sidenav #2',
+                                id   : 'right-sidebar-1',
+                                title: 'Right Sidebar #1',
                                 type : 'item',
-                                url  : '/ui/page-layouts/simple/right-sidenav-2'
+                                url  : '/ui/page-layouts/simple/right-sidebar-1'
                             },
                             {
-                                id   : 'right-sidenav-3',
-                                title: 'Right Sidenav #3',
+                                id   : 'right-sidebar-2',
+                                title: 'Right Sidebar #2',
                                 type : 'item',
-                                url  : '/ui/page-layouts/simple/right-sidenav-3'
+                                url  : '/ui/page-layouts/simple/right-sidebar-2'
+                            },
+                            {
+                                id   : 'right-sidebar-3',
+                                title: 'Right Sidebar #3',
+                                type : 'item',
+                                url  : '/ui/page-layouts/simple/right-sidebar-3'
+                            },
+                            {
+                                id   : 'right-sidebar-4',
+                                title: 'Right Sidebar #4',
+                                type : 'item',
+                                url  : '/ui/page-layouts/simple/right-sidebar-4'
                             },
                             {
                                 id   : 'tabbed-1',
@@ -666,7 +678,7 @@ export const navigation: FuseNavigation[] = [
                             },
                             {
                                 id   : 'sidenav',
-                                title: 'Sidenav',
+                                title: 'Sidebar',
                                 type : 'item',
                                 url  : '/components/angular-material/sidenav'
                             },

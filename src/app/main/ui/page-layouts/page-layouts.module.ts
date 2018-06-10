@@ -9,23 +9,27 @@ import { CardedFullWidth1Component } from 'app/main/ui/page-layouts/carded/full-
 import { CardedFullWidth2Component } from 'app/main/ui/page-layouts/carded/full-width-2/full-width-2.component';
 import { CardedFullWidthTabbed1Component } from 'app/main/ui/page-layouts/carded/full-width-tabbed-1/full-width-tabbed-1.component';
 import { CardedFullWidthTabbed2Component } from 'app/main/ui/page-layouts/carded/full-width-tabbed-2/full-width-tabbed-2.component';
-import { CardedLeftSidenav1Component } from 'app/main/ui/page-layouts/carded/left-sidenav-1/left-sidenav-1.component';
-import { CardedLeftSidenav2Component } from 'app/main/ui/page-layouts/carded/left-sidenav-2/left-sidenav-2.component';
-import { CardedLeftSidenavTabbed1Component } from 'app/main/ui/page-layouts/carded/left-sidenav-tabbed-1/left-sidenav-tabbed-1.component';
-import { CardedLeftSidenavTabbed2Component } from 'app/main/ui/page-layouts/carded/left-sidenav-tabbed-2/left-sidenav-tabbed-2.component';
-import { CardedRightSidenav1Component } from 'app/main/ui/page-layouts/carded/right-sidenav-1/right-sidenav-1.component';
-import { CardedRightSidenav2Component } from 'app/main/ui/page-layouts/carded/right-sidenav-2/right-sidenav-2.component';
-import { CardedRightSidenavTabbed1Component } from 'app/main/ui/page-layouts/carded/right-sidenav-tabbed-1/right-sidenav-tabbed-1.component';
-import { CardedRightSidenavTabbed2Component } from 'app/main/ui/page-layouts/carded/right-sidenav-tabbed-2/right-sidenav-tabbed-2.component';
+import { CardedLeftSidebar1Component } from 'app/main/ui/page-layouts/carded/left-sidebar-1/left-sidebar-1.component';
+import { CardedLeftSidebar2Component } from 'app/main/ui/page-layouts/carded/left-sidebar-2/left-sidebar-2.component';
+import { CardedLeftSidebarTabbed1Component } from 'app/main/ui/page-layouts/carded/left-sidebar-tabbed-1/left-sidebar-tabbed-1.component';
+import { CardedLeftSidebarTabbed2Component } from 'app/main/ui/page-layouts/carded/left-sidebar-tabbed-2/left-sidebar-tabbed-2.component';
+import { CardedRightSidebar1Component } from 'app/main/ui/page-layouts/carded/right-sidebar-1/right-sidebar-1.component';
+import { CardedRightSidebar2Component } from 'app/main/ui/page-layouts/carded/right-sidebar-2/right-sidebar-2.component';
+import { CardedRightSidebarTabbed1Component } from 'app/main/ui/page-layouts/carded/right-sidebar-tabbed-1/right-sidebar-tabbed-1.component';
+import { CardedRightSidebarTabbed2Component } from 'app/main/ui/page-layouts/carded/right-sidebar-tabbed-2/right-sidebar-tabbed-2.component';
 import { SimpleFullWidth1Component } from 'app/main/ui/page-layouts/simple/full-width-1/full-width-1.component';
-import { SimpleLeftSidenav1Component } from 'app/main/ui/page-layouts/simple/left-sidenav-1/left-sidenav-1.component';
-import { SimpleLeftSidenav2Component } from 'app/main/ui/page-layouts/simple/left-sidenav-2/left-sidenav-2.component';
-import { SimpleLeftSidenav3Component } from 'app/main/ui/page-layouts/simple/left-sidenav-3/left-sidenav-3.component';
-import { SimpleRightSidenav1Component } from 'app/main/ui/page-layouts/simple/right-sidenav-1/right-sidenav-1.component';
-import { SimpleRightSidenav2Component } from 'app/main/ui/page-layouts/simple/right-sidenav-2/right-sidenav-2.component';
-import { SimpleRightSidenav3Component } from 'app/main/ui/page-layouts/simple/right-sidenav-3/right-sidenav-3.component';
+import { SimpleLeftSidebar1Component } from 'app/main/ui/page-layouts/simple/left-sidebar-1/left-sidebar-1.component';
+import { SimpleLeftSidebar2Component } from 'app/main/ui/page-layouts/simple/left-sidebar-2/left-sidebar-2.component';
+import { SimpleLeftSidebar3Component } from 'app/main/ui/page-layouts/simple/left-sidebar-3/left-sidebar-3.component';
+import { SimpleLeftSidebar4Component } from 'app/main/ui/page-layouts/simple/left-sidebar-4/left-sidebar-4.component';
+import { SimpleRightSidebar1Component } from 'app/main/ui/page-layouts/simple/right-sidebar-1/right-sidebar-1.component';
+import { SimpleRightSidebar2Component } from 'app/main/ui/page-layouts/simple/right-sidebar-2/right-sidebar-2.component';
+import { SimpleRightSidebar3Component } from 'app/main/ui/page-layouts/simple/right-sidebar-3/right-sidebar-3.component';
+import { SimpleRightSidebar4Component } from 'app/main/ui/page-layouts/simple/right-sidebar-4/right-sidebar-4.component';
 import { Tabbed1Component } from 'app/main/ui/page-layouts/simple/tabbed-1/tabbed-1.component';
 import { BlankComponent } from 'app/main/ui/page-layouts/blank/blank.component';
+
+import { FuseSidebarModule } from '@fuse/components';
 
 const routes: Routes = [
     {
@@ -45,64 +49,72 @@ const routes: Routes = [
         component: CardedFullWidthTabbed2Component
     },
     {
-        path     : 'page-layouts/carded/left-sidenav-1',
-        component: CardedLeftSidenav1Component
+        path     : 'page-layouts/carded/left-sidebar-1',
+        component: CardedLeftSidebar1Component
     },
     {
-        path     : 'page-layouts/carded/left-sidenav-tabbed-1',
-        component: CardedLeftSidenavTabbed1Component
+        path     : 'page-layouts/carded/left-sidebar-tabbed-1',
+        component: CardedLeftSidebarTabbed1Component
     },
     {
-        path     : 'page-layouts/carded/left-sidenav-2',
-        component: CardedLeftSidenav2Component
+        path     : 'page-layouts/carded/left-sidebar-2',
+        component: CardedLeftSidebar2Component
     },
     {
-        path     : 'page-layouts/carded/left-sidenav-tabbed-2',
-        component: CardedLeftSidenavTabbed2Component
+        path     : 'page-layouts/carded/left-sidebar-tabbed-2',
+        component: CardedLeftSidebarTabbed2Component
     },
     {
-        path     : 'page-layouts/carded/right-sidenav-1',
-        component: CardedRightSidenav1Component
+        path     : 'page-layouts/carded/right-sidebar-1',
+        component: CardedRightSidebar1Component
     },
     {
-        path     : 'page-layouts/carded/right-sidenav-tabbed-1',
-        component: CardedRightSidenavTabbed1Component
+        path     : 'page-layouts/carded/right-sidebar-tabbed-1',
+        component: CardedRightSidebarTabbed1Component
     },
     {
-        path     : 'page-layouts/carded/right-sidenav-2',
-        component: CardedRightSidenav2Component
+        path     : 'page-layouts/carded/right-sidebar-2',
+        component: CardedRightSidebar2Component
     },
     {
-        path     : 'page-layouts/carded/right-sidenav-tabbed-2',
-        component: CardedRightSidenavTabbed2Component
+        path     : 'page-layouts/carded/right-sidebar-tabbed-2',
+        component: CardedRightSidebarTabbed2Component
     },
     {
         path     : 'page-layouts/simple/full-width-1',
         component: SimpleFullWidth1Component
     },
     {
-        path     : 'page-layouts/simple/left-sidenav-1',
-        component: SimpleLeftSidenav1Component
+        path     : 'page-layouts/simple/left-sidebar-1',
+        component: SimpleLeftSidebar1Component
     },
     {
-        path     : 'page-layouts/simple/left-sidenav-2',
-        component: SimpleLeftSidenav2Component
+        path     : 'page-layouts/simple/left-sidebar-2',
+        component: SimpleLeftSidebar2Component
     },
     {
-        path     : 'page-layouts/simple/left-sidenav-3',
-        component: SimpleLeftSidenav3Component
+        path     : 'page-layouts/simple/left-sidebar-3',
+        component: SimpleLeftSidebar3Component
     },
     {
-        path     : 'page-layouts/simple/right-sidenav-1',
-        component: SimpleRightSidenav1Component
+        path     : 'page-layouts/simple/left-sidebar-4',
+        component: SimpleLeftSidebar4Component
     },
     {
-        path     : 'page-layouts/simple/right-sidenav-2',
-        component: SimpleRightSidenav2Component
+        path     : 'page-layouts/simple/right-sidebar-1',
+        component: SimpleRightSidebar1Component
     },
     {
-        path     : 'page-layouts/simple/right-sidenav-3',
-        component: SimpleRightSidenav3Component
+        path     : 'page-layouts/simple/right-sidebar-2',
+        component: SimpleRightSidebar2Component
+    },
+    {
+        path     : 'page-layouts/simple/right-sidebar-3',
+        component: SimpleRightSidebar3Component
+    },
+    {
+        path     : 'page-layouts/simple/right-sidebar-4',
+        component: SimpleRightSidebar4Component
     },
     {
         path     : 'page-layouts/simple/tabbed-1',
@@ -120,21 +132,23 @@ const routes: Routes = [
         CardedFullWidth2Component,
         CardedFullWidthTabbed1Component,
         CardedFullWidthTabbed2Component,
-        CardedLeftSidenav1Component,
-        CardedLeftSidenav2Component,
-        CardedLeftSidenavTabbed1Component,
-        CardedLeftSidenavTabbed2Component,
-        CardedRightSidenav1Component,
-        CardedRightSidenav2Component,
-        CardedRightSidenavTabbed1Component,
-        CardedRightSidenavTabbed2Component,
+        CardedLeftSidebar1Component,
+        CardedLeftSidebar2Component,
+        CardedLeftSidebarTabbed1Component,
+        CardedLeftSidebarTabbed2Component,
+        CardedRightSidebar1Component,
+        CardedRightSidebar2Component,
+        CardedRightSidebarTabbed1Component,
+        CardedRightSidebarTabbed2Component,
         SimpleFullWidth1Component,
-        SimpleLeftSidenav1Component,
-        SimpleLeftSidenav2Component,
-        SimpleLeftSidenav3Component,
-        SimpleRightSidenav1Component,
-        SimpleRightSidenav2Component,
-        SimpleRightSidenav3Component,
+        SimpleLeftSidebar1Component,
+        SimpleLeftSidebar2Component,
+        SimpleLeftSidebar3Component,
+        SimpleLeftSidebar4Component,
+        SimpleRightSidebar1Component,
+        SimpleRightSidebar2Component,
+        SimpleRightSidebar3Component,
+        SimpleRightSidebar4Component,
         Tabbed1Component,
         BlankComponent
     ],
@@ -146,6 +160,7 @@ const routes: Routes = [
         MatSidenavModule,
         MatTabsModule,
 
+        FuseSidebarModule,
         FuseSharedModule,
         FuseDemoModule
     ]

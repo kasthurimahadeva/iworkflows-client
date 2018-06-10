@@ -153,112 +153,116 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             }
         }
 
-        // Left sidenav - Right sidenav
-        &.left-sidenav,
-        &.right-sidenav {
+        // Left / Right sidebar
+        &.left-sidebar,
+        &.right-sidebar {
+            flex-direction: row;
 
-            > mat-sidenav-container {
+            // Sidebar
+            > .sidebar {
                 display: flex;
+                flex-direction: column;
                 flex: 1 1 auto;
-                background: none;
-                z-index: 2;
-                width: 100%;
+                width: 240px;
+                min-width: 240px;
+                max-width: 240px;
+                height: auto;
+                z-index: 4;
+                overflow-y: hidden;
+                @include mat-elevation(7);
 
-                .sidenav {
+                &.locked-open {
+                    background: none;
+                    box-shadow: none;
+
+                    + .center {
+                        z-index: 5;
+                    }
+
+                    &.left-positioned {
+
+                        + .center {
+                            margin-left: 0;
+                        }
+                    }
+
+                    &.right-positioned {
+
+                        + .center {
+                            margin-right: 0;
+                        }
+                    }
+                }
+
+                .header {
+                    height: $carded-header-height;
+                    min-height: $carded-header-height;
+                    max-height: $carded-header-height;
+
+                    @include media-breakpoint-down('sm') {
+                        height: $carded-header-height-sm;
+                        min-height: $carded-header-height-sm;
+                        max-height: $carded-header-height-sm;
+                    }
+                }
+
+                .content {
+                    background: transparent;
+                    overflow: auto;
+                }
+            }
+
+            // Center
+            > .center {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                position: relative;
+                z-index: 3;
+                margin-left: 32px;
+                margin-right: 32px;
+
+                .header {
+                    display: flex;
+                    height: $carded-header-height-without-toolbar;
+                    min-height: $carded-header-height-without-toolbar;
+                    max-height: $carded-header-height-without-toolbar;
+
+                    @include media-breakpoint-down('sm') {
+                        height: $carded-header-height-without-toolbar-sm;
+                        min-height: $carded-header-height-without-toolbar-sm;
+                        max-height: $carded-header-height-without-toolbar-sm;
+                    }
+                }
+
+                .content-card {
                     display: flex;
                     flex-direction: column;
                     flex: 1 1 auto;
-                    width: 240px;
-                    min-width: 240px;
-                    max-width: 240px;
-                    height: auto;
-                    z-index: 4;
-                    overflow-y: hidden;
+                    overflow: hidden;
                     @include mat-elevation(7);
 
-                    &.mat-is-locked-open {
-                        background: none;
-                        box-shadow: none;
-                    }
+                    .toolbar {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex: 1 1 auto;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                        height: $carded-toolbar-height;
+                        min-height: $carded-toolbar-height;
+                        max-height: $carded-toolbar-height;
 
-                    .header {
-                        height: $carded-header-height;
-                        min-height: $carded-header-height;
-                        max-height: $carded-header-height;
-
-                        @include media-breakpoint-down('sm') {
-                            height: $carded-header-height-sm;
-                            min-height: $carded-header-height-sm;
-                            max-height: $carded-header-height-sm;
+                        .sidebar-toggle {
+                            margin: 0 8px 0 0 !important;
+                            padding: 0 !important;
+                            border-radius: 0;
                         }
                     }
 
                     .content {
-                        background: transparent;
-                        overflow: auto;
-                    }
-                }
-
-                > .mat-sidenav-content,
-                > .mat-drawer-content {
-                    display: flex;
-                    flex: 1 1 auto;
-                    height: auto;
-                    overflow: visible;
-
-                    // Center
-                    .center {
                         display: flex;
-                        flex-direction: column;
                         flex: 1 1 auto;
-                        position: relative;
-                        z-index: 3;
-                        margin-left: 32px;
-                        margin-right: 32px;
-
-                        .header {
-                            display: flex;
-                            height: $carded-header-height-without-toolbar;
-                            min-height: $carded-header-height-without-toolbar;
-                            max-height: $carded-header-height-without-toolbar;
-
-                            @include media-breakpoint-down('sm') {
-                                height: $carded-header-height-without-toolbar-sm;
-                                min-height: $carded-header-height-without-toolbar-sm;
-                                max-height: $carded-header-height-without-toolbar-sm;
-                            }
-                        }
-
-                        .content-card {
-                            display: flex;
-                            flex-direction: column;
-                            flex: 1 1 auto;
-                            overflow: hidden;
-                            @include mat-elevation(7);
-
-                            .toolbar {
-                                display: flex;
-                                justify-content: flex-start;
-                                align-items: center;
-                                flex: 1 1 auto;
-                                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-                                height: $carded-toolbar-height;
-                                min-height: $carded-toolbar-height;
-                                max-height: $carded-toolbar-height;
-
-                                .sidenav-toggle {
-                                    margin: 0 8px 0 0 !important;
-                                    padding: 0 !important;
-                                    border-radius: 0;
-                                }
-                            }
-
-                            .content {
-                                display: flex;
-                                flex: 1 1 auto;
-                                overflow: auto;
-                            }
-                        }
+                        overflow: auto;
                     }
                 }
             }
@@ -267,21 +271,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             &.inner-scroll {
                 flex: 1 1 auto;
 
-                > mat-sidenav-container {
+                > .center {
+                    flex: 1 1 auto;
 
-                    > .mat-sidenav-content,
-                    > .mat-drawer-content {
+                    .content-card {
+                        flex: 1 1 auto;
 
-                        > .center {
+                        > .content {
                             flex: 1 1 auto;
-
-                            .content-card {
-                                flex: 1 1 auto;
-
-                                > .content {
-                                    flex: 1 1 auto;
-                                }
-                            }
                         }
                     }
                 }
@@ -290,52 +287,43 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             // Tabbed
             &.tabbed {
 
-                > mat-sidenav-container {
+                > .center {
+                    width: calc(100% - 32px);
+                    min-width: 0;
 
-                    > .mat-sidenav-content,
-                    > .mat-drawer-content {
-                        width: calc(100% - 240px);
-                        min-width: 0;
+                    @include media-breakpoint-down('md') {
+                        width: calc(100% - 64px);
+                    }
 
-                        .center {
-                            width: calc(100% - 32px);
-                            min-width: 0;
+                    .header {
+                        flex: 1 1 auto;
+                    }
 
-                            @include media-breakpoint-down('md') {
-                                width: calc(100% - 64px);
-                            }
+                    .content-card {
 
-                            .header {
-                                flex: 1 1 auto;
-                            }
+                        .content {
 
-                            .content-card {
+                            .mat-tab-group {
+                                overflow: hidden;
 
-                                .content {
+                                .mat-tab-header {
 
-                                    .mat-tab-group {
+                                    .mat-tab-label {
+                                        height: 64px;
+                                    }
+                                }
+
+                                .mat-tab-body {
+                                    overflow: hidden;
+
+                                    .mat-tab-body-content {
                                         overflow: hidden;
 
-                                        .mat-tab-header {
-
-                                            .mat-tab-label {
-                                                height: 64px;
-                                            }
-                                        }
-
-                                        .mat-tab-body {
-                                            overflow: hidden;
-
-                                            .mat-tab-body-content {
-                                                overflow: hidden;
-
-                                                .tab-content {
-                                                    position: relative;
-                                                    width: 100%;
-                                                    height: 100%;
-                                                    overflow: auto;
-                                                }
-                                            }
+                                        .tab-content {
+                                            position: relative;
+                                            width: 100%;
+                                            height: 100%;
+                                            overflow: auto;
                                         }
                                     }
                                 }
@@ -346,48 +334,15 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             }
         }
 
-        // Left sidenav
-        &.left-sidenav {
+        // Right sidebar specific
+        &.right-sidebar {
 
-            // Sidenav
-            > mat-sidenav-container {
-
-                .sidenav {
-
-                    &.mat-is-locked-open {
-
-                        ~ .mat-sidenav-content,
-                        ~ .mat-drawer-content {
-
-                            .center {
-                                margin-left: 0;
-                            }
-                        }
-                    }
-                }
+            > .sidebar {
+                order: 2;
             }
-        }
 
-        // Right sidenav
-        &.right-sidenav {
-
-            // Sidenav
-            > mat-sidenav-container {
-
-                .sidenav {
-                    order: 999;
-
-                    &.mat-is-locked-open {
-
-                        ~ .mat-sidenav-content,
-                        ~ .mat-drawer-content {
-
-                            .center {
-                                margin-right: 0;
-                            }
-                        }
-                    }
-                }
+            > .center {
+                order: 1;
             }
         }
     }
@@ -403,11 +358,16 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
         // Fullwidth
         &.fullwidth {
             overflow: auto;
+
+            > .content {
+                display: flex;
+                flex: 1 1 auto;
+            }
         }
 
         &.fullwidth,
-        &.inner-sidenav {
-            min-height: 100%;
+        &.inner-sidebar {
+            //min-height: 100%;
 
             > .header {
                 height: $header-height;
@@ -416,107 +376,113 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             }
         }
 
-        // Left sidenav - Right sidenav
-        &.left-sidenav,
-        &.right-sidenav {
+        // Left / Right sidebar
+        &.left-sidebar,
+        &.right-sidebar {
+            flex-direction: row;
 
-            // Single scroll
-            /*&.single-scroll {
+            // Sidebar
+            > .sidebar {
+                width: 240px;
+                min-width: 240px;
+                max-width: 240px;
+                z-index: 4;
+                @include mat-elevation(7);
 
-                > mat-sidenav-container {
-                    flex: 1 0 auto;
+                &.locked-open {
+                    background: none;
+                    box-shadow: none;
 
-                    > .mat-sidenav-content,
-                    > .mat-drawer-content {
-                        flex: 1 0 auto;
-                        max-height: none;
+                    + .center {
+                        z-index: 5;
                     }
-                }
-            }*/
 
-            // Inner Sidenav
-            &.inner-sidenav {
+                    &.left-positioned {
 
-                > mat-sidenav-container {
-                    flex: 1 1 auto;
-
-                    .sidenav {
-
-                        .sidenav-content {
-                            height: 100%;
+                        + .center {
+                            margin-left: 0;
                         }
                     }
 
-                    > .mat-sidenav-content,
-                    > .mat-drawer-content {
-                        display: flex;
-                        height: auto;
+                    &.right-positioned {
 
-                        .center {
-                            flex: 1 1 auto;
-                            min-height: 100%;
-                            @include mat-elevation(0);
-
-                            .content {
-                                display: flex;
-                                flex: 1 0 auto;
-                            }
+                        + .center {
+                            margin-right: 0;
                         }
                     }
                 }
             }
 
-            > mat-sidenav-container {
+            // Center
+            > .center {
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 flex: 1 1 auto;
-                background: none;
-                z-index: 2;
-                width: 100%;
+                overflow: auto;
+                z-index: 3;
+                @include mat-elevation(7);
 
-                .sidenav {
-                    width: 240px;
-                    min-width: 240px;
-                    max-width: 240px;
-                    z-index: 51;
-                    @include mat-elevation(7);
-
-                    &.mat-is-locked-open {
-                        width: 220px;
-                        min-width: 220px;
-                        max-width: 220px;
-                        box-shadow: none;
-                        background: transparent;
-                    }
-
-                    .sidenav-content {
-                        height: 100%;
-                    }
+                .header {
+                    height: $header-height;
+                    min-height: $header-height;
+                    max-height: $header-height;
                 }
 
-                > .mat-sidenav-content,
-                > .mat-drawer-content {
+                .content {
                     display: flex;
-                    flex: 1 1 auto;
-                    height: auto;
-                    overflow: visible;
-                    max-height: 100%;
+                    flex: 1 0 auto;
+                }
+            }
 
-                    .header {
-                        height: $header-height;
-                        min-height: $header-height;
-                        max-height: $header-height;
+            // Inner Sidebar
+            &.inner-sidebar {
+                flex-direction: column;
+                overflow: hidden;
+                height: 100%;
+
+                > .content {
+                    display: flex;
+
+                    > .sidebar {
+                        background: none;
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            // Inner scroll
+            &.inner-scroll {
+                flex: 1 1 auto;
+
+                > .center {
+                    flex: 1 1 auto;
+                }
+            }
+        }
+
+        // Right sidebar specific
+        &.right-sidebar {
+
+            > .sidebar {
+                order: 2;
+            }
+
+            > .center {
+                order: 1;
+            }
+
+            // Inner sidebar
+            &.inner-sidebar {
+
+                > .content {
+
+                    > .sidebar {
+                        order: 2;
                     }
 
-                    .center {
-                        display: flex;
-                        flex-direction: column;
-                        flex: 1 1 auto;
-                        overflow: auto;
-                        @include mat-elevation(7);
-
-                        .content {
-                        }
+                    > .center {
+                        order: 1;
                     }
                 }
             }
