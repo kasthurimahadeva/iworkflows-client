@@ -360,7 +360,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             overflow: auto;
 
             > .content {
-                display: flex;
                 flex: 1 1 auto;
             }
         }

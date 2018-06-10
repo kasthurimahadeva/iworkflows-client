@@ -18,6 +18,7 @@ import { CardedRightSidebar2Component } from 'app/main/ui/page-layouts/carded/ri
 import { CardedRightSidebarTabbed1Component } from 'app/main/ui/page-layouts/carded/right-sidebar-tabbed-1/right-sidebar-tabbed-1.component';
 import { CardedRightSidebarTabbed2Component } from 'app/main/ui/page-layouts/carded/right-sidebar-tabbed-2/right-sidebar-tabbed-2.component';
 import { SimpleFullWidth1Component } from 'app/main/ui/page-layouts/simple/full-width-1/full-width-1.component';
+import { SimpleFullWidthTabbed1Component } from 'app/main/ui/page-layouts/simple/full-width-tabbed-1/full-width-tabbed-1.component';
 import { SimpleLeftSidebar1Component } from 'app/main/ui/page-layouts/simple/left-sidebar-1/left-sidebar-1.component';
 import { SimpleLeftSidebar2Component } from 'app/main/ui/page-layouts/simple/left-sidebar-2/left-sidebar-2.component';
 import { SimpleLeftSidebar3Component } from 'app/main/ui/page-layouts/simple/left-sidebar-3/left-sidebar-3.component';
@@ -26,12 +27,12 @@ import { SimpleRightSidebar1Component } from 'app/main/ui/page-layouts/simple/ri
 import { SimpleRightSidebar2Component } from 'app/main/ui/page-layouts/simple/right-sidebar-2/right-sidebar-2.component';
 import { SimpleRightSidebar3Component } from 'app/main/ui/page-layouts/simple/right-sidebar-3/right-sidebar-3.component';
 import { SimpleRightSidebar4Component } from 'app/main/ui/page-layouts/simple/right-sidebar-4/right-sidebar-4.component';
-import { Tabbed1Component } from 'app/main/ui/page-layouts/simple/tabbed-1/tabbed-1.component';
 import { BlankComponent } from 'app/main/ui/page-layouts/blank/blank.component';
 
 import { FuseSidebarModule } from '@fuse/components';
 
 const routes: Routes = [
+    // Carded
     {
         path     : 'page-layouts/carded/full-width-1',
         component: CardedFullWidth1Component
@@ -80,9 +81,14 @@ const routes: Routes = [
         path     : 'page-layouts/carded/right-sidebar-tabbed-2',
         component: CardedRightSidebarTabbed2Component
     },
+    // Simple
     {
         path     : 'page-layouts/simple/full-width-1',
         component: SimpleFullWidth1Component
+    },
+    {
+        path     : 'page-layouts/simple/full-width-tabbed-1',
+        component: SimpleFullWidthTabbed1Component
     },
     {
         path     : 'page-layouts/simple/left-sidebar-1',
@@ -116,10 +122,7 @@ const routes: Routes = [
         path     : 'page-layouts/simple/right-sidebar-4',
         component: SimpleRightSidebar4Component
     },
-    {
-        path     : 'page-layouts/simple/tabbed-1',
-        component: Tabbed1Component
-    },
+    // Blank
     {
         path     : 'page-layouts/blank',
         component: BlankComponent
@@ -141,6 +144,7 @@ const routes: Routes = [
         CardedRightSidebarTabbed1Component,
         CardedRightSidebarTabbed2Component,
         SimpleFullWidth1Component,
+        SimpleFullWidthTabbed1Component,
         SimpleLeftSidebar1Component,
         SimpleLeftSidebar2Component,
         SimpleLeftSidebar3Component,
@@ -149,7 +153,6 @@ const routes: Routes = [
         SimpleRightSidebar2Component,
         SimpleRightSidebar3Component,
         SimpleRightSidebar4Component,
-        Tabbed1Component,
         BlankComponent
     ],
     imports     : [

@@ -498,6 +498,12 @@ export const navigation: FuseNavigation[] = [
                                 url  : '/ui/page-layouts/simple/full-width-1'
                             },
                             {
+                                id   : 'full-width-tabbed-1',
+                                title: 'Full Width Tabbed #1',
+                                type : 'item',
+                                url  : '/ui/page-layouts/simple/full-width-tabbed-1'
+                            },
+                            {
                                 id   : 'left-sidebar-1',
                                 title: 'Left Sidebar #1',
                                 type : 'item',
