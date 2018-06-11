@@ -55,7 +55,7 @@
             <!-- BOARD -->
             <div class="board-content ngx-dnd-container p-16 p-mat-24" fxLayout="row"
                  ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)"
-                 *fuseIfOnDom [@animateStagger]="{value:'50'}">
+                 [@animateStagger]="{value:'50'}">
 
                 <!-- LIST -->
                 <scrumboard-board-list
