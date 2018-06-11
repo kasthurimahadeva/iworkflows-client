@@ -217,7 +217,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
                 }
 
-                > .header {
+                .header {
                     height: $carded-header-height;
                     min-height: $carded-header-height;
                     max-height: $carded-header-height;
@@ -229,7 +229,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
                 }
 
-                > .content {
+                .content {
                     background: transparent;
                 }
             }
@@ -342,7 +342,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                 > .sidebar {
 
-                    > .content {
+                    .content {
                         overflow: auto;
                     }
                 }
@@ -490,7 +490,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                 > .sidebar {
 
-                    > .content {
+                    .content {
                         overflow: auto;
                     }
                 }
@@ -514,7 +514,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         background: none;
                         box-shadow: none;
 
-                        > .content {
+                        .content {
                             overflow: auto;
                         }
                     }

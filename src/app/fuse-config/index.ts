@@ -30,5 +30,5 @@ export const fuseConfig: FuseConfig = {
         }
     },
     customScrollbars: true,
-    routerAnimation : 'fadeIn'
+    routerAnimation : 'none'
 };
