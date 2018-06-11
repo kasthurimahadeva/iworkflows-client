@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
@@ -59,6 +59,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {AnimationBuilder} _animationBuilder
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {ElementRef} _elementRef
      * @param {FuseConfigService} _fuseConfigService
      * @param {FuseMatchMediaService} _fuseMatchMediaService
@@ -68,6 +69,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     constructor(
         private _animationBuilder: AnimationBuilder,
+        private _changeDetectorRef: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _fuseConfigService: FuseConfigService,
         private _fuseMatchMediaService: FuseMatchMediaService,
@@ -348,6 +350,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                 this.close();
             }
         );
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -383,6 +388,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                 this._backdrop = null;
             }
         });
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -398,6 +406,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Make the sidebar invisible
         this._renderer.removeStyle(this._elementRef.nativeElement, 'visibility');
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -419,6 +430,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             // Make the sidebar invisible
             this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
         }, delayAmount);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -436,6 +450,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Enable the animations
         this._animationsEnabled = true;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -463,6 +480,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Set the opened status
         this.opened = true;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -486,6 +506,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Hide the sidebar
         this._hideSidebar();
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -520,6 +543,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Unfold the sidebar temporarily
         this.unfolded = true;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -539,6 +565,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Fold the sidebar back
         this.unfolded = false;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -557,6 +586,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Fold
         this.folded = true;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -575,6 +607,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Unfold
         this.folded = false;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 
     /**
