@@ -11,7 +11,6 @@ import { AcademyCoursesService } from 'app/main/apps/academy/courses.service';
 import { AcademyCourseService } from 'app/main/apps/academy/course.service';
 import { FuseSidebarModule } from '@fuse/components';
 
-
 const routes = [
     {
         path     : 'courses',

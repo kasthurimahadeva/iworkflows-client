@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
-import { FuseConfigService } from '@fuse/services/config.service';
 
 import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
 import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
@@ -13,7 +13,6 @@ import * as fromStore from 'app/main/apps/mail-ngrx/store';
 
 import { locale as english } from 'app/main/apps/mail-ngrx/i18n/en';
 import { locale as turkish } from 'app/main/apps/mail-ngrx/i18n/tr';
-import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 @Component({
     selector       : 'mail-ngrx',
@@ -39,7 +38,6 @@ export class MailNgrxComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ChangeDetectorRef} _changeDetectorRef
-     * @param {FuseConfigService} _fuseConfigService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
      * @param {MailNgrxService} _mailNgrxService
@@ -47,18 +45,12 @@ export class MailNgrxComponent implements OnInit, OnDestroy
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
-        private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
         private _fuseTranslationLoaderService: FuseTranslationLoaderService,
         private _mailNgrxService: MailNgrxService,
         private _store: Store<fromStore.MailAppState>
     )
     {
-        // Configure the layout
-        this._fuseConfigService.config = {
-            routerAnimation: 'none'
-        };
-
         // Set the defaults
         this.searchInput = new FormControl('');
         this._fuseTranslationLoaderService.loadTranslations(english, turkish);

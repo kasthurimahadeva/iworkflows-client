@@ -3,9 +3,8 @@ import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
-import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
-import { FuseConfigService } from '@fuse/services/config.service';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
 import { Mail } from 'app/main/apps/mail/mail.model';
 import { MailService } from 'app/main/apps/mail/mail.service';
@@ -35,22 +34,15 @@ export class MailComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {MailService} _mailService
-     * @param {FuseConfigService} _fuseConfigService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
      */
     constructor(
         private _mailService: MailService,
-        private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
         private _fuseTranslationLoaderService: FuseTranslationLoaderService
     )
     {
-        // Configure the layout
-        this._fuseConfigService.config = {
-            routerAnimation: 'none'
-        };
-
         // Load the translations
         this._fuseTranslationLoaderService.loadTranslations(english, turkish);
 
