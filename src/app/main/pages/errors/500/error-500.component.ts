@@ -9,16 +9,27 @@ import { FuseConfigService } from '@fuse/services/config.service';
 })
 export class Error500Component
 {
+    /**
+     * Constructor
+     *
+     * @param {FuseConfigService} _fuseConfigService
+     */
     constructor(
-        private fuseConfig: FuseConfigService
+        private _fuseConfigService: FuseConfigService
     )
     {
         // Configure the layout
-        this.fuseConfig.config = {
+        this._fuseConfigService.config = {
             layout: {
-                navigation: 'none',
-                toolbar   : 'none',
-                footer    : 'none'
+                navbar : {
+                    hidden: true
+                },
+                toolbar: {
+                    hidden: true
+                },
+                footer : {
+                    hidden: true
+                }
             }
         };
     }

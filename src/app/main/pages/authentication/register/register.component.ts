@@ -28,9 +28,15 @@ export class RegisterComponent implements OnInit, OnDestroy
         // Configure the layout
         this._fuseConfigService.config = {
             layout: {
-                navigation: 'none',
-                toolbar   : 'none',
-                footer    : 'none'
+                navbar : {
+                    hidden: true
+                },
+                toolbar: {
+                    hidden: true
+                },
+                footer : {
+                    hidden: true
+                }
             }
         };
 

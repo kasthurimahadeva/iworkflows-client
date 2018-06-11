@@ -18,11 +18,8 @@
 
         <!-- TOOLBAR BOTTOM -->
         <mat-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
-
             <img [src]="contact.avatar" class="avatar contact-avatar huge" alt="{{contact.name}}"/>
-
             <div class="contact-name my-8">{{contact.name}}</div>
-
         </mat-toolbar-row>
         <!-- / TOOLBAR BOTTOM -->
 
@@ -31,7 +28,7 @@
 </div>
 
 <!-- SIDENAV CONTENT -->
-<div class="sidenav-content p-16" fusePerfectScrollbar fxFlex *ngIf="contact">
+<div class="sidenav-content p-16" fxFlex *ngIf="contact">
 
     <!-- CONTACT MOOD -->
     <mat-card>
