@@ -1,4 +1,4 @@
-<div id="order" class="page-layout carded fullwidth" fusePerfectScrollbar>
+<div id="order" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg mat-accent-bg"></div>
@@ -19,7 +19,7 @@
                 </button>
 
                 <div fxLayout="column" fxLayoutAlign="start start"
-                     *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <div class="h2">
                         Order {{order.reference}}
                     </div>

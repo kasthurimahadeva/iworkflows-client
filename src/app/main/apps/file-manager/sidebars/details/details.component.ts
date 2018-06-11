@@ -7,12 +7,12 @@ import { fuseAnimations } from '@fuse/animations';
 import { FileManagerService } from 'app/main/apps/file-manager/file-manager.service';
 
 @Component({
-    selector   : 'file-manager-details-sidenav',
+    selector   : 'file-manager-details-sidebar',
     templateUrl: './details.component.html',
     styleUrls  : ['./details.component.scss'],
     animations : fuseAnimations
 })
-export class FileManagerDetailsSidenavComponent implements OnInit, OnDestroy
+export class FileManagerDetailsSidebarComponent implements OnInit, OnDestroy
 {
     selected: any;
 

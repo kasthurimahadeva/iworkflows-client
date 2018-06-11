@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { FileManagerService } from 'app/main/apps/file-manager/file-manager.service';
 
@@ -27,9 +28,11 @@ export class FileManagerFileListComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {FileManagerService} _fileManagerService
+     * @param {FuseSidebarService} _fuseSidebarService
      */
     constructor(
-        private _fileManagerService: FileManagerService
+        private _fileManagerService: FileManagerService,
+        private _fuseSidebarService: FuseSidebarService
     )
     {
         // Set the private defaults
@@ -82,6 +85,16 @@ export class FileManagerFileListComponent implements OnInit, OnDestroy
     onSelect(selected): void
     {
         this._fileManagerService.onFileSelected.next(selected);
+    }
+
+    /**
+     * Toggle the sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 }
 

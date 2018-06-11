@@ -1,4 +1,4 @@
-<div id="orders" class="page-layout carded fullwidth" fusePerfectScrollbar>
+<div id="orders" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg mat-accent-bg"></div>
@@ -15,8 +15,10 @@
             <!-- APP TITLE -->
             <div class="logo"
                  fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="logo-icon mr-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">shopping_basket</mat-icon>
-                <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Orders</span>
+                <mat-icon class="logo-icon mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Orders</span>
             </div>
             <!-- / APP TITLE -->
 
@@ -92,7 +94,7 @@
 
                 <!-- Status Column -->
                 <ng-container cdkColumnDef="status">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header >Status</mat-header-cell>
+                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Status</mat-header-cell>
                     <mat-cell *cdkCellDef="let order">
                         <p class="status text-truncate h6 p-4" [ngClass]="order.status[0].color">
                             {{order.status[0].name}}

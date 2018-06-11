@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -9,12 +9,12 @@ import * as fromStore from 'app/main/apps/mail-ngrx/store';
 import { MailNgrxComposeDialogComponent } from 'app/main/apps/mail-ngrx/dialogs/compose/compose.component';
 
 @Component({
-    selector       : 'mail-main-sidenav',
-    templateUrl    : './main-sidenav.component.html',
-    styleUrls      : ['./main-sidenav.component.scss'],
+    selector       : 'mail-ngrx-main-sidebar',
+    templateUrl    : './main-sidebar.component.html',
+    styleUrls      : ['./main-sidebar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MailNgrxMainSidenavComponent
+export class MailNgrxMainSidebarComponent
 {
     labels: any[];
     accounts: object;
@@ -59,7 +59,7 @@ export class MailNgrxMainSidenavComponent
     composeDialog(): void
     {
         this.dialogRef = this._matDialog.open(MailNgrxComposeDialogComponent, {
-            panelClass: 'mail-compose-dialog'
+            panelClass: 'mail-ngrx-compose-dialog'
         });
 
         this.dialogRef.afterClosed()

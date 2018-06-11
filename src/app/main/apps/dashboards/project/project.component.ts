@@ -6,6 +6,7 @@ import * as shape from 'd3-shape';
 import { fuseAnimations } from '@fuse/animations';
 
 import { ProjectDashboardService } from 'app/main/apps/dashboards/project/project.service';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 @Component({
     selector     : 'project-dashboard',
@@ -32,9 +33,11 @@ export class ProjectDashboardComponent implements OnInit
     /**
      * Constructor
      *
+     * @param {FuseSidebarService} _fuseSidebarService
      * @param {ProjectDashboardService} _projectDashboardService
      */
     constructor(
+        private _fuseSidebarService: FuseSidebarService,
         private _projectDashboardService: ProjectDashboardService
     )
     {
@@ -160,6 +163,20 @@ export class ProjectDashboardComponent implements OnInit
         this.widget11.onContactsChanged = new BehaviorSubject({});
         this.widget11.onContactsChanged.next(this.widgets.widget11.table.rows);
         this.widget11.dataSource = new FilesDataSource(this.widget11);
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Toggle the sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 }
 

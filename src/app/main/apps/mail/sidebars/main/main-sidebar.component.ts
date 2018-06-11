@@ -1,21 +1,21 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
 
 import { MailService } from 'app/main/apps/mail/mail.service';
 import { MailComposeDialogComponent } from 'app/main/apps/mail/dialogs/compose/compose.component';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'mail-main-sidenav',
-    templateUrl: './main-sidenav.component.html',
-    styleUrls  : ['./main-sidenav.component.scss'],
+    selector   : 'mail-main-sidebar',
+    templateUrl: './main-sidebar.component.html',
+    styleUrls  : ['./main-sidebar.component.scss'],
     animations : fuseAnimations
 })
-export class MailMainSidenavComponent implements OnInit, OnDestroy
+export class MailMainSidebarComponent implements OnInit, OnDestroy
 {
     folders: any[];
     filters: any[];

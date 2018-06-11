@@ -1,4 +1,4 @@
-<mat-table #table [dataSource]="dataSource" *fuseIfOnDom [@animateStagger]="{value:'50'}">
+<mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
 
     <!-- Type Column -->
     <ng-container cdkColumnDef="icon">
@@ -42,8 +42,8 @@
     <ng-container cdkColumnDef="detail-button">
         <mat-header-cell *cdkHeaderCellDef fxFlex="48px" fxHide.gt-md></mat-header-cell>
         <mat-cell *cdkCellDef="let row" fxFlex="48px" fxHide.gt-md>
-            <button mat-icon-button class="sidenav-toggle"
-                    fuseMatSidenavToggler="file-manager-right-sidenav">
+            <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                    (click)="toggleSidebar('file-manager-details-sidebar')">
                 <mat-icon class="secondary-text">info</mat-icon>
             </button>
         </mat-cell>

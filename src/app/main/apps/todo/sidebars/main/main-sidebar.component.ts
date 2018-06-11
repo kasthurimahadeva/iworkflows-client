@@ -8,12 +8,12 @@ import { fuseAnimations } from '@fuse/animations';
 import { TodoService } from 'app/main/apps/todo/todo.service';
 
 @Component({
-    selector   : 'todo-main-sidenav',
-    templateUrl: './main-sidenav.component.html',
-    styleUrls  : ['./main-sidenav.component.scss'],
+    selector   : 'todo-main-sidebar',
+    templateUrl: './main-sidebar.component.html',
+    styleUrls  : ['./main-sidebar.component.scss'],
     animations : fuseAnimations
 })
-export class TodoMainSidenavComponent implements OnInit, OnDestroy
+export class TodoMainSidebarComponent implements OnInit, OnDestroy
 {
     folders: any[];
     filters: any[];

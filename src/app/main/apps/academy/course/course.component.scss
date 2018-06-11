@@ -2,19 +2,7 @@
 
 #academy-course {
 
-    .mat-drawer-container {
-        flex: 1 !important;
-
-        > .mat-drawer-content {
-            flex: 1 !important;
-
-            @include media-breakpoint-up('lg') {
-                z-index: 52;
-            }
-        }
-    }
-
-    .sidenav {
+    .sidebar {
 
         .steps {
             padding: 16px 0;
@@ -140,6 +128,7 @@
 
     .center {
         position: relative;
+        overflow: hidden;
 
         .header {
             height: 72px;
@@ -148,10 +137,8 @@
         }
 
         .content {
-            display: flex;
             position: relative;
-            overflow: hidden;
-            height: 100%;
+            display: flex;
             background: mat-color($mat-grey, 200);
 
             .course-step {
@@ -162,6 +149,10 @@
                 left: 0;
                 padding: 48px;
                 overflow: auto;
+
+                &.ng-animating {
+                    overflow: hidden;
+                }
 
                 @media (max-width: 720px) {
                     padding: 0 0 120px 0;

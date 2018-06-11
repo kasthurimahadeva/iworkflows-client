@@ -1,12 +1,14 @@
-<div id="academy-courses" class="page-layout simple" fusePerfectScrollbar>
+<div id="academy-courses" class="page-layout simple">
 
     <!-- HEADER -->
     <div class="header mat-accent-bg p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
 
         <div class="hero-text">
             <mat-icon class="hero-icon">school</mat-icon>
-            <h1>WELCOME TO ACADEMY</h1>
-            <h3>
+            <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                WELCOME TO ACADEMY
+            </h1>
+            <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
                 Our courses will step you through the process of building a small application, or adding a new feature
                 to an existing application.
             </h3>
@@ -46,8 +48,7 @@
 
             </div>
 
-            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}"
-                 *fuseIfOnDom>
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
 
                 <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50"
                      fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}">

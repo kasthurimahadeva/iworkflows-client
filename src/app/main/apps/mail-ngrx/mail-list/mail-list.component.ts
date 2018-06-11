@@ -5,7 +5,7 @@ import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
 import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 @Component({
-    selector       : 'mail-list',
+    selector       : 'mail-ngrx-list',
     templateUrl    : './mail-list.component.html',
     styleUrls      : ['./mail-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

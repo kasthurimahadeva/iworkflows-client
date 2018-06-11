@@ -1,4 +1,4 @@
-<div id="calendar" class="page-layout simple fullwidth" fusePerfectScrollbar>
+<div id="calendar" class="page-layout simple fullwidth">
 
     <!-- HEADER -->
     <div class="header p-16 p-sm-24" [ngClass]="viewDate | date:'MMM'">
@@ -8,8 +8,12 @@
             <div class="header-top" fxLayout="row" fxLayoutAlign="space-between center" fxLayout.xs="column">
 
                 <div class="logo mb-16 mb-sm-0" fxLayout="row" fxLayoutAlign="start center">
-                    <mat-icon class="logo-icon" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">today</mat-icon>
-                    <span class="logo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Calendar</span>
+                    <mat-icon class="logo-icon" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                        today
+                    </mat-icon>
+                    <span class="logo-text" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        Calendar
+                    </span>
                 </div>
 
                 <!-- TOOLBAR -->
@@ -44,7 +48,7 @@
 
             <!-- HEADER BOTTOM -->
             <div class="header-bottom" fxLayout="row" fxLayoutAlign="center center"
-                 *fuseIfOnDom [@animate]="{value:'*',params:{delay:'150ms'}}">
+                 [@animate]="{value:'*',params:{delay:'150ms'}}">
 
                 <button mat-icon-button class="arrow"
                         mwlCalendarPreviousView
@@ -73,7 +77,7 @@
 
         <!-- ADD EVENT BUTTON -->
         <button mat-fab class="add-event-button mat-warn" (click)="addEvent()" aria-label="Add event"
-                *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
+                [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">
             <mat-icon>add</mat-icon>
         </button>
         <!-- / ADD EVENT BUTTON -->
@@ -81,7 +85,7 @@
     <!-- / HEADER -->
 
     <!-- CONTENT -->
-    <div class="content" fusePerfectScrollbar *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms',y:'50px'}}">
+    <div class="content" fusePerfectScrollbar [@animate]="{value:'*',params:{delay:'200ms',y:'50px'}}">
         <div [ngSwitch]="view">
             <mwl-calendar-month-view
                 *ngSwitchCase="'month'"

@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatRippleModule, MatSelectModule, MatToolbarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { FuseSharedModule } from '@fuse/shared.module';
+import { FuseSidebarModule } from '@fuse/components';
 
 import { MailService } from 'app/main/apps/mail/mail.service';
 import { MailComponent } from 'app/main/apps/mail/mail.component';
 import { MailListComponent } from 'app/main/apps/mail/mail-list/mail-list.component';
 import { MailListItemComponent } from 'app/main/apps/mail/mail-list/mail-list-item/mail-list-item.component';
 import { MailDetailsComponent } from 'app/main/apps/mail/mail-details/mail-details.component';
-import { MailMainSidenavComponent } from 'app/main/apps/mail/sidenavs/main/main-sidenav.component';
+import { MailMainSidebarComponent } from 'app/main/apps/mail/sidebars/main/main-sidebar.component';
 import { MailComposeDialogComponent } from 'app/main/apps/mail/dialogs/compose/compose.component';
 
 const routes: Routes = [
@@ -68,7 +69,7 @@ const routes: Routes = [
         MailListComponent,
         MailListItemComponent,
         MailDetailsComponent,
-        MailMainSidenavComponent,
+        MailMainSidebarComponent,
         MailComposeDialogComponent
     ],
     imports        : [
@@ -83,12 +84,12 @@ const routes: Routes = [
         MatMenuModule,
         MatRippleModule,
         MatSelectModule,
-        MatSidenavModule,
         MatToolbarModule,
 
         TranslateModule,
 
-        FuseSharedModule
+        FuseSharedModule,
+        FuseSidebarModule
     ],
     providers      : [
         MailService

@@ -2,5 +2,12 @@
 
     .content {
         overflow: hidden;
+
+        .sidebar {
+
+            &:not(.locked-open) {
+                background: white;
+            }
+        }
     }
 }

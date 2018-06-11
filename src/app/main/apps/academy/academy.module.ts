@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
@@ -9,6 +9,7 @@ import { AcademyCoursesComponent } from 'app/main/apps/academy/courses/courses.c
 import { AcademyCourseComponent } from 'app/main/apps/academy/course/course.component';
 import { AcademyCoursesService } from 'app/main/apps/academy/courses.service';
 import { AcademyCourseService } from 'app/main/apps/academy/course.service';
+import { FuseSidebarModule } from '@fuse/components';
 
 
 const routes = [
@@ -45,9 +46,9 @@ const routes = [
         MatIconModule,
         MatInputModule,
         MatSelectModule,
-        MatSidenavModule,
 
-        FuseSharedModule
+        FuseSharedModule,
+        FuseSidebarModule
     ],
     providers   : [
         AcademyCoursesService,

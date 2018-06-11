@@ -5,11 +5,11 @@ import { takeUntil } from 'rxjs/operators';
 import { ContactsService } from 'app/main/apps/contacts/contacts.service';
 
 @Component({
-    selector   : 'contacts-main-sidenav',
+    selector   : 'contacts-main-sidebar',
     templateUrl: './main.component.html',
     styleUrls  : ['./main.component.scss']
 })
-export class ContactsMainSidenavComponent implements OnInit, OnDestroy
+export class ContactsMainSidebarComponent implements OnInit, OnDestroy
 {
     user: any;
     filterBy: string;

@@ -1,14 +1,13 @@
-<!-- SIDENAV HEADER -->
+<!-- SIDEBAR HEADER -->
 <div fxLayout="column" fxLayoutAlign="space-between start"
      class="header mat-accent-bg p-24 pb-4">
 
     <div class="logo" fxFlex fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon class="logo-icon s-32" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">mail
-        </mat-icon>
-        <span class="logo-text" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Mailbox</span>
+        <mat-icon class="logo-icon s-32">mail</mat-icon>
+        <span class="logo-text">Mailbox Ngrx</span>
     </div>
 
-    <div class="account" fxLayout="column" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'300ms'}}">
+    <div class="account" fxLayout="column">
         <div class="title">John Doe</div>
         <mat-form-field floatLabel="never">
             <mat-select class="account-selection" placeholder="Mail Selection"
@@ -21,10 +20,10 @@
     </div>
 
 </div>
-<!-- / SIDENAV HEADER -->
+<!-- / SIDEBAR HEADER -->
 
-<!-- SIDENAV CONTENT -->
-<div class="content" fusePerfectScrollbar *fuseIfOnDom [@animate]="{value:'*',params:{y:'50px'}}">
+<!-- SIDEBAR CONTENT -->
+<div class="content" fusePerfectScrollbar>
 
     <div class="p-24">
         <button mat-raised-button
@@ -39,8 +38,8 @@
 
         <div class="nav-subheader">{{ 'MAIL.FOLDERS' | translate }}</div>
 
-        <div class="nav-item" *ngFor="let folder of folders">
-            <a class="nav-link" matRipple [routerLink]="'/apps/mail/' + folder.handle"
+        <div class="nav-item" *ngFor="let folder of (folders$ | async)">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/' + folder.handle"
                [routerLinkActive]="['active', 'mat-accent-bg']">
                 <mat-icon class="nav-link-icon secondary-text" *ngIf="folder.icon">{{folder.icon}}</mat-icon>
                 <span>{{folder.title}}</span>
@@ -49,8 +48,8 @@
 
         <div class="nav-subheader">{{ 'MAIL.FILTERS' | translate }}</div>
 
-        <div class="nav-item" *ngFor="let filter of filters">
-            <a class="nav-link" matRipple [routerLink]="'/apps/mail/filter/' + filter.handle"
+        <div class="nav-item" *ngFor="let filter of (filters$ | async)">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/filter/' + filter.handle"
                [routerLinkActive]="['active', 'mat-accent-bg']">
                 <mat-icon class="nav-link-icon" [ngClass]="filter.color" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
                 <span>{{filter.title}}</span>
@@ -59,8 +58,8 @@
 
         <div class="nav-subheader">{{ 'MAIL.LABELS' | translate }}</div>
 
-        <div class="nav-item" *ngFor="let label of labels">
-            <a class="nav-link" matRipple [routerLink]="'/apps/mail/label/' + label.handle"
+        <div class="nav-item" *ngFor="let label of (labels$ | async)">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/label/' + label.handle"
                [routerLinkActive]="['active', 'mat-accent-bg']">
                 <mat-icon class="nav-link-icon" [ngStyle]="{'color':label.color}">label</mat-icon>
                 <span>{{label.title}}</span>
@@ -70,4 +69,4 @@
     </div>
 
 </div>
-<!-- / SIDENAV CONTENT -->
+<!-- / SIDEBAR CONTENT -->

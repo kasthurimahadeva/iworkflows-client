@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { Todo } from 'app/main/apps/todo/todo.model';
 import { TodoService } from 'app/main/apps/todo/todo.service';
@@ -29,9 +30,11 @@ export class TodoComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {FuseSidebarService} _fuseSidebarService
      * @param {TodoService} _todoService
      */
     constructor(
+        private _fuseSidebarService: FuseSidebarService,
         private _todoService: TodoService
     )
     {
@@ -154,5 +157,15 @@ export class TodoComponent implements OnInit, OnDestroy
     toggleTagOnSelectedTodos(tagId): void
     {
         this._todoService.toggleTagOnSelectedTodos(tagId);
+    }
+
+    /**
+     * Toggle the sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 }

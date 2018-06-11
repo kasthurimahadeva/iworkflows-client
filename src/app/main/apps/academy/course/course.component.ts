@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { fuseAnimations } from '@fuse/animations';
 
 import { AcademyCourseService } from 'app/main/apps/academy/course.service';
@@ -32,10 +33,12 @@ export class AcademyCourseComponent implements OnInit, OnDestroy, AfterViewInit
      *
      * @param {AcademyCourseService} _academyCourseService
      * @param {ChangeDetectorRef} _changeDetectorRef
+     * @param {FuseSidebarService} _fuseSidebarService
      */
     constructor(
         private _academyCourseService: AcademyCourseService,
-        private _changeDetectorRef: ChangeDetectorRef
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _fuseSidebarService: FuseSidebarService
     )
     {
         // Set the defaults
@@ -145,5 +148,15 @@ export class AcademyCourseComponent implements OnInit, OnDestroy, AfterViewInit
 
         // Decrease the current step
         this.currentStep--;
+    }
+
+    /**
+     * Toggle the sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 }

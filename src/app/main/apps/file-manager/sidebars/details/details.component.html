@@ -1,4 +1,4 @@
-<!-- SIDENAV HEADER -->
+<!-- SIDEBAR HEADER -->
 <div class="header mat-accent-bg p-24" fxLayout="column" fxLayoutAlign="space-between">
 
     <div class="toolbar" fxLayout="row" fxLayoutAlign="end center">
@@ -24,13 +24,12 @@
         </div>
     </div>
 </div>
-<!-- / SIDENAV HEADER -->
+<!-- / SIDEBAR HEADER -->
 
-<!-- SIDENAV CONTENT -->
+<!-- SIDEBAR CONTENT -->
 <div class="content p-24 mat-white-bg" fusePerfectScrollbar>
 
-    <div class="file-details"
-         *fuseIfOnDom [@animate]="{value:'*',params:{delay:'200ms'}}">
+    <div class="file-details" [@animate]="{value:'*',params:{delay:'200ms'}}">
 
         <div class="preview file-icon" fxLayout="row" fxLayoutAlign="center center">
             <mat-icon class="type-icon s-48" [ngClass]="selected.type"></mat-icon>
@@ -81,4 +80,4 @@
     </div>
 
 </div>
-<!-- / SIDENAV CONTENT -->
+<!-- / SIDEBAR CONTENT -->

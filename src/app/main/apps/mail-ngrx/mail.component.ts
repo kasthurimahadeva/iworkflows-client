@@ -13,6 +13,7 @@ import * as fromStore from 'app/main/apps/mail-ngrx/store';
 
 import { locale as english } from 'app/main/apps/mail-ngrx/i18n/en';
 import { locale as turkish } from 'app/main/apps/mail-ngrx/i18n/tr';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 @Component({
     selector       : 'mail-ngrx',
@@ -37,18 +38,20 @@ export class MailNgrxComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {FuseConfigService} _fuseConfigService
-     * @param {MailNgrxService} _mailNgrxService
-     * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
-     * @param {Store<MailAppState>} _store
      * @param {ChangeDetectorRef} _changeDetectorRef
+     * @param {FuseConfigService} _fuseConfigService
+     * @param {FuseSidebarService} _fuseSidebarService
+     * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
+     * @param {MailNgrxService} _mailNgrxService
+     * @param {Store<MailAppState>} _store
      */
     constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
         private _fuseConfigService: FuseConfigService,
-        private _mailNgrxService: MailNgrxService,
+        private _fuseSidebarService: FuseSidebarService,
         private _fuseTranslationLoaderService: FuseTranslationLoaderService,
-        private _store: Store<fromStore.MailAppState>,
-        private _changeDetectorRef: ChangeDetectorRef
+        private _mailNgrxService: MailNgrxService,
+        private _store: Store<fromStore.MailAppState>
     )
     {
         // Configure the layout
@@ -197,5 +200,15 @@ export class MailNgrxComponent implements OnInit, OnDestroy
     refresh(): void
     {
         this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Toggle the sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 }

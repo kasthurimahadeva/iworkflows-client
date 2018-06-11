@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-    selector     : 'mail-compose',
+    selector     : 'mail-ngrx-compose',
     templateUrl  : './compose.component.html',
     styleUrls    : ['./compose.component.scss'],
     encapsulation: ViewEncapsulation.None

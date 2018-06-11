@@ -4,13 +4,14 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
+import { FuseConfigService } from '@fuse/services/config.service';
 
 import { Mail } from 'app/main/apps/mail/mail.model';
 import { MailService } from 'app/main/apps/mail/mail.service';
 
 import { locale as english } from 'app/main/apps/mail//i18n/en';
 import { locale as turkish } from 'app/main/apps/mail//i18n/tr';
-import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
     selector   : 'mail',
@@ -35,11 +36,13 @@ export class MailComponent implements OnInit, OnDestroy
      *
      * @param {MailService} _mailService
      * @param {FuseConfigService} _fuseConfigService
+     * @param {FuseSidebarService} _fuseSidebarService
      * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
      */
     constructor(
         private _mailService: MailService,
         private _fuseConfigService: FuseConfigService,
+        private _fuseSidebarService: FuseSidebarService,
         private _fuseTranslationLoaderService: FuseTranslationLoaderService
     )
     {
@@ -184,5 +187,15 @@ export class MailComponent implements OnInit, OnDestroy
     setFolderOnSelectedMails(folderId): void
     {
         this._mailService.setFolderOnSelectedMails(folderId);
+    }
+
+    /**
+     * Toggle the sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 }

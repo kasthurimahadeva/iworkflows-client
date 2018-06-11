@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { ContactsService } from 'app/main/apps/contacts/contacts.service';
 import { ContactsContactFormDialogComponent } from 'app/main/apps/contacts/contact-form/contact-form.component';
@@ -29,10 +30,12 @@ export class ContactsComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {ContactsService} _contactsService
+     * @param {FuseSidebarService} _fuseSidebarService
      * @param {MatDialog} _matDialog
      */
     constructor(
         private _contactsService: ContactsService,
+        private _fuseSidebarService: FuseSidebarService,
         private _matDialog: MatDialog
     )
     {
@@ -104,5 +107,15 @@ export class ContactsComponent implements OnInit, OnDestroy
 
                 this._contactsService.updateContact(response.getRawValue());
             });
+    }
+
+    /**
+     * Toggle the sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
     }
 }

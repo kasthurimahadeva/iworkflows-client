@@ -7,7 +7,7 @@ import * as fromStore from 'app/main/apps/mail-ngrx/store';
 import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 
 @Component({
-    selector       : 'mail-details',
+    selector       : 'mail-ngrx-details',
     templateUrl    : './mail-details.component.html',
     styleUrls      : ['./mail-details.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

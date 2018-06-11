@@ -1,4 +1,4 @@
-<div id="product" class="page-layout carded fullwidth" fusePerfectScrollbar>
+<div id="product" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg mat-accent-bg"></div>
@@ -17,14 +17,13 @@
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
-                <div class="product-image mr-8 mr-sm-16" *fuseIfOnDom
-                     [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
                     <img *ngIf="product.images[0]" [src]="product.images[0].url">
                     <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
                 </div>
 
                 <div fxLayout="column" fxLayoutAlign="start start"
-                     *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <div class="h2" *ngIf="pageType ==='edit'">
                         {{product.name}}
                     </div>
