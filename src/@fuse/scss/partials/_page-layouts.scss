@@ -53,14 +53,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 max-height: 100%;
 
                 > .header {
-                    height: $carded-header-height-without-toolbar;
-                    min-height: $carded-header-height-without-toolbar;
-                    max-height: $carded-header-height-without-toolbar;
+                    height: $carded-header-height-without-toolbar !important;
+                    min-height: $carded-header-height-without-toolbar !important;
+                    max-height: $carded-header-height-without-toolbar !important;
 
                     @include media-breakpoint-down('sm') {
-                        height: $carded-header-height-without-toolbar-sm;
-                        min-height: $carded-header-height-without-toolbar-sm;
-                        max-height: $carded-header-height-without-toolbar-sm;
+                        height: $carded-header-height-without-toolbar-sm !important;
+                        min-height: $carded-header-height-without-toolbar-sm !important;
+                        max-height: $carded-header-height-without-toolbar-sm !important;
                     }
                 }
 
@@ -192,6 +192,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 max-width: 240px;
                 height: auto;
                 z-index: 4;
+                overflow: hidden;
                 @include mat-elevation(7);
 
                 &.locked-open {
@@ -231,6 +232,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                 .content {
                     background: transparent;
+                    flex: 1 1 auto;
                 }
             }
 
@@ -438,6 +440,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 min-width: 240px;
                 max-width: 240px;
                 z-index: 4;
+                overflow: hidden;
                 @include mat-elevation(7);
 
                 &.locked-open {
@@ -461,6 +464,10 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                             margin-right: 0;
                         }
                     }
+                }
+
+                .content {
+                    flex: 1 1 auto;
                 }
             }
 
@@ -520,6 +527,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
 
                     > .center {
+                        flex: 1 1 auto;
                         overflow: auto;
                     }
                 }
