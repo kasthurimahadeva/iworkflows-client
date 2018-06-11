@@ -72,14 +72,9 @@
             }
 
             &.active {
-                //background-color: mat-color($accent);
 
-                .mat-ripple-element {
-                    //background-color: mat-color($accent, default-contrast, 0.1);
-                }
-
-                &, .nav-link-icon {
-                    //color: mat-color($accent, default-contrast);
+                .nav-link-icon {
+                    opacity: 1;
                 }
 
                 .nav-link-badge {
@@ -90,6 +85,7 @@
 
             .nav-link-icon {
                 margin-right: 16px;
+                opacity: 0.7;
             }
 
             .nav-link-icon,

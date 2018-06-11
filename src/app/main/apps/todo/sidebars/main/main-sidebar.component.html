@@ -40,7 +40,7 @@
         <div class="nav-item">
             <a class="nav-link" matRipple [routerLink]="'/apps/todo/all'"
                [routerLinkActive]="['active', 'mat-accent-bg']">
-                <mat-icon class="nav-link-icon secondary-text">view_headline</mat-icon>
+                <mat-icon class="nav-link-icon">view_headline</mat-icon>
                 <span>All</span>
             </a>
         </div>
@@ -50,7 +50,7 @@
         <div class="nav-item" *ngFor="let filter of filters">
             <a class="nav-link" matRipple [routerLink]="'/apps/todo/filter/' + filter.handle"
                [routerLinkActive]="['active', 'mat-accent-bg']">
-                <mat-icon class="nav-link-icon secondary-text" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
+                <mat-icon class="nav-link-icon" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
                 <span>{{filter.title}}</span>
             </a>
         </div>

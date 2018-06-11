@@ -41,7 +41,7 @@
         <div class="nav-item" *ngFor="let folder of (folders$ | async)">
             <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/' + folder.handle"
                [routerLinkActive]="['active', 'mat-accent-bg']">
-                <mat-icon class="nav-link-icon secondary-text" *ngIf="folder.icon">{{folder.icon}}</mat-icon>
+                <mat-icon class="nav-link-icon" *ngIf="folder.icon">{{folder.icon}}</mat-icon>
                 <span>{{folder.title}}</span>
             </a>
         </div>
