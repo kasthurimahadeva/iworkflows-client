@@ -12,8 +12,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
 .page-layout {
     position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 
     // Carded layout
     &.carded {
@@ -24,7 +23,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
         min-width: 100%;
 
         // Top bg
-        .top-bg {
+        > .top-bg {
             position: absolute;
             z-index: 1;
             top: 0;
@@ -40,23 +39,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
         // Fullwidth
         &.fullwidth {
 
-            // Inner scroll
-            &.inner-scroll {
-                flex: 1 1 auto;
-
-                > .center {
-                    flex: 1 1 auto;
-
-                    .content-card {
-                        flex: 1 1 auto;
-
-                        > .content {
-                            flex: 1 1 auto;
-                        }
-                    }
-                }
-            }
-
             // Center
             > .center {
                 display: flex;
@@ -70,7 +52,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 max-width: 100%;
                 max-height: 100%;
 
-                .header {
+                > .header {
                     height: $carded-header-height-without-toolbar;
                     min-height: $carded-header-height-without-toolbar;
                     max-height: $carded-header-height-without-toolbar;
@@ -82,14 +64,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
                 }
 
-                .content-card {
+                > .content-card {
                     display: flex;
                     flex-direction: column;
                     flex: 1 0 auto;
                     overflow: hidden;
                     @include mat-elevation(7);
 
-                    .toolbar {
+                    > .toolbar {
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
@@ -101,7 +83,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                     > .content {
                         flex: 1 0 auto;
-                        overflow: auto;
                     }
                 }
             }
@@ -109,20 +90,20 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
             // Tabbed
             &.tabbed {
 
-                .center {
+                > .center {
                     width: 100%;
                     min-width: 0;
 
-                    .header {
+                    > .header {
                         flex: 1 1 auto;
                     }
 
-                    .content-card {
+                    > .content-card {
 
-                        .content {
+                        > .content {
                             display: flex;
 
-                            .mat-tab-group {
+                            > .mat-tab-group {
                                 overflow: hidden;
 
                                 .mat-tab-header {
@@ -142,7 +123,50 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                                             position: relative;
                                             width: 100%;
                                             height: 100%;
-                                            overflow: auto;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Inner scroll
+            &.inner-scroll {
+                flex: 1 1 auto;
+
+                > .center {
+                    flex: 1 1 auto;
+
+                    > .content-card {
+                        flex: 1 1 auto;
+
+                        > .content {
+                            overflow: auto;
+                            flex: 1 1 auto;
+                        }
+                    }
+                }
+
+                // Tabbed
+                &.tabbed {
+
+                    > .center {
+
+                        > .content-card {
+
+                            > .content {
+
+                                > .mat-tab-group {
+
+                                    .mat-tab-body {
+
+                                        .mat-tab-body-content {
+
+                                            .tab-content {
+                                                overflow: auto;
+                                            }
                                         }
                                     }
                                 }
@@ -168,7 +192,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 max-width: 240px;
                 height: auto;
                 z-index: 4;
-                overflow-y: hidden;
                 @include mat-elevation(7);
 
                 &.locked-open {
@@ -194,7 +217,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
                 }
 
-                .header {
+                > .header {
                     height: $carded-header-height;
                     min-height: $carded-header-height;
                     max-height: $carded-header-height;
@@ -206,9 +229,8 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
                 }
 
-                .content {
+                > .content {
                     background: transparent;
-                    overflow: auto;
                 }
             }
 
@@ -222,7 +244,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 margin-left: 32px;
                 margin-right: 32px;
 
-                .header {
+                > .header {
                     display: flex;
                     height: $carded-header-height-without-toolbar;
                     min-height: $carded-header-height-without-toolbar;
@@ -235,14 +257,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     }
                 }
 
-                .content-card {
+                > .content-card {
                     display: flex;
                     flex-direction: column;
                     flex: 1 1 auto;
                     overflow: hidden;
                     @include mat-elevation(7);
 
-                    .toolbar {
+                    > .toolbar {
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
@@ -259,26 +281,8 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         }
                     }
 
-                    .content {
+                    > .content {
                         flex: 1 1 auto;
-                        overflow: auto;
-                    }
-                }
-            }
-
-            // Inner scroll
-            &.inner-scroll {
-                flex: 1 1 auto;
-
-                > .center {
-                    flex: 1 1 auto;
-
-                    .content-card {
-                        flex: 1 1 auto;
-
-                        > .content {
-                            flex: 1 1 auto;
-                        }
                     }
                 }
             }
@@ -294,16 +298,16 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         width: calc(100% - 64px);
                     }
 
-                    .header {
+                    > .header {
                         flex: 1 1 auto;
                     }
 
-                    .content-card {
+                    > .content-card {
 
-                        .content {
+                        > .content {
                             display: flex;
 
-                            .mat-tab-group {
+                            > .mat-tab-group {
                                 overflow: hidden;
 
                                 .mat-tab-header {
@@ -323,7 +327,57 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                                             position: relative;
                                             width: 100%;
                                             height: 100%;
-                                            overflow: auto;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Inner scroll
+            &.inner-scroll {
+                flex: 1 1 auto;
+
+                > .sidebar {
+
+                    > .content {
+                        overflow: auto;
+                    }
+                }
+
+                > .center {
+                    flex: 1 1 auto;
+
+                    > .content-card {
+                        flex: 1 1 auto;
+
+                        > .content {
+                            flex: 1 1 auto;
+                            overflow: auto;
+                        }
+                    }
+                }
+
+                // Tabbed
+                &.tabbed {
+
+                    > .center {
+
+                        > .content-card {
+
+                            > .content {
+
+                                > .mat-tab-group {
+
+                                    .mat-tab-body {
+
+                                        .mat-tab-body-content {
+
+                                            .tab-content {
+                                                overflow: auto;
+                                            }
                                         }
                                     }
                                 }
@@ -357,7 +411,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
         // Fullwidth
         &.fullwidth {
-            overflow: auto;
 
             > .content {
                 flex: 1 1 auto;
@@ -366,7 +419,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
         &.fullwidth,
         &.inner-sidebar {
-            //min-height: 100%;
 
             > .header {
                 height: $header-height;
@@ -418,18 +470,34 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 display: flex;
                 flex-direction: column;
                 flex: 1 1 auto;
-                overflow: auto;
                 z-index: 3;
                 @include mat-elevation(7);
 
-                .header {
+                > .header {
                     height: $header-height;
                     min-height: $header-height;
                     max-height: $header-height;
                 }
 
-                .content {
+                > .content {
                     flex: 1 0 auto;
+                }
+            }
+
+            // Inner scroll
+            &.inner-scroll {
+                flex: 1 1 auto;
+
+                > .sidebar {
+
+                    > .content {
+                        overflow: auto;
+                    }
+                }
+
+                > .center {
+                    flex: 1 1 auto;
+                    overflow: auto;
                 }
             }
 
@@ -445,16 +513,15 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     > .sidebar {
                         background: none;
                         box-shadow: none;
+
+                        > .content {
+                            overflow: auto;
+                        }
                     }
-                }
-            }
 
-            // Inner scroll
-            &.inner-scroll {
-                flex: 1 1 auto;
-
-                > .center {
-                    flex: 1 1 auto;
+                    > .center {
+                        overflow: auto;
+                    }
                 }
             }
         }
@@ -490,7 +557,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
         &.tabbed {
             min-height: 100%;
 
-            .header {
+            > .header {
                 height: $header-height;
                 min-height: $header-height;
                 max-height: $header-height;
@@ -498,7 +565,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
             > .content {
 
-                .mat-tab-group {
+                > .mat-tab-group {
 
                     .mat-tab-labels {
                         padding: 0 24px;
@@ -526,18 +593,11 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 }
             }
 
-            &.left-sidenav,
-            &.right-sidenav {
+            &.left-sidebar,
+            &.right-sidebar {
 
-                > mat-sidenav-container {
-
-                    > .mat-sidenav-content,
-                    > .mat-drawer-content {
-
-                        .center {
-                            margin: 0 16px;
-                        }
-                    }
+                > .center {
+                    margin: 0 16px;
                 }
             }
         }
