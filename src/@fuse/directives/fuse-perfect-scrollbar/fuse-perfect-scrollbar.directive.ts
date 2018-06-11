@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 
     // Private
     private _enabled: boolean | '';
+    private _debouncedUpdate: any;
     private _options: any;
     private _unsubscribeAll: Subject<any>;
 
@@ -43,6 +44,7 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
 
         // Set the private defaults
         this._enabled = false;
+        this._debouncedUpdate = _.debounce(this.update, 150);
         this._options = {
             updateOnRouteChange: false
         };
@@ -138,10 +140,13 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
             this._router.events
                 .pipe(
                     takeUntil(this._unsubscribeAll),
-                    filter(event => event instanceof NavigationStart)
+                    filter(event => event instanceof NavigationEnd)
                 )
                 .subscribe(() => {
-                    this.scrollToTop();
+                    setTimeout(() => {
+                        this.scrollToTop();
+                        this.update();
+                    }, 0);
                 });
         }
     }
@@ -215,6 +220,17 @@ export class FusePerfectScrollbarDirective implements AfterViewInit, OnDestroy
         // Clean up
         this.ps = null;
         this.isInitialized = false;
+    }
+
+    /**
+     * Update scrollbars on window resize
+     *
+     * @private
+     */
+    @HostListener('window:resize')
+    _updateOnResize(): void
+    {
+        this._debouncedUpdate();
     }
 
     // -----------------------------------------------------------------------------------------------------
