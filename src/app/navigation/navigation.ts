@@ -894,7 +894,7 @@ export const navigation: FuseNavigation[] = [
                     },
                     {
                         id   : 'directory-structure',
-                        title: 'Directory structure',
+                        title: 'Directory Structure',
                         type : 'item',
                         url  : '/documentation/working-with-fuse/directory-structure'
                     },
@@ -905,10 +905,10 @@ export const navigation: FuseNavigation[] = [
                         url  : '/documentation/working-with-fuse/directory-structure'
                     },
                     {
-                        id   : 'template-layouts',
-                        title: 'Template Layouts',
+                        id   : 'theme-layouts',
+                        title: 'Theme Layouts',
                         type : 'item',
-                        url  : '/documentation/working-with-fuse/template-layouts'
+                        url  : '/documentation/working-with-fuse/theme-layouts'
                     },
                     {
                         id   : 'page-layouts',

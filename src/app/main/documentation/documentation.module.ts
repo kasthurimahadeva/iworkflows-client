@@ -1,8 +1,17 @@
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes } from '@angular/router';
 
+import { MatIconModule } from '@angular/material';
+
+import { FuseSharedModule } from '@fuse/shared.module';
+
+import { DocsChangelogComponent } from 'app/main/documentation/changelog/changelog.component';
+
 const routes: Routes = [
+    {
+        path     : 'changelog',
+        component: DocsChangelogComponent
+    },
     {
         path        : 'components',
         loadChildren: './components/components.module#ComponentsModule'
@@ -18,8 +27,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forChild(routes)
+    declarations: [
+        DocsChangelogComponent
+    ],
+    imports     : [
+        RouterModule.forChild(routes),
+
+        MatIconModule,
+
+        FuseSharedModule
     ]
 })
 export class DocumentationModule

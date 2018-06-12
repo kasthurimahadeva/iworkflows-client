@@ -275,3 +275,88 @@ strong {
 .text-nowrap {
     white-space: nowrap;
 }
+
+// Changelog
+.changelog {
+
+    .entry {
+        background: white;
+        margin-bottom: 24px;
+        padding: 24px 32px;
+        @include mat-elevation(2);
+
+        > .title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+
+            .version {
+                font-size: 24px;
+            }
+
+            .date {
+                margin-left: 8px;
+                font-size: 17px;
+                opacity: 0.54;
+            }
+        }
+
+        .groups {
+
+            div {
+                margin-bottom: 32px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .title {
+                display: inline-flex;
+                font-size: 13px;
+                color: white;
+                letter-spacing: 0.015em;
+                line-height: 1;
+                padding: 5px 8px;
+                border-radius: 2px;
+            }
+
+            .breaking-changes {
+
+                .title {
+                    background: #F44336;
+                }
+            }
+
+            .new {
+
+                .title {
+                    background: #43A047;
+                }
+            }
+
+            .improved {
+
+                .title {
+                    background: #673AB7;
+                }
+            }
+
+            .fixed {
+
+                .title {
+                    background: #2196F3;
+                }
+            }
+
+            ul {
+                padding-left: 24px;
+
+                li {
+                    margin-bottom: 6px;
+                    letter-spacing: 0.015em;
+                }
+            }
+        }
+    }
+}
