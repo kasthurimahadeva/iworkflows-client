@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { FuseSidebarModule } from '@fuse/components';
+import { FuseSidebarModule } from '@fuse/components/index';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { ContentModule } from 'app/layout/components/content/content.module';
@@ -10,11 +10,11 @@ import { NavbarModule } from 'app/layout/components/navbar/navbar.module';
 import { QuickPanelModule } from 'app/layout/components/quick-panel/quick-panel.module';
 import { ToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
 
-import { VerticalLayout1ContentScrollComponent } from 'app/layout/vertical/layout-1/content-scroll/content-scroll.component';
+import { VerticalLayout3Component } from 'app/layout/vertical/layout-3/layout-3.component';
 
 @NgModule({
     declarations: [
-        VerticalLayout1ContentScrollComponent
+        VerticalLayout3Component
     ],
     imports     : [
         RouterModule,
@@ -29,9 +29,9 @@ import { VerticalLayout1ContentScrollComponent } from 'app/layout/vertical/layou
         ToolbarModule
     ],
     exports     : [
-        VerticalLayout1ContentScrollComponent
+        VerticalLayout3Component
     ]
 })
-export class VerticalLayout1ContentScrollModule
+export class VerticalLayout3Module
 {
 }

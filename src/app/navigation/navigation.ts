@@ -571,9 +571,10 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
-        id      : 'angular-material-elements-elements',
+        id      : 'angular-material-elements',
         title   : 'Angular Material Elements',
         type    : 'group',
+        icon    : 'layers',
         children: [
             {
                 id      : 'form-controls',
@@ -838,6 +839,7 @@ export const navigation: FuseNavigation[] = [
     {
         id      : 'documentation',
         title   : 'Documentation',
+        icon    : 'import_contacts',
         type    : 'group',
         children: [
             {
@@ -846,10 +848,10 @@ export const navigation: FuseNavigation[] = [
                 type : 'item',
                 icon : 'update',
                 url  : '/documentation/changelog',
-                badge    : {
-                    title    : '6.1.0',
-                    bg       : '#EC0C8E',
-                    fg       : '#FFFFFF'
+                badge: {
+                    title: '6.1.0',
+                    bg   : '#EC0C8E',
+                    fg   : '#FFFFFF'
                 }
             },
             {

@@ -10,7 +10,7 @@ import { FuseConfig } from '@fuse/types';
 
 export const fuseConfig: FuseConfig = {
     layout          : {
-        style         : 'vertical-layout-1-content-scroll',
+        style         : 'vertical-layout-1',
         width         : 'fullwidth',
         navbar        : {
             hidden    : false,

@@ -23,11 +23,25 @@
             </ng-container>
             <!-- / NAVBAR: Left -->
 
-            <!-- CONTENT -->
-            <content
-                [ngClass]="{'ml-32':fuseConfig.layout.navbar.position === 'left', 'mr-32':fuseConfig.layout.navbar.position === 'right'}">
-            </content>
-            <!-- / CONTENT -->
+            <div id="container-3" class="container">
+
+                <!-- TOOLBAR: Below -->
+                <ng-container *ngIf="fuseConfig.layout.toolbar.position === 'below'">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container>
+                <!-- / TOOLBAR: Below -->
+
+                <!-- CONTENT -->
+                <content></content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below -->
+                <ng-container *ngIf="fuseConfig.layout.footer.position === 'below'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container>
+                <!-- / FOOTER: Below -->
+
+            </div>
 
             <!-- NAVBAR: Right -->
             <ng-container *ngIf="fuseConfig.layout.navbar.position === 'right'">

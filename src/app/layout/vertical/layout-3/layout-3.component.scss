@@ -1,6 +1,6 @@
-@import "src/@fuse/scss/fuse";
+@import "../../../../@fuse/scss/fuse";
 
-vertical-layout-1-body-scroll {
+vertical-layout-3 {
     display: flex;
     flex: 1 1 auto;
     width: 100%;
@@ -39,14 +39,15 @@ vertical-layout-1-body-scroll {
                 display: flex;
                 flex: 1 0 auto;
                 width: 100%;
+                min-width: 0;
+                padding: 32px;
 
-                // Container 3
-                > .container {
-                    position: relative;
-                    display: flex;
+                // Content component
+                > content {
                     flex: 1 1 auto;
-                    flex-direction: column;
                     min-width: 0;
+
+                    @include mat-elevation(3);
                 }
             }
         }

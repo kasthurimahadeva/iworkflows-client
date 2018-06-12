@@ -123,6 +123,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             'id'      : 'custom-function',
             'title'   : 'Custom Function',
             'type'    : 'group',
+            'icon'    : 'settings',
             'children': [
                 {
                     'id'      : 'customize',
@@ -167,8 +168,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     {
         switch ( value )
         {
-            // Vertical Layout #1 - Content scroll
-            case 'vertical-layout-1-content-scroll':
+            // Vertical Layout #1
+            case 'vertical-layout-1':
             {
                 this.form.patchValue({
                     layout: {
@@ -187,34 +188,6 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         footer : {
                             hidden    : false,
                             position  : 'below-static',
-                            background: 'mat-fuse-dark-900-bg'
-                        }
-                    }
-                });
-
-                break;
-            }
-
-            // Vertical Layout #1 - Body scroll
-            case 'vertical-layout-1-body-scroll':
-            {
-                this.form.patchValue({
-                    layout: {
-                        width  : 'fullwidth',
-                        navbar : {
-                            hidden    : false,
-                            position  : 'left',
-                            folded    : false,
-                            background: 'mat-fuse-dark-700-bg'
-                        },
-                        toolbar: {
-                            hidden    : false,
-                            position  : 'below',
-                            background: 'mat-white-500-bg'
-                        },
-                        footer : {
-                            hidden    : false,
-                            position  : 'below',
                             background: 'mat-fuse-dark-900-bg'
                         }
                     }
@@ -225,6 +198,34 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 
             // Vertical Layout #2
             case 'vertical-layout-2':
+            {
+                this.form.patchValue({
+                    layout: {
+                        width  : 'fullwidth',
+                        navbar : {
+                            hidden    : false,
+                            position  : 'left',
+                            folded    : false,
+                            background: 'mat-fuse-dark-700-bg'
+                        },
+                        toolbar: {
+                            hidden    : false,
+                            position  : 'below',
+                            background: 'mat-white-500-bg'
+                        },
+                        footer : {
+                            hidden    : false,
+                            position  : 'below',
+                            background: 'mat-fuse-dark-900-bg'
+                        }
+                    }
+                });
+
+                break;
+            }
+
+            // Vertical Layout #3
+            case 'vertical-layout-3':
             {
                 this.form.patchValue({
                     layout: {
@@ -291,9 +292,5 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
 
 }

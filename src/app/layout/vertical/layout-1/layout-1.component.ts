@@ -6,12 +6,12 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { navigation } from 'app/navigation/navigation';
 
 @Component({
-    selector     : 'vertical-layout-1-body-scroll',
-    templateUrl  : './body-scroll.component.html',
-    styleUrls    : ['./body-scroll.component.scss'],
+    selector     : 'vertical-layout-1',
+    templateUrl  : './layout-1.component.html',
+    styleUrls    : ['./layout-1.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class VerticalLayout1BodyScrollComponent implements OnInit, OnDestroy
+export class VerticalLayout1Component implements OnInit, OnDestroy
 {
     fuseConfig: any;
     navigation: any;
