@@ -34,16 +34,12 @@ const appRoutes: Routes = [
         loadChildren: './main/ui/ui.module#UIModule'
     },
     {
-        path        : 'services',
-        loadChildren: './main/services/services.module#ServicesModule'
+        path        : 'documentation',
+        loadChildren: './main/documentation/documentation.module#DocumentationModule'
     },
     {
-        path        : 'components',
-        loadChildren: './main/components/components.module#ComponentsModule'
-    },
-    {
-        path        : 'components-third-party',
-        loadChildren: './main/components-third-party/components-third-party.module#ComponentsThirdPartyModule'
+        path        : 'angular-material-elements',
+        loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
     },
     {
         path      : '**',

@@ -571,7 +571,7 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
-        id      : 'angular-material-elements',
+        id      : 'angular-material-elements-elements',
         title   : 'Angular Material Elements',
         type    : 'group',
         children: [
@@ -585,55 +585,55 @@ export const navigation: FuseNavigation[] = [
                         id   : 'autocomplete',
                         title: 'Autocomplete',
                         type : 'item',
-                        url  : '/components/angular-material/autocomplete'
+                        url  : '/angular-material-elements/autocomplete'
                     },
                     {
                         id   : 'checkbox',
                         title: 'Checkbox',
                         type : 'item',
-                        url  : '/components/angular-material/checkbox'
+                        url  : '/angular-material-elements/checkbox'
                     },
                     {
                         id   : 'datepicker',
                         title: 'Datepicker',
                         type : 'item',
-                        url  : '/components/angular-material/datepicker'
+                        url  : '/angular-material-elements/datepicker'
                     },
                     {
                         id   : 'form-field',
                         title: 'Form field',
                         type : 'item',
-                        url  : '/components/angular-material/form-field'
+                        url  : '/angular-material-elements/form-field'
                     },
                     {
                         id   : 'input',
                         title: 'Input',
                         type : 'item',
-                        url  : '/components/angular-material/input'
+                        url  : '/angular-material-elements/input'
                     },
                     {
                         id   : 'radio-button',
                         title: 'Radio button',
                         type : 'item',
-                        url  : '/components/angular-material/radio-button'
+                        url  : '/angular-material-elements/radio-button'
                     },
                     {
                         id   : 'select',
                         title: 'Select',
                         type : 'item',
-                        url  : '/components/angular-material/select'
+                        url  : '/angular-material-elements/select'
                     },
                     {
                         id   : 'slider',
                         title: 'Slider',
                         type : 'item',
-                        url  : '/components/angular-material/slider'
+                        url  : '/angular-material-elements/slider'
                     },
                     {
                         id   : 'slide-toggle',
                         title: 'Slide toggle',
                         type : 'item',
-                        url  : '/components/angular-material/slide-toggle'
+                        url  : '/angular-material-elements/slide-toggle'
                     }
                 ]
             },
@@ -647,19 +647,19 @@ export const navigation: FuseNavigation[] = [
                         id   : 'menu',
                         title: 'Menu',
                         type : 'item',
-                        url  : '/components/angular-material/menu'
+                        url  : '/angular-material-elements/menu'
                     },
                     {
                         id   : 'sidenav',
                         title: 'Sidebar',
                         type : 'item',
-                        url  : '/components/angular-material/sidenav'
+                        url  : '/angular-material-elements/sidenav'
                     },
                     {
                         id   : 'toolbar',
                         title: 'Toolbar',
                         type : 'item',
-                        url  : '/components/angular-material/toolbar'
+                        url  : '/angular-material-elements/toolbar'
                     }
                 ]
             },
@@ -673,67 +673,67 @@ export const navigation: FuseNavigation[] = [
                         id   : 'badge',
                         title: 'Badge',
                         type : 'item',
-                        url  : '/components/angular-material/badge'
+                        url  : '/angular-material-elements/badge'
                     },
                     {
                         id   : 'bottom-sheet',
                         title: 'Bottom Sheet',
                         type : 'item',
-                        url  : '/components/angular-material/bottom-sheet'
+                        url  : '/angular-material-elements/bottom-sheet'
                     },
                     {
                         id   : 'card',
                         title: 'Card',
                         type : 'item',
-                        url  : '/components/angular-material/card'
+                        url  : '/angular-material-elements/card'
                     },
                     {
                         id   : 'divider',
                         title: 'Divider',
                         type : 'item',
-                        url  : '/components/angular-material/divider'
+                        url  : '/angular-material-elements/divider'
                     },
                     {
                         id   : 'elevation',
                         title: 'Elevation',
                         type : 'item',
-                        url  : '/components/angular-material/elevation'
+                        url  : '/angular-material-elements/elevation'
                     },
                     {
                         id   : 'expansion-panel',
                         title: 'Expansion Panel',
                         type : 'item',
-                        url  : '/components/angular-material/expansion-panel'
+                        url  : '/angular-material-elements/expansion-panel'
                     },
                     {
                         id   : 'grid-list',
                         title: 'Grid list',
                         type : 'item',
-                        url  : '/components/angular-material/grid-list'
+                        url  : '/angular-material-elements/grid-list'
                     },
                     {
                         id   : 'list',
                         title: 'List',
                         type : 'item',
-                        url  : '/components/angular-material/list'
+                        url  : '/angular-material-elements/list'
                     },
                     {
                         id   : 'stepper',
                         title: 'Stepper',
                         type : 'item',
-                        url  : '/components/angular-material/stepper'
+                        url  : '/angular-material-elements/stepper'
                     },
                     {
                         id   : 'tabs',
                         title: 'Tabs',
                         type : 'item',
-                        url  : '/components/angular-material/tabs'
+                        url  : '/angular-material-elements/tabs'
                     },
                     {
                         id   : 'tree',
                         title: 'Tree',
                         type : 'item',
-                        url  : '/components/angular-material/tree'
+                        url  : '/angular-material-elements/tree'
                     }
                 ]
             },
@@ -747,37 +747,37 @@ export const navigation: FuseNavigation[] = [
                         id   : 'button',
                         title: 'Button',
                         type : 'item',
-                        url  : '/components/angular-material/button'
+                        url  : '/angular-material-elements/button'
                     },
                     {
                         id   : 'button-toggle',
                         title: 'Button toggle',
                         type : 'item',
-                        url  : '/components/angular-material/button-toggle'
+                        url  : '/angular-material-elements/button-toggle'
                     },
                     {
                         id   : 'chips',
                         title: 'Chips',
                         type : 'item',
-                        url  : '/components/angular-material/chips'
+                        url  : '/angular-material-elements/chips'
                     },
                     {
                         id   : 'icon',
                         title: 'icon',
                         type : 'item',
-                        url  : '/components/angular-material/icon'
+                        url  : '/angular-material-elements/icon'
                     },
                     {
                         id   : 'progress-spinner',
                         title: 'Progress spinner',
                         type : 'item',
-                        url  : '/components/angular-material/progress-spinner'
+                        url  : '/angular-material-elements/progress-spinner'
                     },
                     {
                         id   : 'progress-bar',
                         title: 'Progress bar',
                         type : 'item',
-                        url  : '/components/angular-material/progress-bar'
+                        url  : '/angular-material-elements/progress-bar'
                     }
                 ]
             },
@@ -791,19 +791,19 @@ export const navigation: FuseNavigation[] = [
                         id   : 'dialog',
                         title: 'Dialog',
                         type : 'item',
-                        url  : '/components/angular-material/dialog'
+                        url  : '/angular-material-elements/dialog'
                     },
                     {
                         id   : 'snackbar',
                         title: 'Snackbar',
                         type : 'item',
-                        url  : '/components/angular-material/snackbar'
+                        url  : '/angular-material-elements/snackbar'
                     },
                     {
                         id   : 'tooltip',
                         title: 'Tooltip',
                         type : 'item',
-                        url  : '/components/angular-material/tooltip'
+                        url  : '/angular-material-elements/tooltip'
                     }
                 ]
             },
@@ -817,151 +817,253 @@ export const navigation: FuseNavigation[] = [
                         id   : 'paginator',
                         title: 'Paginator',
                         type : 'item',
-                        url  : '/components/angular-material/paginator'
+                        url  : '/angular-material-elements/paginator'
                     },
                     {
                         id   : 'sort-header',
                         title: 'Sort header',
                         type : 'item',
-                        url  : '/components/angular-material/sort-header'
+                        url  : '/angular-material-elements/sort-header'
                     },
                     {
                         id   : 'table',
                         title: 'Table',
                         type : 'item',
-                        url  : '/components/angular-material/table'
+                        url  : '/angular-material-elements/table'
                     }
                 ]
             }
         ]
     },
     {
-        id      : 'components',
-        title   : 'Components',
+        id      : 'documentation',
+        title   : 'Documentation',
         type    : 'group',
-        icon    : 'settings_input_component',
         children: [
             {
-                id   : 'cards',
-                title: 'Cards',
+                id   : 'changelog',
+                title: 'Changelog',
                 type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/cards'
+                icon : 'update',
+                url  : '/documentation/changelog',
+                badge    : {
+                    title    : '6.1.0',
+                    bg       : '#EC0C8E',
+                    fg       : '#FFFFFF'
+                }
             },
             {
-                id   : 'countdown',
-                title: 'Countdown',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/countdown'
-            },
-            {
-                id   : 'highlight',
-                title: 'Highlight',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/highlight'
-            },
-            {
-                id   : 'material-color-picker',
-                title: 'Material Color Picker',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/material-color-picker'
-            },
-            {
-                id   : 'multi-language',
-                title: 'Multi Language',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/multi-language'
-            },
-            {
-                id   : 'navigation',
-                title: 'Navigation',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/navigation'
-            },
-            {
-                id   : 'search-bar',
-                title: 'Search Bar',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/search-bar'
-            },
-            {
-                id   : 'sidebar',
-                title: 'Sidebar',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/sidebar'
-            },
-            {
-                id   : 'shortcuts',
-                title: 'Shortcuts',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/shortcuts'
-            },
-            {
-                id   : 'widget',
-                title: 'Widget',
-                type : 'item',
-                icon : 'settings_input_component',
-                url  : '/components/widget'
-            }
-        ]
-    },
-    {
-        id      : '3rd-party-components',
-        title   : '3rd Party components',
-        type    : 'group',
-        icon    : 'settings_input_component',
-        children: [
-            {
-                id      : 'datatables',
-                title   : 'Datatables',
+                id      : 'getting-started',
+                title   : 'Getting Started',
                 type    : 'collapsable',
-                icon    : 'border_all',
+                icon    : 'import_contacts',
                 children: [
                     {
-                        id   : 'ngxdatatable',
-                        title: 'ngx-datatable',
+                        id   : 'introduction',
+                        title: 'Introduction',
                         type : 'item',
-                        url  : '/components-third-party/datatables/ngx-datatable'
+                        url  : '/documentation/getting-started/introduction'
+                    },
+                    {
+                        id   : 'installation',
+                        title: 'Installation',
+                        type : 'item',
+                        url  : '/documentation/getting-started/installation'
                     }
                 ]
             },
             {
-                id   : 'google-maps',
-                title: 'Google Maps',
-                type : 'item',
-                icon : 'place',
-                url  : '/components-third-party/google-maps'
-            }
-        ]
-    },
-    {
-        id      : 'services',
-        title   : 'Services',
-        type    : 'group',
-        icon    : 'settings',
-        children: [
-            {
-                id   : 'config',
-                title: 'Config',
-                type : 'item',
-                icon : 'settings',
-                url  : '/services/config'
+                id      : 'working-with-fuse',
+                title   : 'Working with Fuse',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'server',
+                        title: 'Server',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/server'
+                    },
+                    {
+                        id   : 'production',
+                        title: 'Production',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/production'
+                    },
+                    {
+                        id   : 'directory-structure',
+                        title: 'Directory structure',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/directory-structure'
+                    },
+                    {
+                        id   : 'updating-fuse',
+                        title: 'Updating Fuse',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/directory-structure'
+                    },
+                    {
+                        id   : 'template-layouts',
+                        title: 'Template Layouts',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/template-layouts'
+                    },
+                    {
+                        id   : 'page-layouts',
+                        title: 'Page Layouts',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/page-layouts'
+                    }
+                ]
             },
             {
-                id   : 'splash-screen',
-                title: 'Splash Screen',
-                type : 'item',
-                icon : 'settings',
-                url  : '/services/splash-screen'
+                id      : 'components',
+                title   : 'Components',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'cards',
+                        title: 'Cards',
+                        type : 'item',
+                        url  : '/documentation/components/cards'
+                    },
+                    {
+                        id   : 'countdown',
+                        title: 'Countdown',
+                        type : 'item',
+                        url  : '/documentation/components/countdown'
+                    },
+                    {
+                        id   : 'highlight',
+                        title: 'Highlight',
+                        type : 'item',
+                        url  : '/documentation/components/highlight'
+                    },
+                    {
+                        id   : 'material-color-picker',
+                        title: 'Material Color Picker',
+                        type : 'item',
+                        url  : '/documentation/components/material-color-picker'
+                    },
+                    {
+                        id   : 'multi-language',
+                        title: 'Multi Language',
+                        type : 'item',
+                        url  : '/documentation/components/multi-language'
+                    },
+                    {
+                        id   : 'navigation',
+                        title: 'Navigation',
+                        type : 'item',
+                        url  : '/documentation/components/navigation'
+                    },
+                    {
+                        id   : 'search-bar',
+                        title: 'Search Bar',
+                        type : 'item',
+                        url  : '/documentation/components/search-bar'
+                    },
+                    {
+                        id   : 'sidebar',
+                        title: 'Sidebar',
+                        type : 'item',
+                        url  : '/documentation/components/sidebar'
+                    },
+                    {
+                        id   : 'shortcuts',
+                        title: 'Shortcuts',
+                        type : 'item',
+                        url  : '/documentation/components/shortcuts'
+                    },
+                    {
+                        id   : 'widget',
+                        title: 'Widget',
+                        type : 'item',
+                        url  : '/documentation/components/widget'
+                    }
+                ]
+            },
+            {
+                id      : '3rd-party-components',
+                title   : '3rd Party components',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id      : 'datatables',
+                        title   : 'Datatables',
+                        type    : 'collapsable',
+                        children: [
+                            {
+                                id   : 'ngxdatatable',
+                                title: 'ngx-datatable',
+                                type : 'item',
+                                url  : '/documentation/components-third-party/datatables/ngx-datatable'
+                            }
+                        ]
+                    },
+                    {
+                        id   : 'google-maps',
+                        title: 'Google Maps',
+                        type : 'item',
+                        url  : '/documentation/components-third-party/google-maps'
+                    }
+                ]
+            },
+            {
+                id      : 'directives',
+                title   : 'Directives',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'fuse-if-on-dom',
+                        title: 'fuseIfOnDom',
+                        type : 'item',
+                        url  : '/documentation/directives/fuse-if-on-dom'
+                    },
+                    {
+                        id   : 'fuse-inner-scroll',
+                        title: 'fuseInnerScroll',
+                        type : 'item',
+                        url  : '/documentation/directives/fuse-inner-scroll'
+                    },
+                    {
+                        id   : 'fuse-mat-sidenav',
+                        title: 'fuseMatSidenav',
+                        type : 'item',
+                        url  : '/documentation/directives/fuse-mat-sidenav'
+                    },
+                    {
+                        id   : 'fuse-perfect-scrollbar',
+                        title: 'fusePerfectScrollbar',
+                        type : 'item',
+                        url  : '/documentation/directives/fuse-perfect-scrollbar'
+                    }
+                ]
+            },
+            {
+                id      : 'services',
+                title   : 'Services',
+                type    : 'collapsable',
+                icon    : 'import_contacts',
+                children: [
+                    {
+                        id   : 'config',
+                        title: 'Config',
+                        type : 'item',
+                        url  : '/documentation/services/config'
+                    },
+                    {
+                        id   : 'splash-screen',
+                        title: 'Splash Screen',
+                        type : 'item',
+                        url  : '/documentation/services/splash-screen'
+                    }
+                ]
             }
         ]
     }
+
 ];

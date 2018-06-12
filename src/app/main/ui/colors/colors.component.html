@@ -1,7 +1,8 @@
-<div id="material-colors" class="page-layout simple tabbed" fxLayout="column" fusePerfectScrollbar>
+<div id="material-colors" class="page-layout simple tabbed" fxLayout="column">
 
     <!-- HEADER -->
-    <div class="header mat-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
+    <div class="header mat-accent-bg p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
 
         <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
@@ -76,7 +77,8 @@
                 </div>
             </div>
 
-            <div class="color" fxLayout="column" fxFlex="1 0 auto" *ngIf="selectedColor != 'black' && selectedColor != 'white'">
+            <div class="color" fxLayout="column" fxFlex="1 0 auto"
+                 *ngIf="selectedColor != 'black' && selectedColor != 'white'">
 
                 <div class="colored-bg p-8"
                      *ngFor="let hue of ['50','100','200','300','400','500','600','700','800','900','A100','A200','A400','A700']"
