@@ -988,7 +988,7 @@ export const navigation: FuseNavigation[] = [
             },
             {
                 id      : '3rd-party-components',
-                title   : '3rd Party components',
+                title   : '3rd Party Components',
                 type    : 'collapsable',
                 icon    : 'import_contacts',
                 children: [
