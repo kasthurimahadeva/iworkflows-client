@@ -11,6 +11,7 @@
 
 :host {
     display: flex;
+    overflow: hidden;
 
     .theme-options-panel {
         display: flex;
