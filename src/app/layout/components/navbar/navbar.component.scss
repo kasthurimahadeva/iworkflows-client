@@ -1,28 +1,5 @@
 @import "src/@fuse/scss/fuse";
 
-body {
-
-    &.fuse-sidebar-folded {
-
-        .content-wrapper {
-
-            &:last-child {
-                padding-left: 64px !important;
-            }
-
-            &:first-child {
-                padding-right: 64px !important;
-            }
-
-            &:first-child:last-child {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-
-        }
-    }
-}
-
 fuse-sidebar {
 
     &.folded:not(.unfolded) {
@@ -89,16 +66,14 @@ navbar {
             flex: 1;
         }
     }
-}
 
-.top-navbar + #wrapper {
+    &.right-navbar {
 
-    & > .left-navbar {
-        display: none !important;
+        .toggle-sidebar-opened {
 
-        @include media-breakpoint-down(md) {
-            display: flex !important;
+            mat-icon {
+                transform: rotate(180deg);
+            }
         }
     }
 }
-

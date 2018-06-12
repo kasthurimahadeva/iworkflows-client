@@ -82,8 +82,8 @@
 <!-- TOP NAVBAR -->
 <ng-template #topNavbar>
     <navbar layout="horizontal"
-            class="top-navbar" fxHide fxShow.gt-md
-            [ngClass]="fuseConfig.layout.navbar.background"
+            class="top-navbar" [ngClass]="fuseConfig.layout.navbar.background"
+            fxHide fxShow.gt-md
             *ngIf="!fuseConfig.layout.navbar.hidden">
     </navbar>
 </ng-template>
@@ -93,9 +93,8 @@
 <ng-template #leftNavbar>
     <fuse-sidebar [name]="'navbar'"
                   [folded]="fuseConfig.layout.navbar.folded"
-                  class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background"
                   *ngIf="!fuseConfig.layout.navbar.hidden">
-        <navbar layout="vertical"></navbar>
+        <navbar class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background" layout="vertical"></navbar>
     </fuse-sidebar>
 </ng-template>
 <!-- / LEFT NAVBAR -->

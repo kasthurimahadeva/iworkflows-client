@@ -82,9 +82,8 @@
     <fuse-sidebar [name]="'navbar'"
                   [folded]="fuseConfig.layout.navbar.folded"
                   [lockedOpen]="'gt-md'"
-                  class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background"
                   *ngIf="!fuseConfig.layout.navbar.hidden">
-        <navbar layout="vertical"></navbar>
+        <navbar class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background" layout="vertical"></navbar>
     </fuse-sidebar>
 </ng-template>
 <!-- / LEFT NAVBAR -->
@@ -94,9 +93,8 @@
     <fuse-sidebar [name]="'navbar'" position="right"
                   [folded]="fuseConfig.layout.navbar.folded"
                   [lockedOpen]="'gt-md'"
-                  class="right-navbar" [ngClass]="fuseConfig.layout.navbar.background"
                   *ngIf="!fuseConfig.layout.navbar.hidden">
-        <navbar layout="vertical"></navbar>
+        <navbar class="right-navbar" [ngClass]="fuseConfig.layout.navbar.background" layout="vertical"></navbar>
     </fuse-sidebar>
 </ng-template>
 <!-- / RIGHT NAVBAR -->

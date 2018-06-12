@@ -18,9 +18,10 @@ import { navigation } from 'app/navigation/navigation';
 
 export class ToolbarComponent implements OnInit, OnDestroy
 {
-    horizontalNav: boolean;
+    horizontalNavbar: boolean;
+    rightNavbar: boolean;
+    hiddenNavbar: boolean;
     languages: any;
-    noNav: boolean;
     navigation: any;
     selectedLanguage: any;
     showLoadingBar: boolean;
@@ -123,8 +124,9 @@ export class ToolbarComponent implements OnInit, OnDestroy
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((settings) => {
-                this.horizontalNav = settings.layout.navbar.position === 'top';
-                this.noNav = settings.layout.navbar.position === 'none';
+                this.horizontalNavbar = settings.layout.navbar.position === 'top';
+                this.rightNavbar = settings.layout.navbar.position === 'right';
+                this.hiddenNavbar = settings.layout.navbar.hidden === true;
             });
 
         // Set the selected language from default languages
