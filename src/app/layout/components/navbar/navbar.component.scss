@@ -25,6 +25,7 @@ navbar {
 
     &:not(.top-navbar) {
         height: 100%;
+        overflow: hidden;
     }
 
     .navbar-vertical {
@@ -63,7 +64,8 @@ navbar {
         }
 
         .navbar-content {
-            flex: 1;
+            flex: 1 1 auto;
+            overflow-y: auto;
         }
     }
 

@@ -191,7 +191,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 min-width: 240px;
                 max-width: 240px;
                 height: auto;
-                z-index: 4;
                 overflow: hidden;
                 @include mat-elevation(7);
 
@@ -200,7 +199,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     box-shadow: none;
 
                     + .center {
-                        z-index: 5;
+                        z-index: 1001;
                     }
 
                     &.left-positioned {
@@ -439,7 +438,6 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 width: 240px;
                 min-width: 240px;
                 max-width: 240px;
-                z-index: 4;
                 overflow: hidden;
                 @include mat-elevation(7);
 
@@ -448,7 +446,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                     box-shadow: none;
 
                     + .center {
-                        z-index: 5;
+                        z-index: 1001;
                     }
 
                     &.left-positioned {
@@ -516,10 +514,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                 > .content {
                     display: flex;
+                    min-height: 0;
 
                     > .sidebar {
-                        background: none;
-                        box-shadow: none;
+
+                        &.locked-open {
+                            background: none;
+                            box-shadow: none;
+                        }
 
                         .content {
                             overflow: auto;
