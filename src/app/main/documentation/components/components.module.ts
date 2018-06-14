@@ -5,73 +5,67 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components/index';
-import { CardsDocsComponent } from 'app/main/documentation/components/cards/cards.component';
-import { CountdownDocsComponent } from 'app/main/documentation/components/countdown/countdown.component';
-import { HighlightDocsComponent } from 'app/main/documentation/components/highlight/highlight.component';
-import { MaterialColorPickerDocsComponent } from 'app/main/documentation/components/material-color-picker/material-color-picker.component';
-import { MultiLanguageDocsComponent } from 'app/main/documentation/components/multi-language/multi-language.component';
-import { NavigationDocsComponent } from 'app/main/documentation/components/navigation/navigation.component';
-import { SearchBarDocsComponent } from 'app/main/documentation/components/search-bar/search-bar.component';
-import { SidebarDocsComponent } from 'app/main/documentation/components/sidebar/sidebar.component';
-import { ShortcutsDocsComponent } from 'app/main/documentation/components/shortcuts/shortcuts.component';
-import { WidgetDocsComponent } from 'app/main/documentation/components/widget/widget.component';
+import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components';
+import { DocsComponentsCardsComponent } from 'app/main/documentation/components/cards/cards.component';
+import { DocsComponentsCountdownComponent } from 'app/main/documentation/components/countdown/countdown.component';
+import { DocsComponentsHighlightComponent } from 'app/main/documentation/components/highlight/highlight.component';
+import { DocsComponentsMaterialColorPickerComponent } from 'app/main/documentation/components/material-color-picker/material-color-picker.component';
+import { DocsComponentsNavigationComponent } from 'app/main/documentation/components/navigation/navigation.component';
+import { DocsComponentsSearchBarComponent } from 'app/main/documentation/components/search-bar/search-bar.component';
+import { DocsComponentsSidebarComponent } from 'app/main/documentation/components/sidebar/sidebar.component';
+import { DocsComponentsShortcutsComponent } from 'app/main/documentation/components/shortcuts/shortcuts.component';
+import { DocsComponentsWidgetComponent } from 'app/main/documentation/components/widget/widget.component';
 
 const routes = [
     {
         path     : 'cards',
-        component: CardsDocsComponent
+        component: DocsComponentsCardsComponent
     },
     {
         path     : 'countdown',
-        component: CountdownDocsComponent
+        component: DocsComponentsCountdownComponent
     },
     {
         path     : 'highlight',
-        component: HighlightDocsComponent
+        component: DocsComponentsHighlightComponent
     },
     {
         path     : 'material-color-picker',
-        component: MaterialColorPickerDocsComponent
-    },
-    {
-        path     : 'multi-language',
-        component: MultiLanguageDocsComponent
+        component: DocsComponentsMaterialColorPickerComponent
     },
     {
         path     : 'navigation',
-        component: NavigationDocsComponent
+        component: DocsComponentsNavigationComponent
     },
     {
         path     : 'search-bar',
-        component: SearchBarDocsComponent
+        component: DocsComponentsSearchBarComponent
     },
     {
         path     : 'sidebar',
-        component: SidebarDocsComponent
+        component: DocsComponentsSidebarComponent
     },
     {
         path     : 'shortcuts',
-        component: ShortcutsDocsComponent
+        component: DocsComponentsShortcutsComponent
     },
     {
         path     : 'widget',
-        component: WidgetDocsComponent
+        component: DocsComponentsWidgetComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        CardsDocsComponent,
-        CountdownDocsComponent,
-        HighlightDocsComponent,
-        MaterialColorPickerDocsComponent,
-        MultiLanguageDocsComponent,
-        NavigationDocsComponent,
-        SearchBarDocsComponent,
-        SidebarDocsComponent,
-        ShortcutsDocsComponent,
-        WidgetDocsComponent
+        DocsComponentsCardsComponent,
+        DocsComponentsCountdownComponent,
+        DocsComponentsHighlightComponent,
+        DocsComponentsMaterialColorPickerComponent,
+        DocsComponentsNavigationComponent,
+        DocsComponentsSearchBarComponent,
+        DocsComponentsSidebarComponent,
+        DocsComponentsShortcutsComponent,
+        DocsComponentsWidgetComponent
     ],
     imports     : [
         RouterModule.forChild(routes),

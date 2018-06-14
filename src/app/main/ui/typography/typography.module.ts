@@ -9,6 +9,7 @@ import { TypographyComponent } from 'app/main/ui/typography/typography.component
 import { TypographyHeadingsComponent } from 'app/main/ui/typography/tabs/headings/headings.component';
 import { TypographyInlineTextElementsComponent } from 'app/main/ui/typography/tabs/inline-text-elements/inline-text-elements.component';
 import { TypographyBlockquotesListsComponent } from 'app/main/ui/typography/tabs/blockquotes-lists/blockquotes-lists.component';
+import { TypographyMessageBoxesComponent } from 'app/main/ui/typography/tabs/message-boxes/message-boxes.component';
 import { TypographyHelpersComponent } from 'app/main/ui/typography/tabs/helpers/helpers.component';
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
         TypographyHeadingsComponent,
         TypographyInlineTextElementsComponent,
         TypographyBlockquotesListsComponent,
+        TypographyMessageBoxesComponent,
         TypographyHelpersComponent
     ],
     imports     : [

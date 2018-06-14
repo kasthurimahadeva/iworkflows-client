@@ -360,3 +360,33 @@ strong {
         }
     }
 }
+
+// Message boxes
+.message-box {
+    padding: 16px;
+    background: #607D8B;
+    border-left: 6px solid #37474F;
+    color: rgba(255, 255, 255, 1);
+
+    &.alert {
+        background: #EF5350;
+        border-left-color: #B71C1C;
+    }
+
+    &.warning {
+        background: #FFECB3;
+        border-left-color: #FFC107;
+        color: rgba(0, 0, 0, 0.87);
+    }
+
+    &.success {
+        background: #4CAF50;
+        border-left-color: #2E7D32;
+    }
+
+    &.info {
+        background: #B3E5FC;
+        border-left-color: #03A9F4;
+        color: rgba(0, 0, 0, 0.87);
+    }
+}

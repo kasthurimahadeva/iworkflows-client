@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'search-bar-docs',
+    selector   : 'docs-components-search-bar',
     templateUrl: './search-bar.component.html',
     styleUrls  : ['./search-bar.component.scss']
 })
-export class SearchBarDocsComponent
+export class DocsComponentsSearchBarComponent
 {
     /**
      * Constructor

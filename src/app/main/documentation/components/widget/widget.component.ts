@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'widget-docs',
+    selector   : 'docs-components-widget',
     templateUrl: './widget.component.html',
     styleUrls  : ['./widget.component.scss']
 })
-export class WidgetDocsComponent
+export class DocsComponentsWidgetComponent
 {
     /**
      * Constructor

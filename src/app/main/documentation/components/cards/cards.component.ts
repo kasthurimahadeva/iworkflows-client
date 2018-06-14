@@ -4,12 +4,12 @@ import * as shape from 'd3-shape';
 import { fuseAnimations } from '@fuse/animations/index';
 
 @Component({
-    selector   : 'cards-docs',
+    selector   : 'docs-components-cards',
     templateUrl: './cards.component.html',
     styleUrls  : ['./cards.component.scss'],
     animations : fuseAnimations
 })
-export class CardsDocsComponent
+export class DocsComponentsCardsComponent
 {
     view: string;
     card9Expanded: boolean;

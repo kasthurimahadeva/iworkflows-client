@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'highlight-docs',
+    selector   : 'docs-components-highlight',
     templateUrl: './highlight.component.html',
     styleUrls  : ['./highlight.component.scss']
 })
-export class HighlightDocsComponent
+export class DocsComponentsHighlightComponent
 {
     /**
      * Constructor

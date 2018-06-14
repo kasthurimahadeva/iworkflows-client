@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import { navigation } from 'app/navigation/navigation';
 
 @Component({
-    selector   : 'navigation-docs',
+    selector   : 'docs-components-navigation',
     templateUrl: './navigation.component.html',
     styleUrls  : ['./navigation.component.scss']
 })
-export class NavigationDocsComponent
+export class DocsComponentsNavigationComponent
 {
     navigation: any;
     hidden: boolean;

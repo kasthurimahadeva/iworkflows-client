@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector   : 'google-maps-docs',
+    selector   : 'docs-components-third-party-google-maps',
     templateUrl: './google-maps.component.html',
     styleUrls  : ['./google-maps.component.scss']
 })
-export class GoogleMapsDocsComponent
+export class DocsComponentsThirdPartyGoogleMapsComponent
 {
     lat: number;
     lng: number;

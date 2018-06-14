@@ -4,11 +4,11 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'ngx-datatable-docs',
+    selector   : 'docs-components-third-party-ngx-datatable',
     templateUrl: './ngx-datatable.component.html',
     styleUrls  : ['./ngx-datatable.component.scss']
 })
-export class NgxDatatableDocsComponent implements OnInit, OnDestroy
+export class DocsComponentsThirdPartyNgxDatatableComponent implements OnInit, OnDestroy
 {
     rows: any[];
     loadingIndicator: boolean;

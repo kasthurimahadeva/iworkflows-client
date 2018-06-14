@@ -8,18 +8,18 @@ import { AgmCoreModule } from '@agm/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseHighlightModule } from '@fuse/components/index';
 
-import { GoogleMapsDocsComponent } from './google-maps.component';
+import { DocsComponentsThirdPartyGoogleMapsComponent } from './google-maps.component';
 
 const routes = [
     {
         path     : 'google-maps',
-        component: GoogleMapsDocsComponent
+        component: DocsComponentsThirdPartyGoogleMapsComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        GoogleMapsDocsComponent
+        DocsComponentsThirdPartyGoogleMapsComponent
     ],
     imports     : [
         RouterModule.forChild(routes),
