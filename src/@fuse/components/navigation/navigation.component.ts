@@ -47,8 +47,8 @@ export class FuseNavigationComponent implements OnInit
         // Subscribe to the current navigation changes
         this._fuseNavigationService.onNavigationChanged
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((key) => {
-                this._fuseNavigationService.getNavigation(key);
+            .subscribe(() => {
+                this.navigation = this._fuseNavigationService.getCurrentNavigation();
             });
     }
 }
