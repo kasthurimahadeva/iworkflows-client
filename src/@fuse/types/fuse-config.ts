@@ -21,5 +21,4 @@ export interface FuseConfig
         }
     };
     customScrollbars: boolean;
-    routerAnimation: 'fadeIn' | 'slideUp' | 'slideDown' | 'slideRight' | 'slideLeft' | 'none';
 }

@@ -81,8 +81,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     background: new FormControl()
                 })
             }),
-            customScrollbars: new FormControl(),
-            routerAnimation : new FormControl()
+            customScrollbars: new FormControl()
         });
 
         // Subscribe to the config changes
