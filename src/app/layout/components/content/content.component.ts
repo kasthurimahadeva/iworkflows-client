@@ -8,29 +8,29 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
-    selector     : 'content',
-    templateUrl  : './content.component.html',
-    styleUrls    : ['./content.component.scss'],
+    selector: 'content',
+    templateUrl: './content.component.html',
+    styleUrls: ['./content.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations   : fuseAnimations
+    animations: fuseAnimations
 })
 export class ContentComponent implements OnInit, OnDestroy
 {
     fuseConfig: any;
 
-    @HostBinding('@routerTransitionUp')
+    // @HostBinding('@routerTransitionUp')
     routeAnimationUp: boolean;
 
-    @HostBinding('@routerTransitionDown')
+    // @HostBinding('@routerTransitionDown')
     routeAnimationDown: boolean;
 
-    @HostBinding('@routerTransitionRight')
+    // @HostBinding('@routerTransitionRight')
     routeAnimationRight: boolean;
 
-    @HostBinding('@routerTransitionLeft')
+    // @HostBinding('@routerTransitionLeft')
     routeAnimationLeft: boolean;
 
-    @HostBinding('@routerTransitionFade')
+    // @HostBinding('@routerTransitionFade')
     routeAnimationFade: boolean;
 
     // Private
@@ -75,8 +75,9 @@ export class ContentComponent implements OnInit, OnDestroy
                 filter((event) => event instanceof NavigationEnd),
                 map(() => this._activatedRoute)
             )
-            .subscribe(() => {
-                switch ( this.fuseConfig.routerAnimation )
+            .subscribe(() =>
+            {
+                switch (this.fuseConfig.routerAnimation)
                 {
                     case 'fadeIn':
                         this.routeAnimationFade = !this.routeAnimationFade;
@@ -100,7 +101,8 @@ export class ContentComponent implements OnInit, OnDestroy
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(
-                (config) => {
+                (config) =>
+                {
                     this.fuseConfig = config;
                 }
             );
