@@ -13,12 +13,24 @@ const routes: Routes = [
         component: DocsChangelogComponent
     },
     {
+        path        : 'getting-started',
+        loadChildren: './getting-started/getting-started.module#GettingStartedModule'
+    },
+    {
+        path        : 'working-with-fuse',
+        loadChildren: './working-with-fuse/working-with-fuse.module#WorkingWithFuseModule'
+    },
+    {
         path        : 'components',
         loadChildren: './components/components.module#ComponentsModule'
     },
     {
         path        : 'components-third-party',
         loadChildren: './components-third-party/components-third-party.module#ComponentsThirdPartyModule'
+    },
+    {
+        path        : 'directives',
+        loadChildren: './directives/directives.module#DirectivesModule'
     },
     {
         path        : 'services',

@@ -1,10 +1,12 @@
-<div id="search-bar" class="page-layout simple fullwidth">
+<div id="search-bar" class="page-layout simple fullwidth docs">
 
     <!-- HEADER -->
     <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="column" fxLayoutAlign="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">Components</span>
             </div>
@@ -21,26 +23,22 @@
             on click.
         </p>
 
-        <div class="my-48">
-            <h2>Usage</h2>
-            <p class="py-8">
-                <fuse-highlight lang="html">
-                    <textarea #source>
-                        <fuse-search-bar (input)="search($event)"></fuse-search-bar>
-                    </textarea>
-                </fuse-highlight>
-            </p>
-        </div>
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-search-bar (input)="search($event)"></fuse-search-bar>
+                </textarea>
+            </fuse-highlight>
+        </p>
 
-        <div class="my-48">
-            <h2>Outputs</h2>
-            <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
-                <code class="mr-8">input</code>
-                <span>Triggers every time an input occurs within the search bar. Can be used to trigger the actual
-                    search mechanism. The $event is the value from the search input.
-                </span>
-            </p>
-        </div>
+        <div class="section-title">Outputs</div>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-8">input</code>
+            <span>Triggers every time an input occurs within the search bar. Can be used to trigger the actual
+                search mechanism. The $event is the value from the search input.
+            </span>
+        </p>
 
     </div>
 

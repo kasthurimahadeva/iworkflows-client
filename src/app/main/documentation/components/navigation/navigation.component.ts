@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { navigation } from 'app/navigation/navigation';
+import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
 @Component({
     selector   : 'docs-components-navigation',
@@ -15,10 +15,11 @@ export class DocsComponentsNavigationComponent
     /**
      * Constructor
      */
-    constructor()
+    constructor(
+        private _fuseNavigationService: FuseNavigationService
+    )
     {
         // Set the defaults
-        this.navigation = navigation;
         this.hidden = false;
     }
 
@@ -32,7 +33,7 @@ export class DocsComponentsNavigationComponent
     showHideCalendarMenuItem(): void
     {
         // Get the calendar item from the navigation
-        const calendarNavItem = this.navigation[0].children[1];
+        const calendarNavItem = this._fuseNavigationService.getNavigationItem('calendar');
 
         // Toggle the visibility
         this.hidden = !this.hidden;
@@ -45,7 +46,7 @@ export class DocsComponentsNavigationComponent
     updateMailBadge(): void
     {
         // Get the mail nav item
-        const mailNavItem = this.navigation[0].children[4];
+        const mailNavItem = this._fuseNavigationService.getNavigationItem('mail');
 
         // Update the badge title
         mailNavItem.badge.title = 35;
@@ -65,16 +66,13 @@ export class DocsComponentsNavigationComponent
         };
 
         // Get the calendar item from the navigation
-        const calendarNavItem = this.navigation[0].children[1];
+        const calendarNavItem = this._fuseNavigationService.getNavigationItem('calendar');
 
         // Make the calendar navigation item collapsable
-        calendarNavItem.type = 'collapse';
+        calendarNavItem.type = 'collapsable';
 
-        // Create an empty children array
-        calendarNavItem.children = [];
-
-        // Push the new children
-        calendarNavItem.children.push(newNavItem);
+        // Add the navigation item
+        this._fuseNavigationService.addNavigationItem(newNavItem, 'calendar');
     }
 
     /**
@@ -92,10 +90,74 @@ export class DocsComponentsNavigationComponent
             }
         };
 
-        // Get the applications nav item
-        const applicationsNavItem = this.navigation[0];
+        // Add the new nav item at the beginning of the navigation
+        this._fuseNavigationService.addNavigationItem(newNavItem, 'start');
+    }
 
-        // Add the new nav item at the beginning of the applications
-        applicationsNavItem.children.unshift(newNavItem);
+    /**
+     * Remove the dashboard menu item
+     */
+    removeDashboards(): void
+    {
+        this._fuseNavigationService.removeNavigationItem('dashboards');
+    }
+
+    /**
+     * Register a new navigation and toggle to it
+     */
+    registerNewNavigationAndToggle(): void
+    {
+        const adminNav = [
+            {
+                id      : 'admin',
+                title   : 'Admin',
+                type    : 'group',
+                icon    : 'apps',
+                children: [
+                    {
+                        id   : 'users',
+                        title: 'Users',
+                        type : 'item',
+                        icon : 'person',
+                        url  : '/apps/dashboards/analytics'
+                    },
+                    {
+                        id   : 'payments',
+                        title: 'Payments',
+                        type : 'item',
+                        icon : 'attach_money',
+                        url  : '/apps/academy'
+                    }
+                ]
+            },
+            {
+                id      : 'control-panel',
+                title   : 'Control Panel',
+                type    : 'group',
+                icon    : 'apps',
+                children: [
+                    {
+                        id   : 'cron-jobs',
+                        title: 'Cron Jobs',
+                        type : 'item',
+                        icon : 'settings',
+                        url  : '/apps/file-manager'
+                    },
+                    {
+                        id   : 'maintenance-mode',
+                        title: 'Maintenance Mode',
+                        type : 'item',
+                        icon : 'build',
+                        url  : '/apps/todo'
+                    }
+                ]
+            }
+        ];
+
+        // Register the new navigation
+        this._fuseNavigationService.register('admin-nav', adminNav);
+
+        // Set the current navigation
+        this._fuseNavigationService.setCurrentNavigation('admin-nav');
     }
 }

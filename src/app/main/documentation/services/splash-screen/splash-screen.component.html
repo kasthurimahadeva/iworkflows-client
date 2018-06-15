@@ -1,10 +1,12 @@
-<div id="splash-screen" class="page-layout simple fullwidth">
+<div id="splash-screen" class="page-layout simple fullwidth docs">
 
     <!-- HEADER -->
     <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="column" fxLayoutAlign="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">Services</span>
             </div>
@@ -17,33 +19,35 @@
     <div class="content p-24">
 
         <p>
-            <code>Splash screen</code> is a custom built Fuse service allows to have a fully controllable splash
-            screen. It also has built state for application loading so it will always be available while the app
-            loads.
+            <code>Splash screen</code> is a custom Fuse service that allows to have a control on the splash screen.
         </p>
 
-        <div class="my-48">
-            <h2>Usage</h2>
-            <p class="mat-grey-200-bg py-8">
+        <div class="section-title">Usage</div>
+        <p class="mat-grey-200-bg py-8">
 
-                <fuse-highlight lang="typescript">
-                    <textarea #source>
+            <fuse-highlight lang="typescript">
+                <textarea #source>
 
-                        export class SomeComponent
+                    export class SomeComponent
+                    {
+                        constructor(
+                            private _fuseSplashScreenService: FuseSplashScreenService
+                        ) {}
+
+                        onInit()
                         {
-                            constructor(private fuseSplashScreen: FuseSplashScreenService) {}
+                            this._fuseSplashScreenService.show();
 
-                            onInit(){
-                                this.fuseSplashScreen.show();
-                                this.fuseSplashScreen.hide();
-                            }
+                            setTimeout(() => {
+                                this._fuseSplashScreenService.hide();
+                            }, 3000);
                         }
+                    }
 
-                    </textarea>
-                </fuse-highlight>
+                </textarea>
+            </fuse-highlight>
 
-            </p>
-        </div>
+        </p>
 
     </div>
 

@@ -1,10 +1,12 @@
-<div id="highlight" class="page-layout simple fullwidth">
+<div id="highlight" class="page-layout simple fullwidth docs">
 
     <!-- HEADER -->
     <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="column" fxLayoutAlign="center start">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">Components</span>
             </div>
@@ -20,28 +22,25 @@
             <code>fuse-highlight</code> is a custom built Fuse component allows to show syntax highlighted codes.
         </p>
 
-        <div class="my-48">
-            <h2>Sample</h2>
-            <p fxLayout="row" fxLayoutAlign="start start">
+        <div class="section-title">Sample</div>
+        <p fxLayout="row" fxLayoutAlign="start start">
 
-                <fuse-highlight lang="html">
-                    <textarea #source>
+            <fuse-highlight lang="html">
+                <textarea #source>
 
-                        <div class="title">
-                            <span>Example Title</span>
-                        </div>
+                    <div class="title">
+                        <span>Example Title</span>
+                    </div>
 
-                    </textarea>
-                </fuse-highlight>
+                </textarea>
+            </fuse-highlight>
 
-            </p>
-        </div>
+        </p>
 
-        <div class="my-48">
-            <h2>Usage</h2>
-            <p class="mat-grey-200-bg py-8">
-                <fuse-highlight lang="html">
-                    <textarea #source>
+        <div class="section-title">Usage</div>
+        <p class="mat-grey-200-bg py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
 
 &lt;fuse-highlight lang="html"&gt;
     &lt;textarea #source&gt;
@@ -51,20 +50,17 @@
     &lt;/textarea&gt;
 &lt;/fuse-highlight&gt;
 
-                    </textarea>
-                </fuse-highlight>
-            </p>
-        </div>
+                </textarea>
+            </fuse-highlight>
+        </p>
 
-        <div class="my-48">
-            <h2>Inputs</h2>
-            <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
-                <code class="mr-16">lang</code>
-                <span>
-                    Language of the code to be highlighted.
-                </span>
-            </p>
-        </div>
+        <div class="section-title">Inputs</div>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">lang</code>
+            <span>
+                Language of the code to be highlighted.
+            </span>
+        </p>
 
     </div>
 

@@ -902,7 +902,13 @@ export const navigation: FuseNavigation[] = [
                         id   : 'updating-fuse',
                         title: 'Updating Fuse',
                         type : 'item',
-                        url  : '/documentation/working-with-fuse/directory-structure'
+                        url  : '/documentation/working-with-fuse/updating-fuse'
+                    },
+                    {
+                        id   : 'multi-language',
+                        title: 'Multi Language',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/multi-language'
                     },
                     {
                         id   : 'theme-layouts',
@@ -947,12 +953,6 @@ export const navigation: FuseNavigation[] = [
                         title: 'Material Color Picker',
                         type : 'item',
                         url  : '/documentation/components/material-color-picker'
-                    },
-                    {
-                        id   : 'multi-language',
-                        title: 'Multi Language',
-                        type : 'item',
-                        url  : '/documentation/components/multi-language'
                     },
                     {
                         id   : 'navigation',
