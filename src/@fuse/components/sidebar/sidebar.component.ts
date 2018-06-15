@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, RendererStyleFlags2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
@@ -118,12 +118,12 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         if ( this.position === 'left' )
         {
             sibling = this._elementRef.nativeElement.nextElementSibling;
-            styleRule = 'marginLeft';
+            styleRule = 'margin-left';
         }
         else
         {
             sibling = this._elementRef.nativeElement.previousElementSibling;
-            styleRule = 'marginRight';
+            styleRule = 'margin-right';
         }
 
         // If there is no sibling, return...
@@ -136,7 +136,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         if ( value )
         {
             // Set the style
-            this._renderer.setStyle(sibling, styleRule, styleValue);
+            this._renderer.setStyle(sibling, styleRule, styleValue, RendererStyleFlags2.Important + RendererStyleFlags2.DashCase);
         }
         // If unfolded...
         else
