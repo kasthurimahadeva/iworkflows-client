@@ -3,9 +3,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { MetaReducer, StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { environment } from '../../environments/environment';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import { reducers, effects, CustomSerializer } from './index';
+
+import { environment } from 'environments/environment';
+import { reducers, effects, CustomSerializer } from 'app/store';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
     ? [storeFreeze]

@@ -227,6 +227,35 @@ $matColorHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400
     }
 }
 
+@mixin generateFuseColorClasses($primary, $accent, $warn) {
+
+    $colorMap: (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn
+    );
+
+    // Generate the color classes...
+    @each $name, $map in $colorMap {
+
+        @each $hue in $matColorHues {
+
+            $color: map-get($map, $hue);
+            $contrastColor: map-get(map-get($map, 'contrast'), $hue);
+
+            @if ($color != null and $contrastColor != null) {
+
+                @include generateColorClasses($name, $color, $contrastColor, '-#{$hue}');
+
+                // Run the generator one more time for default values (500)
+                @if ($hue == 500) {
+                    @include generateColorClasses($name, $color, $contrastColor, '');
+                }
+            }
+        }
+    }
+}
+
 // Generate the color classes...
 @each $colorName, $colorMap in $matColorsMap {
 

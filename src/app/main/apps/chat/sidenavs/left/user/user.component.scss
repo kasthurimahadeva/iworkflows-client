@@ -1,0 +1,23 @@
+@import "src/@fuse/scss/fuse";
+
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: auto;
+
+    mat-toolbar {
+
+        .toolbar-bottom {
+            height: 240px;
+
+            @include media-breakpoint-down(md) {
+                height: 180px;
+            }
+        }
+    }
+
+    .sidenav-content {
+        background: whitesmoke;
+    }
+}
