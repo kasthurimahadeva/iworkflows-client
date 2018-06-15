@@ -130,7 +130,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     'type'    : 'item',
                     'icon'    : 'settings',
                     'function': () => {
-                        this._toggleSidebarOpen('themeOptionsPanel');
+                        this.toggleSidebarOpen('themeOptionsPanel');
                     }
                 }
             ]
@@ -281,13 +281,16 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         }
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
     /**
      * Toggle sidebar open
      *
      * @param key
-     * @private
      */
-    private _toggleSidebarOpen(key): void
+    toggleSidebarOpen(key): void
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }

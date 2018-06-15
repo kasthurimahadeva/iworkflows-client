@@ -98,16 +98,15 @@ export class AppComponent implements OnInit, OnDestroy
     }
 
     // -----------------------------------------------------------------------------------------------------
-    // @ Private methods
+    // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
     /**
      * Toggle sidebar open
      *
      * @param key
-     * @private
      */
-    private _toggleSidebarOpen(key): void
+    private toggleSidebarOpen(key): void
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }

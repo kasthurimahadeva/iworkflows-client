@@ -21,12 +21,12 @@ export class ContactsContactFormDialogComponent
     /**
      * Constructor
      *
-     * @param {MatDialogRef<ContactsContactFormDialogComponent>} _matDialogRef
+     * @param {MatDialogRef<ContactsContactFormDialogComponent>} matDialogRef
      * @param _data
      * @param {FormBuilder} _formBuilder
      */
     constructor(
-        private _matDialogRef: MatDialogRef<ContactsContactFormDialogComponent>,
+        public matDialogRef: MatDialogRef<ContactsContactFormDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder
     )

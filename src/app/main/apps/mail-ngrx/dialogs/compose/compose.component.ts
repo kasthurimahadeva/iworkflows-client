@@ -15,12 +15,12 @@ export class MailNgrxComposeDialogComponent
     /**
      * Constructor
      *
-     * @param {MatDialogRef<MailNgrxComposeDialogComponent>} _matDialogRef
+     * @param {MatDialogRef<MailNgrxComposeDialogComponent>} matDialogRef
      * @param _data
      * @param {FormBuilder} _formBuilder
      */
     constructor(
-        private _matDialogRef: MatDialogRef<MailNgrxComposeDialogComponent>,
+        public matDialogRef: MatDialogRef<MailNgrxComposeDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder
     )

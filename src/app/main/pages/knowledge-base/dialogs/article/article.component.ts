@@ -9,10 +9,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class KnowledgeBaseArticleComponent
 {
-    article: any;
-
+    /**
+     * Constructor
+     *
+     * @param {MatDialogRef<KnowledgeBaseArticleComponent>} matDialogRef
+     * @param _data
+     */
     constructor(
-        private _matDialogRef: MatDialogRef<KnowledgeBaseArticleComponent>,
+        public matDialogRef: MatDialogRef<KnowledgeBaseArticleComponent>,
         @Inject(MAT_DIALOG_DATA) public _data: any
     )
     {

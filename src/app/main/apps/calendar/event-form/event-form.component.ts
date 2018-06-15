@@ -25,12 +25,12 @@ export class CalendarEventFormDialogComponent
     /**
      * Constructor
      *
-     * @param {MatDialogRef<CalendarEventFormDialogComponent>} _matDialogRef
+     * @param {MatDialogRef<CalendarEventFormDialogComponent>} matDialogRef
      * @param _data
      * @param {FormBuilder} _formBuilder
      */
     constructor(
-        private _matDialogRef: MatDialogRef<CalendarEventFormDialogComponent>,
+        public matDialogRef: MatDialogRef<CalendarEventFormDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _formBuilder: FormBuilder
     )

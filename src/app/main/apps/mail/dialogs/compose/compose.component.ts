@@ -16,11 +16,11 @@ export class MailComposeDialogComponent
     /**
      * Constructor
      *
-     * @param {MatDialogRef<MailComposeDialogComponent>} _matDialogRef
+     * @param {MatDialogRef<MailComposeDialogComponent>} matDialogRef
      * @param _data
      */
     constructor(
-        private _matDialogRef: MatDialogRef<MailComposeDialogComponent>,
+        public matDialogRef: MatDialogRef<MailComposeDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any
     )
     {
