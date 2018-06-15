@@ -85,3 +85,8 @@ mat-chip {
         min-height: 0 !important;
     }
 }
+
+// Fix: Mat-card-image requires a bigger width than 100%
+.mat-card-image {
+    max-width: none !important;
+}

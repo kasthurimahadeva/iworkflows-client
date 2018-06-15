@@ -1,6 +1,6 @@
-# Fuse2
+# Fuse - Angular
 
-Material Design Admin Template with Angular 6+ and Angular Material 2
+Material Design Admin Template with Angular 6+ and Angular Material
 
 ## The Community
 
