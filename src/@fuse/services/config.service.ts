@@ -101,9 +101,6 @@ export class FuseConfigService
                     // Clone the default config
                     const config = _.cloneDeep(this._defaultConfig);
 
-                    // Don't reset the router animation
-                    config.routerAnimation = this._configSubject.getValue().routerAnimation;
-
                     // Set the config
                     this._configSubject.next(config);
                 }
