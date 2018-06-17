@@ -56,7 +56,7 @@
 </div>
 
 <!-- QUICK PANEL -->
-<fuse-sidebar [name]="'quickPanel'" position="right" class="quick-panel">
+<fuse-sidebar name="quickPanel" position="right" class="quick-panel">
     <quick-panel></quick-panel>
 </fuse-sidebar>
 <!-- / QUICK PANEL -->
@@ -91,7 +91,7 @@
 
 <!-- LEFT NAVBAR -->
 <ng-template #leftNavbar>
-    <fuse-sidebar [name]="'navbar'"
+    <fuse-sidebar name="navbar"
                   [folded]="fuseConfig.layout.navbar.folded"
                   *ngIf="!fuseConfig.layout.navbar.hidden">
         <navbar class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background" layout="vertical"></navbar>

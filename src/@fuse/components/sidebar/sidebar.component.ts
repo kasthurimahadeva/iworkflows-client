@@ -2,11 +2,11 @@ import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, In
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/internal/operators';
 
 import { FuseSidebarService } from './sidebar.service';
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { FuseConfigService } from '@fuse/services/config.service';
-import { takeUntil } from 'rxjs/internal/operators';
 
 @Component({
     selector     : 'fuse-sidebar',
@@ -19,6 +19,10 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // Name
     @Input()
     name: string;
+
+    // Key
+    @Input()
+    key: string;
 
     // Position
     @Input()
@@ -48,6 +52,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     private _folded: boolean;
     private _fuseConfig: any;
     private _wasActive: boolean;
+    private _wasFolded: boolean;
     private _backdrop: HTMLElement | null = null;
     private _player: AnimationPlayer;
     private _unsubscribeAll: Subject<any>;
@@ -79,13 +84,14 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
-        this.folded = false;
         this.opened = false;
+        // this.folded = false;
         this.position = 'left';
         this.invisibleOverlay = false;
 
         // Set the private defaults
         this._animationsEnabled = false;
+        this._folded = false;
         this._unsubscribeAll = new Subject();
     }
 
@@ -94,18 +100,17 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     // Folded
-    @HostBinding('class.folded')
     @Input()
     set folded(value: boolean)
     {
-        // Only work if the sidebar is not closed
+        // Set the folded
+        this._folded = value;
+
+        // Return if the sidebar is closed
         if ( !this.opened )
         {
             return;
         }
-
-        // Set the folded
-        this._folded = value;
 
         // Programmatically add/remove margin to the element
         // that comes after or before based on the position
@@ -135,14 +140,22 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // If folded...
         if ( value )
         {
-            // Set the style
+            // Fold the sidebar
+            this.fold();
+
+            // Set the style and class
             this._renderer.setStyle(sibling, styleRule, styleValue, RendererStyleFlags2.Important + RendererStyleFlags2.DashCase);
+            this._renderer.addClass(this._elementRef.nativeElement, 'folded');
         }
         // If unfolded...
         else
         {
-            // Remove the style
+            // Unfold the sidebar
+            this.unfold();
+
+            // Remove the style and class
             this._renderer.removeStyle(sibling, styleRule);
+            this._renderer.removeClass(this._elementRef.nativeElement, 'folded');
         }
     }
 
@@ -178,6 +191,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Setup lockedOpen
         this._setupLockedOpen();
+
+        // Setup folded
+        this._setupFolded();
     }
 
     /**
@@ -253,6 +269,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // Set the wasActive for the first time
         this._wasActive = false;
 
+        // Set the wasFolded
+        this._wasFolded = this.folded;
+
         // Show the sidebar
         this._showSidebar();
 
@@ -282,11 +301,17 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                     // Force the the opened status to true
                     this.opened = true;
 
-                    // Read the folded setting from the config
-                    // and fold the sidebar if it's true
-                    if ( this._fuseConfig.layout.navbar.folded )
+                    // If the sidebar was folded, forcefully fold it again
+                    if ( this._wasFolded )
                     {
-                        this.fold();
+                        // Enable the animations
+                        this._enableAnimations();
+
+                        // Fold
+                        this.folded = true;
+
+                        // Mark for check
+                        this._changeDetectorRef.markForCheck();
                     }
 
                     // Hide the backdrop if any exists
@@ -311,6 +336,58 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                 // Store the new active status
                 this._wasActive = isActive;
             });
+    }
+
+    /**
+     * Setup the initial folded status
+     *
+     * @private
+     */
+    private _setupFolded(): void
+    {
+        // Return, if sidebar is not folded
+        if ( !this.folded )
+        {
+            return;
+        }
+
+        // Return if the sidebar is closed
+        if ( !this.opened )
+        {
+            return;
+        }
+
+        // Programmatically add/remove margin to the element
+        // that comes after or before based on the position
+        let sibling,
+            styleRule;
+
+        const styleValue = '64px';
+
+        // Get the sibling and set the style rule
+        if ( this.position === 'left' )
+        {
+            sibling = this._elementRef.nativeElement.nextElementSibling;
+            styleRule = 'margin-left';
+        }
+        else
+        {
+            sibling = this._elementRef.nativeElement.previousElementSibling;
+            styleRule = 'margin-right';
+        }
+
+        // If there is no sibling, return...
+        if ( !sibling )
+        {
+            return;
+        }
+
+        // Fold the sidebar
+        this.fold();
+
+        // Set the style and class
+        this._renderer.setStyle(sibling, styleRule, styleValue, RendererStyleFlags2.Important + RendererStyleFlags2.DashCase);
+        this._renderer.addClass(this._elementRef.nativeElement, 'folded');
     }
 
     /**
