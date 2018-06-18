@@ -2,23 +2,29 @@
 
 :host {
 
-    .header {
+    #products {
 
-        .search-input-wrapper {
-            max-width: 480px;
+        .top-bg {
+            @include media-breakpoint-down(xs) {
+                height: 240px;
+            }
         }
 
-        @include media-breakpoint-down(xs) {
-            margin: 8px 0;
-            height: 192px !important;
-            min-height: 192px !important;
-            max-height: 192px !important;
-        }
-    }
+        > .center {
 
-    .top-bg {
-        @include media-breakpoint-down(xs) {
-            height: 240px;
+            > .header {
+
+                .search-input-wrapper {
+                    max-width: 480px;
+                }
+
+                @include media-breakpoint-down(xs) {
+                    margin: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
         }
     }
 

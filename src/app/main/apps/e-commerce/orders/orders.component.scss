@@ -2,23 +2,29 @@
 
 :host {
 
-    .header {
+    #orders {
 
-        .search-input-wrapper {
-            max-width: 480px;
-        }
+        > .center {
 
-        @include media-breakpoint-down(xs) {
-            margin: 24px 0;
-            height: 128px !important;
-            min-height: 128px !important;
-            max-height: 128px !important;
+            > .header {
+
+                .search-input-wrapper {
+                    max-width: 480px;
+                }
+
+                @include media-breakpoint-down(xs) {
+                    margin: 24px 0;
+                    height: 128px !important;
+                    min-height: 128px !important;
+                    max-height: 128px !important;
+                }
+            }
         }
     }
 
     .mat-tab-group,
     .mat-tab-body-wrapper,
-    .tab-content{
+    .tab-content {
         flex: 1 1 auto;
         max-width: 100%;
     }
