@@ -95,8 +95,6 @@ import { TableHttpExample } from 'assets/angular-material-examples/table-http/ta
 import { TableOverviewExample } from 'assets/angular-material-examples/table-overview/table-overview-example';
 import { TablePaginationExample } from 'assets/angular-material-examples/table-pagination/table-pagination-example';
 import { TableSortingExample } from 'assets/angular-material-examples/table-sorting/table-sorting-example';
-import { TabsOverviewExample } from 'assets/angular-material-examples/tabs-overview/tabs-overview-example';
-import { TabsTemplateLabelExample } from 'assets/angular-material-examples/tabs-template-label/tabs-template-label-example';
 import { ToolbarMultirowExample } from 'assets/angular-material-examples/toolbar-multirow/toolbar-multirow-example';
 import { ToolbarOverviewExample } from 'assets/angular-material-examples/toolbar-overview/toolbar-overview-example';
 import { TooltipOverviewExample } from 'assets/angular-material-examples/tooltip-overview/tooltip-overview-example';
@@ -137,7 +135,6 @@ import { SliderFormattingExample } from 'assets/angular-material-examples/slider
 import { StepperEditableExample } from 'assets/angular-material-examples/stepper-editable/stepper-editable-example';
 import { StepperOptionalExample } from 'assets/angular-material-examples/stepper-optional/stepper-optional-example';
 import { TableFooterRowExample } from 'assets/angular-material-examples/table-footer-row/table-footer-row-example';
-import { TableNativeOnlyExample } from 'assets/angular-material-examples/table-native-only/table-native-only-example';
 import { TextFieldAutofillDirectiveExample } from 'assets/angular-material-examples/text-field-autofill-directive/text-field-autofill-directive-example';
 import { TextFieldAutofillMonitorExample } from 'assets/angular-material-examples/text-field-autofill-monitor/text-field-autofill-monitor-example';
 import { TextFieldAutosizeTextareaExample } from 'assets/angular-material-examples/text-field-autosize-textarea/text-field-autosize-textarea-example';
@@ -146,6 +143,32 @@ import { TreeDynamicExample } from 'assets/angular-material-examples/tree-dynami
 import { TreeFlatOverviewExample } from 'assets/angular-material-examples/tree-flat-overview/tree-flat-overview-example';
 import { TreeLoadmoreExample } from 'assets/angular-material-examples/tree-loadmore/tree-loadmore-example';
 import { TreeNestedOverviewExample } from 'assets/angular-material-examples/tree-nested-overview/tree-nested-overview-example';
+import { CdkTableBasicFlexExample } from 'assets/angular-material-examples/cdk-table-basic-flex/cdk-table-basic-flex-example';
+import { StepperVerticalExample } from 'assets/angular-material-examples/stepper-vertical/stepper-vertical-example';
+import { TabGroupBasicExample } from 'assets/angular-material-examples/tab-group-basic/tab-group-basic-example';
+import { TabGroupAsyncExample } from 'assets/angular-material-examples/tab-group-async/tab-group-async-example';
+import { TabGroupCustomLabelExample } from 'assets/angular-material-examples/tab-group-custom-label/tab-group-custom-label-example';
+import { TabGroupDynamicExample } from 'assets/angular-material-examples/tab-group-dynamic/tab-group-dynamic-example';
+import { TabGroupDynamicHeightExample } from 'assets/angular-material-examples/tab-group-dynamic-height/tab-group-dynamic-height-example';
+import { TabGroupHeaderBelowExample } from 'assets/angular-material-examples/tab-group-header-below/tab-group-header-below-example';
+import { TabGroupLazyLoadedExample } from 'assets/angular-material-examples/tab-group-lazy-loaded/tab-group-lazy-loaded-example';
+import { TabGroupStretchedExample } from 'assets/angular-material-examples/tab-group-stretched/tab-group-stretched-example';
+import { TabGroupThemeExample } from 'assets/angular-material-examples/tab-group-theme/tab-group-theme-example';
+import { TabNavBarBasicExample } from 'assets/angular-material-examples/tab-nav-bar-basic/tab-nav-bar-basic-example';
+import { TooltipAutoHideExample } from 'assets/angular-material-examples/tooltip-auto-hide/tooltip-auto-hide-example';
+import { TooltipCustomClassExample } from 'assets/angular-material-examples/tooltip-custom-class/tooltip-custom-class-example';
+import { TooltipDisabledExample } from 'assets/angular-material-examples/tooltip-disabled/tooltip-disabled-example';
+import { TooltipMessageExample } from 'assets/angular-material-examples/tooltip-message/tooltip-message-example';
+import { TableBasicFlexExample } from 'assets/angular-material-examples/table-basic-flex/table-basic-flex-example';
+import { TableDynamicColumnsExample } from 'assets/angular-material-examples/table-dynamic-columns/table-dynamic-columns-example';
+import { TableExpandableRowsExample } from 'assets/angular-material-examples/table-expandable-rows/table-expandable-rows-example';
+import { TableMultipleHeaderFooterExample } from 'assets/angular-material-examples/table-multiple-header-footer/table-multiple-header-footer-example';
+import { TableRowContextExample } from 'assets/angular-material-examples/table-row-context/table-row-context-example';
+import { TableStickyColumnsExample } from 'assets/angular-material-examples/table-sticky-columns/table-sticky-columns-example';
+import { TableStickyComplexExample } from 'assets/angular-material-examples/table-sticky-complex/table-sticky-complex-example';
+import { TableStickyComplexFlexExample } from 'assets/angular-material-examples/table-sticky-complex-flex/table-sticky-complex-flex-example';
+import { TableStickyFooterExample } from 'assets/angular-material-examples/table-sticky-footer/table-sticky-footer-example';
+import { TableStickyHeaderExample } from 'assets/angular-material-examples/table-sticky-header/table-sticky-header-example';
 
 export const COMPONENT_MAP = {
     'autocomplete'    : [
@@ -176,6 +199,7 @@ export const COMPONENT_MAP = {
     ],
     // 'cdk-table'       : [
     //     'cdk-table-basic',
+    //     'cdk-table-basic-flex',
     //     'cdk-table-flat'
     // ],
     // 'cdk-tree'        : [
@@ -333,22 +357,40 @@ export const COMPONENT_MAP = {
     'stepper'         : [
         'stepper-overview',
         'stepper-editable',
-        'stepper-optional'
+        'stepper-optional',
+        'stepper-vertical'
     ],
     'table'           : [
         'table-overview',
         'table-basic',
+        'table-basic-flex',
+        'table-dynamic-columns',
+        'table-expandable-rows',
         'table-filtering',
         'table-footer-row',
         'table-http',
-        'table-native-only',
+        'table-multiple-header-footer',
         'table-pagination',
+        'table-row-context',
         'table-selection',
-        'table-sorting'
+        'table-sorting',
+        'table-sticky-columns',
+        'table-sticky-complex',
+        'table-sticky-complex-flex',
+        'table-sticky-header',
+        'table-sticky-footer',
     ],
     'tabs'            : [
-        'tabs-overview',
-        'tabs-template-label'
+        'tab-group-basic',
+        'tab-group-async',
+        'tab-group-custom-label',
+        'tab-group-dynamic',
+        'tab-group-dynamic-height',
+        'tab-group-header-below',
+        'tab-group-lazy-loaded',
+        'tab-group-stretched',
+        'tab-group-theme',
+        'tab-nav-bar-basic'
     ],
     'text-field'      : [
         'text-field-autofill-directive',
@@ -361,8 +403,12 @@ export const COMPONENT_MAP = {
     ],
     'tooltip'         : [
         'tooltip-overview',
+        'tooltip-auto-hide',
+        'tooltip-custom-class',
         'tooltip-delay',
+        'tooltip-disabled',
         'tooltip-manual',
+        'tooltip-message',
         'tooltip-modified-defaults',
         'tooltip-position'
     ],
@@ -437,6 +483,10 @@ export const EXAMPLE_COMPONENTS = {
     'cdk-table-basic'                      : {
         title    : 'Basic CDK data-table',
         component: CdkTableBasicExample
+    },
+    'cdk-table-basic-flex'                 : {
+        title    : 'Basic use of `<cdk-table>` (uses display flex)',
+        component: CdkTableBasicFlexExample
     },
     'cdk-tree-flat'                        : {
         title    : 'Tree with flat nodes',
@@ -879,9 +929,25 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Stepper overview',
         component: StepperOverviewExample
     },
+    'stepper-vertical'                     : {
+        title    : 'Stepper vertical',
+        component: StepperVerticalExample
+    },
     'table-basic'                          : {
         title    : 'Basic table',
         component: TableBasicExample
+    },
+    'table-basic-flex'                          : {
+        title    : 'Basic use of `<mat-table>` (uses display flex)',
+        component: TableBasicFlexExample
+    },
+    'table-dynamic-columns'                          : {
+        title    : 'Table dynamically changing the columns displayed',
+        component: TableDynamicColumnsExample
+    },
+    'table-expandable-rows'                          : {
+        title    : 'Table with expandable rows',
+        component: TableExpandableRowsExample
     },
     'table-filtering'                      : {
         title    : 'Table with filtering',
@@ -895,9 +961,9 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Table retrieving data through HTTP',
         component: TableHttpExample
     },
-    'table-native-only'                    : {
-        title    : 'Native `<table>` that only applies the Material styles',
-        component: TableNativeOnlyExample
+    'table-multiple-header-footer'                           : {
+        title    : 'Table with multiple header and footer rows',
+        component: TableMultipleHeaderFooterExample
     },
     'table-overview'                       : {
         title    : 'Data table with sorting, pagination, and filtering.',
@@ -907,6 +973,10 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Table with pagination',
         component: TablePaginationExample
     },
+    'table-row-context'                     : {
+        title    : 'Table showing each row context properties',
+        component: TableRowContextExample
+    },
     'table-selection'                      : {
         title    : 'Table with selection',
         component: TableSelectionExample
@@ -915,13 +985,65 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Table with sorting',
         component: TableSortingExample
     },
-    'tabs-overview'                        : {
-        title    : 'Basic tabs',
-        component: TabsOverviewExample
+    'table-sticky-columns'                        : {
+        title    : 'Table with a sticky columns',
+        component: TableStickyColumnsExample
     },
-    'tabs-template-label'                  : {
-        title    : 'Complex Example',
-        component: TabsTemplateLabelExample
+    'table-sticky-complex'                        : {
+        title    : 'Tables with toggle-able sticky headers, footers, and columns',
+        component: TableStickyComplexExample
+    },
+    'table-sticky-complex-flex'                        : {
+        title    : 'Flex-layout tables with toggle-able sticky headers, footers, and columns',
+        component: TableStickyComplexFlexExample
+    },
+    'table-sticky-footer'                        : {
+        title    : 'Table with a sticky footer',
+        component: TableStickyFooterExample
+    },
+    'table-sticky-header'                        : {
+        title    : 'Table with sticky header',
+        component: TableStickyHeaderExample
+    },
+    'tab-group-basic'                      : {
+        title    : 'Basic use of the tab group',
+        component: TabGroupBasicExample
+    },
+    'tab-group-async'                      : {
+        title    : 'Tab group with asynchronously loading tab contents',
+        component: TabGroupAsyncExample
+    },
+    'tab-group-custom-label'               : {
+        title    : 'Using tabs with a custom label template',
+        component: TabGroupCustomLabelExample
+    },
+    'tab-group-dynamic'                    : {
+        title    : 'Tab group with dynamically changing tabs',
+        component: TabGroupDynamicExample
+    },
+    'tab-group-dynamic-height'             : {
+        title    : 'Tab group with dynamic height based on tab contents',
+        component: TabGroupDynamicHeightExample
+    },
+    'tab-group-header-below'               : {
+        title    : 'Tab group with the headers on the bottom',
+        component: TabGroupHeaderBelowExample
+    },
+    'tab-group-lazy-loaded'                : {
+        title    : 'Tab group where the tab content is loaded lazily (when activated)',
+        component: TabGroupLazyLoadedExample
+    },
+    'tab-group-stretched'                  : {
+        title    : 'Tab group with stretched labels',
+        component: TabGroupStretchedExample
+    },
+    'tab-group-theme'                      : {
+        title    : 'Customizing the theme options on the tab group',
+        component: TabGroupThemeExample
+    },
+    'tab-nav-bar-basic'                    : {
+        title    : 'Basic use of the tab nav bar',
+        component: TabNavBarBasicExample
     },
     'text-field-autofill-directive'        : {
         title    : 'Monitoring autofill state with cdkAutofill',
@@ -943,13 +1065,29 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Basic toolbar',
         component: ToolbarOverviewExample
     },
+    'tooltip-auto-hide'                        : {
+        title    : 'Tooltip that demonstrates auto-hiding when it clips out of its scrolling container',
+        component: TooltipAutoHideExample
+    },
+    'tooltip-custom-class'                        : {
+        title    : 'Tooltip that can have a custom class applied',
+        component: TooltipCustomClassExample
+    },
     'tooltip-delay'                        : {
         title    : 'Tooltip with a show and hide delay',
         component: TooltipDelayExample
     },
+    'tooltip-disabled'                        : {
+        title    : 'Tooltip that can be disabled',
+        component: TooltipDisabledExample
+    },
     'tooltip-manual'                       : {
-        title    : 'Tooltip that can be manually shown/hidden.',
+        title    : 'Tooltip that can be manually shown/hidden',
         component: TooltipManualExample
+    },
+    'tooltip-message'                       : {
+        title    : 'Tooltip with a changing message',
+        component: TooltipMessageExample
     },
     'tooltip-modified-defaults'            : {
         title    : 'Tooltip with a show and hide delay',
@@ -1001,6 +1139,7 @@ export const EXAMPLE_LIST = [
     CardFancyExample,
     CardOverviewExample,
     CdkTableBasicExample,
+    CdkTableBasicFlexExample,
     CdkTreeFlatExample,
     CdkTreeNestedExample,
     CheckboxConfigurableExample,
@@ -1108,24 +1247,47 @@ export const EXAMPLE_LIST = [
     StepperEditableExample,
     StepperOptionalExample,
     StepperOverviewExample,
+    StepperVerticalExample,
     TableBasicExample,
+    TableBasicFlexExample,
+    TableDynamicColumnsExample,
+    TableExpandableRowsExample,
     TableFilteringExample,
     TableFooterRowExample,
     TableHttpExample,
-    TableNativeOnlyExample,
+    TableMultipleHeaderFooterExample,
     TableOverviewExample,
     TablePaginationExample,
+    TableRowContextExample,
     TableSelectionExample,
     TableSortingExample,
-    TabsOverviewExample,
-    TabsTemplateLabelExample,
+    TableStickyColumnsExample,
+    TableStickyComplexExample,
+    TableStickyComplexFlexExample,
+    TableStickyFooterExample,
+    TableStickyHeaderExample,
+    TabGroupBasicExample,
+    TabGroupAsyncExample,
+    TabGroupCustomLabelExample,
+    TabGroupDynamicExample,
+    TabGroupDynamicHeightExample,
+    TabGroupHeaderBelowExample,
+    TabGroupLazyLoadedExample,
+    TabGroupStretchedExample,
+    TabGroupStretchedExample,
+    TabGroupThemeExample,
+    TabNavBarBasicExample,
     TextFieldAutofillDirectiveExample,
     TextFieldAutofillMonitorExample,
     TextFieldAutosizeTextareaExample,
     ToolbarMultirowExample,
     ToolbarOverviewExample,
+    TooltipAutoHideExample,
+    TooltipCustomClassExample,
     TooltipDelayExample,
+    TooltipDisabledExample,
     TooltipManualExample,
+    TooltipMessageExample,
     TooltipModifiedDefaultsExample,
     TooltipOverviewExample,
     TooltipPositionExample,

@@ -1,5 +1,4 @@
-<div class="example-container mat-elevation-z8">
-  <table mat-table #table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
@@ -46,4 +45,3 @@
              (click)="selection.toggle(row)">
     </tr>
   </table>
-</div>
