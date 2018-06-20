@@ -816,28 +816,28 @@
                                 <mat-table #table [dataSource]="widget11.dataSource">
 
                                     <!-- Avatar Column -->
-                                    <ng-container cdkColumnDef="avatar">
-                                        <mat-header-cell fxFlex="96px" *cdkHeaderCellDef></mat-header-cell>
-                                        <mat-cell fxFlex="96px" *cdkCellDef="let contact">
+                                    <ng-container matColumnDef="avatar">
+                                        <mat-header-cell fxFlex="96px" *matHeaderCellDef></mat-header-cell>
+                                        <mat-cell fxFlex="96px" *matCellDef="let contact">
                                             <img class="avatar" *ngIf="contact.avatar" [alt]="contact.name"
                                                  [src]="contact.avatar"/>
                                         </mat-cell>
                                     </ng-container>
 
                                     <!-- Name Column -->
-                                    <ng-container cdkColumnDef="name">
-                                        <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
-                                        <mat-cell *cdkCellDef="let contact">
+                                    <ng-container matColumnDef="name">
+                                        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                                        <mat-cell *matCellDef="let contact">
                                             <p class="text-truncate font-weight-600">{{contact.name}}
                                                 {{contact.lastName}}</p>
                                         </mat-cell>
                                     </ng-container>
 
                                     <!-- Position Column -->
-                                    <ng-container cdkColumnDef="position">
-                                        <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Position
+                                    <ng-container matColumnDef="position">
+                                        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Position
                                         </mat-header-cell>
-                                        <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-sm>
+                                        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-sm>
                                             <p class="position text-truncate">
                                                 {{contact.position}}
                                             </p>
@@ -845,10 +845,10 @@
                                     </ng-container>
 
                                     <!-- Office Column -->
-                                    <ng-container cdkColumnDef="office">
-                                        <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Office
+                                    <ng-container matColumnDef="office">
+                                        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Office
                                         </mat-header-cell>
-                                        <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-md>
+                                        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-md>
                                             <p class="office text-truncate">
                                                 {{contact.office}}
                                             </p>
@@ -856,10 +856,10 @@
                                     </ng-container>
 
                                     <!-- Email Column -->
-                                    <ng-container cdkColumnDef="email">
-                                        <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-sm>Email
+                                    <ng-container matColumnDef="email">
+                                        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Email
                                         </mat-header-cell>
-                                        <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-sm>
+                                        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-sm>
                                             <p class="email text-truncate">
                                                 {{contact.email}}
                                             </p>
@@ -867,10 +867,10 @@
                                     </ng-container>
 
                                     <!-- Phone Column -->
-                                    <ng-container cdkColumnDef="phone">
-                                        <mat-header-cell *cdkHeaderCellDef fxHide fxShow.gt-md>Phone
+                                    <ng-container matColumnDef="phone">
+                                        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Phone
                                         </mat-header-cell>
-                                        <mat-cell *cdkCellDef="let contact" fxHide fxShow.gt-md>
+                                        <mat-cell *matCellDef="let contact" fxHide fxShow.gt-md>
                                             <p class="phone text-truncate">
                                                 {{contact.phone}}
                                             </p>
@@ -878,8 +878,8 @@
                                     </ng-container>
 
                                     <mat-header-row
-                                        *cdkHeaderRowDef="widgets.widget11.table.columns"></mat-header-row>
-                                    <mat-row *cdkRowDef="let contact; columns: widgets.widget11.table.columns;">
+                                        *matHeaderRowDef="widgets.widget11.table.columns"></mat-header-row>
+                                    <mat-row *matRowDef="let contact; columns: widgets.widget11.table.columns;">
                                     </mat-row>
                                 </mat-table>
                             </div>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CdkTableModule } from '@angular/cdk/table';
 import { MatButtonModule, MatIconModule, MatRippleModule, MatSlideToggleModule, MatTableModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -33,7 +32,6 @@ const routes: Routes = [
     imports     : [
         RouterModule.forChild(routes),
 
-        CdkTableModule,
         MatButtonModule,
         MatIconModule,
         MatRippleModule,

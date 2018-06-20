@@ -55,17 +55,17 @@
                        fusePerfectScrollbar>
 
                 <!-- ID Column -->
-                <ng-container cdkColumnDef="id">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>ID</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product">
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.id}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Image Column -->
-                <ng-container cdkColumnDef="image">
-                    <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
-                    <mat-cell *cdkCellDef="let product">
+                <ng-container matColumnDef="image">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let product">
                         <img class="product-image"
                              *ngIf="product.images[0]" [alt]="product.name"
                              [src]="product.images[0].url"/>
@@ -74,17 +74,17 @@
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container cdkColumnDef="name">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Name</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product">
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let product">
                         <p class="text-truncate">{{product.name}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Category Column -->
-                <ng-container cdkColumnDef="category">
-                    <mat-header-cell *cdkHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Category</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-md>
+                <ng-container matColumnDef="category">
+                    <mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Category</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-md>
                         <p class="category text-truncate">
                             {{product.categories[0]}}
                         </p>
@@ -92,9 +92,9 @@
                 </ng-container>
 
                 <!-- Price Column -->
-                <ng-container cdkColumnDef="price">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Price</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-xs>
+                <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Price</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
                         <p class="price text-truncate">
                             {{product.priceTaxIncl | currency:'USD':'symbol'}}
                         </p>
@@ -102,9 +102,9 @@
                 </ng-container>
 
                 <!-- Quantity Column -->
-                <ng-container cdkColumnDef="quantity">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Quantity</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-sm>
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Quantity</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-sm>
 
                         <span class="quantity-indicator text-truncate"
                               [ngClass]="{'mat-red-500-bg':product.quantity <= 5, 'mat-amber-500-bg':product.quantity > 5 && product.quantity <= 25,'mat-green-600-bg':product.quantity > 25}">
@@ -117,17 +117,17 @@
                 </ng-container>
 
                 <!-- Active Column -->
-                <ng-container cdkColumnDef="active">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Active</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-xs>
+                <ng-container matColumnDef="active">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Active</mat-header-cell>
+                    <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
                         <mat-icon *ngIf="product.active" class="active-icon mat-green-600-bg s-16">check</mat-icon>
                         <mat-icon *ngIf="!product.active" class="active-icon mat-red-500-bg s-16">close</mat-icon>
                     </mat-cell>
                 </ng-container>
 
-                <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-                <mat-row *cdkRowDef="let product; columns: displayedColumns;"
+                <mat-row *matRowDef="let product; columns: displayedColumns;"
                          class="product"
                          matRipple
                          [routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">

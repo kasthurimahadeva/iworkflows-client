@@ -46,25 +46,25 @@
                        fusePerfectScrollbar>
 
                 <!-- ID Column -->
-                <ng-container cdkColumnDef="id">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>ID</mat-header-cell>
-                    <mat-cell *cdkCellDef="let order">
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let order">
                         <p class="text-truncate">{{order.id}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Reference Column -->
-                <ng-container cdkColumnDef="reference">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Reference</mat-header-cell>
-                    <mat-cell *cdkCellDef="let order" fxHide fxShow.gt-sm>
+                <ng-container matColumnDef="reference">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Reference</mat-header-cell>
+                    <mat-cell *matCellDef="let order" fxHide fxShow.gt-sm>
                         <p class="text-truncate">{{order.reference}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container cdkColumnDef="customer">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Customer</mat-header-cell>
-                    <mat-cell *cdkCellDef="let order">
+                <ng-container matColumnDef="customer">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Customer</mat-header-cell>
+                    <mat-cell *matCellDef="let order">
                         <p class="text-truncate">
                             {{order.customer.firstName}}
                             {{order.customer.lastName}}
@@ -73,9 +73,9 @@
                 </ng-container>
 
                 <!-- Total Price Column -->
-                <ng-container cdkColumnDef="total">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-md>Total</mat-header-cell>
-                    <mat-cell *cdkCellDef="let order" fxHide fxShow.gt-md>
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-md>Total</mat-header-cell>
+                    <mat-cell *matCellDef="let order" fxHide fxShow.gt-md>
                         <p class="total-price text-truncate">
                             {{order.total | currency:'USD':'symbol'}}
                         </p>
@@ -83,9 +83,9 @@
                 </ng-container>
 
                 <!-- Payment Column -->
-                <ng-container cdkColumnDef="payment">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Payment</mat-header-cell>
-                    <mat-cell *cdkCellDef="let order" fxHide fxShow.gt-sm>
+                <ng-container matColumnDef="payment">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Payment</mat-header-cell>
+                    <mat-cell *matCellDef="let order" fxHide fxShow.gt-sm>
                         <p class="text-truncate">
                             {{order.payment.method}}
                         </p>
@@ -93,9 +93,9 @@
                 </ng-container>
 
                 <!-- Status Column -->
-                <ng-container cdkColumnDef="status">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Status</mat-header-cell>
-                    <mat-cell *cdkCellDef="let order">
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+                    <mat-cell *matCellDef="let order">
                         <p class="status text-truncate h6 p-4" [ngClass]="order.status[0].color">
                             {{order.status[0].name}}
                         </p>
@@ -103,18 +103,18 @@
                 </ng-container>
 
                 <!-- Date Column -->
-                <ng-container cdkColumnDef="date">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Date</mat-header-cell>
-                    <mat-cell *cdkCellDef="let order" fxHide fxShow.gt-sm>
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Date</mat-header-cell>
+                    <mat-cell *matCellDef="let order" fxHide fxShow.gt-sm>
                         <p class="text-truncate">
                             {{order.date}}
                         </p>
                     </mat-cell>
                 </ng-container>
 
-                <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-                <mat-row *cdkRowDef="let order; columns: displayedColumns;"
+                <mat-row *matRowDef="let order; columns: displayedColumns;"
                          class="order"
                          matRipple
                          [routerLink]="'/apps/e-commerce/orders/'+order.id">

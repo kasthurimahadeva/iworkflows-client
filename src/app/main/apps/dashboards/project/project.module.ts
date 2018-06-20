@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CdkTableModule } from '@angular/cdk/table';
 import { MatButtonModule, MatDividerModule, MatFormFieldModule, MatIconModule, MatMenuModule, MatSelectModule, MatTableModule, MatTabsModule } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -28,7 +27,6 @@ const routes: Routes = [
     imports     : [
         RouterModule.forChild(routes),
 
-        CdkTableModule,
         MatButtonModule,
         MatDividerModule,
         MatFormFieldModule,
