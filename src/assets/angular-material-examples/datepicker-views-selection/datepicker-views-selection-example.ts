@@ -9,10 +9,12 @@ import {MatDatepicker} from '@angular/material/datepicker';
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
 // the `default as` syntax.
 import * as _moment from 'moment';
+import { Moment } from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
-import {default as _rollupMoment, Moment} from 'moment';
+// import {default as _rollupMoment, Moment} from 'moment';
 
-const moment = _rollupMoment || _moment;
+// const moment = _rollupMoment || _moment;
+const moment = _moment;
 
 // See the Moment.js docs for the meaning of these formats:
 // https://momentjs.com/docs/#/displaying/format/
