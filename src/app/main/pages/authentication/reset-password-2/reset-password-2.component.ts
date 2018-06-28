@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/internal/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/internal/operators';
 
 @Component({
     selector   : 'reset-password-2',
@@ -15,7 +15,6 @@ import { takeUntil } from 'rxjs/internal/operators';
 export class ResetPassword2Component implements OnInit, OnDestroy
 {
     resetPasswordForm: FormGroup;
-    resetPasswordFormErrors: any;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -40,13 +39,6 @@ export class ResetPassword2Component implements OnInit, OnDestroy
             }
         };
 
-        // Set the defaults
-        this.resetPasswordFormErrors = {
-            email          : {},
-            password       : {},
-            passwordConfirm: {}
-        };
-
         // Set the private defaults
         this._unsubscribeAll = new Subject();
     }
@@ -61,15 +53,18 @@ export class ResetPassword2Component implements OnInit, OnDestroy
     ngOnInit(): void
     {
         this.resetPasswordForm = this._formBuilder.group({
+            name           : ['', Validators.required],
             email          : ['', [Validators.required, Validators.email]],
             password       : ['', Validators.required],
-            passwordConfirm: ['', [Validators.required, confirmPassword]]
+            passwordConfirm: ['', [Validators.required, confirmPasswordValidator]]
         });
 
-        this.resetPasswordForm.valueChanges
+        // Update the validity of the 'passwordConfirm' field
+        // when the 'password' field changes
+        this.resetPasswordForm.get('password').valueChanges
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
-                this.onResetPasswordFormValuesChanged();
+                this.resetPasswordForm.get('passwordConfirm').updateValueAndValidity();
             });
     }
 
@@ -82,48 +77,19 @@ export class ResetPassword2Component implements OnInit, OnDestroy
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On form values changed
-     */
-    onResetPasswordFormValuesChanged(): void
-    {
-        for ( const field in this.resetPasswordFormErrors )
-        {
-            if ( !this.resetPasswordFormErrors.hasOwnProperty(field) )
-            {
-                continue;
-            }
-
-            // Clear previous errors
-            this.resetPasswordFormErrors[field] = {};
-
-            // Get the control
-            const control = this.resetPasswordForm.get(field);
-
-            if ( control && control.dirty && !control.valid )
-            {
-                this.resetPasswordFormErrors[field] = control.errors;
-            }
-        }
-    }
 }
 
 /**
- * Confirm password
+ * Confirm password validator
  *
  * @param {AbstractControl} control
- * @returns {{passwordsNotMatch: boolean}}
+ * @returns {ValidationErrors | null}
  */
-function confirmPassword(control: AbstractControl): any
-{
+export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+
     if ( !control.parent || !control )
     {
-        return;
+        return null;
     }
 
     const password = control.parent.get('password');
@@ -131,18 +97,18 @@ function confirmPassword(control: AbstractControl): any
 
     if ( !password || !passwordConfirm )
     {
-        return;
+        return null;
     }
 
     if ( passwordConfirm.value === '' )
     {
-        return;
+        return null;
     }
 
-    if ( password.value !== passwordConfirm.value )
+    if ( password.value === passwordConfirm.value )
     {
-        return {
-            passwordsNotMatch: true
-        };
+        return null;
     }
-}
+
+    return {'passwordsNotMatching': true};
+};
