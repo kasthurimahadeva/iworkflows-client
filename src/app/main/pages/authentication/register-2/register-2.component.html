@@ -59,8 +59,8 @@
                     <mat-error *ngIf="registerForm.get('passwordConfirm').hasError('required')">
                         Password confirmation is required
                     </mat-error>
-                    <mat-error *ngIf="!registerForm.get('passwordConfirm').hasError('required')
-                            && registerForm.get('passwordConfirm').hasError('passwordsNotMatching')">
+                    <mat-error *ngIf="!registerForm.get('passwordConfirm').hasError('required') &&
+                                       registerForm.get('passwordConfirm').hasError('passwordsNotMatching')">
                         Passwords must match
                     </mat-error>
                 </mat-form-field>

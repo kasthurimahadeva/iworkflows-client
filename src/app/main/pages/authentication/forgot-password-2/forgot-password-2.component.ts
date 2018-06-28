@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
@@ -12,13 +10,9 @@ import { fuseAnimations } from '@fuse/animations';
     styleUrls  : ['./forgot-password-2.component.scss'],
     animations : fuseAnimations
 })
-export class ForgotPassword2Component implements OnInit, OnDestroy
+export class ForgotPassword2Component implements OnInit
 {
     forgotPasswordForm: FormGroup;
-    forgotPasswordFormErrors: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -45,14 +39,6 @@ export class ForgotPassword2Component implements OnInit, OnDestroy
                 }
             }
         };
-
-        // Set the defaults
-        this.forgotPasswordFormErrors = {
-            email: {}
-        };
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -67,50 +53,5 @@ export class ForgotPassword2Component implements OnInit, OnDestroy
         this.forgotPasswordForm = this._formBuilder.group({
             email: ['', [Validators.required, Validators.email]]
         });
-
-        this.forgotPasswordForm.valueChanges
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-                this.onForgotPasswordFormValuesChanged();
-            });
-    }
-
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On form values changed
-     */
-    onForgotPasswordFormValuesChanged(): void
-    {
-        for ( const field in this.forgotPasswordFormErrors )
-        {
-            if ( !this.forgotPasswordFormErrors.hasOwnProperty(field) )
-            {
-                continue;
-            }
-
-            // Clear previous errors
-            this.forgotPasswordFormErrors[field] = {};
-
-            // Get the control
-            const control = this.forgotPasswordForm.get(field);
-
-            if ( control && control.dirty && !control.valid )
-            {
-                this.forgotPasswordFormErrors[field] = control.errors;
-            }
-        }
     }
 }

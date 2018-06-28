@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
@@ -12,13 +10,9 @@ import { fuseAnimations } from '@fuse/animations';
     styleUrls  : ['./lock.component.scss'],
     animations : fuseAnimations
 })
-export class LockComponent implements OnInit, OnDestroy
+export class LockComponent implements OnInit
 {
     lockForm: FormGroup;
-    lockFormErrors: any;
-
-    // Private
-    private _unsubscribeAll: Subject<any>;
 
     /**
      * Constructor
@@ -45,15 +39,6 @@ export class LockComponent implements OnInit, OnDestroy
                 }
             }
         };
-
-        // Set the defaults
-        this.lockFormErrors = {
-            username: {},
-            password: {}
-        };
-
-        // Set the private defaults
-        this._unsubscribeAll = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -74,50 +59,5 @@ export class LockComponent implements OnInit, OnDestroy
             ],
             password: ['', Validators.required]
         });
-
-        this.lockForm.valueChanges
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-                this.onLockFormValuesChanged();
-            });
-    }
-
-    /**
-     * On destroy
-     */
-    ngOnDestroy(): void
-    {
-        // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
-        this._unsubscribeAll.complete();
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On form values changed
-     */
-    onLockFormValuesChanged(): void
-    {
-        for ( const field in this.lockFormErrors )
-        {
-            if ( !this.lockFormErrors.hasOwnProperty(field) )
-            {
-                continue;
-            }
-
-            // Clear previous errors
-            this.lockFormErrors[field] = {};
-
-            // Get the control
-            const control = this.lockForm.get(field);
-
-            if ( control && control.dirty && !control.valid )
-            {
-                this.lockFormErrors[field] = control.errors;
-            }
-        }
     }
 }
