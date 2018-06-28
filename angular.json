@@ -49,6 +49,14 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true
+                        },
+                        "hmr": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.hmr.ts"
+                                }
+                            ]
                         }
                     }
                 },
@@ -63,12 +71,7 @@
                         },
                         "hmr": {
                             "hmr": true,
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.hmr.ts"
-                                }
-                            ]
+                            "browserTarget": "fuse:build:hmr"
                         }
                     }
                 },
