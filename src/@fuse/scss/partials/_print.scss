@@ -36,11 +36,11 @@
     /* General styles */
     app {
 
-        fuse-navbar-vertical,
-        fuse-navbar-horizontal,
-        fuse-toolbar,
-        fuse-footer,
-        fuse-quick-panel,
+        fuse-sidebar,
+        navbar,
+        toolbar,
+        footer,
+        .theme-options-button,
         fuse-theme-options,
         .ps > .ps__rail-x,
         .ps > .ps__rail-y {
