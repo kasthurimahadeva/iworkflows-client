@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
 
@@ -9,6 +8,7 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
+import { FuseLoadingBarService } from '@fuse/services/loading-bar.service';
 
 @Component({
     selector   : 'toolbar',
@@ -34,14 +34,14 @@ export class ToolbarComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {FuseConfigService} _fuseConfigService
+     * @param {FuseLoadingBarService} _fuseLoadingBarService
      * @param {FuseSidebarService} _fuseSidebarService
-     * @param {Router} _router
      * @param {TranslateService} _translateService
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
+        private _fuseLoadingBarService: FuseLoadingBarService,
         private _fuseSidebarService: FuseSidebarService,
-        private _router: Router,
         private _translateService: TranslateService
     )
     {
@@ -102,22 +102,11 @@ export class ToolbarComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the router events to show/hide the loading bar
-        this._router.events
-            .pipe(
-                filter((event) => event instanceof NavigationStart),
-                takeUntil(this._unsubscribeAll)
-            )
-            .subscribe((event) => {
-                this.showLoadingBar = true;
-            });
-
-        this._router.events
-            .pipe(
-                filter((event) => event instanceof NavigationEnd)
-            )
-            .subscribe((event) => {
-                this.showLoadingBar = false;
+        // Subscribe to the Fuse loading bar service
+        this._fuseLoadingBarService.visible
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((visible) => {
+                this.showLoadingBar = visible;
             });
 
         // Subscribe to the config changes

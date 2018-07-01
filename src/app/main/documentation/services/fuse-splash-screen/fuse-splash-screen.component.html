@@ -10,7 +10,7 @@
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">Services</span>
             </div>
-            <div class="h2 mt-16">Splash Screen</div>
+            <div class="h2 mt-16">Fuse Splash Screen</div>
         </div>
     </div>
     <!-- / HEADER -->
@@ -28,13 +28,13 @@
             <fuse-highlight lang="typescript">
                 <textarea #source>
 
-                    export class SomeComponent
+                    export class SomeComponent implements OnInit
                     {
                         constructor(
                             private _fuseSplashScreenService: FuseSplashScreenService
                         ) {}
 
-                        onInit()
+                        ngOnInit()
                         {
                             this._fuseSplashScreenService.show();
 

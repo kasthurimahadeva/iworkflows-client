@@ -1052,16 +1052,22 @@ export const navigation: FuseNavigation[] = [
                 icon    : 'import_contacts',
                 children: [
                     {
-                        id   : 'config',
-                        title: 'Config',
+                        id   : 'fuse-config',
+                        title: 'Fuse Config',
                         type : 'item',
-                        url  : '/documentation/services/config'
+                        url  : '/documentation/services/fuse-config'
                     },
                     {
-                        id   : 'splash-screen',
-                        title: 'Splash Screen',
+                        id   : 'fuse-loading-bar',
+                        title: 'Fuse Loading Bar',
                         type : 'item',
-                        url  : '/documentation/services/splash-screen'
+                        url  : '/documentation/services/fuse-loading-bar'
+                    },
+                    {
+                        id   : 'fuse-splash-screen',
+                        title: 'Fuse Splash Screen',
+                        type : 'item',
+                        url  : '/documentation/services/fuse-splash-screen'
                     }
                 ]
             }

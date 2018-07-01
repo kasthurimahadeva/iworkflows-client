@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 
 import { FUSE_CONFIG, FuseConfigService } from '@fuse/services/config.service';
 import { FuseCopierService } from '@fuse/services/copier.service';
+import { FuseLoadingBarService } from '@fuse/services/loading-bar.service';
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
 import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav/fuse-mat-sidenav.service';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
@@ -14,6 +15,7 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
     providers      : [
         FuseConfigService,
         FuseCopierService,
+        FuseLoadingBarService,
         FuseMatchMediaService,
         FuseMatSidenavHelperService,
         FuseNavigationService,
