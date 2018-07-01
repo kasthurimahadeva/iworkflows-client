@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit, Renderer2, RendererStyleFlags2, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, RendererStyleFlags2, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
@@ -48,6 +48,14 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @Input()
     invisibleOverlay: boolean;
 
+    // Folded changed
+    @Output()
+    foldedChanged: EventEmitter<boolean>;
+
+    // Opened changed
+    @Output()
+    openedChanged: EventEmitter<boolean>;
+
     // Private
     private _folded: boolean;
     private _fuseConfig: any;
@@ -84,8 +92,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
+        this.foldedChanged = new EventEmitter();
+        this.openedChanged = new EventEmitter();
         this.opened = false;
-        // this.folded = false;
         this.position = 'left';
         this.invisibleOverlay = false;
 
@@ -157,6 +166,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             this._renderer.removeStyle(sibling, styleRule);
             this._renderer.removeClass(this._elementRef.nativeElement, 'folded');
         }
+
+        // Emit the 'foldedChanged' event
+        this.foldedChanged.emit(this.folded);
     }
 
     get folded(): boolean
@@ -301,6 +313,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
                     // Force the the opened status to true
                     this.opened = true;
 
+                    // Emit the 'openedChanged' event
+                    this.openedChanged.emit(this.opened);
+
                     // If the sidebar was folded, forcefully fold it again
                     if ( this._wasFolded )
                     {
@@ -328,6 +343,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
                     // Force the the opened status to close
                     this.opened = false;
+
+                    // Emit the 'openedChanged' event
+                    this.openedChanged.emit(this.opened);
 
                     // Hide the sidebar
                     this._hideSidebar();
@@ -558,6 +576,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         // Set the opened status
         this.opened = true;
 
+        // Emit the 'openedChanged' event
+        this.openedChanged.emit(this.opened);
+
         // Mark for check
         this._changeDetectorRef.markForCheck();
     }
@@ -580,6 +601,9 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Set the opened status
         this.opened = false;
+
+        // Emit the 'openedChanged' event
+        this.openedChanged.emit(this.opened);
 
         // Hide the sidebar
         this._hideSidebar();

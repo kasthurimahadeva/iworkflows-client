@@ -33,7 +33,7 @@
         </p>
 
         <div class="my-48">
-            <h2>[name]</h2>
+            <h3><code>[name]</code></h3>
             <p class="py-8">
                 <b>name</b> attribute allows you to set a unique name to the sidebar. It's required for sidebar to
                 work correctly, as every sidebar being registered to the sidebar service.
@@ -41,14 +41,14 @@
         </div>
 
         <div class="my-48">
-            <h2>[folded]</h2>
+            <h3><code>[folded]</code></h3>
             <p class="py-8">
                 Controls the folded status of the sidebar.
             </p>
         </div>
 
         <div class="my-48">
-            <h2>[position]</h2>
+            <h3><code>[position]</code></h3>
             <p class="py-8">
                 Controls the position of the sidebar when it's hidden. This doesn't affect on the locked-open placement
                 of the sidebar, it only controls which side the sidebar is going to slide in when it's completely
@@ -57,10 +57,24 @@
         </div>
 
         <div class="my-48">
-            <h2>[lockedOpen]</h2>
+            <h3><code>[lockedOpen]</code></h3>
             <p class="py-8">
                 Accepts Angular Material breakpoint aliases ('gt-md', 'lg' etc.) and locks open the sidebar if the
                 alias matches the current breakpoint, similar to how Angular Material 1.x sidenav works.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>(onFoldedChanged)</code></h3>
+            <p class="py-8">
+                <b>onFoldedChanged</b> event will be triggered when the sidebar folded or unfolded permanently.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>(onOpenedChanged)</code></h3>
+            <p class="py-8">
+                <b>onOpenedChanged</b> event will be triggered when the sidebar opened or closed.
             </p>
         </div>
 
