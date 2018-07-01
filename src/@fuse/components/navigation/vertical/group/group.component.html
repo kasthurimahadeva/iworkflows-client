@@ -1,6 +1,6 @@
 <ng-container *ngIf="!item.hidden">
 
-    <div class="group-title">
+    <div class="group-title" [ngClass]="item.classes">
         <span class="hint-text" [translate]="item.translate">{{ item.title }}</span>
     </div>
 
