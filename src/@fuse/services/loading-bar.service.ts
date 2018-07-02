@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Injectable()
 export class FuseLoadingBarService
@@ -26,7 +26,7 @@ export class FuseLoadingBarService
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
 
-    get visible(): Observable
+    get visible(): Observable<any>
     {
         // Return the _visible as observable
         return this._visible.asObservable();
