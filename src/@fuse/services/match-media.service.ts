@@ -2,7 +2,9 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FuseMatchMediaService
 {
     activeMediaQuery: string;

@@ -8,7 +8,9 @@ import * as _ from 'lodash';
 // Create the injection token for the custom settings
 export const FUSE_CONFIG = new InjectionToken('fuseCustomConfig');
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FuseConfigService
 {
     // Private

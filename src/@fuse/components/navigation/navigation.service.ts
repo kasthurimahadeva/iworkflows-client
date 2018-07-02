@@ -3,7 +3,9 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { FuseNavigationItem } from '@fuse/types';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FuseNavigationService
 {
     onItemCollapsed: Subject<any>;
