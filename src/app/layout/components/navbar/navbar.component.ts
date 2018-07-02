@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { filter, take, takeUntil } from 'rxjs/operators';
 
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
@@ -61,6 +61,7 @@ export class NavbarComponent implements OnInit, OnDestroy
 
         this._fusePerfectScrollbar = theDirective;
 
+        // Update the scrollbar on collapsable item toggle
         this._fuseNavigationService.onItemCollapseToggled
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
@@ -68,6 +69,28 @@ export class NavbarComponent implements OnInit, OnDestroy
                     this._fusePerfectScrollbar.update();
                 }, 310);
             });
+
+        // Scroll to the active item position
+        this._router.events
+            .pipe(
+                filter((event) => event instanceof NavigationEnd),
+                take(1)
+            )
+            .subscribe(() => {
+                    setTimeout(() => {
+                        const activeNavItem = document.querySelector('navbar .nav-link.active');
+
+                        if ( activeNavItem )
+                        {
+                            const activeItemOffsetTop       = activeNavItem.offsetTop,
+                                  activeItemOffsetParentTop = activeNavItem.offsetParent.offsetTop,
+                                  scrollDistance            = activeItemOffsetTop - activeItemOffsetParentTop - (48 * 3);
+
+                            this._fusePerfectScrollbar.scrollToTop(scrollDistance);
+                        }
+                    });
+                }
+            );
     }
 
     // -----------------------------------------------------------------------------------------------------
