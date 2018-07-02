@@ -1,29 +1,8 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
-import { FUSE_CONFIG, FuseConfigService } from '@fuse/services/config.service';
-import { FuseCopierService } from '@fuse/services/copier.service';
-import { FuseLoadingBarService } from '@fuse/services/loading-bar.service';
-import { FuseMatchMediaService } from '@fuse/services/match-media.service';
-import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav/fuse-mat-sidenav.service';
-import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
-import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
-import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
-import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import { FUSE_CONFIG } from '@fuse/services/config.service';
 
-@NgModule({
-    entryComponents: [],
-    providers      : [
-        FuseConfigService,
-        FuseCopierService,
-        FuseLoadingBarService,
-        FuseMatchMediaService,
-        FuseMatSidenavHelperService,
-        FuseNavigationService,
-        FuseSidebarService,
-        FuseSplashScreenService,
-        FuseTranslationLoaderService
-    ]
-})
+@NgModule()
 export class FuseModule
 {
     constructor(@Optional() @SkipSelf() parentModule: FuseModule)

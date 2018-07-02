@@ -72,7 +72,7 @@
 
             <mat-menu #languageMenu="matMenu" [overlapTrigger]="false">
 
-                <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang.id)">
+                <button mat-menu-item *ngFor="let lang of languages" (click)="setLanguage(lang)">
                     <span fxLayout="row" fxLayoutAlign="start center">
                         <img class="flag mr-16" [src]="'assets/images/flags/'+lang.flag+'.png'">
                         <span class="iso">{{lang.title}}</span>

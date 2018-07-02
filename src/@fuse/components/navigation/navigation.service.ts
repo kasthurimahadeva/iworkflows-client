@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
-@Injectable()
+import { FuseNavigationItem } from '@fuse/types';
+
+@Injectable({
+    providedIn: 'root'
+})
 export class FuseNavigationService
 {
-    flatNavigation: any[] = [];
-
     onItemCollapsed: Subject<any>;
     onItemCollapseToggled: Subject<any>;
 
@@ -138,39 +140,30 @@ export class FuseNavigationService
      * Get flattened navigation array
      *
      * @param navigation
+     * @param flatNavigation
      * @returns {any[]}
      */
-    getFlatNavigation(navigation): any
+    getFlatNavigation(navigation, flatNavigation: FuseNavigationItem[] = []): any
     {
-        for ( const navItem of navigation )
+        for ( const item of navigation )
         {
-            if ( navItem.type === 'item' )
+            if ( item.type === 'item' )
             {
-                this.flatNavigation.push({
-                    id        : navItem.id || null,
-                    title     : navItem.title || null,
-                    translate : navItem.translate || null,
-                    type      : navItem.type,
-                    icon      : navItem.icon || null,
-                    url       : navItem.url || null,
-                    function  : navItem.function || null,
-                    exactMatch: navItem.exactMatch || false,
-                    badge     : navItem.badge || null
-                });
+                flatNavigation.push(item);
 
                 continue;
             }
 
-            if ( navItem.type === 'collapse' || navItem.type === 'group' )
+            if ( item.type === 'collapsable' || item.type === 'group' )
             {
-                if ( navItem.children )
+                if ( item.children )
                 {
-                    this.getFlatNavigation(navItem.children);
+                    this.getFlatNavigation(item.children, flatNavigation);
                 }
             }
         }
 
-        return this.flatNavigation;
+        return flatNavigation;
     }
 
     /**

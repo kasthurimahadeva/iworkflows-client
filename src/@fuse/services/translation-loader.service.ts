@@ -7,7 +7,9 @@ export interface Locale
     data: Object;
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FuseTranslationLoaderService
 {
     /**

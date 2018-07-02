@@ -3,7 +3,9 @@ import { DOCUMENT } from '@angular/common';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { NavigationEnd, Router } from '@angular/router';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FuseSplashScreenService
 {
     splashScreenEl: any;
