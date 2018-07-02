@@ -78,7 +78,7 @@ export class NavbarComponent implements OnInit, OnDestroy
             )
             .subscribe(() => {
                     setTimeout(() => {
-                        const activeNavItem = document.querySelector('navbar .nav-link.active');
+                        const activeNavItem: any = document.querySelector('navbar .nav-link.active');
 
                         if ( activeNavItem )
                         {
