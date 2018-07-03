@@ -37,12 +37,6 @@ fuse-sidebar {
         position: absolute !important;
         top: 0;
         bottom: 0;
-
-        &:not(.unfolded) {
-            width: 64px;
-            min-width: 64px;
-            max-width: 64px;
-        }
     }
 
     &.animations-enabled {
