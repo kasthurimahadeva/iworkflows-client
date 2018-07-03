@@ -154,6 +154,45 @@ export class ChatPanelComponent implements OnInit, OnDestroy
     }
 
     /**
+     * Decide whether to show or not the contact's avatar in the message row
+     *
+     * @param message
+     * @param i
+     * @returns {boolean}
+     */
+    shouldShowContactAvatar(message, i): boolean
+    {
+        return (
+            message.who === this.contact.id &&
+            ((this.chat.dialog[i + 1] && this.chat.dialog[i + 1].who !== this.contact.id) || !this.chat.dialog[i + 1])
+        );
+    }
+
+    /**
+     * Check if the given message is the first message of a group
+     *
+     * @param message
+     * @param i
+     * @returns {boolean}
+     */
+    isFirstMessageOfGroup(message, i): boolean
+    {
+        return (i === 0 || this.chat.dialog[i - 1] && this.chat.dialog[i - 1].who !== message.who);
+    }
+
+    /**
+     * Check if the given message is the last message of a group
+     *
+     * @param message
+     * @param i
+     * @returns {boolean}
+     */
+    isLastMessageOfGroup(message, i): boolean
+    {
+        return (i === this.chat.dialog.length - 1 || this.chat.dialog[i + 1] && this.chat.dialog[i + 1].who !== message.who);
+    }
+
+    /**
      * Go to chat with the contact
      *
      * @param contact
@@ -195,8 +234,15 @@ export class ChatPanelComponent implements OnInit, OnDestroy
     /**
      * Reply
      */
-    reply(): void
+    reply(event): void
     {
+        event.preventDefault();
+
+        if ( !this._replyForm.form.value.message )
+        {
+            return;
+        }
+
         // Message
         const message = {
             who    : this.user.id,

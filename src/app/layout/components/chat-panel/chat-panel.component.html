@@ -60,18 +60,21 @@
 
         <div class="messages" fxFlex="1 1 auto" fusePerfectScrollbar>
 
-            <div fxLayout="row" *ngFor="let message of chat.dialog" class="message-row"
-                 [ngClass]="{'user': message.who === user.id}">
+            <div *ngFor="let message of chat.dialog; let i = index" class="message-row"
+                 [ngClass]="{
+                            'me': message.who === user.id,
+                            'contact': message.who !== user.id,
+                            'first-of-group': isFirstMessageOfGroup(message, i),
+                            'last-of-group': isLastMessageOfGroup(message, i)
+                            }">
 
-                <img *ngIf="message.who === contact.id"
+                <img *ngIf="shouldShowContactAvatar(message, i)"
                      src="{{contact.avatar}}"
                      class="avatar">
 
-                <img *ngIf="message.who === user.id" class="avatar" src="{{user.avatar}}">
-
                 <div class="bubble">
                     <div class="message">{{message.message}}</div>
-                    <div class="time secondary-text">{{message.time | date:'medium'}}</div>
+                    <div class="time secondary-text">{{message.time | date:'short'}}</div>
                 </div>
 
             </div>
@@ -81,8 +84,8 @@
         <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
 
             <form #replyForm="ngForm"
-                  (ngSubmit)="reply()"
-                  (keyup.enter)="reply()"
+                  (ngSubmit)="reply($event)"
+                  (keydown.enter)="reply($event)"
                   fxFlex class="reply-form"
                   fxLayout="row"
                   fxLayoutAlign="start center">
