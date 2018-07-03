@@ -1,0 +1,105 @@
+<div class="header mat-elevation-z4 mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
+
+    <ng-container *ngIf="view === 'contacts'">
+
+        <div class="title ml-16" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="s-32">account_circle</mat-icon>
+            <h3 class="ml-12">Team Members</h3>
+        </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="view === 'chat'">
+
+        <div class="title" fxLayout="row" fxLayoutAlign="start center">
+            <button class="mx-8" mat-icon-button (click)="goToContacts()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <img [src]="contact.avatar" class="avatar mr-0 w-32 h-32">
+            <h3 class="ml-12 text-truncate">{{contact.name}}</h3>
+        </div>
+
+    </ng-container>
+
+    <button mat-icon-button class="toggle-sidebar-folded mr-8" (click)="toggleSidebarFolded()" fxHide fxShow.gt-md>
+        <mat-icon class="secondary-text" *ngIf="sidebarFolded">lock_open</mat-icon>
+        <mat-icon class="secondary-text" *ngIf="!sidebarFolded">lock_outline</mat-icon>
+    </button>
+
+    <button mat-icon-button class="toggle-sidebar-folded mr-8" (click)="toggleSidebarOpen()" fxHide.gt-md>
+        <mat-icon class="secondary-text">arrow_forward</mat-icon>
+    </button>
+
+</div>
+
+<ng-container *ngIf="view === 'contacts'">
+
+    <mat-list id="contacts-list" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
+
+        <mat-list-item *ngFor="let contact of contacts" [ngClass]="contact.status" (click)="goToChat(contact)"
+                       matRipple>
+
+            <img matListAvatar [src]="contact.avatar">
+
+            <h3 matLine>
+                {{contact.name}}
+            </h3>
+
+            <div class="unread-count" *ngIf="contact.unread">{{contact.unread}}</div>
+            <div class="status-icon" [ngClass]="contact.status"></div>
+
+        </mat-list-item>
+
+    </mat-list>
+
+</ng-container>
+
+<ng-container *ngIf="view === 'chat'">
+
+    <div id="chat" fxLayout="column" fxFlex="1 1 auto">
+
+        <div class="messages" fxFlex="1 1 auto" fusePerfectScrollbar>
+
+            <div fxLayout="row" *ngFor="let message of chat.dialog" class="message-row"
+                 [ngClass]="{'user': message.who === user.id}">
+
+                <img *ngIf="message.who === contact.id"
+                     src="{{contact.avatar}}"
+                     class="avatar">
+
+                <img *ngIf="message.who === user.id" class="avatar" src="{{user.avatar}}">
+
+                <div class="bubble">
+                    <div class="message">{{message.message}}</div>
+                    <div class="time secondary-text">{{message.time | date:'medium'}}</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+
+            <form #replyForm="ngForm"
+                  (ngSubmit)="reply()"
+                  (keyup.enter)="reply()"
+                  fxFlex class="reply-form"
+                  fxLayout="row"
+                  fxLayoutAlign="start center">
+
+                <mat-form-field fxFlex floatLabel="never">
+                    <textarea matInput #replyInput placeholder="Type and hit enter to send message"
+                              ngModel name="message"></textarea>
+                </mat-form-field>
+
+                <button mat-mini-fab type="submit" aria-label="Send message">
+                    <mat-icon>send</mat-icon>
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</ng-container>

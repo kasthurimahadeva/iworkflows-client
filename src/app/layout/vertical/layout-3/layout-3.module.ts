@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FuseSidebarModule } from '@fuse/components/index';
 import { FuseSharedModule } from '@fuse/shared.module';
 
+import { ChatPanelModule } from 'app/layout/components/chat-panel/chat-panel.module';
 import { ContentModule } from 'app/layout/components/content/content.module';
 import { FooterModule } from 'app/layout/components/footer/footer.module';
 import { NavbarModule } from 'app/layout/components/navbar/navbar.module';
@@ -22,6 +23,7 @@ import { VerticalLayout3Component } from 'app/layout/vertical/layout-3/layout-3.
         FuseSharedModule,
         FuseSidebarModule,
 
+        ChatPanelModule,
         ContentModule,
         FooterModule,
         NavbarModule,

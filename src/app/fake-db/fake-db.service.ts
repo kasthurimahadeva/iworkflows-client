@@ -17,6 +17,7 @@ import { SearchFakeDb } from 'app/fake-db/search';
 import { FaqFakeDb } from 'app/fake-db/faq';
 import { KnowledgeBaseFakeDb } from 'app/fake-db/knowledge-base';
 import { IconsFakeDb } from 'app/fake-db/icons';
+import { ChatPanelFakeDb } from 'app/fake-db/chat-panel';
 import { QuickPanelFakeDb } from 'app/fake-db/quick-panel';
 
 export class FakeDbService implements InMemoryDbService
@@ -88,6 +89,11 @@ export class FakeDbService implements InMemoryDbService
 
             // Icons
             'icons': IconsFakeDb.icons,
+
+            // Chat Panel
+            'chat-panel-contacts' : ChatPanelFakeDb.contacts,
+            'chat-panel-chats': ChatPanelFakeDb.chats,
+            'chat-panel-user': ChatPanelFakeDb.user,
 
             // Quick Panel
             'quick-panel-notes' : QuickPanelFakeDb.notes,

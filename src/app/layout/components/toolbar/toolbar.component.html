@@ -30,7 +30,7 @@
             <button mat-button [matMenuTriggerFor]="userMenu"
                     class="user-button">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="avatar" src="assets/images/avatars/profile.jpg">
+                    <img class="avatar" src="assets/images/avatars/Velazquez.jpg">
                     <span class="username mr-12" fxHide fxShow.gt-sm>John Doe</span>
                     <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
                 </div>
@@ -88,6 +88,15 @@
             </mat-menu>
 
             <div class="toolbar-separator" fxHide fxShow.gt-xs></div>
+
+            <button mat-icon-button fxHide.gt-md
+                    class="chat-panel-toggle-button"
+                    (click)="toggleSidebarOpen('chatPanel')"
+                    aria-label="Toggle chat panel">
+                <mat-icon class="icon">chat</mat-icon>
+            </button>
+
+            <div class="toolbar-separator" fxHide.gt-md></div>
 
             <button mat-icon-button
                     class="quick-panel-toggle-button"
