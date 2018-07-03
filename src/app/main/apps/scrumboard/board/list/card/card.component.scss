@@ -58,7 +58,7 @@
                 }
 
                 &.due-date {
-                    background-color: mat-color(mat-palette($mat-green));;
+                    background-color: mat-color(mat-palette($mat-green));
 
                     &.overdue {
                         background-color: mat-color(mat-palette($mat-red));
