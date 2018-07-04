@@ -104,6 +104,7 @@ chat-panel {
         background-color: mat-color(mat-palette($mat-grey, 300));
 
         .messages {
+            position: relative;
             overflow: auto;
             padding: 16px 0 40px 40px;
 
@@ -244,11 +245,70 @@ chat-panel {
                     }
                 }
             }
+
+            .no-messages-icon {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                left: 0;
+                padding: 0 24px;
+                margin-top: -64px;
+                text-align: center;
+
+                mat-icon {
+                    color: rgba(0, 0, 0, 0.06);
+                }
+            }
+
+            .no-messages {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 0 16px 24px 16px;
+                text-align: center;
+            }
         }
 
         .reply-form {
             position: relative;
-            @include mat-elevation(8);
+
+            .message-text {
+                padding: 16px 8px;
+
+                .mat-form-field-wrapper {
+                    padding: 0;
+
+                    .mat-form-field-flex {
+                        padding: 0;
+
+                        .mat-form-field-infix {
+                            padding: 0;
+                            border: none;
+                            background: white;
+                            border-radius: 20px;
+                            @include mat-elevation(2);
+
+                            textarea {
+                                overflow: hidden;
+                                margin: 16px 48px 16px 16px;
+                                width: calc(100% - 64px);
+                                padding: 0;
+                            }
+                        }
+                    }
+
+                    .mat-form-field-underline {
+                        display: none !important;
+                    }
+                }
+            }
+
+            .send-message-button {
+                position: absolute;
+                right: 16px;
+                bottom: 21px;
+            }
         }
     }
 }

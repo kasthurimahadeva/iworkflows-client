@@ -79,6 +79,17 @@
 
             </div>
 
+            <ng-container *ngIf="chat.dialog.length === 0">
+
+                <div class="no-messages-icon">
+                    <mat-icon class="s-128">chat</mat-icon>
+                </div>
+
+                <div class="no-messages secondary-text">
+                    Start a conversation by typing your message below.
+                </div>
+            </ng-container>
+
         </div>
 
         <div class="reply-form" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
@@ -86,17 +97,17 @@
             <form #replyForm="ngForm"
                   (ngSubmit)="reply($event)"
                   (keydown.enter)="reply($event)"
-                  fxFlex class="reply-form"
+                  fxFlex
                   fxLayout="row"
                   fxLayoutAlign="start center">
 
-                <mat-form-field fxFlex floatLabel="never">
-                    <textarea matInput #replyInput placeholder="Type and hit enter to send message"
-                              ngModel name="message"></textarea>
+                <mat-form-field class="message-text" fxFlex floatLabel="never" appearance="standard">
+                    <textarea matInput #replyInput ngModel name="message" placeholder="Type your message"
+                              [rows]="1" [matTextareaAutosize]="true"></textarea>
                 </mat-form-field>
 
-                <button mat-mini-fab type="submit" aria-label="Send message">
-                    <mat-icon>send</mat-icon>
+                <button class="send-message-button" mat-icon-button type="submit" aria-label="Send message">
+                    <mat-icon class="secondary-text">send</mat-icon>
                 </button>
 
             </form>
