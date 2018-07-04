@@ -74,9 +74,7 @@ export class ChatService implements Resolve<any>
             return item.contactId === contactId;
         });
 
-        /**
-         * Create new chat, if it's not created yet.
-         */
+        // Create new chat, if it's not created yet.
         if ( !chatItem )
         {
             this.createNewChat(contactId).then((newChats) => {
@@ -137,26 +135,18 @@ export class ChatService implements Resolve<any>
                 unread         : null
             };
 
-            /**
-             * Add new chat list item to the user's chat list
-             */
+            // Add new chat list item to the user's chat list
             this.user.chatList.push(chatListItem);
 
-            /**
-             * Post the created chat
-             */
+            // Post the created chat
             this._httpClient.post('api/chat-chats', {...chat})
                 .subscribe((response: any) => {
 
-                    /**
-                     * Post the new the user data
-                     */
+                    // Post the new the user data
                     this._httpClient.post('api/chat-user/' + this.user.id, this.user)
                         .subscribe(newUserData => {
 
-                            /**
-                             * Update the user data from server
-                             */
+                            // Update the user data from server
                             this.getUser().then(updatedUser => {
                                 this.onUserUpdated.next(updatedUser);
                                 resolve(updatedUser);
