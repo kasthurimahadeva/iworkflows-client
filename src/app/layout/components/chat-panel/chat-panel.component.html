@@ -3,8 +3,8 @@
     <ng-container *ngIf="view === 'contacts'">
 
         <div class="title ml-16" fxLayout="row" fxLayoutAlign="start center">
-            <mat-icon class="s-32">account_circle</mat-icon>
-            <h3 class="ml-12">Team Members</h3>
+            <mat-icon class="s-32">chat</mat-icon>
+            <h3 class="ml-12">Team Chat</h3>
         </div>
 
     </ng-container>
@@ -22,8 +22,8 @@
     </ng-container>
 
     <button mat-icon-button class="toggle-sidebar-folded mr-8" (click)="toggleSidebarFolded()" fxHide fxShow.gt-md>
-        <mat-icon class="secondary-text" *ngIf="sidebarFolded">lock_open</mat-icon>
-        <mat-icon class="secondary-text" *ngIf="!sidebarFolded">lock_outline</mat-icon>
+        <mat-icon class="secondary-text s-20" *ngIf="sidebarFolded">lock_open</mat-icon>
+        <mat-icon class="secondary-text s-20" *ngIf="!sidebarFolded">lock_outline</mat-icon>
     </button>
 
     <button mat-icon-button class="toggle-sidebar-folded mr-8" (click)="toggleSidebarOpen()" fxHide.gt-md>
