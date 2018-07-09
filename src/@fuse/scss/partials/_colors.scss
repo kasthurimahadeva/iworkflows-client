@@ -79,6 +79,10 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
             .mat-ripple-element {
                 background: rgba(0, 0, 0, 0.1);
             }
+
+            .adaptive-border-color {
+                border-color: rgba(0, 0, 0, 0.12);
+            }
         }
 
     }
@@ -112,6 +116,10 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
 
             .mat-ripple-element {
                 background: rgba(255, 255, 255, 0.1);
+            }
+
+            .adaptive-border-color {
+                border-color: rgba(255, 255, 255, 0.12);
             }
         }
     }
