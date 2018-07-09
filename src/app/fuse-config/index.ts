@@ -17,7 +17,7 @@ export const fuseConfig: FuseConfig = {
             folded    : false,
             hidden    : false,
             position  : 'left',
-            variant   : 'vertical-style-2'
+            variant   : 'vertical-style-1'
         },
         toolbar: {
             background: 'mat-white-500-bg',
