@@ -50,6 +50,10 @@
                             "vendorChunk": false,
                             "buildOptimizer": true
                         },
+                        "ec": {
+                            "sourceMap": true,
+                            "extractCss": true
+                        },
                         "hmr": {
                             "fileReplacements": [
                                 {
@@ -72,6 +76,9 @@
                         "hmr": {
                             "hmr": true,
                             "browserTarget": "fuse:build:hmr"
+                        },
+                        "ec": {
+                            "browserTarget": "fuse:build:ec"
                         }
                     }
                 },
