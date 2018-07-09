@@ -1,3 +1,5 @@
+@import "src/@fuse/scss/fuse";
+
 :host {
     position: relative;
     display: flex;
@@ -20,6 +22,10 @@
         pointer-events: auto;
         opacity: .90;
         z-index: 998;
+
+        @include media-breakpoint-down('md') {
+            right: 0;
+        }
 
         mat-icon {
             animation: rotating 3s linear infinite;
