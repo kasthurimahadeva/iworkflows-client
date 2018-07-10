@@ -1,41 +1,43 @@
+<div class="navbar-wrapper" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
 
-<div class="navbar-header adaptive-border-color">
+    <div class="navbar-header mat-indigo-700-bg">
 
-    <div class="top">
+        <div class="top">
 
-        <div class="logo">
-            <img class="logo-icon" src="assets/images/logos/fuse.svg">
+            <div class="logo">
+                <img class="logo-icon" src="assets/images/logos/fuse.svg">
+            </div>
+
+            <div class="buttons">
+
+                <button mat-icon-button class="toggle-sidebar-folded"
+                        (click)="toggleSidebarFolded()" fxHide.lt-lg>
+                    <mat-icon class="secondary-text">menu</mat-icon>
+                </button>
+
+                <button mat-icon-button class="toggle-sidebar-opened"
+                        (click)="toggleSidebarOpened()" fxHide.gt-md>
+                    <mat-icon class="secondary-text">arrow_back</mat-icon>
+                </button>
+
+            </div>
+
         </div>
 
-        <div class="buttons">
+        <div class="user" fxLayout="column">
 
-            <button mat-icon-button class="toggle-sidebar-folded"
-                    (click)="toggleSidebarFolded()" fxHide.lt-lg>
-                <mat-icon class="secondary-text">menu</mat-icon>
-            </button>
-
-            <button mat-icon-button class="toggle-sidebar-opened"
-                    (click)="toggleSidebarOpened()" fxHide.gt-md>
-                <mat-icon class="secondary-text">arrow_back</mat-icon>
-            </button>
+            <div class="h3 username">Charlie Adams</div>
+            <div class="h5 email hint-text mt-8">adams.charlie@mail.com</div>
+            <div class="avatar-container" [ngClass]="fuseConfig.layout.navbar.background">
+                <img class="avatar" src="assets/images/avatars/Velazquez.jpg">
+            </div>
 
         </div>
 
     </div>
 
-    <div class="user" fxLayout="column">
-
-        <div class="avatar-container">
-            <img class="avatar" src="assets/images/avatars/Velazquez.jpg">
-            <div class="avatar-circle"></div>
-        </div>
-        <div class="h3 username mt-32">Charlie Adams</div>
-        <div class="h5 email hint-text mt-8">adams.charlie@mail.com</div>
-
+    <div class="navbar-content" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
+        <fuse-navigation layout="vertical"></fuse-navigation>
     </div>
 
-</div>
-
-<div class="navbar-content" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
-    <fuse-navigation layout="vertical"></fuse-navigation>
 </div>
