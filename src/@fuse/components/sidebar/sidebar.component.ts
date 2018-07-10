@@ -44,6 +44,10 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @Input()
     foldedWidth: number;
 
+    // Folded auto trigger on hover
+    @Input()
+    foldedAutoTriggerOnHover: boolean;
+
     // Folded unfolded
     @HostBinding('class.unfolded')
     unfolded: boolean;
@@ -96,6 +100,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
+        this.foldedAutoTriggerOnHover = true;
         this.foldedWidth = 64;
         this.foldedChanged = new EventEmitter();
         this.openedChanged = new EventEmitter();
@@ -657,25 +662,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @HostListener('mouseenter')
     onMouseEnter(): void
     {
-        // Only work if the sidebar is folded
-        if ( !this.folded )
+        // Only work if the auto trigger is enabled
+        if ( !this.foldedAutoTriggerOnHover )
         {
             return;
         }
 
-        // Enable the animations
-        this._enableAnimations();
-
-        // Unfold the sidebar temporarily
-        this.unfolded = true;
-
-        // Remove the folded width
-        this._renderer.removeStyle(this._elementRef.nativeElement, 'width');
-        this._renderer.removeStyle(this._elementRef.nativeElement, 'min-width');
-        this._renderer.removeStyle(this._elementRef.nativeElement, 'max-width');
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
+        this.unfoldTemporarily();
     }
 
     /**
@@ -684,27 +677,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @HostListener('mouseleave')
     onMouseLeave(): void
     {
-        // Only work if the sidebar is folded
-        if ( !this.folded )
+        // Only work if the auto trigger is enabled
+        if ( !this.foldedAutoTriggerOnHover )
         {
             return;
         }
 
-        // Enable the animations
-        this._enableAnimations();
-
-        // Fold the sidebar back
-        this.unfolded = false;
-
-        // Set the folded width
-        const styleValue = this.foldedWidth + 'px';
-
-        this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
-        this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
-        this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
+        this.foldTemporarily();
     }
 
     /**
@@ -762,5 +741,59 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         {
             this.fold();
         }
+    }
+
+    /**
+     * Fold the temporarily unfolded sidebar back
+     */
+    foldTemporarily(): void
+    {
+        // Only work if the sidebar is folded
+        if ( !this.folded )
+        {
+            return;
+        }
+
+        // Enable the animations
+        this._enableAnimations();
+
+        // Fold the sidebar back
+        this.unfolded = false;
+
+        // Set the folded width
+        const styleValue = this.foldedWidth + 'px';
+
+        this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+        this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+        this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Unfold the sidebar temporarily
+     */
+    unfoldTemporarily(): void
+    {
+        // Only work if the sidebar is folded
+        if ( !this.folded )
+        {
+            return;
+        }
+
+        // Enable the animations
+        this._enableAnimations();
+
+        // Unfold the sidebar temporarily
+        this.unfolded = true;
+
+        // Remove the folded width
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'width');
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'min-width');
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'max-width');
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 }
