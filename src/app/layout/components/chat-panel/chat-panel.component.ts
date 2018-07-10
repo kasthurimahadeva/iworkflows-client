@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,20 +15,13 @@ import { ChatPanelService } from 'app/layout/components/chat-panel/chat-panel.se
     styleUrls    : ['./chat-panel.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ChatPanelComponent implements OnInit, OnDestroy
+export class ChatPanelComponent implements OnInit, AfterViewInit, OnDestroy
 {
     contacts: any[];
-    contact: any;
     chat: any;
+    selectedContact: any;
     sidebarFolded: boolean;
     user: any;
-    view: string;
-
-    @ViewChild(FusePerfectScrollbarDirective)
-    set fusePerfectScrollbarDirective(content: FusePerfectScrollbarDirective)
-    {
-        this._fusePerfectScrollbarDirective = content;
-    }
 
     @ViewChild('replyForm')
     set replyForm(content: NgForm)
@@ -42,8 +35,11 @@ export class ChatPanelComponent implements OnInit, OnDestroy
         this._replyInput = content;
     }
 
+    @ViewChildren(FusePerfectScrollbarDirective)
+    private _fusePerfectScrollbarDirectives: QueryList<FusePerfectScrollbarDirective>;
+
     // Private
-    private _fusePerfectScrollbarDirective: FusePerfectScrollbarDirective;
+    private _chatViewScrollbar: FusePerfectScrollbarDirective;
     private _replyForm: NgForm;
     private _replyInput: ElementRef;
     private _unsubscribeAll: Subject<any>;
@@ -62,9 +58,8 @@ export class ChatPanelComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
-        this.contact = null;
+        this.selectedContact = null;
         this.sidebarFolded = true;
-        this.view = 'contacts';
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
@@ -95,6 +90,16 @@ export class ChatPanelComponent implements OnInit, OnDestroy
     }
 
     /**
+     * After view init
+     */
+    ngAfterViewInit(): void
+    {
+        this._chatViewScrollbar = this._fusePerfectScrollbarDirectives.find((directive) => {
+            return directive.elementRef.nativeElement.id === 'messages';
+        });
+    }
+
+    /**
      * On destroy
      */
     ngOnDestroy(): void
@@ -122,12 +127,12 @@ export class ChatPanelComponent implements OnInit, OnDestroy
             this._replyInput.nativeElement.focus();
 
             // Scroll to the bottom of the messages list
-            if ( this._fusePerfectScrollbarDirective )
+            if ( this._chatViewScrollbar )
             {
-                this._fusePerfectScrollbarDirective.update();
+                this._chatViewScrollbar.update();
 
                 setTimeout(() => {
-                    this._fusePerfectScrollbarDirective.scrollToBottom(0);
+                    this._chatViewScrollbar.scrollToBottom(0);
                 });
             }
         });
@@ -143,6 +148,22 @@ export class ChatPanelComponent implements OnInit, OnDestroy
     toggleSidebarFolded(): void
     {
         this._fuseSidebarService.getSidebar('chatPanel').toggleFold();
+    }
+
+    /**
+     * Fold the temporarily unfolded sidebar back
+     */
+    foldSidebarTemporarily(): void
+    {
+        this._fuseSidebarService.getSidebar('chatPanel').foldTemporarily();
+    }
+
+    /**
+     * Unfold the sidebar temporarily
+     */
+    unfoldSidebarTemporarily(): void
+    {
+        this._fuseSidebarService.getSidebar('chatPanel').unfoldTemporarily();
     }
 
     /**
@@ -163,8 +184,8 @@ export class ChatPanelComponent implements OnInit, OnDestroy
     shouldShowContactAvatar(message, i): boolean
     {
         return (
-            message.who === this.contact.id &&
-            ((this.chat.dialog[i + 1] && this.chat.dialog[i + 1].who !== this.contact.id) || !this.chat.dialog[i + 1])
+            message.who === this.selectedContact.id &&
+            ((this.chat.dialog[i + 1] && this.chat.dialog[i + 1].who !== this.selectedContact.id) || !this.chat.dialog[i + 1])
         );
     }
 
@@ -199,11 +220,11 @@ export class ChatPanelComponent implements OnInit, OnDestroy
      */
     goToChat(contact): void
     {
-        // Change the view
-        this.view = 'chat';
+        // Unfold the sidebar temporarily
+        this.unfoldSidebarTemporarily();
 
-        // Set the current contact
-        this.contact = contact;
+        // Set the selected contact
+        this.selectedContact = contact;
 
         // Load the chat
         this._chatPanelService.getChat(contact.id).then((chat) => {
@@ -214,21 +235,6 @@ export class ChatPanelComponent implements OnInit, OnDestroy
             // Prepare the chat for the replies
             this._prepareChatForReplies();
         });
-    }
-
-    /**
-     * Go to contact view
-     */
-    goToContacts(): void
-    {
-        // Change the view
-        this.view = 'contacts';
-
-        // Set the current contact as null
-        this.contact = null;
-
-        // Clear the chat data
-        this.chat = null;
     }
 
     /**

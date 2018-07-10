@@ -1,6 +1,6 @@
 <div class="header mat-elevation-z4 mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
 
-    <ng-container *ngIf="view === 'contacts'">
+    <ng-container *ngIf="selectedContact === null">
 
         <div class="title ml-16" fxLayout="row" fxLayoutAlign="start center">
             <mat-icon class="s-32 white-fg">chat</mat-icon>
@@ -9,21 +9,17 @@
 
     </ng-container>
 
-    <ng-container *ngIf="view === 'chat'">
+    <ng-container *ngIf="selectedContact !== null">
 
         <div class="title" fxLayout="row" fxLayoutAlign="start center">
-            <button class="mx-8" mat-icon-button (click)="goToContacts()">
-                <mat-icon>arrow_back</mat-icon>
-            </button>
-            <img [src]="contact.avatar" class="avatar mr-0 w-32 h-32">
-            <h3 class="ml-12 text-truncate">{{contact.name}}</h3>
+            <img [src]="selectedContact.avatar" class="avatar mx-16">
+            <h3 class="text-truncate">{{selectedContact.name}}</h3>
         </div>
 
     </ng-container>
 
-    <button mat-icon-button class="toggle-sidebar-folded mr-8" (click)="toggleSidebarFolded()" fxHide fxShow.gt-md>
-        <mat-icon class="secondary-text s-20" *ngIf="sidebarFolded">lock_open</mat-icon>
-        <mat-icon class="secondary-text s-20" *ngIf="!sidebarFolded">lock_outline</mat-icon>
+    <button mat-icon-button class="toggle-sidebar-folded mr-8" (click)="foldSidebarTemporarily()" fxHide fxShow.gt-md>
+        <mat-icon class="secondary-text s-20">arrow_forward</mat-icon>
     </button>
 
     <button mat-icon-button class="toggle-sidebar-folded mr-8" (click)="toggleSidebarOpen()" fxHide.gt-md>
@@ -32,54 +28,57 @@
 
 </div>
 
-<ng-container *ngIf="view === 'contacts'">
+<div>
 
+    <!-- Contacts -->
     <mat-list id="contacts-list" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
 
-        <mat-list-item *ngFor="let contact of contacts" [ngClass]="contact.status" (click)="goToChat(contact)"
+        <mat-list-item *ngFor="let contact of contacts"
+                       [ngClass]="contact.status"
+                       [class.active]="contact.id === selectedContact?.id"
+                       (click)="goToChat(contact)"
+                       [matTooltip]="contact.name"
+                       matTooltipPosition="left"
                        matRipple>
 
             <img matListAvatar [src]="contact.avatar">
-
-            <h3 matLine>
-                {{contact.name}}
-            </h3>
-
             <div class="unread-count" *ngIf="contact.unread">{{contact.unread}}</div>
             <div class="status-icon" [ngClass]="contact.status"></div>
 
         </mat-list-item>
 
     </mat-list>
+    <!-- / Contacts -->
 
-</ng-container>
-
-<ng-container *ngIf="view === 'chat'">
-
+    <!-- Chat -->
     <div id="chat" fxLayout="column" fxFlex="1 1 auto">
 
-        <div class="messages" fxFlex="1 1 auto" fusePerfectScrollbar>
+        <div id="messages" class="messages" fxFlex="1 1 auto" fusePerfectScrollbar>
 
-            <div *ngFor="let message of chat.dialog; let i = index" class="message-row"
-                 [ngClass]="{
+            <ng-container *ngIf="chat && chat.dialog && chat.dialog.length > 0">
+
+                <div *ngFor="let message of chat.dialog; let i = index" class="message-row"
+                     [ngClass]="{
                             'me': message.who === user.id,
                             'contact': message.who !== user.id,
                             'first-of-group': isFirstMessageOfGroup(message, i),
                             'last-of-group': isLastMessageOfGroup(message, i)
                             }">
 
-                <img *ngIf="shouldShowContactAvatar(message, i)"
-                     src="{{contact.avatar}}"
-                     class="avatar">
+                    <img *ngIf="shouldShowContactAvatar(message, i)"
+                         src="{{selectedContact.avatar}}"
+                         class="avatar">
 
-                <div class="bubble">
-                    <div class="message">{{message.message}}</div>
-                    <div class="time secondary-text">{{message.time | date:'short'}}</div>
+                    <div class="bubble">
+                        <div class="message">{{message.message}}</div>
+                        <div class="time secondary-text">{{message.time | date:'short'}}</div>
+                    </div>
+
                 </div>
 
-            </div>
+            </ng-container>
 
-            <ng-container *ngIf="chat.dialog.length === 0">
+            <ng-container *ngIf="chat && chat.dialog && chat.dialog.length === 0">
 
                 <div class="no-messages-icon">
                     <mat-icon class="s-128">chat</mat-icon>
@@ -115,5 +114,6 @@
         </div>
 
     </div>
+    <!-- / Chat -->
 
-</ng-container>
+</div>
