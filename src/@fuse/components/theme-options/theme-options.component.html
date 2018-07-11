@@ -73,6 +73,17 @@
                             <mat-radio-button class="mb-16" value="right">Right</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-8">Variant:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="variant">
+                            <mat-radio-button class="mb-16" value="vertical-style-1">Style 1</mat-radio-button>
+                            <mat-radio-button class="mb-16" value="vertical-style-2">Style 2</mat-radio-button>
+                        </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.navbar.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                     <!-- TOOLBAR -->
@@ -91,6 +102,11 @@
                             <mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.toolbar.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                     <!-- FOOTER -->
@@ -108,6 +124,11 @@
                             <mat-radio-button class="mb-12" value="below-static">Below Static</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below-fixed">Below Fixed</mat-radio-button>
                         </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.footer.background">
+                        </fuse-material-color-picker>
 
                     </div>
 
@@ -146,6 +167,17 @@
                             <mat-radio-button class="mb-16" value="right">Right</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-8">Variant:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="variant">
+                            <mat-radio-button class="mb-16" value="vertical-style-1">Style 1</mat-radio-button>
+                            <mat-radio-button class="mb-16" value="vertical-style-2">Style 2</mat-radio-button>
+                        </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.navbar.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                     <!-- TOOLBAR -->
@@ -164,6 +196,11 @@
                             <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.toolbar.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                     <!-- FOOTER -->
@@ -181,6 +218,11 @@
                             <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
                         </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.footer.background">
+                        </fuse-material-color-picker>
 
                     </div>
 
@@ -219,6 +261,17 @@
                             <mat-radio-button class="mb-16" value="right">Right</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-8">Variant:</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="variant">
+                            <mat-radio-button class="mb-16" value="vertical-style-1">Style 1</mat-radio-button>
+                            <mat-radio-button class="mb-16" value="vertical-style-2">Style 2</mat-radio-button>
+                        </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.navbar.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                     <!-- TOOLBAR -->
@@ -236,6 +289,11 @@
                             <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.toolbar.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                     <!-- FOOTER -->
@@ -252,6 +310,11 @@
                             <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
                             <mat-radio-button class="mb-12" value="above-fixed">Above Fixed</mat-radio-button>
                         </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.footer.background">
+                        </fuse-material-color-picker>
 
                     </div>
 
@@ -285,6 +348,17 @@
                             <mat-radio-button class="mb-16" value="top">Top</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-8">Variant (Vertical):</h3>
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="start start" formControlName="variant">
+                            <mat-radio-button class="mb-16" value="vertical-style-1">Style 1</mat-radio-button>
+                            <mat-radio-button class="mb-16" value="vertical-style-2">Style 2</mat-radio-button>
+                        </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.navbar.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                     <!-- TOOLBAR -->
@@ -301,6 +375,11 @@
                             <mat-radio-button class="mb-12" value="above">Above</mat-radio-button>
                             <mat-radio-button class="mb-12" value="below">Below</mat-radio-button>
                         </mat-radio-group>
+
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.toolbar.background">
+                        </fuse-material-color-picker>
 
                     </div>
 
@@ -319,6 +398,11 @@
                             <mat-radio-button class="mb-12" value="above-static">Above Static</mat-radio-button>
                         </mat-radio-group>
 
+                        <h3 class="mt-24 mb-8">Color:</h3>
+                        <fuse-material-color-picker class="mb-16"
+                                                    [(selectedClass)]="fuseConfig.layout.footer.background">
+                        </fuse-material-color-picker>
+
                     </div>
 
                 </ng-container>
@@ -335,35 +419,6 @@
             <mat-slide-toggle class="mb-12" formControlName="customScrollbars">
                 Enable custom scrollbars
             </mat-slide-toggle>
-
-        </div>
-
-        <!-- COLORS -->
-        <div class="group">
-
-            <h2>Colors</h2>
-
-            <div class="colors">
-
-                <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                    <h4 class="mr-8">Toolbar Color</h4>
-                    <fuse-material-color-picker
-                        [(selectedClass)]="fuseConfig.layout.toolbar.background"></fuse-material-color-picker>
-                </div>
-
-                <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                    <h4 class="mr-8">Navbar Color</h4>
-                    <fuse-material-color-picker
-                        [(selectedClass)]="fuseConfig.layout.navbar.background"></fuse-material-color-picker>
-                </div>
-
-                <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-                    <h4 class="mr-8">Footer Color</h4>
-                    <fuse-material-color-picker
-                        [(selectedClass)]="fuseConfig.layout.footer.background"></fuse-material-color-picker>
-                </div>
-
-            </div>
 
         </div>
 

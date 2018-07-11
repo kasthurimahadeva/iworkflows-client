@@ -1,4 +1,4 @@
-@import "../../../../@fuse/scss/fuse";
+@import "src/@fuse/scss/fuse";
 
 vertical-layout-3 {
     display: flex;
@@ -14,6 +14,7 @@ vertical-layout-3 {
         width: 100%;
         height: 100%;
         z-index: 1;
+        min-width: 0;
 
         // Boxed
         &.boxed {

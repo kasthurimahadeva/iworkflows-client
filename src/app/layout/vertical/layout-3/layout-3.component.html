@@ -53,6 +53,14 @@
 
 </div>
 
+<!-- CHAT PANEL -->
+<fuse-sidebar class="chat-panel" name="chatPanel" position="right"
+              [folded]="true" [foldedWidth]="70" [foldedAutoTriggerOnHover]="false"
+              lockedOpen="gt-md">
+    <chat-panel></chat-panel>
+</fuse-sidebar>
+<!-- / CHAT PANEL -->
+
 <!-- QUICK PANEL -->
 <fuse-sidebar name="quickPanel" position="right" class="quick-panel">
     <quick-panel></quick-panel>
@@ -83,7 +91,8 @@
                   [folded]="fuseConfig.layout.navbar.folded"
                   lockedOpen="gt-md"
                   *ngIf="!fuseConfig.layout.navbar.hidden">
-        <navbar class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background" layout="vertical"></navbar>
+        <navbar [variant]="fuseConfig.layout.navbar.variant"
+                class="left-navbar" [ngClass]="fuseConfig.layout.navbar.background"></navbar>
     </fuse-sidebar>
 </ng-template>
 <!-- / LEFT NAVBAR -->
@@ -94,7 +103,8 @@
                   [folded]="fuseConfig.layout.navbar.folded"
                   lockedOpen="gt-md"
                   *ngIf="!fuseConfig.layout.navbar.hidden">
-        <navbar class="right-navbar" [ngClass]="fuseConfig.layout.navbar.background" layout="vertical"></navbar>
+        <navbar [variant]="fuseConfig.layout.navbar.variant"
+                class="right-navbar" [ngClass]="fuseConfig.layout.navbar.background"></navbar>
     </fuse-sidebar>
 </ng-template>
 <!-- / RIGHT NAVBAR -->

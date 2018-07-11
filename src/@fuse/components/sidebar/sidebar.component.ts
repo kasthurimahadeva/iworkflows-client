@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Ho
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/internal/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { FuseSidebarService } from './sidebar.service';
 import { FuseMatchMediaService } from '@fuse/services/match-media.service';
@@ -39,6 +39,14 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // isLockedOpen
     @HostBinding('class.locked-open')
     isLockedOpen: boolean;
+
+    // Folded width
+    @Input()
+    foldedWidth: number;
+
+    // Folded auto trigger on hover
+    @Input()
+    foldedAutoTriggerOnHover: boolean;
 
     // Folded unfolded
     @HostBinding('class.unfolded')
@@ -92,6 +100,8 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
+        this.foldedAutoTriggerOnHover = true;
+        this.foldedWidth = 64;
         this.foldedChanged = new EventEmitter();
         this.openedChanged = new EventEmitter();
         this.opened = false;
@@ -108,7 +118,11 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
 
-    // Folded
+    /**
+     * Folded
+     *
+     * @param {boolean} value
+     */
     @Input()
     set folded(value: boolean)
     {
@@ -121,23 +135,23 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             return;
         }
 
-        // Programmatically add/remove margin to the element
+        // Programmatically add/remove padding to the element
         // that comes after or before based on the position
         let sibling,
             styleRule;
 
-        const styleValue = '64px';
+        const styleValue = this.foldedWidth + 'px';
 
         // Get the sibling and set the style rule
         if ( this.position === 'left' )
         {
             sibling = this._elementRef.nativeElement.nextElementSibling;
-            styleRule = 'margin-left';
+            styleRule = 'padding-left';
         }
         else
         {
             sibling = this._elementRef.nativeElement.previousElementSibling;
-            styleRule = 'margin-right';
+            styleRule = 'padding-right';
         }
 
         // If there is no sibling, return...
@@ -152,6 +166,11 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             // Fold the sidebar
             this.fold();
 
+            // Set the folded width
+            this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+            this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+            this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
+
             // Set the style and class
             this._renderer.setStyle(sibling, styleRule, styleValue, RendererStyleFlags2.Important + RendererStyleFlags2.DashCase);
             this._renderer.addClass(this._elementRef.nativeElement, 'folded');
@@ -161,6 +180,11 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         {
             // Unfold the sidebar
             this.unfold();
+
+            // Remove the folded width
+            this._renderer.removeStyle(this._elementRef.nativeElement, 'width');
+            this._renderer.removeStyle(this._elementRef.nativeElement, 'min-width');
+            this._renderer.removeStyle(this._elementRef.nativeElement, 'max-width');
 
             // Remove the style and class
             this._renderer.removeStyle(sibling, styleRule);
@@ -375,23 +399,23 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             return;
         }
 
-        // Programmatically add/remove margin to the element
+        // Programmatically add/remove padding to the element
         // that comes after or before based on the position
         let sibling,
             styleRule;
 
-        const styleValue = '64px';
+        const styleValue = this.foldedWidth + 'px';
 
         // Get the sibling and set the style rule
         if ( this.position === 'left' )
         {
             sibling = this._elementRef.nativeElement.nextElementSibling;
-            styleRule = 'margin-left';
+            styleRule = 'padding-left';
         }
         else
         {
             sibling = this._elementRef.nativeElement.previousElementSibling;
-            styleRule = 'margin-right';
+            styleRule = 'padding-right';
         }
 
         // If there is no sibling, return...
@@ -402,6 +426,11 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
         // Fold the sidebar
         this.fold();
+
+        // Set the folded width
+        this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+        this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+        this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
 
         // Set the style and class
         this._renderer.setStyle(sibling, styleRule, styleValue, RendererStyleFlags2.Important + RendererStyleFlags2.DashCase);
@@ -633,20 +662,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @HostListener('mouseenter')
     onMouseEnter(): void
     {
-        // Only work if the sidebar is folded
-        if ( !this.folded )
+        // Only work if the auto trigger is enabled
+        if ( !this.foldedAutoTriggerOnHover )
         {
             return;
         }
 
-        // Enable the animations
-        this._enableAnimations();
-
-        // Unfold the sidebar temporarily
-        this.unfolded = true;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
+        this.unfoldTemporarily();
     }
 
     /**
@@ -655,20 +677,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
     @HostListener('mouseleave')
     onMouseLeave(): void
     {
-        // Only work if the sidebar is folded
-        if ( !this.folded )
+        // Only work if the auto trigger is enabled
+        if ( !this.foldedAutoTriggerOnHover )
         {
             return;
         }
 
-        // Enable the animations
-        this._enableAnimations();
-
-        // Fold the sidebar back
-        this.unfolded = false;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
+        this.foldTemporarily();
     }
 
     /**
@@ -726,5 +741,59 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         {
             this.fold();
         }
+    }
+
+    /**
+     * Fold the temporarily unfolded sidebar back
+     */
+    foldTemporarily(): void
+    {
+        // Only work if the sidebar is folded
+        if ( !this.folded )
+        {
+            return;
+        }
+
+        // Enable the animations
+        this._enableAnimations();
+
+        // Fold the sidebar back
+        this.unfolded = false;
+
+        // Set the folded width
+        const styleValue = this.foldedWidth + 'px';
+
+        this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+        this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+        this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+    }
+
+    /**
+     * Unfold the sidebar temporarily
+     */
+    unfoldTemporarily(): void
+    {
+        // Only work if the sidebar is folded
+        if ( !this.folded )
+        {
+            return;
+        }
+
+        // Enable the animations
+        this._enableAnimations();
+
+        // Unfold the sidebar temporarily
+        this.unfolded = true;
+
+        // Remove the folded width
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'width');
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'min-width');
+        this._renderer.removeStyle(this._elementRef.nativeElement, 'max-width');
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
     }
 }
