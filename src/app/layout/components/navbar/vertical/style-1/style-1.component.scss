@@ -23,6 +23,10 @@ fuse-sidebar {
                             width: 32px;
                             height: 32px;
                         }
+
+                        .logo-text {
+                            display: none;
+                        }
                     }
                 }
 
@@ -71,7 +75,14 @@ navbar {
             flex: 1 0 auto;
             align-items: center;
             justify-content: space-between;
+            min-height: 64px;
+            height: 64px;
             padding: 12px 12px 12px 20px;
+
+            @include media-breakpoint('xs') {
+                min-height: 56px;
+                height: 56px;
+            }
 
             .logo {
                 display: flex;
@@ -80,6 +91,14 @@ navbar {
                 .logo-icon {
                     width: 24px;
                     height: 24px;
+                }
+
+                .logo-text {
+                    margin-left: 12px;
+                    font-size: 16px;
+                    font-weight: 300;
+                    letter-spacing: 0.4px;
+                    line-height: normal;
                 }
             }
 
