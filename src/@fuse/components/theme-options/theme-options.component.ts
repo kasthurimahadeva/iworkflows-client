@@ -62,23 +62,27 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         // noinspection TypeScriptValidateTypes
         this.form = this._formBuilder.group({
             layout          : this._formBuilder.group({
-                style  : new FormControl(),
-                width  : new FormControl(),
-                navbar : this._formBuilder.group({
+                style    : new FormControl(),
+                width    : new FormControl(),
+                navbar   : this._formBuilder.group({
                     background: new FormControl(),
                     folded    : new FormControl(),
                     hidden    : new FormControl(),
                     position  : new FormControl(),
                     variant   : new FormControl()
                 }),
-                toolbar: this._formBuilder.group({
+                toolbar  : this._formBuilder.group({
                     background: new FormControl(),
                     hidden    : new FormControl(),
                     position  : new FormControl()
                 }),
-                footer : this._formBuilder.group({
+                footer   : this._formBuilder.group({
                     background: new FormControl(),
                     hidden    : new FormControl(),
+                    position  : new FormControl()
+                }),
+                sidepanel: this._formBuilder.group({
+                    hidden: new FormControl(),
                     position  : new FormControl()
                 })
             }),
