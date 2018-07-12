@@ -31,23 +31,23 @@
 <div>
 
     <!-- Contacts -->
-    <mat-list id="contacts-list" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
+    <div id="contacts-list" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
 
-        <mat-list-item *ngFor="let contact of contacts"
-                       [ngClass]="contact.status"
-                       [class.active]="contact.id === selectedContact?.id"
-                       (click)="goToChat(contact)"
-                       [matTooltip]="contact.name"
-                       matTooltipPosition="left"
-                       matRipple>
+        <div *ngFor="let contact of contacts"
+             class="contacts-list-item"
+             [ngClass]="contact.status"
+             [class.active]="contact.id === selectedContact?.id"
+             (click)="goToChat(contact)">
 
-            <img matListAvatar [src]="contact.avatar">
+            <img class="avatar" [src]="contact.avatar"
+                 [matTooltip]="contact.name"
+                 matTooltipPosition="left">
             <div class="unread-count" *ngIf="contact.unread">{{contact.unread}}</div>
             <div class="status-icon" [ngClass]="contact.status"></div>
 
-        </mat-list-item>
+        </div>
 
-    </mat-list>
+    </div>
     <!-- / Contacts -->
 
     <!-- Chat -->
