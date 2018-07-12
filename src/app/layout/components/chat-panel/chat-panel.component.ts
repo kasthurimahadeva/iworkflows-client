@@ -124,7 +124,7 @@ export class ChatPanelComponent implements OnInit, AfterViewInit, OnDestroy
             this._replyForm.reset();
 
             // Focus to the reply input
-            this._replyInput.nativeElement.focus();
+            // this._replyInput.nativeElement.focus();
 
             // Scroll to the bottom of the messages list
             if ( this._chatViewScrollbar )

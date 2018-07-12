@@ -1,59 +1,62 @@
 @import "src/@fuse/scss/fuse";
 
 fuse-sidebar {
-    overflow: hidden;
 
-    &.folded:not(.unfolded) {
+    &.navbar-fuse-sidebar {
+        overflow: hidden;
 
-        navbar {
+        &.folded:not(.unfolded) {
 
-            navbar-vertical-style-1 {
+            navbar {
 
-                .navbar-top {
-                    padding: 12px 0;
-                    justify-content: center;
+                navbar-vertical-style-1 {
 
-                    .buttons {
-                        display: none;
-                    }
+                    .navbar-top {
+                        padding: 12px 0;
+                        justify-content: center;
 
-                    .logo {
-
-                        .logo-icon {
-                            width: 32px;
-                            height: 32px;
-                        }
-
-                        .logo-text {
+                        .buttons {
                             display: none;
                         }
+
+                        .logo {
+
+                            .logo-icon {
+                                width: 32px;
+                                height: 32px;
+                            }
+
+                            .logo-text {
+                                display: none;
+                            }
+                        }
                     }
-                }
 
-                .navbar-scroll-container {
+                    .navbar-scroll-container {
 
-                    .user {
-                        padding: 12px 0;
+                        .user {
+                            padding: 12px 0;
 
-                        .avatar-container {
-                            position: relative;
-                            top: auto;
-                            padding: 0;
+                            .avatar-container {
+                                position: relative;
+                                top: auto;
+                                padding: 0;
 
-                            .avatar {
-                                width: 40px;
-                                height: 40px;
+                                .avatar {
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                            }
+
+                            .username,
+                            .email {
+                                display: none;
                             }
                         }
 
-                        .username,
-                        .email {
-                            display: none;
+                        .navbar-content {
+                            margin-top: 0;
                         }
-                    }
-
-                    .navbar-content {
-                        margin-top: 0;
                     }
                 }
             }
