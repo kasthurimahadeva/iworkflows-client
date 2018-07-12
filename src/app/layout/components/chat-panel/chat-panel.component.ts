@@ -206,27 +206,52 @@ export class ChatPanelComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     /**
-     * Go to chat with the contact
+     * Toggle chat with the contact
      *
      * @param contact
      */
-    goToChat(contact): void
+    toggleChat(contact): void
     {
-        // Unfold the sidebar temporarily
-        this.unfoldSidebarTemporarily();
+        // If the contact equals to the selectedContact,
+        // that means we will deselect the contact and
+        // unload the chat
+        if ( this.selectedContact && contact.id === this.selectedContact.id )
+        {
+            // Reset
+            this.resetChat();
+        }
+        // Otherwise, we will select the contact, open
+        // the sidebar and start the chat
+        else
+        {
+            // Unfold the sidebar temporarily
+            this.unfoldSidebarTemporarily();
 
-        // Set the selected contact
-        this.selectedContact = contact;
+            // Set the selected contact
+            this.selectedContact = contact;
 
-        // Load the chat
-        this._chatPanelService.getChat(contact.id).then((chat) => {
+            // Load the chat
+            this._chatPanelService.getChat(contact.id).then((chat) => {
 
-            // Set the chat
-            this.chat = chat;
+                // Set the chat
+                this.chat = chat;
 
-            // Prepare the chat for the replies
-            this._prepareChatForReplies();
-        });
+                // Prepare the chat for the replies
+                this._prepareChatForReplies();
+            });
+        }
+    }
+
+    /**
+     * Remove the selected contact and unload the chat
+     */
+    resetChat(): void
+    {
+        // Set the selected contact as null
+        this.selectedContact = null;
+
+        // Set the chat as null
+        this.chat = null;
     }
 
     /**
