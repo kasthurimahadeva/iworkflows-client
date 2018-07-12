@@ -11,7 +11,7 @@
     .theme-options-button {
         position: absolute;
         top: 160px;
-        right: 70px;
+        right: 0;
         width: 48px;
         height: 48px;
         line-height: 48px;
@@ -22,10 +22,6 @@
         pointer-events: auto;
         opacity: .90;
         z-index: 998;
-
-        @include media-breakpoint-down('md') {
-            right: 0;
-        }
 
         mat-icon {
             animation: rotating 3s linear infinite;
