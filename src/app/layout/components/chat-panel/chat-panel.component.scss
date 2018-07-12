@@ -34,6 +34,10 @@ chat-panel {
 
     }
 
+    .content {
+        min-height: 0;
+    }
+
     #contacts-list {
         padding: 8px 0;
         overflow: auto;
