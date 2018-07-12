@@ -21,13 +21,16 @@ export class Error404Component
         // Configure the layout
         this._fuseConfigService.config = {
             layout: {
-                navbar : {
+                navbar   : {
                     hidden: true
                 },
-                toolbar: {
+                toolbar  : {
                     hidden: true
                 },
-                footer : {
+                footer   : {
+                    hidden: true
+                },
+                sidepanel: {
                     hidden: true
                 }
             }
