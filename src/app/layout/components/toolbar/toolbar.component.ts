@@ -26,7 +26,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
     selectedLanguage: any;
     showLoadingBar: boolean;
     userStatusOptions: any[];
-    chatPanelLockedOpen: string;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -145,28 +144,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
     toggleSidebarOpen(key): void
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
-    }
-
-    toggleChatPanel(): void
-    {
-        // Get the chat panel sidebar
-        const chatPanelSidebar = this._fuseSidebarService.getSidebar('chatPanel');
-
-        // Store the original value
-        if ( chatPanelSidebar.lockedOpen !== '' )
-        {
-            this.chatPanelLockedOpen = chatPanelSidebar.lockedOpen;
-        }
-
-        // Toggle
-        if ( chatPanelSidebar.lockedOpen === this.chatPanelLockedOpen )
-        {
-            chatPanelSidebar.lockedOpen = '';
-        }
-        else
-        {
-            chatPanelSidebar.lockedOpen = this.chatPanelLockedOpen;
-        }
     }
 
     /**
