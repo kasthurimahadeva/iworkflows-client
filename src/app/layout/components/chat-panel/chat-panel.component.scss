@@ -10,6 +10,11 @@ chat-panel {
     z-index: 99;
     overflow: hidden;
 
+    @include media-breakpoint-down('xs') {
+        max-width: none !important;
+        width: 100% !important;
+    }
+
     .header {
         height: 64px;
         max-height: 64px;
@@ -26,6 +31,7 @@ chat-panel {
                 transition: opacity 300ms ease-in-out;
             }
         }
+
     }
 
     #contacts-list {
@@ -348,6 +354,20 @@ fuse-sidebar {
             min-width: 0 !important;
             max-width: 100vw !important;
             width: 100vw !important;
+        }
+
+        &.left-chat-panel {
+
+            .header {
+
+                .toggle-sidebar-folded,
+                .toggle-sidebar-open {
+
+                    mat-icon {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
         }
 
         // Folded

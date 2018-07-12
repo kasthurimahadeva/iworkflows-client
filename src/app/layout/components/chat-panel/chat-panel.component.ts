@@ -143,14 +143,6 @@ export class ChatPanelComponent implements OnInit, AfterViewInit, OnDestroy
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Toggle sidebar folded status
-     */
-    toggleSidebarFolded(): void
-    {
-        this._fuseSidebarService.getSidebar('chatPanel').toggleFold();
-    }
-
-    /**
      * Fold the temporarily unfolded sidebar back
      */
     foldSidebarTemporarily(): void
