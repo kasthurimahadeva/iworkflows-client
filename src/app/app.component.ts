@@ -1,4 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Platform } from '@angular/cdk/platform';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -29,20 +31,24 @@ export class AppComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {DOCUMENT} document
      * @param {FuseConfigService} _fuseConfigService
      * @param {FuseNavigationService} _fuseNavigationService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {FuseSplashScreenService} _fuseSplashScreenService
      * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
+     * @param {Platform} _platform
      * @param {TranslateService} _translateService
      */
     constructor(
+        @Inject(DOCUMENT) private document: any,
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
         private _fuseSidebarService: FuseSidebarService,
         private _fuseSplashScreenService: FuseSplashScreenService,
         private _fuseTranslationLoaderService: FuseTranslationLoaderService,
-        private _translateService: TranslateService
+        private _translateService: TranslateService,
+        private _platform: Platform
     )
     {
         // Get default navigation
@@ -65,6 +71,12 @@ export class AppComponent implements OnInit, OnDestroy
 
         // Use a language
         this._translateService.use('en');
+
+        // Add is-mobile class to the body if the platform is mobile
+        if ( this._platform.ANDROID || this._platform.IOS )
+        {
+            this.document.body.className += ' is-mobile';
+        }
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
