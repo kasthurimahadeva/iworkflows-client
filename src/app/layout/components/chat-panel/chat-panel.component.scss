@@ -35,6 +35,7 @@ chat-panel {
     }
 
     .content {
+        flex: 1 1 100%;
         min-height: 0;
     }
 
@@ -162,6 +163,7 @@ chat-panel {
                     align-items: center;
                     justify-content: center;
                     padding: 12px;
+                    max-width: 100%;
 
                     .message {
                         white-space: pre-wrap;
