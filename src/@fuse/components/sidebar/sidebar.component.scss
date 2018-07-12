@@ -1,3 +1,5 @@
+@import "src/@fuse/scss/fuse";
+
 fuse-sidebar {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,12 @@ fuse-sidebar {
     z-index: 1000;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
     background: white;
+
+    @include media-breakpoint-down('xs') {
+        min-width: 0 !important;
+        max-width: 80vw !important;
+        width: 80vw !important;
+    }
 
     &.left-positioned {
         left: 0;
