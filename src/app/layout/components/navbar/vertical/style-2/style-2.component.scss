@@ -1,22 +1,25 @@
 @import "src/@fuse/scss/fuse";
 
 fuse-sidebar {
-    overflow: hidden;
 
-    &.folded:not(.unfolded) {
+    &.navbar-fuse-sidebar {
+        overflow: hidden;
 
-        navbar {
+        &.folded:not(.unfolded) {
 
-            navbar-vertical-style-2 {
+            navbar {
 
-                .navbar-header {
-                    padding: 0 13px;
+                navbar-vertical-style-2 {
 
-                    .logo {
+                    .navbar-header {
+                        padding: 0 13px;
 
-                        .logo-text {
-                            opacity: 0;
-                            transition: opacity 200ms ease;
+                        .logo {
+
+                            .logo-text {
+                                opacity: 0;
+                                transition: opacity 200ms ease;
+                            }
                         }
                     }
                 }
