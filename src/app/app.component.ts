@@ -22,8 +22,8 @@ import { locale as navigationTurkish } from 'app/navigation/i18n/tr';
 })
 export class AppComponent implements OnInit, OnDestroy
 {
-    navigation: any;
     fuseConfig: any;
+    navigation: any;
 
     // Private
     private _unsubscribeAll: Subject<any>;
