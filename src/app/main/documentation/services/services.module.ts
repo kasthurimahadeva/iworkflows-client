@@ -6,17 +6,12 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseHighlightModule } from '@fuse/components/index';
 
 import { FuseConfigServiceDocsComponent } from 'app/main/documentation/services/fuse-config/fuse-config.component';
-import { FuseLoadingBarServiceDocsComponent } from 'app/main/documentation/services/fuse-loading-bar/fuse-loading-bar.component';
 import { FuseSplashScreenServiceDocsComponent } from 'app/main/documentation/services/fuse-splash-screen/fuse-splash-screen.component';
 
 const routes = [
     {
         path     : 'fuse-config',
         component: FuseConfigServiceDocsComponent
-    },
-    {
-        path     : 'fuse-loading-bar',
-        component: FuseLoadingBarServiceDocsComponent
     },
     {
         path     : 'fuse-splash-screen',
@@ -27,7 +22,6 @@ const routes = [
 @NgModule({
     declarations: [
         FuseConfigServiceDocsComponent,
-        FuseLoadingBarServiceDocsComponent,
         FuseSplashScreenServiceDocsComponent
     ],
     imports     : [

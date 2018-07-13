@@ -961,6 +961,12 @@ export const navigation: FuseNavigation[] = [
                         url  : '/documentation/components/navigation'
                     },
                     {
+                        id   : 'progress-bar',
+                        title: 'Progress Bar',
+                        type : 'item',
+                        url  : '/documentation/components/progress-bar'
+                    },
+                    {
                         id   : 'search-bar',
                         title: 'Search Bar',
                         type : 'item',
@@ -1056,12 +1062,6 @@ export const navigation: FuseNavigation[] = [
                         title: 'Fuse Config',
                         type : 'item',
                         url  : '/documentation/services/fuse-config'
-                    },
-                    {
-                        id   : 'fuse-loading-bar',
-                        title: 'Fuse Loading Bar',
-                        type : 'item',
-                        url  : '/documentation/services/fuse-loading-bar'
                     },
                     {
                         id   : 'fuse-splash-screen',

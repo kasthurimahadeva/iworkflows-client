@@ -6,9 +6,12 @@ import { filter } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class FuseLoadingBarService
+export class FuseProgressBarService
 {
     // Private
+    private _bufferValue: BehaviorSubject<number>;
+    private _mode: BehaviorSubject<string>;
+    private _value: BehaviorSubject<number>;
     private _visible: BehaviorSubject<boolean>;
 
     /**
@@ -28,9 +31,50 @@ export class FuseLoadingBarService
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
 
+    /**
+     * Buffer value
+     */
+    get bufferValue(): Observable<any>
+    {
+        return this._bufferValue.asObservable();
+    }
+
+    setBufferValue(value: number): void
+    {
+        this._bufferValue.next(value);
+    }
+
+    /**
+     * Mode
+     */
+    get mode(): Observable<any>
+    {
+        return this._mode.asObservable();
+    }
+
+    setMode(value: 'determinate' | 'indeterminate' | 'buffer' | 'query'): void
+    {
+        this._mode.next(value);
+    }
+
+    /**
+     * Value
+     */
+    get value(): Observable<any>
+    {
+        return this._value.asObservable();
+    }
+
+    setValue(value: number): void
+    {
+        this._value.next(value);
+    }
+
+    /**
+     * Visible
+     */
     get visible(): Observable<any>
     {
-        // Return the _visible as observable
         return this._visible.asObservable();
     }
 
@@ -45,24 +89,23 @@ export class FuseLoadingBarService
      */
     private _init(): void
     {
-        // Initialize the behavior subject
+        // Initialize the behavior subjects
+        this._bufferValue = new BehaviorSubject(0);
+        this._mode = new BehaviorSubject('indeterminate');
+        this._value = new BehaviorSubject(0);
         this._visible = new BehaviorSubject(false);
 
         // Subscribe to the router events to show/hide the loading bar
         this._router.events
-            .pipe(
-                filter((event) => event instanceof NavigationStart)
-            )
+            .pipe(filter((event) => event instanceof NavigationStart))
             .subscribe(() => {
-                this.showLoadingBar();
+                this.show();
             });
 
         this._router.events
-            .pipe(
-                filter((event) => event instanceof NavigationEnd)
-            )
+            .pipe(filter((event) => event instanceof NavigationEnd))
             .subscribe(() => {
-                this.hideLoadingBar();
+                this.hide();
             });
     }
 
@@ -71,20 +114,18 @@ export class FuseLoadingBarService
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Show the loading bar
+     * Show the progress bar
      */
-    showLoadingBar(): void
+    show(): void
     {
-        // Show
         this._visible.next(true);
     }
 
     /**
-     * Hide the loading bar
+     * Hide the progress bar
      */
-    hideLoadingBar(): void
+    hide(): void
     {
-        // Hide
         this._visible.next(false);
     }
 }
