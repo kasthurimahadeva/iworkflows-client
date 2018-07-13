@@ -6,6 +6,7 @@
     #boards {
         width: 100%;
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
 
         .board-list {
             padding: 32px 0;

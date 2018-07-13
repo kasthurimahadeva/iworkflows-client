@@ -33,6 +33,7 @@
         #chat-content {
             background: transparent;
             overflow: auto;
+            -webkit-overflow-scrolling: touch;
 
             .message-row {
                 padding: 16px;
@@ -113,9 +114,10 @@
                     padding-right: 16px;
 
                     textarea {
-                        overflow: auto;
                         max-height: 80px;
                         transition: height 200ms ease;
+                        overflow: auto;
+                        -webkit-overflow-scrolling: touch;
 
                         &.grow {
                             height: 80px;

@@ -42,6 +42,7 @@
 
     .sidenav-content {
         overflow: auto;
+        -webkit-overflow-scrolling: touch;
 
         .contact-list, .chat-list {
 

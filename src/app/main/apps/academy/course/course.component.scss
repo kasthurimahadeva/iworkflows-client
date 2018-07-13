@@ -149,6 +149,7 @@
                 left: 0;
                 padding: 48px;
                 overflow: auto;
+                -webkit-overflow-scrolling: touch;
 
                 &.ng-animating {
                     overflow: hidden;

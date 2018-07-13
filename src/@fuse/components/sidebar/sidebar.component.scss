@@ -9,6 +9,7 @@ fuse-sidebar {
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     width: 280px;
     min-width: 280px;
     max-width: 280px;

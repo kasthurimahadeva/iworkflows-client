@@ -49,6 +49,7 @@ horizontal-layout-1 {
                     transform: translateZ(0);
                     overflow-x: hidden;
                     overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
 
                     // Content component
                     content {

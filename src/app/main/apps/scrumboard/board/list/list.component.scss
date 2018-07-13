@@ -28,9 +28,10 @@
 
         .list-content {
             position: relative;
+            min-height: 0;
             overflow: hidden;
             overflow-y: auto;
-            min-height: 0;
+            -webkit-overflow-scrolling: touch;
 
             .list-cards {
                 position: relative;

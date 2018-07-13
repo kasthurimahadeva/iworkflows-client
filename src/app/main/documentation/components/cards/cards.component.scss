@@ -43,9 +43,10 @@
                         display: flex !important;
                         flex: 1;
                         max-height: 400px;
-                        overflow: auto;
                         min-width: 400px;
                         margin-left: 24px;
+                        overflow: auto;
+                        -webkit-overflow-scrolling: touch;
                     }
                 }
             }

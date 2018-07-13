@@ -5,6 +5,7 @@
     flex: 1 0 auto;
     flex-direction: column;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     .todo-header {
         padding: 24px;
