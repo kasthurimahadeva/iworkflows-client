@@ -8,7 +8,6 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
-import { FuseLoadingBarService } from '@fuse/services/loading-bar.service';
 
 @Component({
     selector   : 'toolbar',
@@ -24,7 +23,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
     languages: any;
     navigation: any;
     selectedLanguage: any;
-    showLoadingBar: boolean;
     userStatusOptions: any[];
 
     // Private
@@ -34,13 +32,11 @@ export class ToolbarComponent implements OnInit, OnDestroy
      * Constructor
      *
      * @param {FuseConfigService} _fuseConfigService
-     * @param {FuseLoadingBarService} _fuseLoadingBarService
      * @param {FuseSidebarService} _fuseSidebarService
      * @param {TranslateService} _translateService
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private _fuseLoadingBarService: FuseLoadingBarService,
         private _fuseSidebarService: FuseSidebarService,
         private _translateService: TranslateService
     )
@@ -102,13 +98,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to the Fuse loading bar service
-        this._fuseLoadingBarService.visible
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((visible) => {
-                this.showLoadingBar = visible;
-            });
-
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))

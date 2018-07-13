@@ -6,6 +6,11 @@
     }
 }
 
+// Fix: "Smooth scrolling for iOS"
+.mat-dialog-container {
+    -webkit-overflow-scrolling: touch;
+}
+
 // Fix: "Inconsistent font sizes across elements"
 .mat-form-field-wrapper {
     font-size: 16px;

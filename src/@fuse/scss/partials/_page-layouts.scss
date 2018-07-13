@@ -143,8 +143,9 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         flex: 1 1 auto;
 
                         > .content {
-                            overflow: auto;
                             flex: 1 1 auto;
+                            overflow: auto;
+                            -webkit-overflow-scrolling: touch;
                         }
                     }
                 }
@@ -166,6 +167,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                                             .tab-content {
                                                 overflow: auto;
+                                                -webkit-overflow-scrolling: touch;
                                             }
                                         }
                                     }
@@ -346,6 +348,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                     .content {
                         overflow: auto;
+                        -webkit-overflow-scrolling: touch;
                     }
                 }
 
@@ -358,6 +361,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         > .content {
                             flex: 1 1 auto;
                             overflow: auto;
+                            -webkit-overflow-scrolling: touch;
                         }
                     }
                 }
@@ -379,6 +383,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                                             .tab-content {
                                                 overflow: auto;
+                                                -webkit-overflow-scrolling: touch;
                                             }
                                         }
                                     }
@@ -500,12 +505,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                     .content {
                         overflow: auto;
+                        -webkit-overflow-scrolling: touch;
                     }
                 }
 
                 > .center {
                     flex: 1 1 auto;
                     overflow: auto;
+                    -webkit-overflow-scrolling: touch;
                 }
             }
 
@@ -528,12 +535,14 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
 
                         .content {
                             overflow: auto;
+                            -webkit-overflow-scrolling: touch;
                         }
                     }
 
                     > .center {
                         flex: 1 1 auto;
                         overflow: auto;
+                        -webkit-overflow-scrolling: touch;
                     }
                 }
             }
