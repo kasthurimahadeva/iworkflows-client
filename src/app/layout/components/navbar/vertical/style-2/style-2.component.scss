@@ -30,6 +30,24 @@ fuse-sidebar {
 
 navbar {
 
+    &.vertical-style-2 {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        width: 100%;
+        height: 100%;
+
+        &.right-navbar {
+
+            .toggle-sidebar-opened {
+
+                mat-icon {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
     navbar-vertical-style-2 {
         display: flex;
         flex-direction: column;
@@ -71,15 +89,5 @@ navbar {
             -webkit-overflow-scrolling: touch;
         }
 
-    }
-
-    &.right-navbar {
-
-        .toggle-sidebar-opened {
-
-            mat-icon {
-                transform: rotate(180deg);
-            }
-        }
     }
 }
