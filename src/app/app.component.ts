@@ -75,7 +75,7 @@ export class AppComponent implements OnInit, OnDestroy
         // Add is-mobile class to the body if the platform is mobile
         if ( this._platform.ANDROID || this._platform.IOS )
         {
-            this.document.body.className += ' is-mobile';
+            this.document.body.classList.add('is-mobile');
         }
 
         // Set the private defaults
@@ -96,6 +96,15 @@ export class AppComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
                 this.fuseConfig = config;
+
+                if ( this.fuseConfig.layout.width === 'boxed' )
+                {
+                    this.document.body.classList.add('boxed');
+                }
+                else
+                {
+                    this.document.body.classList.remove('boxed');
+                }
             });
     }
 
