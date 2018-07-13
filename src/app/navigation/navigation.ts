@@ -849,7 +849,7 @@ export const navigation: FuseNavigation[] = [
                 icon : 'update',
                 url  : '/documentation/changelog',
                 badge: {
-                    title: '6.2.3',
+                    title: '6.2.4',
                     bg   : '#EC0C8E',
                     fg   : '#FFFFFF'
                 }
