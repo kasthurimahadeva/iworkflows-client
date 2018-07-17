@@ -82,8 +82,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     position  : new FormControl()
                 }),
                 sidepanel: this._formBuilder.group({
-                    hidden: new FormControl(),
-                    position  : new FormControl()
+                    hidden  : new FormControl(),
+                    position: new FormControl()
                 })
             }),
             customScrollbars: new FormControl()
@@ -177,23 +177,27 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             {
                 this.form.patchValue({
                     layout: {
-                        width  : 'fullwidth',
-                        navbar : {
+                        width    : 'fullwidth',
+                        navbar   : {
                             background: 'mat-fuse-dark-700-bg',
                             folded    : false,
                             hidden    : false,
                             position  : 'left',
                             variant   : 'vertical-style-1'
                         },
-                        toolbar: {
+                        toolbar  : {
                             background: 'mat-white-500-bg',
                             hidden    : false,
                             position  : 'below-static'
                         },
-                        footer : {
+                        footer   : {
                             background: 'mat-fuse-dark-900-bg',
                             hidden    : false,
                             position  : 'below-static'
+                        },
+                        sidepanel: {
+                            hidden  : false,
+                            position: 'right'
                         }
                     }
                 });
@@ -206,23 +210,27 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             {
                 this.form.patchValue({
                     layout: {
-                        width  : 'fullwidth',
-                        navbar : {
+                        width    : 'fullwidth',
+                        navbar   : {
                             background: 'mat-fuse-dark-700-bg',
                             folded    : false,
                             hidden    : false,
                             position  : 'left',
                             variant   : 'vertical-style-1'
                         },
-                        toolbar: {
+                        toolbar  : {
                             background: 'mat-white-500-bg',
                             hidden    : false,
                             position  : 'below'
                         },
-                        footer : {
+                        footer   : {
                             background: 'mat-fuse-dark-900-bg',
                             hidden    : false,
                             position  : 'below'
+                        },
+                        sidepanel: {
+                            hidden  : false,
+                            position: 'right'
                         }
                     }
                 });
@@ -235,23 +243,27 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             {
                 this.form.patchValue({
                     layout: {
-                        width  : 'fullwidth',
-                        navbar : {
+                        width    : 'fullwidth',
+                        navbar   : {
                             background: 'mat-fuse-dark-700-bg',
                             folded    : false,
                             hidden    : false,
                             position  : 'left',
                             layout    : 'vertical-style-1'
                         },
-                        toolbar: {
+                        toolbar  : {
                             background: 'mat-white-500-bg',
                             hidden    : false,
                             position  : 'above-static'
                         },
-                        footer : {
+                        footer   : {
                             background: 'mat-fuse-dark-900-bg',
                             hidden    : false,
                             position  : 'above-static'
+                        },
+                        sidepanel: {
+                            hidden  : false,
+                            position: 'right'
                         }
                     }
                 });
@@ -264,23 +276,27 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             {
                 this.form.patchValue({
                     layout: {
-                        width  : 'fullwidth',
-                        navbar : {
+                        width    : 'fullwidth',
+                        navbar   : {
                             background: 'mat-fuse-dark-700-bg',
                             folded    : false,
                             hidden    : false,
                             position  : 'top',
                             variant   : 'vertical-style-1'
                         },
-                        toolbar: {
+                        toolbar  : {
                             background: 'mat-white-500-bg',
                             hidden    : false,
                             position  : 'above'
                         },
-                        footer : {
+                        footer   : {
                             background: 'mat-fuse-dark-900-bg',
                             hidden    : false,
                             position  : 'above-fixed'
+                        },
+                        sidepanel: {
+                            hidden  : false,
+                            position: 'right'
                         }
                     }
                 });
