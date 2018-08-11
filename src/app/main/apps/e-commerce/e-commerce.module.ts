@@ -7,8 +7,6 @@ import { AgmCoreModule } from '@agm/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
-import { EcommerceDashboardComponent } from 'app/main/apps/e-commerce/dashboard/dashboard.component';
-import { EcommerceDashboardService } from 'app/main/apps/e-commerce/dashboard/dashboard.service';
 import { EcommerceProductsComponent } from 'app/main/apps/e-commerce/products/products.component';
 import { EcommerceProductsService } from 'app/main/apps/e-commerce/products/products.service';
 import { EcommerceProductComponent } from 'app/main/apps/e-commerce/product/product.component';
@@ -19,13 +17,6 @@ import { EcommerceOrderComponent } from 'app/main/apps/e-commerce/order/order.co
 import { EcommerceOrderService } from 'app/main/apps/e-commerce/order/order.service';
 
 const routes: Routes = [
-    {
-        path     : 'dashboard',
-        component: EcommerceDashboardComponent,
-        resolve  : {
-            data: EcommerceDashboardService
-        }
-    },
     {
         path     : 'products',
         component: EcommerceProductsComponent,
@@ -65,7 +56,6 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        EcommerceDashboardComponent,
         EcommerceProductsComponent,
         EcommerceProductComponent,
         EcommerceOrdersComponent,
@@ -93,10 +83,9 @@ const routes: Routes = [
         }),
 
         FuseSharedModule,
-        FuseWidgetModule,
+        FuseWidgetModule
     ],
     providers   : [
-        EcommerceDashboardService,
         EcommerceProductsService,
         EcommerceProductService,
         EcommerceOrdersService,

@@ -1622,7 +1622,7 @@ export class ProjectDashboardDb
                     [
                         {
                             'value'  : 'Wireframing',
-                            'classes': 'mat-primary-bg',
+                            'classes': 'primary',
                             'icon'   : ''
                         },
                         {
@@ -1718,7 +1718,7 @@ export class ProjectDashboardDb
                     [
                         {
                             'value'  : 'Marketing',
-                            'classes': 'mat-accent-bg',
+                            'classes': 'accent',
                             'icon'   : ''
                         },
                         {
