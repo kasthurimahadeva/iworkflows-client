@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,9 +10,10 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { navigation } from 'app/navigation/navigation';
 
 @Component({
-    selector   : 'toolbar',
-    templateUrl: './toolbar.component.html',
-    styleUrls  : ['./toolbar.component.scss']
+    selector     : 'toolbar',
+    templateUrl  : './toolbar.component.html',
+    styleUrls    : ['./toolbar.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class ToolbarComponent implements OnInit, OnDestroy
