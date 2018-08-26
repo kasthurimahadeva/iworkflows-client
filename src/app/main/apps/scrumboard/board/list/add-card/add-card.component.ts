@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-    selector   : 'scrumboard-board-add-card',
-    templateUrl: './add-card.component.html',
-    styleUrls  : ['./add-card.component.scss']
+    selector     : 'scrumboard-board-add-card',
+    templateUrl  : './add-card.component.html',
+    styleUrls    : ['./add-card.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ScrumboardBoardAddCardComponent
 {

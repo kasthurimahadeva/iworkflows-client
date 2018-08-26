@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+error-500 {
 
     #error-500 {
         width: 100%;
@@ -20,13 +20,11 @@
             .message {
                 font-size: 24px;
                 text-align: center;
-                color: rgba(0, 0, 0, 0.54);
             }
 
             .sub-message {
                 font-size: 17px;
                 text-align: center;
-                color: rgba(0, 0, 0, 0.54);
                 margin: 16px auto 48px auto;
             }
 

@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+todo {
     width: 100%;
 
     .center {
@@ -15,7 +15,7 @@
                     width: 56px;
                     height: 56px;
                     border-radius: 0;
-                    border-right: 1px solid rgba(0, 0, 0, .12);
+                    border-right: 1px solid;
                 }
 
                 .search {
@@ -27,7 +27,6 @@
                     input {
                         height: 56px;
                         padding-left: 16px;
-                        color: rgba(0, 0, 0, 0.54);
                         border: none;
                         outline: none;
                     }

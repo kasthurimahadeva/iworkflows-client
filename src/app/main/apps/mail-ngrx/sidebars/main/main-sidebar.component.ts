@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -12,7 +12,8 @@ import { MailNgrxComposeDialogComponent } from 'app/main/apps/mail-ngrx/dialogs/
     selector       : 'mail-ngrx-main-sidebar',
     templateUrl    : './main-sidebar.component.html',
     styleUrls      : ['./main-sidebar.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation  : ViewEncapsulation.None
 })
 export class MailNgrxMainSidebarComponent
 {

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import * as shape from 'd3-shape';
 
 import { fuseAnimations } from '@fuse/animations/index';
 
 @Component({
-    selector   : 'docs-components-cards',
-    templateUrl: './cards.component.html',
-    styleUrls  : ['./cards.component.scss'],
-    animations : fuseAnimations
+    selector     : 'docs-components-cards',
+    templateUrl  : './cards.component.html',
+    styleUrls    : ['./cards.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class DocsComponentsCardsComponent
 {
@@ -65,7 +66,7 @@ export class DocsComponentsCardsComponent
                     ]
                 }
             ],
-            curve         : shape.curveBasis
+            curve : shape.curveBasis
         };
 
         this.card24 = {
@@ -198,7 +199,7 @@ export class DocsComponentsCardsComponent
                     ]
                 }
             ],
-            curve         : shape.curveBasis
+            curve : shape.curveBasis
         };
 
     }

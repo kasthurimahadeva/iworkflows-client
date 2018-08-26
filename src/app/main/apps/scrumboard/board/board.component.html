@@ -3,14 +3,14 @@
     <div id="board">
 
         <!-- HEADER -->
-        <div class="header mat-accent-bg p-16 p-mat-24" [ngClass]="'mat-'+board.settings.color+'-bg'" fxLayout="column">
+        <div class="header p-16 p-md-24" [ngClass]="board.settings.color" fxLayout="column">
 
             <div class="header-content" fxLayout="row wrap" fxLayoutAlign="space-between" fxFlex="1 0 auto">
 
                 <!-- BOARD SELECTION BUTTON -->
                 <div fxLayout="row" fxLayoutAlign="center center" fxFlexOrder="2" fxFlexOrder.gt-xs="1">
-                    <button mat-raised-button class="mat-accent header-boards-button"
-                            [ngClass]="'mat-'+board.settings.color+'-700-bg'"
+                    <button mat-raised-button class="header-boards-button"
+                            [ngClass]="board.settings.color+'-800'"
                             routerLink="/apps/scrumboard/boards"
                             aria-label="boards button">
                         <mat-icon class="mr-8">assessment</mat-icon>
@@ -20,7 +20,7 @@
                 <!-- / BOARD SELECTION BUTTON -->
 
                 <!-- BOARD NAME -->
-                <div class="header-board-name mb-8 mb-mat-0"
+                <div class="header-board-name mb-8 mb-md-0"
                      fxLayout="row" fxLayoutAlign="center center"
                      fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="center center"
                      fxFlex="1 0 100%" fxFlex.gt-xs="1 0 auto"
@@ -50,10 +50,10 @@
         </div>
         <!-- / HEADER -->
 
-        <div fxFlex class="board-content-wrapper p-16 p-mat-24" [ngClass]="board.settings.color+'-100-bg'">
+        <div fxFlex class="board-content-wrapper p-16 p-md-24">
 
             <!-- BOARD -->
-            <div class="board-content ngx-dnd-container p-16 p-mat-24" fxLayout="row"
+            <div class="board-content ngx-dnd-container p-16 p-md-24" fxLayout="row"
                  ngxDroppable="list" [model]="board.lists" (out)="onDrop($event)"
                  [@animateStagger]="{value:'50'}">
 

@@ -1,10 +1,8 @@
 <div *ngIf="!formActive" class="add-card-button"
      (click)="openForm()"
      fxLayout="row" fxLayoutAlign="start center">
-    <div>
-        <mat-icon class="s-20">add</mat-icon>
-    </div>
-    <span>Add a card</span>
+    <mat-icon class="s-20">add</mat-icon>
+    <div>Add a card</div>
 </div>
 
 <div *ngIf="formActive" class="add-card-form-wrapper">

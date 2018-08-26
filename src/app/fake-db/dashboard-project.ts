@@ -1654,7 +1654,7 @@ export class ProjectDashboardDb
                     [
                         {
                             'value'  : 'Design',
-                            'classes': 'mat-green-bg',
+                            'classes': 'green',
                             'icon'   : ''
                         },
                         {
@@ -1686,7 +1686,7 @@ export class ProjectDashboardDb
                     [
                         {
                             'value'  : 'Coding',
-                            'classes': 'mat-red-bg',
+                            'classes': 'red',
                             'icon'   : ''
                         },
                         {
@@ -1750,7 +1750,7 @@ export class ProjectDashboardDb
                     [
                         {
                             'value'  : 'Extra',
-                            'classes': 'mat-orange-bg',
+                            'classes': 'orange',
                             'icon'   : ''
                         },
                         {

@@ -4,6 +4,7 @@ const black12 = 'rgba(black, 0.12)';
 const white12 = 'rgba(white, 0.12)';
 const black6 = 'rgba(black, 0.06)';
 const white6 = 'rgba(white, 0.06)';
+
 const matColors = {
     'red': {
         50      : '#ffebee',
@@ -635,7 +636,8 @@ const matColors = {
             A700: white87
         }
     },
-    'fuse-dark': {
+
+    'fuse-navy': {
         50      : '#ECECEE',
         100     : '#C5C6CB',
         200     : '#9EA1A9',
@@ -667,13 +669,15 @@ const matColors = {
             A700: white87
         }
     },
-    white      : {
+
+    'fuse-white': {
         500     : 'white',
         contrast: {
             500: black87
         }
     },
-    black      : {
+
+    'fuse-black': {
         500     : 'black',
         contrast: {
             500: 'white'
@@ -693,7 +697,6 @@ const matPresetColors = [
 export class MatColors
 {
     public static all = matColors;
-
     public static presets = matPresetColors;
 
     public static getColor(colorName)
@@ -702,6 +705,7 @@ export class MatColors
         {
             return matColors[colorName];
         }
+
         return false;
     }
 }

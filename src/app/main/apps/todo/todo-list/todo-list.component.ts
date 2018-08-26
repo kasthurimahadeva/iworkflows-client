@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -10,10 +10,11 @@ import { TodoService } from 'app/main/apps/todo/todo.service';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'todo-list',
-    templateUrl: './todo-list.component.html',
-    styleUrls  : ['./todo-list.component.scss'],
-    animations : fuseAnimations
+    selector     : 'todo-list',
+    templateUrl  : './todo-list.component.html',
+    styleUrls    : ['./todo-list.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class TodoListComponent implements OnInit, OnDestroy
 {

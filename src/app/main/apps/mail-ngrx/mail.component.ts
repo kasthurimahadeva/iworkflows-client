@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,7 +18,8 @@ import { locale as turkish } from 'app/main/apps/mail-ngrx/i18n/tr';
     selector       : 'mail-ngrx',
     templateUrl    : './mail.component.html',
     styleUrls      : ['./mail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation  : ViewEncapsulation.None
 })
 export class MailNgrxComponent implements OnInit, OnDestroy
 {

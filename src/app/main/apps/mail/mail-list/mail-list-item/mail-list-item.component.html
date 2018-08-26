@@ -9,7 +9,7 @@
 
             <div class="name" fxLayout="row" fxLayoutAlign="start center" fxFlex>
                 <img class="avatar" *ngIf="mail.from?.avatar" alt="{{mail.from?.name}}" src="{{mail.from?.avatar}}"/>
-                <div class="avatar mat-accent-bg" *ngIf="!mail.from?.avatar">{{mail.from?.name[0]}}</div>
+                <div class="avatar accent" *ngIf="!mail.from?.avatar">{{mail.from?.name[0]}}</div>
                 <span class="text-truncate" *ngIf="mail?.from">{{mail.from?.name}}</span>
                 <mat-icon *ngIf="mail.hasAttachments">attachment</mat-icon>
             </div>

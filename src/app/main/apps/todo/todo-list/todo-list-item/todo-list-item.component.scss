@@ -1,14 +1,13 @@
 @import 'src/@fuse/scss/fuse';
 
-.todo-list-item {
+todo-list-item {
     display: block;
     position: relative;
     padding: 16px 16px 16px 24px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid;
     text-transform: none;
     cursor: pointer;
     flex-shrink: 0;
-    background: #FFFFFF;
 
     .handle {
         height: 48px;
@@ -18,6 +17,7 @@
     }
 
     &.move-disabled {
+
         .handle {
             display: none;
         }
@@ -30,7 +30,6 @@
             border-radius: 2px;
             margin: 8px 4px 0 0;
             padding: 3px 8px;
-            background-color: rgba(0, 0, 0, 0.08);
 
             .tag-color {
                 width: 8px;
@@ -42,17 +41,11 @@
     }
 
     &.completed {
-        background: #EEEEEE;
 
         .title,
         .notes {
-            color: rgba(0, 0, 0, 0.54);
             text-decoration: line-through;
         }
-    }
-
-    &.selected {
-        background: #FFF8E1;
     }
 
     .info {

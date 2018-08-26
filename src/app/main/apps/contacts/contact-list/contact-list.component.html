@@ -97,7 +97,7 @@
     <mat-row *matRowDef="let contact; columns: displayedColumns;"
              class="contact"
              (click)="editContact(contact)"
-             [ngClass]="{'mat-accent-50-bg':checkboxes[contact.id]}"
+             [ngClass]="{'accent-50':checkboxes[contact.id]}"
              matRipple
              [@animate]="{value:'*',params:{y:'100%'}}">
     </mat-row>

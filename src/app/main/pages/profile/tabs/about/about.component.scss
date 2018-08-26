@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+profile-about {
 
     #about {
         max-width: 1200px;
@@ -24,10 +24,6 @@
                     .company {
                         padding: 0 16px 0 0;
                         font-weight: 500;
-                    }
-
-                    .date {
-                        color: rgba(0, 0, 0, 0.54);
                     }
                 }
             }
@@ -62,18 +58,13 @@
                         }
 
                         .logo {
-                            border: 1px solid rgba(0, 0, 0, 0.12);
+                            border: 1px solid;
                             margin-right: 16px;
                         }
 
                         .name {
                             font-weight: 500;
                             font-size: 15px;
-                        }
-
-                        .category,
-                        .members {
-                            color: rgba(0, 0, 0, 0.54);
                         }
 
                         .members {
@@ -104,13 +95,11 @@
 
         .content {
             padding: 16px;
-            background-color: #FFF;
         }
 
         footer {
             padding: 8px;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            background-color: rgba(0, 0, 0, 0.06);
+            border-top: 1px solid;
         }
 
         &.info-box {

@@ -2,7 +2,7 @@
 <div class="sidenav-header" *ngIf="contact">
 
     <!-- CONTACT TOOLBAR -->
-    <mat-toolbar class="mat-accent-bg">
+    <mat-toolbar class="accent">
 
         <!-- TOOLBAR TOP -->
         <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
@@ -28,17 +28,11 @@
 </div>
 
 <!-- SIDENAV CONTENT -->
-<div class="sidenav-content p-16" fxFlex *ngIf="contact">
+<div class="sidenav-content py-32 px-24" fxFlex fxLayout="column" *ngIf="contact">
 
     <!-- CONTACT MOOD -->
-    <mat-card>
-
-        <mat-form-field class="w-100-p">
-            <textarea matInput placeholder="Mood" name="mood"
-                      [value]="contact.mood" rows="3" disabled>
-            </textarea>
-        </mat-form-field>
-
-    </mat-card>
+    <div class="secondary-text mb-8">Mood</div>
+    <div>{{contact.mood}}</div>
     <!-- / CONTACT MOOD -->
+
 </div>

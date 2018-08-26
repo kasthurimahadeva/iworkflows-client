@@ -318,7 +318,6 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
                 // Get the active status
                 const isActive = this._observableMedia.isActive(this.lockedOpen);
-
                 // If the both status are the same, don't act
                 if ( this._wasActive === isActive )
                 {

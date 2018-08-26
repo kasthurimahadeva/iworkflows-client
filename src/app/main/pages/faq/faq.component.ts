@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
@@ -8,9 +8,10 @@ import { FuseUtils } from '@fuse/utils';
 import { FaqService } from 'app/main/pages/faq/faq.service';
 
 @Component({
-    selector   : 'faq',
-    templateUrl: './faq.component.html',
-    styleUrls  : ['./faq.component.scss']
+    selector     : 'faq',
+    templateUrl  : './faq.component.html',
+    styleUrls    : ['./faq.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class FaqComponent implements OnInit, OnDestroy
 {

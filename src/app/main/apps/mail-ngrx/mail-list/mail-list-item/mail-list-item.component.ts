@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,8 @@ import * as fromStore from '../../store';
     selector       : 'mail-ngrx-list-item',
     templateUrl    : './mail-list-item.component.html',
     styleUrls      : ['./mail-list-item.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation  : ViewEncapsulation.None
 })
 export class MailNgrxListItemComponent implements OnInit
 {

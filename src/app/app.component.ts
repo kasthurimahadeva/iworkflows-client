@@ -125,8 +125,10 @@ export class AppComponent implements OnInit, OnDestroy
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((config) => {
+
                 this.fuseConfig = config;
 
+                // Boxed
                 if ( this.fuseConfig.layout.width === 'boxed' )
                 {
                     this.document.body.classList.add('boxed');
@@ -135,6 +137,16 @@ export class AppComponent implements OnInit, OnDestroy
                 {
                     this.document.body.classList.remove('boxed');
                 }
+
+                // Color theme
+                this.document.body.classList.forEach(className => {
+                    if ( className.startsWith('theme-') )
+                    {
+                        this.document.body.classList.remove(className);
+                    }
+                });
+
+                this.document.body.classList.add(this.fuseConfig.colorTheme);
             });
     }
 

@@ -47,7 +47,6 @@
 
         .mat-dialog-content {
             position: relative;
-            background-color: #F5F5F5;
 
             .card-breadcrumb {
                 font-weight: 500;
@@ -56,13 +55,11 @@
 
             .card-subscribe {
                 margin-right: 8px;
-                color: rgba(0, 0, 0, 0.6);
             }
 
             .picker {
                 width: 140px;
                 min-width: 140px;
-
             }
 
             .card-name {
@@ -87,7 +84,7 @@
             .sections {
 
                 .section {
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                    border-bottom: 1px solid;
                     margin-bottom: 32px;
 
                     &:last-child {
@@ -104,7 +101,6 @@
 
                         mat-icon {
                             margin-right: 8px;
-                            color: rgba(0, 0, 0, 0.6);
                         }
 
                         .section-title {
@@ -123,7 +119,6 @@
                         }
 
                         .label-chips {
-
                             box-shadow: none;
                             padding: 0;
 
@@ -168,14 +163,12 @@
                             margin-bottom: 16px;
 
                             .attachment-preview {
-                                background-color: #EEF0F2;
                                 width: 160px;
                                 height: 128px;
                                 background-size: contain;
                                 background-position: 50% 50%;
                                 background-repeat: no-repeat;
                                 font-weight: 500;
-                                color: rgba(0, 0, 0, 0.6);
 
                                 @include media-breakpoint('xs') {
                                     margin-bottom: 24px;
@@ -198,19 +191,13 @@
                                     margin-left: 6px;
                                 }
 
-                                .attachment-time {
-                                    color: rgba(0, 0, 0, 0.6);
-                                }
-
                                 .attachment-actions-button {
-                                    background-color: white;
                                     text-transform: capitalize;
                                     margin: 12px 0 0 0;
                                     padding-left: 12px;
 
                                     mat-icon {
                                         margin-left: 8px;
-                                        color: rgba(0, 0, 0, 0.6);
                                     }
                                 }
                             }
@@ -220,7 +207,6 @@
                             margin: 0;
 
                             mat-icon {
-                                color: rgba(0, 0, 0, 0.6);
                                 margin-right: 8px;
                             }
 
@@ -266,7 +252,6 @@
 
                                         .mat-label {
                                             text-decoration: line-through;
-                                            color: rgba(0, 0, 0, 0.6);
                                         }
                                     }
                                 }
@@ -310,8 +295,7 @@
                             .comment-bubble {
                                 position: relative;
                                 padding: 8px;
-                                background-color: white;
-                                border: 1px solid rgb(220, 223, 225);
+                                border: 1px solid;
                                 font-size: 14px;
                                 margin: 4px 0;
 
@@ -329,7 +313,6 @@
                                     top: 0px;
                                     bottom: auto;
                                     border: 11px solid;
-                                    border-color: white transparent transparent transparent;
                                 }
 
                                 &:before {
@@ -338,7 +321,6 @@
                                     top: -1px;
                                     bottom: auto;
                                     border: 8px solid;
-                                    border-color: rgb(220, 223, 225) transparent transparent transparent;
                                 }
                             }
 
@@ -432,7 +414,7 @@
                 top: 0;
 
                 > .header {
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    border-bottom: 1px solid;
                 }
             }
         }

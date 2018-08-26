@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
 import { ScrumboardService } from 'app/main/apps/scrumboard/scrumboard.service';
@@ -6,10 +6,11 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-    selector   : 'scrumboard-board-settings',
-    templateUrl: './settings.component.html',
-    styleUrls  : ['./settings.component.scss'],
-    animations : fuseAnimations
+    selector     : 'scrumboard-board-settings',
+    templateUrl  : './settings.component.html',
+    styleUrls    : ['./settings.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ScrumboardBoardSettingsSidenavComponent implements OnInit, OnDestroy
 {

@@ -1,7 +1,7 @@
 <div id="todo" class="page-layout carded left-sidebar inner-scroll">
 
     <!-- TOP BACKGROUND -->
-    <div class="top-bg mat-accent-bg"></div>
+    <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
 
     <!-- SIDEBAR -->
@@ -16,7 +16,7 @@
         <!-- CONTENT HEADER -->
         <div class="header" fxLayout="row" fxLayoutAlign="start center">
 
-            <div class="search-wrapper mat-white-bg" fxFlex fxLayout="row" fxLayoutAlign="start center">
+            <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
 
                 <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
                         (click)="toggleSidebar('todo-main-sidebar')">
@@ -33,7 +33,7 @@
         <!-- / CONTENT HEADER -->
 
         <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg" [ngClass]="{'current-todo-selected':currentTodo}">
+        <div class="content-card" [ngClass]="{'current-todo-selected':currentTodo}">
 
             <!-- CONTENT TOOLBAR -->
             <div class="toolbar px-24 py-8">

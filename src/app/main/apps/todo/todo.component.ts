@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
@@ -10,10 +10,11 @@ import { Todo } from 'app/main/apps/todo/todo.model';
 import { TodoService } from 'app/main/apps/todo/todo.service';
 
 @Component({
-    selector   : 'todo',
-    templateUrl: './todo.component.html',
-    styleUrls  : ['./todo.component.scss'],
-    animations : fuseAnimations
+    selector     : 'todo',
+    templateUrl  : './todo.component.html',
+    styleUrls    : ['./todo.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class TodoComponent implements OnInit, OnDestroy
 {

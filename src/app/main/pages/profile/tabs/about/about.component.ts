@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -6,10 +6,11 @@ import { fuseAnimations } from '@fuse/animations';
 import { ProfileService } from 'app/main/pages/profile/profile.service';
 
 @Component({
-    selector   : 'profile-about',
-    templateUrl: './about.component.html',
-    styleUrls  : ['./about.component.scss'],
-    animations : fuseAnimations
+    selector     : 'profile-about',
+    templateUrl  : './about.component.html',
+    styleUrls    : ['./about.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ProfileAboutComponent implements OnInit, OnDestroy
 {
@@ -43,8 +44,8 @@ export class ProfileAboutComponent implements OnInit, OnDestroy
         this._profileService.aboutOnChanged
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(about => {
-            this.about = about;
-        });
+                this.about = about;
+            });
     }
 
     /**

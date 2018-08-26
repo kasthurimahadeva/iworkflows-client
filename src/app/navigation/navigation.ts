@@ -45,12 +45,6 @@ export const navigation: FuseNavigation[] = [
                 icon     : 'shopping_cart',
                 children : [
                     {
-                        id   : 'dashboard',
-                        title: 'Dashboard',
-                        type : 'item',
-                        url  : '/apps/e-commerce/dashboard'
-                    },
-                    {
                         id        : 'products',
                         title     : 'Products',
                         type      : 'item',
@@ -849,7 +843,7 @@ export const navigation: FuseNavigation[] = [
                 icon : 'update',
                 url  : '/documentation/changelog',
                 badge: {
-                    title: '6.2.5',
+                    title: '6.3.0',
                     bg   : '#EC0C8E',
                     fg   : '#FFFFFF'
                 }

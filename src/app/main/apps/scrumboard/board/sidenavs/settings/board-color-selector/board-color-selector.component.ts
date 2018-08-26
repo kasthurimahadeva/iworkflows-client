@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -7,9 +7,10 @@ import { MatColors } from '@fuse/mat-colors';
 import { ScrumboardService } from 'app/main/apps/scrumboard/scrumboard.service';
 
 @Component({
-    selector   : 'scrumboard-board-color-selector',
-    templateUrl: './board-color-selector.component.html',
-    styleUrls  : ['./board-color-selector.component.scss']
+    selector     : 'scrumboard-board-color-selector',
+    templateUrl  : './board-color-selector.component.html',
+    styleUrls    : ['./board-color-selector.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ScrumboardBoardColorSelectorComponent implements OnInit, OnDestroy
 {

@@ -1,4 +1,83 @@
-// Page Layouts
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@mixin page-layouts-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    .page-layout {
+
+        // Carded layout
+        &.carded {
+
+            // Fullwidth
+            &.fullwidth {
+
+                > .center {
+
+                    > .content-card {
+                        background: map-get($background, card);
+
+                        > .toolbar {
+                            border-bottom-color: map-get($foreground, divider);
+                        }
+                    }
+                }
+            }
+
+            // Left / Right sidebar
+            &.left-sidebar,
+            &.right-sidebar {
+
+                > .center {
+
+                    > .content-card {
+                        background: map-get($background, card);
+
+                        > .toolbar {
+                            border-bottom-color: map-get($foreground, divider);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Simple layout
+        &.simple {
+
+            // Left / Right sidebar
+            &.left-sidebar,
+            &.right-sidebar {
+
+                > .center {
+
+                    > .content {
+                        background: map-get($background, card);
+                    }
+                }
+
+                // Inner sidebar
+                &.inner-sidebar {
+
+                    > .content {
+
+                        > .center {
+
+                            > .content {
+                                background: map-get($background, card);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Page Layouts
+// -----------------------------------------------------------------------------------------------------
 $carded-header-height: 200px !default;
 $carded-header-height-sm: 160px !default;
 $carded-toolbar-height: 64px !default;
@@ -75,7 +154,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
-                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                        border-bottom: 1px solid;
                         height: $carded-toolbar-height;
                         min-height: $carded-toolbar-height;
                         max-height: $carded-toolbar-height;
@@ -273,7 +352,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                         justify-content: flex-start;
                         align-items: center;
                         flex: 1 1 auto;
-                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                        border-bottom: 1px solid;
                         height: $carded-toolbar-height;
                         min-height: $carded-toolbar-height;
                         max-height: $carded-toolbar-height;
@@ -516,7 +595,7 @@ $carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-too
                 }
             }
 
-            // Inner Sidebar
+            // Inner sidebar
             &.inner-sidebar {
                 flex-direction: column;
                 overflow: hidden;

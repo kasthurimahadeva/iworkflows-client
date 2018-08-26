@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
@@ -6,9 +6,10 @@ import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'chat-user-sidenav',
-    templateUrl: './user.component.html',
-    styleUrls  : ['./user.component.scss']
+    selector     : 'chat-user-sidenav',
+    templateUrl  : './user.component.html',
+    styleUrls    : ['./user.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ChatUserSidenavComponent implements OnInit, OnDestroy
 {

@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+invoice-compact {
 
     #invoice {
 
@@ -38,6 +38,7 @@
                                 }
 
                                 .number {
+                                    color: rgba(0, 0, 0, 0.87);
                                     padding-left: 6px;
                                 }
                             }
@@ -51,6 +52,7 @@
                                 }
 
                                 .date {
+                                    color: rgba(0, 0, 0, 0.87);
                                     padding-left: 6px;
                                 }
                             }
@@ -88,6 +90,8 @@
                                 tr {
 
                                     th {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
                                         &:first-child {
                                             padding-left: 8px;
@@ -105,6 +109,8 @@
                                 tr {
 
                                     td {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
                                         &:first-child {
                                             padding-left: 8px;
@@ -206,6 +212,7 @@
         #invoice {
 
             &.compact {
+                background: white;
 
                 .invoice-container {
                     padding: 0;

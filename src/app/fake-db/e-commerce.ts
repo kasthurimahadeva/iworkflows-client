@@ -1622,13 +1622,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 13,
                     'name' : 'On pre-order (not paid)',
-                    'color': 'mat-purple-300-bg',
+                    'color': 'purple-300',
                     'date' : '2016/04/03 10:06:18'
                 },
                 {
                     'id'   : 1,
                     'name' : 'Awaiting check payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/03/17 18:28:37'
                 }
             ],
@@ -1706,13 +1706,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 2,
                     'name' : 'Payment accepted',
-                    'color': 'mat-green-500-bg',
+                    'color': 'green-500',
                     'date' : '2015/10/04 08:54:33'
                 },
                 {
                     'id'   : 1,
                     'name' : 'Awaiting check payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/05/03 03:43:04'
                 }
             ],
@@ -1790,13 +1790,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 8,
                     'name' : 'Payment error',
-                    'color': 'mat-red-900-bg',
+                    'color': 'red-900',
                     'date' : '2015/07/02 20:44:34'
                 },
                 {
                     'id'   : 3,
                     'name' : 'Preparing the order',
-                    'color': 'mat-orange-500-bg',
+                    'color': 'orange-500',
                     'date' : '2015/03/23 04:59:45'
                 }
             ],
@@ -1874,13 +1874,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 5,
                     'name' : 'Delivered',
-                    'color': 'mat-green-800-bg',
+                    'color': 'green-800',
                     'date' : '2015/10/26 16:12:47'
                 },
                 {
                     'id'   : 4,
                     'name' : 'Shipped',
-                    'color': 'mat-purple-500-bg',
+                    'color': 'purple-500',
                     'date' : '2016/02/06 06:42:37'
                 }
             ],
@@ -1958,13 +1958,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 8,
                     'name' : 'Payment error',
-                    'color': 'mat-red-900-bg',
+                    'color': 'red-900',
                     'date' : '2015/02/01 09:21:46'
                 },
                 {
                     'id'   : 6,
                     'name' : 'Canceled',
-                    'color': 'mat-pink-500-bg',
+                    'color': 'pink-500',
                     'date' : '2015/11/16 04:48:32'
                 }
             ],
@@ -2042,13 +2042,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 3,
                     'name' : 'Preparing the order',
-                    'color': 'mat-orange-500-bg',
+                    'color': 'orange-500',
                     'date' : '2015/11/30 01:04:32'
                 },
                 {
                     'id'   : 2,
                     'name' : 'Payment accepted',
-                    'color': 'mat-green-500-bg',
+                    'color': 'green-500',
                     'date' : '2015/11/12 21:27:18'
                 }
             ],
@@ -2126,13 +2126,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 11,
                     'name' : 'Awaiting PayPal payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/09/03 18:53:02'
                 },
                 {
                     'id'   : 13,
                     'name' : 'On pre-order (not paid)',
-                    'color': 'mat-purple-300-bg',
+                    'color': 'purple-300',
                     'date' : '2015/12/13 18:14:40'
                 }
             ],
@@ -2210,13 +2210,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 4,
                     'name' : 'Shipped',
-                    'color': 'mat-purple-500-bg',
+                    'color': 'purple-500',
                     'date' : '2015/04/29 07:57:43'
                 },
                 {
                     'id'   : 3,
                     'name' : 'Preparing the order',
-                    'color': 'mat-orange-500-bg',
+                    'color': 'orange-500',
                     'date' : '2015/04/23 11:14:38'
                 }
             ],
@@ -2294,13 +2294,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 12,
                     'name' : 'Remote payment accepted',
-                    'color': 'mat-green-500-bg',
+                    'color': 'green-500',
                     'date' : '2015/07/15 15:48:00'
                 },
                 {
                     'id'   : 14,
                     'name' : 'Awaiting Cash-on-delivery payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/11/08 18:30:15'
                 }
             ],
@@ -2378,13 +2378,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 5,
                     'name' : 'Delivered',
-                    'color': 'mat-green-800-bg',
+                    'color': 'green-800',
                     'date' : '2016/05/02 09:53:55'
                 },
                 {
                     'id'   : 2,
                     'name' : 'Payment accepted',
-                    'color': 'mat-green-500-bg',
+                    'color': 'green-500',
                     'date' : '2015/07/11 05:33:31'
                 }
             ],
@@ -2462,13 +2462,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 9,
                     'name' : 'On pre-order (paid)',
-                    'color': 'mat-purple-300-bg',
+                    'color': 'purple-300',
                     'date' : '2016/02/26 14:15:38'
                 },
                 {
                     'id'   : 4,
                     'name' : 'Shipped',
-                    'color': 'mat-purple-500-bg',
+                    'color': 'purple-500',
                     'date' : '2015/10/17 03:32:39'
                 }
             ],
@@ -2546,13 +2546,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 10,
                     'name' : 'Awaiting bank wire payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/09/01 20:50:07'
                 },
                 {
                     'id'   : 12,
                     'name' : 'Remote payment accepted',
-                    'color': 'mat-green-500-bg',
+                    'color': 'green-500',
                     'date' : '2016/02/13 21:19:04'
                 }
             ],
@@ -2630,13 +2630,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 6,
                     'name' : 'Canceled',
-                    'color': 'mat-pink-500-bg',
+                    'color': 'pink-500',
                     'date' : '2015/03/31 03:01:12'
                 },
                 {
                     'id'   : 8,
                     'name' : 'Payment error',
-                    'color': 'mat-red-900-bg',
+                    'color': 'red-900',
                     'date' : '2016/03/11 18:53:35'
                 }
             ],
@@ -2714,13 +2714,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 7,
                     'name' : 'Refunded',
-                    'color': 'mat-red-500-bg',
+                    'color': 'red-500',
                     'date' : '2015/12/29 15:34:46'
                 },
                 {
                     'id'   : 11,
                     'name' : 'Awaiting PayPal payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/07/14 19:10:43'
                 }
             ],
@@ -2798,13 +2798,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 1,
                     'name' : 'Awaiting check payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/12/21 10:42:21'
                 },
                 {
                     'id'   : 6,
                     'name' : 'Canceled',
-                    'color': 'mat-pink-500-bg',
+                    'color': 'pink-500',
                     'date' : '2016/02/11 05:58:55'
                 }
             ],
@@ -2882,13 +2882,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 9,
                     'name' : 'On pre-order (paid)',
-                    'color': 'mat-purple-300-bg',
+                    'color': 'purple-300',
                     'date' : '2015/06/20 08:37:46'
                 },
                 {
                     'id'   : 2,
                     'name' : 'Payment accepted',
-                    'color': 'mat-green-500-bg',
+                    'color': 'green-500',
                     'date' : '2015/01/01 01:42:21'
                 }
             ],
@@ -2966,13 +2966,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 5,
                     'name' : 'Delivered',
-                    'color': 'mat-green-800-bg',
+                    'color': 'green-800',
                     'date' : '2015/03/23 00:18:52'
                 },
                 {
                     'id'   : 3,
                     'name' : 'Preparing the order',
-                    'color': 'mat-orange-500-bg',
+                    'color': 'orange-500',
                     'date' : '2015/03/22 04:48:12'
                 }
             ],
@@ -3050,13 +3050,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 6,
                     'name' : 'Canceled',
-                    'color': 'mat-pink-500-bg',
+                    'color': 'pink-500',
                     'date' : '2016/03/24 22:56:35'
                 },
                 {
                     'id'   : 4,
                     'name' : 'Shipped',
-                    'color': 'mat-purple-500-bg',
+                    'color': 'purple-500',
                     'date' : '2016/04/09 13:33:26'
                 }
             ],
@@ -3134,13 +3134,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 7,
                     'name' : 'Refunded',
-                    'color': 'mat-red-500-bg',
+                    'color': 'red-500',
                     'date' : '2015/08/10 17:14:57'
                 },
                 {
                     'id'   : 5,
                     'name' : 'Delivered',
-                    'color': 'mat-green-800-bg',
+                    'color': 'green-800',
                     'date' : '2016/03/30 01:38:14'
                 }
             ],
@@ -3218,13 +3218,13 @@ export class ECommerceFakeDb
                 {
                     'id'   : 10,
                     'name' : 'Awaiting bank wire payment',
-                    'color': 'mat-blue-500-bg',
+                    'color': 'blue-500',
                     'date' : '2015/05/19 11:09:56'
                 },
                 {
                     'id'   : 12,
                     'name' : 'Remote payment accepted',
-                    'color': 'mat-green-500-bg',
+                    'color': 'green-500',
                     'date' : '2015/03/27 05:02:33'
                 }
             ],

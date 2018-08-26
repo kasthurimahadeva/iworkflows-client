@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+lock {
 
     #lock {
         width: 100%;
@@ -21,7 +21,6 @@
                 width: 420px;
                 max-width: 420px;
                 padding: 48px 32px 32px 32px;
-                background: #FFFFFF;
                 @include mat-elevation(16);
 
                 @include media-breakpoint('xs') {
@@ -47,9 +46,8 @@
 
                         mat-icon {
                             position: absolute;
-                            bottom: 0;
-                            right: 0;
-                            color: mat-color($mat-red, 500);
+                            bottom: -2px;
+                            right: -6px;
                         }
                     }
 
@@ -64,7 +62,6 @@
                     }
 
                     .subtitle {
-                        color: rgba(0, 0, 0, 0.54);
 
                         @include media-breakpoint('xs') {
                             text-align: center;

@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+maintenance {
 
     #maintenance {
         width: 100%;
@@ -18,7 +18,6 @@
             #maintenance-form {
                 max-width: 384px;
                 padding: 48px;
-                background: #FFFFFF;
                 text-align: center;
                 @include mat-elevation(16);
 

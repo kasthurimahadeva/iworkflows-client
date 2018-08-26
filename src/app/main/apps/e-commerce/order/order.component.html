@@ -1,14 +1,14 @@
 <div id="order" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
-    <div class="top-bg mat-accent-bg"></div>
+    <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
 
     <!-- CENTER -->
     <div class="center">
 
         <!-- HEADER -->
-        <div class="header mat-accent-bg"
+        <div class="header accent"
              fxLayout="row" fxLayoutAlign="space-between center">
 
             <!-- APP TITLE -->
@@ -35,7 +35,7 @@
         <!-- / HEADER -->
 
         <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg">
+        <div class="content-card">
 
             <!-- CONTENT -->
             <div class="content">
@@ -68,7 +68,9 @@
                                                 <td>
                                                     <div fxLayout="row" fxLayoutAlign="start center">
                                                         <img class="avatar" [src]="order.customer.avatar">
-                                                        <span class="name text-truncate">{{order.customer.firstName}} {{order.customer.lastName}}</span>
+                                                        <span class="name text-truncate">{{order.customer.firstName}}
+                                                            {{order.customer.lastName}}
+                                                        </span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -78,7 +80,8 @@
                                                     <span class="phone text-truncate">{{order.customer.phone}}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="company text-truncate">{{order.customer.company}}</span>
+                                                    <span class="company text-truncate">{{order.customer.company}}
+                                                    </span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -89,7 +92,8 @@
 
                                     <mat-tab label="Shipping Address">
                                         <div fxFlex fxLayout="column">
-                                            <div class="address h4 py-24">{{order.customer.shippingAddress.address}}</div>
+                                            <div class="address h4 py-24">{{order.customer.shippingAddress.address}}
+                                            </div>
                                             <agm-map class="w-100-p h-400" [zoom]="15"
                                                      [latitude]="order.customer.shippingAddress.lat"
                                                      [longitude]="order.customer.shippingAddress.lng">
@@ -102,7 +106,8 @@
 
                                     <mat-tab label="Invoice Address" fxLayout="column">
                                         <div fxFlex fxLayout="column">
-                                            <div class="address h4 py-24">{{order.customer.invoiceAddress.address}}</div>
+                                            <div class="address h4 py-24">{{order.customer.invoiceAddress.address}}
+                                            </div>
                                             <agm-map class="w-100-p h-400" [zoom]="15"
                                                      [latitude]="order.customer.invoiceAddress.lat"
                                                      [longitude]="order.customer.invoiceAddress.lng">
@@ -308,7 +313,8 @@
 
                                             <div fxLayout="row" fxLayoutAlign="space-between stretch">
                                                 <div class="client">
-                                                    <div class="invoice-number" fxLayout="row" fxLayoutAlign="start center">
+                                                    <div class="invoice-number" fxLayout="row"
+                                                         fxLayoutAlign="start center">
                                                         <span class="title">INVOICE</span>
                                                         <span class="number">{{order.reference}}</span>
                                                     </div>
@@ -318,20 +324,23 @@
                                                             {{order.customer.firstName}}
                                                             {{order.customer.lastName}}
                                                         </div>
-                                                        <div class="address">{{order.customer.invoiceAddress}}</div>
+                                                        <div class="address">
+                                                            {{order.customer.invoiceAddress.address}}
+                                                        </div>
                                                         <div class="phone">{{order.customer.phone}}</div>
                                                         <div class="email">{{order.customer.email}}</div>
                                                     </div>
                                                 </div>
 
-                                                <div class="issuer mat-accent-bg" fxLayout="row" fxLayoutAlign="start center">
+                                                <div class="issuer accent" fxLayout="row" fxLayoutAlign="start center">
                                                     <div class="logo">
                                                         <img src="assets/images/logos/fuse.svg">
                                                     </div>
 
                                                     <div class="info">
                                                         <div class="title">FUSE INC.</div>
-                                                        <div class="address">2810 Country Club Road Cranford, NJ 07016</div>
+                                                        <div class="address">2810 Country Club Road Cranford, NJ 07016
+                                                        </div>
                                                         <div class="phone">+66 123 455 87</div>
                                                         <div class="email">hello@fuseinc.com</div>
                                                         <div class="website">www.fuseinc.com</div>
@@ -394,17 +403,20 @@
                                         </div>
 
                                         <div class="footer">
-                                            <div class="note">Please pay within 15 days. Thank you for your business.</div>
+                                            <div class="note">Please pay within 15 days. Thank you for your business.
+                                            </div>
                                             <div fxLayout="row" fxLayoutAlign="start start">
                                                 <div class="logo">
                                                     <img src="assets/images/logos/fuse.svg">
                                                 </div>
                                                 <div class="small-note">
-                                                    In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue dolor. Quisque
-                                                    scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc hendrerit
-                                                    quam at leo commodo, a suscipit tellus dapibus. Etiam at felis volutpat est mollis lacinia.
-                                                    Mauris placerat sem sit amet velit mollis, in porttitor ex finibus. Proin eu nibh id libero
-                                                    tincidunt lacinia et eget eros.
+                                                    In condimentum malesuada efficitur. Mauris volutpat placerat auctor.
+                                                    Ut ac congue dolor. Quisque scelerisque lacus sed feugiat fermentum.
+                                                    Cras aliquet facilisis pellentesque. Nunc hendrerit quam at leo
+                                                    commodo, a suscipit tellus dapibus. Etiam at felis volutpat est
+                                                    mollis lacinia. Mauris placerat sem sit amet velit mollis, in
+                                                    porttitor ex finibus. Proin eu nibh id libero tincidunt lacinia et
+                                                    eget eros.
                                                 </div>
                                             </div>
                                         </div>

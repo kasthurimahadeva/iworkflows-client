@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'chat-contact-sidenav',
-    templateUrl: './contact.component.html',
-    styleUrls  : ['./contact.component.scss']
+    selector     : 'chat-contact-sidenav',
+    templateUrl  : './contact.component.html',
+    styleUrls    : ['./contact.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ChatContactSidenavComponent implements OnInit, OnDestroy
 {
@@ -41,8 +42,8 @@ export class ChatContactSidenavComponent implements OnInit, OnDestroy
         this._chatService.onContactSelected
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(contact => {
-            this.contact = contact;
-        });
+                this.contact = contact;
+            });
     }
 
     /**

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -10,10 +10,11 @@ import { Mail } from 'app/main/apps/mail/mail.model';
 import { MailService } from 'app/main/apps/mail/mail.service';
 
 @Component({
-    selector   : 'mail-list',
-    templateUrl: './mail-list.component.html',
-    styleUrls  : ['./mail-list.component.scss'],
-    animations : fuseAnimations
+    selector     : 'mail-list',
+    templateUrl  : './mail-list.component.html',
+    styleUrls    : ['./mail-list.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class MailListComponent implements OnInit, OnDestroy
 {

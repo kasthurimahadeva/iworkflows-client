@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,8 @@ import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
     selector       : 'mail-ngrx-details',
     templateUrl    : './mail-details.component.html',
     styleUrls      : ['./mail-details.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation  : ViewEncapsulation.None
 })
 export class MailNgrxDetailsComponent implements OnChanges
 {

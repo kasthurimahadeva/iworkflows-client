@@ -1,7 +1,7 @@
 <div id="changelog" class="page-layout simple fullwidth docs">
 
     <!-- HEADER -->
-    <div class="header mat-accent-bg p-24" fxLayout="column" fxLayoutAlign="center start">
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
 
         <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
             <mat-icon class="secondary-text s-18">home</mat-icon>
@@ -20,22 +20,51 @@
         <div class="changelog">
 
             <!-- --------------------------------------------------------------------------------------------- -->
-            <!-- @ v6.2.5 -->
+            <!-- @ v6.3.0 -->
             <!-- --------------------------------------------------------------------------------------------- -->
             <div class="entry">
 
                 <div class="title">
-                    <span class="version">v6.2.5</span>
+                    <span class="version">v6.3.0</span>
                     <span class="date">(TBA)</span>
                 </div>
 
                 <div class="groups">
 
+                    <div class="breaking-changes">
+                        <span class="title">Breaking Changes</span>
+                        <ul>
+                            <li>
+                                (Color Helpers) Removed 'mat-' prefix and '-bg' suffix from the color helpers that sets
+                                both background and foreground colors (i.e. mat-primary-bg -> primary , mat-red-bg ->
+                                red).
+                            </li>
+                        </ul>
+                    </div>
+
                     <div class="new">
                         <span class="title">New</span>
                         <ul>
-                            <li>Updated Angular Material to 6.4.0</li>
+                            <li>Updated Angular to 6.1.4</li>
+                            <li>Updated Angular Material to 6.4.6</li>
                             <li>Updated various other packages</li>
+                            <li>Dark color theme</li>
+                            <li>Easier way of working multiple Angular Material color themes</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(ECommerce) Order page custom scrollbar is not working</li>
+                            <li>(Quick Panel) Custom scrollbar is not working</li>
+                            <li>(Theme Options) Side panel settings are not resetting when layout changes</li>
+                            <li>
+                                (Progress Bar) Progress bar doesn't hide when NavigationCancel or NavigationError events
+                                happen
+                            </li>
+                            <li>(Layouts) "transform: translateZ(0)" causes "position: fixed" to break</li>
+                            <li>(Contacts) _matDialogRef is not defined</li>
                         </ul>
                     </div>
 

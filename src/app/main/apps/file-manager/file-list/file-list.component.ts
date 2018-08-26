@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,10 +9,11 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { FileManagerService } from 'app/main/apps/file-manager/file-manager.service';
 
 @Component({
-    selector   : 'file-list',
-    templateUrl: './file-list.component.html',
-    styleUrls  : ['./file-list.component.scss'],
-    animations : fuseAnimations
+    selector     : 'file-list',
+    templateUrl  : './file-list.component.html',
+    styleUrls    : ['./file-list.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class FileManagerFileListComponent implements OnInit, OnDestroy
 {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
@@ -13,9 +13,10 @@ import { locale as english } from 'app/main/apps/mail//i18n/en';
 import { locale as turkish } from 'app/main/apps/mail//i18n/tr';
 
 @Component({
-    selector   : 'mail',
-    templateUrl: './mail.component.html',
-    styleUrls  : ['./mail.component.scss']
+    selector     : 'mail',
+    templateUrl  : './mail.component.html',
+    styleUrls    : ['./mail.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MailComponent implements OnInit, OnDestroy
 {

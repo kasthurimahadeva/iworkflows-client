@@ -7,9 +7,8 @@
         flex: 1 0 auto;
         height: 280px;
         max-height: 280px;
-        background: #1A237E;
-        background: linear-gradient(to right, #0E2A3B 0%, #34306B 100%);
         text-align: center;
+        overflow: hidden;
 
         @include media-breakpoint('xs') {
             height: 240px;
@@ -29,7 +28,6 @@
             }
 
             h1 {
-                color: white;
                 font-size: 40px;
                 font-weight: 300;
                 letter-spacing: 0.01em;
@@ -43,7 +41,6 @@
             }
 
             h3 {
-                color: rgba(255, 255, 255, 0.75);
                 max-width: 480px;
                 text-align: center;
                 font-weight: 300;
@@ -108,14 +105,12 @@
                 }
 
                 .course-content {
-                    background: white;
                     min-height: 240px;
                     transition: box-shadow 150ms ease-in-out;
 
                     @include mat-elevation(3);
 
                     .header {
-                        color: white;
                         padding: 16px 24px;
                         height: 64px !important;
                         min-height: 64px !important;
@@ -141,19 +136,16 @@
                             text-transform: capitalize;
                             text-align: left;
                             font-weight: 500;
-                            color: rgba(0, 0, 0, 0.54);
                         }
 
                         .length {
 
                             .length-icon {
                                 margin-right: 8px;
-                                color: rgba(0, 0, 0, 0.54) !important;
                             }
 
                             .min {
                                 font-size: 16px;
-                                color: rgba(0, 0, 0, 0.54);
                             }
                         }
                     }
@@ -170,7 +162,6 @@
                             font-size: 13px;
                             font-weight: 500;
                             margin-top: 4px;
-                            color: rgba(0, 0, 0, 0.37);
                         }
                     }
 

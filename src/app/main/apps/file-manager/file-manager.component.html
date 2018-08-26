@@ -10,7 +10,7 @@
     <div class="center" fxFlex>
 
         <!-- HEADER -->
-        <div class="header mat-accent-bg p-24" fxLayout="column" fxLayoutAlign="space-between start">
+        <div class="header accent p-24" fxLayout="column" fxLayoutAlign="space-between start">
 
             <!-- TOOLBAR -->
             <div class="toolbar w-100-p" fxFlex fxLayout="row" fxLayoutAlign="space-between start">
@@ -44,7 +44,8 @@
             <div class="file-uploader">
                 <input hidden type="file" #fileInput/>
                 <button mat-fab
-                        class="add-file-button mat-warn"
+                        color="warn"
+                        class="add-file-button"
                         (click)="fileInput.click()"
                         aria-label="Add file"
                         [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
@@ -57,7 +58,7 @@
         <!-- / HEADER -->
 
         <!-- CONTENT -->
-        <div class="content mat-white-bg" fusePerfectScrollbar>
+        <div class="content" fusePerfectScrollbar>
             <file-list></file-list>
         </div>
         <!-- / CONTENT -->

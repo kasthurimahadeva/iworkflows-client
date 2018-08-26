@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -7,10 +7,11 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'coming-soon',
-    templateUrl: './coming-soon.component.html',
-    styleUrls  : ['./coming-soon.component.scss'],
-    animations : fuseAnimations
+    selector     : 'coming-soon',
+    templateUrl  : './coming-soon.component.html',
+    styleUrls    : ['./coming-soon.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ComingSoonComponent implements OnInit, OnDestroy
 {

@@ -1,12 +1,10 @@
 @import "src/@fuse/scss/fuse";
 
-.scrumboard-board-card {
+scrumboard-board-card {
     position: relative;
     display: block;
     width: 100%;
     margin: 16px 0 !important;
-    background-color: white !important;
-    color: #000;
     border-radius: 2px;
     transition: box-shadow 150ms ease;
     cursor: pointer;
@@ -18,9 +16,6 @@
         right: 0;
         padding: 4px;
         background: rgba(255, 255, 255, 0.8);
-    }
-
-    .list-card-cover {
     }
 
     .list-card-details {
@@ -50,26 +45,9 @@
                 margin-right: 8px;
                 padding: 4px 8px;
                 border-radius: 2px;
-                background-color: rgba(0, 0, 0, 0.4);
-                color: #FFFFFF;
 
                 mat-icon {
                     margin-right: 4px;
-                }
-
-                &.due-date {
-                    background-color: mat-color(mat-palette($mat-green));
-
-                    &.overdue {
-                        background-color: mat-color(mat-palette($mat-red));
-                    }
-                }
-
-                &.check-items {
-
-                    &.completed {
-                        background-color: mat-color(mat-palette($mat-green));
-                    }
                 }
             }
         }
@@ -90,13 +68,12 @@
     }
 
     .list-card-footer {
-        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        border-top: 1px solid;
         padding: 0 16px;
 
         .list-card-footer-item {
             height: 48px;
             margin-right: 12px;
-            color: rgba(0, 0, 0, 0.66);
 
             .value {
                 padding-left: 8px;

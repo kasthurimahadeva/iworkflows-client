@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'login',
-    templateUrl: './login.component.html',
-    styleUrls  : ['./login.component.scss'],
-    animations : fuseAnimations
+    selector     : 'login',
+    templateUrl  : './login.component.html',
+    styleUrls    : ['./login.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class LoginComponent implements OnInit
 {

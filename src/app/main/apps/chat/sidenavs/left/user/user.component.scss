@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+chat-user-sidenav {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -10,15 +10,7 @@
     mat-toolbar {
 
         .toolbar-bottom {
-            height: 240px;
-
-            @include media-breakpoint-down(md) {
-                height: 180px;
-            }
+            height: 180px;
         }
-    }
-
-    .sidenav-content {
-        background: whitesmoke;
     }
 }

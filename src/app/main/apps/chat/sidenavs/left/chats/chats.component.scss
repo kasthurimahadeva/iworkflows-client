@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+chat-chats-sidenav {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -8,11 +8,12 @@
     .sidenav-header {
 
         mat-toolbar {
-            border-bottom: 1px solid rgba(0, 0, 0, .08);
+            border-bottom: 1px solid;
 
             .avatar-wrapper {
 
-                .avatar, .status {
+                .avatar,
+                .status {
                     cursor: pointer;
                 }
             }
@@ -21,19 +22,16 @@
                 height: 36px;
                 line-height: 36px;
                 padding: 8px;
-                background: #FFFFFF;
                 font-size: 13px;
                 @include mat-elevation(1);
 
                 .icon {
                     margin: 0;
-                    color: rgba(0, 0, 0, 0.54);
                 }
 
                 input {
                     padding-left: 12px;
                     height: 36px;
-                    color: rgba(0, 0, 0, 0.54);
                     border: none;
                 }
             }
@@ -44,7 +42,8 @@
         overflow: auto;
         -webkit-overflow-scrolling: touch;
 
-        .contact-list, .chat-list {
+        .contact-list,
+        .chat-list {
 
             .mat-subheader {
                 padding-left: 16px;
@@ -52,7 +51,6 @@
                 font-weight: 300;
                 height: 88px;
                 line-height: 88px;
-                color: mat-color($accent);
             }
 
             .contact {
@@ -60,7 +58,7 @@
                 text-align: left;
                 letter-spacing: .010em;
                 min-height: 88px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                border-bottom: 1px solid;
                 padding: 16px;
                 font-weight: 400;
 
@@ -78,10 +76,8 @@
                 }
 
                 .contact-last-message {
-                    line-height: 1.6em;
-                    margin: 0;
-                    font-weight: 500;
-                    color: rgba(0, 0, 0, 0.54);
+                    line-height: normal;
+                    margin-top: 0;
                 }
 
                 .contact-mood {
@@ -104,7 +100,6 @@
             width: 100%;
             height: 88px;
             padding: 16px;
-            background: #FFFFFF;
             font-size: 15px;
             font-weight: 400;
         }

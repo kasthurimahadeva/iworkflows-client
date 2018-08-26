@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+mail-confirm {
 
     #mail-confirm {
         width: 100%;
@@ -18,7 +18,6 @@
             #mail-confirm-form {
                 max-width: 480px;
                 padding: 48px;
-                background: #FFFFFF;
                 text-align: center;
                 @include mat-elevation(16);
 
@@ -39,7 +38,6 @@
                 .subtitle {
                     margin: 16px auto;
                     max-width: 300px;
-                    color: rgba(0, 0, 0, 0.54);
                     font-size: 15px;
                 }
 

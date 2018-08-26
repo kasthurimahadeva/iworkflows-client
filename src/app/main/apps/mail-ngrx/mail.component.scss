@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+mail-ngrx {
     width: 100%;
 
     .center {
@@ -14,9 +14,8 @@
                     margin: 0;
                     width: 56px;
                     height: 56px;
-                    background: #FFF;
                     border-radius: 0;
-                    border-right: 1px solid rgba(0, 0, 0, .12);
+                    border-right: 1px solid;
                 }
 
                 .search {
@@ -28,7 +27,6 @@
                     input {
                         height: 56px;
                         padding-left: 16px;
-                        color: rgba(0, 0, 0, 0.54);
                         border: none;
                         outline: none;
                     }

@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+login {
 
     #login {
         width: 100%;
@@ -19,7 +19,6 @@
                 width: 384px;
                 max-width: 384px;
                 padding: 32px;
-                background: #FFFFFF;
                 text-align: center;
                 @include mat-elevation(16);
 
@@ -92,7 +91,6 @@
                     position: relative;
                     overflow: hidden;
                     width: 100px;
-                    color: rgba(0, 0, 0, 0.54);
 
                     .text {
                         display: inline-flex;
@@ -100,13 +98,14 @@
                         padding: 0 8px;
                         z-index: 9999;
 
-                        &:before, &:after {
+                        &:before,
+                        &:after {
                             content: '';
                             display: block;
                             width: 30px;
                             position: absolute;
                             top: 10px;
-                            border-top: 1px solid rgba(0, 0, 0, 0.12);
+                            border-top: 1px solid;
                         }
 
                         &:before {

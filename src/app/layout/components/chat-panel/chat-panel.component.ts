@@ -120,9 +120,6 @@ export class ChatPanelComponent implements OnInit, AfterViewInit, OnDestroy
     {
         setTimeout(() => {
 
-            // Reset the reply form
-            this._replyForm.reset();
-
             // Focus to the reply input
             // this._replyInput.nativeElement.focus();
 
@@ -275,6 +272,9 @@ export class ChatPanelComponent implements OnInit, AfterViewInit, OnDestroy
 
         // Add the message to the chat
         this.chat.dialog.push(message);
+
+        // Reset the reply form
+        this._replyForm.reset();
 
         // Update the server
         this._chatPanelService.updateChat(this.chat.id, this.chat.dialog).then(response => {

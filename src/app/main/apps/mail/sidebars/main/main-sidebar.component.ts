@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Subject } from 'rxjs';
@@ -10,10 +10,11 @@ import { MailService } from 'app/main/apps/mail/mail.service';
 import { MailComposeDialogComponent } from 'app/main/apps/mail/dialogs/compose/compose.component';
 
 @Component({
-    selector   : 'mail-main-sidebar',
-    templateUrl: './main-sidebar.component.html',
-    styleUrls  : ['./main-sidebar.component.scss'],
-    animations : fuseAnimations
+    selector     : 'mail-main-sidebar',
+    templateUrl  : './main-sidebar.component.html',
+    styleUrls    : ['./main-sidebar.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class MailMainSidebarComponent implements OnInit, OnDestroy
 {

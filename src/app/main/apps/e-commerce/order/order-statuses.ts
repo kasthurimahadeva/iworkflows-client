@@ -2,71 +2,71 @@ export const orderStatuses = [
     {
         'id'   : 1,
         'name' : 'Awaiting check payment',
-        'color': 'mat-blue-500-bg'
+        'color': 'blue-500'
     },
     {
         'id'   : 2,
         'name' : 'Payment accepted',
-        'color': 'mat-green-500-bg'
+        'color': 'green-500'
     },
     {
         'id'   : 3,
         'name' : 'Preparing the order',
-        'color': 'mat-orange-500-bg'
+        'color': 'orange-500'
     },
     {
         'id'   : 4,
         'name' : 'Shipped',
-        'color': 'mat-purple-500-bg'
+        'color': 'purple-500'
     },
     {
         'id'   : 5,
         'name' : 'Delivered',
-        'color': 'mat-green-800-bg'
+        'color': 'green-800'
     },
     {
         'id'   : 6,
         'name' : 'Canceled',
-        'color': 'mat-pink-500-bg'
+        'color': 'pink-500'
     },
     {
         'id'   : 7,
         'name' : 'Refunded',
-        'color': 'mat-red-500-bg'
+        'color': 'red-500'
     },
     {
         'id'   : 8,
         'name' : 'Payment error',
-        'color': 'mat-red-900-bg'
+        'color': 'red-900'
     },
     {
         'id'   : 9,
         'name' : 'On pre-order (paid)',
-        'color': 'mat-purple-300-bg'
+        'color': 'purple-300'
     },
     {
         'id'   : 10,
         'name' : 'Awaiting bank wire payment',
-        'color': 'mat-blue-500-bg'
+        'color': 'blue-500'
     },
     {
         'id'   : 11,
         'name' : 'Awaiting PayPal payment',
-        'color': 'mat-blue-500-bg'
+        'color': 'blue-500'
     },
     {
         'id'   : 12,
         'name' : 'Remote payment accepted',
-        'color': 'mat-green-500-bg'
+        'color': 'green-500'
     },
     {
         'id'   : 13,
         'name' : 'On pre-order (not paid)',
-        'color': 'mat-purple-300-bg'
+        'color': 'purple-300'
     },
     {
         'id'   : 14,
         'name' : 'Awaiting Cash-on-delivery payment',
-        'color': 'mat-blue-500-bg'
+        'color': 'blue-500'
     }
 ];

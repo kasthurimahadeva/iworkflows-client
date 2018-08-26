@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+profile-photos-videos {
 
     #photos-videos {
 
@@ -16,7 +16,6 @@
                 .info {
                     margin-left: 16px;
                     font-size: 15px;
-                    color: rgba(0, 0, 0, 0.54);
                 }
             }
 
@@ -42,8 +41,6 @@
                         padding: 0 16px;
                         height: 48px;
                         line-height: 48px;
-                        background: rgba(0, 0, 0, 0.54);
-                        color: #FFF;
                         font-size: 15px;
                     }
                 }

@@ -12,10 +12,12 @@
 
         <div fxFlex fxLayout="column" fusePerfectScrollbar>
 
-            <div class="label" *ngFor="let label of board.labels" fxFlex="0 0 auto" fxLayout="row" fxFlexAlign="space-between center"
+            <div class="label" *ngFor="let label of board.labels" fxFlex="0 0 auto" fxLayout="row"
+                 fxFlexAlign="space-between center"
                  [ngClass]="label.color">
 
-                <mat-checkbox fxFlex fxLayout="row" fxLayoutAlign="start center" [checked]="card.idLabels.indexOf(label.id) > -1"
+                <mat-checkbox fxFlex fxLayout="row" fxLayoutAlign="start center"
+                              [checked]="card.idLabels.indexOf(label.id) > -1"
                               (change)="toggleInArray(label.id, card.idLabels);cardLabelsChanged()">
                     {{label.name}}
                 </mat-checkbox>
@@ -41,7 +43,8 @@
                 <input matInput placeholder="Name" [(ngModel)]="selectedLabel.name" (change)="onLabelChange()">
             </mat-form-field>
 
-            <fuse-material-color-picker [(selectedClass)]="selectedLabel.color" class="ml-8" (change)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>
+            <fuse-material-color-picker [(ngModel)]="selectedLabel.color" class="ml-8"
+                                        (colorChanged)="$event.preventDefault;onLabelChange()"></fuse-material-color-picker>
         </div>
 
     </div>
@@ -62,7 +65,8 @@
                     <input matInput placeholder="Name" [(ngModel)]="newLabel.name" name="labelName" required>
                 </mat-form-field>
 
-                <fuse-material-color-picker class="ml-8" [(selectedClass)]="newLabel.color" name="labelColor"></fuse-material-color-picker>
+                <fuse-material-color-picker class="ml-8" [(ngModel)]="newLabel.color"
+                                            name="labelColor"></fuse-material-color-picker>
             </div>
 
             <button mat-raised-button class="mat-accent mt-16" [disabled]="!newLabelForm.valid">ADD NEW LABEL</button>

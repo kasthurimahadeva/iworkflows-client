@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+profile-timeline {
 
     #timeline {
         max-width: 1200px;
@@ -24,8 +24,7 @@
 
                 footer {
                     padding: 8px;
-                    border-top: 1px solid rgba(0, 0, 0, 0.08);
-                    background: #F3F4F5;
+                    border-top: 1px solid;
 
                     .post-button {
                         margin: 0;
@@ -48,7 +47,6 @@
                 margin-bottom: 32px;
                 overflow: hidden;
                 border-radius: 2px;
-                background: #FFFFFF;
                 @include mat-elevation(2);
 
                 &:last-child {
@@ -63,12 +61,7 @@
 
                         .username {
                             margin-right: 2px;
-                            color: mat-color($accent);
                         }
-                    }
-
-                    .time {
-                        color: rgba(0, 0, 0, 0.54);
                     }
                 }
 
@@ -110,19 +103,18 @@
                     }
 
                     .article {
-                        border: 1px solid rgba(0, 0, 0, 0.12);
+                        border: 1px solid;
                         margin: 16px;
 
                         .media {
                             padding: 0;
                             overflow: hidden;
-                            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                            border-bottom: 1px solid;
 
                             img {
                                 display: block;
                                 padding: 0;
                             }
-
                         }
 
                         .title {
@@ -132,7 +124,6 @@
 
                         .subtitle {
                             padding: 0 16px;
-                            color: rgba(0, 0, 0, 0.54);
                         }
 
                         .excerpt {
@@ -142,8 +133,6 @@
                 }
 
                 footer {
-                    border-top: 1px solid rgba(0, 0, 0, 0.08);
-                    background-color: rgba(0, 0, 0, 0.04);
                     padding: 16px;
 
                     .comment-count {
@@ -163,21 +152,12 @@
                             margin-right: 4px;
                         }
 
-                        .message {
-                            color: rgba(0, 0, 0, 0.87);
-                        }
-
-                        .time {
-                            color: rgba(0, 0, 0, 0.54);
-                        }
-
                         .actions {
                             margin-top: 8px;
 
                             .reply-button {
                                 margin-right: 16px;
                                 cursor: pointer;
-                                color: mat-color($accent);
                             }
 
                             .report-button {
@@ -197,7 +177,7 @@
                                 padding: 8px;
                                 margin-bottom: 8px;
                                 font-size: 13px;
-                                border: 1px solid rgba(0, 0, 0, 0.12);
+                                border: 1px solid;
                             }
 
                             .post-comment-button {
@@ -225,7 +205,6 @@
             .latest-activity {
 
                 .content {
-                    background-color: #FFF;
 
                     .activities {
 
@@ -238,14 +217,10 @@
 
                             .username {
                                 font-weight: 500;
-                                color: mat-color($accent)
                             }
 
                             .message {
                                 font-weight: 500;
-                            }
-
-                            .time {
                             }
                         }
                     }
@@ -273,13 +248,11 @@
 
         .content {
             padding: 16px;
-            background-color: #FFF;
         }
 
         footer {
             padding: 8px;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            background-color: rgba(0, 0, 0, 0.06);
+            border-top: 1px solid;
         }
 
         &.info-box {
@@ -291,10 +264,6 @@
                     font-size: 15px;
                     font-weight: 500;
                     padding-bottom: 4px;
-                }
-
-                .info {
-
                 }
 
                 &:last-child {

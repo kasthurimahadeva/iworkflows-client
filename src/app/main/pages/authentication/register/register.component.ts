@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/internal/operators';
@@ -7,10 +7,11 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'register',
-    templateUrl: './register.component.html',
-    styleUrls  : ['./register.component.scss'],
-    animations : fuseAnimations
+    selector     : 'register',
+    templateUrl  : './register.component.html',
+    styleUrls    : ['./register.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class RegisterComponent implements OnInit, OnDestroy
 {

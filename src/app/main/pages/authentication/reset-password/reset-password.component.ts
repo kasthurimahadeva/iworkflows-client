@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -7,10 +7,11 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'reset-password',
-    templateUrl: './reset-password.component.html',
-    styleUrls  : ['./reset-password.component.scss'],
-    animations : fuseAnimations
+    selector     : 'reset-password',
+    templateUrl  : './reset-password.component.html',
+    styleUrls    : ['./reset-password.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy
 {

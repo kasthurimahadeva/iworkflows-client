@@ -93,7 +93,7 @@
                             </div>
                         </div>
 
-                        <div class="grey-300-bg p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="p-16 by" fxLayout="row" fxLayoutAlign="space-between center">
                             <div fxLayout="row" fxLayoutAlign="start center">
                                 <mat-icon fontSet="meteocons" fontIcon="icon-windy"
                                           class="s-16 secondary-text mr-8"></mat-icon>
@@ -125,7 +125,8 @@
                                  *ngFor="let day of widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].next3Days">
                                 <span class="h4">{{day.name}}</span>
                                 <div fxLayout="row" fxLayoutAlign="start center">
-                                    <mat-icon fontSet="meteocons" [fontIcon]="day.icon" class="secondary-text mr-16"></mat-icon>
+                                    <mat-icon fontSet="meteocons" [fontIcon]="day.icon"
+                                              class="secondary-text mr-16"></mat-icon>
                                     <span class="h2">{{day.temp[widgets.weatherWidget.tempUnit]}}</span>
                                     <span class="h2 font-weight-300 secondary-text text-super">&deg;</span>
                                     <span class="h2 font-weight-300 secondary-text">
@@ -156,7 +157,7 @@
     <div class="center" fusePerfectScrollbar>
 
         <!-- HEADER -->
-        <div class="header mat-accent-bg p-24 pb-0" fxLayout="column" fxLayoutAlign="space-between">
+        <div class="header accent p-24 pb-0" fxLayout="column" fxLayoutAlign="space-between">
 
             <div fxLayout="row" fxLayoutAlign="space-between start">
 
@@ -195,7 +196,7 @@
 
                 <mat-tab label="Home">
 
-                    <div class="widget-group grey-100-bg p-12" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
+                    <div class="widget-group p-12" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
                          [@animateStagger]="{value:'50'}">
 
                         <!-- WIDGET 1 -->
@@ -203,7 +204,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <mat-form-field>
@@ -229,7 +230,7 @@
                                     </div>
                                 </div>
 
-                                <div class="p-16 grey-50-bg border-top" fxLayout="row" fxLayoutAlign="start center">
+                                <div class="p-16 border-top" fxLayout="row" fxLayoutAlign="start center">
                                     <span class="h4 secondary-text text-truncate">
                                         {{widgets.widget1.data.extra.label}}:
                                     </span>
@@ -241,7 +242,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -261,7 +262,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget2.title}}</div>
@@ -280,7 +281,7 @@
                                     </div>
                                 </div>
 
-                                <div class="p-16 grey-50-bg border-top" fxLayout="row" fxLayoutAlign="start center">
+                                <div class="p-16 border-top" fxLayout="row" fxLayoutAlign="start center">
                                     <span class="h4 secondary-text text-truncate">
                                         {{widgets.widget2.data.extra.label}}:
                                     </span>
@@ -290,7 +291,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -310,7 +311,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget3.title}}</div>
@@ -329,7 +330,7 @@
                                     </div>
                                 </div>
 
-                                <div class="p-16 grey-50-bg border-top" fxLayout="row" fxLayoutAlign="start center">
+                                <div class="p-16 border-top" fxLayout="row" fxLayoutAlign="start center">
                                     <span class="h4 secondary-text text-truncate">
                                         {{widgets.widget3.data.extra.label}}:
                                     </span>
@@ -339,7 +340,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -359,7 +360,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget4.title}}</div>
@@ -378,7 +379,7 @@
                                     </div>
                                 </div>
 
-                                <div class="p-16 grey-50-bg border-top" fxLayout="row" fxLayoutAlign="start center">
+                                <div class="p-16 border-top" fxLayout="row" fxLayoutAlign="start center">
                                     <span class="h4 secondary-text text-truncate">
                                         {{widgets.widget4.data.extra.label}}:
                                     </span>
@@ -388,7 +389,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -408,7 +409,7 @@
                                      class="widget widget5">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
 
                                 <div class="px-16 border-bottom" fxLayout="row wrap"
                                      fxLayoutAlign="space-between center">
@@ -419,7 +420,7 @@
                                         <button mat-button class="px-16"
                                                 *ngFor="let range of widgets.widget5.ranges | keys"
                                                 (click)="widget5.currentRange = range.key"
-                                                [disabled]="widget5.currentRange == range.key">
+                                                [ngClass]="{'accent' : widget5.currentRange == range.key}">
                                             {{range.value}}
                                         </button>
                                     </div>
@@ -487,7 +488,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
 
                                 <div class="px-16 py-8 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
@@ -547,7 +548,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
 
                                 <div class="px-16 py-8 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
@@ -592,7 +593,7 @@
                 <mat-tab label="Budget Summary">
 
                     <!-- WIDGET GROUP -->
-                    <div class="widget-group grey-100-bg" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
+                    <div class="widget-group" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
                          [@animateStagger]="{value:'50'}">
 
                         <!-- WIDGET 8 -->
@@ -600,7 +601,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
                                 <div class="h3 px-16 py-24">
                                     {{widgets.widget8.title}}
                                 </div>
@@ -632,7 +633,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
                                 <div class="px-16 py-12 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget9.title}}</div>
@@ -749,7 +750,7 @@
                                      fxFlex="100">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
 
                                 <div class="simple-table-container" ms-responsive-table>
                                     <div class=" table-title">
@@ -794,7 +795,7 @@
                 <mat-tab label="Team Members">
 
                     <!-- WIDGET GROUP -->
-                    <div class="widget-group grey-100-bg" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
+                    <div class="widget-group" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom
                          [@animateStagger]="{value:'50'}">
 
                         <!-- WIDGET 11 -->
@@ -802,12 +803,12 @@
                                      fxFlex="100">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-white-bg mat-elevation-z2">
+                            <div class="fuse-widget-front mat-elevation-z2">
 
                                 <div class="p-24 mb-8 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h2">{{widgets.widget11.title}}</div>
-                                    <div class="text-boxed red-bg white-fg m-0">
+                                    <div class="text-boxed accent m-0">
                                         {{widgets.widget11.table.rows.length}}
                                         members
                                     </div>

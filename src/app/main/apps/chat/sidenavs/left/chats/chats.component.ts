@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ObservableMedia } from '@angular/flex-layout';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,10 +9,11 @@ import { FuseMatSidenavHelperService } from '@fuse/directives/fuse-mat-sidenav/f
 import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'chat-chats-sidenav',
-    templateUrl: './chats.component.html',
-    styleUrls  : ['./chats.component.scss'],
-    animations : fuseAnimations
+    selector     : 'chat-chats-sidenav',
+    templateUrl  : './chats.component.html',
+    styleUrls    : ['./chats.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ChatChatsSidenavComponent implements OnInit, OnDestroy
 {

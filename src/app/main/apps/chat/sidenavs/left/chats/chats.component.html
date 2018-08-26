@@ -120,23 +120,24 @@
                 <div fxLayout="row" fxLayoutAlign="start center">
 
                     <div class="avatar-wrapper" fxFlex="0 1 auto" fxLayoutAlign="center center">
-                        <img [src]="contacts |getById:chat.contactId:'avatar'"
+                        <img [src]="contacts | getById:chat.contactId:'avatar'"
                              class="avatar"
-                             alt="{{contacts |getById:chat.contactId:'name'}}"/>
-                        <mat-icon class="s-16 status" [ngClass]="contacts |getById:chat.contactId:'status'"></mat-icon>
+                             alt="{{contacts | getById:chat.contactId:'name'}}"/>
+                        <mat-icon class="s-16 status" [ngClass]="contacts | getById:chat.contactId:'status'"></mat-icon>
                     </div>
 
                     <div fxLayout="row" fxFlex>
 
                         <div class="" fxFlex fxLayout="column" fxLayoutAlign="center start">
-                            <div class="contact-name">{{contacts |getById:chat.contactId:'name'}}</div>
+                            <div class="contact-name">{{contacts | getById:chat.contactId:'name'}}</div>
+                            <div class="contact-last-message">{{chat.lastMessage}}</div>
                         </div>
 
                         <div fxLayout="column" fxLayoutAlign="center end">
                             <div class="contact-last-message-time">
                                 {{chat.lastMessageTime | date}}
                             </div>
-                            <div *ngIf="chat.unread" class="unread-message-count mat-accent-bg">{{chat.unread}}</div>
+                            <div *ngIf="chat.unread" class="unread-message-count accent">{{chat.unread}}</div>
                         </div>
                     </div>
                 </div>
@@ -148,7 +149,7 @@
         <!-- CONTACTS LIST-->
         <div class="contact-list" fxLayout="column">
 
-            <div matSubheader *ngIf="(contacts| filter: searchText).length > 0">
+            <div matSubheader *ngIf="(contacts | filter: searchText).length > 0">
                 Contacts
             </div>
 
@@ -173,7 +174,7 @@
         <!-- / CONTACTS LIST-->
 
         <!-- NO RESULTS MESSAGE -->
-        <div *ngIf="(contacts| filter: searchText).length === 0" class="no-results-message">
+        <div *ngIf="(contacts | filter: searchText).length === 0" class="no-results-message">
             No results..
         </div>
         <!-- NO RESULTS MESSAGE-->

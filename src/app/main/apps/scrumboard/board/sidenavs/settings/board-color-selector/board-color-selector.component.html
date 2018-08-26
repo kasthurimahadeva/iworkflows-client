@@ -1,7 +1,7 @@
 <mat-list class="colors">
     <!-- COLORS -->
     <mat-list-item class="color m-8 mat-elevation-z1"
-                   [ngClass]="'mat-'+color.key+'-bg'"
+                   [ngClass]="color.key"
                    *ngFor="let color of (colors | keys)"
                    (click)="setColor(color.key)"
                    matRipple>

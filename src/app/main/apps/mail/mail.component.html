@@ -1,7 +1,7 @@
 <div id="mail" class="page-layout carded left-sidebar inner-scroll">
 
     <!-- TOP BACKGROUND -->
-    <div class="top-bg mat-accent-bg"></div>
+    <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
 
     <!-- SIDEBAR -->
@@ -23,7 +23,7 @@
                     <mat-icon>menu</mat-icon>
                 </button>
 
-                <div class="search mat-white-bg" flex fxLayout="row" fxLayoutAlign="start center">
+                <div class="search" flex fxLayout="row" fxLayoutAlign="start center">
                     <mat-icon>search</mat-icon>
                     <input [formControl]="searchInput" [placeholder]="'MAIL.SEARCH_PLACEHOLDER' | translate" fxFlex>
                 </div>
@@ -33,7 +33,7 @@
         <!-- / CONTENT HEADER -->
 
         <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg" [ngClass]="{'current-mail-selected':currentMail}">
+        <div class="content-card" [ngClass]="{'current-mail-selected':currentMail}">
 
             <!-- CONTENT TOOLBAR -->
             <div class="toolbar px-24 py-8">

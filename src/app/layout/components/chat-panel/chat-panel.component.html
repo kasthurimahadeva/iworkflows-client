@@ -1,4 +1,4 @@
-<div class="header mat-elevation-z4 mat-primary-bg" fxLayout="row" fxLayoutAlign="space-between center">
+<div class="header mat-elevation-z4 primary" fxLayout="row" fxLayoutAlign="space-between center">
 
     <ng-container *ngIf="selectedContact === null">
 
@@ -84,7 +84,7 @@
             <ng-container *ngIf="selectedContact && chat && chat.dialog && chat.dialog.length === 0">
 
                 <div class="no-messages-icon">
-                    <mat-icon class="s-128">chat</mat-icon>
+                    <mat-icon class="s-128 fade-text">chat</mat-icon>
                 </div>
 
                 <div class="no-messages secondary-text">
@@ -98,7 +98,7 @@
                 <div class="no-contact-selected">
 
                     <div class="no-contact-icon">
-                        <mat-icon class="s-128">chat</mat-icon>
+                        <mat-icon class="s-128 fade-text">chat</mat-icon>
                     </div>
 
                     <div class="no-contact secondary-text">
@@ -117,9 +117,7 @@
             <form #replyForm="ngForm"
                   (ngSubmit)="reply($event)"
                   (keydown.enter)="reply($event)"
-                  fxFlex
-                  fxLayout="row"
-                  fxLayoutAlign="start center">
+                  fxFlex fxLayout="row" fxLayoutAlign="start center">
 
                 <mat-form-field class="message-text" fxFlex floatLabel="never" appearance="standard">
                     <textarea matInput #replyInput ngModel name="message" placeholder="Type your message"

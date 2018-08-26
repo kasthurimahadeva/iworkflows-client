@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,10 +9,11 @@ import { ScrumboardService } from 'app/main/apps/scrumboard/scrumboard.service';
 import { Board } from 'app/main/apps/scrumboard/board.model';
 
 @Component({
-    selector   : 'scrumboard',
-    templateUrl: './scrumboard.component.html',
-    styleUrls  : ['./scrumboard.component.scss'],
-    animations : fuseAnimations
+    selector     : 'scrumboard',
+    templateUrl  : './scrumboard.component.html',
+    styleUrls    : ['./scrumboard.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ScrumboardComponent implements OnInit, OnDestroy
 {

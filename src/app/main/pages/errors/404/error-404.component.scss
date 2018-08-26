@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+error-404 {
 
     #error-404 {
         width: 100%;
@@ -20,7 +20,6 @@
             .message {
                 font-size: 24px;
                 text-align: center;
-                color: rgba(0, 0, 0, 0.54);
             }
 
             .search {
@@ -29,7 +28,6 @@
                 line-height: 56px;
                 margin: 48px auto 16px auto;
                 padding: 16px;
-                background: #FFFFFF;
                 @include mat-elevation(1);
 
                 input {

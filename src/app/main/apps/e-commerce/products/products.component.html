@@ -1,14 +1,14 @@
 <div id="products" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
-    <div class="top-bg mat-accent-bg"></div>
+    <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
 
     <!-- CENTER -->
     <div class="center">
 
         <!-- HEADER -->
-        <div class="header mat-accent-bg"
+        <div class="header accent"
              fxLayout="column" fxLayoutAlign="center center"
              fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
@@ -38,7 +38,7 @@
 
             <button mat-raised-button
                     [routerLink]="'/apps/e-commerce/products/new'"
-                    class="add-product-button mat-white-bg my-12 mt-sm-0">
+                    class="add-product-button fuse-white my-12 mt-sm-0">
                 <span>ADD NEW PRODUCT</span>
             </button>
 
@@ -46,7 +46,7 @@
         <!-- / HEADER -->
 
         <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg">
+        <div class="content-card">
 
             <mat-table class="products-table"
                        #table [dataSource]="dataSource"
@@ -107,7 +107,7 @@
                     <mat-cell *matCellDef="let product" fxHide fxShow.gt-sm>
 
                         <span class="quantity-indicator text-truncate"
-                              [ngClass]="{'mat-red-500-bg':product.quantity <= 5, 'mat-amber-500-bg':product.quantity > 5 && product.quantity <= 25,'mat-green-600-bg':product.quantity > 25}">
+                              [ngClass]="{'red-500':product.quantity <= 5, 'amber-500':product.quantity > 5 && product.quantity <= 25,'green-600':product.quantity > 25}">
                         </span>
                         <span>
                             {{product.quantity}}
@@ -120,8 +120,8 @@
                 <ng-container matColumnDef="active">
                     <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Active</mat-header-cell>
                     <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
-                        <mat-icon *ngIf="product.active" class="active-icon mat-green-600-bg s-16">check</mat-icon>
-                        <mat-icon *ngIf="!product.active" class="active-icon mat-red-500-bg s-16">close</mat-icon>
+                        <mat-icon *ngIf="product.active" class="active-icon green-600 s-16">check</mat-icon>
+                        <mat-icon *ngIf="!product.active" class="active-icon red-500 s-16">close</mat-icon>
                     </mat-cell>
                 </ng-container>
 

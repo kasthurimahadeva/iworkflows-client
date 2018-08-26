@@ -274,7 +274,7 @@ export class ScrumboardFakeDb
                         }
                     ],
                     'activities'       : [],
-                    'due'              : '2018-09-07T12:00:00.000Z'
+                    'due'              : '2020-09-07T12:00:00.000Z'
                 },
                 {
                     'id'               : 'f6b9d7a9247e5d794a081927',
@@ -565,22 +565,22 @@ export class ScrumboardFakeDb
                 {
                     'id'   : '26022e4129ad3a5sc28b36cd',
                     'name' : 'High Priority',
-                    'color': 'mat-red-500-bg'
+                    'color': 'red-500'
                 },
                 {
                     'id'   : '56027e4119ad3a5dc28b36cd',
                     'name' : 'Design',
-                    'color': 'mat-orange-400-bg'
+                    'color': 'orange-400'
                 },
                 {
                     'id'   : '5640635e19ad3a5dc21416b2',
                     'name' : 'App',
-                    'color': 'mat-blue-600-bg'
+                    'color': 'blue-600'
                 },
                 {
                     'id'   : '6540635g19ad3s5dc31412b2',
                     'name' : 'Feature',
-                    'color': 'mat-green-400-bg'
+                    'color': 'green-400'
                 }
             ]
         },
@@ -769,17 +769,17 @@ export class ScrumboardFakeDb
                 {
                     'id'   : '56027e4119ad3a5dc28b36cd',
                     'name' : 'Design',
-                    'color': 'mat-red-500-bg'
+                    'color': 'red-500'
                 },
                 {
                     'id'   : '5640635e19ad3a5dc21416b2',
                     'name' : 'App',
-                    'color': 'mat-blue-500-bg'
+                    'color': 'blue-500'
                 },
                 {
                     'id'   : '6540635g19ad3s5dc31412b2',
                     'name' : 'Feature',
-                    'color': 'mat-green-400-bg'
+                    'color': 'green-400'
                 }
             ]
         }

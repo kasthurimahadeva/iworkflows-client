@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -7,10 +7,11 @@ import { fuseAnimations } from '@fuse/animations';
 import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'chat-left-sidenav',
-    templateUrl: './left.component.html',
-    styleUrls  : ['./left.component.scss'],
-    animations : fuseAnimations
+    selector     : 'chat-left-sidenav',
+    templateUrl  : './left.component.html',
+    styleUrls    : ['./left.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ChatLeftSidenavComponent implements OnInit, OnDestroy
 {

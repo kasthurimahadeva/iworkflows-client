@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'lock',
-    templateUrl: './lock.component.html',
-    styleUrls  : ['./lock.component.scss'],
-    animations : fuseAnimations
+    selector     : 'lock',
+    templateUrl  : './lock.component.html',
+    styleUrls    : ['./lock.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class LockComponent implements OnInit
 {

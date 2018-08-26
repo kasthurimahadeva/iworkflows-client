@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+file-list {
     width: 100%;
 
     .mat-table {
@@ -11,15 +11,6 @@
             position: relative;
             cursor: pointer;
             min-height: 64px;
-
-            .mat-cell {
-
-                &.mat-column-icon {
-                }
-
-                &.mat-column-detail-button {
-                }
-            }
         }
     }
 }

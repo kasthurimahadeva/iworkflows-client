@@ -1,4 +1,4 @@
-:host {
+mail-ngrx-main-sidebar {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
@@ -20,11 +20,6 @@
 
         .account {
             width: 100%;
-        }
-    }
-    .content {
-
-        .compose-dialog-button {
         }
     }
 }

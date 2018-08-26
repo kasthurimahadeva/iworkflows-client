@@ -1,6 +1,6 @@
 @import 'src/@fuse/scss/fuse';
 
-:host {
+mail-details {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -15,7 +15,7 @@
 
     .mail-header {
         padding-bottom: 16px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        border-bottom: 1px solid;
 
         .actions {
             min-width: 88px;
@@ -31,7 +31,6 @@
             border-radius: 2px;
             margin: 4px 4px 4px 0;
             padding: 3px 8px;
-            background-color: rgba(0, 0, 0, 0.08);
 
             .label-color {
                 width: 8px;
@@ -46,7 +45,6 @@
         padding: 24px 0;
 
         .to {
-            color: rgba(0, 0, 0, 0.54);
 
             .to-text {
                 margin-right: 4px;
@@ -59,7 +57,6 @@
 
             .avatar {
                 margin-right: 16px;
-                background-color: mat-color($accent);
             }
 
             .name {
@@ -82,10 +79,6 @@
                     font-weight: 500;
                     margin-right: 6px;
                 }
-
-                .detail {
-                    color: rgba(0, 0, 0, 0.54);
-                }
             }
 
         }
@@ -93,7 +86,7 @@
 
     .mail-attachments {
         padding: 24px 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.12);
+        border-top: 1px solid;
 
         .title {
             margin-bottom: 16px;

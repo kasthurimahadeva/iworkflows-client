@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
-    selector   : 'forgot-password',
-    templateUrl: './forgot-password.component.html',
-    styleUrls  : ['./forgot-password.component.scss'],
-    animations : fuseAnimations
+    selector     : 'forgot-password',
+    templateUrl  : './forgot-password.component.html',
+    styleUrls    : ['./forgot-password.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class ForgotPasswordComponent implements OnInit
 {

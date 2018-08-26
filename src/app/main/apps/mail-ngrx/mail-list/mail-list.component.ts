@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
@@ -8,7 +8,8 @@ import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
     selector       : 'mail-ngrx-list',
     templateUrl    : './mail-list.component.html',
     styleUrls      : ['./mail-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation  : ViewEncapsulation.None
 })
 export class MailNgrxListComponent
 {

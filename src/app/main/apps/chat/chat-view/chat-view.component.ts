@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -8,9 +8,10 @@ import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scr
 import { ChatService } from 'app/main/apps/chat/chat.service';
 
 @Component({
-    selector   : 'chat-view',
-    templateUrl: './chat-view.component.html',
-    styleUrls  : ['./chat-view.component.scss']
+    selector     : 'chat-view',
+    templateUrl  : './chat-view.component.html',
+    styleUrls    : ['./chat-view.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ChatViewComponent implements OnInit, OnDestroy, AfterViewInit
 {
@@ -93,6 +94,45 @@ export class ChatViewComponent implements OnInit, OnDestroy, AfterViewInit
     // -----------------------------------------------------------------------------------------------------
 
     /**
+     * Decide whether to show or not the contact's avatar in the message row
+     *
+     * @param message
+     * @param i
+     * @returns {boolean}
+     */
+    shouldShowContactAvatar(message, i): boolean
+    {
+        return (
+            message.who === this.contact.id &&
+            ((this.dialog[i + 1] && this.dialog[i + 1].who !== this.contact.id) || !this.dialog[i + 1])
+        );
+    }
+
+    /**
+     * Check if the given message is the first message of a group
+     *
+     * @param message
+     * @param i
+     * @returns {boolean}
+     */
+    isFirstMessageOfGroup(message, i): boolean
+    {
+        return (i === 0 || this.dialog[i - 1] && this.dialog[i - 1].who !== message.who);
+    }
+
+    /**
+     * Check if the given message is the last message of a group
+     *
+     * @param message
+     * @param i
+     * @returns {boolean}
+     */
+    isLastMessageOfGroup(message, i): boolean
+    {
+        return (i === this.dialog.length - 1 || this.dialog[i + 1] && this.dialog[i + 1].who !== message.who);
+    }
+
+    /**
      * Select contact
      */
     selectContact(): void
@@ -106,11 +146,9 @@ export class ChatViewComponent implements OnInit, OnDestroy, AfterViewInit
     readyToReply(): void
     {
         setTimeout(() => {
-            this.replyForm.reset();
             this.focusReplyInput();
             this.scrollToBottom();
         });
-
     }
 
     /**
@@ -144,8 +182,15 @@ export class ChatViewComponent implements OnInit, OnDestroy, AfterViewInit
     /**
      * Reply
      */
-    reply(): void
+    reply(event): void
     {
+        event.preventDefault();
+
+        if ( !this.replyForm.form.value.message )
+        {
+            return;
+        }
+
         // Message
         const message = {
             who    : this.user.id,
@@ -155,6 +200,9 @@ export class ChatViewComponent implements OnInit, OnDestroy, AfterViewInit
 
         // Add the message to the chat
         this.dialog.push(message);
+
+        // Reset the reply form
+        this.replyForm.reset();
 
         // Update the server
         this._chatService.updateDialog(this.selectedChat.chatId, this.dialog).then(response => {

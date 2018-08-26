@@ -1,5 +1,6 @@
-import { Component, HostBinding, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostBinding, Inject, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -9,10 +10,11 @@ import { FuseNavigationService } from '@fuse/components/navigation/navigation.se
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 @Component({
-    selector   : 'fuse-theme-options',
-    templateUrl: './theme-options.component.html',
-    styleUrls  : ['./theme-options.component.scss'],
-    animations : fuseAnimations
+    selector     : 'fuse-theme-options',
+    templateUrl  : './theme-options.component.html',
+    styleUrls    : ['./theme-options.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class FuseThemeOptionsComponent implements OnInit, OnDestroy
 {
@@ -28,6 +30,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {DOCUMENT} document
      * @param {FormBuilder} _formBuilder
      * @param {FuseConfigService} _fuseConfigService
      * @param {FuseNavigationService} _fuseNavigationService
@@ -35,6 +38,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
      * @param {Renderer2} _renderer
      */
     constructor(
+        @Inject(DOCUMENT) private document: any,
         private _formBuilder: FormBuilder,
         private _fuseConfigService: FuseConfigService,
         private _fuseNavigationService: FuseNavigationService,
@@ -61,25 +65,29 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         // Build the config form
         // noinspection TypeScriptValidateTypes
         this.form = this._formBuilder.group({
+            colorTheme      : new FormControl(),
             layout          : this._formBuilder.group({
                 style    : new FormControl(),
                 width    : new FormControl(),
                 navbar   : this._formBuilder.group({
-                    background: new FormControl(),
-                    folded    : new FormControl(),
-                    hidden    : new FormControl(),
-                    position  : new FormControl(),
-                    variant   : new FormControl()
+                    primaryBackground  : new FormControl(),
+                    secondaryBackground: new FormControl(),
+                    folded             : new FormControl(),
+                    hidden             : new FormControl(),
+                    position           : new FormControl(),
+                    variant            : new FormControl()
                 }),
                 toolbar  : this._formBuilder.group({
-                    background: new FormControl(),
-                    hidden    : new FormControl(),
-                    position  : new FormControl()
+                    background           : new FormControl(),
+                    customBackgroundColor: new FormControl(),
+                    hidden               : new FormControl(),
+                    position             : new FormControl()
                 }),
                 footer   : this._formBuilder.group({
-                    background: new FormControl(),
-                    hidden    : new FormControl(),
-                    position  : new FormControl()
+                    background           : new FormControl(),
+                    customBackgroundColor: new FormControl(),
+                    hidden               : new FormControl(),
+                    position             : new FormControl()
                 }),
                 sidepanel: this._formBuilder.group({
                     hidden  : new FormControl(),
@@ -179,21 +187,24 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     layout: {
                         width    : 'fullwidth',
                         navbar   : {
-                            background: 'mat-fuse-dark-700-bg',
-                            folded    : false,
-                            hidden    : false,
-                            position  : 'left',
-                            variant   : 'vertical-style-1'
+                            primaryBackground  : 'fuse-navy-700',
+                            secondaryBackground: 'indigo-600',
+                            folded             : false,
+                            hidden             : false,
+                            position           : 'left',
+                            variant            : 'vertical-style-1'
                         },
                         toolbar  : {
-                            background: 'mat-white-500-bg',
-                            hidden    : false,
-                            position  : 'below-static'
+                            background           : 'fuse-white-500',
+                            customBackgroundColor: false,
+                            hidden               : false,
+                            position             : 'below-static'
                         },
                         footer   : {
-                            background: 'mat-fuse-dark-900-bg',
-                            hidden    : false,
-                            position  : 'below-static'
+                            background           : 'fuse-navy-900',
+                            customBackgroundColor: true,
+                            hidden               : false,
+                            position             : 'below-static'
                         },
                         sidepanel: {
                             hidden  : false,
@@ -212,21 +223,24 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     layout: {
                         width    : 'fullwidth',
                         navbar   : {
-                            background: 'mat-fuse-dark-700-bg',
-                            folded    : false,
-                            hidden    : false,
-                            position  : 'left',
-                            variant   : 'vertical-style-1'
+                            primaryBackground  : 'fuse-navy-700',
+                            secondaryBackground: 'indigo-600',
+                            folded             : false,
+                            hidden             : false,
+                            position           : 'left',
+                            variant            : 'vertical-style-1'
                         },
                         toolbar  : {
-                            background: 'mat-white-500-bg',
-                            hidden    : false,
-                            position  : 'below'
+                            background           : 'fuse-white-500',
+                            customBackgroundColor: false,
+                            hidden               : false,
+                            position             : 'below'
                         },
                         footer   : {
-                            background: 'mat-fuse-dark-900-bg',
-                            hidden    : false,
-                            position  : 'below'
+                            background           : 'fuse-navy-900',
+                            customBackgroundColor: true,
+                            hidden               : false,
+                            position             : 'below'
                         },
                         sidepanel: {
                             hidden  : false,
@@ -245,21 +259,24 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     layout: {
                         width    : 'fullwidth',
                         navbar   : {
-                            background: 'mat-fuse-dark-700-bg',
-                            folded    : false,
-                            hidden    : false,
-                            position  : 'left',
-                            layout    : 'vertical-style-1'
+                            primaryBackground  : 'fuse-navy-700',
+                            secondaryBackground: 'indigo-600',
+                            folded             : false,
+                            hidden             : false,
+                            position           : 'left',
+                            layout             : 'vertical-style-1'
                         },
                         toolbar  : {
-                            background: 'mat-white-500-bg',
-                            hidden    : false,
-                            position  : 'above-static'
+                            background           : 'fuse-white-500',
+                            customBackgroundColor: false,
+                            hidden               : false,
+                            position             : 'above-static'
                         },
                         footer   : {
-                            background: 'mat-fuse-dark-900-bg',
-                            hidden    : false,
-                            position  : 'above-static'
+                            background           : 'fuse-navy-900',
+                            customBackgroundColor: true,
+                            hidden               : false,
+                            position             : 'above-static'
                         },
                         sidepanel: {
                             hidden  : false,
@@ -278,21 +295,24 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     layout: {
                         width    : 'fullwidth',
                         navbar   : {
-                            background: 'mat-fuse-dark-700-bg',
-                            folded    : false,
-                            hidden    : false,
-                            position  : 'top',
-                            variant   : 'vertical-style-1'
+                            primaryBackground  : 'fuse-navy-700',
+                            secondaryBackground: 'indigo-600',
+                            folded             : false,
+                            hidden             : false,
+                            position           : 'top',
+                            variant            : 'vertical-style-1'
                         },
                         toolbar  : {
-                            background: 'mat-white-500-bg',
-                            hidden    : false,
-                            position  : 'above'
+                            background           : 'fuse-white-500',
+                            customBackgroundColor: false,
+                            hidden               : false,
+                            position             : 'above'
                         },
                         footer   : {
-                            background: 'mat-fuse-dark-900-bg',
-                            hidden    : false,
-                            position  : 'above-fixed'
+                            background           : 'fuse-navy-900',
+                            customBackgroundColor: true,
+                            hidden               : false,
+                            position             : 'above-fixed'
                         },
                         sidepanel: {
                             hidden  : false,

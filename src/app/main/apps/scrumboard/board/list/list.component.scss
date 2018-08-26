@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-.scrumboard-board-list {
+scrumboard-board-list {
     width: 344px;
     min-width: 344px;
     max-width: 344px;
@@ -9,8 +9,6 @@
 
     .list {
         max-height: 100%;
-        background-color: #EEF0F2;
-        color: #000;
         border-radius: 2px;
         transition: box-shadow 150ms ease;
 
@@ -18,7 +16,7 @@
             height: 64px;
             min-height: 64px;
             padding: 0 8px 0 16px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            border-bottom: 1px solid;
 
             @include media-breakpoint-down(sm) {
                 height: 48px;
@@ -37,7 +35,6 @@
                 position: relative;
                 min-height: 32px;
                 padding: 0 16px;
-                background: mat-color($mat-grey, 200) !important;
             }
         }
 
@@ -45,9 +42,9 @@
             display: flex;
             flex-direction: column;
             flex: 1 0 auto;
+            border-top: 1px solid;
             min-height: 48px;
         }
-
     }
 
     &:not(.has-handle):not(.move-disabled),

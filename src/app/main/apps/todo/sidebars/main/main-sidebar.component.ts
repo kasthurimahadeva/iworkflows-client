@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -8,10 +8,11 @@ import { fuseAnimations } from '@fuse/animations';
 import { TodoService } from 'app/main/apps/todo/todo.service';
 
 @Component({
-    selector   : 'todo-main-sidebar',
-    templateUrl: './main-sidebar.component.html',
-    styleUrls  : ['./main-sidebar.component.scss'],
-    animations : fuseAnimations
+    selector     : 'todo-main-sidebar',
+    templateUrl  : './main-sidebar.component.html',
+    styleUrls    : ['./main-sidebar.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations   : fuseAnimations
 })
 export class TodoMainSidebarComponent implements OnInit, OnDestroy
 {

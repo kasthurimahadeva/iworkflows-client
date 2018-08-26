@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+invoice-modern {
 
     #invoice {
 
@@ -83,6 +83,29 @@
                         .invoice-table {
                             margin-top: 96px;
                             font-size: 15px;
+                            color: rgba(0, 0, 0, 0.87);
+
+                            thead {
+
+                                tr {
+
+                                    th {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                                    }
+                                }
+                            }
+
+                            tbody {
+
+                                tr {
+
+                                    td {
+                                        color: rgba(0, 0, 0, 0.87);
+                                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                                    }
+                                }
+                            }
 
                             .title {
                                 font-size: 17px;
@@ -173,6 +196,7 @@
         #invoice {
 
             &.modern {
+                background: white;
 
                 .invoice-container {
                     padding: 0;

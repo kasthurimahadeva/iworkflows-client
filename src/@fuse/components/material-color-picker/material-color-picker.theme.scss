@@ -1,6 +1,6 @@
 @mixin fuse-material-color-picker-theme($theme) {
 
-    $background: map_get($theme, background);
+    $background: map-get($theme, background);
 
     .fuse-material-color-picker-menu {
 

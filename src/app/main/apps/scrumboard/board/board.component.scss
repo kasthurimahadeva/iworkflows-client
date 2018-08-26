@@ -1,6 +1,6 @@
 @import "src/@fuse/scss/fuse";
 
-:host {
+scrumboard-board {
 
     mat-sidenav-container {
         width: 100%;
@@ -100,7 +100,6 @@
 
             .board-content-wrapper {
                 position: relative;
-                background: #E5E7E8;
 
                 .board-content {
                     position: absolute;

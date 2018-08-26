@@ -46,6 +46,7 @@
                                 padding: 64px 88px;
                                 overflow: hidden;
                                 background: #FFFFFF;
+                                color: rgba(0, 0, 0, 0.87);
                                 @include mat-elevation(7);
 
                                 .header {
@@ -134,6 +135,7 @@
                                             tr {
 
                                                 td {
+                                                    border-color: rgba(0, 0, 0, 0.12);
 
                                                     &:first-child {
                                                         padding-left: 8px;
