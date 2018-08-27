@@ -188,7 +188,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         width    : 'fullwidth',
                         navbar   : {
                             primaryBackground  : 'fuse-navy-700',
-                            secondaryBackground: 'indigo-600',
+                            secondaryBackground: 'fuse-navy-900',
                             folded             : false,
                             hidden             : false,
                             position           : 'left',
@@ -224,7 +224,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         width    : 'fullwidth',
                         navbar   : {
                             primaryBackground  : 'fuse-navy-700',
-                            secondaryBackground: 'indigo-600',
+                            secondaryBackground: 'fuse-navy-900',
                             folded             : false,
                             hidden             : false,
                             position           : 'left',
@@ -260,7 +260,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         width    : 'fullwidth',
                         navbar   : {
                             primaryBackground  : 'fuse-navy-700',
-                            secondaryBackground: 'indigo-600',
+                            secondaryBackground: 'fuse-navy-900',
                             folded             : false,
                             hidden             : false,
                             position           : 'left',
@@ -296,7 +296,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         width    : 'fullwidth',
                         navbar   : {
                             primaryBackground  : 'fuse-navy-700',
-                            secondaryBackground: 'indigo-600',
+                            secondaryBackground: 'fuse-navy-900',
                             folded             : false,
                             hidden             : false,
                             position           : 'top',
@@ -339,5 +339,4 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
-
 }
