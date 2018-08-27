@@ -10,6 +10,7 @@ import { DocsWorkingWithFuseProductionComponent } from 'app/main/documentation/w
 import { DocsWorkingWithFuseDirectoryStructureComponent } from 'app/main/documentation/working-with-fuse/directory-structure/directory-structure.component';
 import { DocsWorkingWithFuseUpdatingFuseComponent } from 'app/main/documentation/working-with-fuse/updating-fuse/updating-fuse.component';
 import { DocsWorkingWithFuseMultiLanguageComponent } from 'app/main/documentation/working-with-fuse/multi-language/multi-language.component';
+import { DocsWorkingWithFuseMaterialThemingComponent } from 'app/main/documentation/working-with-fuse/material-theming/material-theming.component';
 import { DocsWorkingWithFuseThemeLayoutsComponent } from 'app/main/documentation/working-with-fuse/theme-layouts/theme-layouts.component';
 import { DocsWorkingWithFusePageLayoutsComponent } from 'app/main/documentation/working-with-fuse/page-layouts/page-layouts.component';
 
@@ -35,6 +36,10 @@ const routes = [
         component: DocsWorkingWithFuseMultiLanguageComponent
     },
     {
+        path     : 'material-theming',
+        component: DocsWorkingWithFuseMaterialThemingComponent
+    },
+    {
         path     : 'theme-layouts',
         component: DocsWorkingWithFuseThemeLayoutsComponent
     },
@@ -50,6 +55,7 @@ const routes = [
         DocsWorkingWithFuseProductionComponent,
         DocsWorkingWithFuseDirectoryStructureComponent,
         DocsWorkingWithFuseUpdatingFuseComponent,
+        DocsWorkingWithFuseMaterialThemingComponent,
         DocsWorkingWithFuseMultiLanguageComponent,
         DocsWorkingWithFuseThemeLayoutsComponent,
         DocsWorkingWithFusePageLayoutsComponent

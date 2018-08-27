@@ -905,6 +905,12 @@ export const navigation: FuseNavigation[] = [
                         url  : '/documentation/working-with-fuse/multi-language'
                     },
                     {
+                        id   : 'material-theming',
+                        title: 'Material Theming',
+                        type : 'item',
+                        url  : '/documentation/working-with-fuse/material-theming'
+                    },
+                    {
                         id   : 'theme-layouts',
                         title: 'Theme Layouts',
                         type : 'item',
