@@ -53,7 +53,7 @@
                 <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50"
                      fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}">
 
-                    <div class="course-content" fxLayout="column">
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
 
                         <div class="header" fxLayout="row" fxLayoutAlign="center center"
                              [ngClass]="course.category + '-bg'">
@@ -69,7 +69,7 @@
 
                         </div>
 
-                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex>
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
                             <div class="h1">{{course.title}}</div>
                             <div class="updated">Updated {{course.updated}}</div>
                         </div>
