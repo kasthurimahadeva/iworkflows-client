@@ -13,10 +13,10 @@
 
         // If it's a light theme, use a darker background
         // color other than the default #fafafa
-        @if ($is-dark == false) {
-            background: #F5F5F5;
-        } @else {
+        @if ($is-dark) {
             background: map-get($background, background);
+        } @else {
+            background: #F5F5F5;
         }
     }
 
@@ -300,7 +300,8 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
                 }
 
                 // Run the generator one more time for default values (500)
-                @if ($hue == 500) {
+                // if we are not working with primary, accent or warn palettes
+                @if ($hue == 500 and $paletteName != 'primary' and $paletteName != 'accent' and $paletteName != 'warn') {
 
                     // Generate color classes
                     @include generate-color-classes($paletteName, $color, $contrast, '');
@@ -316,6 +317,33 @@ $matHues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A70
                         $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
                     }
                 }
+            }
+        }
+
+        // Run the generator again for the selected default hue values for
+        // primary, accent and warn palettes
+        //
+        // We are doing this because the default hue value can be changed
+        // by the user when the Material theme being generated.
+        @if ($paletteName == 'primary' or $paletteName == 'accent' or $paletteName == 'warn') {
+
+            // Get the color and the contrasting color for the selected
+            // default hue
+            $color: map-get($palette, 'default');
+            $contrast: map-get($palette, 'default-contrast');
+
+            // Generate color classes
+            @include generate-color-classes($paletteName, $color, $contrast, '');
+
+            // Add color to the correct list depending on the contrasting color
+
+            // If the contrast color is dark
+            @if (rgba(black, 1) == rgba($contrast, 1)) {
+                $dark-contrasting-classes: append($dark-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
+            }
+                // if the contrast color is light
+            @else {
+                $light-contrasting-classes: append($light-contrasting-classes, unquote('.#{$paletteName}'), 'comma');
             }
         }
     }

@@ -187,13 +187,13 @@ body.theme-default {
     @include components-theme($theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $custom-palettes: (
+    $palettes: (
         primary: $default-primary-palette,
         accent: $default-accent-palette,
         warn: $default-warn-palette
     );
 
-    @include fuse-color-classes($custom-palettes);
+    @include fuse-color-classes($palettes);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -222,13 +222,13 @@ body.theme-yellow-light {
     @include components-theme($yellow-light-theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $custom-palettes: (
+    $palettes: (
         primary: $yellow-light-theme-primary-palette,
         accent: $yellow-light-theme-accent-palette,
         warn: $yellow-light-theme-warn-palette
     );
 
-    @include fuse-color-classes($custom-palettes);
+    @include fuse-color-classes($palettes);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -257,13 +257,13 @@ body.theme-blue-gray-dark {
     @include components-theme($blue-gray-dark-theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $custom-palettes: (
+    $palettes: (
         primary: $blue-gray-dark-theme-primary-palette,
         accent: $blue-gray-dark-theme-accent-palette,
         warn: $blue-gray-dark-theme-warn-palette
     );
 
-    @include fuse-color-classes($custom-palettes);
+    @include fuse-color-classes($palettes);
 }
 
 // -----------------------------------------------------------------------------------------------------
@@ -292,11 +292,11 @@ body.theme-pink-dark {
     @include components-theme($pink-dark-theme);
 
     // Generate Fuse color classes for primary, accent and warn colors
-    $custom-palettes: (
+    $palettes: (
         primary: $pink-dark-theme-primary-palette,
         accent: $pink-dark-theme-accent-palette,
         warn: $pink-dark-theme-warn-palette
     );
 
-    @include fuse-color-classes($custom-palettes);
+    @include fuse-color-classes($palettes);
 }
