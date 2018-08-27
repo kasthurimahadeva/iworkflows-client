@@ -66,6 +66,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         // noinspection TypeScriptValidateTypes
         this.form = this._formBuilder.group({
             colorTheme      : new FormControl(),
+            customScrollbars: new FormControl(),
             layout          : this._formBuilder.group({
                 style    : new FormControl(),
                 width    : new FormControl(),
@@ -93,8 +94,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                     hidden  : new FormControl(),
                     position: new FormControl()
                 })
-            }),
-            customScrollbars: new FormControl()
+            })
         });
 
         // Subscribe to the config changes
