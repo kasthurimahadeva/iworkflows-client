@@ -1,5 +1,5 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { Platform } from '@angular/cdk/platform';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -93,10 +93,10 @@ export class FuseConfigService
         // Set the config from the default config
         this._configSubject = new BehaviorSubject(_.cloneDeep(this._defaultConfig));
 
-        // Reload the default config on every navigation start if
+        // Reload the default config on every RoutesRecognized event if
         // the current config is different from the default one
         this._router.events
-            .pipe(filter(event => event instanceof NavigationStart))
+            .pipe(filter(event => event instanceof RoutesRecognized))
             .subscribe(() => {
                 if ( !_.isEqual(this._configSubject.getValue(), this._defaultConfig) )
                 {
