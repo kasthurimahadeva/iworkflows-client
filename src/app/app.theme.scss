@@ -113,6 +113,8 @@ $typography: mat-typography-config(
 
 @import "src/app/main/documentation/components/cards/cards.theme";
 
+@import "src/app/main/angular-material-elements/example-viewer/example-viewer.theme";
+
 // Define a mixin for easier access
 @mixin components-theme($theme) {
 
@@ -159,6 +161,8 @@ $typography: mat-typography-config(
     // Docs
     @include docs-components-cards-theme($theme);
 
+    // Example Viewer
+    @include example-viewer-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
