@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, Store } from '@ngrx/store';
+import { Action, select, Store } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import { Observable, of, forkJoin } from 'rxjs';
@@ -24,12 +24,14 @@ export class MailsEffect
         private store: Store<State>
     )
     {
-        this.store.select(getRouterState).subscribe(routerState => {
-            if ( routerState )
-            {
-                this.routerState = routerState.state;
-            }
-        });
+        this.store
+            .pipe(select(getRouterState))
+            .subscribe(routerState => {
+                if ( routerState )
+                {
+                    this.routerState = routerState.state;
+                }
+            });
     }
 
     /**
@@ -101,11 +103,9 @@ export class MailsEffect
             .pipe(
                 ofType<MailsActions.UpdateMails>(MailsActions.UPDATE_MAILS),
                 exhaustMap((action) => {
-                    return forkJoin(
-                        action.payload.map(mail => this.mailService.updateMail(mail)),
-                        () => {
-                            return new MailsActions.UpdateMailsSuccess();
-                        });
+                    return forkJoin(action.payload.map(mail => this.mailService.updateMail(mail))).pipe(map(() => {
+                        return new MailsActions.UpdateMailsSuccess();
+                    }));
                 })
             );
 
@@ -118,7 +118,7 @@ export class MailsEffect
         this.actions
             .pipe(
                 ofType<MailsActions.SetCurrentMail>(MailsActions.SET_CURRENT_MAIL),
-                withLatestFrom(this.store.select(getMailsState)),
+                withLatestFrom(this.store.pipe(select(getMailsState))),
                 map(([action, state]) => {
                     return new MailsActions.SetCurrentMailSuccess(state.entities[action.payload]);
                 })
@@ -135,7 +135,7 @@ export class MailsEffect
         this.actions
             .pipe(
                 ofType<MailsActions.CheckCurrentMail>(MailsActions.CHECK_CURRENT_MAIL),
-                withLatestFrom(this.store.select(getMailsState)),
+                withLatestFrom(this.store.pipe(select(getMailsState))),
                 map(([action, state]) => {
 
                     if ( !state.entities[this.routerState.params.mailId] )
@@ -200,7 +200,7 @@ export class MailsEffect
             .pipe(
                 ofType<MailsActions.SetFolderOnSelectedMails>(MailsActions.SET_FOLDER_ON_SELECTED_MAILS),
                 withLatestFrom(
-                    this.store.select(getMailsState)),
+                    this.store.pipe(select(getMailsState))),
                 map(([action, state]) => {
                     const entities = {...state.entities};
                     let mailsToUpdate = [];
@@ -227,7 +227,7 @@ export class MailsEffect
         this.actions
             .pipe(
                 ofType<MailsActions.AddLabelOnSelectedMails>(MailsActions.ADD_LABEL_ON_SELECTED_MAILS),
-                withLatestFrom(this.store.select(getMailsState)),
+                withLatestFrom(this.store.pipe(select(getMailsState))),
                 map(([action, state]) => {
 
                     const entities = {...state.entities};
