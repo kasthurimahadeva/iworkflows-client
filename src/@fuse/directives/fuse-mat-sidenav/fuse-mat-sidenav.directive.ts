@@ -15,11 +15,11 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
     @HostBinding('class.mat-is-locked-open')
     isLockedOpen: boolean;
 
-    @Input('fuseMatSidenavHelper')
+    @Input()
     id: string;
 
-    @Input('mat-is-locked-open')
-    matIsLockedOpenBreakpoint: string;
+    @Input()
+    matIsLockedOpen: string;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -58,7 +58,7 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
         // Register the sidenav to the service
         this._fuseMatSidenavHelperService.setSidenav(this.id, this._matSidenav);
 
-        if ( this._observableMedia.isActive(this.matIsLockedOpenBreakpoint) )
+        if ( this._observableMedia.isActive(this.matIsLockedOpen) )
         {
             this.isLockedOpen = true;
             this._matSidenav.mode = 'side';
@@ -74,7 +74,7 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
         this._fuseMatchMediaService.onMediaChange
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(() => {
-                if ( this._observableMedia.isActive(this.matIsLockedOpenBreakpoint) )
+                if ( this._observableMedia.isActive(this.matIsLockedOpen) )
                 {
                     this.isLockedOpen = true;
                     this._matSidenav.mode = 'side';
@@ -105,8 +105,8 @@ export class FuseMatSidenavHelperDirective implements OnInit, OnDestroy
 })
 export class FuseMatSidenavTogglerDirective
 {
-    @Input('fuseMatSidenavToggler')
-    id;
+    @Input()
+    id: string;
 
     /**
      * Constructor
@@ -126,7 +126,7 @@ export class FuseMatSidenavTogglerDirective
      * On click
      */
     @HostListener('click')
-    onClick()
+    onClick(): void
     {
         this._fuseMatSidenavHelperService.getSidenav(this.id).toggle();
     }

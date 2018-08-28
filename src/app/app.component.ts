@@ -138,13 +138,16 @@ export class AppComponent implements OnInit, OnDestroy
                     this.document.body.classList.remove('boxed');
                 }
 
-                // Color theme
-                this.document.body.classList.forEach(className => {
+                // Color theme - Use normal for loop for IE11 compatibility
+                for ( let i = 0; i < this.document.body.classList.length; i++ )
+                {
+                    const className = this.document.body.classList[i];
+
                     if ( className.startsWith('theme-') )
                     {
                         this.document.body.classList.remove(className);
                     }
-                });
+                }
 
                 this.document.body.classList.add(this.fuseConfig.colorTheme);
             });

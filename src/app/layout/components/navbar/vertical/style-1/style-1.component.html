@@ -22,7 +22,8 @@
 </div>
 
 
-<div class="navbar-scroll-container" fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
+<div class="navbar-scroll-container" [ngClass]="fuseConfig.layout.navbar.primaryBackground"
+     fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
 
     <div class="user" fxLayout="column" [ngClass]="fuseConfig.layout.navbar.secondaryBackground">
 
@@ -34,7 +35,7 @@
 
     </div>
 
-    <div class="navbar-content" [ngClass]="fuseConfig.layout.navbar.primaryBackground">
+    <div class="navbar-content">
         <fuse-navigation layout="vertical"></fuse-navigation>
     </div>
 

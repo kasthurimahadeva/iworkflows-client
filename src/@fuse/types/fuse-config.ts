@@ -1,6 +1,7 @@
 export interface FuseConfig
 {
     colorTheme: string;
+    customScrollbars: boolean;
     layout: {
         style: string,
         width: 'fullwidth' | 'boxed',
@@ -29,5 +30,4 @@ export interface FuseConfig
             position: 'left' | 'right'
         }
     };
-    customScrollbars: boolean;
 }

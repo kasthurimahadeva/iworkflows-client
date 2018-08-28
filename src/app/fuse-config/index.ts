@@ -11,6 +11,7 @@ import { FuseConfig } from '@fuse/types';
 export const fuseConfig: FuseConfig = {
     // Color themes can be defined in src/app/app.theme.scss
     colorTheme      : 'theme-default',
+    customScrollbars: true,
     layout          : {
         style    : 'vertical-layout-1',
         width    : 'fullwidth',
@@ -38,6 +39,5 @@ export const fuseConfig: FuseConfig = {
             hidden  : false,
             position: 'right'
         }
-    },
-    customScrollbars: true
+    }
 };
