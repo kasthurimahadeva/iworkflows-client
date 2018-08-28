@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, ViewEncapsulation } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
@@ -15,8 +15,8 @@ import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
 })
 export class MailNgrxDetailsComponent implements OnChanges
 {
-    @Input('mail')
-    mailInput: Mail;
+    @Input()
+    currentMail: Mail;
 
     labels$: Observable<any>;
     mail: Mail;
@@ -34,7 +34,7 @@ export class MailNgrxDetailsComponent implements OnChanges
     )
     {
         // Set the defaults
-        this.labels$ = this._store.select(fromStore.getLabelsArr);
+        this.labels$ = this._store.pipe(select(fromStore.getLabelsArr));
         this.showDetails = false;
     }
 
@@ -47,7 +47,7 @@ export class MailNgrxDetailsComponent implements OnChanges
      */
     ngOnChanges(): void
     {
-        this.updateModel(this.mailInput);
+        this.updateModel(this.currentMail);
         this.markAsRead();
     }
 

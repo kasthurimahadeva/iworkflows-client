@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
@@ -55,12 +55,12 @@ export class MailNgrxComponent implements OnInit, OnDestroy
         // Set the defaults
         this.searchInput = new FormControl('');
         this._fuseTranslationLoaderService.loadTranslations(english, turkish);
-        this.currentMail$ = this._store.select(fromStore.getCurrentMail);
-        this.mails$ = this._store.select(fromStore.getMailsArr);
-        this.folders$ = this._store.select(fromStore.getFoldersArr);
-        this.labels$ = this._store.select(fromStore.getLabelsArr);
-        this.selectedMailIds$ = this._store.select(fromStore.getSelectedMailIds);
-        this.searchText$ = this._store.select(fromStore.getSearchText);
+        this.currentMail$ = this._store.pipe(select(fromStore.getCurrentMail));
+        this.mails$ = this._store.pipe(select(fromStore.getMailsArr));
+        this.folders$ = this._store.pipe(select(fromStore.getFoldersArr));
+        this.labels$ = this._store.pipe(select(fromStore.getLabelsArr));
+        this.selectedMailIds$ = this._store.pipe(select(fromStore.getSelectedMailIds));
+        this.searchText$ = this._store.pipe(select(fromStore.getSearchText));
         this.mails = [];
         this.selectedMailIds = [];
     }

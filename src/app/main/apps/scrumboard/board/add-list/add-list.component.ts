@@ -13,7 +13,7 @@ export class ScrumboardBoardAddListComponent
     form: FormGroup;
 
     @Output()
-    onListAdd: EventEmitter<any>;
+    listAdded: EventEmitter<any>;
 
     @ViewChild('nameInput')
     nameInputField;
@@ -29,7 +29,7 @@ export class ScrumboardBoardAddListComponent
     {
         // Set the defaults
         this.formActive = false;
-        this.onListAdd = new EventEmitter();
+        this.listAdded = new EventEmitter();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ export class ScrumboardBoardAddListComponent
     {
         if ( this.form.valid )
         {
-            this.onListAdd.next(this.form.getRawValue().name);
+            this.listAdded.next(this.form.getRawValue().name);
             this.formActive = false;
         }
     }

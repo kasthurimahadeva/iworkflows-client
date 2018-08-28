@@ -28,7 +28,7 @@
                     <mat-icon *ngIf="board.settings.subscribed" class="board-subscribe s-16">remove_red_eye</mat-icon>
                     <scrumboard-edit-board-name
                         [board]="board"
-                        (onNameChanged)="onBoardNameChanged($event)">
+                        (boardNameChanged)="onBoardNameChanged($event)">
                     </scrumboard-edit-board-name>
                 </div>
                 <!-- / BOARD NAME -->
@@ -69,7 +69,7 @@
                 <!-- / LIST -->
 
                 <!-- NEW LIST BUTTON-->
-                <scrumboard-board-add-list class="new-list-wrapper" (onListAdd)="onListAdd($event)"
+                <scrumboard-board-add-list class="new-list-wrapper" (listAdded)="onListAdd($event)"
                                            ngxDraggable [moves]="false"
                                            [@animate]="{value:'*',params:{duration:'350ms',x:'100%'}}">
                 </scrumboard-board-add-list>

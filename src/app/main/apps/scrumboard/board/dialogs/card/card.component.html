@@ -36,7 +36,7 @@
                     <mat-menu #labelsMenu="matMenu" [overlapTrigger]="false" class="scrumboard-labels-menu">
 
                         <scrumboard-label-selector [card]="card"
-                                                   (onCardLabelsChange)="updateCard()"></scrumboard-label-selector>
+                                                   (cardLabelsChanged)="updateCard()"></scrumboard-label-selector>
 
                     </mat-menu>
                 </div>

@@ -95,7 +95,7 @@
             <div class="content" fxLayout="row">
 
                 <mail-ngrx-list fusePerfectScrollbar fxFlex [mails]="mails$ | async" [currentMail]="currentMail$ | async"></mail-ngrx-list>
-                <mail-ngrx-details [mail]="currentMail$ | async" fusePerfectScrollbar fxFlex></mail-ngrx-details>
+                <mail-ngrx-details [currentMail]="currentMail$ | async" fusePerfectScrollbar fxFlex></mail-ngrx-details>
 
             </div>
             <!-- / CONTENT -->

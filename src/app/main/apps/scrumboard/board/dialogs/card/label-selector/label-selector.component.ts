@@ -21,7 +21,7 @@ export class ScrumboardLabelSelectorComponent implements OnInit, OnDestroy
     card: any;
 
     @Output()
-    onCardLabelsChange: EventEmitter<any>;
+    cardLabelsChanged: EventEmitter<any>;
 
     board: any;
     labelsMenuView: string;
@@ -42,7 +42,7 @@ export class ScrumboardLabelSelectorComponent implements OnInit, OnDestroy
     )
     {
         // Set the defaults
-        this.onCardLabelsChange = new EventEmitter();
+        this.cardLabelsChanged = new EventEmitter();
         this.labelsMenuView = 'labels';
         this.newLabel = {
             'id'   : '',
@@ -88,9 +88,9 @@ export class ScrumboardLabelSelectorComponent implements OnInit, OnDestroy
     /**
      * Card labels changed
      */
-    cardLabelsChanged(): void
+    onCardLabelsChanged(): void
     {
-        this.onCardLabelsChange.next();
+        this.cardLabelsChanged.next();
     }
 
     /**

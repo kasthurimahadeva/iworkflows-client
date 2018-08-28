@@ -13,7 +13,7 @@ export class ScrumboardBoardAddCardComponent
     form: FormGroup;
 
     @Output()
-    onCardAdd: EventEmitter<any>;
+    cardAdded: EventEmitter<any>;
 
     @ViewChild('nameInput')
     nameInputField;
@@ -29,7 +29,7 @@ export class ScrumboardBoardAddCardComponent
     {
         // Set the defaults
         this.formActive = false;
-        this.onCardAdd = new EventEmitter();
+        this.cardAdded = new EventEmitter();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ export class ScrumboardBoardAddCardComponent
         if ( this.form.valid )
         {
             const cardName = this.form.getRawValue().name;
-            this.onCardAdd.next(cardName);
+            this.cardAdded.next(cardName);
             this.formActive = false;
         }
     }

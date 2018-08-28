@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -24,8 +24,8 @@ export class LabelsEffect
     @Effect()
     getLabels: Observable<LabelsActions.LabelsActionsAll> =
         this.actions
-            .ofType<LabelsActions.GetLabels>(LabelsActions.GET_LABELS)
             .pipe(
+                ofType<LabelsActions.GetLabels>(LabelsActions.GET_LABELS),
                 switchMap((action) => {
                         return this.mailService.getLabels()
                                    .pipe(

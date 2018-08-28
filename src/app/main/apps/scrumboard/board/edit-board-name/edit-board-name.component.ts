@@ -16,7 +16,7 @@ export class ScrumboardEditBoardNameComponent
     board;
 
     @Output()
-    onNameChanged: EventEmitter<any>;
+    boardNameChanged: EventEmitter<any>;
 
     @ViewChild('nameInput')
     nameInputField;
@@ -27,7 +27,7 @@ export class ScrumboardEditBoardNameComponent
     {
         // Set the defaults
         this.formActive = false;
-        this.onNameChanged = new EventEmitter();
+        this.boardNameChanged = new EventEmitter();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ export class ScrumboardEditBoardNameComponent
             this.board.name = this.form.getRawValue().name;
             this.board.uri = encodeURIComponent(this.board.name).replace(/%20/g, '-').toLowerCase();
 
-            this.onNameChanged.next(this.board.name);
+            this.boardNameChanged.next(this.board.name);
             this.formActive = false;
         }
     }

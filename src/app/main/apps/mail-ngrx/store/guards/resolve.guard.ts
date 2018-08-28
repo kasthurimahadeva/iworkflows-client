@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { RouterStateSnapshot } from '@angular/router/src/router_state';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 
 import { Observable, forkJoin, of } from 'rxjs';
 import { map, switchMap, catchError, tap, take, filter } from 'rxjs/operators';
@@ -25,12 +25,14 @@ export class ResolveGuard implements CanActivate
         private _store: Store<MailAppState>
     )
     {
-        this._store.select(getRouterState).subscribe(routerState => {
-            if ( routerState )
-            {
-                this.routerState = routerState.state;
-            }
-        });
+        this._store
+            .pipe(select(getRouterState))
+            .subscribe(routerState => {
+                if ( routerState )
+                {
+                    this.routerState = routerState.state;
+                }
+            });
     }
 
     /**
@@ -59,16 +61,15 @@ export class ResolveGuard implements CanActivate
             this.getFolders(),
             this.getFilters(),
             this.getLabels()
-        )
-            .pipe(
-                filter(([foldersLoaded, filtersLoaded, labelsLoaded]) => !!(foldersLoaded && filtersLoaded && labelsLoaded)),
-                take(1),
-                switchMap(() =>
-                    this.getMails()
-                ),
-                take(1),
-                map(() => this._store.dispatch(new fromStore.SetCurrentMail(this.routerState.params.mailId)))
-            );
+        ).pipe(
+            filter(([foldersLoaded, filtersLoaded, labelsLoaded]) => !!(foldersLoaded && filtersLoaded && labelsLoaded)),
+            take(1),
+            switchMap(() =>
+                this.getMails()
+            ),
+            take(1),
+            map(() => this._store.dispatch(new fromStore.SetCurrentMail(this.routerState.params.mailId)))
+        );
     }
 
     /**
@@ -78,17 +79,17 @@ export class ResolveGuard implements CanActivate
      */
     getFolders(): any
     {
-        return this._store.select(getFoldersLoaded)
-                   .pipe(
-                       tap(loaded => {
-                           if ( !loaded )
-                           {
-                               this._store.dispatch(new fromStore.GetFolders([]));
-                           }
-                       }),
-                       filter(loaded => loaded),
-                       take(1)
-                   );
+        return this._store.pipe(
+            select(getFoldersLoaded),
+            tap(loaded => {
+                if ( !loaded )
+                {
+                    this._store.dispatch(new fromStore.GetFolders([]));
+                }
+            }),
+            filter(loaded => loaded),
+            take(1)
+        );
     }
 
     /**
@@ -98,17 +99,17 @@ export class ResolveGuard implements CanActivate
      */
     getFilters(): any
     {
-        return this._store.select(getFiltersLoaded)
-                   .pipe(
-                       tap(loaded => {
-                           if ( !loaded )
-                           {
-                               this._store.dispatch(new fromStore.GetFilters([]));
-                           }
-                       }),
-                       filter(loaded => loaded),
-                       take(1)
-                   );
+        return this._store.pipe(
+            select(getFiltersLoaded),
+            tap(loaded => {
+                if ( !loaded )
+                {
+                    this._store.dispatch(new fromStore.GetFilters([]));
+                }
+            }),
+            filter(loaded => loaded),
+            take(1)
+        );
     }
 
     /**
@@ -117,17 +118,17 @@ export class ResolveGuard implements CanActivate
      */
     getLabels(): any
     {
-        return this._store.select(getLabelsLoaded)
-                   .pipe(
-                       tap(loaded => {
-                           if ( !loaded )
-                           {
-                               this._store.dispatch(new fromStore.GetLabels([]));
-                           }
-                       }),
-                       filter(loaded => loaded),
-                       take(1)
-                   );
+        return this._store.pipe(
+            select(getLabelsLoaded),
+            tap(loaded => {
+                if ( !loaded )
+                {
+                    this._store.dispatch(new fromStore.GetLabels([]));
+                }
+            }),
+            filter(loaded => loaded),
+            take(1)
+        );
     }
 
     /**
@@ -137,21 +138,21 @@ export class ResolveGuard implements CanActivate
      */
     getMails(): any
     {
-        return this._store.select(getMailsLoaded)
-                   .pipe(
-                       tap((loaded: any) => {
+        return this._store.pipe(
+            select(getMailsLoaded),
+            tap((loaded: any) => {
 
-                           if ( !this.routerState.params[loaded.id] || this.routerState.params[loaded.id] !== loaded.value )
-                           {
-                               this._store.dispatch(new fromStore.GetMails());
-                               this._store.dispatch(new fromStore.SetSearchText(''));
-                               this._store.dispatch(new fromStore.DeselectAllMails());
-                           }
-                       }),
-                       filter((loaded: any) => {
-                           return this.routerState.params[loaded.id] && this.routerState.params[loaded.id] === loaded.value;
-                       }),
-                       take(1)
-                   );
+                if ( !this.routerState.params[loaded.id] || this.routerState.params[loaded.id] !== loaded.value )
+                {
+                    this._store.dispatch(new fromStore.GetMails());
+                    this._store.dispatch(new fromStore.SetSearchText(''));
+                    this._store.dispatch(new fromStore.DeselectAllMails());
+                }
+            }),
+            filter((loaded: any) => {
+                return this.routerState.params[loaded.id] && this.routerState.params[loaded.id] === loaded.value;
+            }),
+            take(1)
+        );
     }
 }

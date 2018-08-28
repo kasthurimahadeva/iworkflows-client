@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { FormGroup } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { MailNgrxService } from 'app/main/apps/mail-ngrx/mail.service';
@@ -45,9 +45,9 @@ export class MailNgrxMainSidebarComponent
             'withinpixels': 'johndoe@withinpixels.com'
         };
         this.selectedAccount = 'creapond';
-        this.folders$ = this._store.select(fromStore.getFoldersArr);
-        this.filters$ = this._store.select(fromStore.getFiltersArr);
-        this.labels$ = this._store.select(fromStore.getLabelsArr);
+        this.folders$ = this._store.pipe(select(fromStore.getFoldersArr));
+        this.filters$ = this._store.pipe(select(fromStore.getFiltersArr));
+        this.labels$ = this._store.pipe(select(fromStore.getLabelsArr));
     }
 
     // -----------------------------------------------------------------------------------------------------

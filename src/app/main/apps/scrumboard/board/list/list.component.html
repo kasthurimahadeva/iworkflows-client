@@ -6,7 +6,7 @@
         <scrumboard-board-edit-list-name
             fxFlex="1 0 auto"
             [list]="list"
-            (onNameChanged)="onListNameChanged($event)">
+            (listNameChanged)="onListNameChanged($event)">
         </scrumboard-board-edit-list-name>
 
         <div fxFlex="0 1 auto">
@@ -40,8 +40,7 @@
 
     <!-- NEW CARD BUTTON-->
     <div class="list-footer">
-        <scrumboard-board-add-card (onCardAdd)="onCardAdd($event)">
-        </scrumboard-board-add-card>
+        <scrumboard-board-add-card (cardAdded)="onCardAdd($event)"></scrumboard-board-add-card>
     </div>
     <!-- / NEW CARD BUTTON-->
 

@@ -16,7 +16,7 @@ export class ScrumboardBoardEditListNameComponent
     list;
 
     @Output()
-    onNameChanged: EventEmitter<any>;
+    listNameChanged: EventEmitter<any>;
 
     @ViewChild('nameInput')
     nameInputField;
@@ -32,7 +32,7 @@ export class ScrumboardBoardEditListNameComponent
     {
         // Set the defaults
         this.formActive = false;
-        this.onNameChanged = new EventEmitter();
+        this.listNameChanged = new EventEmitter();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ export class ScrumboardBoardEditListNameComponent
         if ( this.form.valid )
         {
             this.list.name = this.form.getRawValue().name;
-            this.onNameChanged.next(this.list.name);
+            this.listNameChanged.next(this.list.name);
             this.formActive = false;
         }
     }

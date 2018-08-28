@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { MailNgrxService } from '../../mail.service';
@@ -21,18 +21,29 @@ export class MailNgrxListItemComponent implements OnInit
     labels$: Observable<any>;
     selectedMailIds$: Observable<any>;
 
+    /**
+     * Constructor
+     *
+     * @param {ChangeDetectorRef} _changeDetectorRef
+     * @param {MailNgrxService} _mailNgrxService
+     * @param {Store} _store
+     */
     constructor(
-        private mailService: MailNgrxService,
-        private store: Store<fromStore.MailAppState>,
-        private cd: ChangeDetectorRef
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _mailNgrxService: MailNgrxService,
+        private _store: Store<fromStore.MailAppState>
     )
     {
-        this.labels$ = this.store.select(fromStore.getLabelsArr);
-        this.selectedMailIds$ = this.store.select(fromStore.getSelectedMailIds);
+        this.labels$ = this._store.pipe(select(fromStore.getLabelsArr));
+        this.selectedMailIds$ = this._store.pipe(select(fromStore.getSelectedMailIds));
         this.selected = false;
     }
 
-    ngOnInit()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    ngOnInit(): void
     {
         // Set the initial values
         this.mail = new Mail(this.mail);
@@ -44,13 +55,17 @@ export class MailNgrxListItemComponent implements OnInit
         });
     }
 
-    refresh()
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    refresh(): void
     {
-        this.cd.markForCheck();
+        this._changeDetectorRef.markForCheck();
     }
 
-    onSelectedChange()
+    onSelectedChange(): void
     {
-        this.store.dispatch(new fromStore.ToggleInSelectedMails(this.mail.id));
+        this._store.dispatch(new fromStore.ToggleInSelectedMails(this.mail.id));
     }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Mail } from 'app/main/apps/mail-ngrx/mail.model';
@@ -27,21 +27,29 @@ export class MailNgrxService
         private _store: Store<MailAppState>
     )
     {
-        this._store.select(getFoldersArr).subscribe(folders => {
-            this.foldersArr = folders;
-        });
+        this._store
+            .pipe(select(getFoldersArr))
+            .subscribe(folders => {
+                this.foldersArr = folders;
+            });
 
-        this._store.select(getFiltersArr).subscribe(filters => {
-            this.filtersArr = filters;
-        });
+        this._store
+            .pipe(select(getFiltersArr))
+            .subscribe(filters => {
+                this.filtersArr = filters;
+            });
 
-        this._store.select(getLabelsArr).subscribe(labels => {
-            this.labelsArr = labels;
-        });
+        this._store
+            .pipe(select(getLabelsArr))
+            .subscribe(labels => {
+                this.labelsArr = labels;
+            });
 
-        this._store.select(getMailsArr).subscribe(mails => {
-            this.mails = mails;
-        });
+        this._store
+            .pipe(select(getMailsArr))
+            .subscribe(mails => {
+                this.mails = mails;
+            });
 
         this.selectedMails = [];
     }

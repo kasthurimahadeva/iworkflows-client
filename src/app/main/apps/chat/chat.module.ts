@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatRadioModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import {
+    MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatRadioModule, MatSidenavModule, MatToolbarModule
+} from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
@@ -17,10 +19,10 @@ import { ChatContactSidenavComponent } from 'app/main/apps/chat/sidenavs/right/c
 
 const routes: Routes = [
     {
-        path     : '**',
+        path: '**',
         component: ChatComponent,
-        children : [],
-        resolve  : {
+        children: [],
+        resolve: {
             chat: ChatService
         }
     }

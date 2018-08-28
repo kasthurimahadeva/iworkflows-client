@@ -49,12 +49,18 @@ export class Mail
         this.folder = mail.folder;
     }
 
-    toggleStar()
+    /**
+     * Toggle star
+     */
+    toggleStar(): void
     {
         this.starred = !this.starred;
     }
 
-    toggleImportant()
+    /**
+     * Toggle important
+     */
+    toggleImportant(): void
     {
         this.important = !this.important;
     }
