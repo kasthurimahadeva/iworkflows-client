@@ -174,7 +174,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
             this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
 
             // Set the style and class
-            this._renderer.setStyle(sibling, styleRule, styleValue, RendererStyleFlags2.Important + RendererStyleFlags2.DashCase);
+            this._renderer.setStyle(sibling, styleRule, styleValue);
             this._renderer.addClass(this._elementRef.nativeElement, 'folded');
         }
         // If unfolded...
@@ -434,7 +434,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
         this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
 
         // Set the style and class
-        this._renderer.setStyle(sibling, styleRule, styleValue, RendererStyleFlags2.Important + RendererStyleFlags2.DashCase);
+        this._renderer.setStyle(sibling, styleRule, styleValue);
         this._renderer.addClass(this._elementRef.nativeElement, 'folded');
     }
 
