@@ -49,7 +49,7 @@
             position: relative;
 
             .card-breadcrumb {
-                font-weight: 500;
+                font-weight: 600;
                 font-size: 14px;
             }
 
@@ -104,7 +104,7 @@
                         }
 
                         .section-title {
-                            font-weight: 500;
+                            font-weight: 600;
                         }
                     }
 
@@ -168,7 +168,7 @@
                                 background-size: contain;
                                 background-position: 50% 50%;
                                 background-repeat: no-repeat;
-                                font-weight: 500;
+                                font-weight: 600;
 
                                 @include media-breakpoint('xs') {
                                     margin-bottom: 24px;
@@ -183,7 +183,7 @@
 
                                 .attachment-url,
                                 .attachment-name {
-                                    font-weight: 500;
+                                    font-weight: 600;
                                     font-size: 16px;
                                 }
 
@@ -211,7 +211,7 @@
                             }
 
                             span {
-                                font-weight: 500;
+                                font-weight: 600;
                                 text-transform: capitalize;
                             }
                         }
@@ -224,7 +224,7 @@
 
                             .checklist-progress-value {
                                 margin-right: 12px;
-                                font-weight: 500;
+                                font-weight: 600;
                                 white-space: nowrap;
                                 font-size: 14px;
                             }
@@ -285,7 +285,7 @@
 
                             .comment-member-name {
                                 font-size: 14px;
-                                font-weight: 500;
+                                font-weight: 600;
                             }
 
                             .comment-time {
@@ -347,7 +347,7 @@
 
                             .activity-member-name {
                                 font-size: 14px;
-                                font-weight: 500;
+                                font-weight: 600;
                                 margin-right: 8px;
                             }
 

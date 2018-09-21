@@ -36,6 +36,15 @@ todo {
 
         .content-card {
 
+            .toolbar {
+
+                .toolbar-separator {
+                    height: 32px;
+                    width: 1px;
+                    margin: 0 12px;
+                }
+            }
+
             @include media-breakpoint-down(lg) {
 
                 todo-list {

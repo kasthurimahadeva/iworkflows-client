@@ -1,3 +1,10 @@
+// Modify the default Material Icons so that we can use the outline icons
+.material-icons {
+    font-family: 'material-outline-icons' !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
 i,
 mat-icon {
     font-size: 24px;

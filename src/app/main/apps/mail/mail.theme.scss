@@ -28,6 +28,16 @@
                     }
                 }
             }
+
+            .content-card {
+
+                .toolbar {
+
+                    .toolbar-separator {
+                        background: map-get($foreground, divider);
+                    }
+                }
+            }
         }
     }
 
