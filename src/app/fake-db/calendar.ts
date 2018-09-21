@@ -20,7 +20,7 @@ export class CalendarFakeDb
                     start    : subDays(startOfDay(new Date()), 1),
                     end      : addDays(new Date(), 1),
                     title    : 'A 3 day event',
-                    allDay   : false,
+                    allDay   : true,
                     color    : {
                         primary  : '#ad2121',
                         secondary: '#FAE3E3'

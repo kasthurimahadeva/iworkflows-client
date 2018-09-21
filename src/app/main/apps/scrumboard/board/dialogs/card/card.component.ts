@@ -36,13 +36,13 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
-     * @param {MatDialogRef<ScrumboardCardDialogComponent>} _matDialogRef
+     * @param {MatDialogRef<ScrumboardCardDialogComponent>} matDialogRef
      * @param _data
      * @param {MatDialog} _matDialog
      * @param {ScrumboardService} _scrumboardService
      */
     constructor(
-        private _matDialogRef: MatDialogRef<ScrumboardCardDialogComponent>,
+        public matDialogRef: MatDialogRef<ScrumboardCardDialogComponent>,
         @Inject(MAT_DIALOG_DATA) private _data: any,
         private _matDialog: MatDialog,
         private _scrumboardService: ScrumboardService
@@ -301,7 +301,7 @@ export class ScrumboardCardDialogComponent implements OnInit, OnDestroy
         this.confirmDialogRef.afterClosed().subscribe(result => {
             if ( result )
             {
-                this._matDialogRef.close();
+                this.matDialogRef.close();
                 this._scrumboardService.removeCard(this.card.id, this.list.id);
             }
         });

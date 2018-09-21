@@ -117,7 +117,7 @@
 
         <button *ngIf="action !=='edit'"
                 mat-raised-button
-                (click)="_matDialogRef.close(eventForm)"
+                (click)="matDialogRef.close(eventForm)"
                 class="save-button mat-accent"
                 [disabled]="eventForm.invalid"
                 aria-label="SAVE">
@@ -126,7 +126,7 @@
 
         <button *ngIf="action ==='edit'"
                 mat-raised-button
-                (click)="_matDialogRef.close(['save',eventForm])"
+                (click)="matDialogRef.close(['save',eventForm])"
                 class="save-button mat-accent"
                 [disabled]="eventForm.invalid"
                 aria-label="SAVE">
@@ -135,7 +135,7 @@
 
         <button *ngIf="action ==='edit'"
                 mat-icon-button
-                (click)="_matDialogRef.close(['delete',eventForm])"
+                (click)="matDialogRef.close(['delete',eventForm])"
                 aria-label="Delete"
                 matTooltip="Delete">
             <mat-icon>delete</mat-icon>
