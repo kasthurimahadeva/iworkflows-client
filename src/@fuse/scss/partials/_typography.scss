@@ -41,7 +41,7 @@
 // -----------------------------------------------------------------------------------------------------
 html {
     font-size: 62.5%;
-    font-family: 'Nunito', 'Helvetica Neue', 'Arial', sans-serif;
+    font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
     line-height: 1.4 !important;
     letter-spacing: -0.1px !important;
 }
@@ -304,7 +304,7 @@ strong {
     padding: 4px 8px;
     margin: 0 8px;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     white-space: nowrap;
 }
 
@@ -399,6 +399,10 @@ strong {
                 li {
                     margin-bottom: 6px;
                     letter-spacing: 0.015em;
+
+                    ul {
+                        margin-top: 6px;
+                    }
                 }
             }
         }

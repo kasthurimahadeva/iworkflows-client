@@ -63,6 +63,7 @@ $custom_palettes: (
 
 // Force the input field font sizes to 16px
 $typography: mat-typography-config(
+    $font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
     $input: mat-typography-level(16px, 1.125, 400)
 );
 

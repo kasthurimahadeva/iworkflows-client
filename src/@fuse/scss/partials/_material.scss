@@ -172,7 +172,7 @@
     margin: 0 8px 0 0;
     border-radius: 50%;
     font-size: 17px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
 
     &.square {
@@ -287,14 +287,14 @@ mat-icon.status {
 
         .title {
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1;
         }
     }
 
     .subheader {
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 600;
         margin-top: 8px;
     }
 
@@ -364,7 +364,7 @@ mat-icon.status {
                 .currency {
                     padding-right: 4px;
                     font-size: 24px;
-                    font-weight: 500;
+                    font-weight: 600;
                 }
 
                 .value {
@@ -406,14 +406,14 @@ mat-icon.status {
                 left: 50%;
                 transform: translateX(-50%);
                 font-size: 11px;
-                font-weight: 500;
+                font-weight: 600;
                 padding: 6px 8px;
             }
 
             .package-type {
                 padding: 48px 32px 24px 32px;
                 font-size: 20px;
-                font-weight: 500;
+                font-weight: 600;
                 text-align: center;
             }
 
@@ -423,7 +423,7 @@ mat-icon.status {
                 .currency {
                     padding-right: 4px;
                     font-size: 24px;
-                    font-weight: 500;
+                    font-weight: 600;
                 }
 
                 .value {
@@ -436,7 +436,7 @@ mat-icon.status {
             .period {
                 padding: 0 32px;
                 font-size: 15px;
-                font-weight: 500;
+                font-weight: 600;
                 text-align: center;
             }
 
@@ -471,7 +471,7 @@ mat-icon.status {
 
                 .subtitle {
                     font-size: 17px;
-                    font-weight: 500;
+                    font-weight: 600;
                 }
             }
 
@@ -481,7 +481,7 @@ mat-icon.status {
                 .currency {
                     padding-right: 4px;
                     font-size: 15px;
-                    font-weight: 500;
+                    font-weight: 600;
                 }
 
                 .value {
@@ -546,7 +546,7 @@ table {
 
                 th {
                     padding: 16px 8px;
-                    font-weight: 500;
+                    font-weight: 600;
                     white-space: nowrap;
 
                     &:first-child {

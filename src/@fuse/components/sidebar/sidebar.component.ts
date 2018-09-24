@@ -1,5 +1,5 @@
 import {
-    ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, RendererStyleFlags2, ViewEncapsulation
+    ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { ObservableMedia } from '@angular/flex-layout';
@@ -320,6 +320,7 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
 
                 // Get the active status
                 const isActive = this._observableMedia.isActive(this.lockedOpen);
+
                 // If the both status are the same, don't act
                 if ( this._wasActive === isActive )
                 {
