@@ -28,10 +28,11 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
                     <input matInput formControlName="email">
-                    <mat-error *ngIf="comingSoonFormErrors.email.required">
+                    <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
                         Email is required
                     </mat-error>
-                    <mat-error *ngIf="!comingSoonFormErrors.email.required && comingSoonFormErrors.email.email">
+                    <mat-error *ngIf="!comingSoonForm.get('email').hasError('required') &&
+                                       comingSoonForm.get('email').hasError('email')">
                         Please enter a valid email address
                     </mat-error>
                 </mat-form-field>
