@@ -230,13 +230,12 @@ mat-icon.status {
         color: #F44336;
 
         &:before {
-            content: "do_not_disturb_on";
+            content: "remove_circle_outline";
         }
     }
 
     &.away {
-        background-color: #FFC107;
-        color: #FFFFFF;
+        color: #FFC107;
 
         &:before {
             content: "access_time";
@@ -245,7 +244,6 @@ mat-icon.status {
 
     &.offline {
         color: #646464;
-        background-color: #FFFFFF;
 
         &:before {
             content: "not_interested";

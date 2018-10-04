@@ -33,7 +33,7 @@ export class Contact
             this.email = contact.email || '';
             this.phone = contact.phone || '';
             this.address = contact.address || '';
-            this.birthday = contact.birhday || '';
+            this.birthday = contact.birthday || '';
             this.notes = contact.notes || '';
         }
     }

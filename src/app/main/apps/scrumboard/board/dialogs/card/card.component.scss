@@ -6,7 +6,7 @@
         width: 100%;
     }
 
-    @include media-breakpoint-up('xs') {
+    @include media-breakpoint('gt-xs') {
         width: 720px;
     }
 
@@ -50,7 +50,7 @@
 
             .card-breadcrumb {
                 font-weight: 600;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .card-subscribe {
@@ -71,20 +71,11 @@
                 }
             }
 
-            .due-date {
-
-                .remove-due-date {
-                }
-            }
-
-            .description {
-                padding-bottom: 16px;
-            }
-
             .sections {
 
                 .section {
                     border-bottom: 1px solid;
+                    padding: 0 24px;
                     margin-bottom: 32px;
 
                     &:last-child {
@@ -99,17 +90,13 @@
                     .section-header {
                         font-size: 16px;
 
-                        mat-icon {
-                            margin-right: 8px;
-                        }
-
                         .section-title {
                             font-weight: 600;
                         }
                     }
 
                     .section-content {
-                        padding: 24px 0 32px 0;
+                        padding: 24px 16px 32px 32px;
                     }
 
                     .labels {
@@ -143,7 +130,7 @@
                             padding: 0;
 
                             .member-chip {
-                                padding: 4px 12px 4px 4px;
+                                margin: 4px;
 
                                 .member-chip-avatar {
                                     width: 32px;
@@ -160,23 +147,12 @@
                     .attachments {
 
                         .attachment {
-                            margin-bottom: 16px;
+                            padding: 0 24px 24px 0;
 
                             .attachment-preview {
-                                width: 160px;
-                                height: 128px;
-                                background-size: contain;
-                                background-position: 50% 50%;
-                                background-repeat: no-repeat;
                                 font-weight: 600;
-
-                                @include media-breakpoint('xs') {
-                                    margin-bottom: 24px;
-                                }
-
-                                @include media-breakpoint-up('xs') {
-                                    margin-right: 24px;
-                                }
+                                border-radius: 4px;
+                                overflow: hidden;
                             }
 
                             .attachment-content {
@@ -190,16 +166,6 @@
                                 .attachment-is-cover {
                                     margin-left: 6px;
                                 }
-
-                                .attachment-actions-button {
-                                    text-transform: capitalize;
-                                    margin: 12px 0 0 0;
-                                    padding-left: 12px;
-
-                                    mat-icon {
-                                        margin-left: 8px;
-                                    }
-                                }
                             }
                         }
 
@@ -209,18 +175,13 @@
                             mat-icon {
                                 margin-right: 8px;
                             }
-
-                            span {
-                                font-weight: 600;
-                                text-transform: capitalize;
-                            }
                         }
                     }
 
                     .checklist {
 
                         .checklist-progress {
-                            margin-bottom: 16px;
+                            margin: 0 0 16px 0;
 
                             .checklist-progress-value {
                                 margin-right: 12px;
@@ -242,7 +203,9 @@
                             .check-item {
 
                                 mat-checkbox {
-                                    margin-bottom: 0;
+                                    position: relative;
+                                    top: -5px;
+                                    margin: 0 12px 0 3px;
 
                                     .mat-label {
                                         font-size: 14px;
@@ -255,18 +218,51 @@
                                         }
                                     }
                                 }
+
+                                .checklist-actions-button {
+                                    position: relative;
+                                    top: 2px;
+                                }
+
+                                mat-form-field {
+
+                                    &.mat-form-field-appearance-outline {
+
+                                        .mat-form-field-outline {
+                                            top: 0;
+                                        }
+                                    }
+
+                                    .mat-form-field-wrapper {
+                                        padding: 0;
+
+                                        .mat-form-field-infix {
+                                            border-top: 0;
+                                        }
+                                    }
+                                }
                             }
                         }
 
                         .new-check-item-form {
-                            padding-top: 16px;
+                            margin: 32px 0 0 0;
 
                             mat-form-field {
-                                margin: 0;
-                            }
 
-                            .mat-button {
-                                margin: 0 0 0 16px;
+                                &.mat-form-field-appearance-outline {
+
+                                    .mat-form-field-outline {
+                                        top: 0;
+                                    }
+                                }
+
+                                .mat-form-field-wrapper {
+                                    padding: 0;
+
+                                    .mat-form-field-infix {
+                                        border-top: 0;
+                                    }
+                                }
                             }
                         }
                     }
@@ -274,7 +270,7 @@
                     .comments {
 
                         .comment {
-                            margin-bottom: 16px;
+                            margin: 0 0 24px 0;
 
                             .comment-member-avatar {
                                 width: 32px;
@@ -294,40 +290,21 @@
 
                             .comment-bubble {
                                 position: relative;
-                                padding: 8px;
+                                padding: 8px 12px;
                                 border: 1px solid;
                                 font-size: 14px;
-                                margin: 4px 0;
-
-                                &:after,
-                                &:before {
-                                    content: ' ';
-                                    position: absolute;
-                                    width: 0;
-                                    height: 0;
-                                }
-
-                                &:after {
-                                    left: -7px;
-                                    right: auto;
-                                    top: 0px;
-                                    bottom: auto;
-                                    border: 11px solid;
-                                }
-
-                                &:before {
-                                    left: -9px;
-                                    right: auto;
-                                    top: -1px;
-                                    bottom: auto;
-                                    border: 8px solid;
-                                }
+                                margin: 6px 0;
+                                border-radius: 20px;
                             }
 
                             &.new-comment {
+                                margin: 0 0 24px 0;
 
                                 mat-form-field {
-                                    margin: 0;
+
+                                    .mat-form-field-wrapper {
+                                        padding: 0;
+                                    }
                                 }
                             }
                         }
@@ -336,11 +313,11 @@
                     .activities {
 
                         .activity {
-                            margin-bottom: 12px;
+                            margin-bottom: 16px;
 
                             .activity-member-avatar {
-                                width: 24px;
-                                height: 24px;
+                                width: 32px;
+                                height: 32px;
                                 border-radius: 50%;
                                 margin-right: 16px;
                             }
@@ -348,12 +325,14 @@
                             .activity-member-name {
                                 font-size: 14px;
                                 font-weight: 600;
-                                margin-right: 8px;
+                                margin-right: 5px;
+                                white-space: nowrap;
                             }
 
                             .activity-message {
                                 font-size: 14px;
                                 margin-right: 8px;
+                                white-space: nowrap;
                             }
 
                             .activity-time {

@@ -20,9 +20,10 @@
             flex-direction: column;
             flex: 0 1 auto;
             padding: 0;
+            border-radius: 8px;
 
             @include media-breakpoint(gt-sm) {
-                @include mat-elevation(4);
+                @include mat-elevation(1);
             }
 
             > .header {

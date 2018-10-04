@@ -13,7 +13,7 @@
             .header {
 
                 .search-wrapper {
-                    background: map-get($background, background);
+                    background: map-get($background, card);
 
                     .sidebar-toggle {
                         border-right-color: map-get($foreground, divider);
@@ -22,7 +22,7 @@
                     .search {
 
                         input {
-                            background: map-get($background, background);
+                            background: map-get($background, card);
                             color: map-get($foreground, text);
                         }
                     }

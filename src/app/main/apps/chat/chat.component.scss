@@ -7,14 +7,15 @@
         max-width: 1400px;
         margin: 0 auto;
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint('lt-lg') {
             padding: 0 !important;
         }
 
         .content-card {
+            position: relative;
             display: flex;
             flex: 1;
-            position: relative;
+            border-radius: 8px;
 
             .mat-sidenav-container {
                 display: flex;
@@ -38,7 +39,6 @@
                     flex-direction: column;
                     width: 400px;
                     max-width: 90%;
-                    box-shadow: 0 0 1px rgba(0, 0, 0, 0.37);
                     overflow: hidden;
                 }
             }

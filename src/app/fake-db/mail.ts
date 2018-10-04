@@ -25,23 +25,22 @@ export class MailFakeDb
                 {
                     'type'    : 'image',
                     'fileName': 'flowers',
-                    'preview' : 'assets/images/etc/flowers-thumb.jpg',
+                    'preview' : 'assets/images/mail/attachment-1.jpg',
                     'url'     : '',
                     'size'    : '1.1Mb'
                 },
                 {
                     'type'    : 'image',
                     'fileName': 'snow',
-                    'preview' : 'assets/images/etc/snow-thumb.jpg',
+                    'preview' : 'assets/images/mail/attachment-2.jpg',
                     'url'     : '',
                     'size'    : '380kb'
                 },
                 {
                     'type'    : 'image',
                     'fileName': 'sunrise',
-                    'preview' : 'assets/images/etc/sunrise-thumb.jpg',
-                    'url'     : 'assets/images/etc/early-sunrise.jpg',
-                    'size'    : '17Mb'
+                    'preview' : 'assets/images/mail/attachment-3.jpg',
+                    'size': '17Mb'
                 }
             ],
             'labels'        : [

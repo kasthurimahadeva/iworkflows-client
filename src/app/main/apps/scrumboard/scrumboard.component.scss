@@ -27,12 +27,12 @@ scrumboard {
                 height: 210px;
                 padding: 24px 0;
                 margin: 16px;
-                border-radius: 4px;
+                border-radius: 8px;
                 background: rgba(0, 0, 0, 0.12);
                 transition: box-shadow 150ms ease-in;
                 cursor: pointer;
 
-                &:hover {
+                &:hover:not(.add-new-board) {
                     @include mat-elevation(8);
                 }
 

@@ -33,9 +33,9 @@
     <!-- USER MOOD -->
     <form [formGroup]="userForm" fxLayout="column">
 
-        <mat-form-field class="mb-24" fxFlex="0 1 auto">
-            <textarea matInput placeholder="Mood" name="mood"
-                      formControlName="mood" rows="3"></textarea>
+        <mat-form-field appearance="outline" fxFlex="0 1 auto">
+            <mat-label>Mood</mat-label>
+            <textarea matInput name="mood" formControlName="mood" rows="3"></textarea>
         </mat-form-field>
 
         <mat-radio-group formControlName="status" fxLayout="column">

@@ -22,8 +22,8 @@ export class CalendarFakeDb
                     title    : 'A 3 day event',
                     allDay   : true,
                     color    : {
-                        primary  : '#ad2121',
-                        secondary: '#FAE3E3'
+                        primary  : '#F44336',
+                        secondary: '#FFCDD2'
                     },
                     resizable: {
                         beforeStart: true,
@@ -40,8 +40,8 @@ export class CalendarFakeDb
                     title    : 'An event with no end date',
                     allDay   : false,
                     color    : {
-                        primary  : '#e3bc08',
-                        secondary: '#FDF1BA'
+                        primary  : '#FF9800',
+                        secondary: '#FFE0B2'
                     },
                     resizable: {
                         beforeStart: true,
@@ -59,7 +59,7 @@ export class CalendarFakeDb
                     title    : 'A long event that spans 2 months',
                     allDay   : false,
                     color    : {
-                        primary  : '#1e90ff',
+                        primary  : '#1E90FF',
                         secondary: '#D1E8FF'
                     },
                     resizable: {
@@ -78,8 +78,8 @@ export class CalendarFakeDb
                     title    : 'A draggable and resizable event',
                     allDay   : false,
                     color    : {
-                        primary  : '#e3bc08',
-                        secondary: '#FDF1BA'
+                        primary  : '#673AB7',
+                        secondary: '#D1C4E9'
                     },
                     resizable: {
                         beforeStart: true,

@@ -12,18 +12,11 @@
 
         <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
 
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>From</mat-label>
                 <input matInput name="from"
-                       placeholder="From"
                        formControlName="from"
                        type="email">
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput name="to"
-                       placeholder="To"
-                       formControlName="to"
-                       type="email" required>
             </mat-form-field>
 
             <div class="show-hide-extra-fields" (click)="toggleExtraToFields()">
@@ -31,31 +24,38 @@
                 <span [fxShow]="showExtraToFields">Hide CC & BCC</span>
             </div>
 
-            <mat-form-field [fxShow]="showExtraToFields">
+            <mat-form-field appearance="outline">
+                <mat-label>To</mat-label>
+                <input matInput name="to"
+                       formControlName="to"
+                       type="email" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" [fxShow]="showExtraToFields">
+                <mat-label>Cc</mat-label>
                 <input matInput
                        name="cc"
-                       placeholder="Cc"
                        formControlName="cc"
                        type="email">
             </mat-form-field>
 
-            <mat-form-field [fxShow]="showExtraToFields">
+            <mat-form-field appearance="outline" [fxShow]="showExtraToFields">
+                <mat-label>Bcc</mat-label>
                 <input matInput
                        name="bcc"
-                       placeholder="Bcc"
                        formControlName="bcc"
                        type="email">
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Subject</mat-label>
                 <input matInput name="subject"
-                       placeholder="Subject"
                        formControlName="subject">
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Message</mat-label>
                 <textarea matInput name="message"
-                          placeholder="Message"
                           formControlName="message"
                           rows="6">
                 </textarea>
@@ -66,7 +66,7 @@
                 <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
                     <div>
                         <span class="filename">attachment-2.doc</span>
-                        <span class="size">(12 Kb)</span>
+                        <span class="size ml-4">(12 Kb)</span>
                     </div>
 
                     <button mat-icon-button aria-label="Delete attachment">
@@ -77,7 +77,7 @@
                 <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
                     <div>
                         <span class="filename">attachment-1.jpg</span>
-                        <span class="size">(350 Kb)</span>
+                        <span class="size ml-4">(350 Kb)</span>
                     </div>
 
                     <button mat-icon-button aria-label="Delete attachment">
@@ -91,8 +91,9 @@
     <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
         <div>
             <button mat-raised-button
+                    color="accent"
                     (click)="matDialogRef.close(['send',composeForm])"
-                    class="save-button mat-accent"
+                    class="save-button"
                     [disabled]="composeForm.invalid"
                     aria-label="SAVE">
                 SEND

@@ -25,8 +25,9 @@
                     If you would like to be notified when the app is ready, you can subscribe to our e-mail list.
                 </div>
 
-                <mat-form-field>
-                    <input matInput placeholder="Email" formControlName="email">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
                     <mat-error *ngIf="comingSoonFormErrors.email.required">
                         Email is required
                     </mat-error>

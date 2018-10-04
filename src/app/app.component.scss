@@ -25,7 +25,7 @@
 
         &.right-side-panel {
 
-            @include media-breakpoint-up('lg') {
+            @include media-breakpoint('gt-md') {
                 right: 70px;
             }
         }

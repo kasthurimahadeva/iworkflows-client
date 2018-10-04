@@ -13,8 +13,9 @@
         <div fxFlex fxLayout="column" fusePerfectScrollbar>
 
             <div class="label" *ngFor="let label of board.labels" fxFlex="0 0 auto" fxLayout="row"
-                 fxFlexAlign="space-between center"
-                 [ngClass]="label.color">
+                 fxLayoutAlign="space-between center">
+
+                <div class="label-color" [ngClass]="label.color"></div>
 
                 <mat-checkbox fxFlex fxLayout="row" fxLayoutAlign="start center"
                               [checked]="card.idLabels.indexOf(label.id) > -1"
@@ -25,8 +26,11 @@
                 <button mat-icon-button>
                     <mat-icon class="s-16" (click)="labelsMenuView ='edit';selectedLabel = label">mode_edit</mat-icon>
                 </button>
+
             </div>
+
         </div>
+
     </div>
 
     <div class="view edit" *ngSwitchCase="'edit'" fxFlex fxLayout="column">
@@ -70,6 +74,9 @@
             </div>
 
             <button mat-raised-button class="mat-accent mt-16" [disabled]="!newLabelForm.valid">ADD NEW LABEL</button>
+
         </form>
+
     </div>
+
 </div>

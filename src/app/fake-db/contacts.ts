@@ -12,7 +12,7 @@ export class ContactsFakeDb
             'email'   : 'abbott@withinpixels.com',
             'phone'   : '+1-202-555-0175',
             'address' : '933 8th Street Stamford, CT 06902',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -26,7 +26,7 @@ export class ContactsFakeDb
             'email'   : 'arnold@withinpixels.com',
             'phone'   : '+1-202-555-0141',
             'address' : '906 Valley Road Michigan City, IN 46360',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -40,7 +40,7 @@ export class ContactsFakeDb
             'email'   : 'barrera@withinpixels.com',
             'phone'   : '+1-202-555-0196',
             'address' : '183 River Street Passaic, NJ 07055',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -54,7 +54,7 @@ export class ContactsFakeDb
             'email'   : 'blair@withinpixels.com',
             'phone'   : '+1-202-555-0118',
             'address' : '143 Jones Street Eau Claire, WI 54701',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -68,7 +68,7 @@ export class ContactsFakeDb
             'email'   : 'boyle@withinpixels.com',
             'phone'   : '+1-202-555-0177',
             'address' : '218 Pearl Street Brandon, FL 33510',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -82,7 +82,7 @@ export class ContactsFakeDb
             'email'   : 'christy@withinpixels.com',
             'phone'   : '+1-202-555-0136',
             'address' : '329 Bridge Street Desoto, TX 75115',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -96,7 +96,7 @@ export class ContactsFakeDb
             'email'   : 'copeland@withinpixels.com',
             'phone'   : '+1-202-555-0107',
             'address' : '956 6th Avenue North Bergen, NJ 0704',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -110,7 +110,7 @@ export class ContactsFakeDb
             'email'   : 'estes@withinpixels.com',
             'phone'   : '+1-202-555-0113',
             'address' : '664 York Street Cambridge, MA 02138',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -124,7 +124,7 @@ export class ContactsFakeDb
             'email'   : 'harper@withinpixels.com',
             'phone'   : '+1-202-555-0173',
             'address' : '738 Route 11 Cornelius, NC 28031',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -138,7 +138,7 @@ export class ContactsFakeDb
             'email'   : 'helen@withinpixels.com',
             'phone'   : '+1-202-555-0163',
             'address' : '194 Washington Avenue Saint Petersburg, FL 33702',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -152,7 +152,7 @@ export class ContactsFakeDb
             'email'   : 'henderson@withinpixels.com',
             'phone'   : '+1-202-555-0151',
             'address' : '686 Roosevelt Avenue Oviedo, FL 32765',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -166,7 +166,7 @@ export class ContactsFakeDb
             'email'   : 'josefina@withinpixels.com',
             'phone'   : '+1-202-555-0160',
             'address' : '202 Hartford Road Lynchburg, VA 24502',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -180,7 +180,7 @@ export class ContactsFakeDb
             'email'   : 'katina@withinpixels.com',
             'phone'   : '+1-202-555-0186',
             'address' : '219 Woodland Road Valrico, FL 33594',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -194,7 +194,7 @@ export class ContactsFakeDb
             'email'   : 'lily@withinpixels.com',
             'phone'   : '+1-202-555-0115',
             'address' : '305 Willow Drive Superior, WI 54880',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -208,7 +208,7 @@ export class ContactsFakeDb
             'email'   : 'mai@withinpixels.com',
             'phone'   : '+1-202-555-0199',
             'address' : '148 Heather Lane Mcminnville, TN 37110',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -222,7 +222,7 @@ export class ContactsFakeDb
             'email'   : 'nancy@withinpixels.com',
             'phone'   : '+1-202-555-0120',
             'address' : '345 Laurel Lane Union City, NJ 07087',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -236,7 +236,7 @@ export class ContactsFakeDb
             'email'   : 'nora@withinpixels.com',
             'phone'   : '+1-202-555-0172',
             'address' : '572 Rose Street Summerfield, FL 34491',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -250,7 +250,7 @@ export class ContactsFakeDb
             'email'   : 'odessa@withinpixels.com',
             'phone'   : '+1-202-555-0190',
             'address' : '527 Jefferson Court Conyers, GA 30012',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -264,7 +264,7 @@ export class ContactsFakeDb
             'email'   : 'reyna@withinpixels.com',
             'phone'   : '+1-202-555-0116',
             'address' : '297 Strawberry Lane Faribault, MN 55021',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -278,7 +278,7 @@ export class ContactsFakeDb
             'email'   : 'shauna@withinpixels.com',
             'phone'   : '+1-202-555-0159',
             'address' : '928 Canterbury Court Pittsburgh, PA 15206',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -292,7 +292,7 @@ export class ContactsFakeDb
             'email'   : 'shepard@withinpixels.com',
             'phone'   : '+1-202-555-0173',
             'address' : '904 Ridge Road Pickerington, OH 43147',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -306,7 +306,7 @@ export class ContactsFakeDb
             'email'   : 'tillman@withinpixels.com',
             'phone'   : '+1-202-555-0183',
             'address' : '447 Charles Street Dorchester, MA 02125',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -320,7 +320,7 @@ export class ContactsFakeDb
             'email'   : 'trevino@withinpixels.com',
             'phone'   : '+1-202-555-0138',
             'address' : '84 Valley View Road Norman, OK 73072',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -334,7 +334,7 @@ export class ContactsFakeDb
             'email'   : 'tyson@withinpixels.com',
             'phone'   : '+1-202-555-0146',
             'address' : '204 Clark Street Monsey, NY 10952',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         },
         {
@@ -348,7 +348,7 @@ export class ContactsFakeDb
             'email'   : 'velezquez@withinpixels.com',
             'phone'   : '+1-202-555-0146',
             'address' : '261 Cleveland Street Riverside, NJ 08075',
-            'birthday': null,
+            'birthday': '',
             'notes'   : ''
         }
     ];

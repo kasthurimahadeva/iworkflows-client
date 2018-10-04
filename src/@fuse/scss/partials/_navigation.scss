@@ -219,24 +219,27 @@
         }
     }
 
-    // Material style
-    &.material {
+    // Material 2 style
+    &.material2,
+    .material2 & {
 
         .nav-subheader {
-            border-top: 1px solid rgba(0, 0, 0, 0.12);
-
-            &:first-child {
-                border-top: none;
-            }
+            height: 40px;
         }
 
+        .nav-group {
+
+            > .group-title {
+                height: 40px;
+            }
+        }
         .nav-item {
 
             .nav-link {
                 height: 40px;
-                padding: 0 16px;
-                margin: 4px 8px;
-                border-radius: 4px;
+                padding: 0 12px 0 24px;
+                border-radius: 0 20px 20px 0;
+                margin-right: 16px;
             }
         }
     }

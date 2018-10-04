@@ -35,7 +35,7 @@
                 margin-top: 0;
                 margin-bottom: 16px;
 
-                @include media-breakpoint-down('xs') {
+                @include media-breakpoint('xs') {
                     font-size: 24px;
                 }
             }
@@ -47,7 +47,7 @@
                 letter-spacing: 0.03em;
                 margin: 0;
 
-                @include media-breakpoint-down('xs') {
+                @include media-breakpoint('xs') {
                     font-size: 14px;
                 }
             }
@@ -57,7 +57,7 @@
     .content {
 
         .category-selector {
-            min-width: 200px;
+            min-width: 320px;
         }
 
         .filters {
@@ -66,18 +66,14 @@
             margin: 24px auto;
             padding: 0 20px;
 
-            @include media-breakpoint-down('xs') {
+            @include media-breakpoint('xs') {
                 margin: 0 auto;
             }
 
             .course-search {
-                width: 200px;
+                width: 320px;
 
-                @include media-breakpoint-down('xs') {
-                    margin-bottom: 16px;
-                }
-
-                @include media-breakpoint-up('sm') {
+                @include media-breakpoint('gt-xs') {
                     margin-right: 16px;
                 }
             }
@@ -100,15 +96,17 @@
                 &:hover {
 
                     .course-content {
-                        @include mat-elevation(8);
+                        border: none;
+                        @include mat-elevation(12);
                     }
                 }
 
                 .course-content {
                     min-height: 240px;
-                    transition: box-shadow 150ms ease-in-out;
-
-                    @include mat-elevation(3);
+                    border-radius: 4px;
+                    overflow: hidden;
+                    transition: box-shadow 200ms ease-in-out;
+                    @include mat-elevation(1);
 
                     .header {
                         padding: 16px 24px;

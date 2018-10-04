@@ -11,6 +11,7 @@
 
         .big-circle {
             background: map-get($background, card);
+            border-color: map-get($foreground, divider);
         }
     }
 
@@ -60,6 +61,8 @@
                             .mat-form-field-flex {
 
                                 .mat-form-field-infix {
+                                    border-color: map-get($foreground, divider);
+
                                     @if ($is-dark == true) {
                                         background-color: map-get($background, hover);
                                     } @else {
@@ -84,6 +87,7 @@
 
                 .search {
                     background: map-get($background, background);
+                    border-color: map-get($foreground, divider);
 
                     input {
                         background: map-get($background, background);

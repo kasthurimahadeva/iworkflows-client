@@ -51,9 +51,9 @@ contacts-contact-list {
     padding: 0;
     z-index: 99;
 
-    @include media-breakpoint-down('xs') {
+    @include media-breakpoint('xs') {
         position: sticky;
-        top: calc(100vh - 72px);
+        top: calc(100vh - 120px);
         bottom: auto;
     }
 }

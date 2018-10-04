@@ -111,7 +111,6 @@ export class CalendarComponent implements OnInit
      */
     beforeMonthViewRender({header, body}): void
     {
-        // console.info('beforeMonthViewRender');
         /**
          * Get the selected day
          */
@@ -122,10 +121,10 @@ export class CalendarComponent implements OnInit
         if ( _selectedDay )
         {
             /**
-             * Set selectedday style
+             * Set selected day style
              * @type {string}
              */
-            _selectedDay.cssClass = 'mat-elevation-z3';
+            _selectedDay.cssClass = 'cal-selected';
         }
 
     }

@@ -25,16 +25,15 @@
             <div class="filters" fxLayout="column" fxLayoutAlign="center center"
                  fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
-                <mat-form-field class="course-search">
-
-                    <input matInput placeholder="Search for a course" [(ngModel)]="searchTerm"
+                <mat-form-field appearance="outline" class="course-search">
+                    <mat-label>Search for a course</mat-label>
+                    <input matInput [(ngModel)]="searchTerm"
                            (input)="filterCoursesByTerm()">
-
                 </mat-form-field>
 
-                <mat-form-field class="category-selector">
-
-                    <mat-select placeholder="Select Category" [(ngModel)]="currentCategory"
+                <mat-form-field appearance="outline" class="category-selector">
+                    <mat-label>Category</mat-label>
+                    <mat-select [(ngModel)]="currentCategory"
                                 (selectionChange)="filterCoursesByCategory()">
                         <mat-option [value]="'all'">
                             All
@@ -43,7 +42,6 @@
                             {{ category.label }}
                         </mat-option>
                     </mat-select>
-
                 </mat-form-field>
 
             </div>

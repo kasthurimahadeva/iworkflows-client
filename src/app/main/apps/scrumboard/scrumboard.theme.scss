@@ -69,6 +69,7 @@
     // Card
     scrumboard-board-card {
         background-color: map-get($background, card);
+        border-color: map-get($foreground, divider);
 
         .list-card-details {
 

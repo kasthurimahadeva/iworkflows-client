@@ -26,7 +26,7 @@
             min-height: 160px;
             max-height: 160px;
 
-            @include media-breakpoint-down('sm') {
+            @include media-breakpoint('lt-md') {
                 height: 120px;
                 min-height: 120px;
                 max-height: 120px;

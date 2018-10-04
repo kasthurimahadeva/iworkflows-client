@@ -42,7 +42,7 @@
             <button mat-icon-button (click)="toggleStar($event)"
                     aria-label="Toggle star" fxHide.xs>
                 <mat-icon class="amber-fg" *ngIf="todo.starred">star</mat-icon>
-                <mat-icon class="secondary-text" *ngIf="!todo.starred">star_outline</mat-icon>
+                <mat-icon class="secondary-text" *ngIf="!todo.starred">star_border</mat-icon>
             </button>
 
             <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation()"
@@ -79,7 +79,7 @@
                         <span>Remove star</span>
                     </ng-container>
                     <ng-container *ngIf="!todo.starred">
-                        <mat-icon>star_outline</mat-icon>
+                        <mat-icon>star_border</mat-icon>
                         <span>Add star</span>
                     </ng-container>
                 </button>

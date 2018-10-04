@@ -13,9 +13,9 @@
              fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
             <!-- APP TITLE -->
-            <div class="logo"
+            <div class="logo mb-24 mb-sm-0"
                  fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="logo-icon mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                <mat-icon class="logo-icon s-40 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
                     shopping_basket
                 </mat-icon>
                 <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Orders</span>
@@ -23,16 +23,14 @@
             <!-- / APP TITLE -->
 
             <!-- SEARCH -->
-            <div class="search-input-wrapper ml-sm-16"
-                 fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
+            <div class="search-input-wrapper ml-sm-32" fxFlex="1 0 auto" fxLayout="row" fxLayoutAlign="start center">
                 <label for="search" class="mr-8">
-                    <mat-icon class="secondary-text">search</mat-icon>
+                    <mat-icon class="secondary-text s-18">search</mat-icon>
                 </label>
-                <mat-form-field floatLabel="never" fxFlex="1 0 auto">
-                    <input id="search" matInput #filter placeholder="Search">
-                </mat-form-field>
+                <input id="search" #filter placeholder="Search">
             </div>
             <!-- / SEARCH -->
+
         </div>
         <!-- / HEADER -->
 

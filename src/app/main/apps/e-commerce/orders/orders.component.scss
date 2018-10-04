@@ -4,19 +4,50 @@
 
     #orders {
 
+        .top-bg {
+
+            @include media-breakpoint('xs') {
+                height: 224px;
+            }
+        }
+
         > .center {
 
             > .header {
 
                 .search-input-wrapper {
                     max-width: 480px;
+                    height: 42px;
+                    max-height: 42px;
+                    min-height: 42px;
+                    border-radius: 21px;
+                    padding: 0 16px;
+                    background: white;
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    label {
+                        width: 18px;
+                        height: 18px;
+
+                        mat-icon {
+                            color: rgba(0, 0, 0, 0.54) !important;
+                        }
+                    }
+
+                    #search {
+                        border: none;
+                        background: none;
+                    }
                 }
 
-                @include media-breakpoint-down(xs) {
-                    margin: 24px 0;
-                    height: 128px !important;
-                    min-height: 128px !important;
-                    max-height: 128px !important;
+                @include media-breakpoint('xs') {
+                    padding: 8px 0;
+                    height: 160px !important;
+                    min-height: 160px !important;
+                    max-height: 160px !important;
                 }
             }
         }

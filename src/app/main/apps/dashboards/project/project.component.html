@@ -1,158 +1,5 @@
 <div id="dashboard-project" class="page-layout simple right-sidebar" fxLayout="row">
 
-    <!-- SIDEBAR -->
-    <fuse-sidebar class="sidebar" name="project-dashboard-right-sidebar-1" position="right" lockedOpen="gt-md">
-
-        <!-- SIDEBAR CONTENT -->
-        <div class="content">
-
-            <!-- WIDGET GROUP -->
-            <div class="widget-group" fxLayout="column" fxFlex="100" [@animateStagger]="{value:'50'}">
-
-                <!-- NOW WIDGET -->
-                <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="p-0">
-
-                    <!-- Front -->
-                    <div class="fuse-widget-front">
-
-                        <div class="pl-16 pr-8 py-16" fxLayout="row" fxLayoutAlign="space-between center">
-
-                            <div class="h3">{{dateNow | date: 'EEEE, HH:mm:ss'}}</div>
-
-                            <div>
-                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="more">
-                                    <mat-icon>more_vert</mat-icon>
-                                </button>
-
-                                <mat-menu #moreMenu="matMenu">
-                                    <button mat-menu-item aria-label="Flip widget">
-                                        Details
-                                    </button>
-                                </mat-menu>
-                            </div>
-                        </div>
-
-                        <div class="p-16 pb-24" fxLayout="column" fxLayoutAlign="center center">
-                            <div class="h1 secondary-text">
-                                <span>{{dateNow | date: 'MMMM'}}</span>
-                            </div>
-
-                            <div class="font-size-72 line-height-88 secondary-text font-weight-400">
-                                {{dateNow | date: 'd'}}
-                            </div>
-
-                            <div class="h1 secondary-text">
-                                <span>{{dateNow | date: 'y'}}</span>
-                            </div>
-                        </div>
-
-                        <mat-divider></mat-divider>
-                    </div>
-                    <!-- / Front -->
-
-                </fuse-widget>
-                <!-- / NOW WIDGET -->
-
-                <!-- WEATHER WIDGET -->
-                <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="p-0">
-
-                    <!-- Front -->
-                    <div class="fuse-widget-front">
-
-                        <div class="pl-16 pr-8 py-16" fxLayout="row" fxLayoutAlign="space-between center">
-
-                            <div class="h4" fxLayout="row" fxLayoutAlign="start center">
-                                <mat-icon class="secondary-text mr-8">place</mat-icon>
-                                {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].name}}
-                            </div>
-
-                            <div>
-                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="more">
-                                    <mat-icon class="secondary-text">more_vert</mat-icon>
-                                </button>
-
-                                <mat-menu #moreMenu="matMenu">
-                                    <button mat-menu-item aria-label="Flip widget">
-                                        Details
-                                    </button>
-                                </mat-menu>
-                            </div>
-                        </div>
-
-                        <div class="p-16 pb-32" fxLayout="column" fxLayoutAlign="center center">
-
-                            <div fxLayout="row" fxLayoutAlign="center center">
-                                <mat-icon fontSet="meteocons"
-                                          [fontIcon]="widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].icon"
-                                          class="icon s-40 secondary-text mr-16"></mat-icon>
-                                <span class="mat-display-2 m-0 font-weight-300 secondary-text">
-                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].temp[widgets.weatherWidget.tempUnit]}}
-                                </span>
-                                <span class="font-size-48 font-weight-300 hint-text text-super ml-8">°</span>
-                                <span class="mat-display-2 mb-0 font-weight-300 hint-text ng-binding">C</span>
-                            </div>
-                        </div>
-
-                        <div class="p-16 by" fxLayout="row" fxLayoutAlign="space-between center">
-                            <div fxLayout="row" fxLayoutAlign="start center">
-                                <mat-icon fontSet="meteocons" fontIcon="icon-windy"
-                                          class="s-16 secondary-text mr-8"></mat-icon>
-                                <span>
-                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].windSpeed[widgets.weatherWidget.speedUnit]}}
-                                </span>
-                                <span class="secondary-text ml-5">{{widgets.weatherWidget.speedUnit}}</span>
-                            </div>
-
-                            <div fxLayout="row" fxLayoutAlign="start center">
-                                <mat-icon fontSet="meteocons" fontIcon="icon-compass"
-                                          class="s-16 secondary-text mr-8"></mat-icon>
-                                <span>
-                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].windDirection}}
-                                </span>
-                            </div>
-
-                            <div fxLayout="row" fxLayoutAlign="start center">
-                                <mat-icon fontSet="meteocons" fontIcon="icon-rainy"
-                                          class="s-16 secondary-text mr-8"></mat-icon>
-                                <span>
-                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].rainProbability}}
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="py-16">
-                            <div class="py-16 px-24" fxLayout="row" fxLayoutAlign="space-between center"
-                                 *ngFor="let day of widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].next3Days">
-                                <span class="h4">{{day.name}}</span>
-                                <div fxLayout="row" fxLayoutAlign="start center">
-                                    <mat-icon fontSet="meteocons" [fontIcon]="day.icon"
-                                              class="secondary-text mr-16"></mat-icon>
-                                    <span class="h2">{{day.temp[widgets.weatherWidget.tempUnit]}}</span>
-                                    <span class="h2 font-weight-300 secondary-text text-super">&deg;</span>
-                                    <span class="h2 font-weight-300 secondary-text">
-                                        {{widgets.weatherWidget.tempUnit}}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <mat-divider></mat-divider>
-
-                    </div>
-                    <!-- / Front -->
-
-                </fuse-widget>
-                <!-- / WEATHER WIDGET -->
-
-            </div>
-            <!-- / WIDGET GROUP -->
-
-        </div>
-        <!-- / SIDEBAR CONTENT -->
-
-    </fuse-sidebar>
-    <!-- / SIDEBAR -->
-
     <!-- CENTER -->
     <div class="center" fusePerfectScrollbar>
 
@@ -161,8 +8,8 @@
 
             <div fxLayout="row" fxLayoutAlign="space-between start">
 
-                <span class="mat-display-1 mb-0 welcome-message"
-                      [@animate]="{value:'*',params:{x:'50px'}}">Welcome back, John!
+                <span class="mat-display-1 my-0 my-sm-24 welcome-message"
+                      [@animate]="{value:'*',params:{x:'50px'}}">Welcome back, Charlie!
                 </span>
 
                 <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
@@ -204,7 +51,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <mat-form-field>
@@ -242,7 +89,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -262,7 +109,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget2.title}}</div>
@@ -291,7 +138,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -311,7 +158,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget3.title}}</div>
@@ -340,7 +187,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -360,7 +207,7 @@
                                      fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-md="25">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
                                 <div class="pl-16 pr-8 py-16 h-52" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget4.title}}</div>
@@ -389,7 +236,7 @@
                             <!-- / Front -->
 
                             <!-- Back -->
-                            <div class="fuse-widget-back p-16 pt-32 mat-elevation-z2">
+                            <div class="fuse-widget-back p-16 pt-32">
                                 <button mat-icon-button fuseWidgetToggle class="fuse-widget-flip-button"
                                         aria-label="Flip widget">
                                     <mat-icon class="s-16">close</mat-icon>
@@ -409,7 +256,7 @@
                                      class="widget widget5">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
 
                                 <div class="px-16 border-bottom" fxLayout="row wrap"
                                      fxLayoutAlign="space-between center">
@@ -488,7 +335,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
 
                                 <div class="px-16 py-8 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
@@ -548,7 +395,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
 
                                 <div class="px-16 py-8 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
@@ -601,7 +448,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
                                 <div class="h3 px-16 py-24">
                                     {{widgets.widget8.title}}
                                 </div>
@@ -633,7 +480,7 @@
                                      fxFlex="100" fxFlex.gt-sm="50">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
                                 <div class="px-16 py-12 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
                                     <div class="h3">{{widgets.widget9.title}}</div>
@@ -750,7 +597,7 @@
                                      fxFlex="100">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
 
                                 <div class="simple-table-container" ms-responsive-table>
                                     <div class=" table-title">
@@ -803,7 +650,7 @@
                                      fxFlex="100">
 
                             <!-- Front -->
-                            <div class="fuse-widget-front mat-elevation-z2">
+                            <div class="fuse-widget-front">
 
                                 <div class="p-24 mb-8 border-bottom" fxLayout="row"
                                      fxLayoutAlign="space-between center">
@@ -900,5 +747,155 @@
 
     </div>
     <!-- / CENTER -->
+
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="project-dashboard-right-sidebar-1" position="right" lockedOpen="gt-md">
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content">
+
+            <!-- WIDGET GROUP -->
+            <div class="widget-group" fxLayout="column" fxFlex="100" [@animateStagger]="{value:'50'}">
+
+                <!-- NOW WIDGET -->
+                <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="pb-0">
+
+                    <!-- Front -->
+                    <div class="fuse-widget-front">
+
+                        <div class="pl-16 pr-8 py-16" fxLayout="row" fxLayoutAlign="space-between center">
+
+                            <div class="h3">{{dateNow | date: 'EEEE, HH:mm:ss'}}</div>
+
+                            <div>
+                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="more">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+
+                                <mat-menu #moreMenu="matMenu">
+                                    <button mat-menu-item aria-label="Flip widget">
+                                        Details
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+
+                        <div class="p-16 pb-24" fxLayout="column" fxLayoutAlign="center center">
+                            <div class="h1 secondary-text">
+                                <span>{{dateNow | date: 'MMMM'}}</span>
+                            </div>
+
+                            <div class="font-size-72 line-height-88 secondary-text font-weight-400">
+                                {{dateNow | date: 'd'}}
+                            </div>
+
+                            <div class="h1 secondary-text">
+                                <span>{{dateNow | date: 'y'}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- / Front -->
+
+                </fuse-widget>
+                <!-- / NOW WIDGET -->
+
+                <!-- WEATHER WIDGET -->
+                <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}">
+
+                    <!-- Front -->
+                    <div class="fuse-widget-front">
+
+                        <div class="pl-16 pr-8 py-16" fxLayout="row" fxLayoutAlign="space-between center">
+
+                            <div class="h4" fxLayout="row" fxLayoutAlign="start center">
+                                <mat-icon class="secondary-text mr-8">place</mat-icon>
+                                {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].name}}
+                            </div>
+
+                            <div>
+                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="more">
+                                    <mat-icon class="secondary-text">more_vert</mat-icon>
+                                </button>
+
+                                <mat-menu #moreMenu="matMenu">
+                                    <button mat-menu-item aria-label="Flip widget">
+                                        Details
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+
+                        <div class="p-16 pb-32" fxLayout="column" fxLayoutAlign="center center">
+
+                            <div fxLayout="row" fxLayoutAlign="center center">
+                                <mat-icon fontSet="meteocons"
+                                          [fontIcon]="widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].icon"
+                                          class="icon s-40 secondary-text mr-16"></mat-icon>
+                                <span class="mat-display-2 m-0 font-weight-300 secondary-text">
+                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].temp[widgets.weatherWidget.tempUnit]}}
+                                </span>
+                                <span class="font-size-48 font-weight-300 hint-text text-super ml-8">°</span>
+                                <span class="mat-display-2 mb-0 font-weight-300 hint-text ng-binding">C</span>
+                            </div>
+                        </div>
+
+                        <div class="p-16 by" fxLayout="row" fxLayoutAlign="space-between center">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <mat-icon fontSet="meteocons" fontIcon="icon-windy"
+                                          class="s-16 secondary-text mr-8"></mat-icon>
+                                <span>
+                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].windSpeed[widgets.weatherWidget.speedUnit]}}
+                                </span>
+                                <span class="secondary-text ml-5">{{widgets.weatherWidget.speedUnit}}</span>
+                            </div>
+
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <mat-icon fontSet="meteocons" fontIcon="icon-compass"
+                                          class="s-16 secondary-text mr-8"></mat-icon>
+                                <span>
+                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].windDirection}}
+                                </span>
+                            </div>
+
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <mat-icon fontSet="meteocons" fontIcon="icon-rainy"
+                                          class="s-16 secondary-text mr-8"></mat-icon>
+                                <span>
+                                    {{widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].rainProbability}}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="py-16">
+                            <div class="py-16 px-24" fxLayout="row" fxLayoutAlign="space-between center"
+                                 *ngFor="let day of widgets.weatherWidget.locations[widgets.weatherWidget.currentLocation].next3Days">
+                                <span class="h4">{{day.name}}</span>
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                    <mat-icon fontSet="meteocons" [fontIcon]="day.icon"
+                                              class="secondary-text mr-16"></mat-icon>
+                                    <span class="h2">{{day.temp[widgets.weatherWidget.tempUnit]}}</span>
+                                    <span class="h2 font-weight-300 secondary-text text-super">&deg;</span>
+                                    <span class="h2 font-weight-300 secondary-text">
+                                        {{widgets.weatherWidget.tempUnit}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- / Front -->
+
+                </fuse-widget>
+                <!-- / WEATHER WIDGET -->
+
+            </div>
+            <!-- / WIDGET GROUP -->
+
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
 
 </div>

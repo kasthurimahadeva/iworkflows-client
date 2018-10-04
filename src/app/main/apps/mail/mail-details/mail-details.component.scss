@@ -28,7 +28,7 @@ mail-details {
 
         .label {
             font-size: 11px;
-            border-radius: 2px;
+            border-radius: 4px;
             margin: 4px 4px 4px 0;
             padding: 3px 8px;
 
@@ -98,6 +98,7 @@ mail-details {
             .preview {
                 width: 100px;
                 margin: 0 16px 8px 0;
+                border-radius: 4px;
             }
 
             .link {

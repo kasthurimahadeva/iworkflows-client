@@ -81,12 +81,10 @@
             <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
 
                 <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
-
-                    <mat-icon>search</mat-icon>
-
+                    <mat-icon class="s-16 secondary-text">search</mat-icon>
                     <input [(ngModel)]="searchText" type="text" placeholder="Search or start new chat" fxFlex>
-
                 </div>
+
             </div>
             <!-- / SEARCH -->
 
@@ -120,27 +118,29 @@
                 <div fxLayout="row" fxLayoutAlign="start center">
 
                     <div class="avatar-wrapper" fxFlex="0 1 auto" fxLayoutAlign="center center">
-                        <img [src]="contacts | getById:chat.contactId:'avatar'"
-                             class="avatar"
+                        <img class="avatar" [src]="contacts | getById:chat.contactId:'avatar'"
                              alt="{{contacts | getById:chat.contactId:'name'}}"/>
                         <mat-icon class="s-16 status" [ngClass]="contacts | getById:chat.contactId:'status'"></mat-icon>
                     </div>
 
                     <div fxLayout="row" fxFlex>
 
-                        <div class="" fxFlex fxLayout="column" fxLayoutAlign="center start">
+                        <div class="pr-4" fxFlex fxLayout="column" fxLayoutAlign="center start">
                             <div class="contact-name">{{contacts | getById:chat.contactId:'name'}}</div>
                             <div class="contact-last-message">{{chat.lastMessage}}</div>
                         </div>
 
-                        <div fxLayout="column" fxLayoutAlign="center end">
+                        <div fxLayout="column" fxLayoutAlign="start end">
                             <div class="contact-last-message-time">
                                 {{chat.lastMessageTime | date}}
                             </div>
-                            <div *ngIf="chat.unread" class="unread-message-count accent">{{chat.unread}}</div>
+                            <div *ngIf="chat.unread" class="mt-4 unread-message-count accent">{{chat.unread}}</div>
                         </div>
+
                     </div>
+
                 </div>
+
             </button>
 
         </div>
@@ -159,17 +159,21 @@
                     [@animate]="{value:'*',params:{y:'100%'}}">
 
                 <div fxLayout="row" fxLayoutAlign="start center">
+
                     <div class="avatar-wrapper" fxFlex="0 1 auto">
                         <img src="{{contact.avatar}}" class="mat-avatar avatar" alt="{{contact.name}}"/>
                         <mat-icon class="s-16 status" [ngClass]="contact.status"></mat-icon>
                     </div>
 
-                    <div class="" fxLayout="column" fxLayoutAlign="center start">
+                    <div fxLayout="column" fxLayoutAlign="start start">
                         <div class="contact-name">{{contact.name}}</div>
                         <p class="contact-mood">{{contact.mood}}</p>
                     </div>
+
                 </div>
+
             </button>
+
         </div>
         <!-- / CONTACTS LIST-->
 

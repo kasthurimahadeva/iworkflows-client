@@ -10,8 +10,9 @@ chat-start {
         height: 240px;
         line-height: 240px;
         text-align: center;
+        border: 1px solid;
 
-        @include media-breakpoint-down('sm') {
+        @include media-breakpoint('lt-md') {
             width: 160px;
             height: 160px;
             line-height: 160px;

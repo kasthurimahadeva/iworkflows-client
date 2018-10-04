@@ -11,7 +11,7 @@ pricing-style-2 {
             background: #1A237E;
             background: linear-gradient(to right, #0E2A3B 0%, #34306B 100%);
 
-            @include media-breakpoint-down('xs') {
+            @include media-breakpoint('xs') {
                 height: 400px;
                 min-height: 400px;
             }
@@ -19,7 +19,7 @@ pricing-style-2 {
             .hero-text {
                 margin: 128px 24px;
 
-                @include media-breakpoint-down('xs') {
+                @include media-breakpoint('xs') {
                     margin: 64px 24px;
                 }
 
@@ -30,7 +30,7 @@ pricing-style-2 {
                     letter-spacing: 0.01em;
                     text-align: center;
 
-                    @include media-breakpoint-down('xs') {
+                    @include media-breakpoint('xs') {
                         font-size: 32px;
                     }
                 }
@@ -43,7 +43,7 @@ pricing-style-2 {
                     font-weight: 300;
                     letter-spacing: 0.05em;
 
-                    @include media-breakpoint-down('xs') {
+                    @include media-breakpoint('xs') {
                         font-size: 14px;
                     }
                 }
@@ -54,7 +54,7 @@ pricing-style-2 {
             flex: 1 0 auto;
             margin-top: -192px;
 
-            @include media-breakpoint-down('xs') {
+            @include media-breakpoint('xs') {
                 margin-top: -128px;
             }
 

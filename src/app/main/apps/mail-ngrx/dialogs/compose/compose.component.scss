@@ -12,14 +12,12 @@
 
             .attachment-list {
                 font-size: 13px;
-                padding-top: 16px;
 
                 .attachment {
-                    background-color: rgba(0, 0, 0, 0.08);
-                    border: 1px solid rgba(0, 0, 0, 0.16);
+                    border: 1px solid;
+                    border-radius: 20px;
                     padding-left: 16px;
                     margin-top: 8px;
-                    border-radius: 2px;
 
                     .filename {
                         font-weight: 600;

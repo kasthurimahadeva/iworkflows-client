@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
-import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
+import { BehaviorSubject, fromEvent, merge, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
@@ -11,10 +11,10 @@ import { EcommerceProductsService } from 'app/main/apps/e-commerce/products/prod
 import { takeUntil } from 'rxjs/internal/operators';
 
 @Component({
-    selector   : 'e-commerce-products',
-    templateUrl: './products.component.html',
-    styleUrls  : ['./products.component.scss'],
-    animations : fuseAnimations
+    selector     : 'e-commerce-products',
+    templateUrl  : './products.component.html',
+    styleUrls    : ['./products.component.scss'],
+    animations   : fuseAnimations
 })
 export class EcommerceProductsComponent implements OnInit
 {

@@ -5,21 +5,6 @@
 
     #dashboard-project {
 
-        > .sidebar {
-
-            fuse-widget {
-
-                > .fuse-widget-front,
-                > .fuse-widget-back {
-                    @if ($is-dark) {
-                        background: map-get($background, background);
-                    } @else {
-                        background: map-get($background, app-bar);
-                    }
-                }
-            }
-        }
-
         > .center {
 
             > .content {

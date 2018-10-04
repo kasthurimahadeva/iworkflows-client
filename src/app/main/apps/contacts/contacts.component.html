@@ -1,13 +1,13 @@
 <div id="contacts" class="page-layout simple left-sidebar inner-sidebar inner-scroll">
 
     <!-- HEADER -->
-    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="start start"
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="start"
          fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
         <!-- APP TITLE -->
         <div fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-icon-button class="sidebar-toggle mr-12" fxHide.gt-md
+            <button mat-icon-button class="sidebar-toggle mr-12" fxHide.gt-sm
                     (click)="toggleSidebar('contacts-main-sidebar')">
                 <mat-icon>menu</mat-icon>
             </button>
@@ -25,13 +25,17 @@
         <!-- / APP TITLE -->
 
         <!-- SEARCH -->
-        <div class="search-input-wrapper mt-16 ml-8 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
-            <label for="search" class="mr-8">
-                <mat-icon>search</mat-icon>
-            </label>
-            <mat-form-field mat-no-float class="m-0" floatLabel="never">
-                <input matInput [formControl]="searchInput" id="search" placeholder="Search for anything">
-            </mat-form-field>
+        <div class="ml-sm-32" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+
+            <div class="search-wrapper mt-16 mt-sm-0">
+
+                <div class="search" flex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input [formControl]="searchInput" placeholder="Search for a contact">
+                </div>
+
+            </div>
+
         </div>
         <!-- / SEARCH -->
 
@@ -61,7 +65,7 @@
         <div class="center p-24 pb-56 pr-sm-92" fusePerfectScrollbar>
 
             <!-- CONTENT -->
-            <div class="content mat-elevation-z4">
+            <div class="content">
                 <contacts-contact-list></contacts-contact-list>
             </div>
             <!-- / CONTENT -->

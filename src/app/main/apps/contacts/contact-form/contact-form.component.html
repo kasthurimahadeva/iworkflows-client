@@ -14,79 +14,88 @@
         </mat-toolbar-row>
     </mat-toolbar>
 
-    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
 
         <form [formGroup]="contactForm">
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Name</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">account_circle</mat-icon>
-                    <input name="name" formControlName="name" placeholder="Name" matInput required>
+                    <input name="name" formControlName="name" matInput required>
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Lastname</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">account_circle</mat-icon>
-                    <input name="lastName" formControlName="lastName" placeholder="Lastname" matInput>
+                    <input name="lastName" formControlName="lastName" matInput>
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Nickname</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">star</mat-icon>
-                    <input name="nickname" formControlName="nickname" matInput placeholder="Nickname">
+                    <input name="nickname" formControlName="nickname" matInput>
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Phone number</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">phone</mat-icon>
-                    <input formControlName="phone" matInput placeholder="Phone number">
+                    <input formControlName="phone" matInput>
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Email</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">email</mat-icon>
-                    <input name="email" formControlName="email" matInput type="email" placeholder="Email">
+                    <input name="email" formControlName="email" matInput type="email">
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Company</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">domain</mat-icon>
-                    <input name="company" formControlName="company" matInput placeholder="Company">
+                    <input name="company" formControlName="company" matInput>
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Job title</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">work</mat-icon>
-                    <input name="jobTitle" formControlName="jobTitle" matInput placeholder="Job title">
+                    <input name="jobTitle" formControlName="jobTitle" matInput>
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field class="mr-24" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Birthday</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">cake</mat-icon>
-                    <input matInput [matDatepicker]="birthdayDatePicker" placeholder="Birthday">
+                    <input matInput [matDatepicker]="birthdayDatePicker" name="birthday" formControlName="birthday">
                     <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
                     <mat-datepicker #birthdayDatePicker></mat-datepicker>
                 </mat-form-field>
             </div>
 
-            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Address</mat-label>
                     <mat-icon matPrefix class="mr-12 s-20 secondary-text">home</mat-icon>
-                    <input name="address" formControlName="address" matInput placeholder="Address">
+                    <input name="address" formControlName="address" matInput>
                 </mat-form-field>
             </div>
 
             <div fxLayout="row" class="textarea-wrapper" fxLayoutAlign="start start">
-                <mat-form-field fxFlex>
-                    <textarea name="notes" formControlName="notes" placeholder="Notes" matInput type="text"
-                              max-rows="4"></textarea>
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Notes</mat-label>
+                    <textarea name="notes" formControlName="notes" matInput type="text" max-rows="4"></textarea>
                 </mat-form-field>
             </div>
 
@@ -94,32 +103,33 @@
 
     </div>
 
-    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
 
-        <button *ngIf="action !=='edit'"
-                mat-raised-button
-                (click)="matDialogRef.close(contactForm)"
-                class="save-button mat-accent"
-                [disabled]="contactForm.invalid"
-                aria-label="SAVE">
-            SAVE
-        </button>
-
-        <button *ngIf="action ==='edit'"
-                mat-raised-button
-                (click)="matDialogRef.close(['save',contactForm])"
-                class="save-button mat-accent"
-                [disabled]="contactForm.invalid"
-                aria-label="SAVE">
-            SAVE
-        </button>
-
-        <button *ngIf="action ==='edit'"
-                mat-icon-button
+        <button *ngIf="action === 'edit'"
+                mat-button
+                class="mr-8"
                 (click)="matDialogRef.close(['delete',contactForm])"
                 aria-label="Delete"
                 matTooltip="Delete">
-            <mat-icon>delete</mat-icon>
+            DELETE
+        </button>
+
+        <button *ngIf="action !== 'edit'"
+                mat-button
+                class="save-button"
+                (click)="matDialogRef.close(contactForm)"
+                [disabled]="contactForm.invalid"
+                aria-label="SAVE">
+            ADD
+        </button>
+
+        <button *ngIf="action === 'edit'"
+                mat-button
+                class="save-button"
+                (click)="matDialogRef.close(['save',contactForm])"
+                [disabled]="contactForm.invalid"
+                aria-label="SAVE">
+            SAVE
         </button>
 
     </div>
