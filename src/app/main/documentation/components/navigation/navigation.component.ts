@@ -47,8 +47,10 @@ export class DocsComponentsNavigationComponent
     updateMailBadge(): void
     {
         // Update the badge title
-        this._fuseNavigationService.updateNavigationItem('02001', {
-                title: 'Transactionssss'
+        this._fuseNavigationService.updateNavigationItem('mail', {
+                badge: {
+                    title: 35
+                }
         });
     }
 

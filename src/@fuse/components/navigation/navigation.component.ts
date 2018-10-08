@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { Subject } from 'rxjs';
+import { merge, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 
 @Component({
-    selector     : 'fuse-navigation',
-    templateUrl  : './navigation.component.html',
-    styleUrls    : ['./navigation.component.scss'],
-    encapsulation: ViewEncapsulation.None,
+    selector       : 'fuse-navigation',
+    templateUrl    : './navigation.component.html',
+    styleUrls      : ['./navigation.component.scss'],
+    encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FuseNavigationComponent implements OnInit
@@ -60,31 +60,16 @@ export class FuseNavigationComponent implements OnInit
                 this._changeDetectorRef.markForCheck();
             });
 
-        // Subscribe to navigation item additions
-        this._fuseNavigationService.onNavigationItemAdded
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
+        // Subscribe to navigation item
+        merge(
+            this._fuseNavigationService.onNavigationItemAdded,
+            this._fuseNavigationService.onNavigationItemUpdated,
+            this._fuseNavigationService.onNavigationItemRemoved
+        ).pipe(takeUntil(this._unsubscribeAll))
+         .subscribe(() => {
 
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
-
-        // Subscribe to navigation item updates
-        this._fuseNavigationService.onNavigationItemUpdated
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
-
-        // Subscribe to navigation item removal
-        this._fuseNavigationService.onNavigationItemRemoved
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
+             // Mark for check
+             this._changeDetectorRef.markForCheck();
+         });
     }
 }

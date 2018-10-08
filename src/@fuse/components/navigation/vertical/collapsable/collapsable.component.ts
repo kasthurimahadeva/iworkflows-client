@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { merge, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
 import { FuseNavigationItem } from '@fuse/types';
@@ -114,32 +114,17 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
             this.collapse();
         }
 
-        // Subscribe to navigation item additions
-        this._fuseNavigationService.onNavigationItemAdded
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
+        // Subscribe to navigation item
+        merge(
+            this._fuseNavigationService.onNavigationItemAdded,
+            this._fuseNavigationService.onNavigationItemUpdated,
+            this._fuseNavigationService.onNavigationItemRemoved
+        ).pipe(takeUntil(this._unsubscribeAll))
+         .subscribe(() => {
 
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
-
-        // Subscribe to navigation item updates
-        this._fuseNavigationService.onNavigationItemUpdated
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
-
-        // Subscribe to navigation item removal
-        this._fuseNavigationService.onNavigationItemRemoved
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(() => {
-
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
+             // Mark for check
+             this._changeDetectorRef.markForCheck();
+         });
     }
 
     /**
