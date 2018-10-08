@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -30,10 +30,12 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
     /**
      * Constructor
      *
+     * @param {ChangeDetectorRef} _changeDetectorRef
      * @param {FuseNavigationService} _fuseNavigationService
      * @param {Router} _router
      */
     constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
         private _fuseNavigationService: FuseNavigationService,
         private _router: Router
     )
@@ -111,6 +113,33 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
         {
             this.collapse();
         }
+
+        // Subscribe to navigation item additions
+        this._fuseNavigationService.onNavigationItemAdded
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
+
+        // Subscribe to navigation item updates
+        this._fuseNavigationService.onNavigationItemUpdated
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
+
+        // Subscribe to navigation item removal
+        this._fuseNavigationService.onNavigationItemRemoved
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe(() => {
+
+                // Mark for check
+                this._changeDetectorRef.markForCheck();
+            });
     }
 
     /**
@@ -154,6 +183,10 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
         }
 
         this.isOpen = true;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+
         this._fuseNavigationService.onItemCollapseToggled.next();
     }
 
@@ -168,6 +201,10 @@ export class FuseNavVerticalCollapsableComponent implements OnInit, OnDestroy
         }
 
         this.isOpen = false;
+
+        // Mark for check
+        this._changeDetectorRef.markForCheck();
+
         this._fuseNavigationService.onItemCollapseToggled.next();
     }
 

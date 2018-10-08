@@ -32,12 +32,13 @@ export class DocsComponentsNavigationComponent
      */
     showHideCalendarMenuItem(): void
     {
-        // Get the calendar item from the navigation
-        const calendarNavItem = this._fuseNavigationService.getNavigationItem('calendar');
-
         // Toggle the visibility
         this.hidden = !this.hidden;
-        calendarNavItem.hidden = this.hidden;
+
+        // Update the calendar menu item
+        this._fuseNavigationService.updateNavigationItem('calendar', {
+            hidden: this.hidden
+        });
     }
 
     /**
@@ -45,11 +46,10 @@ export class DocsComponentsNavigationComponent
      */
     updateMailBadge(): void
     {
-        // Get the mail nav item
-        const mailNavItem = this._fuseNavigationService.getNavigationItem('mail');
-
         // Update the badge title
-        mailNavItem.badge.title = 35;
+        this._fuseNavigationService.updateNavigationItem('02001', {
+                title: 'Transactionssss'
+        });
     }
 
     /**
@@ -65,14 +65,12 @@ export class DocsComponentsNavigationComponent
             url  : '/apps/calendar'
         };
 
-        // Get the calendar item from the navigation
-        const calendarNavItem = this._fuseNavigationService.getNavigationItem('calendar');
-
-        // Make the calendar navigation item collapsable
-        calendarNavItem.type = 'collapsable';
-
-        // Add the navigation item
-        this._fuseNavigationService.addNavigationItem(newNavItem, 'calendar');
+        this._fuseNavigationService.updateNavigationItem('calendar', {
+            type: 'collapsable',
+            children: [
+                newNavItem
+            ]
+        });
     }
 
     /**
