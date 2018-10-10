@@ -374,6 +374,7 @@ export const navigation: FuseNavigation[] = [
                 id   : 'cards',
                 title: 'Cards',
                 type : 'item',
+                icon : 'crop_portrait',
                 url  : '/ui/cards'
             },
             {
