@@ -55,6 +55,8 @@
             min-width: 400px;
             margin: 16px;
             padding: 16px;
+            border-radius: 4px;
+            @include mat-elevation(1);
 
             @include media-breakpoint('xs') {
                 min-width: 300px;
@@ -63,10 +65,6 @@
 
             .mat-list-item {
                 text-decoration: none !important;
-
-                .mat-list-item-content {
-
-                }
             }
 
             .see-all-link {

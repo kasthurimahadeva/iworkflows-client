@@ -15,6 +15,7 @@
 
                 .search {
                     background: map-get($background, card);
+                    border-color: map-get($foreground, divider);
 
                     input {
                         background: map-get($background, card);

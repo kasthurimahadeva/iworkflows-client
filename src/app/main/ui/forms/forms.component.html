@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="column" fxLayoutAlign="center start">
-            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="secondary-text s-18">home</mat-icon>
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">User Interface</span>
@@ -38,21 +38,27 @@
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <mat-form-field fxFlex="100">
-                        <input matInput placeholder="Company (disabled)" formControlName="company">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Company (disabled)</mat-label>
+                        <input matInput formControlName="company">
+                        <mat-icon matSuffix class="disabled-text">domain</mat-icon>
                     </mat-form-field>
 
                 </div>
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <mat-form-field fxFlex="50">
-                        <input matInput placeholder="First name" formControlName="firstName" required>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                        <mat-label>First name</mat-label>
+                        <input matInput formControlName="firstName" required>
+                        <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
                         <mat-error>First Name is required!</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field fxFlex="50">
-                        <input matInput placeholder="Last name" formControlName="lastName" required>
+                    <mat-form-field appearance="outline" fxFlex="50" class="pl-4">
+                        <mat-label>Last name</mat-label>
+                        <input matInput formControlName="lastName" required>
+                        <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
                         <mat-error>Last Name is required!</mat-error>
                     </mat-form-field>
 
@@ -60,15 +66,17 @@
 
                 <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <mat-form-field fxFlex="100">
-                        <textarea matInput placeholder="Address" formControlName="address" required>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="address" required>
                             1600 Amphitheatre Pkwy
                         </textarea>
                         <mat-error>Address is required!</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field fxFlex="100">
-                        <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Address 2</mat-label>
+                        <textarea matInput formControlName="address2"></textarea>
                         <mat-error>Address 2 is required!</mat-error>
                     </mat-form-field>
 
@@ -76,19 +84,25 @@
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <mat-form-field fxFlex="33">
-                        <input matInput placeholder="City" formControlName="city" required>
+                    <mat-form-field appearance="outline" fxFlex="33">
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName="city" required>
+                        <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
                         <mat-error>City is required!</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field fxFlex="34">
-                        <input matInput placeholder="State" formControlName="state" required>
+                    <mat-form-field appearance="outline" fxFlex="34" class="px-8">
+                        <mat-label>State</mat-label>
+                        <input matInput formControlName="state" required>
+                        <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
                         <mat-error>State is required!</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field fxFlex="33">
-                        <input matInput #postalCode placeholder="Postal Code" value="94043"
+                    <mat-form-field appearance="outline" fxFlex="33">
+                        <mat-label>Postal Code</mat-label>
+                        <input matInput #postalCode value="94043"
                                formControlName="postalCode" maxlength="5" required>
+                        <mat-icon matSuffix class="secondary-text">markunread_mailbox</mat-icon>
                         <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
                         <mat-error>Postal Code is required!</mat-error>
                     </mat-form-field>
@@ -97,8 +111,9 @@
 
                 <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
 
-                    <mat-form-field fxFlex="100">
-                        <mat-select placeholder="Country" formControlName="country" required>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="country" required>
                             <mat-option [value]="'United States of America'">
                                 United States of America
                             </mat-option>
@@ -118,6 +133,7 @@
                                 Turkey
                             </mat-option>
                         </mat-select>
+                        <mat-icon matSuffix class="secondary-text">outlined_flag</mat-icon>
                         <mat-error>Country is required!</mat-error>
                     </mat-form-field>
 
@@ -156,19 +172,21 @@
 
                         <div fxFlex="1 0 auto" fxLayout="column">
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="First name" formControlName="firstName" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>First Name</mat-label>
+                                <input matInput formControlName="firstName" required>
                                 <mat-error>First Name is required!</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="Last name" formControlName="lastName" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput formControlName="lastName" required>
                                 <mat-error>Last Name is required!</mat-error>
                             </mat-form-field>
 
                         </div>
 
-                        <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                        <div fxLayout="row" fxLayoutAlign="center center">
                             <button mat-raised-button matStepperNext type="button" color="accent">
                                 Next
                             </button>
@@ -186,8 +204,9 @@
 
                         <div fxFlex="1 0 auto" fxLayout="row">
 
-                            <mat-form-field fxFlex="100">
-                                <textarea matInput placeholder="Address" formControlName="address" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Address</mat-label>
+                                <textarea matInput formControlName="address" required>
                                     1600 Amphitheatre Pkwy
                                 </textarea>
                                 <mat-error>Address is required!</mat-error>
@@ -195,7 +214,7 @@
 
                         </div>
 
-                        <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                        <div fxLayout="row" fxLayoutAlign="center center">
                             <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                                 Previous
                             </button>
@@ -216,26 +235,29 @@
 
                         <div fxFlex="1 0 auto" fxLayout="column">
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="City" formControlName="city" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>City</mat-label>
+                                <input matInput formControlName="city" required>
                                 <mat-error>City is required!</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="State" formControlName="state" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>State</mat-label>
+                                <input matInput formControlName="state" required>
                                 <mat-error>State is required!</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput #postalCode placeholder="Postal Code" formControlName="postalCode"
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Postal Code</mat-label>
+                                <input matInput #postalCode2 formControlName="postalCode"
                                        maxlength="5" required>
-                                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                                <mat-hint align="end">{{postalCode2.value.length}} / 5</mat-hint>
                                 <mat-error>Postal Code is required!</mat-error>
                             </mat-form-field>
 
                         </div>
 
-                        <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                        <div fxLayout="row" fxLayoutAlign="center center">
                             <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                                 Previous
                             </button>
@@ -256,7 +278,7 @@
                         Thank your for filling out our form.
                     </div>
 
-                    <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                    <div fxLayout="row" fxLayoutAlign="center center">
                         <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                             Previous
                         </button>
@@ -294,19 +316,21 @@
 
                         <div fxFlex="1 0 auto" fxLayout="column">
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="First name" formControlName="firstName" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>First Name</mat-label>
+                                <input matInput formControlName="firstName" required>
                                 <mat-error>First Name is required!</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="Last name" formControlName="lastName" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput formControlName="lastName" required>
                                 <mat-error>Last Name is required!</mat-error>
                             </mat-form-field>
 
                         </div>
 
-                        <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                        <div fxLayout="row" fxLayoutAlign="center center">
                             <button mat-raised-button matStepperNext type="button" color="accent">
                                 Next
                             </button>
@@ -324,8 +348,9 @@
 
                         <div fxFlex="1 0 auto" fxLayout="row">
 
-                            <mat-form-field fxFlex="100">
-                                <textarea matInput placeholder="Address" formControlName="address" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Address</mat-label>
+                                <textarea matInput formControlName="address" required>
                                     1600 Amphitheatre Pkwy
                                 </textarea>
                                 <mat-error>Address is required!</mat-error>
@@ -333,7 +358,7 @@
 
                         </div>
 
-                        <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                        <div fxLayout="row" fxLayoutAlign="center center">
                             <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                                 Previous
                             </button>
@@ -352,28 +377,31 @@
 
                         <ng-template matStepLabel>Fill out your address</ng-template>
 
-                        <div fxFlex="1 0 auto" fxLayout="row">
+                        <div fxFlex="1 0 auto" fxLayout="column">
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="City" formControlName="city" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>City</mat-label>
+                                <input matInput formControlName="city" required>
                                 <mat-error>City is required!</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput placeholder="State" formControlName="state" required>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>State</mat-label>
+                                <input matInput formControlName="state" required>
                                 <mat-error>State is required!</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field fxFlex="100">
-                                <input matInput #postalCode placeholder="Postal Code" formControlName="postalCode"
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Postal Code</mat-label>
+                                <input matInput #postalCode3 formControlName="postalCode"
                                        maxlength="5" required>
-                                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                                <mat-hint align="end">{{postalCode3.value.length}} / 5</mat-hint>
                                 <mat-error>Postal Code is required!</mat-error>
                             </mat-form-field>
 
                         </div>
 
-                        <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                        <div fxLayout="row" fxLayoutAlign="center center">
                             <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                                 Previous
                             </button>
@@ -394,7 +422,7 @@
                         Thank your for filling out our form.
                     </div>
 
-                    <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
+                    <div fxLayout="row" fxLayoutAlign="center center">
                         <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                             Previous
                         </button>

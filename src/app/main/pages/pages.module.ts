@@ -18,7 +18,8 @@ import { InvoiceCompactModule } from 'app/main/pages/invoices/compact/compact.mo
 import { MaintenanceModule } from 'app/main/pages/maintenance/maintenence.module';
 import { PricingModule } from 'app/main/pages/pricing/pricing.module';
 import { ProfileModule } from 'app/main/pages/profile/profile.module';
-import { SearchModule } from 'app/main/pages/search/search.module';
+import { SearchClassicModule } from 'app/main/pages/search/classic/search-classic.module';
+import { SearchModernModule } from 'app/main/pages/search/modern/search-modern.module';
 import { FaqModule } from 'app/main/pages/faq/faq.module';
 import { KnowledgeBaseModule } from 'app/main/pages/knowledge-base/knowledge-base.module';
 
@@ -57,7 +58,8 @@ import { KnowledgeBaseModule } from 'app/main/pages/knowledge-base/knowledge-bas
         ProfileModule,
 
         // Search
-        SearchModule,
+        SearchClassicModule,
+        SearchModernModule,
 
         // Faq
         FaqModule,

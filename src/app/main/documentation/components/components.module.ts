@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {
-    MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatListModule, MatMenuModule, MatSelectModule, MatSlideToggleModule, MatTabsModule
-} from '@angular/material';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { FuseCountdownModule, FuseHighlightModule, FuseMaterialColorPickerModule, FuseWidgetModule } from '@fuse/components';
-import { DocsComponentsCardsComponent } from 'app/main/documentation/components/cards/cards.component';
 import { DocsComponentsCountdownComponent } from 'app/main/documentation/components/countdown/countdown.component';
 import { DocsComponentsHighlightComponent } from 'app/main/documentation/components/highlight/highlight.component';
 import { DocsComponentsMaterialColorPickerComponent } from 'app/main/documentation/components/material-color-picker/material-color-picker.component';
@@ -20,10 +16,6 @@ import { DocsComponentsShortcutsComponent } from 'app/main/documentation/compone
 import { DocsComponentsWidgetComponent } from 'app/main/documentation/components/widget/widget.component';
 
 const routes = [
-    {
-        path     : 'cards',
-        component: DocsComponentsCardsComponent
-    },
     {
         path     : 'countdown',
         component: DocsComponentsCountdownComponent
@@ -64,7 +56,6 @@ const routes = [
 
 @NgModule({
     declarations: [
-        DocsComponentsCardsComponent,
         DocsComponentsCountdownComponent,
         DocsComponentsHighlightComponent,
         DocsComponentsMaterialColorPickerComponent,
@@ -79,16 +70,7 @@ const routes = [
         RouterModule.forChild(routes),
 
         MatButtonModule,
-        MatButtonToggleModule,
-        MatFormFieldModule,
         MatIconModule,
-        MatListModule,
-        MatMenuModule,
-        MatSelectModule,
-        MatSlideToggleModule,
-        MatTabsModule,
-
-        NgxChartsModule,
 
         FuseSharedModule,
 

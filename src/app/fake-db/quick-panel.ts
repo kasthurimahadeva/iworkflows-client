@@ -3,11 +3,11 @@ export class QuickPanelFakeDb
     public static notes = [
         {
             'title' : 'Best songs to listen while working',
-            'detail': 'Last edit: May 8th, 2015'
+            'detail': 'Last edit: May 8th, 2018'
         },
         {
             'title' : 'Useful subreddits',
-            'detail': 'Last edit: January 12th, 2015'
+            'detail': 'Last edit: January 12th, 2018'
         }
     ];
 

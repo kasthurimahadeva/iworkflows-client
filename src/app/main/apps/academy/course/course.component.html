@@ -68,14 +68,14 @@
 
         <div class="step-navigation">
 
-            <button mat-fab class="previous mat-accent white-fg"
+            <button mat-fab class="previous mat-accent fuse-white-fg"
                     (click)="gotoPreviousStep()"
                     [disabled]="currentStep === 0"
                     [fxHide]="currentStep === 0">
                 <mat-icon>chevron_left</mat-icon>
             </button>
 
-            <button mat-fab class="next mat-accent white-fg"
+            <button mat-fab class="next mat-accent fuse-white-fg"
                     (click)="gotoNextStep()"
                     [disabled]="currentStep === course.totalSteps - 1"
                     [fxHide]="currentStep === course.totalSteps - 1">

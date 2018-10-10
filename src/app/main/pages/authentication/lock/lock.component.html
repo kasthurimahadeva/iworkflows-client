@@ -23,12 +23,16 @@
 
             <form name="lockForm" [formGroup]="lockForm" novalidate>
 
-                <mat-form-field>
-                    <input matInput placeholder="Username" formControlName="username">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username">
+                    <mat-icon matSuffix class="disabled-text">account_circle</mat-icon>
                 </mat-form-field>
 
-                <mat-form-field>
-                    <input matInput placeholder="Password" formControlName="password">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password">
+                    <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
                     <mat-error>
                         Password is required
                     </mat-error>

@@ -135,7 +135,7 @@
 
                     <div fxLayout="row" fxLayoutAlign="start center">
 
-                        <img [src]="group.logo" class="logo" alt="{{group.name}}"/>
+                        <div class="logo">{{group.name.substring(0,1)}}</div>
 
                         <div>
                             <div class="name">{{group.name}}</div>

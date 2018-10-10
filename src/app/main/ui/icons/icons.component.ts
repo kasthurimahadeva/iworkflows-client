@@ -10,8 +10,8 @@ import { Subject } from 'rxjs';
 })
 export class IconsComponent implements OnInit, OnDestroy
 {
-    icons: string[];
-    filteredIcons: string[];
+    icons: any[];
+    filteredIcons: any[];
     loading: boolean;
 
     // Private
@@ -75,7 +75,7 @@ export class IconsComponent implements OnInit, OnDestroy
         const value = event.target.value;
 
         this.filteredIcons = this.icons.filter(icon => {
-            return icon.includes(value);
+            return icon.name.includes(value) || icon.tags.includes(value);
         });
     }
 }

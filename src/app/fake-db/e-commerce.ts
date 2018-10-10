@@ -73,10 +73,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 19.90,
             'quantity'        : 3,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -152,10 +152,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 29.90,
             'quantity'        : 92,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -231,10 +231,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 59.90,
             'quantity'        : 60,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -310,10 +310,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 79.90,
             'quantity'        : 101,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : false
         },
@@ -389,10 +389,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 19.90,
             'quantity'        : 19,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -468,10 +468,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 69.90,
             'quantity'        : 101,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -547,10 +547,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 69.90,
             'quantity'        : 34,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -626,10 +626,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 79.90,
             'quantity'        : 4,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : false
         },
@@ -705,10 +705,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 59.90,
             'quantity'        : 58,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -784,10 +784,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 69.90,
             'quantity'        : 125,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -863,10 +863,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 19.90,
             'quantity'        : 3,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -942,10 +942,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 69.90,
             'quantity'        : 34,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -1021,10 +1021,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 59.90,
             'quantity'        : 58,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -1100,10 +1100,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 29.90,
             'quantity'        : 92,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -1179,10 +1179,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 19.90,
             'quantity'        : 19,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -1258,10 +1258,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 59.90,
             'quantity'        : 60,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -1337,10 +1337,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 69.90,
             'quantity'        : 101,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         },
@@ -1416,10 +1416,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 79.90,
             'quantity'        : 4,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : false
         },
@@ -1495,10 +1495,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 79.90,
             'quantity'        : 101,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : false
         },
@@ -1574,10 +1574,10 @@ export class ECommerceFakeDb
             'comparedPrice'   : 69.90,
             'quantity'        : 125,
             'sku'             : 'A445BV',
-            'width'           : '22cm',
-            'height'          : '24cm',
-            'depth'           : '15cm',
-            'weight'          : '3kg',
+            'width'           : '22',
+            'height'          : '24',
+            'depth'           : '15',
+            'weight'          : '3',
             'extraShippingFee': 3.00,
             'active'          : true
         }
@@ -1591,7 +1591,7 @@ export class ECommerceFakeDb
             'tax'            : '77.44',
             'discount'       : '-10.17',
             'total'          : '73.31',
-            'date'           : '2015/04/25 02:07:59',
+            'date'           : '2018/04/25 02:07:59',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Dollie',
@@ -1643,20 +1643,20 @@ export class ECommerceFakeDb
                     'id'   : 13,
                     'name' : 'On pre-order (not paid)',
                     'color': 'purple-300',
-                    'date' : '2016/04/03 10:06:18'
+                    'date' : '2018/04/03 10:06:18'
                 },
                 {
                     'id'   : 1,
                     'name' : 'Awaiting check payment',
                     'color': 'blue-500',
-                    'date' : '2015/03/17 18:28:37'
+                    'date' : '2018/03/17 18:28:37'
                 }
             ],
             'payment'        : {
                 'transactionId': '2a894b9e',
                 'amount'       : '73.31',
                 'method'       : 'Credit Card',
-                'date'         : '2016/02/23 15:50:23'
+                'date'         : '2018/02/23 15:50:23'
             },
             'shippingDetails': [
                 {
@@ -1664,7 +1664,7 @@ export class ECommerceFakeDb
                     'carrier' : 'TNT',
                     'weight'  : '10.44',
                     'fee'     : '7.00',
-                    'date'    : '2015/04/10 07:03:52'
+                    'date'    : '2018/04/10 07:03:52'
                 }
             ]
         },
@@ -1675,7 +1675,7 @@ export class ECommerceFakeDb
             'tax'            : '45.55',
             'discount'       : '-10.25',
             'total'          : '24.51',
-            'date'           : '2015/11/07 15:47:31',
+            'date'           : '2018/11/07 15:47:31',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Holmes',
@@ -1727,20 +1727,20 @@ export class ECommerceFakeDb
                     'id'   : 2,
                     'name' : 'Payment accepted',
                     'color': 'green-500',
-                    'date' : '2015/10/04 08:54:33'
+                    'date' : '2018/10/04 08:54:33'
                 },
                 {
                     'id'   : 1,
                     'name' : 'Awaiting check payment',
                     'color': 'blue-500',
-                    'date' : '2015/05/03 03:43:04'
+                    'date' : '2018/05/03 03:43:04'
                 }
             ],
             'payment'        : {
                 'transactionId': '79c640c8',
                 'amount'       : '24.51',
                 'method'       : 'Check',
-                'date'         : '2015/04/22 04:49:49'
+                'date'         : '2018/04/22 04:49:49'
             },
             'shippingDetails': [
                 {
@@ -1748,7 +1748,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '2.92',
                     'fee'     : '4.00',
-                    'date'    : '2015/07/11 14:57:12'
+                    'date'    : '2018/07/11 14:57:12'
                 }
             ]
         },
@@ -1759,7 +1759,7 @@ export class ECommerceFakeDb
             'tax'            : '16.36',
             'discount'       : '-19.46',
             'total'          : '87.17',
-            'date'           : '2015/11/26 16:04:40',
+            'date'           : '2018/11/26 16:04:40',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Serena',
@@ -1811,20 +1811,20 @@ export class ECommerceFakeDb
                     'id'   : 8,
                     'name' : 'Payment error',
                     'color': 'red-900',
-                    'date' : '2015/07/02 20:44:34'
+                    'date' : '2018/07/02 20:44:34'
                 },
                 {
                     'id'   : 3,
                     'name' : 'Preparing the order',
                     'color': 'orange-500',
-                    'date' : '2015/03/23 04:59:45'
+                    'date' : '2018/03/23 04:59:45'
                 }
             ],
             'payment'        : {
                 'transactionId': '5ff44b0c',
                 'amount'       : '87.17',
                 'method'       : 'PayPal',
-                'date'         : '2016/01/25 11:46:28'
+                'date'         : '2018/01/25 11:46:28'
             },
             'shippingDetails': [
                 {
@@ -1832,7 +1832,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '7.53',
                     'fee'     : '7.00',
-                    'date'    : '2015/11/25 00:40:54'
+                    'date'    : '2018/11/25 00:40:54'
                 }
             ]
         },
@@ -1843,7 +1843,7 @@ export class ECommerceFakeDb
             'tax'            : '53.45',
             'discount'       : '-15.55',
             'total'          : '26.98',
-            'date'           : '2015/11/23 05:35:18',
+            'date'           : '2018/11/23 05:35:18',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Dianne',
@@ -1895,20 +1895,20 @@ export class ECommerceFakeDb
                     'id'   : 5,
                     'name' : 'Delivered',
                     'color': 'green-800',
-                    'date' : '2015/10/26 16:12:47'
+                    'date' : '2018/10/26 16:12:47'
                 },
                 {
                     'id'   : 4,
                     'name' : 'Shipped',
                     'color': 'purple-500',
-                    'date' : '2016/02/06 06:42:37'
+                    'date' : '2018/02/06 06:42:37'
                 }
             ],
             'payment'        : {
                 'transactionId': '787d49b1',
                 'amount'       : '26.98',
                 'method'       : 'Check',
-                'date'         : '2015/03/07 05:50:57'
+                'date'         : '2018/03/07 05:50:57'
             },
             'shippingDetails': [
                 {
@@ -1916,7 +1916,7 @@ export class ECommerceFakeDb
                     'carrier' : 'FedEx',
                     'weight'  : '11.93',
                     'fee'     : '5.00',
-                    'date'    : '2016/03/21 07:08:26'
+                    'date'    : '2018/03/21 07:08:26'
                 }
             ]
         },
@@ -1927,7 +1927,7 @@ export class ECommerceFakeDb
             'tax'            : '12.14',
             'discount'       : '-19.16',
             'total'          : '12.97',
-            'date'           : '2015/01/13 06:21:21',
+            'date'           : '2018/01/13 06:21:21',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Frankie',
@@ -1979,20 +1979,20 @@ export class ECommerceFakeDb
                     'id'   : 8,
                     'name' : 'Payment error',
                     'color': 'red-900',
-                    'date' : '2015/02/01 09:21:46'
+                    'date' : '2018/02/01 09:21:46'
                 },
                 {
                     'id'   : 6,
                     'name' : 'Canceled',
                     'color': 'pink-500',
-                    'date' : '2015/11/16 04:48:32'
+                    'date' : '2018/11/16 04:48:32'
                 }
             ],
             'payment'        : {
                 'transactionId': 'cd8c4727',
                 'amount'       : '12.97',
                 'method'       : 'Bank-wire',
-                'date'         : '2016/05/15 21:15:32'
+                'date'         : '2018/05/15 21:15:32'
             },
             'shippingDetails': [
                 {
@@ -2000,7 +2000,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '5.43',
                     'fee'     : '3.00',
-                    'date'    : '2016/01/06 00:51:59'
+                    'date'    : '2018/01/06 00:51:59'
                 }
             ]
         },
@@ -2011,7 +2011,7 @@ export class ECommerceFakeDb
             'tax'            : '11.81',
             'discount'       : '-12.33',
             'total'          : '30.96',
-            'date'           : '2015/01/17 04:21:08',
+            'date'           : '2018/01/17 04:21:08',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Cole',
@@ -2063,20 +2063,20 @@ export class ECommerceFakeDb
                     'id'   : 3,
                     'name' : 'Preparing the order',
                     'color': 'orange-500',
-                    'date' : '2015/11/30 01:04:32'
+                    'date' : '2018/11/30 01:04:32'
                 },
                 {
                     'id'   : 2,
                     'name' : 'Payment accepted',
                     'color': 'green-500',
-                    'date' : '2015/11/12 21:27:18'
+                    'date' : '2018/11/12 21:27:18'
                 }
             ],
             'payment'        : {
                 'transactionId': 'a41f4b7c',
                 'amount'       : '30.96',
                 'method'       : 'Check',
-                'date'         : '2015/04/27 03:59:22'
+                'date'         : '2018/04/27 03:59:22'
             },
             'shippingDetails': [
                 {
@@ -2084,7 +2084,7 @@ export class ECommerceFakeDb
                     'carrier' : 'FedEx',
                     'weight'  : '6.05',
                     'fee'     : '4.00',
-                    'date'    : '2015/09/10 11:28:47'
+                    'date'    : '2018/09/10 11:28:47'
                 }
             ]
         },
@@ -2095,7 +2095,7 @@ export class ECommerceFakeDb
             'tax'            : '74.96',
             'discount'       : '-16.60',
             'total'          : '63.36',
-            'date'           : '2015/06/14 14:49:47',
+            'date'           : '2018/06/14 14:49:47',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Merrill',
@@ -2147,20 +2147,20 @@ export class ECommerceFakeDb
                     'id'   : 11,
                     'name' : 'Awaiting PayPal payment',
                     'color': 'blue-500',
-                    'date' : '2015/09/03 18:53:02'
+                    'date' : '2018/09/03 18:53:02'
                 },
                 {
                     'id'   : 13,
                     'name' : 'On pre-order (not paid)',
                     'color': 'purple-300',
-                    'date' : '2015/12/13 18:14:40'
+                    'date' : '2018/12/13 18:14:40'
                 }
             ],
             'payment'        : {
                 'transactionId': 1974588,
                 'amount'       : '63.36',
                 'method'       : 'PayPal',
-                'date'         : '2015/11/28 22:24:58'
+                'date'         : '2018/11/28 22:24:58'
             },
             'shippingDetails': [
                 {
@@ -2168,7 +2168,7 @@ export class ECommerceFakeDb
                     'carrier' : 'FedEx',
                     'weight'  : '2.89',
                     'fee'     : '3.00',
-                    'date'    : '2016/02/10 09:03:44'
+                    'date'    : '2018/02/10 09:03:44'
                 }
             ]
         },
@@ -2179,7 +2179,7 @@ export class ECommerceFakeDb
             'tax'            : '55.78',
             'discount'       : '-17.20',
             'total'          : '45.74',
-            'date'           : '2015/01/18 01:31:47',
+            'date'           : '2018/01/18 01:31:47',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Morgan',
@@ -2231,20 +2231,20 @@ export class ECommerceFakeDb
                     'id'   : 4,
                     'name' : 'Shipped',
                     'color': 'purple-500',
-                    'date' : '2015/04/29 07:57:43'
+                    'date' : '2018/04/29 07:57:43'
                 },
                 {
                     'id'   : 3,
                     'name' : 'Preparing the order',
                     'color': 'orange-500',
-                    'date' : '2015/04/23 11:14:38'
+                    'date' : '2018/04/23 11:14:38'
                 }
             ],
             'payment'        : {
                 'transactionId': '1e704aaf',
                 'amount'       : '45.74',
                 'method'       : 'Credit Card',
-                'date'         : '2015/06/08 03:50:41'
+                'date'         : '2018/06/08 03:50:41'
             },
             'shippingDetails': [
                 {
@@ -2252,7 +2252,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '6.35',
                     'fee'     : '2.00',
-                    'date'    : '2015/06/01 09:18:26'
+                    'date'    : '2018/06/01 09:18:26'
                 }
             ]
         },
@@ -2263,7 +2263,7 @@ export class ECommerceFakeDb
             'tax'            : '11.44',
             'discount'       : '-17.45',
             'total'          : '15.31',
-            'date'           : '2016/02/14 14:22:58',
+            'date'           : '2018/02/14 14:22:58',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Krista',
@@ -2315,20 +2315,20 @@ export class ECommerceFakeDb
                     'id'   : 12,
                     'name' : 'Remote payment accepted',
                     'color': 'green-500',
-                    'date' : '2015/07/15 15:48:00'
+                    'date' : '2018/07/15 15:48:00'
                 },
                 {
                     'id'   : 14,
                     'name' : 'Awaiting Cash-on-delivery payment',
                     'color': 'blue-500',
-                    'date' : '2015/11/08 18:30:15'
+                    'date' : '2018/11/08 18:30:15'
                 }
             ],
             'payment'        : {
                 'transactionId': '762c4e1a',
                 'amount'       : '15.31',
                 'method'       : 'Bank-wire',
-                'date'         : '2015/06/19 14:52:53'
+                'date'         : '2018/06/19 14:52:53'
             },
             'shippingDetails': [
                 {
@@ -2336,7 +2336,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '7.93',
                     'fee'     : '8.00',
-                    'date'    : '2015/08/25 15:18:55'
+                    'date'    : '2018/08/25 15:18:55'
                 }
             ]
         },
@@ -2347,7 +2347,7 @@ export class ECommerceFakeDb
             'tax'            : '87.50',
             'discount'       : '-18.11',
             'total'          : '20.97',
-            'date'           : '2015/10/23 03:02:55',
+            'date'           : '2018/10/23 03:02:55',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Hayden',
@@ -2399,20 +2399,20 @@ export class ECommerceFakeDb
                     'id'   : 5,
                     'name' : 'Delivered',
                     'color': 'green-800',
-                    'date' : '2016/05/02 09:53:55'
+                    'date' : '2018/05/02 09:53:55'
                 },
                 {
                     'id'   : 2,
                     'name' : 'Payment accepted',
                     'color': 'green-500',
-                    'date' : '2015/07/11 05:33:31'
+                    'date' : '2018/07/11 05:33:31'
                 }
             ],
             'payment'        : {
                 'transactionId': '3dce47a3',
                 'amount'       : '20.97',
                 'method'       : 'Credit Card',
-                'date'         : '2015/07/28 23:53:49'
+                'date'         : '2018/07/28 23:53:49'
             },
             'shippingDetails': [
                 {
@@ -2420,7 +2420,7 @@ export class ECommerceFakeDb
                     'carrier' : 'TNT',
                     'weight'  : '9.20',
                     'fee'     : '2.00',
-                    'date'    : '2015/08/05 08:45:55'
+                    'date'    : '2018/08/05 08:45:55'
                 }
             ]
         },
@@ -2431,7 +2431,7 @@ export class ECommerceFakeDb
             'tax'            : '71.75',
             'discount'       : '-10.46',
             'total'          : '72.30',
-            'date'           : '2015/07/28 13:22:49',
+            'date'           : '2018/07/28 13:22:49',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Cotton',
@@ -2483,20 +2483,20 @@ export class ECommerceFakeDb
                     'id'   : 9,
                     'name' : 'On pre-order (paid)',
                     'color': 'purple-300',
-                    'date' : '2016/02/26 14:15:38'
+                    'date' : '2018/02/26 14:15:38'
                 },
                 {
                     'id'   : 4,
                     'name' : 'Shipped',
                     'color': 'purple-500',
-                    'date' : '2015/10/17 03:32:39'
+                    'date' : '2018/10/17 03:32:39'
                 }
             ],
             'payment'        : {
                 'transactionId': 'f4154419',
                 'amount'       : '72.30',
                 'method'       : 'PayPal',
-                'date'         : '2016/03/07 15:10:12'
+                'date'         : '2018/03/07 15:10:12'
             },
             'shippingDetails': [
                 {
@@ -2504,7 +2504,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '2.81',
                     'fee'     : '7.00',
-                    'date'    : '2016/05/01 11:15:22'
+                    'date'    : '2018/05/01 11:15:22'
                 }
             ]
         },
@@ -2515,7 +2515,7 @@ export class ECommerceFakeDb
             'tax'            : '22.44',
             'discount'       : '-10.89',
             'total'          : '42.54',
-            'date'           : '2015/06/07 17:54:36',
+            'date'           : '2018/06/07 17:54:36',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Kaye',
@@ -2567,20 +2567,20 @@ export class ECommerceFakeDb
                     'id'   : 10,
                     'name' : 'Awaiting bank wire payment',
                     'color': 'blue-500',
-                    'date' : '2015/09/01 20:50:07'
+                    'date' : '2018/09/01 20:50:07'
                 },
                 {
                     'id'   : 12,
                     'name' : 'Remote payment accepted',
                     'color': 'green-500',
-                    'date' : '2016/02/13 21:19:04'
+                    'date' : '2018/02/13 21:19:04'
                 }
             ],
             'payment'        : {
                 'transactionId': 44464979,
                 'amount'       : '42.54',
                 'method'       : 'Credit Card',
-                'date'         : '2015/06/30 11:59:49'
+                'date'         : '2018/06/30 11:59:49'
             },
             'shippingDetails': [
                 {
@@ -2588,7 +2588,7 @@ export class ECommerceFakeDb
                     'carrier' : 'FedEx',
                     'weight'  : '5.52',
                     'fee'     : '2.00',
-                    'date'    : '2015/03/15 07:08:37'
+                    'date'    : '2018/03/15 07:08:37'
                 }
             ]
         },
@@ -2599,7 +2599,7 @@ export class ECommerceFakeDb
             'tax'            : '46.96',
             'discount'       : '-11.64',
             'total'          : '97.49',
-            'date'           : '2016/02/06 13:26:55',
+            'date'           : '2018/02/06 13:26:55',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Iva',
@@ -2651,20 +2651,20 @@ export class ECommerceFakeDb
                     'id'   : 6,
                     'name' : 'Canceled',
                     'color': 'pink-500',
-                    'date' : '2015/03/31 03:01:12'
+                    'date' : '2018/03/31 03:01:12'
                 },
                 {
                     'id'   : 8,
                     'name' : 'Payment error',
                     'color': 'red-900',
-                    'date' : '2016/03/11 18:53:35'
+                    'date' : '2018/03/11 18:53:35'
                 }
             ],
             'payment'        : {
                 'transactionId': '2aef4aa3',
                 'amount'       : '97.49',
                 'method'       : 'Check',
-                'date'         : '2015/05/13 13:28:52'
+                'date'         : '2018/05/13 13:28:52'
             },
             'shippingDetails': [
                 {
@@ -2672,7 +2672,7 @@ export class ECommerceFakeDb
                     'carrier' : 'TNT',
                     'weight'  : '5.37',
                     'fee'     : '6.00',
-                    'date'    : '2015/04/22 01:48:15'
+                    'date'    : '2018/04/22 01:48:15'
                 }
             ]
         },
@@ -2683,7 +2683,7 @@ export class ECommerceFakeDb
             'tax'            : '48.92',
             'discount'       : '-18.45',
             'total'          : '16.95',
-            'date'           : '2016/01/17 04:23:11',
+            'date'           : '2018/01/17 04:23:11',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Shauna',
@@ -2735,20 +2735,20 @@ export class ECommerceFakeDb
                     'id'   : 7,
                     'name' : 'Refunded',
                     'color': 'red-500',
-                    'date' : '2015/12/29 15:34:46'
+                    'date' : '2018/12/29 15:34:46'
                 },
                 {
                     'id'   : 11,
                     'name' : 'Awaiting PayPal payment',
                     'color': 'blue-500',
-                    'date' : '2015/07/14 19:10:43'
+                    'date' : '2018/07/14 19:10:43'
                 }
             ],
             'payment'        : {
                 'transactionId': 'b7ea43c9',
                 'amount'       : '16.95',
                 'method'       : 'PayPal',
-                'date'         : '2015/07/11 07:18:06'
+                'date'         : '2018/07/11 07:18:06'
             },
             'shippingDetails': [
                 {
@@ -2756,7 +2756,7 @@ export class ECommerceFakeDb
                     'carrier' : 'TNT',
                     'weight'  : '6.49',
                     'fee'     : '6.00',
-                    'date'    : '2015/01/05 13:42:13'
+                    'date'    : '2018/01/05 13:42:13'
                 }
             ]
         },
@@ -2767,7 +2767,7 @@ export class ECommerceFakeDb
             'tax'            : '64.42',
             'discount'       : '-19.64',
             'total'          : '20.34',
-            'date'           : '2015/09/26 14:26:33',
+            'date'           : '2018/09/26 14:26:33',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Carroll',
@@ -2819,20 +2819,20 @@ export class ECommerceFakeDb
                     'id'   : 1,
                     'name' : 'Awaiting check payment',
                     'color': 'blue-500',
-                    'date' : '2015/12/21 10:42:21'
+                    'date' : '2018/12/21 10:42:21'
                 },
                 {
                     'id'   : 6,
                     'name' : 'Canceled',
                     'color': 'pink-500',
-                    'date' : '2016/02/11 05:58:55'
+                    'date' : '2018/02/11 05:58:55'
                 }
             ],
             'payment'        : {
                 'transactionId': '0633458c',
                 'amount'       : '20.34',
                 'method'       : 'Check',
-                'date'         : '2015/07/17 20:54:14'
+                'date'         : '2018/07/17 20:54:14'
             },
             'shippingDetails': [
                 {
@@ -2840,7 +2840,7 @@ export class ECommerceFakeDb
                     'carrier' : 'TNT',
                     'weight'  : '3.30',
                     'fee'     : '2.00',
-                    'date'    : '2015/11/04 14:08:16'
+                    'date'    : '2018/11/04 14:08:16'
                 }
             ]
         },
@@ -2851,7 +2851,7 @@ export class ECommerceFakeDb
             'tax'            : '31.36',
             'discount'       : '-18.23',
             'total'          : '10.64',
-            'date'           : '2015/08/10 14:28:10',
+            'date'           : '2018/08/10 14:28:10',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Jeannie',
@@ -2903,20 +2903,20 @@ export class ECommerceFakeDb
                     'id'   : 9,
                     'name' : 'On pre-order (paid)',
                     'color': 'purple-300',
-                    'date' : '2015/06/20 08:37:46'
+                    'date' : '2018/06/20 08:37:46'
                 },
                 {
                     'id'   : 2,
                     'name' : 'Payment accepted',
                     'color': 'green-500',
-                    'date' : '2015/01/01 01:42:21'
+                    'date' : '2018/01/01 01:42:21'
                 }
             ],
             'payment'        : {
                 'transactionId': '45f7440a',
                 'amount'       : '10.64',
                 'method'       : 'PayPal',
-                'date'         : '2015/11/23 11:14:47'
+                'date'         : '2018/11/23 11:14:47'
             },
             'shippingDetails': [
                 {
@@ -2924,7 +2924,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '9.94',
                     'fee'     : '6.00',
-                    'date'    : '2016/04/30 19:17:39'
+                    'date'    : '2018/04/30 19:17:39'
                 }
             ]
         },
@@ -2935,7 +2935,7 @@ export class ECommerceFakeDb
             'tax'            : '74.32',
             'discount'       : '-12.63',
             'total'          : '27.06',
-            'date'           : '2015/11/10 16:54:11',
+            'date'           : '2018/11/10 16:54:11',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Dena',
@@ -2987,20 +2987,20 @@ export class ECommerceFakeDb
                     'id'   : 5,
                     'name' : 'Delivered',
                     'color': 'green-800',
-                    'date' : '2015/03/23 00:18:52'
+                    'date' : '2018/03/23 00:18:52'
                 },
                 {
                     'id'   : 3,
                     'name' : 'Preparing the order',
                     'color': 'orange-500',
-                    'date' : '2015/03/22 04:48:12'
+                    'date' : '2018/03/22 04:48:12'
                 }
             ],
             'payment'        : {
                 'transactionId': '966f4c8e',
                 'amount'       : '27.06',
                 'method'       : 'PayPal',
-                'date'         : '2015/07/10 17:22:44'
+                'date'         : '2018/07/10 17:22:44'
             },
             'shippingDetails': [
                 {
@@ -3008,7 +3008,7 @@ export class ECommerceFakeDb
                     'carrier' : 'FedEx',
                     'weight'  : '6.81',
                     'fee'     : '3.00',
-                    'date'    : '2015/01/23 07:31:46'
+                    'date'    : '2018/01/23 07:31:46'
                 }
             ]
         },
@@ -3019,7 +3019,7 @@ export class ECommerceFakeDb
             'tax'            : '33.33',
             'discount'       : '-12.33',
             'total'          : '91.50',
-            'date'           : '2015/08/26 16:24:38',
+            'date'           : '2018/08/26 16:24:38',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Blankenship',
@@ -3071,20 +3071,20 @@ export class ECommerceFakeDb
                     'id'   : 6,
                     'name' : 'Canceled',
                     'color': 'pink-500',
-                    'date' : '2016/03/24 22:56:35'
+                    'date' : '2018/03/24 22:56:35'
                 },
                 {
                     'id'   : 4,
                     'name' : 'Shipped',
                     'color': 'purple-500',
-                    'date' : '2016/04/09 13:33:26'
+                    'date' : '2018/04/09 13:33:26'
                 }
             ],
             'payment'        : {
                 'transactionId': '411a4e97',
                 'amount'       : '91.50',
                 'method'       : 'PayPal',
-                'date'         : '2016/02/05 05:35:52'
+                'date'         : '2018/02/05 05:35:52'
             },
             'shippingDetails': [
                 {
@@ -3092,7 +3092,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '6.11',
                     'fee'     : '7.00',
-                    'date'    : '2015/10/20 10:46:31'
+                    'date'    : '2018/10/20 10:46:31'
                 }
             ]
         },
@@ -3103,7 +3103,7 @@ export class ECommerceFakeDb
             'tax'            : '41.90',
             'discount'       : '-16.54',
             'total'          : '47.99',
-            'date'           : '2015/01/04 21:13:53',
+            'date'           : '2018/01/04 21:13:53',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Whitley',
@@ -3155,20 +3155,20 @@ export class ECommerceFakeDb
                     'id'   : 7,
                     'name' : 'Refunded',
                     'color': 'red-500',
-                    'date' : '2015/08/10 17:14:57'
+                    'date' : '2018/08/10 17:14:57'
                 },
                 {
                     'id'   : 5,
                     'name' : 'Delivered',
                     'color': 'green-800',
-                    'date' : '2016/03/30 01:38:14'
+                    'date' : '2018/03/30 01:38:14'
                 }
             ],
             'payment'        : {
                 'transactionId': '761943c2',
                 'amount'       : '47.99',
                 'method'       : 'PayPal',
-                'date'         : '2015/10/11 20:10:46'
+                'date'         : '2018/10/11 20:10:46'
             },
             'shippingDetails': [
                 {
@@ -3176,7 +3176,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '5.51',
                     'fee'     : '5.00',
-                    'date'    : '2015/08/28 21:24:36'
+                    'date'    : '2018/08/28 21:24:36'
                 }
             ]
         },
@@ -3187,7 +3187,7 @@ export class ECommerceFakeDb
             'tax'            : '20.12',
             'discount'       : '-14.57',
             'total'          : '44.40',
-            'date'           : '2015/02/24 00:57:18',
+            'date'           : '2018/02/24 00:57:18',
             'customer'       : {
                 'id'             : 1,
                 'firstName'      : 'Hood',
@@ -3239,20 +3239,20 @@ export class ECommerceFakeDb
                     'id'   : 10,
                     'name' : 'Awaiting bank wire payment',
                     'color': 'blue-500',
-                    'date' : '2015/05/19 11:09:56'
+                    'date' : '2018/05/19 11:09:56'
                 },
                 {
                     'id'   : 12,
                     'name' : 'Remote payment accepted',
                     'color': 'green-500',
-                    'date' : '2015/03/27 05:02:33'
+                    'date' : '2018/03/27 05:02:33'
                 }
             ],
             'payment'        : {
                 'transactionId': '4af94368',
                 'amount'       : '44.40',
                 'method'       : 'PayPal',
-                'date'         : '2015/11/11 14:25:39'
+                'date'         : '2018/11/11 14:25:39'
             },
             'shippingDetails': [
                 {
@@ -3260,7 +3260,7 @@ export class ECommerceFakeDb
                     'carrier' : 'USPS',
                     'weight'  : '3.63',
                     'fee'     : '5.00',
-                    'date'    : '2016/03/01 09:07:49'
+                    'date'    : '2018/03/01 09:07:49'
                 }
             ]
         }

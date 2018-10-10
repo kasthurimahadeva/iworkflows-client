@@ -16,13 +16,13 @@
 
         <div fxLayout="row wrap" fxLayoutAlign="center">
 
-            <mat-nav-list class="articles-list mat-elevation-z4" *ngFor="let category of knowledgeBase">
+            <mat-nav-list class="articles-list" *ngFor="let category of knowledgeBase">
 
                 <h3 mat-subheader>{{category.title}}</h3>
 
                 <a mat-list-item *ngFor="let article of category.featuredArticles"
                    (click)="readArticle(article)">
-                    <mat-icon class="secondary-text mr-8">note</mat-icon>
+                    <mat-icon class="secondary-text mr-8">insert_drive_file</mat-icon>
                     {{ article.title }}
                 </a>
 

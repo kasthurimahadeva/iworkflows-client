@@ -15,8 +15,8 @@ export class InvoiceFakeDb
             'email'  : 'johndoe@mail.com'
         },
         'number'  : 'P9-0004',
-        'date'    : 'Jul 19, 2015',
-        'dueDate' : 'Aug 24, 2015',
+        'date'    : 'Jul 19, 2018',
+        'dueDate' : 'Aug 24, 2018',
         'services': [
             {
                 'title'    : 'Prototype & Design',

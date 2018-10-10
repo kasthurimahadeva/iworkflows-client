@@ -331,9 +331,22 @@ export const navigation: FuseNavigation[] = [
             {
                 id   : 'search',
                 title: 'Search',
-                type : 'item',
+                type : 'collapsable',
                 icon : 'search',
-                url  : '/pages/search'
+                children : [
+                    {
+                        id   : 'search-classic',
+                        title: 'Classic',
+                        type : 'item',
+                        url  : '/pages/search/classic'
+                    },
+                    {
+                        id   : 'search-modern',
+                        title: 'Modern',
+                        type : 'item',
+                        url  : '/pages/search/modern'
+                    },
+                ]
             },
             {
                 id   : 'faq',
@@ -357,6 +370,12 @@ export const navigation: FuseNavigation[] = [
         type    : 'group',
         icon    : 'web',
         children: [
+            {
+                id   : 'cards',
+                title: 'Cards',
+                type : 'item',
+                url  : '/ui/cards'
+            },
             {
                 id   : 'forms',
                 title: 'Forms',
@@ -931,12 +950,6 @@ export const navigation: FuseNavigation[] = [
                 icon    : 'import_contacts',
                 children: [
                     {
-                        id   : 'cards',
-                        title: 'Cards',
-                        type : 'item',
-                        url  : '/documentation/components/cards'
-                    },
-                    {
                         id   : 'countdown',
                         title: 'Countdown',
                         type : 'item',
@@ -1073,5 +1086,4 @@ export const navigation: FuseNavigation[] = [
             }
         ]
     }
-
 ];

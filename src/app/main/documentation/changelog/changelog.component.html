@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
 
-        <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="row" fxLayoutAlign="start center">
             <mat-icon class="secondary-text s-18">home</mat-icon>
             <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
             <span class="secondary-text">Documentation</span>
@@ -38,18 +38,24 @@
                                 Removed <code>media-breakpoint-up</code>, <code>media-breakpoint-down</code>,
                                 <code>media-breakpoint-only</code> and <code>media-breakpoint-between</code> scss
                                 mixins. Use Material design breakpoints with <code>media-breakpoint</code> mixin.
-                                Breakpoint definitions can be found in the
-                                <code>@fuse/scss/partials/_breakpoints.scss</code> file.
+                                Breakpoint definitions can be found in
+                                <code>@fuse/scss/partials/_breakpoints.scss</code>.
 
                                 <br><br>
                                 Example:
-                                <br><br>
+                                <br>
                                 <code>media-breakpoint('sm')</code> // Only small
                                 <br>
                                 <code>media-breakpoint('lt-sm')</code> // Less than small
                                 <br>
                                 <code>media-breakpoint('gt-sm')</code> // Greater than small
-
+                                <br><br>
+                            </li>
+                            <li>
+                                Updating the navigation directly from the object no longer works since
+                                <code>FuseNavigation</code> now uses <code>OnPush</code> change detection strategy for
+                                performance reasons. Use <code>updateNavigationItem</code> method from
+                                <code>FuseNavigationService</code> to update the navigation items.
                             </li>
                         </ul>
                     </div>
@@ -57,13 +63,16 @@
                     <div class="new">
                         <span class="title">New</span>
                         <ul>
-                            <li>Updated Angular to 6.1.9</li>
-                            <li>Updated Angular Material to 7.0.0-beta.2</li>
+                            <li>Updated Angular to 7.0.0-rc.0</li>
+                            <li>Updated Angular Material to 7.0.0-rc.1</li>
+                            <li>Updated Typescript to 3.1.1</li>
                             <li>Updated various other libraries</li>
                             <li>Modernization:
                                 <ul>
                                     <li>Material Outline icons</li>
                                     <li>'Muli' as the primary font face</li>
+                                    <li>Outline form fields</li>
+                                    <li>Modern navigation</li>
                                 </ul>
                             </li>
                         </ul>
@@ -75,6 +84,16 @@
                             <li>(Calendar) _matDialogRef is not defined</li>
                             <li>(Scrumboard) _matDialogRef is not defined</li>
                             <li>(Contacts) birthday field ignored while saving</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>
+                                (FuseNavigation) Use <code>ChangeDetection.OnPush</code> to increase the performance.
+                                Now you can load hundreds of thousands navigation item and it won't mind.
+                            </li>
                         </ul>
                     </div>
 

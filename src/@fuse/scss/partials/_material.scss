@@ -308,8 +308,9 @@ mat-icon.status {
     position: relative;
     display: inline-flex;
     flex-direction: row;
-    @include mat-elevation(1);
     padding: 0 8px;
+    border-radius: 4px;
+    @include mat-elevation(1);
 
     .pagination-item {
         display: flex;

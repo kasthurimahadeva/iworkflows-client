@@ -42,6 +42,10 @@ profile-about {
 
                     .friend {
                         padding: 4px;
+
+                        img {
+                            border-radius: 4px;
+                        }
                     }
                 }
             }
@@ -51,14 +55,21 @@ profile-about {
                 .content {
 
                     .group {
-                        margin-bottom: 16px;
+                        margin-bottom: 24px;
 
                         &:last-child {
                             margin-bottom: 0;
                         }
 
                         .logo {
-                            border: 1px solid;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 48px;
+                            height: 48px;
+                            font-size: 21px;
+                            line-height: normal;
+                            border-radius: 50%;
                             margin-right: 16px;
                         }
 
@@ -68,7 +79,7 @@ profile-about {
                         }
 
                         .members {
-                            margin-top: 16px;
+                            margin-top: 8px;
                         }
                     }
                 }
@@ -78,6 +89,8 @@ profile-about {
 
     // Profile boxes
     .profile-box {
+        border-radius: 4px;
+        overflow: hidden;
         margin-bottom: 16px;
         @include mat-elevation(2);
 

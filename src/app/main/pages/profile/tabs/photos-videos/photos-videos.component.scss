@@ -23,13 +23,15 @@ profile-photos-videos {
                 margin-bottom: 16px;
 
                 .media {
-                    margin: 0 16px 16px 0;
                     position: relative;
+                    margin: 0 16px 16px 0;
+                    border-radius: 4px;
+                    overflow: hidden;
 
                     .preview {
+                        display: block;
                         width: 256px;
                         height: 256px;
-                        display: block;
                     }
 
                     .title {

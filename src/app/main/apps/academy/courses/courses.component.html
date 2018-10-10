@@ -25,9 +25,10 @@
             <div class="filters" fxLayout="column" fxLayoutAlign="center center"
                  fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 
-                <mat-form-field appearance="outline" class="course-search">
+                <mat-form-field appearance="outline" floatLabel="always" class="course-search">
                     <mat-label>Search for a course</mat-label>
-                    <input matInput [(ngModel)]="searchTerm"
+                    <input matInput placeholder="Enter a keyword..."
+                           [(ngModel)]="searchTerm"
                            (input)="filterCoursesByTerm()">
                 </mat-form-field>
 

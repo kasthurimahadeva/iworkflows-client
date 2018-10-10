@@ -5,7 +5,7 @@
          fxLayoutAlign.gt-xs="space-between center">
 
         <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
-            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="secondary-text s-18">home</mat-icon>
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">User Interface</span>
@@ -43,8 +43,8 @@
 
                     <div class="icon-holder m-16" fxLayout="column" fxLayoutAlign="center center"
                          *ngFor="let icon of filteredIcons">
-                        <mat-icon class="secondary-text s-48">{{icon}}</mat-icon>
-                        <div class="icon-name secondary-text mt-8">{{icon}}</div>
+                        <mat-icon class="secondary-text s-48">{{icon.ligature}}</mat-icon>
+                        <div class="icon-name secondary-text mt-8">{{icon.ligature}}</div>
                     </div>
 
                 </div>

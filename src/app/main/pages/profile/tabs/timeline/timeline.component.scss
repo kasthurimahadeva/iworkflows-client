@@ -9,6 +9,8 @@ profile-timeline {
 
             .add-post {
                 margin-bottom: 0;
+                border-radius: 4px;
+                overflow: hidden;
                 @include mat-elevation(2);
 
                 textarea {
@@ -23,17 +25,8 @@ profile-timeline {
                 }
 
                 footer {
-                    padding: 8px;
+                    padding: 8px 12px 8px 8px;
                     border-top: 1px solid;
-
-                    .post-button {
-                        margin: 0;
-                        width: 64px;
-                        min-width: 64px;
-                        height: 30px;
-                        line-height: 30px;
-                        min-height: 30px;
-                    }
                 }
             }
 
@@ -46,7 +39,7 @@ profile-timeline {
             .timeline-item {
                 margin-bottom: 32px;
                 overflow: hidden;
-                border-radius: 2px;
+                border-radius: 4px;
                 @include mat-elevation(2);
 
                 &:last-child {
@@ -178,16 +171,7 @@ profile-timeline {
                                 margin-bottom: 8px;
                                 font-size: 13px;
                                 border: 1px solid;
-                            }
-
-                            .post-comment-button {
-                                margin: 0;
-                                text-transform: inherit;
-                                font-weight: normal;
-                                padding: 0 12px;
-                                min-height: 30px;
-                                min-width: inherit;
-                                line-height: 30px;
+                                border-radius: 4px;
                             }
                         }
                     }
@@ -231,6 +215,8 @@ profile-timeline {
 
     // Profile boxes
     .profile-box {
+        border-radius: 4px;
+        overflow: hidden;
         margin-bottom: 16px;
         @include mat-elevation(2);
 

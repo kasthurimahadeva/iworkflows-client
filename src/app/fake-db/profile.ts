@@ -16,7 +16,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/andrew.jpg'
                 },
                 'message': 'sent you a message.',
-                'time'   : 'June 10,2015'
+                'time'   : 'June 10,2018'
             },
             {
                 'user'   : {
@@ -24,7 +24,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/garry.jpg'
                 },
                 'message': 'shared a public post with your group.',
-                'time'   : 'June 9,2015'
+                'time'   : 'June 9,2018'
             },
             {
                 'user'   : {
@@ -32,7 +32,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/carl.jpg'
                 },
                 'message': 'wants to play Fallout Shelter with you.',
-                'time'   : 'June 8,2015'
+                'time'   : 'June 8,2018'
             },
             {
                 'user'   : {
@@ -40,7 +40,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/jane.jpg'
                 },
                 'message': 'started following you.',
-                'time'   : 'June 7,2015'
+                'time'   : 'June 7,2018'
             },
             {
                 'user'   : {
@@ -48,7 +48,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/james.jpg'
                 },
                 'message': 'sent you a message.',
-                'time'   : 'June 6,2015'
+                'time'   : 'June 6,2018'
             },
             {
                 'user'   : {
@@ -56,7 +56,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/joyce.jpg'
                 },
                 'message': 'shared a photo with you.',
-                'time'   : 'June 5,2015'
+                'time'   : 'June 5,2018'
             },
             {
                 'user'   : {
@@ -64,7 +64,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/vincent.jpg'
                 },
                 'message': 'shared a photo with you.',
-                'time'   : 'June 4,2015'
+                'time'   : 'June 4,2018'
             }
         ],
         posts     : [
@@ -80,7 +80,7 @@ export class ProfileFakeDb
                 'share'   : 21,
                 'media'   : {
                     'type'   : 'image',
-                    'preview': 'assets/images/etc/early-sunrise.jpg'
+                    'preview': 'assets/images/profile/morain-lake.jpg'
                 },
                 'comments': [
                     {
@@ -88,7 +88,7 @@ export class ProfileFakeDb
                             'name'  : 'Alice Freeman',
                             'avatar': 'assets/images/avatars/alice.jpg'
                         },
-                        'time'   : 'June 10, 2015',
+                        'time'   : 'June 10, 2018',
                         'message': 'That’s a wonderful place. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et eleifend ligula. Fusce posuere in sapien ac facilisis. Etiam sit amet justo non felis ornare feugiat.'
                     }
                 ]
@@ -99,17 +99,17 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/andrew.jpg'
                 },
                 'message' : 'Hey, man! Check this, it’s pretty awesome!',
-                'time'    : 'June 12, 2015',
+                'time'    : 'June 12, 2018',
                 'type'    : 'article',
                 'like'    : 98,
                 'share'   : 6,
                 'article' : {
-                    'title'   : 'The Fallout 4 Pip-Boy Edition Is Back In Stock Now',
-                    'subtitle': 'Kotaku',
-                    'excerpt' : 'The Fallout 4 Pip-Boy edition is back in stock at Gamestop, for all 3 platforms. Additionally, Walmart also has it in stock for the PS4 and Xbox One as of this writing, as does Best Buy.',
+                    'title'   : 'Never stop changing!',
+                    'subtitle': 'John Westrock',
+                    'excerpt' : 'John Westrock\'s new photo album called \'Never stop changing\' is published! It features more than 200 photos that will take you right in.',
                     'media'   : {
                         'type'   : 'image',
-                        'preview': 'assets/images/etc/fallout.jpg'
+                        'preview': 'assets/images/profile/never-stop-changing.jpg'
                     }
                 },
                 'comments': [
@@ -118,7 +118,7 @@ export class ProfileFakeDb
                             'name'  : 'Alice Freeman',
                             'avatar': 'assets/images/avatars/alice.jpg'
                         },
-                        'time'   : 'June 10, 2015',
+                        'time'   : 'June 10, 2018',
                         'message': 'That’s a wonderful place. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et eleifend ligula. Fusce posuere in sapien ac facilisis. Etiam sit amet justo non felis ornare feugiat.'
                     }
                 ]
@@ -129,7 +129,7 @@ export class ProfileFakeDb
                     'avatar': 'assets/images/avatars/carl.jpg'
                 },
                 'message': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et eleifend ligula. Fusce posuere in sapien ac facilisis. Etiam sit amet justo non felis ornare feugiat. Aenean lorem ex, ultrices sit amet ligula sed...',
-                'time'   : 'June 10, 2015',
+                'time'   : 'June 10, 2018',
                 'type'   : 'something',
                 'like'   : 4,
                 'share'  : 1
@@ -139,130 +139,130 @@ export class ProfileFakeDb
 
     public static photosVideos = [
         {
-            'name' : 'June 2015',
+            'name' : 'June 2018',
             'info' : '5 Photos',
             'media': [
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Sunset',
-                    'preview': 'assets/images/etc/mountain-sunset.jpg'
+                    'title'  : 'A Walk Amongst Friends',
+                    'preview': 'assets/images/profile/a-walk-amongst-friends-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Lake',
-                    'preview': 'assets/images/etc/mountain-lake.jpg'
+                    'title'  : 'Braies Lake',
+                    'preview': 'assets/images/profile/braies-lake-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Hot air balloons',
-                    'preview': 'assets/images/etc/air-balloons.jpg'
+                    'title'  : 'Fall Glow',
+                    'preview': 'assets/images/profile/fall-glow-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Cactus',
-                    'preview': 'assets/images/etc/cactus.jpg'
+                    'title'  : 'First Snow',
+                    'preview': 'assets/images/profile/first-snow-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Road Trip',
-                    'preview': 'assets/images/etc/road-trip.jpg'
+                    'title'  : 'Lago di Braies',
+                    'preview': 'assets/images/profile/lago-di-braies-small.jpg'
                 }
             ]
         },
         {
-            'name' : 'May 2015',
+            'name' : 'May 2018',
             'info' : '7 Photos, 3 Videos',
             'media': [
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Sunset',
-                    'preview': 'assets/images/etc/mountain-sunset.jpg'
+                    'title'  : 'Lago di Sorapis',
+                    'preview': 'assets/images/profile/lago-di-sorapis-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Lake',
-                    'preview': 'assets/images/etc/mountain-lake.jpg'
+                    'title'  : 'Morain Lake',
+                    'preview': 'assets/images/profile/morain-lake-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Hot air balloons',
-                    'preview': 'assets/images/etc/air-balloons.jpg'
+                    'title'  : 'Never Stop Changing',
+                    'preview': 'assets/images/profile/never-stop-changing-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Cactus',
-                    'preview': 'assets/images/etc/cactus.jpg'
+                    'title'  : 'Reaching',
+                    'preview': 'assets/images/profile/reaching-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Road Trip',
-                    'preview': 'assets/images/etc/road-trip.jpg'
+                    'title'  : 'Yosemite',
+                    'preview': 'assets/images/profile/yosemite-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Sunset',
-                    'preview': 'assets/images/etc/mountain-sunset.jpg'
+                    'title'  : 'A Walk Amongst Friends',
+                    'preview': 'assets/images/profile/a-walk-amongst-friends-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Lake',
-                    'preview': 'assets/images/etc/mountain-lake.jpg'
+                    'title'  : 'Braies Lake',
+                    'preview': 'assets/images/profile/braies-lake-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Hot air balloons',
-                    'preview': 'assets/images/etc/air-balloons.jpg'
+                    'title'  : 'Fall Glow',
+                    'preview': 'assets/images/profile/fall-glow-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Cactus',
-                    'preview': 'assets/images/etc/cactus.jpg'
+                    'title'  : 'First Snow',
+                    'preview': 'assets/images/profile/first-snow-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Road Trip',
-                    'preview': 'assets/images/etc/road-trip.jpg'
+                    'title'  : 'Lago di Braies',
+                    'preview': 'assets/images/profile/lago-di-braies-small.jpg'
                 }
             ]
         },
         {
-            'name' : 'April 2015',
-            'info' : '5 Photos',
+            'name' : 'April 2018',
+            'info' : '7 Photos',
             'media': [
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Sunset',
-                    'preview': 'assets/images/etc/mountain-sunset.jpg'
+                    'title'  : 'Lago di Sorapis',
+                    'preview': 'assets/images/profile/lago-di-sorapis-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Lake',
-                    'preview': 'assets/images/etc/mountain-lake.jpg'
+                    'title'  : 'Morain Lake',
+                    'preview': 'assets/images/profile/morain-lake-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Hot air balloons',
-                    'preview': 'assets/images/etc/air-balloons.jpg'
+                    'title'  : 'Never Stop Changing',
+                    'preview': 'assets/images/profile/never-stop-changing-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Cactus',
-                    'preview': 'assets/images/etc/cactus.jpg'
+                    'title'  : 'Reaching',
+                    'preview': 'assets/images/profile/reaching-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Road Trip',
-                    'preview': 'assets/images/etc/road-trip.jpg'
+                    'title'  : 'Yosemite',
+                    'preview': 'assets/images/profile/yosemite-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Sunset',
-                    'preview': 'assets/images/etc/mountain-sunset.jpg'
+                    'title'  : 'A Walk Amongst Friends',
+                    'preview': 'assets/images/profile/a-walk-amongst-friends-small.jpg'
                 },
                 {
                     'type'   : 'photo',
-                    'title'  : 'Mountain Lake',
-                    'preview': 'assets/images/etc/mountain-lake.jpg'
+                    'title'  : 'Braies Lake',
+                    'preview': 'assets/images/profile/braies-lake-small.jpg'
                 }
             ]
         }
@@ -270,10 +270,10 @@ export class ProfileFakeDb
 
     public static about = {
         'general': {
-            'gender'   : 'Female',
-            'birthday' : 'May 8th, 1988',
+            'gender'   : 'Male',
+            'birthday' : 'February 30th, 1974',
             'locations': [
-                'Istanbul, Turkey',
+                'London, UK',
                 'New York, USA'
             ],
             'about'    : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget pharetra felis, sed ullamcorper dui. Sed et elementum neque. Vestibulum pellente viverra ultrices. Etiam justo augue, vehicula ac gravida a, interdum sit amet nisl. Integer vitae nisi id nibh dictum mollis in vitae tortor.'
@@ -308,19 +308,16 @@ export class ProfileFakeDb
         },
         'groups' : [
             {
-                'logo'    : 'assets/images/logos/android.png',
                 'name'    : 'Android',
                 'category': 'Technology',
                 'members' : '1.856.546'
             },
             {
-                'logo'    : 'assets/images/logos/google.png',
                 'name'    : 'Google',
                 'category': 'Web',
                 'members' : '1.226.121'
             },
             {
-                'logo'    : 'assets/images/logos/fallout.png',
                 'name'    : 'Fallout',
                 'category': 'Games',
                 'members' : '526.142'

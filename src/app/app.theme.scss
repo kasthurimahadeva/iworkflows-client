@@ -112,10 +112,12 @@ $typography: mat-typography-config(
 @import "src/app/main/pages/profile/tabs/about/about.theme";
 @import "src/app/main/pages/profile/tabs/photos-videos/photos-videos.theme";
 @import "src/app/main/pages/profile/tabs/timeline/timeline.theme";
+@import "src/app/main/pages/search/classic/search-classic.theme";
+@import "src/app/main/pages/search/modern/search-modern.theme";
 @import "src/app/main/pages/faq/faq.theme";
 @import "src/app/main/pages/knowledge-base/knowledge-base.theme";
 
-@import "src/app/main/documentation/components/cards/cards.theme";
+@import "src/app/main/ui/cards/cards.theme";
 
 @import "src/app/main/angular-material-elements/example-viewer/example-viewer.theme";
 
@@ -159,11 +161,13 @@ $typography: mat-typography-config(
     @include profile-about-theme($theme);
     @include profile-photos-videos-theme($theme);
     @include profile-timeline-theme($theme);
+    @include search-classic-theme($theme);
+    @include search-modern-theme($theme);
     @include faq-theme($theme);
     @include knowledge-base-theme($theme);
 
-    // Docs
-    @include docs-components-cards-theme($theme);
+    // UI
+    @include ui-cards-theme($theme);
 
     // Example Viewer
     @include example-viewer-theme($theme);

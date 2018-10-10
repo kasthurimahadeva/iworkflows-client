@@ -2,6 +2,7 @@
 
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
 
     profile-about {
 
@@ -29,7 +30,8 @@
                         .group {
 
                             .logo {
-                                border-color: map-get($foreground, divider);
+                                background-color: map-get($primary, default);
+                                color: map-get($primary, default-contrast);
                             }
 
                             .category,
