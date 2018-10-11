@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, fromEvent, merge, Observable, Subject } from 'rxjs';
@@ -14,7 +14,8 @@ import { takeUntil } from 'rxjs/internal/operators';
     selector     : 'e-commerce-products',
     templateUrl  : './products.component.html',
     styleUrls    : ['./products.component.scss'],
-    animations   : fuseAnimations
+    animations   : fuseAnimations,
+    encapsulation: ViewEncapsulation.None
 })
 export class EcommerceProductsComponent implements OnInit
 {

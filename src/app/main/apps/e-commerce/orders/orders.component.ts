@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
-import { merge, Observable, BehaviorSubject, fromEvent, Subject } from 'rxjs';
+import { BehaviorSubject, fromEvent, merge, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
@@ -11,10 +11,11 @@ import { EcommerceOrdersService } from 'app/main/apps/e-commerce/orders/orders.s
 import { takeUntil } from 'rxjs/internal/operators';
 
 @Component({
-    selector   : 'e-commerce-orders',
-    templateUrl: './orders.component.html',
-    styleUrls  : ['./orders.component.scss'],
-    animations : fuseAnimations
+    selector     : 'e-commerce-orders',
+    templateUrl  : './orders.component.html',
+    styleUrls    : ['./orders.component.scss'],
+    animations   : fuseAnimations,
+    encapsulation: ViewEncapsulation.None
 })
 export class EcommerceOrdersComponent implements OnInit, OnDestroy
 {

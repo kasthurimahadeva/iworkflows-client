@@ -86,6 +86,8 @@ $typography: mat-typography-config(
 @import "src/app/main/apps/chat/chat.theme";
 @import "src/app/main/apps/contacts/contacts.theme";
 @import "src/app/main/apps/dashboards/project/project.theme";
+@import "src/app/main/apps/e-commerce/orders/orders.theme";
+@import "src/app/main/apps/e-commerce/products/products.theme";
 @import "src/app/main/apps/file-manager/file-manager.theme";
 @import "src/app/main/apps/mail/mail.theme";
 @import "src/app/main/apps/mail-ngrx/mail.theme";
@@ -134,6 +136,8 @@ $typography: mat-typography-config(
     @include chat-theme($theme);
     @include contacts-theme($theme);
     @include dashboards-project-theme($theme);
+    @include e-commerce-orders-theme($theme);
+    @include e-commerce-products-theme($theme);
     @include file-manager-theme($theme);
     @include mail-theme($theme);
     @include mail-ngrx-theme($theme);

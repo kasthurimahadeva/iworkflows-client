@@ -15,7 +15,7 @@
             <!-- APP TITLE -->
             <div class="logo mb-24 mb-md-0"
                  fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="logo-icon s-40 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
                     shopping_basket
                 </mat-icon>
                 <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
@@ -25,12 +25,11 @@
             <!-- / APP TITLE -->
 
             <!-- SEARCH -->
-            <div class="search-input-wrapper mx-32 mx-md-0" fxFlex="1 0 auto" fxLayout="row"
-                 fxLayoutAlign="start center">
-                <label for="search" class="mr-8">
-                    <mat-icon class="secondary-text s-18">search</mat-icon>
-                </label>
-                <input id="search" #filter placeholder="Search">
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a product">
+                </div>
             </div>
             <!-- / SEARCH -->
 
