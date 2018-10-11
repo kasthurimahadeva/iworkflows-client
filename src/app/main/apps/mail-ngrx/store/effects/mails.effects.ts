@@ -138,10 +138,11 @@ export class MailsEffect
                 withLatestFrom(this.store.pipe(select(getMailsState))),
                 map(([action, state]) => {
 
-                    if ( !state.entities[this.routerState.params.mailId] )
+                    if ( this.routerState.params.mailId && !state.entities[this.routerState.params.mailId] )
                     {
-                        return new fromRoot.Go({path: [this.routerState.url.replace(this.routerState.params.mailId, '')]});
+                        // return new fromRoot.Go({path: [this.routerState.url.replace(this.routerState.params.mailId, '')]});
                     }
+
                     return new MailsActions.SetCurrentMailSuccess(state.entities[this.routerState.params.mailId]);
                 })
             );
