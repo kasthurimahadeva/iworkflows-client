@@ -7,7 +7,7 @@
             <h1>Frequently Asked Questions</h1>
         </div>
 
-        <div class="search mat-elevation-z7" flex fxLayout="row" fxLayoutAlign="start center">
+        <div class="search mat-elevation-z7" fxLayout="row" fxLayoutAlign="start center">
             <mat-icon>search</mat-icon>
             <input [formControl]="searchInput" placeholder="Search in FAQs..." fxFlex>
         </div>
@@ -22,8 +22,8 @@
 
             <mat-expansion-panel *ngFor="let faq of faqsFiltered; let i = index" [expanded]="step === i" (opened)="setStep(i)">
                 <mat-expansion-panel-header>
-                    <mat-panel-title flex fxLayout="row" fxLayoutAlign="start center">
-                        <mat-icon class="mr-8">help_outline</mat-icon>
+                    <mat-panel-title fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="mr-12 s-20 secondary-text">help_outline</mat-icon>
                         {{faq.question}}
                     </mat-panel-title>
                 </mat-expansion-panel-header>

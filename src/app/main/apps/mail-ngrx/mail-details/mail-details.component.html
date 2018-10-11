@@ -12,9 +12,9 @@
     <div class="mail-header" fxLayout="row" fxLayoutAlign="space-between center">
 
         <div>
-            <div class="subject" flex>{{mail.subject}}</div>
+            <div class="subject">{{mail.subject}}</div>
 
-            <div class="labels" fxLayout="row wrap">
+            <div class="labels mt-8" fxLayout="row wrap">
                 <div class="label" *ngFor="let labelId of mail.labels"
                      fxLayout="row" fxLayoutAlign="start center">
                     <div class="label-color" [ngStyle]="{'background-color': (labels$ | async) | getById:labelId:'color'}"></div>
