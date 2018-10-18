@@ -329,11 +329,11 @@ export const navigation: FuseNavigation[] = [
                 url  : '/pages/profile'
             },
             {
-                id   : 'search',
-                title: 'Search',
-                type : 'collapsable',
-                icon : 'search',
-                children : [
+                id      : 'search',
+                title   : 'Search',
+                type    : 'collapsable',
+                icon    : 'search',
+                children: [
                     {
                         id   : 'search-classic',
                         title: 'Classic',
@@ -345,7 +345,7 @@ export const navigation: FuseNavigation[] = [
                         title: 'Modern',
                         type : 'item',
                         url  : '/pages/search/modern'
-                    },
+                    }
                 ]
             },
             {
@@ -793,6 +793,12 @@ export const navigation: FuseNavigation[] = [
                         title: 'Progress bar',
                         type : 'item',
                         url  : '/angular-material-elements/progress-bar'
+                    },
+                    {
+                        id   : 'ripples',
+                        title: 'Ripples',
+                        type : 'item',
+                        url  : '/angular-material-elements/ripples'
                     }
                 ]
             },

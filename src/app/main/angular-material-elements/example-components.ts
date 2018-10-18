@@ -9,7 +9,6 @@ import { ButtonToggleOverviewExample } from 'assets/angular-material-examples/bu
 import { ButtonTypesExample } from 'assets/angular-material-examples/button-types/button-types-example';
 import { CardFancyExample } from 'assets/angular-material-examples/card-fancy/card-fancy-example';
 import { CardOverviewExample } from 'assets/angular-material-examples/card-overview/card-overview-example';
-import { CdkTableBasicExample } from 'assets/angular-material-examples/cdk-table-basic/cdk-table-basic-example';
 import { CheckboxConfigurableExample } from 'assets/angular-material-examples/checkbox-configurable/checkbox-configurable-example';
 import { CheckboxOverviewExample } from 'assets/angular-material-examples/checkbox-overview/checkbox-overview-example';
 import { ChipsInputExample } from 'assets/angular-material-examples/chips-input/chips-input-example';
@@ -111,8 +110,6 @@ import { FormFieldLabelExample } from 'assets/angular-material-examples/form-fie
 import { AutocompleteOptgroupExample } from 'assets/angular-material-examples/autocomplete-optgroup/autocomplete-optgroup-example';
 import { BadgeOverviewExample } from 'assets/angular-material-examples/badge-overview/badge-overview-example';
 import { BottomSheetOverviewExample, BottomSheetOverviewExampleSheet } from 'assets/angular-material-examples/bottom-sheet-overview/bottom-sheet-overview-example';
-import { CdkTreeFlatExample } from 'assets/angular-material-examples/cdk-tree-flat/cdk-tree-flat-example';
-import { CdkTreeNestedExample } from 'assets/angular-material-examples/cdk-tree-nested/cdk-tree-nested-example';
 import { ChipsAutocompleteExample } from 'assets/angular-material-examples/chips-autocomplete/chips-autocomplete-example';
 import { DatepickerColorExample } from 'assets/angular-material-examples/datepicker-color/datepicker-color-example';
 import { DatepickerCustomHeaderExample, ExampleHeader } from 'assets/angular-material-examples/datepicker-custom-header/datepicker-custom-header-example';
@@ -143,7 +140,6 @@ import { TreeDynamicExample } from 'assets/angular-material-examples/tree-dynami
 import { TreeFlatOverviewExample } from 'assets/angular-material-examples/tree-flat-overview/tree-flat-overview-example';
 import { TreeLoadmoreExample } from 'assets/angular-material-examples/tree-loadmore/tree-loadmore-example';
 import { TreeNestedOverviewExample } from 'assets/angular-material-examples/tree-nested-overview/tree-nested-overview-example';
-import { CdkTableBasicFlexExample } from 'assets/angular-material-examples/cdk-table-basic-flex/cdk-table-basic-flex-example';
 import { StepperVerticalExample } from 'assets/angular-material-examples/stepper-vertical/stepper-vertical-example';
 import { TabGroupBasicExample } from 'assets/angular-material-examples/tab-group-basic/tab-group-basic-example';
 import { TabGroupAsyncExample } from 'assets/angular-material-examples/tab-group-async/tab-group-async-example';
@@ -169,6 +165,14 @@ import { TableStickyComplexExample } from 'assets/angular-material-examples/tabl
 import { TableStickyComplexFlexExample } from 'assets/angular-material-examples/table-sticky-complex-flex/table-sticky-complex-flex-example';
 import { TableStickyFooterExample } from 'assets/angular-material-examples/table-sticky-footer/table-sticky-footer-example';
 import { TableStickyHeaderExample } from 'assets/angular-material-examples/table-sticky-header/table-sticky-header-example';
+import { ButtonToggleAppearanceExample } from 'assets/angular-material-examples/button-toggle-appearance/button-toggle-appearance-example';
+import { RippleOverviewExample } from 'assets/angular-material-examples/ripple-overview/ripple-overview-example';
+import { StepperLabelPositionBottomExample } from 'assets/angular-material-examples/stepper-label-position-bottom/stepper-label-position-bottom-example';
+import { StepperStatesExample } from 'assets/angular-material-examples/stepper-states/stepper-states-example';
+import { StepperErrorsExample } from 'assets/angular-material-examples/stepper-errors/stepper-errors-example';
+import { TabGroupAlignExample } from 'assets/angular-material-examples/tab-group-align/tab-group-align-example';
+import { SimpleColumn, TableSimpleColumnExample } from 'assets/angular-material-examples/table-simple-column/table-simple-column-example';
+import { TableWrappedExample, WrapperTable } from 'assets/angular-material-examples/table-wrapped/table-wrapped-example';
 
 export const COMPONENT_MAP = {
     'autocomplete'    : [
@@ -191,20 +195,13 @@ export const COMPONENT_MAP = {
     ],
     'button-toggle'   : [
         'button-toggle-overview',
+        'button-toggle-appearance',
         'button-toggle-exclusive'
     ],
     'card'            : [
         'card-overview',
         'card-fancy'
     ],
-    // 'cdk-table'       : [
-    //     'cdk-table-basic',
-    //     'cdk-table-basic-flex',
-    //     'cdk-table-flat'
-    // ],
-    // 'cdk-tree'        : [
-    //     'cdk-tree-nested'
-    // ],
     'checkbox'        : [
         'checkbox-overview',
         'checkbox-configurable'
@@ -307,6 +304,9 @@ export const COMPONENT_MAP = {
         'progress-spinner-overview',
         'progress-spinner-configurable'
     ],
+    'ripples'         : [
+        'ripple-overview'
+    ],
     'radio-button'    : [
         'radio-overview',
         'radio-ng-model'
@@ -357,7 +357,10 @@ export const COMPONENT_MAP = {
     'stepper'         : [
         'stepper-overview',
         'stepper-editable',
+        'stepper-errors',
+        'stepper-label-position-bottom',
         'stepper-optional',
+        'stepper-states',
         'stepper-vertical'
     ],
     'table'           : [
@@ -373,16 +376,19 @@ export const COMPONENT_MAP = {
         'table-pagination',
         'table-row-context',
         'table-selection',
+        'table-simple-column',
         'table-sorting',
         'table-sticky-columns',
         'table-sticky-complex',
         'table-sticky-complex-flex',
         'table-sticky-header',
         'table-sticky-footer',
+        'table-wrapped'
     ],
     'tabs'            : [
         'tab-group-basic',
         'tab-group-async',
+        'tab-group-align',
         'tab-group-custom-label',
         'tab-group-dynamic',
         'tab-group-dynamic-height',
@@ -460,6 +466,10 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Basic buttons',
         component: ButtonOverviewExample
     },
+    'button-toggle-appearance'             : {
+        title    : 'Button toggle appearance',
+        component: ButtonToggleAppearanceExample
+    },
     'button-toggle-exclusive'              : {
         title    : 'Exclusive selection',
         component: ButtonToggleExclusiveExample
@@ -479,22 +489,6 @@ export const EXAMPLE_COMPONENTS = {
     'card-overview'                        : {
         title    : 'Basic cards',
         component: CardOverviewExample
-    },
-    'cdk-table-basic'                      : {
-        title    : 'Basic CDK data-table',
-        component: CdkTableBasicExample
-    },
-    'cdk-table-basic-flex'                 : {
-        title    : 'Basic use of `<cdk-table>` (uses display flex)',
-        component: CdkTableBasicFlexExample
-    },
-    'cdk-tree-flat'                        : {
-        title    : 'Tree with flat nodes',
-        component: CdkTreeFlatExample
-    },
-    'cdk-tree-nested'                      : {
-        title    : 'Tree with nested nodes',
-        component: CdkTreeNestedExample
     },
     'checkbox-configurable'                : {
         title    : 'Configurable checkbox',
@@ -787,6 +781,10 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Basic radios',
         component: RadioOverviewExample
     },
+    'ripple-overview'                      : {
+        title    : 'MatRipple basic usage',
+        component: RippleOverviewExample
+    },
     'select-custom-trigger'                : {
         title    : 'Select with custom trigger text',
         component: SelectCustomTriggerExample
@@ -921,6 +919,14 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Stepper with editable steps',
         component: StepperEditableExample
     },
+    'stepper-errors'                       : {
+        title    : 'Stepper that displays errors in the steps\n',
+        component: StepperErrorsExample
+    },
+    'stepper-label-position-bottom'        : {
+        title    : 'Stepper label position bottom',
+        component: StepperLabelPositionBottomExample
+    },
     'stepper-optional'                     : {
         title    : 'Stepper with optional steps',
         component: StepperOptionalExample
@@ -928,6 +934,10 @@ export const EXAMPLE_COMPONENTS = {
     'stepper-overview'                     : {
         title    : 'Stepper overview',
         component: StepperOverviewExample
+    },
+    'stepper-states'                       : {
+        title    : 'Stepper with customized states',
+        component: StepperStatesExample
     },
     'stepper-vertical'                     : {
         title    : 'Stepper vertical',
@@ -937,15 +947,15 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Basic table',
         component: TableBasicExample
     },
-    'table-basic-flex'                          : {
+    'table-basic-flex'                     : {
         title    : 'Basic use of `<mat-table>` (uses display flex)',
         component: TableBasicFlexExample
     },
-    'table-dynamic-columns'                          : {
+    'table-dynamic-columns'                : {
         title    : 'Table dynamically changing the columns displayed',
         component: TableDynamicColumnsExample
     },
-    'table-expandable-rows'                          : {
+    'table-expandable-rows'                : {
         title    : 'Table with expandable rows',
         component: TableExpandableRowsExample
     },
@@ -961,7 +971,7 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Table retrieving data through HTTP',
         component: TableHttpExample
     },
-    'table-multiple-header-footer'                           : {
+    'table-multiple-header-footer'         : {
         title    : 'Table with multiple header and footer rows',
         component: TableMultipleHeaderFooterExample
     },
@@ -973,7 +983,7 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Table with pagination',
         component: TablePaginationExample
     },
-    'table-row-context'                     : {
+    'table-row-context'                    : {
         title    : 'Table showing each row context properties',
         component: TableRowContextExample
     },
@@ -981,29 +991,41 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Table with selection',
         component: TableSelectionExample
     },
+    'table-simple-column'                  : {
+        title    : 'Table with a custom column component for easy column definition reuse',
+        component: TableSimpleColumnExample
+    },
     'table-sorting'                        : {
         title    : 'Table with sorting',
         component: TableSortingExample
     },
-    'table-sticky-columns'                        : {
+    'table-sticky-columns'                 : {
         title    : 'Table with a sticky columns',
         component: TableStickyColumnsExample
     },
-    'table-sticky-complex'                        : {
+    'table-sticky-complex'                 : {
         title    : 'Tables with toggle-able sticky headers, footers, and columns',
         component: TableStickyComplexExample
     },
-    'table-sticky-complex-flex'                        : {
+    'table-sticky-complex-flex'            : {
         title    : 'Flex-layout tables with toggle-able sticky headers, footers, and columns',
         component: TableStickyComplexFlexExample
     },
-    'table-sticky-footer'                        : {
+    'table-sticky-footer'                  : {
         title    : 'Table with a sticky footer',
         component: TableStickyFooterExample
     },
-    'table-sticky-header'                        : {
+    'table-sticky-header'                  : {
         title    : 'Table with sticky header',
         component: TableStickyHeaderExample
+    },
+    'table-wrapped'                        : {
+        title    : 'Table example that shows how to wrap a table component for definition and behavior reuse',
+        component: TableWrappedExample
+    },
+    'tab-group-align'                      : {
+        title    : 'Tab group with aligned labels',
+        component: TabGroupAlignExample
     },
     'tab-group-basic'                      : {
         title    : 'Basic use of the tab group',
@@ -1065,11 +1087,11 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Basic toolbar',
         component: ToolbarOverviewExample
     },
-    'tooltip-auto-hide'                        : {
+    'tooltip-auto-hide'                    : {
         title    : 'Tooltip that demonstrates auto-hiding when it clips out of its scrolling container',
         component: TooltipAutoHideExample
     },
-    'tooltip-custom-class'                        : {
+    'tooltip-custom-class'                 : {
         title    : 'Tooltip that can have a custom class applied',
         component: TooltipCustomClassExample
     },
@@ -1077,7 +1099,7 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Tooltip with a show and hide delay',
         component: TooltipDelayExample
     },
-    'tooltip-disabled'                        : {
+    'tooltip-disabled'                     : {
         title    : 'Tooltip that can be disabled',
         component: TooltipDisabledExample
     },
@@ -1085,7 +1107,7 @@ export const EXAMPLE_COMPONENTS = {
         title    : 'Tooltip that can be manually shown/hidden',
         component: TooltipManualExample
     },
-    'tooltip-message'                       : {
+    'tooltip-message'                      : {
         title    : 'Tooltip with a changing message',
         component: TooltipMessageExample
     },
@@ -1135,13 +1157,10 @@ export const EXAMPLE_LIST = [
     ButtonOverviewExample,
     ButtonToggleExclusiveExample,
     ButtonToggleOverviewExample,
+    ButtonToggleAppearanceExample,
     ButtonTypesExample,
     CardFancyExample,
     CardOverviewExample,
-    CdkTableBasicExample,
-    CdkTableBasicFlexExample,
-    CdkTreeFlatExample,
-    CdkTreeNestedExample,
     CheckboxConfigurableExample,
     CheckboxOverviewExample,
     ChipsAutocompleteExample,
@@ -1212,6 +1231,7 @@ export const EXAMPLE_LIST = [
     ProgressSpinnerOverviewExample,
     RadioNgModelExample,
     RadioOverviewExample,
+    RippleOverviewExample,
     SelectCustomTriggerExample,
     SelectDisabledExample,
     SelectErrorStateMatcherExample,
@@ -1245,8 +1265,11 @@ export const EXAMPLE_LIST = [
     SnackBarPositionExample,
     SortOverviewExample,
     StepperEditableExample,
+    StepperErrorsExample,
+    StepperLabelPositionBottomExample,
     StepperOptionalExample,
     StepperOverviewExample,
+    StepperStatesExample,
     StepperVerticalExample,
     TableBasicExample,
     TableBasicFlexExample,
@@ -1260,12 +1283,15 @@ export const EXAMPLE_LIST = [
     TablePaginationExample,
     TableRowContextExample,
     TableSelectionExample,
+    TableSimpleColumnExample, SimpleColumn,
     TableSortingExample,
     TableStickyColumnsExample,
     TableStickyComplexExample,
     TableStickyComplexFlexExample,
     TableStickyFooterExample,
     TableStickyHeaderExample,
+    TableWrappedExample, WrapperTable,
+    TabGroupAlignExample,
     TabGroupBasicExample,
     TabGroupAsyncExample,
     TabGroupCustomLabelExample,

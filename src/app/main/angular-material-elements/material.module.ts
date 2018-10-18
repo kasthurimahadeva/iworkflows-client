@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { CdkTableModule } from '@angular/cdk/table';
-import { CdkTreeModule } from '@angular/cdk/tree';
 import {
     MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule, MatButtonModule,
     MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule,
@@ -15,8 +13,6 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
     imports: [
-        CdkTableModule,
-        CdkTreeModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatBottomSheetModule,
@@ -55,8 +51,6 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
         MatTreeModule
     ],
     exports: [
-        CdkTableModule,
-        CdkTreeModule,
         MatAutocompleteModule,
         MatBadgeModule,
         MatBottomSheetModule,
