@@ -73,9 +73,12 @@ export class AppComponent implements OnInit, OnDestroy
         this._translateService.use('en');
 
         /**
-         * ------------------------------------------------------------------
+         * ----------------------------------------------------------------------------------------------------
          * ngxTranslate Fix Start
-         * ------------------------------------------------------------------
+         * ----------------------------------------------------------------------------------------------------
+         */
+
+        /**
          * If you are using a language other than the default one, i.e. Turkish in this case,
          * you may encounter an issue where some of the components are not actually being
          * translated when your app first initialized.
@@ -97,9 +100,9 @@ export class AppComponent implements OnInit, OnDestroy
          */
 
         /**
-         * ------------------------------------------------------------------
+         * ----------------------------------------------------------------------------------------------------
          * ngxTranslate Fix End
-         * ------------------------------------------------------------------
+         * ----------------------------------------------------------------------------------------------------
          */
 
         // Add is-mobile class to the body if the platform is mobile
