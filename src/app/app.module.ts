@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule, Routes} from '@angular/router';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
@@ -18,18 +18,33 @@ import {AppComponent} from 'app/app.component';
 import {LayoutModule} from 'app/layout/layout.module';
 import {SampleModule} from 'app/main/sample/sample.module';
 import {LoginModule} from 'app/main/pages/authentication/login/login.module';
-import {LoginComponent} from "./main/pages/authentication/login/login.component";
 import {CarListComponent} from "./main/sample/car-list/car-list.component";
 import {CarEditComponent} from "./main/sample/car-edit/car-edit.component";
+import {SampleComponent} from "./main/sample/sample.component";
+import {AuthenticationService} from "./shared/authentication.service";
+import {AccessGuard} from "./main/guards/access-guard";
+
+
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor {
+
+    intercept(req: HttpRequest<any>, next: HttpHandler) {
+        const xhr = req.clone({
+            headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+        });
+        return next.handle(xhr);
+    }
+}
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: 'car-list', pathMatch: 'full'},
+    {path: '', redirectTo: 'sample', pathMatch: 'full', data: {requiresLogin: true}, canActivate: [AccessGuard]},
+    {path: 'sample', component: SampleComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
     {path: 'car-list', component: CarListComponent},
-    {path: 'car-add', component: CarEditComponent},
-    {path: 'car-edit/:id', component: CarEditComponent},
-    {path: 'login', component: LoginComponent},
+    {path: 'car-add', component: CarEditComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
+    {path: 'car-edit/:id', component: CarEditComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
     {path: '**', redirectTo: ''}
 ];
+
 
 @NgModule({
     declarations: [
@@ -61,6 +76,11 @@ const appRoutes: Routes = [
         LoginModule,
         LayoutModule,
         SampleModule
+    ], providers: [
+        AuthenticationService, {
+            provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true,
+        },
+        AccessGuard
     ],
     bootstrap: [
         AppComponent

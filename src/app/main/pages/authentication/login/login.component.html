@@ -3,16 +3,15 @@
     <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
 
         <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
-            <img src="assets/images/logos/fuse.svg">
+            <img src="assets/images/logos/logo.svg">
         </div>
 
         <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
-            Welcome to the FUSE!
+            Welcome to the iworkflows!
         </div>
 
         <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat,
-            vel convallis elit fermentum pellentesque. Sed mollis velit facilisis facilisis viverra.
+            An integration middleware for end-to-end workflow automation. Login, connect and enjoy the automation.
         </div>
 
     </div>
@@ -23,13 +22,12 @@
         <div id="login-form">
 
             <div class="logo" fxHide.gt-xs>
-                <!--TODO: change logo-->
-                <img src="assets/images/logos/fuse.svg">
+                <img src="assets/images/logos/logo.svg">
             </div>
 
             <div class="title">LOGIN TO YOUR ACCOUNT</div>
 
-            <form name="loginForm" [formGroup]="loginForm" novalidate>
+            <form name="loginForm" [formGroup]="loginForm" novalidate (submit)="login()">
 
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
@@ -66,7 +64,7 @@
                 </div>
 
                 <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN"
-                        [disabled]="loginForm.invalid">
+                        [disabled]="loginForm.invalid" type="submit">
                     LOGIN
                 </button>
 
