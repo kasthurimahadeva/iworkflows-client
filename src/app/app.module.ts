@@ -22,6 +22,7 @@ import {CarListComponent} from "./main/sample/car-list/car-list.component";
 import {CarEditComponent} from "./main/sample/car-edit/car-edit.component";
 import {SampleComponent} from "./main/sample/sample.component";
 import {AuthenticationService} from "./shared/authentication.service";
+import {AccessGuard} from "./main/guards/access-guard";
 
 
 @Injectable()
@@ -36,11 +37,11 @@ export class XhrInterceptor implements HttpInterceptor {
 }
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
-    {path: 'sample', component: SampleComponent},
+    {path: '', redirectTo: 'sample', pathMatch: 'full', data: {requiresLogin: true}, canActivate: [AccessGuard]},
+    {path: 'sample', component: SampleComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
     {path: 'car-list', component: CarListComponent},
-    {path: 'car-add', component: CarEditComponent},
-    {path: 'car-edit/:id', component: CarEditComponent},
+    {path: 'car-add', component: CarEditComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
+    {path: 'car-edit/:id', component: CarEditComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
     {path: '**', redirectTo: ''}
 ];
 
@@ -76,7 +77,10 @@ const appRoutes: Routes = [
         LayoutModule,
         SampleModule
     ], providers: [
-        AuthenticationService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true}
+        AuthenticationService, {
+            provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true,
+        },
+        AccessGuard
     ],
     bootstrap: [
         AppComponent

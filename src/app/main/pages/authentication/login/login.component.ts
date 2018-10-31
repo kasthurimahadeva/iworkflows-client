@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
             username: this.loginForm.controls['email'].value,
             password: this.loginForm.controls['password'].value
         }, () => {
+            console.debug("logged in successfully");
             //TODO: navigate to dashboard instead
             this.router.navigate(['sample']);
         });
