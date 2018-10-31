@@ -37,11 +37,7 @@ export class XhrInterceptor implements HttpInterceptor {
 }
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: 'sample', pathMatch: 'full', data: {requiresLogin: true}, canActivate: [AccessGuard]},
-    {path: 'sample', component: SampleComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
-    {path: 'car-list', component: CarListComponent},
-    {path: 'car-add', component: CarEditComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
-    {path: 'car-edit/:id', component: CarEditComponent, data: {requiresLogin: true}, canActivate: [AccessGuard]},
+    {path: '', component: SampleComponent, pathMatch: 'full', data: {requiresLogin: true}, canActivate: [AccessGuard]},
     {path: '**', redirectTo: ''}
 ];
 
@@ -79,8 +75,7 @@ const appRoutes: Routes = [
     ], providers: [
         AuthenticationService, {
             provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true,
-        },
-        AccessGuard
+        }
     ],
     bootstrap: [
         AppComponent
