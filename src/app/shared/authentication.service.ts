@@ -6,7 +6,8 @@ import 'rxjs/add/operator/finally';
 @Injectable()
 export class AuthenticationService {
 
-    authenticated = false;
+    // TODO: change authenticated back to false
+    authenticated = true;
 
     redirectUrl: string;
 
