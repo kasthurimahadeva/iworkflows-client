@@ -2,7 +2,7 @@ export class ProjectDashboardDb
 {
     public static projects = [
         {
-            'name': 'ACME Corp. Backend App'
+            'name': 'University of Moratuwa'
         },
         {
             'name': 'ACME Corp. Frontend App'
