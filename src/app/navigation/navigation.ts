@@ -15,6 +15,19 @@ export const navigation: FuseNavigation[] = [
                 translate: 'NAV.DASHBOARD',
                 icon     : 'dashboard',
                 url      : '/dashboard'
+            },
+            {
+                id       : 'to-do',
+                title    : 'To-Do',
+                translate: 'NAV.TODO',
+                type     : 'item',
+                icon     : 'check_box',
+                url      : '/todo',
+                badge    : {
+                    title: '3',
+                    bg   : '#FF6F00',
+                    fg   : '#FFFFFF'
+                }
             }
         ]
     }

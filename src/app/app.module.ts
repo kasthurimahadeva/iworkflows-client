@@ -39,6 +39,7 @@ import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {FakeDbService} from './fake-db/fake-db.service';
 import {Error404Component} from './main/components/errors/404/error-404.component';
 import {Error500Component} from './main/components/errors/500/error-500.component';
+import {TodoModule} from './main/modules/todo/todo.module';
 
 
 @Injectable()
@@ -136,6 +137,7 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
+        TodoModule,
         SampleModule
     ], providers: [
         AuthenticationService, {
