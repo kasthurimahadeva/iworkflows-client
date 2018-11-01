@@ -54,6 +54,13 @@ export class XhrInterceptor implements HttpInterceptor {
 
 const appRoutes: Routes = [
     {
+        path: 'dashboard',
+        component: ProjectDashboardComponent,
+        resolve: {
+            data: ProjectDashboardService
+        }
+    },
+    {
         path: '',
         component: ProjectDashboardComponent,
         pathMatch: 'full',
