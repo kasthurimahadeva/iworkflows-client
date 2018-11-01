@@ -37,6 +37,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ProjectDashboardService} from './main/components/dashboard/project.service';
 import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {FakeDbService} from './fake-db/fake-db.service';
+import {Error404Component} from './main/components/errors/404/error-404.component';
+import {Error500Component} from './main/components/errors/500/error-500.component';
 
 
 @Injectable()
@@ -61,8 +63,22 @@ const appRoutes: Routes = [
             data: ProjectDashboardService
         }
     },
-    {path: 'login', component: LoginComponent},
-    {path: '**', redirectTo: ''}
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path     : 'errors/error-404',
+        component: Error404Component
+    },
+    {
+        path     : 'errors/error-500',
+        component: Error500Component
+    },
+    {
+        path: '**',
+        redirectTo: 'errors/error-404'
+    }
 ];
 
 
@@ -70,7 +86,9 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         LoginComponent,
-        ProjectDashboardComponent
+        ProjectDashboardComponent,
+        Error404Component,
+        Error500Component
     ],
     imports: [
         BrowserModule,
