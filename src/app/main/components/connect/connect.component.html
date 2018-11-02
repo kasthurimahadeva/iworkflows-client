@@ -1,0 +1,9 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+
+    <div *ngFor="let provider of providers">
+        <div>{{provider.name}}</div>
+        <button mat-flat-button color="accent" (click)="connectClicked(provider)">Connect</button>
+        <button mat-flat-button [ngClass]="{'disabled': true}" color="warn" (click)="revokeClicked(provider)">Revoke</button>
+    </div>
+
+</div>

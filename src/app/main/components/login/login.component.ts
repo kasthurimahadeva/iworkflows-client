@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         }, () => {
             console.debug("logged in successfully");
             //TODO: navigate to dashboard instead
-            this.router.navigate(['sample']);
+            this.router.navigate(['dashboard']);
         });
         return false;
     }
