@@ -9,7 +9,8 @@ export const locale = {
                 'BADGE': '25'
             },
             'TODO': 'To-Do',
-            'CONNECT': 'Connect'
+            'CONNECT': 'Connect',
+            'SETTINGS': 'Settings'
         }
     }
 };

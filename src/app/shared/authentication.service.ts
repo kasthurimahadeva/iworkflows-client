@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
 import 'rxjs/add/operator/finally';
 
 @Injectable()
 export class AuthenticationService {
 
     // TODO: change authenticated back to false
-    authenticated = true;
+    authenticated = false;
 
     redirectUrl: string;
 
@@ -32,11 +32,11 @@ export class AuthenticationService {
 
     }
 
-    logout() {
-        console.log("logout triggered");
+    logout(): void {
+        console.log('logout triggered');
         this.http.post('/server/logout', {}).finally(() => {
             this.authenticated = false;
-            this.router.navigate(['login']);
+            this.router.navigate(['dashboard']);
         }).subscribe();
     }
 }

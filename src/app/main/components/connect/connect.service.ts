@@ -8,17 +8,21 @@ import {TokenProvider} from './token-provider.model';
 })
 export class ConnectService {
 
-    public API = 'server';
-    public CAR_API = this.API + '/api/v1/token/providers';
+    public API = 'server/api/v1/token';
+    public PROVIDERS_API = '/providers';
 
     constructor(private http: HttpClient) {
     }
 
     getAll(): Observable<any> {
-        return this.http.get(this.CAR_API);
+        return this.http.get(this.API + this.PROVIDERS_API);
     }
 
     connect(provider: TokenProvider): Observable<any> {
+        return this.http.get(this.API + '/' + provider.redirectUri);
+    }
 
+    sendAuthorizationCode(tokenProvider: string, queryParams: string): Observable<any> {
+        return this.http.post(this.API + '/' + 'code', {provider: tokenProvider, query: queryParams}, {observe: 'response'});
     }
 }
