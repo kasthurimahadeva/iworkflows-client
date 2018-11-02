@@ -40,6 +40,7 @@ import {FakeDbService} from './fake-db/fake-db.service';
 import {Error404Component} from './main/components/errors/404/error-404.component';
 import {Error500Component} from './main/components/errors/500/error-500.component';
 import {TodoModule} from './main/modules/todo/todo.module';
+import { ConnectComponent } from './main/components/connect/connect.component';
 
 
 @Injectable()
@@ -72,6 +73,10 @@ const appRoutes: Routes = [
         }
     },
     {
+        path: 'connect',
+        component: ConnectComponent
+    },
+    {
         path: 'login',
         component: LoginComponent
     },
@@ -95,6 +100,7 @@ const appRoutes: Routes = [
         AppComponent,
         LoginComponent,
         ProjectDashboardComponent,
+        ConnectComponent,
         Error404Component,
         Error500Component
     ],

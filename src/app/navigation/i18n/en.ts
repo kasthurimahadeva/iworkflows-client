@@ -8,7 +8,8 @@ export const locale = {
                 'TITLE': 'Sample',
                 'BADGE': '25'
             },
-            'TODO': 'To-Do'
+            'TODO': 'To-Do',
+            'CONNECT': 'Connect'
         }
     }
 };
