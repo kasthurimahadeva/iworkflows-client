@@ -66,6 +66,7 @@ import {Error404Component} from './main/components/errors/404/error-404.componen
 import {Error500Component} from './main/components/errors/500/error-500.component';
 import {TodoModule} from './main/modules/todo/todo.module';
 import {ConnectComponent} from './main/components/connect/connect.component';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @Injectable()
@@ -147,6 +148,7 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
+        ToastrModule.forRoot(),
 
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {

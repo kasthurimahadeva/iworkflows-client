@@ -6,7 +6,6 @@ import 'rxjs/add/operator/finally';
 @Injectable()
 export class AuthenticationService {
 
-    // TODO: change authenticated back to false
     authenticated = false;
 
     redirectUrl: string;
@@ -33,10 +32,14 @@ export class AuthenticationService {
     }
 
     logout(): void {
-        console.log('logout triggered');
         this.http.post('/server/logout', {}).finally(() => {
             this.authenticated = false;
             this.router.navigate(['dashboard']);
-        }).subscribe();
+        }).subscribe(() => {
+                console.log('log out success');
+            },
+            error => {
+                console.error(error);
+            });
     }
 }
