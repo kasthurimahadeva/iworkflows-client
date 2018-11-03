@@ -24,26 +24,20 @@ export class ConnectComponent implements OnInit {
         this.route.queryParams
             .filter(params => params.code)
             .subscribe(params => {
-                this.showInfoToast();
+                const infoToastId: number = this.showInfoToast();
                 const provider = this.getProviderFromRedirectUri();
                 this.connectService.sendAuthorizationCode(provider, this.getQueryParams(provider))
                     .subscribe(response => {
-                        console.log('back from server ' + response.status);
                         if (response.status === 200) {
                             console.log('hit');
-                            this.showSuccessToast(provider);
+                            this.showSuccessToast(provider, infoToastId);
+                            this.getProviders();
                         }
                     });
             });
 
         // this.providers = TestProviders;
-        this.connectService.getAll().subscribe(providers => {
-                this.providers = providers;
-            },
-            error => {
-                console.error(error);
-                this.redirectToLogin();
-            });
+        this.getProviders();
     }
 
     redirectForAuthorization(provider: TokenProvider): void {
@@ -53,7 +47,24 @@ export class ConnectComponent implements OnInit {
     }
 
     revokeAuthorizationCode(provider: TokenProvider): void {
-        this.showSuccessToast(provider.name);
+        // this.showSuccessToast(provider.name);
+        this.connectService.revokeAuthorizationCode(provider).subscribe(response => {
+            if (response.status === 200) {
+                this.showSuccessRevokeToast(provider.name);
+                this.getProviders();
+
+            }
+        });
+    }
+
+    private getProviders(): void {
+        this.connectService.getAll().subscribe(providers => {
+                this.providers = providers;
+            },
+            error => {
+                console.error(error);
+                this.redirectToLogin();
+            });
     }
 
     getProviderFromRedirectUri(): string {
@@ -72,12 +83,18 @@ export class ConnectComponent implements OnInit {
         return this.router.url.replace('/connect/' + provider, '');
     }
 
-    showSuccessToast(provider: string): void {
-        this.toastr.success('Succesfully connected with ' + provider, 'Authorization success');
+    showSuccessToast(provider: string, infoToastId: number): void {
+        this.toastr.success('Successfully connected with ' + provider, 'Authorization success');
+        this.toastr.clear(infoToastId);
     }
 
-    showInfoToast(): void {
-        this.toastr.info('Hint: you can continue to browse', 'Connecting...', {progressBar: true, timeOut: 25000});
+    showSuccessRevokeToast(provider: string): void {
+        this.toastr.success('Successfylly disconnected from ' + provider, 'Revoke success');
+    }
+
+    showInfoToast(): number {
+        return this.toastr.info('Hint: you can continue to browse', 'Connecting...',
+            {progressBar: true, timeOut: 25000, progressAnimation: 'increasing'}).toastId;
     }
 
     redirectToLogin(): void {

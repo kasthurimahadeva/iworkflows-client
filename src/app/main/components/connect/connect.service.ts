@@ -25,4 +25,8 @@ export class ConnectService {
     sendAuthorizationCode(tokenProvider: string, queryParams: string): Observable<any> {
         return this.http.post(this.API + '/' + 'code', {provider: tokenProvider, query: queryParams}, {observe: 'response'});
     }
+
+    revokeAuthorizationCode(provider: TokenProvider): Observable<any> {
+        return this.http.delete(this.API + '/' + 'revoke' + '/' + provider.name.toLowerCase(), {observe: 'response'});
+    }
 }

@@ -3,8 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {FuseConfigService} from '@fuse/services/config.service';
 import {fuseAnimations} from '@fuse/animations/index';
-import {Router} from "@angular/router";
-import {AuthenticationService} from "../../../shared/authentication.service";
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../../shared/authentication.service';
 
 @Component({
     selector: 'login',
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
             username: this.loginForm.controls['email'].value,
             password: this.loginForm.controls['password'].value
         }, () => {
-            console.debug("logged in successfully");
+            console.debug('logged in successfully');
             //TODO: navigate to dashboard instead
             this.router.navigate(['dashboard']);
         });

@@ -2,13 +2,11 @@
     <table>
         <tr *ngFor="let provider of providers">
             <td><strong>{{provider.name}}</strong></td>
-            <td>&nbsp;</td>
-            <td>
-                <button style="background-color: #00aa00" mat-flat-button color="accent" (click)="redirectForAuthorization(provider)">Authorize</button>
+            <td *ngIf="!provider.authorized">
+                <button style="width: 100px" mat-flat-button color="accent" (click)="redirectForAuthorization(provider)">Authorize</button>
             </td>
-            <td>&nbsp;</td>
-            <td>
-                <button mat-flat-button [disabled]="!provider.authorized" color="warn"
+            <td *ngIf="provider.authorized">
+                <button style="width: 100px" mat-flat-button color="warn"
                         (click)="revokeAuthorizationCode(provider)">Revoke
                 </button>
             </td>
