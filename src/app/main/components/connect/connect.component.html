@@ -1,9 +1,15 @@
 <div class="page-layout blank p-24" fusePerfectScrollbar>
-
-    <div *ngFor="let provider of providers">
-        <div>{{provider.name}}</div>
-        <button mat-flat-button color="accent" (click)="connectClicked(provider)">Connect</button>
-        <button mat-flat-button [ngClass]="{'disabled': true}" color="warn" (click)="revokeClicked(provider)">Revoke</button>
-    </div>
-
+    <table>
+        <tr *ngFor="let provider of providers">
+            <td><strong>{{provider.name}}</strong></td>
+            <td *ngIf="!provider.authorized">
+                <button style="width: 100px" mat-flat-button color="accent" (click)="redirectForAuthorization(provider)">Authorize</button>
+            </td>
+            <td *ngIf="provider.authorized">
+                <button style="width: 100px" mat-flat-button color="warn"
+                        (click)="revokeAuthorizationCode(provider)">Revoke
+                </button>
+            </td>
+        </tr>
+    </table>
 </div>

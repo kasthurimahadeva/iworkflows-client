@@ -6,7 +6,6 @@ import 'rxjs/add/operator/finally';
 @Injectable()
 export class AuthenticationService {
 
-    // TODO: change authenticated back to false
     authenticated = false;
 
     redirectUrl: string;
@@ -24,7 +23,9 @@ export class AuthenticationService {
         this.http.get('/server/user', {headers: headers}).subscribe(response => {
             if (response['name']) {
                 this.authenticated = true;
+                localStorage.setItem('authenticated', 'true');
             } else {
+                localStorage.setItem('authenticated', 'false');
                 this.authenticated = false;
             }
             return callback && callback();
@@ -32,11 +33,34 @@ export class AuthenticationService {
 
     }
 
+    // login(credentials) {
+    //     const headers = new HttpHeaders(credentials ? {
+    //         authorization: 'Basic ' + btoa(credentials.username + ':' + credentials.password)
+    //     } : {});
+    //     return this.http.get(`/server/user`, {headers: headers})
+    //         .pipe(map(user => {
+    //             // login successful if there's a user in the response
+    //             if (user) {
+    //                 // store user details and basic auth credentials in local storage
+    //                 // to keep user logged in between page refreshes
+    //                 user.authdata = window.btoa(username + ':' + password);
+    //                 localStorage.setItem('currentUser', JSON.stringify(user));
+    //             }
+    //
+    //             return user;
+    //         }));
+    // }
+
     logout(): void {
-        console.log('logout triggered');
         this.http.post('/server/logout', {}).finally(() => {
             this.authenticated = false;
-            this.router.navigate(['dashboard']);
-        }).subscribe();
+            localStorage.removeItem('currentUser');
+            this.router.navigate(['login']);
+        }).subscribe(() => {
+                console.log('log out success');
+            },
+            error => {
+                console.error(error);
+            });
     }
 }

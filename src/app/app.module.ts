@@ -54,7 +54,7 @@ import {AppComponent} from 'app/app.component';
 import {LayoutModule} from 'app/layout/layout.module';
 import {SampleModule} from 'app/main/sample/sample.module';
 import {AuthenticationService} from './shared/authentication.service';
-import {AccessGuard} from './main/guards/access-guard';
+import {AuthGuard} from './main/guards/auth-guard.service';
 import {LoginComponent} from './main/components/login/login.component';
 import {Observable} from 'rxjs';
 import {ProjectDashboardComponent} from './main/components/dashboard/project.component';
@@ -66,6 +66,9 @@ import {Error404Component} from './main/components/errors/404/error-404.componen
 import {Error500Component} from './main/components/errors/500/error-500.component';
 import {TodoModule} from './main/modules/todo/todo.module';
 import {ConnectComponent} from './main/components/connect/connect.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BasicAuthInterceptor} from './main/interceptors/basic.auth.interceptor';
+import {ErrorInterceptor} from './main/interceptors/error.interceptor';
 
 
 @Injectable()
@@ -84,7 +87,7 @@ const appRoutes: Routes = [
         path: 'dashboard',
         component: ProjectDashboardComponent,
         data: {requiresLogin: true},
-        canActivate: [AccessGuard],
+        canActivate: [AuthGuard],
         resolve: {
             data: ProjectDashboardService
         }
@@ -94,7 +97,7 @@ const appRoutes: Routes = [
         component: ProjectDashboardComponent,
         pathMatch: 'full',
         data: {requiresLogin: true},
-        canActivate: [AccessGuard],
+        canActivate: [AuthGuard],
         resolve: {
             data: ProjectDashboardService
         }
@@ -103,13 +106,13 @@ const appRoutes: Routes = [
         path: 'connect',
         component: ConnectComponent,
         data: {requiresLogin: true},
-        canActivate: [AccessGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'connect/nextcloud',
         component: ConnectComponent,
         // data: {requiresLogin: true},
-        // canActivate: [AccessGuard]
+        // canActivate: [AuthGuard]
     },
     {
         path: 'login',
@@ -147,6 +150,9 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
+        ToastrModule.forRoot({
+            newestOnTop: true
+        }),
 
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {
@@ -212,7 +218,9 @@ const appRoutes: Routes = [
     ], providers: [
         AuthenticationService, {
             provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true,
-        }
+        },
+        BasicAuthInterceptor,
+        ErrorInterceptor
     ],
     bootstrap: [
         AppComponent
