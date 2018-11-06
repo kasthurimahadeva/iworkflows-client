@@ -10,7 +10,8 @@ export const locale = {
             },
             'TODO': 'To-Do',
             'CONNECT': 'Connect',
-            'SETTINGS': 'Settings'
+            'SETTINGS': 'Settings',
+            'TASK': 'Task'
         }
     }
 };

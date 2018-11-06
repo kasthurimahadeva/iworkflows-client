@@ -69,6 +69,7 @@ import {ConnectComponent} from './main/components/connect/connect.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BasicAuthInterceptor} from './main/interceptors/basic.auth.interceptor';
 import {ErrorInterceptor} from './main/interceptors/error.interceptor';
+import { CamundaTaskComponent } from './main/components/camunda-task/camunda-task.component';
 
 
 @Injectable()
@@ -109,6 +110,12 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'task',
+        component: CamundaTaskComponent,
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'connect/nextcloud',
         component: ConnectComponent,
         // data: {requiresLogin: true},
@@ -142,6 +149,7 @@ const appRoutes: Routes = [
         LoginComponent,
         ProjectDashboardComponent,
         ConnectComponent,
+        CamundaTaskComponent,
         Error404Component,
         Error500Component
     ],
