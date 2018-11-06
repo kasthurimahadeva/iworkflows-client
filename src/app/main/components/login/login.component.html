@@ -2,18 +2,20 @@
 
     <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
 
-        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}">
+        <div class="logo" [@animate]="{value:'*',params:{scale:'0.2'}}" style="width: 100px; height: 100px">
             <img src="assets/images/logos/logo.svg">
         </div>
 
-        <div class="title" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">
-            Welcome to the iworkflows!
+        <div class="mat-display-2" [@animate]="{value:'*',params:{delay:'50ms',y:'25px'}}">Welcome to the iworkflows!
+            <div class="mat-title" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+                An integration middleware for end-to-end workflow automation, specially for heterogeneous environment. Login, connect and enjoy the automation.
+            </div>
+            <div class="mat-display-1">Things grow stronger
+                <span class="mat-headline">when you
+                <span class="mat-display-3">integrate! </span>
+            </span>
+            </div>
         </div>
-
-        <div class="description" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
-            An integration middleware for end-to-end workflow automation. Login, connect and enjoy the automation.
-        </div>
-
     </div>
 
     <div id="login-form-wrapper" fusePerfectScrollbar
