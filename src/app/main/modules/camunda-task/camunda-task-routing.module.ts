@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CamundaTaskComponent } from './camunda-task.component';
+import { CamundaTaskComponent } from './camunda-task/camunda-task.component';
 
 const camundaTaskRoutes: Routes = [
     {
