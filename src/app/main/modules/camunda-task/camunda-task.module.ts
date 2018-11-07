@@ -1,25 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CamundaTaskComponent } from './camunda-task.component';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-    {
-        path: 'task',
-        children: [
-            {
-                path     : '',
-                component: CamundaTaskComponent
-            }
-        ]
-    }
-];
+import { CamundaTaskComponent } from './camunda-task.component';
+import { CamundaTaskService } from './camunda-task.service';
+import { CamundaTaskRoutingModule } from './camunda-task-routing.module';
 
 @NgModule({
   imports: [
-      RouterModule.forChild(routes),
-      CommonModule
+      CommonModule,
+      CamundaTaskRoutingModule
   ],
-  declarations: [CamundaTaskComponent]
+    declarations: [
+        CamundaTaskComponent
+    ],
+    providers: [
+      CamundaTaskService
+  ]
 })
 export class CamundaTaskModule { }

@@ -1,9 +1,14 @@
-import {Injectable, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterModule, Routes} from '@angular/router';
-import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import 'hammerjs';
+
+import {
+    HTTP_INTERCEPTORS,
+    HttpClientModule,
+    HttpEvent,
+    HttpHandler,
+    HttpInterceptor,
+    HttpRequest,
+} from '@angular/common/http';
+import { Injectable, NgModule } from '@angular/core';
 import {
     MatAutocompleteModule,
     MatBadgeModule,
@@ -39,37 +44,36 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
 } from '@angular/material';
-import {TranslateModule} from '@ngx-translate/core';
-import 'hammerjs';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule, FuseWidgetModule } from '@fuse/components';
+import { FuseModule } from '@fuse/fuse.module';
+import { FuseSharedModule } from '@fuse/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AppComponent } from 'app/app.component';
+import { fuseConfig } from 'app/fuse-config';
+import { LayoutModule } from 'app/layout/layout.module';
+import { SampleModule } from 'app/main/sample/sample.module';
+import { ToastrModule } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
-import {FuseModule} from '@fuse/fuse.module';
-import {FuseSharedModule} from '@fuse/shared.module';
-import {FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule, FuseWidgetModule} from '@fuse/components';
-
-import {fuseConfig} from 'app/fuse-config';
-
-import {AppComponent} from 'app/app.component';
-import {LayoutModule} from 'app/layout/layout.module';
-import {SampleModule} from 'app/main/sample/sample.module';
-import {AuthenticationService} from './shared/authentication.service';
-import {AuthGuard} from './main/guards/auth-guard.service';
-import {LoginComponent} from './main/components/login/login.component';
-import {Observable} from 'rxjs';
-import {ProjectDashboardComponent} from './main/components/dashboard/project.component';
-import {NgxChartsModule} from '@swimlane/ngx-charts';
-import {ProjectDashboardService} from './main/components/dashboard/project.service';
-import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {FakeDbService} from './fake-db/fake-db.service';
-import {Error404Component} from './main/components/errors/404/error-404.component';
-import {Error500Component} from './main/components/errors/500/error-500.component';
-import {TodoModule} from './main/modules/todo/todo.module';
-import {ConnectComponent} from './main/components/connect/connect.component';
-import {ToastrModule} from 'ngx-toastr';
-import {BasicAuthInterceptor} from './main/interceptors/basic.auth.interceptor';
-import {ErrorInterceptor} from './main/interceptors/error.interceptor';
+import { AppRoutingModule } from './app-routing.module';
+import { FakeDbService } from './fake-db/fake-db.service';
+import { ConnectComponent } from './main/components/connect/connect.component';
+import { ProjectDashboardComponent } from './main/components/dashboard/project.component';
+import { Error404Component } from './main/components/errors/404/error-404.component';
+import { Error500Component } from './main/components/errors/500/error-500.component';
+import { LoginComponent } from './main/components/login/login.component';
+import { BasicAuthInterceptor } from './main/interceptors/basic.auth.interceptor';
+import { ErrorInterceptor } from './main/interceptors/error.interceptor';
 import { CamundaTaskModule } from './main/modules/camunda-task/camunda-task.module';
+import { TodoModule } from './main/modules/todo/todo.module';
+import { AuthenticationService } from './shared/authentication.service';
 
 
 @Injectable()
@@ -82,67 +86,6 @@ export class XhrInterceptor implements HttpInterceptor {
         return next.handle(xhr);
     }
 }
-
-const appRoutes: Routes = [
-    {
-        path: 'dashboard',
-        component: ProjectDashboardComponent,
-        data: {requiresLogin: true},
-        canActivate: [AuthGuard],
-        resolve: {
-            data: ProjectDashboardService
-        }
-    },
-    {
-        path: '',
-        component: ProjectDashboardComponent,
-        pathMatch: 'full',
-        data: {requiresLogin: true},
-        canActivate: [AuthGuard],
-        resolve: {
-            data: ProjectDashboardService
-        }
-    },
-    {
-        path: 'connect',
-        component: ConnectComponent,
-        data: {requiresLogin: true},
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'task',
-        loadChildren: './main/modules/camunda-task/camunda-task.module.ts#CamundaTaskModule',
-        // component: CamundaTaskComponent,
-        data: {requiresLogin: true},
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'connect/nextcloud',
-        component: ConnectComponent,
-        // data: {requiresLogin: true},
-        // canActivate: [AuthGuard]
-    },
-    {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'errors/error-404',
-        component: Error404Component
-    },
-    {
-        path: 'errors/error-500',
-        component: Error500Component
-    },
-    {
-        path        : 'angular-material-elements',
-        loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
-    },
-    {
-        path: '**',
-        redirectTo: 'errors/error-404'
-    }
-];
 
 @NgModule({
     declarations: [
@@ -157,7 +100,13 @@ const appRoutes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes),
+
+        // Routing
+        CamundaTaskModule,
+        AppRoutingModule,
+        // RouterModule.forRoot(appRoutes),
+
+        // Toast notifications
         ToastrModule.forRoot({
             newestOnTop: true
         }),
