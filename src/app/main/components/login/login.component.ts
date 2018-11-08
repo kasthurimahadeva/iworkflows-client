@@ -56,14 +56,14 @@ export class LoginComponent implements OnInit {
      */
     ngOnInit(): void {
         this.loginForm = this._formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
+            userName: ['', Validators.required],
             password: ['', Validators.required]
         });
     }
 
     login() {
         this.authService.authenticate({
-            username: this.loginForm.controls['email'].value,
+            username: this.loginForm.controls['userName'].value,
             password: this.loginForm.controls['password'].value
         }, () => {
             console.debug('logged in successfully');
