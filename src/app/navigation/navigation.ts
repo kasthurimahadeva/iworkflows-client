@@ -28,6 +28,14 @@ export const navigation: FuseNavigation[] = [
                     bg: '#FF6F00',
                     fg: '#FFFFFF'
                 }
+            },
+            {
+                id: 'task',
+                title: 'Task',
+                translate: 'NAV.TASK',
+                type: 'item',
+                icon: 'check_box',
+                url: '/task',
             }
         ]
     },

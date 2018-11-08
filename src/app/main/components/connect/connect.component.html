@@ -1,15 +1,23 @@
-<div class="page-layout blank p-24" fusePerfectScrollbar>
-    <table>
-        <tr *ngFor="let provider of providers">
-            <td><strong>{{provider.name}}</strong></td>
-            <td *ngIf="!provider.authorized">
-                <button style="width: 100px" mat-flat-button color="accent" (click)="redirectForAuthorization(provider)">Authorize</button>
-            </td>
-            <td *ngIf="provider.authorized">
-                <button style="width: 100px" mat-flat-button color="warn"
-                        (click)="revokeAuthorizationCode(provider)">Revoke
-                </button>
-            </td>
-        </tr>
-    </table>
+<div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-100" fxLayout="row">
+        <div class="h1">Connect with External Services</div>
+    </div>
+
+    <div class="page-layout blank p-24" fusePerfectScrollbar>
+        <table>
+            <tr *ngFor="let provider of providers">
+                <td style="padding: 10px"><strong>{{provider.name}}</strong></td>
+                <td *ngIf="!provider.authorized">
+                    <button style="width: 100px; margin: 5px" mat-flat-button color="accent" (click)="redirectForAuthorization(provider)">Authorize</button>
+                </td>
+                <td *ngIf="provider.authorized">
+                    <button style="width: 100px; margin: 5px" mat-flat-button color="warn"
+                            (click)="revokeAuthorizationCode(provider)">Revoke
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
