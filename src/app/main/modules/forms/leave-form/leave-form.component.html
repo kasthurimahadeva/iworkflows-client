@@ -1,0 +1,213 @@
+<div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-120" fxLayout="row" fxLayoutAlign="center start">
+        <div fxLayout="row">
+            <div class="logo">
+                <img src="assets/images/logos/uom.png" style="width: 75px; height: 75px">
+            </div>
+            <div class="mat-display-1">Leave Application
+                <div class="mat-title" style="text-align: center">University of Moratuwa</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content p-24" fxLayoutAlign="center center">
+        <div class="horizontal-stepper-wrapper">
+
+            <!-- HORIZONTAL STEPPER EXAMPLE -->
+            <mat-horizontal-stepper class="mat-elevation-z4" [linear]="true">
+
+                <mat-step [stepControl]="horizontalStepperStep1">
+
+                    <form fxLayout="column" [formGroup]="horizontalStepperStep1">
+
+                        <ng-template matStepLabel>Employee Details</ng-template>
+
+                        <div fxFlex="1 0 auto" fxLayout="column">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Employee Id</mat-label>
+                                <input matInput formControlName="employeeId" value="{{leaveFormDetails.employeeId}}" required>
+                                <mat-icon matSuffix class="secondary-text">assignment_ind</mat-icon>
+                                <mat-error>Employee Id is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Employee Name</mat-label>
+                                <input matInput formControlName="employeeName" value="{{leaveFormDetails.principal}}" required>
+                                <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                                <mat-error>Employee Name is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Faculty</mat-label>
+                                <input matInput formControlName="faculty" value="{{leaveFormDetails.faculty}}" required>
+                                <mat-icon matSuffix class="secondary-text">account_balance</mat-icon>
+                                <mat-error>Faculty is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Department</mat-label>
+                                <input matInput formControlName="department" value="{{leaveFormDetails.department}}">
+                                <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Role</mat-label>
+                                <input matInput formControlName="role" value="{{leaveFormDetails.role}}" required>
+                                <mat-error>Role is required!</mat-error>
+                                <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button mat-raised-button matStepperNext type="button" color="accent">
+                                Next
+                            </button>
+                        </div>
+
+                    </form>
+
+                </mat-step>
+
+                <mat-step [stepControl]="horizontalStepperStep2">
+
+                    <form fxLayout="column" [formGroup]="horizontalStepperStep2">
+
+                        <ng-template matStepLabel>Contact details</ng-template>
+
+                        <mat-form-field appearance="outline" fxFlex="100">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput formControlName="address" required></textarea>
+                            <mat-error>Address is required!</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" fxFlex="100">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" value="{{leaveFormDetails.email}}" required>
+                            <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                            <mat-error *ngIf="horizontalStepperStep2.get('email').hasError('required')">
+                                Email is required
+                            </mat-error>
+                            <mat-error
+                                *ngIf="!horizontalStepperStep2.get('email').hasError('required') &&
+                                horizontalStepperStep2.get('email').hasError('email')">
+                                Please enter a valid email address
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" fxFlex="100">
+                            <mat-label>Mobile number</mat-label>
+                            <input matInput formControlName="mobileNo" value="{{leaveFormDetails.mobileNo}}" required>
+                            <mat-icon matSuffix class="secondary-text">phone_android</mat-icon>
+                            <mat-error>Mobile number is required!</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" fxFlex="100">
+                            <mat-label>Telephone number</mat-label>
+                            <input matInput formControlName="telephoneNo">
+                            <mat-icon matSuffix class="secondary-text">local_phone</mat-icon>
+                        </mat-form-field>
+
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
+                                Previous
+                            </button>
+                            <button mat-raised-button matStepperNext type="button" color="accent">
+                                Next
+                            </button>
+                        </div>
+
+                    </form>
+
+                </mat-step>
+
+                <mat-step [stepControl]="horizontalStepperStep3">
+
+                    <form fxLayout="column" [formGroup]="horizontalStepperStep3">
+
+                        <ng-template matStepLabel>Leave Details</ng-template>
+
+                        <div fxFlex="1 0 auto" fxLayout="column">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Leave type</mat-label>
+                                <mat-select formControlName = "leaveType" required>
+                                    <mat-option [value]="'Casual'">Casual</mat-option>
+                                    <mat-option [value]="'Vacation'">Vacation</mat-option>
+                                    <mat-option [value]="'Medical'">Medical</mat-option>
+                                </mat-select>
+                                <mat-icon matSuffix class="secondary-text">web_asset</mat-icon>
+                                <mat-error>Leave type is required</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <input matInput (dateInput) = "getStartDate($event)" [matDatepicker] ="startPicker"
+                                       placeholder="Start date" [min]="startMinDate" formControlName="startDate">
+                                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #startPicker></mat-datepicker>
+                                <mat-error>Start date is required</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <input matInput [matDatepicker]="endPicker" placeholder="End date" [min]="endMinDate"
+                                formControlName="endDate" (click)="assignMinDate()" required>
+                                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #endPicker></mat-datepicker>
+                                <mat-error>End date is required</mat-error>
+                            </mat-form-field>
+
+                            <div class="row">
+                                <div class="h3"> Already taken leave details</div>
+                                <div class="mat-form-field" id="table">
+                                    <table mat-table class="mat-elevation-z8" [dataSource] = "dataSource">
+
+                                        <ng-container matColumnDef="casual">
+                                            <th mat-header-cell *matHeaderCellDef>Casual</th>
+                                            <td mat-cell *matCellDef="let element"> {{leaveFormDetails.casual}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="medical">
+                                            <th mat-header-cell *matHeaderCellDef>Medical</th>
+                                            <td mat-cell *matCellDef="let element"> {{leaveFormDetails.medical}} </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="vacation">
+                                            <th mat-header-cell *matHeaderCellDef>Vacation</th>
+                                            <td mat-cell *matCellDef="let element"> {{leaveFormDetails.vacation}} </td>
+                                        </ng-container>
+
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    </table>
+                                </div>
+
+                                <input type="file" multiple>
+                            </div>
+
+
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
+                                Previous
+                            </button>
+                            <button mat-raised-button type="submit" color="accent">
+                                Submit
+                            </button>
+                        </div>
+
+                    </form>
+                </mat-step>
+
+            </mat-horizontal-stepper>
+            <!-- / HORIZONTAL STEPPER EXAMPLE -->
+
+        </div>
+    </div>
+
+</div>

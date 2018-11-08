@@ -12,7 +12,9 @@ export const locale = {
             'CONNECT': 'Connect',
             'SETTINGS': 'Settings',
             'TASK': 'Task',
-            'TEST': 'Test'
+            'TEST': 'Test',
+            'FORMS' : 'Forms',
+            'LEAVE FORM' : 'Leave form'
         }
     }
 };

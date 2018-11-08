@@ -6,7 +6,8 @@ import 'rxjs/add/operator/finally';
 @Injectable()
 export class AuthenticationService {
 
-    authenticated = false;
+    // TODO: change authenticated back to false
+    authenticated = true;
 
     redirectUrl: string;
 
@@ -32,24 +33,6 @@ export class AuthenticationService {
         });
 
     }
-
-    // login(credentials) {
-    //     const headers = new HttpHeaders(credentials ? {
-    //         authorization: 'Basic ' + btoa(credentials.username + ':' + credentials.password)
-    //     } : {});
-    //     return this.http.get(`/server/user`, {headers: headers})
-    //         .pipe(map(user => {
-    //             // login successful if there's a user in the response
-    //             if (user) {
-    //                 // store user details and basic auth credentials in local storage
-    //                 // to keep user logged in between page refreshes
-    //                 user.authdata = window.btoa(username + ':' + password);
-    //                 localStorage.setItem('currentUser', JSON.stringify(user));
-    //             }
-    //
-    //             return user;
-    //         }));
-    // }
 
     logout(): void {
         this.http.post('/server/logout', {}).finally(() => {
