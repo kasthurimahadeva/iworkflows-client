@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ConnectComponent } from './main/components/connect/connect.component';
-import { ProjectDashboardComponent } from './main/components/dashboard/project.component';
-import { ProjectDashboardService } from './main/components/dashboard/project.service';
-import { Error404Component } from './main/components/errors/404/error-404.component';
-import { Error500Component } from './main/components/errors/500/error-500.component';
-import { LoginComponent } from './main/components/login/login.component';
-import { AuthGuard } from './main/guards/auth-guard.service';
+import { ConnectComponent } from '../components/connect/connect.component';
+import { ProjectDashboardComponent } from '../components/dashboard/project.component';
+import { ProjectDashboardService } from '../components/dashboard/project.service';
+import { Error404Component } from '../components/errors/404/error-404.component';
+import { Error500Component } from '../components/errors/500/error-500.component';
+import { LoginComponent } from '../components/login/login.component';
+import { AuthGuard } from '../guards/auth-guard.service';
+import { TestComponent } from '../components/test/test.component';
 
 
 const appRoutes: Routes = [
@@ -47,6 +48,10 @@ const appRoutes: Routes = [
         component: LoginComponent
     },
     {
+        path: 'test',
+        component: TestComponent
+    },
+    {
         path: 'errors/error-404',
         component: Error404Component
     },
@@ -56,7 +61,7 @@ const appRoutes: Routes = [
     },
     {
         path        : 'angular-material-elements',
-        loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
+        loadChildren: '../../main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
     },
     {
         path: '**',
@@ -67,8 +72,8 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(
-        appRoutes,
-        { enableTracing: true } // <-- debugging purposes only
+        appRoutes
+        // { enableTracing: true } // <-- debugging purposes only
   )
     ],
     exports: [

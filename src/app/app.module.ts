@@ -62,7 +62,7 @@ import { SampleModule } from 'app/main/sample/sample.module';
 import { ToastrModule } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './main/routing/app-routing.module';
 import { FakeDbService } from './fake-db/fake-db.service';
 import { ConnectComponent } from './main/components/connect/connect.component';
 import { ProjectDashboardComponent } from './main/components/dashboard/project.component';
@@ -74,6 +74,7 @@ import { ErrorInterceptor } from './main/interceptors/error.interceptor';
 import { CamundaTaskModule } from './main/modules/camunda-task/camunda-task.module';
 import { TodoModule } from './main/modules/todo/todo.module';
 import { AuthenticationService } from './shared/authentication.service';
+import { TestComponent } from './main/components/test/test.component';
 
 
 @Injectable()
@@ -93,6 +94,7 @@ export class XhrInterceptor implements HttpInterceptor {
         LoginComponent,
         ProjectDashboardComponent,
         ConnectComponent,
+        TestComponent,
         Error404Component,
         Error500Component
     ],
@@ -100,11 +102,6 @@ export class XhrInterceptor implements HttpInterceptor {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-
-        // Routing
-        CamundaTaskModule,
-        AppRoutingModule,
-        // RouterModule.forRoot(appRoutes),
 
         // Toast notifications
         ToastrModule.forRoot({
@@ -172,7 +169,8 @@ export class XhrInterceptor implements HttpInterceptor {
         LayoutModule,
         TodoModule,
         CamundaTaskModule,
-        SampleModule
+        SampleModule,
+        AppRoutingModule,
     ], providers: [
         AuthenticationService, {
             provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true,

@@ -11,7 +11,8 @@ export const locale = {
             'TODO': 'To-Do',
             'CONNECT': 'Connect',
             'SETTINGS': 'Settings',
-            'TASK': 'Task'
+            'TASK': 'Task',
+            'TEST': 'Test'
         }
     }
 };

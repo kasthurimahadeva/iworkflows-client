@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
 
-import { CamundaTaskService } from '../camunda-task.service';
+import { TaskService } from '../../../../shared/task.service';
 
 @Component({
     selector: 'app-camunda-task',
@@ -12,7 +12,7 @@ import { CamundaTaskService } from '../camunda-task.service';
     animations: fuseAnimations
 })
 export class CamundaTaskComponent implements OnInit {
-    constructor(private http: HttpClient, private camundaTaskService: CamundaTaskService) {}
+    constructor(private http: HttpClient, private camundaTaskService: TaskService) {}
 
     ngOnInit(): void {
         this.connect();

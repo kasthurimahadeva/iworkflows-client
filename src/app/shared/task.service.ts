@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Task } from '../main/modules/camunda-task/camunda.task.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Task } from './camunda.task.model';
 
 declare let EventSource: any;
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class TaskService {
 
     tasks: Task[];
