@@ -82,10 +82,10 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
-        id      : 'angular-material-elements',
-        title   : 'Angular Material Elements',
+        id      : 'documentation',
+        title   : 'Documentation',
         type    : 'group',
-        icon    : 'layers',
+        icon    : 'book',
         children: [
             {
                 id      : 'form-controls',
