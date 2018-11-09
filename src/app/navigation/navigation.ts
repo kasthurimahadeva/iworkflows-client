@@ -48,6 +48,23 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
+        id: 'forms',
+        title: 'Forms',
+        translate: 'NAV.FORMS',
+        type: 'group',
+        icon: 'apps',
+        children: [
+            {
+                id: 'leave-form',
+                title: 'Leave form',
+                translate: 'NAV.LEAVE FORM',
+                type: 'item',
+                icon: 'web_asset',
+                url: '/forms/leave-form',
+            }
+        ]
+    },
+    {
         id: 'settings',
         title: 'Settings',
         translate: 'NAV.SETTINGS',
@@ -65,10 +82,10 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
-        id      : 'angular-material-elements',
-        title   : 'Angular Material Elements',
+        id      : 'documentation',
+        title   : 'Documentation',
         type    : 'group',
-        icon    : 'layers',
+        icon    : 'book',
         children: [
             {
                 id      : 'form-controls',
