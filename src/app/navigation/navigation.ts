@@ -34,8 +34,16 @@ export const navigation: FuseNavigation[] = [
                 title: 'Task',
                 translate: 'NAV.TASK',
                 type: 'item',
-                icon: 'check_box',
-                url: '/task',
+                icon: 'assignment',
+                url: '/tasks',
+            },
+            {
+                id: 'test',
+                title: 'Test',
+                translate: 'NAV.TEST',
+                type: 'item',
+                icon: 'title',
+                url: '/test',
             }
         ]
     },
