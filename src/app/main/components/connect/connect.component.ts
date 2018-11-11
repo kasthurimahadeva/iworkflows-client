@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ConnectService} from './connect.service';
-import {TokenProvider} from './token-provider.model';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ConnectService } from './connect.service';
+import { TokenProvider } from './token-provider.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs-compat/add/operator/filter';
-import {ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-connect',
@@ -11,14 +11,14 @@ import {ToastrService} from 'ngx-toastr';
     styleUrls: ['./connect.component.scss']
 })
 export class ConnectComponent implements OnInit {
-
     providers: Array<TokenProvider>;
 
-    constructor(private connectService: ConnectService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private toastr: ToastrService) {
-    }
+    constructor(
+        private connectService: ConnectService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private toastr: ToastrService
+    ) {}
 
     ngOnInit(): void {
         this.route.queryParams
@@ -26,7 +26,8 @@ export class ConnectComponent implements OnInit {
             .subscribe(params => {
                 const infoToastId: number = this.showInfoToast();
                 const provider = this.getProviderFromRedirectUri();
-                this.connectService.sendAuthorizationCode(provider, this.getQueryParams(provider))
+                this.connectService
+                    .sendAuthorizationCode(provider, this.getQueryParams(provider))
                     .subscribe(response => {
                         if (response.status === 200) {
                             console.log('hit');
@@ -48,23 +49,32 @@ export class ConnectComponent implements OnInit {
 
     revokeAuthorizationCode(provider: TokenProvider): void {
         // this.showSuccessToast(provider.name);
-        this.connectService.revokeAuthorizationCode(provider).subscribe(response => {
-            if (response.status === 200) {
-                this.showSuccessRevokeToast(provider.name);
-                this.getProviders();
-
+        this.connectService.revokeAuthorizationCode(provider).subscribe(
+            response => {
+                if (response.status === 200) {
+                    this.showSuccessRevokeToast(provider.name);
+                    this.getProviders();
+                }
+            },
+            error => {
+                this.toastr.error('Unable to disconnect', 'Disconnect Failed', { progressBar: true });
+                this.redirectToDashboard();
             }
-        });
+
+        );
     }
 
     private getProviders(): void {
-        this.connectService.getAll().subscribe(providers => {
+        this.connectService.getAll().subscribe(
+            providers => {
                 this.providers = providers;
             },
             error => {
-                console.error(error);
-                this.redirectToLogin();
-            });
+                console.log(error);
+                this.toastr.error('Unable to get provider list', 'Fetch failed', { progressBar: true });
+                this.redirectToDashboard();
+            }
+        );
     }
 
     getProviderFromRedirectUri(): string {
@@ -93,11 +103,14 @@ export class ConnectComponent implements OnInit {
     }
 
     showInfoToast(): number {
-        return this.toastr.info('Hint: you can continue to browse', 'Connecting...',
-            {progressBar: true, timeOut: 25000, progressAnimation: 'increasing'}).toastId;
+        return this.toastr.info('Hint: you can continue to browse', 'Connecting...', {
+            progressBar: true,
+            timeOut: 25000,
+            progressAnimation: 'increasing'
+        }).toastId;
     }
 
-    redirectToLogin(): void {
-        this.router.navigate(['login']);
+    redirectToDashboard(): void {
+        this.router.navigate(['dashboard']);
     }
 }
