@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
     selector     : 'error-500',
@@ -11,7 +12,23 @@ export class Error500Component
     /**
      * Constructor
      */
-    constructor()
+    constructor(private _fuseConfigService: FuseConfigService)
     {
+        this._fuseConfigService.config = {
+            layout: {
+                navbar: {
+                    hidden: true
+                },
+                toolbar: {
+                    hidden: true
+                },
+                footer: {
+                    hidden: true
+                },
+                sidepanel: {
+                    hidden: true
+                }
+            }
+        };
     }
 }
