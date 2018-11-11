@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
 import {
     MatButtonModule,
     MatDatepickerModule,
@@ -7,27 +6,23 @@ import {
     MatIconModule,
     MatInputModule,
     MatNativeDateModule,
+    MatRadioModule,
     MatSelectModule,
     MatStepperModule,
     MatTableModule
 } from '@angular/material';
 
-import { FuseSharedModule } from '@fuse/shared.module';
+import {FuseSharedModule} from '@fuse/shared.module';
 import {LeaveFormComponent} from './leave-form/leave-form.component';
-
-const routes: Routes = [
-    {
-        path     : 'leave-form',
-        component: LeaveFormComponent
-    }
-];
+import {LeaveFormRoutingModule} from '../../routing/leave-form-routing.module';
+import {LeaveFormDataResolver} from './leave-form/leave-form-data.resolver';
+import {LeaveFormService} from './leave-form/leave-form.service';
 
 @NgModule({
     declarations: [
         LeaveFormComponent
     ],
-    imports     : [
-        RouterModule.forChild(routes),
+    imports: [
 
         MatButtonModule,
         MatFormFieldModule,
@@ -38,10 +33,15 @@ const routes: Routes = [
         MatStepperModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        LeaveFormRoutingModule,
+        MatRadioModule,
 
         FuseSharedModule,
+    ],
+    providers: [
+        LeaveFormService,
+        LeaveFormDataResolver
     ]
 })
-export class FormsModule
-{
+export class FormsModule {
 }

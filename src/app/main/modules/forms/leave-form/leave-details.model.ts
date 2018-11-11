@@ -1,5 +1,5 @@
 export class LeaveFormDetails{
-    'id?': number;
+    'id': number;
     'principal': string;
     'employeeId': string;
     'faculty': string;

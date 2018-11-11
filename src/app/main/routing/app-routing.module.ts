@@ -9,6 +9,8 @@ import { Error500Component } from '../components/errors/500/error-500.component'
 import { LoginComponent } from '../components/login/login.component';
 import { AuthGuard } from '../guards/auth-guard.service';
 import { TestComponent } from '../components/test/test.component';
+import {LeaveFormComponent} from '../modules/forms/leave-form/leave-form.component';
+import {LeaveFormDataResolver} from '../modules/forms/leave-form/leave-form-data.resolver';
 
 
 const appRoutes: Routes = [
@@ -63,6 +65,15 @@ const appRoutes: Routes = [
         path        : 'angular-material-elements',
         loadChildren: '../../main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
     },
+    {
+        path        : 'forms',
+        loadChildren: '../../main/modules/forms/forms.module#FormsModule'
+    },
+    // {
+    //     path: 'forms/leave-form',
+    //     component: LeaveFormComponent,
+    //     resolve: {leaveFormDetails: LeaveFormDataResolver}
+    // },
     {
         path: '**',
         redirectTo: 'errors/error-404'
