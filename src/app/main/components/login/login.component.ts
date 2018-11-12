@@ -29,6 +29,17 @@ export class LoginComponent implements OnInit {
         private authService: AuthenticationService
     ) {
         // Configure the layout
+
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void {
         this._fuseConfigService.config = {
             layout: {
                 navbar: {
@@ -45,16 +56,7 @@ export class LoginComponent implements OnInit {
                 }
             }
         };
-    }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On init
-     */
-    ngOnInit(): void {
         this.loginForm = this._formBuilder.group({
             userName: ['', Validators.required],
             password: ['', Validators.required]

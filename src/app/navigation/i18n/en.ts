@@ -12,6 +12,7 @@ export const locale = {
             'CONNECT': 'Connect',
             'SETTINGS': 'Settings',
             'TASK': 'Task',
+            'HISTORY': 'Submitted Requests',
             'TEST': 'Test',
             'FORMS' : 'Forms',
             'LEAVE FORM' : 'Leave form'

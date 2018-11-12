@@ -24,7 +24,8 @@ export class LeaveFormService {
             data => subject.next(data),
             error => {
                 subject.error(error);
-                this.toastr.error('Unable to retrive form data, please try again', 'Failed', {progressBar: true});
+                this.toastr.error('Unable to retrive form data, please try again', 'Failed', { progressBar: true });
+                
             },
             () => subject.complete()
         );
