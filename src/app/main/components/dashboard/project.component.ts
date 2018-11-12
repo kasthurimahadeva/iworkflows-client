@@ -7,6 +7,7 @@ import { fuseAnimations } from '@fuse/animations/index';
 
 import { ProjectDashboardService } from 'app/main/components/dashboard/project.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
+import {AuthenticationService} from '../../../shared/authentication.service';
 
 @Component({
     selector     : 'project-dashboard',
@@ -28,6 +29,8 @@ export class ProjectDashboardComponent implements OnInit
     widget9: any = {};
     widget11: any = {};
 
+    loggedInUserName: string;
+
     dateNow = Date.now();
 
     /**
@@ -38,7 +41,8 @@ export class ProjectDashboardComponent implements OnInit
      */
     constructor(
         private _fuseSidebarService: FuseSidebarService,
-        private _projectDashboardService: ProjectDashboardService
+        private _projectDashboardService: ProjectDashboardService,
+        private authenticationService: AuthenticationService
     )
     {
         /**
@@ -163,6 +167,8 @@ export class ProjectDashboardComponent implements OnInit
         this.widget11.onContactsChanged = new BehaviorSubject({});
         this.widget11.onContactsChanged.next(this.widgets.widget11.table.rows);
         this.widget11.dataSource = new FilesDataSource(this.widget11);
+
+        this.loggedInUserName = this.authenticationService.getLoggedInUserName();
     }
 
     // -----------------------------------------------------------------------------------------------------
