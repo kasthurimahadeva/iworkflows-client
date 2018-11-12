@@ -26,6 +26,7 @@ export class AuthenticationService {
         this.http.get('/server/user', {headers: headers}).subscribe(response => {
                 if (response['name']) {
                     this.authenticated = true;
+                    localStorage.setItem('principal', JSON.stringify(response));
                     localStorage.setItem('authenticated', 'true');
                 } else {
                     localStorage.setItem('authenticated', 'false');
@@ -39,10 +40,15 @@ export class AuthenticationService {
 
     }
 
+    getLoggedInUserName(): string {
+        return JSON.parse(localStorage.getItem('principal')).name;
+    }
+
     logout(): void {
         this.http.post('/server/logout', {}).finally(() => {
             this.authenticated = false;
             localStorage.removeItem('currentUser');
+            localStorage.removeItem('principal');
             this.router.navigate(['login']);
         }).subscribe(() => {
                 console.log('log out success');
