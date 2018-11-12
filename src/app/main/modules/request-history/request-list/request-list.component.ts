@@ -1,22 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Task } from '../../camunda-task/camunda.task.model';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {MatPaginator, MatSort} from '@angular/material';
+import {merge, of as observableOf} from 'rxjs';
+import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import {RequestHistoryService} from '../request-history.service';
+import {SubmittedRequest} from '../submitted.request.model';
 
 @Component({
     templateUrl: './request-list.component.html',
     styleUrls: ['./request-list.component.scss']
 })
 export class RequestListComponent implements OnInit {
-    submittedTasks: Task[];
+    submittedRequests: SubmittedRequest[];
+    displayedColumns: string[] = ['type', 'submitted_date', 'due_date', 'assignee'];
+    resultsLength = 0;
+    isLoadingResults = true;
 
-    constructor(private route: ActivatedRoute) {}
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
 
-    ngOnInit(): void {
-        this.getSubmittedTasks();
+    constructor(private route: ActivatedRoute,
+                private requstHistoryService: RequestHistoryService) {
     }
 
-    private getSubmittedTasks(): void {
-        this.submittedTasks = this.route.snapshot.data['submittedTasks'];
-        console.log(this.submittedTasks);
+    ngOnInit(): void {
+        merge(this.sort.sortChange, this.paginator.page)
+            .pipe(
+                startWith({}),
+                switchMap(() => {
+                    this.isLoadingResults = true;
+                    return this.requstHistoryService.getSubmittedTasks();
+                }),
+                map(data => {
+                    this.isLoadingResults = false;
+                    return data;
+                }),
+                catchError(() => {
+                    this.isLoadingResults = false;
+                    return observableOf([]);
+                })
+            ).subscribe(data => this.submittedRequests = data);
     }
 }
