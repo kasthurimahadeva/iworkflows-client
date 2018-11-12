@@ -1,19 +1,19 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
-    selector     : 'error-404',
-    templateUrl  : './error-404.component.html',
-    styleUrls    : ['./error-404.component.scss'],
+    selector: 'error-404',
+    templateUrl: './error-404.component.html',
+    styleUrls: ['./error-404.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class Error404Component
-{
+export class Error404Component implements OnInit {
     /**
      * Constructor
      */
-    constructor(private _fuseConfigService: FuseConfigService)
-    {
+    constructor(private _fuseConfigService: FuseConfigService) {}
+
+    ngOnInit(): void {
         this._fuseConfigService.config = {
             layout: {
                 navbar: {
@@ -30,6 +30,5 @@ export class Error404Component
                 }
             }
         };
-
     }
 }

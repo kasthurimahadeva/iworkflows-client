@@ -1,19 +1,19 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
-    selector     : 'error-500',
-    templateUrl  : './error-500.component.html',
-    styleUrls    : ['./error-500.component.scss'],
+    selector: 'error-500',
+    templateUrl: './error-500.component.html',
+    styleUrls: ['./error-500.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class Error500Component
-{
+export class Error500Component implements OnInit {
     /**
      * Constructor
      */
-    constructor(private _fuseConfigService: FuseConfigService)
-    {
+    constructor(private _fuseConfigService: FuseConfigService) {}
+
+    ngOnInit(): void {
         this._fuseConfigService.config = {
             layout: {
                 navbar: {
