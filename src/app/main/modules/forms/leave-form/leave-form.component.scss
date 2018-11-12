@@ -23,19 +23,33 @@
 }
 
 table {
-    width: 50%;
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
 }
 
-#table{
-    padding-bottom: 20px;
+th, td{
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #ccc;
 }
 
-//.leaveTypesGroup {
-//    display: inline-flex;
-//    flex-direction: row;
-//}
+.header{
+    background: #9EA1A9;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
 
 .leaveTypesButton {
     margin: 10px;
     margin-right: 50px;
+}
+
+#faculty{
+    margin-right: 10px;
+}
+
+#department{
+    margin-left: 10px;
 }
