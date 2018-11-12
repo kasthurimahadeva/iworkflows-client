@@ -38,6 +38,14 @@ export const navigation: FuseNavigation[] = [
                 url: '/tasks',
             },
             {
+                id: 'history',
+                title: 'Submitted Requests',
+                translate: 'NAV.HISTORY',
+                type: 'item',
+                icon: 'history',
+                url: '/history/list',
+            },
+            {
                 id: 'test',
                 title: 'Test',
                 translate: 'NAV.TEST',

@@ -69,6 +69,10 @@ const appRoutes: Routes = [
         path        : 'forms',
         loadChildren: '../../main/modules/forms/forms.module#FormsModule'
     },
+    {
+        path        : 'history',
+        loadChildren: '../../main/modules/request-history/request-history.module#RequestHistoryModule'
+    },
     // {
     //     path: 'forms/leave-form',
     //     component: LeaveFormComponent,
