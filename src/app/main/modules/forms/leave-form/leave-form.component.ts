@@ -87,12 +87,11 @@ export class LeaveFormComponent implements OnInit {
     }
 
     submitLeaveForm(): void {
-        const leaveData = {
-            employeeDetails: this.employeeDetailsStepper.value,
-            contactDetails: this.contactDetailsStepper.value,
-            leaveDetails: this.leaveDetailsStepper.value
-        };
-        // console.log(JSON.stringify(leaveData));
+        const employeeDetails = this.employeeDetailsStepper.value;
+        const contactDetails = this.contactDetailsStepper.value;
+        const leaveDetails = this.leaveDetailsStepper.value;
+        const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
+        console.log(JSON.stringify(leaveData));
         const headers = new HttpHeaders({
             'Content-Type': 'application/json'
         });
