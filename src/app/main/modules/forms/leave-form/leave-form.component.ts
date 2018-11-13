@@ -105,18 +105,18 @@ export class LeaveFormComponent implements OnInit {
         leaveDetails.endDate = this.endDateValue;
         const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
 
-        // const headers = new HttpHeaders({
-        //     'Content-Type': 'application/json'
-        // });
-        //
-        // this.http.post('/server/api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
-        //     response => {
-        //         if (response.status === 200) {
-        //             this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});
-        //         }
-        //     },
-        //     error => this.toastr.error('Could not submit the leave request', 'Failed')
-        // );
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+
+        this.http.post('/server/api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
+            response => {
+                if (response.status === 200) {
+                    this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});
+                }
+            },
+            error => this.toastr.error('Could not submit the leave request', 'Failed')
+        );
 
         this.router.navigate(['dashboard']);
     }
