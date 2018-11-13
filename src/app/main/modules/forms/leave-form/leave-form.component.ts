@@ -91,7 +91,7 @@ export class LeaveFormComponent implements OnInit {
         const contactDetails = this.contactDetailsStepper.value;
         const leaveDetails = this.leaveDetailsStepper.value;
         const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
-        console.log(JSON.stringify(leaveData));
+
         const headers = new HttpHeaders({
             'Content-Type': 'application/json'
         });
