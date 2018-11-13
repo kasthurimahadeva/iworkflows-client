@@ -7,7 +7,6 @@ import {ToastrService} from 'ngx-toastr';
 @Injectable()
 export class AuthenticationService {
 
-    // TODO: change authenticated back to false
     authenticated = false;
 
     redirectUrl: string;
@@ -41,13 +40,19 @@ export class AuthenticationService {
     }
 
     getLoggedInUserName(): string {
-        return JSON.parse(localStorage.getItem('principal')).name;
+        const principal: any = localStorage.getItem('principal');
+        if (principal) {
+            return principal.name;
+        } else {
+            this.router.navigate(['login']);
+            return null;
+        }
     }
 
     logout(): void {
         this.http.post('/server/logout', {}).finally(() => {
             this.authenticated = false;
-            localStorage.removeItem('currentUser');
+            localStorage.removeItem('authenticated');
             localStorage.removeItem('principal');
             this.router.navigate(['login']);
         }).subscribe(() => {
