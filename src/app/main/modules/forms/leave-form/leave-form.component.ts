@@ -1,12 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material';
-import {LeaveFormService} from './leave-form.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {LeaveFormDetails} from './leave-details.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {start} from 'repl';
 
 @Component({
     selector: 'leave-forms',
@@ -38,12 +36,12 @@ export class LeaveFormComponent implements OnInit {
 
     getStartDate(event: MatDatepickerInputEvent<Date>): void {
         this.startDate = event.value;
-        this.startDateValue = this.startDate.getDate() + '/' + (this.startDate.getMonth() + 1) + '/' + this.startDate.getFullYear()
+        this.startDateValue = this.startDate.getDate() + '/' + (this.startDate.getMonth() + 1) + '/' + this.startDate.getFullYear();
     }
 
     getEndDate(event: MatDatepickerInputEvent<Date>): void {
         this.endDate = event.value;
-        this.endDateValue = this.endDate.getDate() + '/' + (this.endDate.getMonth() + 1) + '/' + this.endDate.getFullYear()
+        this.endDateValue = this.endDate.getDate() + '/' + (this.endDate.getMonth() + 1) + '/' + this.endDate.getFullYear();
     }
 
     assignMinDate(): void {
@@ -115,7 +113,10 @@ export class LeaveFormComponent implements OnInit {
                     this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});
                 }
             },
-            error => this.toastr.error('Could not submit the leave request', 'Failed')
+            error => {
+                console.error(error);
+                this.toastr.error('Could not submit the leave request', 'Failed');
+            }
         );
 
         this.router.navigate(['dashboard']);
