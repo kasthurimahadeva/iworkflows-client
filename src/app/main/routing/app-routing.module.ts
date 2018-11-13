@@ -1,16 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { ConnectComponent } from '../components/connect/connect.component';
-import { ProjectDashboardComponent } from '../components/dashboard/project.component';
-import { ProjectDashboardService } from '../components/dashboard/project.service';
-import { Error404Component } from '../components/errors/404/error-404.component';
-import { Error500Component } from '../components/errors/500/error-500.component';
-import { LoginComponent } from '../components/login/login.component';
-import { AuthGuard } from '../guards/auth-guard.service';
-import { TestComponent } from '../components/test/test.component';
-import {LeaveFormComponent} from '../modules/forms/leave-form/leave-form.component';
-import {LeaveFormDataResolver} from '../modules/forms/leave-form/leave-form-data.resolver';
+import {ConnectComponent} from '../components/connect/connect.component';
+import {ProjectDashboardComponent} from '../components/dashboard/project.component';
+import {ProjectDashboardService} from '../components/dashboard/project.service';
+import {Error404Component} from '../components/errors/404/error-404.component';
+import {Error500Component} from '../components/errors/500/error-500.component';
+import {LoginComponent} from '../components/login/login.component';
+import {AuthGuard} from '../guards/auth-guard.service';
+import {TestComponent} from '../components/test/test.component';
 
 
 const appRoutes: Routes = [
@@ -42,8 +40,8 @@ const appRoutes: Routes = [
     {
         path: 'connect/nextcloud',
         component: ConnectComponent,
-        // data: {requiresLogin: true},
-        // canActivate: [AuthGuard]
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard]
     },
     {
         path: 'login',
@@ -62,16 +60,22 @@ const appRoutes: Routes = [
         component: Error500Component
     },
     {
-        path        : 'angular-material-elements',
-        loadChildren: '../../main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
+        path: 'angular-material-elements',
+        loadChildren: '../../main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule',
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard]
     },
     {
-        path        : 'forms',
-        loadChildren: '../../main/modules/forms/forms.module#FormsModule'
+        path: 'forms',
+        loadChildren: '../../main/modules/forms/forms.module#FormsModule',
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard]
     },
     {
-        path        : 'history',
-        loadChildren: '../../main/modules/request-history/request-history.module#RequestHistoryModule'
+        path: 'history',
+        loadChildren: '../../main/modules/request-history/request-history.module#RequestHistoryModule',
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard]
     },
     // {
     //     path: 'forms/leave-form',
@@ -85,14 +89,15 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(
-        appRoutes
-        // { enableTracing: true } // <-- debugging purposes only
-  )
+    imports: [
+        RouterModule.forRoot(
+            appRoutes
+            // { enableTracing: true } // <-- debugging purposes only
+        )
     ],
     exports: [
         RouterModule
     ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
