@@ -34,6 +34,7 @@ export class AuthenticationService {
                 return callback && callback();
             },
             error => {
+                console.error(error);
                 this.toastr.error('Username or password is incorrect', 'Login failed', {progressBar: true});
             });
 
@@ -41,10 +42,10 @@ export class AuthenticationService {
 
     getLoggedInUserName(): string {
         const principal: any = localStorage.getItem('principal');
-        if (principal) {
-            return principal.name;
+        if (principal !== null) {
+            return JSON.parse(principal).name;
         } else {
-            this.router.navigate(['login']);
+            // this.router.navigate(['login']);
             return null;
         }
     }
