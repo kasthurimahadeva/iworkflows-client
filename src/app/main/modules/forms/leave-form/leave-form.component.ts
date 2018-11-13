@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {LeaveFormDetails} from './leave-details.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {start} from 'repl';
 
 @Component({
     selector: 'leave-forms',
@@ -22,9 +23,13 @@ export class LeaveFormComponent implements OnInit {
     contactDetailsStepper: FormGroup;
     leaveDetailsStepper: FormGroup;
     startDate: Date;
+    endDate: Date;
+    startDateValue: string;
+    endDateValue: string;
 
     startMinDate = new Date();
     endMinDate = new Date();
+
 
     // displayedColumns: string[] = ['takenCasualLeaves', 'takenMedicalLeaves', 'takenVacationLeaves'];
     // dataSource = ELEMENT_DATA;
@@ -33,6 +38,12 @@ export class LeaveFormComponent implements OnInit {
 
     getStartDate(event: MatDatepickerInputEvent<Date>): void {
         this.startDate = event.value;
+        this.startDateValue = this.startDate.getDate() + '/' + (this.startDate.getMonth() + 1) + '/' + this.startDate.getFullYear()
+    }
+
+    getEndDate(event: MatDatepickerInputEvent<Date>): void {
+        this.endDate = event.value;
+        this.endDateValue = this.endDate.getDate() + '/' + (this.endDate.getMonth() + 1) + '/' + this.endDate.getFullYear()
     }
 
     assignMinDate(): void {
@@ -90,20 +101,22 @@ export class LeaveFormComponent implements OnInit {
         const employeeDetails = this.employeeDetailsStepper.value;
         const contactDetails = this.contactDetailsStepper.value;
         const leaveDetails = this.leaveDetailsStepper.value;
+        leaveDetails.startDate = this.startDateValue;
+        leaveDetails.endDate = this.endDateValue;
         const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
 
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json'
-        });
-
-        this.http.post('/server/api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
-            response => {
-                if (response.status === 200) {
-                    this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});
-                }
-            },
-            error => this.toastr.error('Could not submit the leave request', 'Failed')
-        );
+        // const headers = new HttpHeaders({
+        //     'Content-Type': 'application/json'
+        // });
+        //
+        // this.http.post('/server/api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
+        //     response => {
+        //         if (response.status === 200) {
+        //             this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});
+        //         }
+        //     },
+        //     error => this.toastr.error('Could not submit the leave request', 'Failed')
+        // );
 
         this.router.navigate(['dashboard']);
     }

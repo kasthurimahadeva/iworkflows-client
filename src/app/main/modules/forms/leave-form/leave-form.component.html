@@ -154,8 +154,7 @@
 
                             <mat-form-field appearance="outline" fxFlex="100">
                                 <mat-label>End date</mat-label>
-                                <input matInput [matDatepicker]="endPicker" [min]="endMinDate"
-                                formControlName="endDate" (click)="assignMinDate()" required>
+                                <input matInput (dateInput) = "getEndDate($event)" formControlName = "endDate" [matDatepicker]="endPicker" [min]="endMinDate" (click)="assignMinDate()" required>
                                 <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
                                 <mat-datepicker #endPicker></mat-datepicker>
                                 <mat-error>End date is required</mat-error>
