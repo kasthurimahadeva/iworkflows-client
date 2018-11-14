@@ -56,19 +56,27 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
-        id: 'forms',
-        title: 'Forms',
-        translate: 'NAV.FORMS',
-        type: 'group',
+        id: 'request',
+        title: 'New Request',
+        translate: 'NAV.NEW_REQUEST',
+        type    : 'collapsable',
         icon: 'apps',
         children: [
             {
-                id: 'leave-form',
-                title: 'Leave form',
-                translate: 'NAV.LEAVE FORM',
+                id: 'leave',
+                title: 'Leave',
+                translate: 'NAV.LEAVE',
                 type: 'item',
                 icon: 'web_asset',
-                url: '/forms/leave-form',
+                url: '/request/leave',
+            },
+            {
+                id: 'loan',
+                title: 'Loan',
+                translate: 'NAV.LOAN',
+                type: 'item',
+                icon: 'attach_money',
+                url: '/request/loan',
             }
         ]
     },

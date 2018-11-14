@@ -14,8 +14,9 @@ export const locale = {
             'TASK': 'Task',
             'HISTORY': 'Submitted Requests',
             'TEST': 'Test',
-            'FORMS' : 'Forms',
-            'LEAVE FORM' : 'Leave form'
+            'NEW_REQUEST' : 'New Request',
+            'LEAVE' : 'Leave',
+            'LOAN': 'Loan'
         }
     }
 };
