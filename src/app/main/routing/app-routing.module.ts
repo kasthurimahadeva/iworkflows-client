@@ -44,6 +44,12 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'connect/learnorg',
+        component: ConnectComponent,
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard]
+    },
+    {
         path: 'login',
         component: LoginComponent
     },
