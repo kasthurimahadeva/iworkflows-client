@@ -14,6 +14,10 @@ export class Error500Component implements OnInit {
     constructor(private _fuseConfigService: FuseConfigService) {}
 
     ngOnInit(): void {
+        this.hideComponents();
+    }
+
+    private hideComponents(): void {
         this._fuseConfigService.config = {
             layout: {
                 navbar: {

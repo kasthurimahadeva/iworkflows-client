@@ -29,22 +29,7 @@ export class LoginComponent implements OnInit {
         private authService: AuthenticationService
     ) {
         // Configure the layout
-        this._fuseConfigService.config = {
-            layout: {
-                navbar: {
-                    hidden: true
-                },
-                toolbar: {
-                    hidden: true
-                },
-                footer: {
-                    hidden: true
-                },
-                sidepanel: {
-                    hidden: true
-                }
-            }
-        };
+        this.hideComponents();
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -55,6 +40,15 @@ export class LoginComponent implements OnInit {
      * On init
      */
     ngOnInit(): void {
+        this.hideComponents();
+
+        this.loginForm = this._formBuilder.group({
+            userName: ['', Validators.required],
+            password: ['', Validators.required]
+        });
+    }
+
+    private hideComponents(): void {
         this._fuseConfigService.config = {
             layout: {
                 navbar: {
@@ -71,11 +65,6 @@ export class LoginComponent implements OnInit {
                 }
             }
         };
-
-        this.loginForm = this._formBuilder.group({
-            userName: ['', Validators.required],
-            password: ['', Validators.required]
-        });
     }
 
     login() {

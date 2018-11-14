@@ -11,9 +11,15 @@ export class Error404Component implements OnInit {
     /**
      * Constructor
      */
-    constructor(private _fuseConfigService: FuseConfigService) {}
+    constructor(private _fuseConfigService: FuseConfigService) {
+        this.hideComponents();
+    }
 
     ngOnInit(): void {
+        this.hideComponents();
+    }
+
+    private hideComponents(): void {
         this._fuseConfigService.config = {
             layout: {
                 navbar: {
