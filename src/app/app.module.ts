@@ -1,14 +1,7 @@
 import 'hammerjs';
 
-import {
-    HTTP_INTERCEPTORS,
-    HttpClientModule,
-    HttpEvent,
-    HttpHandler,
-    HttpInterceptor,
-    HttpRequest,
-} from '@angular/common/http';
-import { Injectable, NgModule } from '@angular/core';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,} from '@angular/common/http';
+import {Injectable, NgModule} from '@angular/core';
 import {
     MatAutocompleteModule,
     MatBadgeModule,
@@ -46,36 +39,36 @@ import {
     MatTooltipModule,
     MatTreeModule,
 } from '@angular/material';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule, FuseWidgetModule } from '@fuse/components';
-import { FuseModule } from '@fuse/fuse.module';
-import { FuseSharedModule } from '@fuse/shared.module';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { AppComponent } from 'app/app.component';
-import { fuseConfig } from 'app/fuse-config';
-import { LayoutModule } from 'app/layout/layout.module';
-import { SampleModule } from 'app/main/sample/sample.module';
-import { ToastrModule } from 'ngx-toastr';
-import { Observable } from 'rxjs';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FuseProgressBarModule, FuseSidebarModule, FuseThemeOptionsModule, FuseWidgetModule} from '@fuse/components';
+import {FuseModule} from '@fuse/fuse.module';
+import {FuseSharedModule} from '@fuse/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {AppComponent} from 'app/app.component';
+import {fuseConfig} from 'app/fuse-config';
+import {LayoutModule} from 'app/layout/layout.module';
+import {SampleModule} from 'app/main/sample/sample.module';
+import {ToastrModule} from 'ngx-toastr';
+import {Observable} from 'rxjs';
 
-import { FakeDbService } from './fake-db/fake-db.service';
-import { ConnectComponent } from './main/components/connect/connect.component';
-import { ProjectDashboardComponent } from './main/components/dashboard/project.component';
-import { Error404Component } from './main/components/errors/404/error-404.component';
-import { Error500Component } from './main/components/errors/500/error-500.component';
-import { LoginComponent } from './main/components/login/login.component';
-import { TestComponent } from './main/components/test/test.component';
-import { BasicAuthInterceptor } from './main/interceptors/basic.auth.interceptor';
-import { ErrorInterceptor } from './main/interceptors/error.interceptor';
-import { CamundaTaskModule } from './main/modules/camunda-task/camunda-task.module';
-import { RequestHistoryModule } from './main/modules/request-history/request-history.module';
-import { TodoModule } from './main/modules/todo/todo.module';
-import { AppRoutingModule } from './main/routing/app-routing.module';
-import { AuthenticationService } from './shared/authentication.service';
+import {FakeDbService} from './fake-db/fake-db.service';
+import {ConnectComponent} from './main/components/connect/connect.component';
+import {ProjectDashboardComponent} from './main/components/dashboard/project.component';
+import {Error404Component} from './main/components/errors/404/error-404.component';
+import {Error500Component} from './main/components/errors/500/error-500.component';
+import {LoginComponent} from './main/components/login/login.component';
+import {TestComponent} from './main/components/test/test.component';
+import {BasicAuthInterceptor} from './main/interceptors/basic.auth.interceptor';
+import {ErrorInterceptor} from './main/interceptors/error.interceptor';
+import {CamundaTaskModule} from './main/modules/camunda-task/camunda-task.module';
+import {RequestHistoryModule} from './main/modules/request-history/request-history.module';
+import {TodoModule} from './main/modules/todo/todo.module';
+import {AppRoutingModule} from './main/routing/app-routing.module';
+import {AuthenticationService} from './shared/authentication.service';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -189,4 +182,5 @@ export class XhrInterceptor implements HttpInterceptor {
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
