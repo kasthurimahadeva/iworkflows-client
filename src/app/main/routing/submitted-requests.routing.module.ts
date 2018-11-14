@@ -9,7 +9,7 @@ const taskHistoryRoutes: Routes = [
         component: RequestListComponent
     },
     {
-        path: 'request/:taskId',
+        path: 'details/:taskId',
         component: RequestDetailsComponent
     }
 ];
