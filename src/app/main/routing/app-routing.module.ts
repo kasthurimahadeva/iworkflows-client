@@ -66,7 +66,7 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'forms',
+        path: 'request',
         loadChildren: '../../main/modules/forms/forms.module#FormsModule',
         data: {requiresLogin: true},
         canActivate: [AuthGuard]

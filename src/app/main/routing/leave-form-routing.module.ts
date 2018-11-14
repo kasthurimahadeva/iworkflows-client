@@ -6,7 +6,7 @@ import {AuthGuard} from '../guards/auth-guard.service';
 
 const leaveFormRoutes: Routes = [
     {
-        path: 'leave-form',
+        path: 'leave',
         component: LeaveFormComponent,
         resolve: {leaveFormDetails: LeaveFormDataResolver},
         data: {requiresLogin: true},
