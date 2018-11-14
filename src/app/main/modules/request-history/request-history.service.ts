@@ -11,4 +11,8 @@ export class RequestHistoryService {
     getSubmittedTasks(): Observable<SubmittedRequest[]> {
         return this.http.get<SubmittedRequest[]>('server/api/v1/camunda/submitted-tasks');
     }
+
+    getBpmnDiagram(taskId: string): Observable<string> {
+        return this.http.get('server/api/v1/camunda/diagram/' + taskId, {responseType: 'text'});
+    }
 }
