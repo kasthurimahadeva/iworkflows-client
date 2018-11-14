@@ -5,6 +5,7 @@ import {SubmittedRequestsRoutingModule} from 'app/main/routing/submitted-request
 import {RequestHistoryService} from './request-history.service';
 import {RequestListComponent} from './request-list/request-list.component';
 import {MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule} from '@angular/material';
+import { RequestDetailsComponent } from './request-details/request-details.component';
 
 @NgModule({
     imports: [
@@ -15,7 +16,7 @@ import {MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableMod
         MatSortModule,
         MatProgressSpinnerModule
     ],
-    declarations: [RequestListComponent],
+    declarations: [RequestListComponent, RequestDetailsComponent],
     providers: [RequestHistoryService]
 })
 export class RequestHistoryModule {

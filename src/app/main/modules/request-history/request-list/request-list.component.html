@@ -47,7 +47,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr mat-row *matRowDef="let request; columns: displayedColumns" [routerLink]="'/request/'+request.taskId"></tr>
         </table>
 
         <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
