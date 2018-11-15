@@ -342,7 +342,7 @@ export const navigation: FuseNavigation[] = [
                 ]
             },
             {
-                id      : 'data-table',
+                id      : 'dataSource-table',
                 title   : 'Data table',
                 type    : 'collapsable',
                 icon    : 'layers',
