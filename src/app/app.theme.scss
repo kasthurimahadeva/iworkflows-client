@@ -82,6 +82,7 @@ $typography: mat-typography-config(
 @import "src/app/layout/components/toolbar/toolbar.theme";
 @import "src/app/main/components/login/login.theme";
 @import "src/app/main/modules/todo/todo.theme";
+@import "src/app/main/modules/camunda-task/my-task-list/my-task-list.theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -90,7 +91,8 @@ $typography: mat-typography-config(
     @include chat-panel-theme($theme);
     @include toolbar-theme($theme);
     @include login-theme($theme);
-    @include todo-theme($theme)
+    @include todo-theme($theme);
+    @include my-task-list-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
