@@ -1,14 +1,18 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MatPaginator, MatSort} from '@angular/material';
 import {merge, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {RequestHistoryService} from '../request-history.service';
 import {SubmittedRequest} from '../submitted.request.model';
+import {fuseAnimations} from '@fuse/animations';
 
 @Component({
+    selector: 'app-request-list',
     templateUrl: './request-list.component.html',
-    styleUrls: ['./request-list.component.scss']
+    styleUrls: ['./request-list.component.scss'],
+    animations: fuseAnimations,
+    encapsulation: ViewEncapsulation.None
 })
 export class RequestListComponent implements OnInit {
     submittedRequests: SubmittedRequest[];
