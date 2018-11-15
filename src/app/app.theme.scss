@@ -83,6 +83,7 @@ $typography: mat-typography-config(
 @import "src/app/main/components/login/login.theme";
 @import "src/app/main/modules/todo/todo.theme";
 @import "src/app/main/modules/camunda-task/my-task-list/my-task-list.theme";
+@import "src/app/main/modules/request-history/request-list/request-list.theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -93,6 +94,7 @@ $typography: mat-typography-config(
     @include login-theme($theme);
     @include todo-theme($theme);
     @include my-task-list-theme($theme);
+    @include request-list-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

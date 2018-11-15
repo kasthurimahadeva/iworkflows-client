@@ -4,7 +4,7 @@ import {SubmittedRequestsRoutingModule} from 'app/main/routing/submitted-request
 
 import {RequestHistoryService} from './request-history.service';
 import {RequestListComponent} from './request-list/request-list.component';
-import {MatButtonModule, MatIconModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSortModule, MatTableModule, MatTabsModule} from '@angular/material';
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import {FuseSharedModule} from '../../../../@fuse/shared.module';
 
@@ -19,6 +19,7 @@ import {FuseSharedModule} from '../../../../@fuse/shared.module';
         MatPaginatorModule,
         MatSortModule,
         MatProgressSpinnerModule,
+        MatSelectModule,
 
         FuseSharedModule
     ],

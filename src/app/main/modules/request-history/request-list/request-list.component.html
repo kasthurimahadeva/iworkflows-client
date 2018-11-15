@@ -1,55 +1,97 @@
-<div class="page-layout simple fullwidth" fxLayout="column">
-    <!-- HEADER -->
-    <div class="header accent p-24 h-100" fxLayout="row">
-        <div class="h1">Submitted Requests</div>
-    </div>
-    <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
-        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-    </div>
-    <div class="page-layout blank p-24" fusePerfectScrollbar>
-        <table
-            mat-table
-            [dataSource]="submittedRequests"
-            class="example-table"
-            matSort
-            matSortActive="submitted_date"
-            matSortDisableClear
-            matSortDirection="asc"
-        >
-            <!-- Type Column -->
-            <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef>Type</th>
-                <td mat-cell *matCellDef="let request">{{ request.type }}</td>
-            </ng-container>
+<div id="requests" class="page-layout carded fullwidth inner-scroll">
 
-            <!-- Submitted Date -->
-            <ng-container matColumnDef="submitted_date">
-                <th mat-header-cell *matHeaderCellDef>Submitted Date</th>
-                <td mat-cell *matCellDef="let request">{{ request.submittedDate | date }}</td>
-            </ng-container>
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
 
-            <!-- Due Date -->
-            <ng-container matColumnDef="due_date">
-                <th mat-header-cell *matHeaderCellDef>Due Date</th>
-                <td mat-cell *matCellDef="let request">{{ request.dueDate | date }}</td>
-            </ng-container>
+    <!-- CENTER -->
+    <div class="center">
 
-            <!-- Assignee Column -->
-            <ng-container matColumnDef="assignee">
-                <th mat-header-cell *matHeaderCellDef>Assignee</th>
-                <td mat-cell *matCellDef="let request">{{ request.assignee }}</td>
-            </ng-container>
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="space-between center">
 
-            <!-- Progress Column -->
-            <ng-container matColumnDef="progress">
-                <th mat-header-cell *matHeaderCellDef>Progress</th>
-                <td mat-cell *matCellDef="let request">{{ request.progress }}</td>
-            </ng-container>
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    history
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Submitted Request
+                </span>
+            </div>
+            <!-- / APP TITLE -->
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let request; columns: displayedColumns" [routerLink]="'/history/details/'+request.taskId"></tr>
-        </table>
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a request">
+                </div>
+            </div>
 
-        <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+            <!-- ADD BUTTON -->
+            <button mat-raised-button
+                    [routerLink]="'/request/leave'"
+                    class="fuse-white mt-24 mt-md-0">
+                <span>NEW REQUEST</span>
+            </button>
+            <!-- / ADD BUTTON -->
+
+            <!--<mat-select class="newRequest">New Request-->
+                <!--<mat-option [routerLink]="'/request/leave'">Leave</mat-option>-->
+                <!--<mat-option>Loan</mat-option>-->
+            <!--</mat-select>-->
+
+        </div>
+        <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+            <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        </div>
+        <div class="page-layout blank p-24" fusePerfectScrollbar>
+            <table
+                mat-table
+                [dataSource]="submittedRequests"
+                class="example-table"
+                matSort
+                matSortActive="submitted_date"
+                matSortDisableClear
+                matSortDirection="asc"
+            >
+                <!-- Type Column -->
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef>Type</th>
+                    <td mat-cell *matCellDef="let request">{{ request.type }}</td>
+                </ng-container>
+
+                <!-- Submitted Date -->
+                <ng-container matColumnDef="submitted_date">
+                    <th mat-header-cell *matHeaderCellDef>Submitted Date</th>
+                    <td mat-cell *matCellDef="let request">{{ request.submittedDate | date }}</td>
+                </ng-container>
+
+                <!-- Due Date -->
+                <ng-container matColumnDef="due_date">
+                    <th mat-header-cell *matHeaderCellDef>Due Date</th>
+                    <td mat-cell *matCellDef="let request">{{ request.dueDate | date }}</td>
+                </ng-container>
+
+                <!-- Assignee Column -->
+                <ng-container matColumnDef="assignee">
+                    <th mat-header-cell *matHeaderCellDef>Assignee</th>
+                    <td mat-cell *matCellDef="let request">{{ request.assignee }}</td>
+                </ng-container>
+
+                <!-- Progress Column -->
+                <ng-container matColumnDef="progress">
+                    <th mat-header-cell *matHeaderCellDef>Progress</th>
+                    <td mat-cell *matCellDef="let request">{{ request.progress }}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let request; columns: displayedColumns" [routerLink]="'/history/details/'+request.taskId"></tr>
+            </table>
+
+            <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+        </div>
     </div>
 </div>
