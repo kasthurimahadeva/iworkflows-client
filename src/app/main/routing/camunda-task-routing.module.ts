@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CamundaTaskComponent } from '../modules/camunda-task/camunda-task/camunda-task.component';
-import { CamundaTaskListComponent } from '../modules/camunda-task/camunda-task-list/camunda-task-list.component';
 import {AuthGuard} from '../guards/auth-guard.service';
+import {MyTaskListComponent} from '../modules/camunda-task/my-task-list/my-task-list.component';
 
 const camundaTaskRoutes: Routes = [
     {
@@ -13,7 +13,7 @@ const camundaTaskRoutes: Routes = [
     },
     {
         path: 'tasks',
-        component: CamundaTaskListComponent,
+        component: MyTaskListComponent,
         data: {requiresLogin: true},
         canActivate: [AuthGuard]
     }
