@@ -44,6 +44,7 @@
     "@types/prismjs": "1.9.0",
     "angular-calendar": "0.26.3",
     "angular-in-memory-web-api": "0.6.1",
+    "bpmn-js": "3.0.1",
     "chart.js": "2.7.3",
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.7",

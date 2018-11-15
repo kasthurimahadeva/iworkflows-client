@@ -4,17 +4,23 @@ import {SubmittedRequestsRoutingModule} from 'app/main/routing/submitted-request
 
 import {RequestHistoryService} from './request-history.service';
 import {RequestListComponent} from './request-list/request-list.component';
-import {MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule} from '@angular/material';
 import { RequestDetailsComponent } from './request-details/request-details.component';
+import {FuseSharedModule} from '../../../../@fuse/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
         SubmittedRequestsRoutingModule,
         MatTableModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatIconModule,
         MatPaginatorModule,
         MatSortModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+
+        FuseSharedModule
     ],
     declarations: [RequestListComponent, RequestDetailsComponent],
     providers: [RequestHistoryService]
