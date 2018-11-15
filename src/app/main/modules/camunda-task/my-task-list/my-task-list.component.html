@@ -1,0 +1,118 @@
+<div id="tasks" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    assignment
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    My Tasks
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a task">
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <mat-table class="tasks-table"
+                       #table [dataSource]="dataSource"
+                       matSort
+                       [@animateStagger]="{value:'50'}"
+                       fusePerfectScrollbar>
+
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+                    <mat-cell *matCellDef="let i = index">
+                        <p class="text-truncate">{{i +1}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="owner">
+                    <mat-header-cell *matHeaderCellDef>Owner</mat-header-cell>
+                    <mat-cell *matCellDef="let task">
+                        <p class="text-truncate">{{task.owner | titlecase}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <mat-header-cell *matHeaderCellDef>Review type</mat-header-cell>
+                    <mat-cell *matCellDef="let task">
+                        <p class="text-truncate h6 p-4" [ngClass]="task.taskDefinitionKey">
+                            {{task.taskDefinitionKey}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="submittedDate">
+                    <mat-header-cell *matHeaderCellDef>Submitted date</mat-header-cell>
+                    <mat-cell *matCellDef="let task">
+                        <p class="text-truncate">{{task.submittedDate | date}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="dueDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Due date</mat-header-cell>
+                    <mat-cell *matCellDef="let task">
+                        <p class="text-truncate">{{task.dueDate | date}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="recommendation">
+                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Status</mat-header-cell>
+                    <mat-cell *matCellDef="let task" fxHide fxShow.gt-xs>
+                        <mat-icon *ngIf="task.recommendation == 'recommended'" class="active-icon green-600 s-16">
+                            check
+                        </mat-icon>
+                        <mat-icon *ngIf="task.recommendation == 'not_recommended'" class="active-icon red-500 s-16">
+                            close
+                        </mat-icon>
+                        <mat-icon *ngIf="task.recommendation == 'insufficient'" class="active-icon yellow-600 s-16">
+                            priority_high
+                        </mat-icon>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let task">
+                        <button mat-stroked-button [color]="'success'" (click)="approveRequest(task)">
+                            Approve
+                        </button>
+                        <button mat-stroked-button color="warn" (click)="rejectRequest(task)">
+                            Reject
+                        </button>
+
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let task; columns: displayedColumns;"
+                         class="task"
+                         matRipple>
+                    <!--[routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">-->
+                </mat-row>
+
+            </mat-table>
+            <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+        </div>
+
+    </div>
+</div>
