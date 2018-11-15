@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {SubmittedRequest} from './submitted.request.model';
+import {BpmnDiagramModel} from './bpmn-diagram.model';
 
 @Injectable()
 export class RequestHistoryService {
@@ -12,7 +13,7 @@ export class RequestHistoryService {
         return this.http.get<SubmittedRequest[]>('server/api/v1/camunda/submitted-tasks');
     }
 
-    getBpmnDiagram(taskId: string): Observable<string> {
-        return this.http.get('server/api/v1/camunda/diagram/' + taskId, {responseType: 'text'});
+    getBpmnDiagram(taskId: string): Observable<BpmnDiagramModel> {
+        return this.http.get<BpmnDiagramModel>('server/api/v1/camunda/diagram/' + taskId);
     }
 }

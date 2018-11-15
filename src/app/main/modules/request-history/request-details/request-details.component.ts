@@ -1,16 +1,20 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import BpmnViewer from 'bpmn-js/lib/Viewer.js';
 import {RequestHistoryService} from '../request-history.service';
+import {BpmnDiagramModel} from '../bpmn-diagram.model';
 
 @Component({
     selector: 'app-request-details',
     templateUrl: './request-details.component.html',
-    styleUrls: ['./request-details.component.scss']
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./request-details.component.scss',
+        '../../../../../../node_modules/bpmn-js/dist/assets/diagram-js.css',
+        '../../../../../../node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css']
 })
 export class RequestDetailsComponent implements OnInit {
     taskId: string;
-    bpmnDiagram: string;
+    bpmnDiagram: BpmnDiagramModel;
 
     @ViewChild('canvas') canvas;
 
@@ -19,27 +23,28 @@ export class RequestDetailsComponent implements OnInit {
         private requestHistoryService: RequestHistoryService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.taskId = this.route.snapshot.paramMap.get('taskId');
 
         this.requestHistoryService.getBpmnDiagram(this.taskId).subscribe(
             diagram => {
                 this.bpmnDiagram = diagram;
-                this.renderBpmnDiagram();
+                this.renderBpmnDiagram(this.bpmnDiagram.xml, this.bpmnDiagram.taskDefinitionKey);
             },
             error => console.error(error)
         );
     }
 
-    private renderBpmnDiagram(): void {
+    private renderBpmnDiagram(bpmnXml: string, taskDefinitionKey: string): void {
         const viewer = new BpmnViewer({
-            container: this.canvas.nativeElement
+            container: this.canvas.nativeElement,
+            width: '100%',
+            height: '100%'
         });
 
-        viewer.importXML(this.bpmnDiagram, function (err) {
+        viewer.importXML(bpmnXml, function (err): void {
 
             if (!err) {
-                console.log('success!');
                 // viewer.get('canvas').zoom('fit-viewport');
                 const canvas = viewer.get('canvas');
                 // zoom to fit full viewport
@@ -47,7 +52,7 @@ export class RequestDetailsComponent implements OnInit {
                 // container.removeClass('with-error')
                 //     .addClass('with-diagram');
                 // // add marker
-                // canvas.addMarker(marker.taskDefinitionKey, 'highlight');
+                canvas.addMarker(taskDefinitionKey, 'highlight');
             } else {
                 console.log('something went wrong:', err);
             }
