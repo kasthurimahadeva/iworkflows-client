@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {
     MatButtonModule,
     MatChipsModule,
@@ -14,16 +14,21 @@ import {
     MatSnackBarModule,
     MatSortModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule, MatTooltipModule
 } from '@angular/material';
 
-import { CamundaTaskListComponent } from './camunda-task-list/camunda-task-list.component';
-import { CamundaTaskRoutingModule } from '../../routing/camunda-task-routing.module';
-import { TaskService } from '../../../shared/task.service';
-import { CamundaTaskComponent } from './camunda-task/camunda-task.component';
+import {CamundaTaskRoutingModule} from '../../routing/camunda-task-routing.module';
+import {CamundaTaskComponent} from './camunda-task/camunda-task.component';
+import {MyTaskListComponent} from './my-task-list/my-task-list.component';
+import {FuseSharedModule} from '../../../../@fuse/shared.module';
+import {FuseWidgetModule} from '../../../../@fuse/components';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
+        BrowserAnimationsModule,
         CommonModule,
         CamundaTaskRoutingModule,
 
@@ -41,7 +46,13 @@ import { CamundaTaskComponent } from './camunda-task/camunda-task.component';
         MatTableModule,
         MatTabsModule,
         MatProgressSpinnerModule,
+        NgxChartsModule,
+        FuseSharedModule,
+        FuseWidgetModule,
+        MatTooltipModule,
+        FormsModule
     ],
-    declarations: [CamundaTaskListComponent, CamundaTaskComponent],
+    declarations: [CamundaTaskComponent, MyTaskListComponent],
 })
-export class CamundaTaskModule {}
+export class CamundaTaskModule {
+}

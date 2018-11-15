@@ -49,7 +49,7 @@ export class TaskService {
         const source = new EventSource('http://localhost:8080/stream', {withCredentials: true});
         source.addEventListener('message', message => {
             // let n: Notification; // need to have this Notification model class in angular2
-            // n = JSON.parse(message.data);
+            // n = JSON.parse(message.dataSource);
             console.log(message.data);
         });
     }
