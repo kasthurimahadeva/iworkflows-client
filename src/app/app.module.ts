@@ -1,6 +1,6 @@
 import 'hammerjs';
 
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable, NgModule} from '@angular/core';
 import {
     MatAutocompleteModule,
@@ -51,7 +51,6 @@ import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {AppComponent} from 'app/app.component';
 import {fuseConfig} from 'app/fuse-config';
 import {LayoutModule} from 'app/layout/layout.module';
-import {SampleModule} from 'app/main/sample/sample.module';
 import {ToastrModule} from 'ngx-toastr';
 import {Observable} from 'rxjs';
 
@@ -162,7 +161,6 @@ export class XhrInterceptor implements HttpInterceptor {
         TodoModule,
         CamundaTaskModule,
         RequestHistoryModule,
-        SampleModule,
         AppRoutingModule
     ],
     providers: [
