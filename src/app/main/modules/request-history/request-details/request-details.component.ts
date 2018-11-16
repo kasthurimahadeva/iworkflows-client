@@ -49,9 +49,20 @@ export class RequestDetailsComponent implements OnInit {
                 // zoom to fit full viewport
                 canvas.zoom('fit-viewport');
                 canvas.addMarker(taskDefinitionKey, 'highlight');
+                // const overlays = viewer.get('overlays');
+                // overlays.add(taskDefinitionKey, {
+                //         position: {
+                //             bottom: 0,
+                //             right: 0
+                //         },
+                //         html: '<div><span matBadge="4" matBadgeOverlap="false">Text with a badge</span></div>'
+                //     }
+                // );
             } else {
                 console.log('something went wrong:', err);
             }
         });
+
+
     }
 }
