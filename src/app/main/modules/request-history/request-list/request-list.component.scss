@@ -17,7 +17,7 @@ app-request-list {
 
                 .search-wrapper {
                     width: 100%;
-                    max-width: 360px;
+                    max-width: 480px;
                     border-radius: 28px;
                     overflow: hidden;
                     @include mat-elevation(1);
@@ -53,65 +53,64 @@ app-request-list {
             }
         }
     }
-}
+
+    .request-table {
+        flex: 1 1 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+        .mat-header-row {
+            min-height: 64px;
+        }
+
+        //.mat-header-cell {
+        //    margin: auto;
+        //}
+
+        .task {
+            //position: relative;
+            cursor: pointer;
+            height: 50px;
+        }
+
+        .mat-cell {
+            min-width: 0;
+            display: flex;
+        }
+
+        .mat-column-id {
+            flex: 0 1 84px;
+        }
+
+        .mat-column-type {
+            flex: 0 1 200px;
+        }
 
 
+        .mat-column-due_date {
+            flex: 0 1 200px;
+        }
 
+        .mat-column-assignee {
+            flex: 0 1 150px;
+        }
 
-/* Structure */
+        .mat-column-submitted_date {
+            flex: 0 1 200px;
+        }
 
-.newRequest {
-    max-width: 150px;
-    background: white;
-    min-height: 30px;
-    text-align: center;
-    align-content: center;
-}
+        .mat-column-progress {
+            flex: 0 1 250px;
+        }
 
+        .leave_process {
+            background: darkorchid;
+            color: white;
+        }
 
-mat-option {
-
-}
-
-.example-container {
-    position: relative;
-}
-
-.example-table-container {
-    position: relative;
-    max-height: 400px;
-    overflow: auto;
-}
-
-table {
-    width: 100%;
-}
-
-.example-loading-shade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 56px;
-    right: 0;
-    background: rgba(0, 0, 0, 0.15);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.example-rate-limit-reached {
-    color: #980000;
-    max-width: 360px;
-    text-align: center;
-}
-
-/* Column Widths */
-.mat-column-number,
-.mat-column-state {
-    max-width: 64px;
-}
-
-.mat-column-created {
-    max-width: 124px;
+        .loan_process {
+            background: #8BD649;
+        }
+    }
 }
