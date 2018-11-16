@@ -45,13 +45,9 @@ export class RequestDetailsComponent implements OnInit {
         viewer.importXML(bpmnXml, function (err): void {
 
             if (!err) {
-                // viewer.get('canvas').zoom('fit-viewport');
                 const canvas = viewer.get('canvas');
                 // zoom to fit full viewport
                 canvas.zoom('fit-viewport');
-                // container.removeClass('with-error')
-                //     .addClass('with-diagram');
-                // // add marker
                 canvas.addMarker(taskDefinitionKey, 'highlight');
             } else {
                 console.log('something went wrong:', err);
