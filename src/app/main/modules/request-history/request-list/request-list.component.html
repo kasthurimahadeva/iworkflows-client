@@ -91,6 +91,13 @@
                     </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                    <mat-cell *matCellDef="let request">
+                        <p class="text-truncate">{{request.status | titlecase}}</p>
+                    </mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="progress">
                     <mat-header-cell *matHeaderCellDef>Progress</mat-header-cell>
                     <mat-cell *matCellDef="let request">

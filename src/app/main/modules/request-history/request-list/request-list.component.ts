@@ -16,7 +16,7 @@ import {fuseAnimations} from '@fuse/animations';
 })
 export class RequestListComponent implements OnInit {
     submittedRequests: SubmittedRequest[];
-    displayedColumns: string[] = ['id', 'type', 'submitted_date', 'due_date', 'assignee', 'progress'];
+    displayedColumns: string[] = ['id', 'type', 'submitted_date', 'status', 'progress'];
     resultsLength = 0;
     isLoadingResults = true;
 
