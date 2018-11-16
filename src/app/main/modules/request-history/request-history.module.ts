@@ -7,6 +7,7 @@ import {RequestListComponent} from './request-list/request-list.component';
 import {MatButtonModule, MatIconModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSortModule, MatTableModule, MatTabsModule} from '@angular/material';
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import {FuseSharedModule} from '../../../../@fuse/shared.module';
+import {ProcessDefinitionKeyPipe} from './request-list/process-definition-key.pipe';
 
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import {FuseSharedModule} from '../../../../@fuse/shared.module';
 
         FuseSharedModule
     ],
-    declarations: [RequestListComponent, RequestDetailsComponent],
+    declarations: [RequestListComponent, RequestDetailsComponent, ProcessDefinitionKeyPipe],
     providers: [RequestHistoryService]
 })
 export class RequestHistoryModule {

@@ -2,7 +2,7 @@ export class SubmittedRequest {
     taskId: string;
     processInstanceId: string;
     processDefinitionId: string;
-    type: string;
+    name: string;
     submittedDate: string;
     dueDate: string;
     assignee: string;
