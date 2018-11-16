@@ -105,9 +105,7 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
                 <mat-row *matRowDef="let task; columns: displayedColumns;"
-                         class="task"
-                         matRipple>
-                    <!--[routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">-->
+                         class="task" matRipple [routerLink]="'/task/'+task.processInstanceId">
                 </mat-row>
 
             </mat-table>

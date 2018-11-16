@@ -31,8 +31,8 @@ export const navigation: FuseNavigation[] = [
             },
             {
                 id: 'task',
-                title: 'Task',
-                translate: 'NAV.TASK',
+                title: 'My Tasks',
+                translate: 'NAV.MY_TASKS',
                 type: 'item',
                 icon: 'assignment',
                 url: '/tasks',

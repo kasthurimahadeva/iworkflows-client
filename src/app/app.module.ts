@@ -64,7 +64,7 @@ import {LoginComponent} from './main/components/login/login.component';
 import {TestComponent} from './main/components/test/test.component';
 import {BasicAuthInterceptor} from './main/interceptors/basic.auth.interceptor';
 import {ErrorInterceptor} from './main/interceptors/error.interceptor';
-import {CamundaTaskModule} from './main/modules/camunda-task/camunda-task.module';
+import {MyTaskModule} from './main/modules/my-tasks/my-task.module';
 import {RequestHistoryModule} from './main/modules/request-history/request-history.module';
 import {TodoModule} from './main/modules/todo/todo.module';
 import {AppRoutingModule} from './main/routing/app-routing.module';
@@ -160,7 +160,7 @@ export class XhrInterceptor implements HttpInterceptor {
         // App modules
         LayoutModule,
         TodoModule,
-        CamundaTaskModule,
+        MyTaskModule,
         RequestHistoryModule,
         SampleModule,
         AppRoutingModule
