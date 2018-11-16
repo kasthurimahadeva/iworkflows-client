@@ -65,16 +65,16 @@ export class LeaveFormComponent implements OnInit {
         // Horizontal Stepper form steps
         this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
         this.employeeDetailsStepper = this._formBuilder.group({
-            employeeId: new FormControl({value: this.leaveFormDetails.employeeId, disabled: false}, Validators.required),
-            employeeName: new FormControl({value: this.leaveFormDetails.principal, disabled: false}, Validators.required),
-            faculty: new FormControl({value: this.leaveFormDetails.faculty, disabled: false}, Validators.required),
-            department: new FormControl({value: this.leaveFormDetails.department, disabled: false}),
-            role: new FormControl({value: this.leaveFormDetails.role, disabled: false}, Validators.required)
+            employeeId: new FormControl({value: this.leaveFormDetails.employeeId, disabled: true}, Validators.required),
+            employeeName: new FormControl({value: this.leaveFormDetails.principal, disabled: true}, Validators.required),
+            faculty: new FormControl({value: this.leaveFormDetails.faculty, disabled: true}, Validators.required),
+            department: new FormControl({value: this.leaveFormDetails.department, disabled: true}),
+            role: new FormControl({value: this.leaveFormDetails.role, disabled: true}, Validators.required)
         });
 
         this.contactDetailsStepper = this._formBuilder.group({
             address: new FormControl({value: '', disabled: false}, Validators.required),
-            email: new FormControl({value: this.leaveFormDetails.email, disabled: false}, [Validators.required, Validators.email]),
+            email: new FormControl({value: this.leaveFormDetails.email, disabled: true}, [Validators.required, Validators.email]),
             mobileNo: new FormControl({value: this.leaveFormDetails.mobileNo, disabled: false}, Validators.required),
             telephoneNo: new FormControl({value: '', disabled: false}),
         });
