@@ -107,7 +107,7 @@
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
                 <mat-row *matRowDef="let request; columns: displayedColumns;"
-                         class="request" matRipple [routerLink]="'/history/details/'+request.taskId">
+                         class="request" matRipple [routerLink]="'/history/details/'+request.processInstanceId">
                 </mat-row>
 
             </mat-table>

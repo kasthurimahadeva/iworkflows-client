@@ -13,7 +13,7 @@ import {BpmnDiagramModel} from '../bpmn-diagram.model';
         '../../../../../../node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css']
 })
 export class RequestDetailsComponent implements OnInit {
-    taskId: string;
+    processInstanceId: string;
     bpmnDiagram: BpmnDiagramModel;
 
     @ViewChild('canvas') canvas;
@@ -24,9 +24,9 @@ export class RequestDetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.taskId = this.route.snapshot.paramMap.get('taskId');
+        this.processInstanceId = this.route.snapshot.paramMap.get('processInstanceId');
 
-        this.requestHistoryService.getBpmnDiagram(this.taskId).subscribe(
+        this.requestHistoryService.getBpmnDiagram(this.processInstanceId).subscribe(
             diagram => {
                 this.bpmnDiagram = diagram;
                 this.renderBpmnDiagram(this.bpmnDiagram.xml, this.bpmnDiagram.taskDefinitionKey);
