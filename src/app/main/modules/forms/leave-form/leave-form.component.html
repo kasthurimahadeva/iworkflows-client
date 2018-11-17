@@ -160,7 +160,14 @@
                                 <mat-error>End date is required</mat-error>
                             </mat-form-field>
 
-                            <app-upload></app-upload>
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Relevent documents</mat-label>
+                                <input matInput formControlName="documents" readonly>
+                                <app-upload></app-upload>
+                                <mat-icon matSuffix class="secondary-text">attach_file</mat-icon>
+                            </mat-form-field>
+
+
 
                             <table>
                                 <tr>
