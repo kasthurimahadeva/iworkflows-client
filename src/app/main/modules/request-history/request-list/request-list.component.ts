@@ -6,6 +6,7 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {RequestHistoryService} from '../request-history.service';
 import {SubmittedRequest} from '../submitted.request.model';
 import {fuseAnimations} from '@fuse/animations';
+import {FuseNavigationService} from '../../../../../@fuse/components/navigation/navigation.service';
 
 @Component({
     selector: 'app-request-list',
@@ -19,12 +20,14 @@ export class RequestListComponent implements OnInit {
     displayedColumns: string[] = ['id', 'type', 'submitted_date', 'status', 'progress'];
     resultsLength = 0;
     isLoadingResults = true;
+    badgeCount: number;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(private route: ActivatedRoute,
-                private requstHistoryService: RequestHistoryService) {
+                private requstHistoryService: RequestHistoryService,
+                private _fuseNavigationService: FuseNavigationService) {
     }
 
     ngOnInit(): void {
@@ -43,6 +46,22 @@ export class RequestListComponent implements OnInit {
                     this.isLoadingResults = false;
                     return observableOf([]);
                 })
-            ).subscribe(data => this.submittedRequests = data);
+            ).subscribe(data => {
+                this.submittedRequests = data;
+                this.badgeCount = this.submittedRequests.length;
+                this.updaterequestBadge();
+        });
+    }
+
+    updaterequestBadge(): void
+    {
+        // Update the badge title
+        this._fuseNavigationService.updateNavigationItem('history', {
+            badge: {
+                title: this.badgeCount,
+                bg: '#F63423',
+                fg: '#FFFFFF'
+            }
+        });
     }
 }
