@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import BpmnViewer from 'bpmn-js/lib/Viewer.js';
+import BpmnViewer from 'bpmn-js/lib/NavigatedViewer.js';
 import {RequestHistoryService} from '../request-history.service';
 import {BpmnDiagramModel} from '../bpmn-diagram.model';
 
@@ -42,6 +42,7 @@ export class RequestDetailsComponent implements OnInit {
             height: '100%'
         });
 
+        // noinspection TypeScriptUnresolvedFunction
         viewer.importXML(bpmnXml, function (err): void {
 
             if (!err) {
