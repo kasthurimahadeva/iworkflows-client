@@ -17,6 +17,7 @@ import {LeaveFormComponent} from './leave-form/leave-form.component';
 import {LeaveFormRoutingModule} from '../../routing/leave-form-routing.module';
 import {LeaveFormDataResolver} from './leave-form/leave-form-data.resolver';
 import {LeaveFormService} from './leave-form/leave-form.service';
+import {UploadModule} from '../upload/upload.module';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,8 @@ import {LeaveFormService} from './leave-form/leave-form.service';
         MatNativeDateModule,
         LeaveFormRoutingModule,
         MatRadioModule,
+
+        UploadModule,
 
         FuseSharedModule,
     ],
