@@ -46,11 +46,18 @@ export class LeaveFormComponent implements OnInit {
     }
 
     assignMinDate(): void {
-        this.endMinDate = new Date(this.startDate);
+        if (this.startDate !== null){
+            this.endMinDate = new Date(this.startDate);
+        }
+        else {
+            this.endMinDate = new Date();
+        }
     }
 
     assignMaxDate(): void {
-        this.startMaxDate = new Date(this.endDate);
+        if (this.endDate !== null){
+            this.startMaxDate = new Date(this.endDate);
+        }
     }
 
 
