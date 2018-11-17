@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {Task} from './my.task.model';
-import {TaskDetails} from './my.task.details.module';
+import {TaskDetails} from './my.task.details.model';
 
 declare let EventSource: any;
 
