@@ -11,7 +11,7 @@ export const locale = {
             'TODO': 'To-Do',
             'CONNECT': 'Connect',
             'SETTINGS': 'Settings',
-            'TASK': 'Task',
+            'MY_TASKS': 'My Tasks',
             'HISTORY': 'Submitted Requests',
             'TEST': 'Test',
             'NEW_REQUEST' : 'New Request',

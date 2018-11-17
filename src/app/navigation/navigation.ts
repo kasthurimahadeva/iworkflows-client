@@ -1,4 +1,5 @@
 import {FuseNavigation} from '@fuse/types';
+import {type} from 'os';
 
 export const navigation: FuseNavigation[] = [
     {
@@ -31,10 +32,15 @@ export const navigation: FuseNavigation[] = [
             },
             {
                 id: 'task',
-                title: 'Task',
-                translate: 'NAV.TASK',
+                title: 'My Tasks',
+                translate: 'NAV.MY_TASKS',
                 type: 'item',
                 icon: 'assignment',
+                badge: {
+                    title: '0',
+                    bg: '#FF6F00',
+                    fg: '#FFFFFF'
+                },
                 url: '/tasks',
             },
             {
@@ -55,6 +61,7 @@ export const navigation: FuseNavigation[] = [
             }
         ]
     },
+
     {
         id: 'request',
         title: 'New Request',

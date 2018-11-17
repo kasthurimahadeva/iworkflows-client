@@ -18,7 +18,7 @@ import {
 } from '@angular/material';
 
 import {CamundaTaskRoutingModule} from '../../routing/camunda-task-routing.module';
-import {CamundaTaskComponent} from './camunda-task/camunda-task.component';
+import {MyTaskListDetailsComponent} from './my-task-list-details/my-task-list-details.component';
 import {MyTaskListComponent} from './my-task-list/my-task-list.component';
 import {FuseSharedModule} from '../../../../@fuse/shared.module';
 import {FuseWidgetModule} from '../../../../@fuse/components';
@@ -52,7 +52,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         MatTooltipModule,
         FormsModule
     ],
-    declarations: [CamundaTaskComponent, MyTaskListComponent],
+    declarations: [MyTaskListDetailsComponent, MyTaskListComponent],
 })
-export class CamundaTaskModule {
+export class MyTaskModule {
 }

@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Task } from './camunda.task.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {Task} from './my.task.model';
+import {TaskDetails} from './my.task.details.module';
 
 declare let EventSource: any;
 
@@ -10,6 +11,7 @@ declare let EventSource: any;
 export class TaskService {
 
     tasks: Task[];
+    taskDetails: TaskDetails[];
     onTasksChange: BehaviorSubject<any>;
 
     constructor(
@@ -18,8 +20,7 @@ export class TaskService {
         this.onTasksChange = new BehaviorSubject({});
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
-    {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
 
             Promise.all([
@@ -33,8 +34,7 @@ export class TaskService {
         });
     }
 
-    getTasks(): Promise<any>
-    {
+    getTasks(): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.get<Task>('server/rest/engine/default/task?assignee=admin')
                 .subscribe((response: any) => {
@@ -44,6 +44,18 @@ export class TaskService {
                 }, reject);
         });
     }
+
+    // getTaskDetails(processInstanceId): Promise<any> {
+    //     const detailsUrl = 'server/api/v1/camunda/leave/details/' + processInstanceId;
+    //     return new Promise((resolve, reject) => {
+    //         this.http.get<TaskDetails>(detailsUrl)
+    //             .subscribe((response: any) => {
+    //                 this.taskDetails = response;
+    //                 this.onTasksChange.next(this.taskDetails);
+    //                 resolve(response);
+    //             }, reject);
+    //     });
+    // }
 
     connect(): void {
         const source = new EventSource('http://localhost:8080/stream', {withCredentials: true});
