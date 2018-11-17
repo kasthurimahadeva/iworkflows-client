@@ -27,6 +27,7 @@ export class LeaveFormComponent implements OnInit {
 
     startMinDate = new Date();
     endMinDate = new Date();
+    startMaxDate: Date;
 
 
     // displayedColumns: string[] = ['takenCasualLeaves', 'takenMedicalLeaves', 'takenVacationLeaves'];
@@ -46,6 +47,10 @@ export class LeaveFormComponent implements OnInit {
 
     assignMinDate(): void {
         this.endMinDate = new Date(this.startDate);
+    }
+
+    assignMaxDate(): void {
+        this.startMaxDate = new Date(this.endDate);
     }
 
 
