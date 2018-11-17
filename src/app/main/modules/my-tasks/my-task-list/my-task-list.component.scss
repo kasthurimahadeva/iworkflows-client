@@ -64,12 +64,12 @@ app-my-task-list {
             min-height: 64px;
         }
 
-        //.mat-header-cell {
-        //    margin: auto;
-        //}
+        .mat-header-cell {
+            justify-content: center;
+        }
 
         .task {
-            //position: relative;
+            position: relative;
             cursor: pointer;
             height: 50px;
         }
@@ -77,6 +77,7 @@ app-my-task-list {
         .mat-cell {
             min-width: 0;
             display: flex;
+            justify-content: center;
         }
 
         .mat-column-id {
@@ -104,7 +105,7 @@ app-my-task-list {
         }
 
         .mat-column-actions {
-            flex: 0 1 250px;
+            flex: 0 1 350px;
         }
 
         .active-icon {
