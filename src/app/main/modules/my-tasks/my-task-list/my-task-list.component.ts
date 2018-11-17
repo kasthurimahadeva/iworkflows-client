@@ -1,14 +1,17 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {fuseAnimations} from '@fuse/animations';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Task} from '../my.task.model';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {MatPaginator, MatSort, MatTable, MatTableDataSource} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatSort, MatTable, MatTableDataSource} from '@angular/material';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {FuseNavigationService} from '../../../../../@fuse/components/navigation/navigation.service';
+import {DialogOverviewExampleDialog} from '../../../../../assets/angular-material-examples/dialog-overview/dialog-overview-example';
+import {RejectCommentsComponent} from '../reject-comments/reject-comments.component';
+import {isRejected} from 'q';
 
 @Component({
     selector: 'app-my-task-list',
@@ -24,6 +27,9 @@ export class MyTaskListComponent implements OnInit {
     dataSource: MatTableDataSource<Task>;
     selection = new SelectionModel<Task>(true, []);
     badgeCount: number;
+    comments: Object = {
+        comment: ''
+    };
 
     resultsLength = 0;
     isLoadingResults = true;
@@ -35,7 +41,8 @@ export class MyTaskListComponent implements OnInit {
     constructor(private http: HttpClient,
                 private toastr: ToastrService,
                 private router: Router,
-                private _fuseNavigationService: FuseNavigationService) {
+                private _fuseNavigationService: FuseNavigationService,
+                public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -84,7 +91,7 @@ export class MyTaskListComponent implements OnInit {
 
     approveRequest(task: Task): void {
         const postUrl = 'server/api/v1/camunda/leave/complete/' + task.taskId + '/true';
-        this.http.post(postUrl, true, {observe: 'response'}).subscribe(
+        this.http.post(postUrl, this.comments, {observe: 'response'}).subscribe(
             response => {
                 if (response.status === 200) {
                     this.dataSource.data.splice((this.dataSource.data.indexOf(this.dataSource.data.filter((t) => t.taskId === task.taskId)[0])), 1);
@@ -105,8 +112,8 @@ export class MyTaskListComponent implements OnInit {
     }
 
     rejectRequest(task: Task): void {
-        const postUrl = 'server/api/v1/camunda/leave/complete/' + task.taskId + '/true';
-        this.http.post(postUrl, false, {observe: 'response'}).subscribe(
+        const postUrl = 'server/api/v1/camunda/leave/complete/' + task.taskId + '/false';
+        this.http.post(postUrl, this.comments, {observe: 'response'}).subscribe(
             response => {
                 if (response.status === 200) {
                     this.dataSource.data.splice((this.dataSource.data.indexOf(this.dataSource.data.filter((t) => t.taskId === task.taskId)[0])), 1);
@@ -127,12 +134,27 @@ export class MyTaskListComponent implements OnInit {
         this.router.navigate(['tasks']);
     }
 
-    updateTaskBadge(): void
-    {
+    updateTaskBadge(): void {
         // Update the badge title
         this._fuseNavigationService.updateNavigationItem('task', {
             badge: {
                 title: this.badgeCount
+            }
+        });
+    }
+
+    openDialog(task: Task): void {
+        let isRejected;
+        const dialogRef = this.dialog.open(RejectCommentsComponent, {
+            width: '500px',
+            data: {isRejected: isRejected, comments: this.comments}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result.isRejected){
+                this.comments['comment'] = result.comments;
+                this.rejectRequest(task);
             }
         });
     }
@@ -151,3 +173,7 @@ export class TaskHttpDao {
         return this.http.get<Task[]>(href);
     }
 }
+
+
+
+

@@ -1,0 +1,15 @@
+<!--<div mat-dialog-title>Reason</div>-->
+
+<div mat-dialog-content>
+    <mat-form-field [formGroup] = "rejectComment" appearance="outline" fxFlex="100">
+        <mat-label>Comments</mat-label>
+        <textarea matInput formControlName="comments" required></textarea>
+        <mat-icon matSuffix class="secondary-text">comment</mat-icon>
+        <mat-error>Comment is required!</mat-error>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button id="reject" color="warn" (click)="onClickReject()">Reject</button>
+    <button mat-raised-button id="cancel" (click)="onClickCancel()">Cancel</button>
+</div>

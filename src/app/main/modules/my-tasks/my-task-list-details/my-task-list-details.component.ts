@@ -4,7 +4,7 @@ import {fuseAnimations} from '@fuse/animations';
 
 import {TaskService} from '../../../../shared/task.service';
 import {ActivatedRoute} from '@angular/router';
-import {TaskDetails} from '../my.task.details.module';
+import {TaskDetails} from '../my.task.details.model';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({

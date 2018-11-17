@@ -25,6 +25,7 @@ import {FuseWidgetModule} from '../../../../@fuse/components';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { RejectCommentsComponent } from './reject-comments/reject-comments.component';
 
 @NgModule({
     imports: [
@@ -52,7 +53,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         MatTooltipModule,
         FormsModule
     ],
-    declarations: [MyTaskListDetailsComponent, MyTaskListComponent],
+    declarations: [MyTaskListDetailsComponent, MyTaskListComponent, RejectCommentsComponent],
+    entryComponents: [RejectCommentsComponent]
 })
 export class MyTaskModule {
 }
