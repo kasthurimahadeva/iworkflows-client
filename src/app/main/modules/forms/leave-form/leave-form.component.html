@@ -66,7 +66,7 @@
                         </div>
 
                         <div fxLayout="row" fxLayoutAlign="center center">
-                            <button mat-raised-button matStepperNext type="button" color="accent">
+                            <button mat-raised-button matStepperNext type="button" color="accent" [disabled]="employeeDetailsStepper.invalid">
                                 Next
                             </button>
                         </div>
@@ -119,7 +119,7 @@
                             <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                                 Previous
                             </button>
-                            <button mat-raised-button matStepperNext type="button" color="accent">
+                            <button mat-raised-button matStepperNext type="button" color="accent" [disabled]="contactDetailsStepper.invalid">
                                 Next
                             </button>
                         </div>
@@ -146,7 +146,7 @@
                             <mat-form-field appearance="outline" fxFlex="100">
                                 <mat-label>Start date</mat-label>
                                 <input matInput (dateInput) = "getStartDate($event)" [matDatepicker] ="startPicker"
-                                       [min]="startMinDate" formControlName="startDate">
+                                       [min]="startMinDate" [max]="startMaxDate" formControlName="startDate" (click)="assignMaxDate()" required>
                                 <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
                                 <mat-datepicker #startPicker></mat-datepicker>
                                 <mat-error>Start date is required</mat-error>
@@ -192,7 +192,7 @@
                             <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                                 Previous
                             </button>
-                            <button mat-raised-button color="accent" class="submit-button" type="submit" (click)="submitLeaveForm()">
+                            <button mat-raised-button color="accent" class="submit-button" type="submit" (click)="submitLeaveForm()" [disabled]="leaveDetailsStepper.invalid">
                                 Submit
                             </button>
                         </div>
