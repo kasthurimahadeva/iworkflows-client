@@ -92,6 +92,9 @@
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef></mat-header-cell>
                     <mat-cell *matCellDef="let task">
+                        <button mat-stroked-button color="accent" [routerLink]="'/task/'+task.processInstanceId">
+                            View
+                        </button>
                         <button mat-stroked-button [color]="'success'" (click)="approveRequest(task)">
                             Approve
                         </button>
@@ -105,7 +108,7 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
 
                 <mat-row *matRowDef="let task; columns: displayedColumns;"
-                         class="task" matRipple [routerLink]="'/task/'+task.processInstanceId">
+                         class="task" matRipple>
                 </mat-row>
 
             </mat-table>

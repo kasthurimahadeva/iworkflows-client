@@ -8,6 +8,7 @@ import {MatPaginator, MatSort, MatTable, MatTableDataSource} from '@angular/mate
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
+import {FuseNavigationService} from '../../../../../@fuse/components/navigation/navigation.service';
 
 @Component({
     selector: 'app-my-task-list',
@@ -33,7 +34,8 @@ export class MyTaskListComponent implements OnInit {
 
     constructor(private http: HttpClient,
                 private toastr: ToastrService,
-                private router: Router) {
+                private router: Router,
+                private _fuseNavigationService: FuseNavigationService) {
     }
 
     ngOnInit() {
@@ -74,8 +76,10 @@ export class MyTaskListComponent implements OnInit {
                 this.database = data;
                 this.dataSource = new MatTableDataSource<Task>(this.database);
                 this.badgeCount = this.database.length;
+                this.updateTaskBadge();
 
             });
+
     }
 
     approveRequest(task: Task): void {
@@ -87,6 +91,7 @@ export class MyTaskListComponent implements OnInit {
                     this.dataSource = new MatTableDataSource<Task>(this.dataSource.data);
                     this.selection = new SelectionModel<Task>(true, []);
                     this.badgeCount = this.database.length;
+                    this.updateTaskBadge();
                     this.toastr.success('Request approved', 'Success');
 
                 }
@@ -100,7 +105,7 @@ export class MyTaskListComponent implements OnInit {
     }
 
     rejectRequest(task: Task): void {
-        let postUrl = 'server/api/v1/camunda/leave/complete/' + task.taskId + '/true';
+        const postUrl = 'server/api/v1/camunda/leave/complete/' + task.taskId + '/true';
         this.http.post(postUrl, false, {observe: 'response'}).subscribe(
             response => {
                 if (response.status === 200) {
@@ -108,6 +113,7 @@ export class MyTaskListComponent implements OnInit {
                     this.dataSource = new MatTableDataSource<Task>(this.dataSource.data);
                     this.selection = new SelectionModel<Task>(true, []);
                     this.badgeCount = this.database.length;
+                    this.updateTaskBadge();
                     this.toastr.success('Request rejected', 'Success');
 
                 }
@@ -119,6 +125,16 @@ export class MyTaskListComponent implements OnInit {
         );
 
         this.router.navigate(['tasks']);
+    }
+
+    updateTaskBadge(): void
+    {
+        // Update the badge title
+        this._fuseNavigationService.updateNavigationItem('task', {
+            badge: {
+                title: this.badgeCount
+            }
+        });
     }
 
 }
