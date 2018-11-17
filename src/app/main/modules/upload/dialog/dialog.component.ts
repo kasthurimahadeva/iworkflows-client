@@ -18,6 +18,7 @@ export class DialogComponent implements OnInit {
     primaryButtonText = 'Upload';
     showCancelButton = true;
     uploading = false;
+    fileAdded = false;
     uploadSuccessful = false;
 
     constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: UploadService) {
@@ -35,6 +36,7 @@ export class DialogComponent implements OnInit {
         for (let key in files) {
             if (!isNaN(parseInt(key))) {
                 this.files.add(files[key]);
+                this.fileAdded = true;
             }
         }
     }
