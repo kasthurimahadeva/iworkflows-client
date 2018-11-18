@@ -1,1 +1,3 @@
+<div class="message" *ngIf="filesAdded && filesCount === 1">{{filesCount}} file successfully uploaded</div>
+<div class="message" *ngIf="filesAdded && filesCount > 1">{{filesCount}} files successfully uploaded</div>
 <button mat-raised-button  (click)="openUploadDialog()">Upload</button>
