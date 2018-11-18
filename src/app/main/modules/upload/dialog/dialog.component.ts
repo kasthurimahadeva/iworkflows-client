@@ -20,6 +20,7 @@ export class DialogComponent implements OnInit {
     uploading = false;
     fileAdded = false;
     uploadSuccessful = false;
+    filesName = [];
 
     constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: UploadService) {
     }
@@ -44,7 +45,9 @@ export class DialogComponent implements OnInit {
     closeDialog() {
         // if everything was uploaded already, just close the dialog
         if (this.uploadSuccessful) {
-            return this.dialogRef.close(this.files.size);
+            this.files.forEach(file => this.filesName.push(file.name));
+            console.log(this.filesName);
+            return this.dialogRef.close(this.filesName);
         }
 
         // set the component state to "uploading"

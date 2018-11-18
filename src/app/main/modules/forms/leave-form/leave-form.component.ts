@@ -24,7 +24,7 @@ export class LeaveFormComponent implements OnInit {
     endDate: Date;
     startDateValue: string;
     endDateValue: string;
-
+    files = [];
     startMinDate = new Date();
     endMinDate = new Date();
     startMaxDate: Date;
@@ -115,7 +115,10 @@ export class LeaveFormComponent implements OnInit {
         const leaveDetails = this.leaveDetailsStepper.value;
         leaveDetails.startDate = this.startDateValue;
         leaveDetails.endDate = this.endDateValue;
+        leaveDetails.documents = this.files;
         const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
+
+        console.log(JSON.stringify(leaveData));
 
         const headers = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -134,5 +137,10 @@ export class LeaveFormComponent implements OnInit {
         );
 
         this.router.navigate(['dashboard']);
+    }
+
+    getFilesDetails(files: Array<string>): void{
+        this.files = this.files.concat(files);
+        console.log(this.files);
     }
 }
