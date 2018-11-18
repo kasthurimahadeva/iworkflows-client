@@ -23,7 +23,7 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
     // Private
     private _fusePerfectScrollbar: FusePerfectScrollbarDirective;
     private _unsubscribeAll: Subject<any>;
-    private loggedInUserName: string;
+    loggedInUserName: string;
 
     /**
      * Constructor

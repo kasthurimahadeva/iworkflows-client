@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./reject-comments.component.scss']
 })
 export class RejectCommentsComponent implements OnInit {
-    private rejectComment: FormGroup;
+    rejectComment: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<RejectCommentsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
