@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {LeaveFormDetails} from './leave-details.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import swal from 'sweetalert';
 
 @Component({
     selector: 'leave-forms',
@@ -46,7 +47,7 @@ export class LeaveFormComponent implements OnInit {
     }
 
     assignMinDate(): void {
-        if (this.startDate !== null){
+        if (this.startDate !== null) {
             this.endMinDate = new Date(this.startDate);
         }
         else {
@@ -55,7 +56,7 @@ export class LeaveFormComponent implements OnInit {
     }
 
     assignMaxDate(): void {
-        if (this.endDate !== null){
+        if (this.endDate !== null) {
             this.startMaxDate = new Date(this.endDate);
         }
     }
@@ -110,36 +111,52 @@ export class LeaveFormComponent implements OnInit {
     }
 
     submitLeaveForm(): void {
-        const employeeDetails = this.employeeDetailsStepper.value;
-        const contactDetails = this.contactDetailsStepper.value;
-        const leaveDetails = this.leaveDetailsStepper.value;
-        leaveDetails.startDate = this.startDateValue;
-        leaveDetails.endDate = this.endDateValue;
-        leaveDetails.documents = this.files;
-        const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
+        if (this.endDate.getTime() < this.startDate.getTime()) {
+            // alert('End date should be later than the start date');
+            swal('Oops', 'End date should be later than the start date!', 'error');
+        }
 
-        console.log(JSON.stringify(leaveData));
+        else if (this.leaveDetailsStepper.value['leaveType'] === 'Medical' &&
+            (Math.round(Math.abs(this.endDate.getTime() - this.startDate.getTime()) / (24 * 60 * 60 * 1000))) > 2){
+            if (this.files.length === 0){
+                swal('Oops', 'Relevent document is required', 'error');
 
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json'
-        });
-
-        this.http.post('/server/api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
-            response => {
-                if (response.status === 200) {
-                    this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});
-                }
-            },
-            error => {
-                console.error(error);
-                this.toastr.error('Could not submit the leave request', 'Failed');
             }
-        );
+        }
 
-        this.router.navigate(['dashboard']);
+        else{
+            const employeeDetails = this.employeeDetailsStepper.value;
+            const contactDetails = this.contactDetailsStepper.value;
+            const leaveDetails = this.leaveDetailsStepper.value;
+            leaveDetails.startDate = this.startDateValue;
+            leaveDetails.endDate = this.endDateValue;
+            leaveDetails.documents = this.files;
+            const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
+
+            console.log(JSON.stringify(leaveData));
+
+            const headers = new HttpHeaders({
+                'Content-Type': 'application/json'
+            });
+
+            this.http.post('/server/api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
+                response => {
+                    if (response.status === 200) {
+                        this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});
+                    }
+                },
+                error => {
+                    console.error(error);
+                    this.toastr.error('Could not submit the leave request', 'Failed');
+                }
+            );
+
+            this.router.navigate(['dashboard']);
+        }
+
     }
 
-    getFilesDetails(files: Array<string>): void{
+    getFilesDetails(files: Array<string>): void {
         this.files = this.files.concat(files);
         console.log(this.files);
     }
