@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {UploadService} from '../upload.service';
 import {DialogComponent} from '../dialog/dialog.component';
@@ -11,6 +11,7 @@ import {DialogComponent} from '../dialog/dialog.component';
 export class UploadComponent {
     filesCount = 0;
     filesAdded = false;
+    @Output() filesDetails = new EventEmitter<Array<string>>();
 
     constructor(public dialog: MatDialog, public uploadService: UploadService) {
     }
@@ -19,9 +20,10 @@ export class UploadComponent {
         const dialogRef = this.dialog.open(DialogComponent, {width: '50%', height: '50%'});
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
-            if (result !== undefined && result > 0){
-                this.filesCount = this.filesCount + result;
+            if (result !== undefined && result.length > 0){
+                this.filesCount = this.filesCount + result.length;
                 this.filesAdded = true;
+                this.filesDetails.emit(result);
             }
         });
     }
