@@ -48,7 +48,7 @@ export class RequestListComponent implements OnInit {
                 })
             ).subscribe(data => {
                 this.submittedRequests = data;
-                this.badgeCount = this.submittedRequests.length;
+                this.badgeCount = this.submittedRequests.filter((request) => request.status === 'in_progress').length;
                 this.updaterequestBadge();
         });
     }
