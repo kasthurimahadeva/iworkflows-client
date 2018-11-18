@@ -9,12 +9,21 @@ import {DialogComponent} from '../dialog/dialog.component';
     styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent {
+    filesCount = 0;
+    filesAdded = false;
 
     constructor(public dialog: MatDialog, public uploadService: UploadService) {
     }
 
-    public openUploadDialog() {
-        let dialogRef = this.dialog.open(DialogComponent, {width: '50%', height: '50%'});
+    public openUploadDialog(): void{
+        const dialogRef = this.dialog.open(DialogComponent, {width: '50%', height: '50%'});
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            if (result !== undefined && result > 0){
+                this.filesCount = this.filesCount + result;
+                this.filesAdded = true;
+            }
+        });
     }
 
 }
