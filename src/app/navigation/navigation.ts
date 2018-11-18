@@ -38,7 +38,7 @@ export const navigation: FuseNavigation[] = [
                 icon: 'assignment',
                 badge: {
                     title: '0',
-                    bg: '#FF6F00',
+                    bg: '#d695ff',
                     fg: '#FFFFFF'
                 },
                 url: '/tasks',
