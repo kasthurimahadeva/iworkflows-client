@@ -26,6 +26,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RejectCommentsComponent } from './reject-comments/reject-comments.component';
+import {RequestsModule} from '../forms/requests.module';
 
 @NgModule({
     imports: [
@@ -51,7 +52,8 @@ import { RejectCommentsComponent } from './reject-comments/reject-comments.compo
         FuseSharedModule,
         FuseWidgetModule,
         MatTooltipModule,
-        FormsModule
+        FormsModule,
+        RequestsModule
     ],
     declarations: [MyTaskListDetailsComponent, MyTaskListComponent, RejectCommentsComponent],
     entryComponents: [RejectCommentsComponent]
