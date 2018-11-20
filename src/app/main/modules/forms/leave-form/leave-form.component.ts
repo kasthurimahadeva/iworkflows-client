@@ -117,11 +117,9 @@ export class LeaveFormComponent implements OnInit {
         }
 
         else if (this.leaveDetailsStepper.value['leaveType'] === 'Medical' &&
-            (Math.round(Math.abs(this.endDate.getTime() - this.startDate.getTime()) / (24 * 60 * 60 * 1000))) > 2){
-            if (this.files.length === 0){
-                swal('Oops', 'Relevent document is required', 'error');
-
-            }
+            (Math.round(Math.abs(this.endDate.getTime() - this.startDate.getTime()) / (24 * 60 * 60 * 1000))) > 2 &&
+            (this.files.length === 0)){
+            swal('Oops', 'Relevent document is required', 'error');
         }
 
         else{
