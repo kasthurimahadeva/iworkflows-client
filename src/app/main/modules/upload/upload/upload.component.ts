@@ -19,7 +19,6 @@ export class UploadComponent {
     public openUploadDialog(): void{
         const dialogRef = this.dialog.open(DialogComponent, {width: '50%', height: '50%'});
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
             if (result !== undefined && result.length > 0){
                 this.filesCount = this.filesCount + result.length;
                 this.filesAdded = true;

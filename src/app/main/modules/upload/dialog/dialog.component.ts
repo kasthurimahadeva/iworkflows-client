@@ -25,16 +25,16 @@ export class DialogComponent implements OnInit {
     constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: UploadService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
-    addFiles() {
+    addFiles(): void {
         this.file.nativeElement.click();
     }
 
-    onFilesAdded() {
+    onFilesAdded(): void {
         const files: { [key: string]: File } = this.file.nativeElement.files;
-        for (let key in files) {
+        for (const key in files) {
             if (!isNaN(parseInt(key))) {
                 this.files.add(files[key]);
                 this.fileAdded = true;
@@ -46,7 +46,6 @@ export class DialogComponent implements OnInit {
         // if everything was uploaded already, just close the dialog
         if (this.uploadSuccessful) {
             this.files.forEach(file => this.filesName.push(file.name));
-            console.log(this.filesName);
             return this.dialogRef.close(this.filesName);
         }
 
@@ -58,7 +57,7 @@ export class DialogComponent implements OnInit {
 
         // convert the progress map into an array
         let allProgressObservables = [];
-        for (let key in this.progress) {
+        for (const key in this.progress) {
             allProgressObservables.push(this.progress[key].progress);
         }
 

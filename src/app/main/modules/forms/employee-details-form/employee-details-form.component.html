@@ -1,0 +1,43 @@
+<form fxLayout="column" [formGroup]="employeeDetailsForm">
+
+    <div fxFlex="1 0 auto" fxLayout="column">
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Employee Id</mat-label>
+            <input matInput formControlName="employeeId" readonly required>
+            <mat-icon matSuffix class="secondary-text">assignment_index</mat-icon>
+            <mat-error>Employee Id is required!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Employee Name</mat-label>
+            <input matInput formControlName="employeeName" readonly required>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <mat-error>Employee Name is required!</mat-error>
+        </mat-form-field>
+
+        <div class="row">
+            <mat-form-field appearance="outline" fxFlex="100" id = "faculty">
+                <mat-label>Faculty</mat-label>
+                <input matInput formControlName="faculty" readonly required>
+                <mat-icon matSuffix class="secondary-text">account_balance</mat-icon>
+                <mat-error>Faculty is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="100" id = "department">
+                <mat-label>Department</mat-label>
+                <input matInput formControlName="department" readonly>
+                <mat-icon matSuffix class="secondary-text">location_city</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Role</mat-label>
+            <input matInput formControlName="role" readonly required>
+            <mat-error>Role is required!</mat-error>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+        </mat-form-field>
+
+    </div>
+
+</form>
