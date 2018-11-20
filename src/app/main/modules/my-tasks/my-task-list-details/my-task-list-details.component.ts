@@ -6,6 +6,7 @@ import {TaskService} from '../../../../shared/task.service';
 import {ActivatedRoute} from '@angular/router';
 import {TaskDetails} from '../my.task.details.model';
 import {ToastrService} from 'ngx-toastr';
+import { environment } from 'environments/environment';
 
 @Component({
     selector: 'app-camunda-task',
@@ -42,7 +43,7 @@ export class MyTaskListDetailsComponent implements OnInit {
     }
 
     private getTaskDetails(processInstanceId): void {
-        const detailsUrl = 'server/api/v1/camunda/leave/details/' + processInstanceId;
+        const detailsUrl = environment.server + 'api/v1/camunda/leave/details/' + processInstanceId;
         this.httpClient.get<TaskDetails>(detailsUrl).subscribe(
             taskDetails => {
                 this.taskDetails = taskDetails;

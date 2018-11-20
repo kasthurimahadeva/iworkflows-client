@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-const proxy = require('express-http-proxy');
+// const proxy = require('http-proxy-middleware');
 const cors = require('cors');
 
 const app = express();
@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes proxy to point to spring boot server
-app.use('/server', proxy('http://iworkflows.projects.mrt.ac.lk:8080'));
+// app.use('/server', proxy({ target: 'http://localhost:8080'}));
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

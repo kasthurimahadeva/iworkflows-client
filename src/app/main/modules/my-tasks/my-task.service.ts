@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {Task} from './my.task.model';
 import {TaskDetails} from './my.task.details.model';
+import { environment } from 'environments/environment';
 
 declare let EventSource: any;
 
@@ -36,7 +37,7 @@ export class TaskService {
 
     getTasks(): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get<Task>('server/rest/engine/default/task?assignee=admin')
+            this.http.get<Task>(environment.server + 'rest/engine/default/task?assignee=admin')
                 .subscribe((response: any) => {
                     this.tasks = response;
                     this.onTasksChange.next(this.tasks);
@@ -67,7 +68,7 @@ export class TaskService {
     }
 
     send(): void {
-        this.http.get('server/sse/emit', {observe: 'response'}).subscribe(
+        this.http.get(environment.server + 'sse/emit', {observe: 'response'}).subscribe(
             response => {
                 console.log('Triggered ' + response);
                 if (response.status === 200) {

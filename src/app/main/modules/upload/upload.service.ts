@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {HttpClient, HttpEventType, HttpRequest, HttpResponse} from '@angular/common/http';
+import { environment } from 'environments/environment';
 
-const url = 'server/api/v1/file/upload';
+const url = environment.server + 'api/v1/file/upload';
 
 @Injectable()
 export class UploadService {
