@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+th, td{
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #ccc;
+}
+
+.header{
+    background: #9EA1A9;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+
+.leaveTypesButton {
+    margin: 10px 50px 10px 10px;
+}
+
+form {
+    width: 100%;
+    max-width: 800px !important;
+}

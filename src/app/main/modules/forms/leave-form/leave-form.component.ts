@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatDatepickerInputEvent} from '@angular/material';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {LeaveFormDetails} from './leave-details.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import swal from 'sweetalert';
 import { environment } from 'environments/environment';
@@ -15,52 +13,16 @@ import { environment } from 'environments/environment';
 })
 export class LeaveFormComponent implements OnInit {
     form: FormGroup;
-
-    leaveFormDetails: LeaveFormDetails;
+    employeeDetails: Object;
+    contactDetails: Object;
+    leaveDetails: Object;
+    files: Array<string>;
+    employeeDetailsStepper: any;
+    contactDetailsStepper: any;
+    leaveDetailsStepper: any;
 
     // Horizontal Stepper
-    employeeDetailsStepper: FormGroup;
-    contactDetailsStepper: FormGroup;
-    leaveDetailsStepper: FormGroup;
-    startDate: Date;
-    endDate: Date;
-    startDateValue: string;
-    endDateValue: string;
-    files = [];
-    startMinDate = new Date();
-    endMinDate = new Date();
-    startMaxDate: Date;
 
-
-    // displayedColumns: string[] = ['takenCasualLeaves', 'takenMedicalLeaves', 'takenVacationLeaves'];
-    // dataSource = ELEMENT_DATA;
-
-    leaveTypes: string[] = ['Casual', 'Medical', 'Vacation'];
-
-    getStartDate(event: MatDatepickerInputEvent<Date>): void {
-        this.startDate = event.value;
-        this.startDateValue = this.startDate.getDate() + '/' + (this.startDate.getMonth() + 1) + '/' + this.startDate.getFullYear();
-    }
-
-    getEndDate(event: MatDatepickerInputEvent<Date>): void {
-        this.endDate = event.value;
-        this.endDateValue = this.endDate.getDate() + '/' + (this.endDate.getMonth() + 1) + '/' + this.endDate.getFullYear();
-    }
-
-    assignMinDate(): void {
-        if (this.startDate !== null) {
-            this.endMinDate = new Date(this.startDate);
-        }
-        else {
-            this.endMinDate = new Date();
-        }
-    }
-
-    assignMaxDate(): void {
-        if (this.endDate !== null) {
-            this.startMaxDate = new Date(this.endDate);
-        }
-    }
 
 
     constructor(
@@ -75,68 +37,17 @@ export class LeaveFormComponent implements OnInit {
     /**
      * On init
      */
-    ngOnInit(): void {
-        // Horizontal Stepper form steps
-        this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
-        this.employeeDetailsStepper = this._formBuilder.group({
-            employeeId: new FormControl({value: this.leaveFormDetails.employeeId, disabled: true}, Validators.required),
-            employeeName: new FormControl({value: this.leaveFormDetails.principal, disabled: true}, Validators.required),
-            faculty: new FormControl({value: this.leaveFormDetails.faculty, disabled: true}, Validators.required),
-            department: new FormControl({value: this.leaveFormDetails.department, disabled: true}),
-            role: new FormControl({value: this.leaveFormDetails.role, disabled: true}, Validators.required)
-        });
+    ngOnInit(): void {}
 
-        this.contactDetailsStepper = this._formBuilder.group({
-            address: new FormControl({value: '', disabled: false}, Validators.required),
-            email: new FormControl({value: this.leaveFormDetails.email, disabled: true}, [Validators.required, Validators.email]),
-            mobileNo: new FormControl({value: this.leaveFormDetails.mobileNo, disabled: false}, Validators.required),
-            telephoneNo: new FormControl({value: '', disabled: false}),
-        });
-
-        this.leaveDetailsStepper = this._formBuilder.group({
-            leaveType: ['', Validators.required],
-            startDate: ['', Validators.required],
-            endDate: ['', Validators.required],
-            takenCasualLeaves: new FormControl({value: this.leaveFormDetails.casual, disabled: false}),
-            takenMedicalLeaves: new FormControl({value: this.leaveFormDetails.medical, disabled: false}),
-            takenVacationLeaves: new FormControl({value: this.leaveFormDetails.vacation, disabled: false}),
-            documents: [''],
-            comments: ['']
-
-        });
-
-    }
-
-    private getLeaveFormDetails(): void {
-        this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
-    }
 
     submitLeaveForm(): void {
-        if (this.endDate.getTime() < this.startDate.getTime()) {
-            // alert('End date should be later than the start date');
-            swal('Oops', 'End date should be later than the start date!', 'error');
-        }
+        const leaveData = Object.assign(this.employeeDetails, this.contactDetails, this.leaveDetails);
 
-        else if (this.leaveDetailsStepper.value['leaveType'] === 'Medical' &&
-            (Math.round(Math.abs(this.endDate.getTime() - this.startDate.getTime()) / (24 * 60 * 60 * 1000))) > 2 &&
-            (this.files.length === 0)){
-            swal('Oops', 'Relevent document is required', 'error');
-        }
+        console.log(JSON.stringify(leaveData));
 
-        else{
-            const employeeDetails = this.employeeDetailsStepper.value;
-            const contactDetails = this.contactDetailsStepper.value;
-            const leaveDetails = this.leaveDetailsStepper.value;
-            leaveDetails.startDate = this.startDateValue;
-            leaveDetails.endDate = this.endDateValue;
-            leaveDetails.documents = this.files;
-            const leaveData = Object.assign(employeeDetails, contactDetails, leaveDetails);
-
-            console.log(JSON.stringify(leaveData));
-
-            const headers = new HttpHeaders({
-                'Content-Type': 'application/json'
-            });
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
 
             this.http.post(environment.server + 'api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
                 response => {
@@ -150,13 +61,44 @@ export class LeaveFormComponent implements OnInit {
                 }
             );
 
-            this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard']);
+    }
+
+    getLeaveDetails(leaveDetails: Object, files: Array<string>): void {
+        this.leaveDetails =  leaveDetails;
+        this.files = files;
+        const startDate = this.leaveDetails['startDate'];
+        const endDate = this.leaveDetails['endDate'];
+
+        if (endDate.getTime() < startDate.getTime()) {
+            swal('Oops', 'End date should be later than the start date!', 'error');
+        }
+
+        else if (this.leaveDetails['leaveType'] === 'Medical' &&
+            (Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000))) > 2 &&
+            (this.files.length === 0)){
+            swal('Oops', 'Relevent document is required', 'error');
+        }
+
+        else{
+            const startDateValue = startDate.getDate() + '/' + (startDate.getMonth() + 1)
+                + '/' + startDate.getFullYear();
+            const endDateValue = endDate.getDate() + '/' + (endDate.getMonth() + 1)
+                + '/' + this.leaveDetails['endDate'].getFullYear();
+            this.leaveDetails['startDate'] = startDateValue;
+            this.leaveDetails['endDate'] = endDateValue;
+            this.leaveDetails['documents'] = this.files;
+
+            this.submitLeaveForm();
         }
 
     }
 
-    getFilesDetails(files: Array<string>): void {
-        this.files = this.files.concat(files);
-        console.log(this.files);
+    getEmployeeDetails(employeeDetails: Object): void {
+        this.employeeDetails = employeeDetails;
+    }
+
+    getContactDetails(contactDetails: Object): void {
+        this.contactDetails = contactDetails;
     }
 }

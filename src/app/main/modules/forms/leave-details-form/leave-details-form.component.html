@@ -1,0 +1,69 @@
+<form fxLayout="column" #leaveForm = "ngForm" [formGroup]="leaveDetailsForm">
+
+    <div fxFlex="1 0 auto" fxLayout="column">
+
+        <mat-radio-group class="leaveTypesGroup" formControlName="leaveType" required>
+            <div class="h3"><mat-label>Leave type</mat-label></div>
+            <mat-radio-button class="leaveTypesButton" *ngFor="let leaveType of leaveTypes" [value]="leaveType" required>
+                {{leaveType}}
+            </mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Start date</mat-label>
+            <input matInput (dateInput) = "getStartDate($event)" [matDatepicker] ="startPicker"
+                   [min]="startMinDate" [max]="startMaxDate" formControlName="startDate" (click)="assignMaxDate()" required>
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+            <mat-error>Start date is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>End date</mat-label>
+            <input matInput (dateInput) = "getEndDate($event)" formControlName = "endDate" [matDatepicker]="endPicker" [min]="endMinDate" (click)="assignMinDate()" required>
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+            <mat-error>End date is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Relevent documents</mat-label>
+            <input matInput formControlName="documents" value="Select your files..." readonly>
+            <app-upload (filesDetails)= "getFilesDetails($event)"></app-upload>
+            <mat-icon matSuffix class="secondary-text">attach_file</mat-icon>
+            <mat-error>File is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Comments</mat-label>
+            <textarea matInput formControlName="comments"></textarea>
+            <mat-icon matSuffix class="secondary-text">comment</mat-icon>
+        </mat-form-field>
+
+        <table>
+            <tr>
+                <th class="header" colspan="2">Casual</th>
+                <th class="header" colspan="2">Medical</th>
+                <th class="header" colspan="2">Vacation</th>
+            </tr>
+            <tr>
+                <th>Taken</th>
+                <th>Remaining</th>
+                <th>Taken</th>
+                <th>Remaining</th>
+                <th>Taken</th>
+                <th>Remaining</th>
+            </tr>
+            <tr>
+                <td>{{leaveFormDetails.casual}}</td>
+                <td>{{21 - leaveFormDetails.casual}}</td>
+                <td>{{leaveFormDetails.medical}}</td>
+                <td>{{20 - leaveFormDetails.medical}}</td>
+                <td>{{leaveFormDetails.vacation}}</td>
+                <td>{{(10 - leaveFormDetails.vacation) > 0 ? (10 - leaveFormDetails.vacation) : 0}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+</form>

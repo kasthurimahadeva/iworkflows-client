@@ -18,10 +18,16 @@ import {LeaveFormRoutingModule} from '../../routing/leave-form-routing.module';
 import {LeaveFormDataResolver} from './leave-form/leave-form-data.resolver';
 import {LeaveFormService} from './leave-form/leave-form.service';
 import {UploadModule} from '../upload/upload.module';
+import { EmployeeDetailsFormComponent } from './employee-details-form/employee-details-form.component';
+import { ContactDetailsFormComponent } from './contact-details-form/contact-details-form.component';
+import { LeaveDetailsFormComponent } from './leave-details-form/leave-details-form.component';
 
 @NgModule({
     declarations: [
-        LeaveFormComponent
+        LeaveFormComponent,
+        EmployeeDetailsFormComponent,
+        ContactDetailsFormComponent,
+        LeaveDetailsFormComponent
     ],
     imports: [
 
