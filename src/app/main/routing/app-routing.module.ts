@@ -73,7 +73,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'request',
-        loadChildren: '../../main/modules/forms/forms.module#FormsModule',
+        loadChildren: '../../main/modules/forms/requests.module#RequestsModule',
         data: {requiresLogin: true},
         canActivate: [AuthGuard]
     },

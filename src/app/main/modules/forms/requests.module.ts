@@ -47,10 +47,15 @@ import { LeaveDetailsFormComponent } from './leave-details-form/leave-details-fo
 
         FuseSharedModule,
     ],
+    exports: [
+        EmployeeDetailsFormComponent,
+        ContactDetailsFormComponent,
+        LeaveDetailsFormComponent
+    ],
     providers: [
         LeaveFormService,
         LeaveFormDataResolver
     ]
 })
-export class FormsModule {
+export class RequestsModule {
 }
