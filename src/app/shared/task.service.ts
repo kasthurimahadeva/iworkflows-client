@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Task } from '../main/modules/my-tasks/my.task.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { environment } from 'environments/environment';
 
 declare let EventSource: any;
 
@@ -38,7 +39,7 @@ export class TaskService {
     getTasks(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get<Task>('server/rest/engine/default/task?assignee=admin')
+            this.http.get<Task>(environment.server + 'rest/engine/default/task?assignee=admin')
                 .subscribe((response: any) => {
                     this.tasks = response;
                     this.onTasksChange.next(this.tasks);

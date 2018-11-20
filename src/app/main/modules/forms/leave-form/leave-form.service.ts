@@ -4,12 +4,13 @@ import {Subject} from 'rxjs';
 import {LeaveFormDetails} from './leave-details.model';
 import * as EVENTS from 'events';
 import {ToastrService} from 'ngx-toastr';
+import { environment } from 'environments/environment';
 
 
 @Injectable()
 export class LeaveFormService {
 
-    public API = 'server/api/v1/forms';
+    public API = environment.server + 'api/v1/forms';
     public PROVIDERS_API = '/leave-form';
 
     constructor(
@@ -25,7 +26,7 @@ export class LeaveFormService {
             error => {
                 subject.error(error);
                 this.toastr.error('Unable to retrive form data, please try again', 'Failed', { progressBar: true });
-                
+
             },
             () => subject.complete()
         );

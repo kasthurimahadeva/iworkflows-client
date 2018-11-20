@@ -167,18 +167,22 @@ export class XhrInterceptor implements HttpInterceptor {
         AppRoutingModule
     ],
     providers: [
-        AuthenticationService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: BasicAuthInterceptor,
+            multi: true
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: XhrInterceptor,
             multi: true
         },
+
         {
             provide: HTTP_INTERCEPTORS,
             useClass: ErrorInterceptor,
             multi: true
-        },
-        BasicAuthInterceptor,
+        }
 
     ],
     bootstrap: [AppComponent]

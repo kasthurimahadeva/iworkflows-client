@@ -1,10 +1,11 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import {FuseConfigService} from '@fuse/services/config.service';
-import {fuseAnimations} from '@fuse/animations/index';
-import {Router} from '@angular/router';
-import {AuthenticationService} from '../../../shared/authentication.service';
+import { FuseConfigService } from '@fuse/services/config.service';
+import { fuseAnimations } from '@fuse/animations/index';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../../../shared/authentication.service';
+import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'login',
@@ -15,6 +16,7 @@ import {AuthenticationService} from '../../../shared/authentication.service';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
+    returnUrl: string;
 
     /**
      * Constructor
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
         private _fuseConfigService: FuseConfigService,
         private _formBuilder: FormBuilder,
         private router: Router,
+        private route: ActivatedRoute,
         private authService: AuthenticationService
     ) {
         // Configure the layout
@@ -40,6 +43,10 @@ export class LoginComponent implements OnInit {
      * On init
      */
     ngOnInit(): void {
+        // this.authService.logout();
+
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
         this.hideComponents();
 
         this.loginForm = this._formBuilder.group({
@@ -68,15 +75,16 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.authService.authenticate({
-            username: this.loginForm.controls['userName'].value,
-            password: this.loginForm.controls['password'].value
-        }, () => {
-            console.debug('logged in successfully');
-            //TODO: navigate to dashboard instead
-            this.router.navigate(['dashboard']);
-        });
-        return false;
+        this.authService
+            .authenticate({
+                username: this.loginForm.controls['userName'].value,
+                password: this.loginForm.controls['password'].value
+            }
+            , () => {
+                console.log('logged in successfully');
+                //TODO: navigate to dashboard instead
+                this.router.navigate(['dashboard']);
+            });
+            return false;
     }
-
 }
