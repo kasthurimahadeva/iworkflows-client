@@ -1,22 +1,24 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {Task} from './my.task.model';
 import {TaskDetails} from './my.task.details.model';
 import { environment } from 'environments/environment';
+import {ToastrService} from 'ngx-toastr';
 
 declare let EventSource: any;
 
 @Injectable()
-export class TaskService {
+export class MyTaskService {
 
     tasks: Task[];
     taskDetails: TaskDetails[];
     onTasksChange: BehaviorSubject<any>;
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private toastr: ToastrService
     ) {
         this.onTasksChange = new BehaviorSubject({});
     }
@@ -46,17 +48,22 @@ export class TaskService {
         });
     }
 
-    // getTaskDetails(processInstanceId): Promise<any> {
-    //     const detailsUrl = 'server/api/v1/camunda/leave/details/' + processInstanceId;
-    //     return new Promise((resolve, reject) => {
-    //         this.http.get<TaskDetails>(detailsUrl)
-    //             .subscribe((response: any) => {
-    //                 this.taskDetails = response;
-    //                 this.onTasksChange.next(this.taskDetails);
-    //                 resolve(response);
-    //             }, reject);
-    //     });
-    // }
+    getTaskDetails(processInstanceId): Subject<TaskDetails> {
+        const subject = new Subject<TaskDetails>();
+
+        const detailsUrl = environment.server + 'api/v1/camunda/leave/details/' + processInstanceId;
+        this.http.get<TaskDetails>(detailsUrl).subscribe(
+            taskDetails => subject.next(taskDetails),
+            err => {
+                subject.error(err);
+                this.toastr.error('Unable to get provider list', 'Fetch failed', {progressBar: true});
+            }
+            ,
+            () => subject.complete()
+        );
+        return subject;
+    }
+
 
     connect(): void {
         const source = new EventSource('http://localhost:8080/stream', {withCredentials: true});

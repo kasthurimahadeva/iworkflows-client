@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {LeaveFormDetails} from '../leave-form/leave-details.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MatDatepickerInputEvent} from '@angular/material';
 
@@ -11,27 +10,30 @@ import {MatDatepickerInputEvent} from '@angular/material';
 })
 export class LeaveDetailsFormComponent implements OnInit {
     leaveDetailsForm: FormGroup;
-    leaveFormDetails: LeaveFormDetails;
-    startDate: Date;
-    endDate: Date;
+    startingDate: Date;
+    endingDate: Date;
     files = [];
     startMinDate = new Date();
     endMinDate = new Date();
     startMaxDate: Date;
+    startedDate: FormControl;
+    endedDate: FormControl;
+    @Input() leaveDetails: Object;
+    @Input() isDisabled: boolean;
 
-    leaveTypes: string[] = ['Casual', 'Medical', 'Vacation'];
+    types: string[] = ['Casual', 'Medical', 'Vacation'];
 
     getStartDate(event: MatDatepickerInputEvent<Date>): void {
-        this.startDate = event.value;
+        this.startingDate = event.value;
     }
 
     getEndDate(event: MatDatepickerInputEvent<Date>): void {
-        this.endDate = event.value;
+        this.endingDate = event.value;
     }
 
     assignMinDate(): void {
-        if (this.startDate !== null) {
-            this.endMinDate = new Date(this.startDate);
+        if (this.startingDate !== null) {
+            this.endMinDate = new Date(this.startingDate);
         }
         else {
             this.endMinDate = new Date();
@@ -39,8 +41,8 @@ export class LeaveDetailsFormComponent implements OnInit {
     }
 
     assignMaxDate(): void {
-        if (this.endDate !== null) {
-            this.startMaxDate = new Date(this.endDate);
+        if (this.endingDate !== null) {
+            this.startMaxDate = new Date(this.endingDate);
         }
     }
 
@@ -50,18 +52,18 @@ export class LeaveDetailsFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-      this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
+      this.startedDate = new FormControl(new Date(this.leaveDetails['startDate']));
+      this.endedDate = new FormControl(new Date(this.leaveDetails['endDate']));
 
       this.leaveDetailsForm = this._formBuilder.group({
-          leaveType: ['', Validators.required],
-          startDate: ['', Validators.required],
-          endDate: ['', Validators.required],
-          takenCasualLeaves: new FormControl({value: this.leaveFormDetails.casual, disabled: false}),
-          takenMedicalLeaves: new FormControl({value: this.leaveFormDetails.medical, disabled: false}),
-          takenVacationLeaves: new FormControl({value: this.leaveFormDetails.vacation, disabled: false}),
-          documents: [''],
-          comments: ['']
+          leaveType: new FormControl({value: this.leaveDetails['leaveType'], disabled: this.isDisabled}),
+          startDate: new FormControl({value: this.leaveDetails['startDate'], disabled: this.isDisabled}),
+          endDate: new FormControl({value: this.leaveDetails['endDate'], disabled: this.isDisabled}),
+          takenCasualLeaves: new FormControl({value: this.leaveDetails['casual'], disabled: this.isDisabled}),
+          takenMedicalLeaves: new FormControl({value: this.leaveDetails['medical'], disabled: this.isDisabled}),
+          takenVacationLeaves: new FormControl({value: this.leaveDetails['vacation'], disabled: this.isDisabled}),
+          documents: new FormControl({value: this.leaveDetails['documents'], disabled: this.isDisabled}),
+          comments: new FormControl({value: this.leaveDetails['comments'], disabled: this.isDisabled})
 
       });
   }

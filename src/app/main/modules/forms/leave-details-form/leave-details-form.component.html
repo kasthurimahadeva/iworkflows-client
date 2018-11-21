@@ -1,18 +1,20 @@
-<form fxLayout="column" #leaveForm = "ngForm" [formGroup]="leaveDetailsForm">
+<form fxLayout="column" [formGroup]="leaveDetailsForm" *ngIf="leaveDetailsForm">
 
     <div fxFlex="1 0 auto" fxLayout="column">
 
         <mat-radio-group class="leaveTypesGroup" formControlName="leaveType" required>
             <div class="h3"><mat-label>Leave type</mat-label></div>
-            <mat-radio-button class="leaveTypesButton" *ngFor="let leaveType of leaveTypes" [value]="leaveType" required>
-                {{leaveType}}
+            <mat-radio-button class="leaveTypesButton" *ngFor="let type of types" [value]="type"
+                              checked="{{type === leaveDetails.leaveType}}" required>
+                {{type}}
             </mat-radio-button>
         </mat-radio-group>
 
         <mat-form-field appearance="outline" fxFlex="100">
             <mat-label>Start date</mat-label>
             <input matInput (dateInput) = "getStartDate($event)" [matDatepicker] ="startPicker"
-                   [min]="startMinDate" [max]="startMaxDate" formControlName="startDate" (click)="assignMaxDate()" required>
+                   [min]="startMinDate" [max]="startMaxDate" (click)="assignMaxDate()" formControlName="startDate"
+                   [value]="startedDate.value" required>
             <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
             <mat-datepicker #startPicker></mat-datepicker>
             <mat-error>Start date is required</mat-error>
@@ -20,7 +22,8 @@
 
         <mat-form-field appearance="outline" fxFlex="100">
             <mat-label>End date</mat-label>
-            <input matInput (dateInput) = "getEndDate($event)" formControlName = "endDate" [matDatepicker]="endPicker" [min]="endMinDate" (click)="assignMinDate()" required>
+            <input matInput (dateInput) = "getEndDate($event)" formControlName = "endDate" [matDatepicker]="endPicker"
+                   [min]="endMinDate" (click)="assignMinDate()" [value]="endedDate.value" required>
             <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
             <mat-datepicker #endPicker></mat-datepicker>
             <mat-error>End date is required</mat-error>
@@ -55,12 +58,12 @@
                 <th>Remaining</th>
             </tr>
             <tr>
-                <td>{{leaveFormDetails.casual}}</td>
-                <td>{{21 - leaveFormDetails.casual}}</td>
-                <td>{{leaveFormDetails.medical}}</td>
-                <td>{{20 - leaveFormDetails.medical}}</td>
-                <td>{{leaveFormDetails.vacation}}</td>
-                <td>{{(10 - leaveFormDetails.vacation) > 0 ? (10 - leaveFormDetails.vacation) : 0}}</td>
+                <td>{{leaveDetails.casual}}</td>
+                <td>{{(21 - leaveDetails.vacation) > 0 ? (21 - leaveDetails.vacation) : 0}}</td>
+                <td>{{leaveDetails.medical}}</td>
+                <td>{{(20 - leaveDetails.vacation) > 0 ? (20 - leaveDetails.vacation) : 0}}</td>
+                <td>{{leaveDetails.vacation}}</td>
+                <td>{{(10 - leaveDetails.vacation) > 0 ? (10 - leaveDetails.vacation) : 0}}</td>
             </tr>
         </table>
 
