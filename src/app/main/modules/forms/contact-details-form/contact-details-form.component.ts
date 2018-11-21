@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {LeaveFormDetails} from '../leave-form/leave-details.model';
 
 @Component({
   selector: 'app-contact-details-form',
@@ -10,7 +9,8 @@ import {LeaveFormDetails} from '../leave-form/leave-details.model';
 })
 export class ContactDetailsFormComponent implements OnInit {
     contactDetailsForm: FormGroup;
-    leaveFormDetails: LeaveFormDetails;
+    @Input() contactDetails: Object;
+    @Input() isDisabled: boolean;
 
     constructor(
       private route: ActivatedRoute,
@@ -18,13 +18,12 @@ export class ContactDetailsFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
 
       this.contactDetailsForm = this._formBuilder.group({
-          address: new FormControl({value: '', disabled: false}, Validators.required),
-          email: new FormControl({value: this.leaveFormDetails.email, disabled: true}, [Validators.required, Validators.email]),
-          mobileNo: new FormControl({value: this.leaveFormDetails.mobileNo, disabled: false}, Validators.required),
-          telephoneNo: new FormControl({value: '', disabled: false}),
+          address: new FormControl({value: this.contactDetails['address'], disabled: this.isDisabled}, Validators.required),
+          email: new FormControl({value: this.contactDetails['email'], disabled: this.isDisabled}, [Validators.required, Validators.email]),
+          mobileNo: new FormControl({value: this.contactDetails['mobileNo'], disabled: this.isDisabled}, Validators.required),
+          telephoneNo: new FormControl({value: this.contactDetails['telephoneNo'], disabled: this.isDisabled}),
       });
   }
 

@@ -5,6 +5,7 @@ import {ToastrService} from 'ngx-toastr';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import swal from 'sweetalert';
 import { environment } from 'environments/environment';
+import {LeaveFormDetails} from './leave-details.model';
 
 @Component({
     selector: 'leave-forms',
@@ -20,6 +21,9 @@ export class LeaveFormComponent implements OnInit {
     employeeDetailsStepper: any;
     contactDetailsStepper: any;
     leaveDetailsStepper: any;
+    leaveFormDetails: LeaveFormDetails;
+    contactAvailability: boolean
+    leaveDetailsAvailability: boolean;
 
     // Horizontal Stepper
 
@@ -37,7 +41,11 @@ export class LeaveFormComponent implements OnInit {
     /**
      * On init
      */
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
+        this.contactAvailability = false;
+        this.leaveDetailsAvailability = false;
+    }
 
 
     submitLeaveForm(): void {
@@ -81,10 +89,10 @@ export class LeaveFormComponent implements OnInit {
         }
 
         else{
-            const startDateValue = startDate.getDate() + '/' + (startDate.getMonth() + 1)
+            const startDateValue =  (startDate.getMonth() + 1) + '/' + startDate.getDate()
                 + '/' + startDate.getFullYear();
-            const endDateValue = endDate.getDate() + '/' + (endDate.getMonth() + 1)
-                + '/' + this.leaveDetails['endDate'].getFullYear();
+            const endDateValue =  (endDate.getMonth() + 1)
+                + '/' + endDate.getDate() + '/' + this.leaveDetails['endDate'].getFullYear();
             this.leaveDetails['startDate'] = startDateValue;
             this.leaveDetails['endDate'] = endDateValue;
             this.leaveDetails['documents'] = this.files;

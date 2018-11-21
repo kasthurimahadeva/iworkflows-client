@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {LeaveFormDetails} from '../leave-form/leave-details.model';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -10,7 +9,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EmployeeDetailsFormComponent implements OnInit {
     employeeDetailsForm: FormGroup;
-    leaveFormDetails: LeaveFormDetails;
+
+    @Input() employeeDetails: Object;
 
     constructor(
         private route: ActivatedRoute,
@@ -18,14 +18,12 @@ export class EmployeeDetailsFormComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
-      this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
       this.employeeDetailsForm = this._formBuilder.group({
-          employeeId: new FormControl({value: this.leaveFormDetails.employeeId, disabled: true}, Validators.required),
-          employeeName: new FormControl({value: this.leaveFormDetails.principal, disabled: true}, Validators.required),
-          faculty: new FormControl({value: this.leaveFormDetails.faculty, disabled: true}, Validators.required),
-          department: new FormControl({value: this.leaveFormDetails.department, disabled: true}),
-          role: new FormControl({value: this.leaveFormDetails.role, disabled: true}, Validators.required)
+          employeeId: new FormControl({value: this.employeeDetails['employeeId'], disabled: true}, Validators.required),
+          employeeName: new FormControl({value: this.employeeDetails['principal'], disabled: true}, Validators.required),
+          faculty: new FormControl({value: this.employeeDetails['faculty'], disabled: true}, Validators.required),
+          department: new FormControl({value: this.employeeDetails['department'], disabled: true}),
+          role: new FormControl({value: this.employeeDetails['role'], disabled: true}, Validators.required)
       });
   }
 }

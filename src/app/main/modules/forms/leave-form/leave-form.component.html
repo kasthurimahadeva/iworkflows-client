@@ -20,8 +20,8 @@
             <mat-horizontal-stepper class="mat-elevation-z4" [linear]="true">
 
                 <mat-step [stepControl]="employeeDetailsStepper">
-                    <ng-template matStepLabel>Contact details</ng-template>
-                    <app-employee-details-form #employeeDetails></app-employee-details-form>
+                    <ng-template matStepLabel>Employee details</ng-template>
+                    <app-employee-details-form #employeeDetails [employeeDetails]=leaveFormDetails></app-employee-details-form>
                     <div fxLayout="row" fxLayoutAlign="center center">
                         <button mat-raised-button matStepperNext type="button"
                                 (click)="getEmployeeDetails(employeeDetails.employeeDetailsForm.value)" color="accent"
@@ -33,7 +33,7 @@
 
                 <mat-step [stepControl]="contactDetailsStepper">
                     <ng-template matStepLabel>Contact details</ng-template>
-                    <app-contact-details-form #contactDetails></app-contact-details-form>
+                    <app-contact-details-form #contactDetails [contactDetails]=leaveFormDetails [isDisabled]=contactAvailability></app-contact-details-form>
                     <div fxLayout="row" fxLayoutAlign="center center">
                         <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                             Previous
@@ -49,14 +49,14 @@
 
                 <mat-step [stepControl]="leaveDetailsStepper">
                     <ng-template matStepLabel>Leave Details</ng-template>
-                    <app-leave-details-form #leaveDetails></app-leave-details-form>
+                    <app-leave-details-form #leaveDetails [leaveDetails]=leaveFormDetails
+                                            [isDisabled]=leaveDetailsAvailability></app-leave-details-form>
                     <div fxLayout="row" fxLayoutAlign="center center">
                         <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
                             Previous
                         </button>
                         <button mat-raised-button color="accent" class="submit-button" type="submit"
-                                (click)="getLeaveDetails(leaveDetails.leaveDetailsForm.value, leaveDetails.files)"
-                                [disabled]="leaveDetails.leaveDetailsForm.invalid">
+                                (click)="getLeaveDetails(leaveDetails.leaveDetailsForm.value, leaveDetails.files)">
                             Submit
                         </button>
                     </div>

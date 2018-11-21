@@ -24,19 +24,19 @@
 
                     <mat-tab label="Employee Details">
                         <div class="tab-content p-32">
-                            <app-employee-details-form></app-employee-details-form>
+                            <app-employee-details-form [employeeDetails]=taskDetails></app-employee-details-form>
                         </div>
                     </mat-tab>
 
                     <mat-tab label="Contact Details">
                         <div class="tab-content p-32">
-                            <div>This is great!</div>
+                            <app-contact-details-form [contactDetails]=taskDetails [isDisabled]=contactAvailability></app-contact-details-form>
                         </div>
                     </mat-tab>
 
                     <mat-tab label="Task Details">
                         <div class="tab-content p-32">
-                            <div>This is great!</div>
+                            <app-leave-details-form [leaveDetails]=taskDetails [isDisabled]=taskAvailability></app-leave-details-form>
                         </div>
                     </mat-tab>
 

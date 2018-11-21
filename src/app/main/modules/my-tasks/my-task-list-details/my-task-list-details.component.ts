@@ -6,7 +6,6 @@ import {TaskService} from '../../../../shared/task.service';
 import {ActivatedRoute} from '@angular/router';
 import {TaskDetails} from '../my.task.details.model';
 import {ToastrService} from 'ngx-toastr';
-import { environment } from 'environments/environment';
 
 @Component({
     selector: 'app-camunda-task',
@@ -19,6 +18,8 @@ export class MyTaskListDetailsComponent implements OnInit {
 
     processInstanceId: string;
     taskDetails: TaskDetails;
+    contactAvailability: boolean;
+    taskAvailability: boolean;
 
     constructor(
         private httpClient: HttpClient,
@@ -30,8 +31,9 @@ export class MyTaskListDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.connect();
-        this.processInstanceId = this.route.snapshot.paramMap.get('processInstanceId');
-        this.getTaskDetails(this.processInstanceId);
+        this.taskDetails = this.route.snapshot.data['taskDetails']['leaveFormDetails'];
+        this.contactAvailability = true;
+        this.taskAvailability = true;
     }
 
     connect(): void {
@@ -42,16 +44,4 @@ export class MyTaskListDetailsComponent implements OnInit {
         this.taskService.send();
     }
 
-    private getTaskDetails(processInstanceId): void {
-        const detailsUrl = environment.server + 'api/v1/camunda/leave/details/' + processInstanceId;
-        this.httpClient.get<TaskDetails>(detailsUrl).subscribe(
-            taskDetails => {
-                this.taskDetails = taskDetails;
-            },
-            error => {
-                console.log(error);
-                this.toastr.error('Unable to get provider list', 'Fetch failed', {progressBar: true});
-            }
-        );
-    }
 }

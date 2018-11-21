@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MyTaskListDetailsComponent } from '../modules/my-tasks/my-task-list-details/my-task-list-details.component';
 import {AuthGuard} from '../guards/auth-guard.service';
 import {MyTaskListComponent} from '../modules/my-tasks/my-task-list/my-task-list.component';
+import {MyTaskListDetailsResolver} from '../modules/my-tasks/my-task-list-details/my-task-list-details.resolver';
 
 const camundaTaskRoutes: Routes = [
     {
         path: 'task/:processInstanceId',
         component: MyTaskListDetailsComponent,
+        resolve: {taskDetails: MyTaskListDetailsResolver},
         data: {requiresLogin: true},
         canActivate: [AuthGuard]
     },

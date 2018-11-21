@@ -2,17 +2,17 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {
     MatButtonModule,
-    MatChipsModule,
+    MatChipsModule, MatDatepickerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule,
+    MatInputModule, MatNativeDateModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule, MatRadioModule,
     MatRippleModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatSortModule,
+    MatSortModule, MatStepperModule,
     MatTableModule,
     MatTabsModule, MatTooltipModule
 } from '@angular/material';
@@ -27,6 +27,9 @@ import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RejectCommentsComponent } from './reject-comments/reject-comments.component';
 import {RequestsModule} from '../forms/requests.module';
+import {UploadModule} from '../upload/upload.module';
+import {MyTaskService} from './my-task.service';
+import {MyTaskListDetailsResolver} from './my-task-list-details/my-task-list-details.resolver';
 
 @NgModule({
     imports: [
@@ -53,9 +56,24 @@ import {RequestsModule} from '../forms/requests.module';
         FuseWidgetModule,
         MatTooltipModule,
         FormsModule,
-        RequestsModule
+        RequestsModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatRadioModule,
+
+        UploadModule,
+
+        FuseSharedModule,
     ],
-    declarations: [MyTaskListDetailsComponent, MyTaskListComponent, RejectCommentsComponent],
+    declarations: [MyTaskListDetailsComponent,
+        MyTaskListComponent,
+        RejectCommentsComponent,
+    ],
+    providers: [
+        MyTaskListDetailsResolver  ,
+        MyTaskService
+    ],
     entryComponents: [RejectCommentsComponent]
 })
 export class MyTaskModule {
