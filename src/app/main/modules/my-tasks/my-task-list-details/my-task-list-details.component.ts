@@ -39,6 +39,7 @@ export class MyTaskListDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.connect();
         this.taskDetails = this.route.snapshot.data['taskDetails']['leaveFormDetails'];
+        console.log(JSON.stringify(this.route.snapshot.data['taskDetails']));
         this.contactAvailability = true;
         this.taskAvailability = true;
     }

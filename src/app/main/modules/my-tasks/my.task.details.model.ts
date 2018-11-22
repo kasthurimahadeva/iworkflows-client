@@ -15,7 +15,7 @@ export class TaskDetails {
     'medical': number;
     'vacation': number;
     'comments': string;
-    'casualAllowed': number;
-    'medicalAllowed': number;
-    'vacationAllowed': number;
+    'remainingCasual': number;
+    'remainingMedical': number;
+    'remainingVacation': number;
 }

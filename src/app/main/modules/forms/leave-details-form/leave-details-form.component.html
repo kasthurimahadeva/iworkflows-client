@@ -51,11 +51,11 @@
             </tr>
             <tr>
                 <td>{{leaveDetails.casual}}</td>
-                <td>{{(leaveDetails.casualAllowed - leaveDetails.casual) > 0 ? (leaveDetails.casualAllowed - leaveDetails.casual) : 0}}</td>
+                <td>{{leaveDetails.remainingCasual}}</td>
                 <td>{{leaveDetails.medical}}</td>
-                <td>{{(leaveDetails.medicalAllowed - leaveDetails.medical) > 0 ? (leaveDetails.medicalAllowed - leaveDetails.medical) : 0}}</td>
+                <td>{{leaveDetails.remainingMedical}}</td>
                 <td>{{leaveDetails.vacation}}</td>
-                <td>{{(leaveDetails.vacationAllowed - leaveDetails.vacation) > 0 ? (leaveDetails.vacationAllowed - leaveDetails.vacation) : 0}}</td>
+                <td>{{leaveDetails.remainingVacation}}</td>
             </tr>
         </table>
 
