@@ -14,7 +14,10 @@ import {BpmnDiagramModel} from '../bpmn-diagram.model';
 })
 export class RequestDetailsComponent implements OnInit {
     processInstanceId: string;
+    status: string;
     bpmnDiagram: BpmnDiagramModel;
+    requestDetails = {};
+    requestAvailability = true;
 
     @ViewChild('canvas') canvas;
 
@@ -25,17 +28,18 @@ export class RequestDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.processInstanceId = this.route.snapshot.paramMap.get('processInstanceId');
+        this.status = this.route.snapshot.paramMap.get('status');
 
         this.requestHistoryService.getBpmnDiagram(this.processInstanceId).subscribe(
             diagram => {
                 this.bpmnDiagram = diagram;
-                this.renderBpmnDiagram(this.bpmnDiagram.xml, this.bpmnDiagram.taskDefinitionKey);
+                this.renderBpmnDiagram(this.bpmnDiagram.xml, this.bpmnDiagram.taskDefinitionKey, this.status);
             },
             error => console.error(error)
         );
     }
 
-    private renderBpmnDiagram(bpmnXml: string, taskDefinitionKey: string): void {
+    private renderBpmnDiagram(bpmnXml: string, taskDefinitionKey: string, status: string): void {
         const viewer = new BpmnViewer({
             container: this.canvas.nativeElement,
             width: '100%',
@@ -49,7 +53,16 @@ export class RequestDetailsComponent implements OnInit {
                 const canvas = viewer.get('canvas');
                 // zoom to fit full viewport
                 canvas.zoom('fit-viewport');
-                canvas.addMarker(taskDefinitionKey, 'highlight');
+                if (status === 'approved') {
+
+                    canvas.addMarker(taskDefinitionKey, 'highlight_green');
+                }
+                else if (status === 'rejected') {
+                    canvas.addMarker(taskDefinitionKey, 'highlight_red');
+                }
+                else {
+                    canvas.addMarker(taskDefinitionKey, 'highlight_blue');
+                }
                 // const overlays = viewer.get('overlays');
                 // overlays.add(taskDefinitionKey, {
                 //         position: {
