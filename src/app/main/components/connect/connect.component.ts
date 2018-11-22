@@ -42,9 +42,14 @@ export class ConnectComponent implements OnInit {
     }
 
     redirectForAuthorization(provider: TokenProvider): void {
-        this.connectService.connect(provider).subscribe(data => {
-            window.location.href = data.redirect_uri;
-        });
+        if (provider.name.toLowerCase() === 'moodle') {
+            this.router.navigate(['moodle-login']);
+        } else {
+            this.connectService.connect(provider).subscribe(data => {
+                window.location.href = data.redirect_uri;
+            });
+        }
+
     }
 
     revokeAuthorizationCode(provider: TokenProvider): void {
