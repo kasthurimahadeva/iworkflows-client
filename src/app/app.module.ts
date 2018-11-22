@@ -67,8 +67,8 @@ import {MyTaskModule} from './main/modules/my-tasks/my-task.module';
 import {RequestHistoryModule} from './main/modules/request-history/request-history.module';
 import {TodoModule} from './main/modules/todo/todo.module';
 import {AppRoutingModule} from './main/routing/app-routing.module';
-import {AuthenticationService} from './shared/authentication.service';
 import {UploadModule} from './main/modules/upload/upload.module';
+import { MoodleLoginComponent } from './main/components/moodle-login/moodle-login.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -88,7 +88,8 @@ export class XhrInterceptor implements HttpInterceptor {
         ConnectComponent,
         TestComponent,
         Error404Component,
-        Error500Component
+        Error500Component,
+        MoodleLoginComponent
     ],
     imports: [
         BrowserModule,

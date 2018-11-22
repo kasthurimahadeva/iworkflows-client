@@ -1,0 +1,39 @@
+<div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-120" fxLayout="row" fxLayoutAlign="center start">
+        <div class="logo">
+            <img src="assets/images/logos/moodle.png">
+        </div>
+    </div>
+
+    <mat-card class="example-card" fxLayout="column" fxLayoutAlign="center center">
+        <mat-card-header>
+            <mat-card-title>Login to Moodle</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="moodleLoginForm">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username" name="username" required>
+                        <mat-error>Username is required!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" type="password" name="password" required>
+                        <mat-error>Password is required!</mat-error>
+                    </mat-form-field>
+                </div>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="login()" color="accent">Login</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
