@@ -28,9 +28,9 @@
                         </div>
                     </mat-tab>
 
-                    <mat-tab label="Contact Details">
+                    <mat-tab label="Request Details">
                         <div class="tab-content p-24">
-                            <div>This is great!</div>
+                            <app-leave-details-form [leaveDetails]=requestDetails [isDisabled]=requestAvailability></app-leave-details-form>
                         </div>
                     </mat-tab>
                 </mat-tab-group>

@@ -3,6 +3,14 @@
     stroke: #08c !important;
     fill: #bce2f5 !important;
 }
-.djs-container .highlight .djs-visual>:nth-child(1) {
+.djs-container .highlight_red .djs-visual>:nth-child(1) {
+    fill: #f56d2a !important;
+}
+
+.djs-container .highlight_green .djs-visual>:nth-child(1) {
+    fill: #74f5be !important;
+}
+
+.djs-container .highlight_blue .djs-visual>:nth-child(1) {
     fill: #bce2f5 !important;
 }

@@ -8,6 +8,7 @@ import {MatButtonModule, MatIconModule, MatPaginatorModule, MatProgressSpinnerMo
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import {FuseSharedModule} from '../../../../@fuse/shared.module';
 import {ProcessDefinitionKeyPipe} from './request-list/process-definition-key.pipe';
+import {RequestsModule} from '../forms/requests.module';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import {ProcessDefinitionKeyPipe} from './request-list/process-definition-key.pi
         MatSortModule,
         MatProgressSpinnerModule,
         MatSelectModule,
+        RequestsModule,
 
         FuseSharedModule
     ],
