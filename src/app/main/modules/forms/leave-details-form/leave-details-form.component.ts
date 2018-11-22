@@ -12,7 +12,6 @@ export class LeaveDetailsFormComponent implements OnInit {
     leaveDetailsForm: FormGroup;
     startingDate: Date;
     endingDate: Date;
-    files = [];
     startMinDate = new Date();
     endMinDate = new Date();
     startMaxDate: Date;
@@ -62,14 +61,9 @@ export class LeaveDetailsFormComponent implements OnInit {
           takenCasualLeaves: new FormControl({value: this.leaveDetails['casual'], disabled: this.isDisabled}),
           takenMedicalLeaves: new FormControl({value: this.leaveDetails['medical'], disabled: this.isDisabled}),
           takenVacationLeaves: new FormControl({value: this.leaveDetails['vacation'], disabled: this.isDisabled}),
-          documents: new FormControl({value: this.leaveDetails['documents'], disabled: this.isDisabled}),
           comments: new FormControl({value: this.leaveDetails['comments'], disabled: this.isDisabled})
 
       });
   }
-
-    getFilesDetails(files: Array<string>): void {
-        this.files = this.files.concat(files);
-    }
 
 }

@@ -11,4 +11,11 @@ export class TaskDetails {
     'leaveType': string;
     'startDate': string;
     'endDate': string;
+    'casual': number;
+    'medical': number;
+    'vacation': number;
+    'comments': string;
+    'casualAllowed': number;
+    'medicalAllowed': number;
+    'vacationAllowed': number;
 }

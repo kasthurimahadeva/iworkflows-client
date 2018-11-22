@@ -1,11 +1,14 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {fuseAnimations} from '@fuse/animations';
 
 import {TaskService} from '../../../../shared/task.service';
 import {ActivatedRoute} from '@angular/router';
 import {TaskDetails} from '../my.task.details.model';
 import {ToastrService} from 'ngx-toastr';
+import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
+import {MyTaskService} from '../my-task.service';
+import {BpmnDiagramModel} from '../../request-history/bpmn-diagram.model';
 
 @Component({
     selector: 'app-camunda-task',
@@ -20,12 +23,16 @@ export class MyTaskListDetailsComponent implements OnInit {
     taskDetails: TaskDetails;
     contactAvailability: boolean;
     taskAvailability: boolean;
+    bpmnDiagram: BpmnDiagramModel;
+
+    @ViewChild('canvas') canvas;
 
     constructor(
         private httpClient: HttpClient,
         private taskService: TaskService,
         private route: ActivatedRoute,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private myTaskService: MyTaskService
     ) {
     }
 
