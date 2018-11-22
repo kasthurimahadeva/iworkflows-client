@@ -17,4 +17,7 @@ export class LeaveFormDetails{
     'endDate': string;
     'documents': Array<string>;
     'comments': string;
+    'casualAllowed': number;
+    'medicalAllowed': number;
+    'vacationAllowed': number;​
 }

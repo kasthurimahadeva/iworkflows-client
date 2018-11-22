@@ -30,14 +30,6 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex="100">
-            <mat-label>Relevent documents</mat-label>
-            <input matInput formControlName="documents" value="Select your files..." readonly>
-            <app-upload (filesDetails)= "getFilesDetails($event)"></app-upload>
-            <mat-icon matSuffix class="secondary-text">attach_file</mat-icon>
-            <mat-error>File is required</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" fxFlex="100">
             <mat-label>Comments</mat-label>
             <textarea matInput formControlName="comments"></textarea>
             <mat-icon matSuffix class="secondary-text">comment</mat-icon>
@@ -59,11 +51,11 @@
             </tr>
             <tr>
                 <td>{{leaveDetails.casual}}</td>
-                <td>{{(21 - leaveDetails.vacation) > 0 ? (21 - leaveDetails.vacation) : 0}}</td>
+                <td>{{(leaveDetails.casualAllowed - leaveDetails.casual) > 0 ? (leaveDetails.casualAllowed - leaveDetails.casual) : 0}}</td>
                 <td>{{leaveDetails.medical}}</td>
-                <td>{{(20 - leaveDetails.vacation) > 0 ? (20 - leaveDetails.vacation) : 0}}</td>
+                <td>{{(leaveDetails.medicalAllowed - leaveDetails.medical) > 0 ? (leaveDetails.medicalAllowed - leaveDetails.medical) : 0}}</td>
                 <td>{{leaveDetails.vacation}}</td>
-                <td>{{(10 - leaveDetails.vacation) > 0 ? (10 - leaveDetails.vacation) : 0}}</td>
+                <td>{{(leaveDetails.vacationAllowed - leaveDetails.vacation) > 0 ? (leaveDetails.vacationAllowed - leaveDetails.vacation) : 0}}</td>
             </tr>
         </table>
 

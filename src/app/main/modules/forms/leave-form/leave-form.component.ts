@@ -17,12 +17,12 @@ export class LeaveFormComponent implements OnInit {
     employeeDetails: Object;
     contactDetails: Object;
     leaveDetails: Object;
-    files: Array<string>;
+    files = [];
     employeeDetailsStepper: any;
     contactDetailsStepper: any;
     leaveDetailsStepper: any;
     leaveFormDetails: LeaveFormDetails;
-    contactAvailability: boolean
+    contactAvailability: boolean;
     leaveDetailsAvailability: boolean;
 
     // Horizontal Stepper
@@ -43,6 +43,7 @@ export class LeaveFormComponent implements OnInit {
      */
     ngOnInit(): void {
         this.leaveFormDetails = this.route.snapshot.data['leaveFormDetails'];
+        this.leaveFormDetails['employeeName'] = this.leaveFormDetails.principal;
         this.contactAvailability = false;
         this.leaveDetailsAvailability = false;
     }
@@ -50,8 +51,6 @@ export class LeaveFormComponent implements OnInit {
 
     submitLeaveForm(): void {
         const leaveData = Object.assign(this.employeeDetails, this.contactDetails, this.leaveDetails);
-
-        console.log(JSON.stringify(leaveData));
 
         const headers = new HttpHeaders({
             'Content-Type': 'application/json'
@@ -72,9 +71,8 @@ export class LeaveFormComponent implements OnInit {
         this.router.navigate(['dashboard']);
     }
 
-    getLeaveDetails(leaveDetails: Object, files: Array<string>): void {
+    getLeaveDetails(leaveDetails: Object): void {
         this.leaveDetails =  leaveDetails;
-        this.files = files;
         const startDate = this.leaveDetails['startDate'];
         const endDate = this.leaveDetails['endDate'];
 
@@ -108,5 +106,9 @@ export class LeaveFormComponent implements OnInit {
 
     getContactDetails(contactDetails: Object): void {
         this.contactDetails = contactDetails;
+    }
+
+    getFilesDetails(files: Array<string>): void {
+        this.files = this.files.concat(files);
     }
 }

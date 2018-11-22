@@ -20,7 +20,7 @@ export class EmployeeDetailsFormComponent implements OnInit {
   ngOnInit(): void {
       this.employeeDetailsForm = this._formBuilder.group({
           employeeId: new FormControl({value: this.employeeDetails['employeeId'], disabled: true}, Validators.required),
-          employeeName: new FormControl({value: this.employeeDetails['principal'], disabled: true}, Validators.required),
+          employeeName: new FormControl({value: this.employeeDetails['employeeName'], disabled: true}, Validators.required),
           faculty: new FormControl({value: this.employeeDetails['faculty'], disabled: true}, Validators.required),
           department: new FormControl({value: this.employeeDetails['department'], disabled: true}),
           role: new FormControl({value: this.employeeDetails['role'], disabled: true}, Validators.required)
