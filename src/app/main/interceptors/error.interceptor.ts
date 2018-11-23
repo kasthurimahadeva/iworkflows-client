@@ -36,6 +36,12 @@ export class ErrorInterceptor implements HttpInterceptor {
                     this.routeService.redirectTo500();
                 } else if (err.status === 404) {
                     this.routeService.redirectTo404();
+                } else if (err.status === 428){
+                    this.toastr.error(
+                        'Please authorize with learnorg and try again',
+                        'First authorize'
+                    );
+                    this.router.navigate(['connect']);
                 }
 
                 // const error = err.error.message;

@@ -17,7 +17,7 @@ import {FuseNavigationService} from '../../../../../@fuse/components/navigation/
 })
 export class RequestListComponent implements OnInit {
     submittedRequests: SubmittedRequest[];
-    displayedColumns: string[] = ['id', 'type', 'submitted_date', 'status', 'progress'];
+    displayedColumns: string[] = ['id', 'type', 'submitted_date', 'status'];
     resultsLength = 0;
     isLoadingResults = true;
     badgeCount: number;

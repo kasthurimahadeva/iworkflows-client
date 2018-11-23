@@ -94,16 +94,16 @@
                 <ng-container matColumnDef="status">
                     <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
                     <mat-cell *matCellDef="let request">
-                        <p class="text-truncate">{{request.status | titlecase}}</p>
+                        <p class="text-truncate" id = "{{request.status}}">{{request.status}}</p>
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="progress">
-                    <mat-header-cell *matHeaderCellDef>Progress</mat-header-cell>
-                    <mat-cell *matCellDef="let request">
-                        <p class="text-truncate">{{request.progress}}</p>
-                    </mat-cell>
-                </ng-container>
+                <!--<ng-container matColumnDef="progress">-->
+                    <!--<mat-header-cell *matHeaderCellDef>Progress</mat-header-cell>-->
+                    <!--<mat-cell *matCellDef="let request">-->
+                        <!--<p class="text-truncate">{{request.progress}}</p>-->
+                    <!--</mat-cell>-->
+                <!--</ng-container>-->
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
                 <mat-row *matRowDef="let request; columns: displayedColumns;"

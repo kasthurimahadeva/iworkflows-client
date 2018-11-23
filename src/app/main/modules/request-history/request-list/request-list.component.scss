@@ -80,11 +80,11 @@ app-request-list {
         }
 
         .mat-column-id {
-            flex: 0 1 84px;
+            flex: 0 1 150px;
         }
 
         .mat-column-type {
-            flex: 0 1 200px;
+            flex: 0 1 300px;
         }
 
 
@@ -97,11 +97,11 @@ app-request-list {
         }
 
         .mat-column-submitted_date {
-            flex: 0 1 200px;
+            flex: 0 1 300px;
         }
 
-        .mat-column-progress {
-            flex: 0 1 250px;
+        .mat-column-status {
+            flex: 0 1 300px;
         }
 
         .leave_process {
@@ -111,6 +111,24 @@ app-request-list {
 
         .loan_process {
             background: #8BD649;
+        }
+
+        #approved {
+            color: #2E7D32;
+            font-weight: bold;
+        }
+
+        #rejected {
+            color: #900000;
+            font-weight: bold;
+        }
+
+        #head_recommended {
+            color: #4d50f4;
+        }
+
+        #in_progress {
+            color: #e8ae23;
         }
     }
 }

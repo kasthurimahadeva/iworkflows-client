@@ -24,8 +24,11 @@ export class LeaveFormService {
         this.http.get<LeaveFormDetails>(this.API + this.PROVIDERS_API).subscribe(
             data => subject.next(data),
             error => {
-                subject.error(error);
-                this.toastr.error('Unable to retrive form data, please try again', 'Failed', { progressBar: true });
+                if (error.status !== 428) {
+                    subject.error(error);
+                    this.toastr.error('Unable to retrive form data, please try again', 'Failed', { progressBar: true });
+                }
+
 
             },
             () => subject.complete()
