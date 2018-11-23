@@ -43,19 +43,21 @@
                     <mat-tab label="Relevent Documents">
                         <div class="tab-content p-32">
                             <div>
-                                <!--<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://www.psych.purdue.edu/~willia55/120/11.MotivationMM.pdf"-->
-                                       <!--width="100%" height="100%">-->
-                                <!--<a href="http://www.psych.purdue.edu/~willia55/120/11.MotivationMM.pdf" target="popup">Document1</a>-->
                                 <a (click)="openDialog()">Document</a>
                             </div>
                         </div>
                     </mat-tab>
 
-                    <!--<mat-tab label="Comments">-->
-                        <!--<div class="tab-content p-32">-->
-                            <!--<div>This is great!</div>-->
-                        <!--</div>-->
-                    <!--</mat-tab>-->
+                    <mat-tab disabled>
+                        <ng-template mat-tab-label>
+                            <button mat-stroked-button [color]="'success'" class="approved" (click)="approveRequest(task)">
+                                Approve
+                            </button>
+                            <button mat-stroked-button color="warn" class="rejected" (click)="openDialog(task)">
+                                Reject
+                            </button>
+                        </ng-template>
+                    </mat-tab>
 
                 </mat-tab-group>
             </div>

@@ -10,7 +10,7 @@ import {MatDialog} from '@angular/material';
 import {FileViewerComponent} from '../file-viewer/file-viewer.component';
 
 @Component({
-    selector: 'app-camunda-task',
+    selector: 'app-my-task-list-details',
     templateUrl: './my-task-list-details.component.html',
     styleUrls: ['./my-task-list-details.component.scss'],
     encapsulation: ViewEncapsulation.None,
