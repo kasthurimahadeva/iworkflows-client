@@ -5,10 +5,9 @@ import {fuseAnimations} from '@fuse/animations';
 import {TaskService} from '../../../../shared/task.service';
 import {ActivatedRoute} from '@angular/router';
 import {TaskDetails} from '../my.task.details.model';
-import {ToastrService} from 'ngx-toastr';
-import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
-import {MyTaskService} from '../my-task.service';
 import {BpmnDiagramModel} from '../../request-history/bpmn-diagram.model';
+import {MatDialog} from '@angular/material';
+import {FileViewerComponent} from '../file-viewer/file-viewer.component';
 
 @Component({
     selector: 'app-camunda-task',
@@ -31,8 +30,7 @@ export class MyTaskListDetailsComponent implements OnInit {
         private httpClient: HttpClient,
         private taskService: TaskService,
         private route: ActivatedRoute,
-        private toastr: ToastrService,
-        private myTaskService: MyTaskService
+        public dialog: MatDialog
     ) {
     }
 
@@ -50,6 +48,10 @@ export class MyTaskListDetailsComponent implements OnInit {
 
     send(): void {
         this.taskService.send();
+    }
+
+    openDialog(): void {
+        this.dialog.open(FileViewerComponent);
     }
 
 }
