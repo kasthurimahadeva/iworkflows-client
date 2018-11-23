@@ -112,11 +112,15 @@ app-my-task-list {
             border-radius: 100%;
         }
 
-        .review_leave {
+        .review_leave_head {
             background: darkorchid;
             color: white;
         }
 
+        .review_leave_clerk {
+            background: #3c7ccc;
+            color: white;
+        }
         .review_loan {
             background: #8BD649;
         }

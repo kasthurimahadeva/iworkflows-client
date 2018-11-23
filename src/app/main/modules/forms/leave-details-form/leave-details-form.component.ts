@@ -58,9 +58,9 @@ export class LeaveDetailsFormComponent implements OnInit {
           leaveType: new FormControl({value: this.leaveDetails['leaveType'], disabled: this.isDisabled}),
           startDate: new FormControl({value: this.leaveDetails['startDate'], disabled: this.isDisabled}),
           endDate: new FormControl({value: this.leaveDetails['endDate'], disabled: this.isDisabled}),
-          takenCasualLeaves: new FormControl({value: this.leaveDetails['casual'], disabled: this.isDisabled}),
-          takenMedicalLeaves: new FormControl({value: this.leaveDetails['medical'], disabled: this.isDisabled}),
-          takenVacationLeaves: new FormControl({value: this.leaveDetails['vacation'], disabled: this.isDisabled}),
+          casual: new FormControl({value: this.leaveDetails['casual'], disabled: this.isDisabled}),
+          medical: new FormControl({value: this.leaveDetails['medical'], disabled: this.isDisabled}),
+          vacation: new FormControl({value: this.leaveDetails['vacation'], disabled: this.isDisabled}),
           comments: new FormControl({value: this.leaveDetails['comments'], disabled: this.isDisabled})
 
       });
