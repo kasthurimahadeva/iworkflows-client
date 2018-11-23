@@ -145,14 +145,13 @@ export class MyTaskListComponent implements OnInit {
     }
 
     openDialog(task: Task): void {
-        let isRejected;
+        const isReject = false;
         const dialogRef = this.dialog.open(RejectCommentsComponent, {
             width: '500px',
-            data: {isRejected: isRejected, comments: this.comments}
+            data: {isRejected: isReject, comments: this.comments}
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
             if (result.isRejected){
                 this.comments['comment'] = result.comments;
                 this.rejectRequest(task);

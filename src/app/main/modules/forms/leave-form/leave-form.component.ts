@@ -51,7 +51,7 @@ export class LeaveFormComponent implements OnInit {
 
     submitLeaveForm(): void {
         const leaveData = Object.assign(this.employeeDetails, this.contactDetails, this.leaveDetails);
-
+        console.log(JSON.stringify(leaveData));
         const headers = new HttpHeaders({
             'Content-Type': 'application/json'
         });
