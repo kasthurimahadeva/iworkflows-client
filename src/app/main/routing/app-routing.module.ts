@@ -10,6 +10,7 @@ import {LoginComponent} from '../components/login/login.component';
 import {AuthGuard} from '../guards/auth-guard.service';
 import {TestComponent} from '../components/test/test.component';
 import {MoodleLoginComponent} from '../components/moodle-login/moodle-login.component';
+import {DebugTableComponent} from '../components/debug-table/debug-table.component';
 
 
 const appRoutes: Routes = [
@@ -61,6 +62,12 @@ const appRoutes: Routes = [
     {
         path: 'moodle-login',
         component: MoodleLoginComponent,
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'debug-table',
+        component: DebugTableComponent,
         data: {requiresLogin: true},
         canActivate: [AuthGuard],
     },

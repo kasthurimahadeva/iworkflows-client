@@ -1,0 +1,78 @@
+<div id="logs" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    event_note
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Debug logs
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a log">
+                </div>
+            </div>
+
+            <button mat-icon-button
+                    (click)="getLogDetails()"
+                    class="fuse-white mt-24 mt-md-0">
+                <mat-icon>refresh</mat-icon>
+            </button>
+        </div>
+
+        <div class="content-card">
+            <mat-table class="debug-table"
+                       #table [dataSource]="dataSource"
+                       matSort
+                       [@animateStagger]="{value:'50'}"
+                       fusePerfectScrollbar>
+
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+                    <mat-cell *matCellDef="let i = index">
+                        <p class="text-truncate">{{i +1}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="timeStamp">
+                    <mat-header-cell *matHeaderCellDef>Timestamp</mat-header-cell>
+                    <mat-cell *matCellDef="let log">
+                        <p class="text-truncate">{{log.timeStamp}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="message">
+                    <mat-header-cell *matHeaderCellDef>Message</mat-header-cell>
+                    <mat-cell *matCellDef="let log">
+                        <p class="text-truncate">{{log.message}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let log; columns: displayedColumns;"
+                         class="log" matRipple>
+                </mat-row>
+
+            </mat-table>
+        </div>
+
+    </div>
+</div>

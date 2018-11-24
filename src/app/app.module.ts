@@ -69,6 +69,7 @@ import {TodoModule} from './main/modules/todo/todo.module';
 import {AppRoutingModule} from './main/routing/app-routing.module';
 import {UploadModule} from './main/modules/upload/upload.module';
 import { MoodleLoginComponent } from './main/components/moodle-login/moodle-login.component';
+import { DebugTableComponent } from './main/components/debug-table/debug-table.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -89,7 +90,8 @@ export class XhrInterceptor implements HttpInterceptor {
         TestComponent,
         Error404Component,
         Error500Component,
-        MoodleLoginComponent
+        MoodleLoginComponent,
+        DebugTableComponent
     ],
     imports: [
         BrowserModule,
