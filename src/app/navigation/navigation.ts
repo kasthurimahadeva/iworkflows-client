@@ -44,6 +44,31 @@ export const navigation: FuseNavigation[] = [
                 url: '/tasks',
             },
             {
+                id: 'request',
+                title: 'New Request',
+                translate: 'NAV.NEW_REQUEST',
+                type    : 'collapsable',
+                icon: 'apps',
+                children: [
+                    {
+                        id: 'leave',
+                        title: 'Leave',
+                        translate: 'NAV.LEAVE',
+                        type: 'item',
+                        icon: 'web_asset',
+                        url: '/request/leave',
+                    },
+                    {
+                        id: 'loan',
+                        title: 'Loan',
+                        translate: 'NAV.LOAN',
+                        type: 'item',
+                        icon: 'attach_money',
+                        url: '/request/loan',
+                    }
+                ]
+            },
+            {
                 id: 'history',
                 title: 'Submitted Requests',
                 translate: 'NAV.HISTORY',
@@ -52,38 +77,20 @@ export const navigation: FuseNavigation[] = [
                 url: '/history/list',
             },
             {
+                id: 'debugTable',
+                title: 'Debug Table',
+                translate: 'NAV.DEBUG',
+                type: 'item',
+                icon: 'event_note',
+                url: '/debug-table',
+            },
+            {
                 id: 'test',
                 title: 'Test',
                 translate: 'NAV.TEST',
                 type: 'item',
                 icon: 'title',
                 url: '/test',
-            }
-        ]
-    },
-
-    {
-        id: 'request',
-        title: 'New Request',
-        translate: 'NAV.NEW_REQUEST',
-        type    : 'collapsable',
-        icon: 'apps',
-        children: [
-            {
-                id: 'leave',
-                title: 'Leave',
-                translate: 'NAV.LEAVE',
-                type: 'item',
-                icon: 'web_asset',
-                url: '/request/leave',
-            },
-            {
-                id: 'loan',
-                title: 'Loan',
-                translate: 'NAV.LOAN',
-                type: 'item',
-                icon: 'attach_money',
-                url: '/request/loan',
             }
         ]
     },

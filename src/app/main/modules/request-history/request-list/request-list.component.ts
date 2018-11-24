@@ -49,11 +49,11 @@ export class RequestListComponent implements OnInit {
             ).subscribe(data => {
                 this.submittedRequests = data;
                 this.badgeCount = this.submittedRequests.filter((request) => request.status === 'in_progress' || request.status === 'head_recommended').length;
-                this.updaterequestBadge();
+                this.updateRequestBadge();
         });
     }
 
-    updaterequestBadge(): void
+    updateRequestBadge(): void
     {
         // Update the badge title
         this._fuseNavigationService.updateNavigationItem('history', {

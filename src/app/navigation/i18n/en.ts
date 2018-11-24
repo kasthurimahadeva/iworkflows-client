@@ -16,7 +16,8 @@ export const locale = {
             'TEST': 'Test',
             'NEW_REQUEST' : 'New Request',
             'LEAVE' : 'Leave',
-            'LOAN': 'Loan'
+            'LOAN': 'Loan',
+            'DEBUG': 'Debug Table'
         }
     }
 };

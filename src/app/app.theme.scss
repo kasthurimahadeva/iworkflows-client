@@ -84,6 +84,7 @@ $typography: mat-typography-config(
 @import "src/app/main/modules/todo/todo.theme";
 @import "src/app/main/modules/my-tasks/my-task-list/my-task-list.theme";
 @import "src/app/main/modules/request-history/request-list/request-list.theme";
+@import "src/app/main/components/debug-table/debug-table-theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -95,6 +96,7 @@ $typography: mat-typography-config(
     @include todo-theme($theme);
     @include my-task-list-theme($theme);
     @include request-list-theme($theme);
+    @include debug-table-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
