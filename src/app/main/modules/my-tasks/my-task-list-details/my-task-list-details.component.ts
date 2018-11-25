@@ -3,11 +3,17 @@ import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {fuseAnimations} from '@fuse/animations';
 
 import {TaskService} from '../../../../shared/task.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TaskDetails} from '../my.task.details.model';
-import {BpmnDiagramModel} from '../../request-history/bpmn-diagram.model';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {FileViewerComponent} from '../file-viewer/file-viewer.component';
+import {MyTaskService} from '../my-task.service';
+import {Task} from '../my.task.model';
+import { environment } from 'environments/environment';
+import {FuseNavigationService} from '../../../../../@fuse/components/navigation/navigation.service';
+import {ToastrService} from 'ngx-toastr';
+import {RejectCommentsComponent} from '../reject-comments/reject-comments.component';
+
 
 @Component({
     selector: 'app-my-task-list-details',
@@ -20,9 +26,15 @@ export class MyTaskListDetailsComponent implements OnInit {
 
     processInstanceId: string;
     taskDetails: TaskDetails;
+    tasks: Task[] = [];
+    task: Task;
     contactAvailability: boolean;
     taskAvailability: boolean;
-    bpmnDiagram: BpmnDiagramModel;
+    comments: Object = {
+        comment: ''
+    };
+    badgeCount: number;
+    currentIndex: number;
 
     @ViewChild('canvas') canvas;
 
@@ -30,14 +42,48 @@ export class MyTaskListDetailsComponent implements OnInit {
         private httpClient: HttpClient,
         private taskService: TaskService,
         private route: ActivatedRoute,
-        public dialog: MatDialog
+        public fileDialog: MatDialog,
+        private _fuseNavigationService: FuseNavigationService,
+        private toastr: ToastrService,
+        private router: Router,
+        private myTaskService: MyTaskService,
+        private rejectDialog: MatDialog,
+        private snackBar: MatSnackBar
     ) {
+        // this.router.routeReuseStrategy.shouldReuseRoute = function() {
+        //     return false;
+        // };
     }
 
     ngOnInit(): void {
         this.connect();
         this.taskDetails = this.route.snapshot.data['taskDetails']['leaveFormDetails'];
-        console.log(JSON.stringify(this.route.snapshot.data['taskDetails']));
+        this.contactAvailability = true;
+        this.taskAvailability = true;
+        this.route.params.subscribe(
+            params => {
+                this.processInstanceId = params['processInstanceId'];
+                this.getTaskDetails(this.processInstanceId);
+            }
+        );
+        console.log('ngOnInit is calling.......');
+        this.myTaskService.taskTable.subscribe(table => this.tasks = table);
+        console.log(this.tasks);
+
+    }
+
+    // getTaskDetails(): void {
+    //     this.taskDetails = this.route.snapshot.data['taskDetails']['leaveFormDetails'];
+    //     this.contactAvailability = true;
+    //     this.taskAvailability = true;
+    // }
+
+    getTaskDetails(processInstanceId: string): void {
+        const detailsUrl = environment.server + 'api/v1/camunda/leave/details/' + processInstanceId;
+        this.httpClient.get<TaskDetails>(detailsUrl).subscribe(
+            taskDetails => this.taskDetails = taskDetails['leaveFormDetails']
+        );
+
         this.contactAvailability = true;
         this.taskAvailability = true;
     }
@@ -50,8 +96,120 @@ export class MyTaskListDetailsComponent implements OnInit {
         this.taskService.send();
     }
 
-    openDialog(): void {
-        this.dialog.open(FileViewerComponent);
+    openFileDialog(): void {
+        this.fileDialog.open(FileViewerComponent);
     }
 
+    findViewTask(): void {
+        this.task = this.tasks.filter((task) => task.processInstanceId === this.processInstanceId)[0];
+        this.currentIndex = this.tasks.indexOf(this.task);
+        console.log(this.currentIndex);
+    }
+
+    getNextTask(): void {
+        if (this.tasks.length > this.currentIndex + 1) {
+            this.task = this.tasks[this.currentIndex + 1];
+        } else {
+            this.task = this.tasks[0];
+            console.log('I am here. My id is ' + this.task.processInstanceId);
+        }
+    }
+
+
+    approveRequest(): void {
+        this.processInstanceId = this.route.snapshot.paramMap.get('processInstanceId');
+        console.log(this.processInstanceId);
+        this.findViewTask();
+        const postUrl = environment.server + 'api/v1/camunda/leave/complete/' + this.task.taskId + '/true';
+        this.httpClient.post(postUrl, this.comments, {observe: 'response'}).subscribe(
+            response => {
+                this.getNextTask();
+                if (response.status === 200) {
+                    this.tasks.splice(this.currentIndex, 1);
+                    this.badgeCount = this.tasks.length;
+                    this.updateTaskBadge();
+                    this.toastr.success('Request approved', 'Success', {timeOut: 1000});
+                    if (this.tasks.length > 0) {
+                        console.log('I am going to ' + this.task.processInstanceId);
+                        // this.getTaskDetails(this.task.processInstanceId);
+                        this.router.navigate(['task', this.task.processInstanceId]);
+                    }
+                    else{
+                        // this.toastr.success('All tasks are completed', 'Completed');
+                        this.router.navigate(['tasks']);
+                        this.snackBar.open('All tasks are completed!!', 'OK', {
+                            duration: 5000,
+                            horizontalPosition: 'center',
+                            verticalPosition: 'top',
+                        });
+                    }
+                }
+            },
+            error => {
+                console.error(error);
+                this.toastr.error('Could not approve', 'Failed');
+            },
+        );
+    }
+
+    updateTaskBadge(): void {
+        // Update the badge title
+        this._fuseNavigationService.updateNavigationItem('task', {
+            badge: {
+                title: this.badgeCount
+            }
+        });
+    }
+
+    openRejectDialog(): void {
+        const isReject = false;
+        const dialogRef = this.rejectDialog.open(RejectCommentsComponent, {
+            width: '500px',
+            data: {isRejected: isReject, comments: this.comments}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.isRejected){
+                this.comments['comment'] = result.comments;
+                this.rejectRequest();
+            }
+        });
+    }
+
+    rejectRequest(): void {
+        this.processInstanceId = this.route.snapshot.paramMap.get('processInstanceId');
+        console.log(this.processInstanceId);
+        this.findViewTask();
+        const postUrl = environment.server + 'api/v1/camunda/leave/complete/' + this.task.taskId + '/false';
+        this.httpClient.post(postUrl, this.comments, {observe: 'response'}).subscribe(
+            response => {
+                this.getNextTask();
+                if (response.status === 200) {
+                    this.tasks.splice(this.currentIndex, 1);
+                    this.badgeCount = this.tasks.length;
+                    this.updateTaskBadge();
+                    this.toastr.success('Request rejected', 'Success', {timeOut: 1000});
+                    if (this.tasks.length > 0) {
+                        console.log('I am going to ' + this.task.processInstanceId);
+                        // this.getTaskDetails(this.task.processInstanceId);
+                        this.router.navigate(['task', this.task.processInstanceId]);
+                    }
+                    else{
+                        // this.toastr.success('All tasks are completed', 'Completed', {positionClass: 'toast-bottom-center'});
+                        this.router.navigate(['tasks']);
+                        this.snackBar.open('All tasks are completed!!', 'Success', {
+                            duration: 5000,
+                            horizontalPosition: 'center',
+                            verticalPosition: 'top',
+                        });
+                    }
+                }
+
+            },
+        error => {
+            console.error(error);
+            this.toastr.error('Could not reject', 'Failed');
+            }
+        );
+    }
 }

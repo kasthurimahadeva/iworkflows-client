@@ -1,18 +1,17 @@
-import {Component, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {fuseAnimations} from '@fuse/animations';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Task} from '../my.task.model';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatSort, MatTable, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {FuseNavigationService} from '../../../../../@fuse/components/navigation/navigation.service';
-import {DialogOverviewExampleDialog} from '../../../../../assets/angular-material-examples/dialog-overview/dialog-overview-example';
 import {RejectCommentsComponent} from '../reject-comments/reject-comments.component';
-import {isRejected} from 'q';
 import { environment } from 'environments/environment';
+import {MyTaskService} from '../my-task.service';
 
 @Component({
     selector: 'app-my-task-list',
@@ -43,7 +42,8 @@ export class MyTaskListComponent implements OnInit {
                 private toastr: ToastrService,
                 private router: Router,
                 private _fuseNavigationService: FuseNavigationService,
-                public dialog: MatDialog) {
+                public dialog: MatDialog,
+                private taskService: MyTaskService) {
     }
 
     ngOnInit() {
@@ -82,6 +82,7 @@ export class MyTaskListComponent implements OnInit {
             )
             .subscribe(data => {
                 this.database = data;
+                this.taskService.updateTaskTable(this.database);
                 this.dataSource = new MatTableDataSource<Task>(this.database);
                 this.badgeCount = this.database.length;
                 this.updateTaskBadge();

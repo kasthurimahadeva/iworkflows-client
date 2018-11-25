@@ -2,13 +2,25 @@ app-my-task-list-details {
     .content-card {
         .content {
             .mat-success {
-                color: green;
+                background-color: green;
+                color: white;
+            }
+
+            .mat-fail {
+                background-color: #d90000;
+                color: white;
             }
 
             .approved {
                 margin-right: 10px;
             }
         }
+    }
+
+    .design {
+        background-color: gainsboro;
+        color: green;
+        margin-bottom: 50%;
     }
 }
 

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {Task} from './my.task.model';
 import {TaskDetails} from './my.task.details.model';
 import { environment } from 'environments/environment';
@@ -12,9 +11,12 @@ declare let EventSource: any;
 @Injectable()
 export class MyTaskService {
 
-    tasks: Task[];
+    public tasks: Task[];
     taskDetails: TaskDetails[];
     onTasksChange: BehaviorSubject<any>;
+
+    private taskSource = new BehaviorSubject(this.tasks);
+    public taskTable = this.taskSource.asObservable();
 
     constructor(
         private http: HttpClient,
@@ -23,30 +25,10 @@ export class MyTaskService {
         this.onTasksChange = new BehaviorSubject({});
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-        return new Promise((resolve, reject) => {
-
-            Promise.all([
-                this.getTasks()
-            ]).then(
-                () => {
-                    resolve();
-                },
-                reject
-            );
-        });
+    updateTaskTable(task: Task[]): void{
+        this.taskSource.next(task);
     }
 
-    getTasks(): Promise<any> {
-        return new Promise((resolve, reject) => {
-            this.http.get<Task>(environment.server + 'rest/engine/default/task?assignee=admin')
-                .subscribe((response: any) => {
-                    this.tasks = response;
-                    this.onTasksChange.next(this.tasks);
-                    resolve(response);
-                }, reject);
-        });
-    }
 
     getTaskDetails(processInstanceId): Subject<TaskDetails> {
         const subject = new Subject<TaskDetails>();
