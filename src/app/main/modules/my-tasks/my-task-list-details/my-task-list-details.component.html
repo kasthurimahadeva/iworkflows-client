@@ -50,14 +50,16 @@
 
                     <mat-tab disabled>
                         <ng-template mat-tab-label>
-                            <button mat-stroked-button [color]="'success'" class="approved" (click)="approveRequest(task)">
+                            <button mat-raised-button [color]="'success'" class="approved" (click)="approveRequest()">
                                 Approve
                             </button>
-                            <button mat-stroked-button color="warn" class="rejected" (click)="openDialog(task)">
+                            <button mat-raised-button [color]="'fail'" class="rejected" (click)="openRejectDialog()">
                                 Reject
                             </button>
                         </ng-template>
                     </mat-tab>
+
+
 
                 </mat-tab-group>
             </div>
