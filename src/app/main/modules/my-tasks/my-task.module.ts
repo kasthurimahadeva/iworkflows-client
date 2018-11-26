@@ -30,6 +30,7 @@ import {RequestsModule} from '../forms/requests.module';
 import {UploadModule} from '../upload/upload.module';
 import {MyTaskService} from './my-task.service';
 import {MyTaskListDetailsResolver} from './my-task-list-details/my-task-list-details.resolver';
+import { CompletedTaskListComponent } from './completed-task-list/completed-task-list.component';
 
 @NgModule({
     imports: [
@@ -70,6 +71,7 @@ import {MyTaskListDetailsResolver} from './my-task-list-details/my-task-list-det
     declarations: [MyTaskListDetailsComponent,
         MyTaskListComponent,
         RejectCommentsComponent,
+        CompletedTaskListComponent
     ],
     providers: [
         MyTaskListDetailsResolver  ,
