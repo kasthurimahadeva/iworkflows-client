@@ -1,4 +1,4 @@
-<div class="page-layout carded fullwidth tabbed">
+<div class="page-layout carded fullwidth tabbed inner-scroll">
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
@@ -45,7 +45,9 @@
                             <div>
                                 <mat-list>
                                     <mat-list-item *ngFor="let file of files">
-                                        <mat-icon mat-list-icon>picture_as_pdf</mat-icon>
+                                        <mat-icon mat-list-icon *ngIf="file.endsWith('.pdf')">picture_as_pdf</mat-icon>
+                                        <mat-icon mat-list-icon *ngIf="!file.endsWith('.pdf')">image</mat-icon>
+
                                         <h4 mat-line><a (click)="openFileDialog(file)">{{file}}</a></h4>
                                     </mat-list-item>
                                 </mat-list>
@@ -55,10 +57,10 @@
 
                     <mat-tab disabled>
                         <ng-template mat-tab-label>
-                            <button mat-raised-button [color]="'success'" class="approved" (click)="approveRequest()">
+                            <button mat-stroked-button [color]="'success'" class="approved" (click)="approveRequest()">
                                 Approve
                             </button>
-                            <button mat-raised-button [color]="'fail'" class="rejected" (click)="openRejectDialog()">
+                            <button mat-stroked-button [color]="'fail'" class="rejected" (click)="openRejectDialog()">
                                 Reject
                             </button>
                         </ng-template>

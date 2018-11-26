@@ -30,7 +30,6 @@ import {RequestsModule} from '../forms/requests.module';
 import {UploadModule} from '../upload/upload.module';
 import {MyTaskService} from './my-task.service';
 import {MyTaskListDetailsResolver} from './my-task-list-details/my-task-list-details.resolver';
-import { FileViewerComponent } from './file-viewer/file-viewer.component';
 
 @NgModule({
     imports: [
@@ -71,14 +70,12 @@ import { FileViewerComponent } from './file-viewer/file-viewer.component';
     declarations: [MyTaskListDetailsComponent,
         MyTaskListComponent,
         RejectCommentsComponent,
-        FileViewerComponent
     ],
     providers: [
         MyTaskListDetailsResolver  ,
         MyTaskService
     ],
-    entryComponents: [RejectCommentsComponent,
-    FileViewerComponent]
+    entryComponents: [RejectCommentsComponent]
 })
 export class MyTaskModule {
 }
