@@ -43,7 +43,12 @@
                     <mat-tab label="Relevent Documents">
                         <div class="tab-content p-32">
                             <div>
-                                <a (click)="openDialog()">Document</a>
+                                <mat-list>
+                                    <mat-list-item *ngFor="let file of files">
+                                        <mat-icon mat-list-icon>picture_as_pdf</mat-icon>
+                                        <h4 mat-line><a (click)="openFileDialog(file)">{{file}}</a></h4>
+                                    </mat-list-item>
+                                </mat-list>
                             </div>
                         </div>
                     </mat-tab>

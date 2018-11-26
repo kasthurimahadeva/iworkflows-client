@@ -6,7 +6,7 @@ import {
     MatExpansionModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule, MatNativeDateModule,
+    MatInputModule, MatListModule, MatNativeDateModule,
     MatPaginatorModule,
     MatProgressSpinnerModule, MatRadioModule,
     MatRippleModule,
@@ -62,6 +62,7 @@ import { FileViewerComponent } from './file-viewer/file-viewer.component';
         MatDatepickerModule,
         MatNativeDateModule,
         MatRadioModule,
+        MatListModule,
 
         UploadModule,
 
