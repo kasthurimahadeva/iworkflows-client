@@ -33,6 +33,7 @@ export class MyTaskListDetailsComponent implements OnInit {
     comments: Object = {
         comment: ''
     };
+    files: Array<string>;
     badgeCount: number;
     currentIndex: number;
 
@@ -58,6 +59,7 @@ export class MyTaskListDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.connect();
         this.taskDetails = this.route.snapshot.data['taskDetails']['leaveFormDetails'];
+        this.files = this.taskDetails['documents'];
         this.contactAvailability = true;
         this.taskAvailability = true;
         this.route.params.subscribe(
@@ -72,18 +74,12 @@ export class MyTaskListDetailsComponent implements OnInit {
 
     }
 
-    // getTaskDetails(): void {
-    //     this.taskDetails = this.route.snapshot.data['taskDetails']['leaveFormDetails'];
-    //     this.contactAvailability = true;
-    //     this.taskAvailability = true;
-    // }
-
     getTaskDetails(processInstanceId: string): void {
         const detailsUrl = environment.server + 'api/v1/camunda/leave/details/' + processInstanceId;
         this.httpClient.get<TaskDetails>(detailsUrl).subscribe(
             taskDetails => this.taskDetails = taskDetails['leaveFormDetails']
         );
-
+        this.files = this.taskDetails['documents'];
         this.contactAvailability = true;
         this.taskAvailability = true;
     }
@@ -96,8 +92,19 @@ export class MyTaskListDetailsComponent implements OnInit {
         this.taskService.send();
     }
 
-    openFileDialog(): void {
-        this.fileDialog.open(FileViewerComponent);
+    openFileDialog(file: string): void {
+
+        this.fileDialog.open(FileViewerComponent,
+            {
+                width: '75%',
+                height: '75%',
+                data: {
+                    'fileName': file,
+                    'processInstanceId': this.processInstanceId
+                }
+            });
+
+
     }
 
     findViewTask(): void {
@@ -213,3 +220,5 @@ export class MyTaskListDetailsComponent implements OnInit {
         );
     }
 }
+
+
