@@ -35,6 +35,7 @@ export class MyTaskListDetailsComponent implements OnInit {
     files: Array<string>;
     badgeCount: number;
     currentIndex: number;
+    isDisable: boolean;
 
     @ViewChild('canvas') canvas;
 
@@ -69,6 +70,7 @@ export class MyTaskListDetailsComponent implements OnInit {
         );
         console.log('ngOnInit is calling.......');
         this.myTaskService.taskTable.subscribe(table => this.tasks = table);
+        this.isDisable = this.tasks.length === 1;
         console.log(this.tasks);
 
     }
@@ -121,6 +123,27 @@ export class MyTaskListDetailsComponent implements OnInit {
         const pwa = window.open(file);
         if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
             alert( 'Please disable your Pop-up blocker and try again.');
+        }
+    }
+
+    openNextTask(): void {
+        this.findViewTask();
+        this.getNextTask();
+        if (this.tasks.length === 1) {
+            this.isDisable = true;
+        }
+        else if (this.tasks.length > 1) {
+            this.getTaskDetails(this.task.processInstanceId);
+            this.router.navigate(['task', this.task.processInstanceId]);
+        }
+        else{
+            // this.toastr.success('All tasks are completed', 'Completed');
+            this.router.navigate(['tasks']);
+            this.snackBar.open('All tasks are completed!!', 'OK', {
+                duration: 5000,
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+            });
         }
     }
 

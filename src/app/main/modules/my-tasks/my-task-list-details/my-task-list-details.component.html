@@ -63,6 +63,9 @@
                             <button mat-stroked-button [color]="'fail'" class="rejected" (click)="openRejectDialog()">
                                 Reject
                             </button>
+                            <button mat-stroked-button [disabled]="isDisable" [color]="'next'" class="next" (click)="openNextTask()">
+                                Next
+                            </button>
                         </ng-template>
                     </mat-tab>
 
