@@ -40,13 +40,7 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'connect/nextcloud',
-        component: ConnectComponent,
-        data: {requiresLogin: true},
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'connect/learnorg',
+        path: 'connect/:provider',
         component: ConnectComponent,
         data: {requiresLogin: true},
         canActivate: [AuthGuard]
