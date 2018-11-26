@@ -55,6 +55,7 @@
                         <mat-form-field appearance="outline" fxFlex="100">
                             <mat-label>Relevant documents</mat-label>
                             <input matInput value="Select your files..." readonly>
+                            <input matInput value="only (.pdf, .jpg, .jpeg, .png) files" style="color: #9EA1A9" readonly>
                             <app-upload (filesDetails)= "getFilesDetails($event)"></app-upload>
                             <mat-icon matSuffix class="secondary-text">attach_file</mat-icon>
                             <mat-error>File is required</mat-error>

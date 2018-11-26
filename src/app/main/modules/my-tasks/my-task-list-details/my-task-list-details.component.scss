@@ -3,10 +3,12 @@ app-my-task-list-details {
         .content {
             .mat-success {
                 color: green;
+                font-weight: bold;
             }
 
             .mat-fail {
                 color: #d90000;
+                font-weight: bold;
             }
 
             .approved {

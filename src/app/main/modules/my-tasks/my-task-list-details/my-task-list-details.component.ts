@@ -6,7 +6,6 @@ import {TaskService} from '../../../../shared/task.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TaskDetails} from '../my.task.details.model';
 import {MatDialog, MatSnackBar} from '@angular/material';
-import {FileViewerComponent} from '../file-viewer/file-viewer.component';
 import {MyTaskService} from '../my-task.service';
 import {Task} from '../my.task.model';
 import { environment } from 'environments/environment';
@@ -51,9 +50,9 @@ export class MyTaskListDetailsComponent implements OnInit {
         private rejectDialog: MatDialog,
         private snackBar: MatSnackBar
     ) {
-        // this.router.routeReuseStrategy.shouldReuseRoute = function() {
-        //     return false;
-        // };
+        this.router.routeReuseStrategy.shouldReuseRoute = function() {
+            return false;
+        };
     }
 
     ngOnInit(): void {
@@ -94,17 +93,35 @@ export class MyTaskListDetailsComponent implements OnInit {
 
     openFileDialog(file: string): void {
 
-        this.fileDialog.open(FileViewerComponent,
-            {
-                width: '75%',
-                height: '75%',
-                data: {
-                    'fileName': file,
-                    'processInstanceId': this.processInstanceId
-                }
-            });
+        const fileUrl = environment.server + 'api/v1/file/' + this.processInstanceId + '/' + file;
+        let type;
+        if (file.endsWith('.pdf')) {
+            type = 'application/pdf';
+        }
 
+        else if (file.endsWith('.jpg')) {
+            type = 'image/jpg';
+        }
 
+        else if (file.endsWith('.png')) {
+            type = 'image/png';
+        }
+
+        else if (file.endsWith('.jpeg')) {
+            type = 'image/jpeg';
+        }
+
+        this.httpClient.get(fileUrl, {responseType: 'arraybuffer'} )
+            .subscribe(response => this.downLoadFile(response, type));
+    }
+
+    downLoadFile(data: any, type: string): void {
+        const blob = new Blob([data], { type: type});
+        const file = window.URL.createObjectURL(blob);
+        const pwa = window.open(file);
+        if (!pwa || pwa.closed || typeof pwa.closed === 'undefined') {
+            alert( 'Please disable your Pop-up blocker and try again.');
+        }
     }
 
     findViewTask(): void {
@@ -138,7 +155,7 @@ export class MyTaskListDetailsComponent implements OnInit {
                     this.toastr.success('Request approved', 'Success', {timeOut: 1000});
                     if (this.tasks.length > 0) {
                         console.log('I am going to ' + this.task.processInstanceId);
-                        // this.getTaskDetails(this.task.processInstanceId);
+                        this.getTaskDetails(this.task.processInstanceId);
                         this.router.navigate(['task', this.task.processInstanceId]);
                     }
                     else{
