@@ -4,6 +4,7 @@ import { MyTaskListDetailsComponent } from '../modules/my-tasks/my-task-list-det
 import {AuthGuard} from '../guards/auth-guard.service';
 import {MyTaskListComponent} from '../modules/my-tasks/my-task-list/my-task-list.component';
 import {MyTaskListDetailsResolver} from '../modules/my-tasks/my-task-list-details/my-task-list-details.resolver';
+import {CompletedTaskListComponent} from '../modules/my-tasks/completed-task-list/completed-task-list.component';
 
 const camundaTaskRoutes: Routes = [
     {
@@ -16,6 +17,12 @@ const camundaTaskRoutes: Routes = [
     {
         path: 'tasks',
         component: MyTaskListComponent,
+        data: {requiresLogin: true},
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'completed-tasks',
+        component: CompletedTaskListComponent,
         data: {requiresLogin: true},
         canActivate: [AuthGuard]
     }
