@@ -11,9 +11,15 @@ app-my-task-list-details {
                 font-weight: bold;
             }
 
-            .approved {
+            .mat-next {
+                color: #e76a15;
+                font-weight: bold;
+            }
+
+            button {
                 margin-right: 10px;
             }
+
         }
     }
 
