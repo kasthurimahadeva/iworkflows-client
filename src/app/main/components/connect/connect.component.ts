@@ -83,15 +83,7 @@ export class ConnectComponent implements OnInit {
     }
 
     getProviderFromRedirectUri(): string {
-        if (this.router.url.includes('nextcloud')) {
-            return 'nextcloud';
-        }
-        if (this.router.url.includes('moodle')) {
-            return 'moodle';
-        }
-        if (this.router.url.includes('learnorg')) {
-            return 'learnorg';
-        }
+        return this.route.snapshot.paramMap.get('provider');
     }
 
     getQueryParams(provider: string): string {
