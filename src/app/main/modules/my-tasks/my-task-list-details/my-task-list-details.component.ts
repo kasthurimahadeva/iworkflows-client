@@ -36,6 +36,7 @@ export class MyTaskListDetailsComponent implements OnInit {
     badgeCount: number;
     currentIndex: number;
     isDisable: boolean;
+    isLoadingDoc: boolean;
 
     @ViewChild('canvas') canvas;
 
@@ -76,7 +77,7 @@ export class MyTaskListDetailsComponent implements OnInit {
     }
 
     getTaskDetails(processInstanceId: string): void {
-        const detailsUrl = environment.server + 'api/v1/camunda/leave/details/' + processInstanceId;
+        const detailsUrl = environment.server + 'v1/camunda/leave/details/' + processInstanceId;
         this.httpClient.get<TaskDetails>(detailsUrl).subscribe(
             taskDetails => this.taskDetails = taskDetails['leaveFormDetails']
         );
@@ -94,8 +95,9 @@ export class MyTaskListDetailsComponent implements OnInit {
     }
 
     openFileDialog(file: string): void {
+        this.isLoadingDoc = true;
 
-        const fileUrl = environment.server + 'api/v1/file/' + this.processInstanceId + '/' + file;
+        const fileUrl = environment.server + 'v1/file/' + this.processInstanceId + '/' + file;
         let type;
         if (file.endsWith('.pdf')) {
             type = 'application/pdf';
@@ -114,7 +116,10 @@ export class MyTaskListDetailsComponent implements OnInit {
         }
 
         this.httpClient.get(fileUrl, {responseType: 'arraybuffer'} )
-            .subscribe(response => this.downLoadFile(response, type));
+            .subscribe(response => {
+                this.downLoadFile(response, type);
+                this.isLoadingDoc = false;
+            });
     }
 
     downLoadFile(data: any, type: string): void {
@@ -167,7 +172,7 @@ export class MyTaskListDetailsComponent implements OnInit {
         this.processInstanceId = this.route.snapshot.paramMap.get('processInstanceId');
         console.log(this.processInstanceId);
         this.findViewTask();
-        const postUrl = environment.server + 'api/v1/camunda/leave/complete/' + this.task.taskId + '/true';
+        const postUrl = environment.server + 'v1/camunda/leave/complete/' + this.task.taskId + '/true';
         this.httpClient.post(postUrl, this.comments, {observe: 'response'}).subscribe(
             response => {
                 this.getNextTask();
@@ -227,7 +232,7 @@ export class MyTaskListDetailsComponent implements OnInit {
         this.processInstanceId = this.route.snapshot.paramMap.get('processInstanceId');
         console.log(this.processInstanceId);
         this.findViewTask();
-        const postUrl = environment.server + 'api/v1/camunda/leave/complete/' + this.task.taskId + '/false';
+        const postUrl = environment.server + 'v1/camunda/leave/complete/' + this.task.taskId + '/false';
         this.httpClient.post(postUrl, this.comments, {observe: 'response'}).subscribe(
             response => {
                 this.getNextTask();

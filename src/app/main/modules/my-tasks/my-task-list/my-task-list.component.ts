@@ -92,7 +92,7 @@ export class MyTaskListComponent implements OnInit {
     }
 
     approveRequest(task: Task): void {
-        const postUrl = environment.server + 'api/v1/camunda/leave/complete/' + task.taskId + '/true';
+        const postUrl = environment.server + 'v1/camunda/leave/complete/' + task.taskId + '/true';
         this.http.post(postUrl, this.comments, {observe: 'response'}).subscribe(
             response => {
                 if (response.status === 200) {
@@ -114,7 +114,7 @@ export class MyTaskListComponent implements OnInit {
     }
 
     rejectRequest(task: Task): void {
-        const postUrl = environment.server + 'api/v1/camunda/leave/complete/' + task.taskId + '/false';
+        const postUrl = environment.server + 'v1/camunda/leave/complete/' + task.taskId + '/false';
         this.http.post(postUrl, this.comments, {observe: 'response'}).subscribe(
             response => {
                 if (response.status === 200) {
@@ -167,7 +167,7 @@ export class TaskHttpDao {
     }
 
     getTasks(sort: string, order: string, page: number): Observable<Task[]> {
-        const href = environment.server + 'api/v1/camunda/my-tasks';
+        const href = environment.server + 'v1/camunda/my-tasks';
         const requestUrl =
             `${href}?q=repo:angular/material2&sort=${sort}&order=${order}&page=${page + 1}`;
 

@@ -9,7 +9,7 @@ import { environment } from 'environments/environment';
 })
 export class ConnectService {
 
-    public API = environment.server + 'api/v1/token';
+    public API = environment.server + 'v1/token';
     public PROVIDERS_API = '/providers';
 
     constructor(private http: HttpClient) {

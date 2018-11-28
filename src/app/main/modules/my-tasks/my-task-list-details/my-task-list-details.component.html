@@ -47,8 +47,10 @@
                                     <mat-list-item *ngFor="let file of files">
                                         <mat-icon mat-list-icon *ngIf="file.endsWith('.pdf')">picture_as_pdf</mat-icon>
                                         <mat-icon mat-list-icon *ngIf="!file.endsWith('.pdf')">image</mat-icon>
-
                                         <h4 mat-line><a (click)="openFileDialog(file)">{{file}}</a></h4>
+                                        <div class="example-loading-shade" *ngIf="isLoadingDoc">
+                                            <mat-spinner *ngIf="isLoadingDoc"></mat-spinner>
+                                        </div>
                                     </mat-list-item>
                                 </mat-list>
                             </div>

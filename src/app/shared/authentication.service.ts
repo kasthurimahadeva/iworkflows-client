@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/finally';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'environments/environment';
-import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -26,7 +25,7 @@ export class AuthenticationService {
                 : {}
         );
 
-        this.http.get<any>(environment.server + 'user', { headers: headers }).subscribe(
+        this.http.get<any>(environment.server + 'v1/user', { headers: headers }).subscribe(
             response => {
                 if (response['name']) {
                     this.authenticated = true;

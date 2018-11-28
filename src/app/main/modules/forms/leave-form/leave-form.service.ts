@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
 import {LeaveFormDetails} from './leave-details.model';
-import * as EVENTS from 'events';
 import {ToastrService} from 'ngx-toastr';
 import { environment } from 'environments/environment';
 
@@ -10,7 +9,7 @@ import { environment } from 'environments/environment';
 @Injectable()
 export class LeaveFormService {
 
-    public API = environment.server + 'api/v1/forms';
+    public API = environment.server + 'v1/forms';
     public PROVIDERS_API = '/leave-form';
 
     constructor(
