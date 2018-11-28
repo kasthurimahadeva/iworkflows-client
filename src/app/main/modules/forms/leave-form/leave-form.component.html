@@ -67,7 +67,7 @@
                             Previous
                         </button>
                         <button mat-raised-button color="accent" class="submit-button" type="submit"
-                                (click)="getLeaveDetails(leaveDetails.leaveDetailsForm.value)">
+                                (click)="getLeaveDetails(leaveDetails.leaveDetailsForm.value)" [disabled]="leaveDetails.leaveDetailsForm.invalid">
                             Submit
                         </button>
                     </div>
@@ -78,5 +78,6 @@
 
         </div>
     </div>
+
 
 </div>
