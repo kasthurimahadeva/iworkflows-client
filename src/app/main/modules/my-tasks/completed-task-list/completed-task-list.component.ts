@@ -86,7 +86,7 @@ export class TaskHttpDao {
     }
 
     getTasks(sort: string, order: string, page: number): Observable<CompletedTasks[]> {
-        const href = environment.server + 'api/v1/camunda/my-tasks';
+        const href = environment.server + 'v1/camunda/my-tasks';
         const requestUrl =
             `${href}?q=repo:angular/material2&sort=${sort}&order=${order}&page=${page + 1}`;
 

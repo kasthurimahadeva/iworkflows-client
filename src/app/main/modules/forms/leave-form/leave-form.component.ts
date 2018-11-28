@@ -56,7 +56,7 @@ export class LeaveFormComponent implements OnInit {
             'Content-Type': 'application/json'
         });
 
-            this.http.post(environment.server + 'api/v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
+            this.http.post(environment.server + 'v1/camunda/leave/start', leaveData, {headers: headers, observe: 'response'}).subscribe(
                 response => {
                     if (response.status === 200) {
                         this.toastr.success('Leave request submitted', 'Success', {progressBar: true, progressAnimation: 'increasing'});

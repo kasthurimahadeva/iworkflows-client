@@ -33,7 +33,7 @@ export class MyTaskService {
     getTaskDetails(processInstanceId): Subject<TaskDetails> {
         const subject = new Subject<TaskDetails>();
 
-        const detailsUrl = environment.server + 'api/v1/camunda/leave/details/' + processInstanceId;
+        const detailsUrl = environment.server + 'v1/camunda/leave/details/' + processInstanceId;
         this.http.get<TaskDetails>(detailsUrl).subscribe(
             taskDetails => subject.next(taskDetails),
             err => {
