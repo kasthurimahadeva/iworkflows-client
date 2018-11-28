@@ -96,7 +96,7 @@ export class ConnectComponent implements OnInit {
     }
 
     showSuccessRevokeToast(provider: string): void {
-        this.toastr.success('Successfylly disconnected from ' + provider, 'Revoke success');
+        this.toastr.success('Successfully disconnected from ' + provider, 'Revoke success');
     }
 
     showInfoToast(): number {

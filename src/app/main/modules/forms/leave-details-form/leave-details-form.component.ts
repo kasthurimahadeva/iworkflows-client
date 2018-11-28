@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MatDatepickerInputEvent} from '@angular/material';
 
@@ -55,9 +55,9 @@ export class LeaveDetailsFormComponent implements OnInit {
       this.endedDate = new FormControl(new Date(this.leaveDetails['endDate']));
 
       this.leaveDetailsForm = this._formBuilder.group({
-          leaveType: new FormControl({value: this.leaveDetails['leaveType'], disabled: this.isDisabled}),
-          startDate: new FormControl({value: this.leaveDetails['startDate'], disabled: this.isDisabled}),
-          endDate: new FormControl({value: this.leaveDetails['endDate'], disabled: this.isDisabled}),
+          leaveType: new FormControl({value: this.leaveDetails['leaveType'], disabled: this.isDisabled}, Validators.required),
+          startDate: new FormControl({value: this.leaveDetails['startDate'], disabled: this.isDisabled}, Validators.required),
+          endDate: new FormControl({value: this.leaveDetails['endDate'], disabled: this.isDisabled}, Validators.required),
           casual: new FormControl({value: this.leaveDetails['casual'], disabled: this.isDisabled}),
           medical: new FormControl({value: this.leaveDetails['medical'], disabled: this.isDisabled}),
           vacation: new FormControl({value: this.leaveDetails['vacation'], disabled: this.isDisabled}),
