@@ -37,8 +37,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                 } else if (err.status === 404) {
                     this.routeService.redirectTo404();
                 } else if (err.status === 428){
+                    console.log(err.message);
                     this.toastr.error(
-                        'Please authorize with these and try again',
+                        err.message,
                         'First authorize'
                     );
                     this.router.navigate(['connect']);

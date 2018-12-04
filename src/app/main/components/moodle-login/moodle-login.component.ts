@@ -63,7 +63,7 @@ export class MoodleLoginComponent implements OnInit {
         this.http.post(environment.server + 'v1/moodle/token', moodleCredentials, {headers: headers, observe: 'response'}).subscribe(
             response => {
                 if (response.status === 200) {
-                    this.toastr.success('Loggedin successfully', 'Success', {progressBar: true, progressAnimation: 'increasing'});
+                    this.toastr.success('Loggin successfully', 'Success', {progressBar: true, progressAnimation: 'increasing'});
                 }
             },
             error => {
