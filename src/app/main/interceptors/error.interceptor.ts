@@ -38,7 +38,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     this.routeService.redirectTo404();
                 } else if (err.status === 428){
                     this.toastr.error(
-                        'Please authorize with learnorg and try again',
+                        'Please authorize with these and try again',
                         'First authorize'
                     );
                     this.router.navigate(['connect']);
