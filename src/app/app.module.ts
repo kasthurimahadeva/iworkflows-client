@@ -91,7 +91,7 @@ export class XhrInterceptor implements HttpInterceptor {
         Error404Component,
         Error500Component,
         MoodleLoginComponent,
-        DebugTableComponent
+        DebugTableComponent,
     ],
     imports: [
         BrowserModule,

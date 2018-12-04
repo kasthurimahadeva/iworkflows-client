@@ -45,16 +45,16 @@
                        fusePerfectScrollbar>
 
                 <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
-                    <mat-cell *matCellDef="let i = index">
-                        <p class="text-truncate">{{i +1}}</p>
+                    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let log">
+                        <p class="text-truncate">{{log.id}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="timeStamp">
                     <mat-header-cell *matHeaderCellDef>Timestamp</mat-header-cell>
                     <mat-cell *matCellDef="let log">
-                        <p class="text-truncate">{{log.timeStamp}}</p>
+                        <p class="text-truncate">{{log.timestamp | date: 'short'}}</p>
                     </mat-cell>
                 </ng-container>
 

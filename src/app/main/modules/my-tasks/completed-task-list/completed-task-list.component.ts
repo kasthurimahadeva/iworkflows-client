@@ -20,7 +20,7 @@ import {CompletedTasks} from '../completed.tasks.model';
 })
 export class CompletedTaskListComponent implements OnInit {
 
-    displayedColumns: string[] = ['id', 'type', 'dueDate', 'owner', 'submittedDate', 'action'];
+    displayedColumns: string[] = ['id', 'type', 'owner', 'submittedDate', 'action'];
     taskDatabase: TaskHttpDao | null;
     database: CompletedTasks[] = [];
 
@@ -75,7 +75,7 @@ export class CompletedTaskListComponent implements OnInit {
             )
             .subscribe(data => {
                 this.database = data;
-                this.taskService.updateTaskTable(this.database);
+                this.taskService.updateCompletedTaskTable(this.database);
             });
     }
 
@@ -86,7 +86,7 @@ export class TaskHttpDao {
     }
 
     getTasks(sort: string, order: string, page: number): Observable<CompletedTasks[]> {
-        const href = environment.server + 'v1/camunda/my-tasks';
+        const href = environment.server + 'v1/camunda/completed-tasks';
         const requestUrl =
             `${href}?q=repo:angular/material2&sort=${sort}&order=${order}&page=${page + 1}`;
 

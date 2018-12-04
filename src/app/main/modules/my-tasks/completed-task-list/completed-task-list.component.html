@@ -33,7 +33,7 @@
 
         <div class="content-card">
             <mat-table class="tasks-table"
-                       #table [dataSource]="dataSource"
+                       #table [dataSource]="database"
                        matSort
                        [@animateStagger]="{value:'50'}"
                        fusePerfectScrollbar>
@@ -55,8 +55,8 @@
                 <ng-container matColumnDef="type">
                     <mat-header-cell *matHeaderCellDef>Review type</mat-header-cell>
                     <mat-cell *matCellDef="let task">
-                        <p class="text-truncate h6 p-4" [ngClass]="task.taskDefinitionKey">
-                            {{task.taskDefinitionKey}}</p>
+                        <p class="text-truncate h6 p-4 review_leave_head">
+                            leave-request</p>
                     </mat-cell>
                 </ng-container>
 
@@ -67,20 +67,20 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="dueDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>Due date</mat-header-cell>
-                    <mat-cell *matCellDef="let task">
-                        <p class="text-truncate">{{task.dueDate | date}}</p>
-                    </mat-cell>
-                </ng-container>
+                <!--<ng-container matColumnDef="dueDate">-->
+                    <!--<mat-header-cell *matHeaderCellDef mat-sort-header>Due date</mat-header-cell>-->
+                    <!--<mat-cell *matCellDef="let task">-->
+                        <!--<p class="text-truncate">{{task.dueDate | date}}</p>-->
+                    <!--</mat-cell>-->
+                <!--</ng-container>-->
 
                 <ng-container matColumnDef="action">
-                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Action</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-xs>Status</mat-header-cell>
                     <mat-cell *matCellDef="let task" fxHide fxShow.gt-xs>
-                        <mat-icon *ngIf="task.action == 'approved'" class="active-icon green-600 s-16">
+                        <mat-icon *ngIf="task.status == 'approved'" class="active-icon green-600 s-16">
                             check
                         </mat-icon>
-                        <mat-icon *ngIf="task.action == 'rejected'" class="active-icon red-500 s-16">
+                        <mat-icon *ngIf="task.status == 'rejected'" class="active-icon red-500 s-16">
                             close
                         </mat-icon>
                     </mat-cell>

@@ -5,6 +5,7 @@ import {Task} from './my.task.model';
 import {TaskDetails} from './my.task.details.model';
 import { environment } from 'environments/environment';
 import {ToastrService} from 'ngx-toastr';
+import {CompletedTasks} from './completed.tasks.model';
 
 declare let EventSource: any;
 
@@ -12,10 +13,12 @@ declare let EventSource: any;
 export class MyTaskService {
 
     public tasks: Task[];
+    public completedTasks: CompletedTasks[];
     taskDetails: TaskDetails[];
     onTasksChange: BehaviorSubject<any>;
 
     private taskSource = new BehaviorSubject(this.tasks);
+    private completedTaskSource = new BehaviorSubject(this.completedTasks);
     public taskTable = this.taskSource.asObservable();
 
     constructor(
@@ -29,6 +32,9 @@ export class MyTaskService {
         this.taskSource.next(task);
     }
 
+    updateCompletedTaskTable(completedTask: CompletedTasks[]): void{
+        this.completedTaskSource.next(completedTask);
+    }
 
     getTaskDetails(processInstanceId): Subject<TaskDetails> {
         const subject = new Subject<TaskDetails>();
