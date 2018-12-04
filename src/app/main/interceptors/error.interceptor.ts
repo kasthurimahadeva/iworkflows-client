@@ -39,8 +39,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                 } else if (err.status === 428){
                     console.log(err.message);
                     this.toastr.error(
-                        err.message,
-                        'First authorize'
+                        '',
+                        'Please connect first...'
                     );
                     this.router.navigate(['connect']);
                 }
